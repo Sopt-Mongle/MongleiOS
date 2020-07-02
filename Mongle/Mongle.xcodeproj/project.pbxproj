@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54DC5A9A745CCB208BCCAF82 /* Pods_Mongle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E307DC40215BE008F7EB0E1 /* Pods_Mongle.framework */; };
 		7F6ABEB224ADE7700040746E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABEB124ADE7700040746E /* AppDelegate.swift */; };
 		7F6ABEB424ADE7700040746E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABEB324ADE7700040746E /* SceneDelegate.swift */; };
 		7F6ABEB624ADE7700040746E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABEB524ADE7700040746E /* ViewController.swift */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E307DC40215BE008F7EB0E1 /* Pods_Mongle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mongle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F27ED38D43F3B60FE12A5BC /* Pods-Mongle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mongle.release.xcconfig"; path = "Target Support Files/Pods-Mongle/Pods-Mongle.release.xcconfig"; sourceTree = "<group>"; };
 		7F6ABEAE24ADE7700040746E /* Mongle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mongle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6ABEB124ADE7700040746E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F6ABEB324ADE7700040746E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 		7F6ABED824ADEC9E0040746E /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		7F6ABEDA24ADED910040746E /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		7F6ABEDC24ADF3B20040746E /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		D8DC844C59312BAF341597F1 /* Pods-Mongle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mongle.debug.xcconfig"; path = "Target Support Files/Pods-Mongle/Pods-Mongle.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,17 +51,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54DC5A9A745CCB208BCCAF82 /* Pods_Mongle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5317C3E85693BAF9C1F6A3CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E307DC40215BE008F7EB0E1 /* Pods_Mongle.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7F6ABEA524ADE7700040746E = {
 			isa = PBXGroup;
 			children = (
 				7F6ABEB024ADE7700040746E /* Mongle */,
 				7F6ABEAF24ADE7700040746E /* Products */,
+				926DF08E8FB83D8573256DC2 /* Pods */,
+				5317C3E85693BAF9C1F6A3CA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,6 +178,16 @@
 			path = VCs;
 			sourceTree = "<group>";
 		};
+		926DF08E8FB83D8573256DC2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D8DC844C59312BAF341597F1 /* Pods-Mongle.debug.xcconfig */,
+				7F27ED38D43F3B60FE12A5BC /* Pods-Mongle.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -170,9 +195,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F6ABEC224ADE7720040746E /* Build configuration list for PBXNativeTarget "Mongle" */;
 			buildPhases = (
+				11332B43F3E078B851BAC7EE /* [CP] Check Pods Manifest.lock */,
 				7F6ABEAA24ADE7700040746E /* Sources */,
 				7F6ABEAB24ADE7700040746E /* Frameworks */,
 				7F6ABEAC24ADE7700040746E /* Resources */,
+				1CE0ED470DC931B66665877B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -228,6 +255,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		11332B43F3E078B851BAC7EE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mongle-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1CE0ED470DC931B66665877B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mongle/Pods-Mongle-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mongle/Pods-Mongle-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mongle/Pods-Mongle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7F6ABEAA24ADE7700040746E /* Sources */ = {
@@ -386,6 +455,7 @@
 		};
 		7F6ABEC324ADE7720040746E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8DC844C59312BAF341597F1 /* Pods-Mongle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -404,6 +474,7 @@
 		};
 		7F6ABEC424ADE7720040746E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F27ED38D43F3B60FE12A5BC /* Pods-Mongle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
