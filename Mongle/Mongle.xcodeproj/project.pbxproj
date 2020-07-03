@@ -3,15 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		54DC5A9A745CCB208BCCAF82 /* Pods_Mongle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E307DC40215BE008F7EB0E1 /* Pods_Mongle.framework */; };
 		7F6ABEB224ADE7700040746E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABEB124ADE7700040746E /* AppDelegate.swift */; };
 		7F6ABEB424ADE7700040746E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABEB324ADE7700040746E /* SceneDelegate.swift */; };
-		7F6ABEB624ADE7700040746E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABEB524ADE7700040746E /* ViewController.swift */; };
-		7F6ABEB924ADE7700040746E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6ABEB724ADE7700040746E /* Main.storyboard */; };
 		7F6ABEBB24ADE7720040746E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F6ABEBA24ADE7720040746E /* Assets.xcassets */; };
 		7F6ABEBE24ADE7720040746E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6ABEBC24ADE7720040746E /* LaunchScreen.storyboard */; };
 		7F6ABECF24ADE8F80040746E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABECE24ADE8F80040746E /* UIColor+Extensions.swift */; };
@@ -30,8 +28,6 @@
 		7F6ABEAE24ADE7700040746E /* Mongle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mongle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6ABEB124ADE7700040746E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F6ABEB324ADE7700040746E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7F6ABEB524ADE7700040746E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7F6ABEB824ADE7700040746E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F6ABEBA24ADE7720040746E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F6ABEBD24ADE7720040746E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F6ABEBF24ADE7720040746E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,7 +118,6 @@
 		7F6ABEC724ADE7F30040746E /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				7F6ABEB724ADE7700040746E /* Main.storyboard */,
 				7F6ABEBC24ADE7720040746E /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
@@ -173,7 +168,6 @@
 		7F6ABECD24ADE8670040746E /* VCs */ = {
 			isa = PBXGroup;
 			children = (
-				7F6ABEB524ADE7700040746E /* ViewController.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -184,7 +178,6 @@
 				D8DC844C59312BAF341597F1 /* Pods-Mongle.debug.xcconfig */,
 				7F27ED38D43F3B60FE12A5BC /* Pods-Mongle.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -250,7 +243,6 @@
 			files = (
 				7F6ABEBE24ADE7720040746E /* LaunchScreen.storyboard in Resources */,
 				7F6ABEBB24ADE7720040746E /* Assets.xcassets in Resources */,
-				7F6ABEB924ADE7700040746E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +298,6 @@
 				7F6ABEDB24ADED910040746E /* GenericResponse.swift in Sources */,
 				7F6ABED724ADEB730040746E /* UserDefaultKeys.swift in Sources */,
 				7F6ABEDD24ADF3B20040746E /* NetworkResult.swift in Sources */,
-				7F6ABEB624ADE7700040746E /* ViewController.swift in Sources */,
 				7F6ABED524ADE9FC0040746E /* UIImageView+Extensions.swift in Sources */,
 				7F6ABEB224ADE7700040746E /* AppDelegate.swift in Sources */,
 				7F6ABED124ADE9860040746E /* UIView+Extensions.swift in Sources */,
@@ -320,14 +311,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		7F6ABEB724ADE7700040746E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7F6ABEB824ADE7700040746E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7F6ABEBC24ADE7720040746E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
