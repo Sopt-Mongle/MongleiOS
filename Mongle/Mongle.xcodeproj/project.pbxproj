@@ -21,7 +21,8 @@
 		7F6ABEDB24ADED910040746E /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABEDA24ADED910040746E /* GenericResponse.swift */; };
 		7F6ABEDD24ADF3B20040746E /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABEDC24ADF3B20040746E /* NetworkResult.swift */; };
 		B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */; };
-		B8F4DDEC24AF23B80075FDC1 /* SearchTabMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDEB24AF23B80075FDC1 /* SearchTabMainVC.swift */; };
+		B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */; };
+		B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +43,8 @@
 		7F6ABEDA24ADED910040746E /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		7F6ABEDC24ADF3B20040746E /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchTabMain.storyboard; sourceTree = "<group>"; };
-		B8F4DDEB24AF23B80075FDC1 /* SearchTabMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTabMainVC.swift; path = Mongle/Resource/Storyboard/SearchTabMainVC.swift; sourceTree = SOURCE_ROOT; };
+		B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTabMainVC.swift; sourceTree = "<group>"; };
+		B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchCVC.swift; sourceTree = "<group>"; };
 		D8DC844C59312BAF341597F1 /* Pods-Mongle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mongle.debug.xcconfig"; path = "Target Support Files/Pods-Mongle/Pods-Mongle.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +168,7 @@
 		7F6ABECC24ADE8610040746E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -173,7 +176,7 @@
 		7F6ABECD24ADE8670040746E /* VCs */ = {
 			isa = PBXGroup;
 			children = (
-				B8F4DDEB24AF23B80075FDC1 /* SearchTabMainVC.swift */,
+				B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -309,10 +312,11 @@
 				7F6ABEB224ADE7700040746E /* AppDelegate.swift in Sources */,
 				7F6ABED124ADE9860040746E /* UIView+Extensions.swift in Sources */,
 				7F6ABED924ADEC9E0040746E /* APIConstants.swift in Sources */,
+				B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */,
 				7F6ABEB424ADE7700040746E /* SceneDelegate.swift in Sources */,
 				7F6ABED324ADE9D60040746E /* UIViewController+Extensions.swift in Sources */,
 				7F6ABECF24ADE8F80040746E /* UIColor+Extensions.swift in Sources */,
-				B8F4DDEC24AF23B80075FDC1 /* SearchTabMainVC.swift in Sources */,
+				B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
