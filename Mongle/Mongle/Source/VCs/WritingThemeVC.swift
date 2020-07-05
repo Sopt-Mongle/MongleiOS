@@ -9,6 +9,8 @@
 import UIKit
 
 class WritingThemeVC: UIViewController, UITextFieldDelegate {
+    
+    
 
     @IBOutlet weak var textQuantityLabel: UILabel!
     @IBOutlet weak var applyButton: UIButton!
@@ -18,7 +20,6 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     var textNum : Int?
     let textLengthSelector : Selector =  #selector(WritingThemeVC.updateTextLength)
     var timer : Timer!
-    var collectionKorean = ["ㅏ","ㅐ","ㅑ","ㅒ","ㅓ","ㅔ","ㅕ","ㅖ","ㅗ" ,"ㅛ", "ㅜ",  "ㅠ" ,"ㅡ" , "ㅣ"]
     var lastLetter : String?
     
     
