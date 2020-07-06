@@ -22,6 +22,7 @@ class UnderTabBarController: UITabBarController {
         $0.setTitle("테마 만들기", for: .normal)
         $0.backgroundColor = .white
         $0.setTitleColor(.black, for: .normal)
+       
     }
     let writeSentenceButton = UIButton().then {
         $0.alpha = 0
@@ -31,7 +32,7 @@ class UnderTabBarController: UITabBarController {
     }
     let blurView = UIView().then {
         $0.alpha = 0
-        $0.backgroundColor = .blur
+        $0.backgroundColor = .blur1
     }
     
     
@@ -46,6 +47,7 @@ class UnderTabBarController: UITabBarController {
         // Do any additional setup after loading the view.
         
         setTabBar()
+        print(self.tabBar.frame.height)
         
         
     }
@@ -62,12 +64,13 @@ class UnderTabBarController: UITabBarController {
         self.tabBar.barStyle = .black
         self.tabBar.barTintColor = .white
         self.tabBar.unselectedItemTintColor = .gray
-        
+        self.tabBar.tintColor = .black
         
         let appearance = UITabBarItem.appearance()
         let attributes = [NSAttributedString.Key.font:UIFont(name:
-            "American Typewriter", size: 20)]
-        appearance.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -10)
+            "American Typewriter", size: 15)]
+        appearance.titlePositionAdjustment = UIOffset(horizontal: 0,
+                                                      vertical: -0.205*self.tabBar.frame.height)
     
         appearance.setTitleTextAttributes(attributes as
             [NSAttributedString.Key : Any], for: .normal)
@@ -93,7 +96,7 @@ class UnderTabBarController: UITabBarController {
         plusButton.snp.makeConstraints{
             $0.width.height.equalTo(65)
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.view.snp_bottomMargin).offset(-70) //should be changed : not exact
+            $0.bottom.equalTo(self.view.safeAreaInsets.bottom).offset(-41) //should be changed : not exact
             
         }
         plusButton.addTarget(self, action: #selector(plusButtonAction(sender:)),
@@ -102,30 +105,46 @@ class UnderTabBarController: UITabBarController {
         
         writeSentenceButton.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(plusButton.snp.top)
-            $0.width.equalTo(118)
+            $0.bottom.equalTo(plusButton.snp.top).offset(13)
+            $0.width.equalTo(88)
             $0.height.equalTo(40)
             
         }
         writeSentenceButton.makeRounded(cornerRadius: 20)
+        writeSentenceButton.titleLabel?.font = UIFont(name:
+        "American Typewriter", size: 15)
+        writeSentenceButton.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.28, radius: 10)
         
         makeThemeButton.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(writeSentenceButton.snp.top).offset(-18)
-            $0.width.equalTo(134)
+            $0.bottom.equalTo(writeSentenceButton.snp.top).offset(-13)
+            $0.width.equalTo(104)
             $0.height.equalTo(40)
         }
+        
         makeThemeButton.makeRounded(cornerRadius: 20)
         makeThemeButton.addTarget(self,
                                   action: #selector(makeThemeButtonAction), for: .touchUpInside)
+        makeThemeButton.titleLabel?.font = UIFont(name:
+        "American Typewriter", size: 15)
         
         
 //        Setting temporary VCs to check implementation
         
         let mainVC = UIViewController()
-        let searchVC = UIViewController()
+      
         let curatorVC = UIViewController()
         let myVC = UIViewController()
+     
+        guard let searchVC = UIStoryboard(name: "SearchTabMain",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "SearchTabMainVC") as? SearchTabMainVC
+            else{
+            
+            return
+        }
+        
+        
         
         let tmpVC = UIViewController() // dummy VC for spacing (should be modified to offset)
       
@@ -136,8 +155,7 @@ class UnderTabBarController: UITabBarController {
         myVC.title = "내 서재"
         tmpVC.title = ""
         
-        mainVC.view.backgroundColor = .red
-        searchVC.view.backgroundColor = .yellow
+        mainVC.view.backgroundColor = .white
         curatorVC.view.backgroundColor = .brown
         myVC.view.backgroundColor = .systemPink
         
