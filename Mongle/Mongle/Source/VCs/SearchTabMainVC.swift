@@ -137,8 +137,7 @@ extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionView
             }
             else{
                 recommendCell.layer.cornerRadius = recommendCell.bounds.width/3 + 3.5
-                recommendCell.backgroundColor = .ice
-                recommendCell.recommendSearchKeyLabel.textColor = .tea
+                
                 recommendCell.setRecommend(key: recommendKeyArray[indexPath.item])
             }
             return recommendCell
