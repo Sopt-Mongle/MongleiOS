@@ -61,11 +61,18 @@ class UnderTabBarController: UITabBarController {
 //        Setting bar properties
         self.tabBar.barStyle = .black
         self.tabBar.barTintColor = .white
+        self.tabBar.unselectedItemTintColor = .gray
+        
+        
         let appearance = UITabBarItem.appearance()
         let attributes = [NSAttributedString.Key.font:UIFont(name:
             "American Typewriter", size: 20)]
+        appearance.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -10)
+    
         appearance.setTitleTextAttributes(attributes as
             [NSAttributedString.Key : Any], for: .normal)
+        
+        
         
 //        adding button, blur view
         self.view.addSubview(blurView)
@@ -86,7 +93,7 @@ class UnderTabBarController: UITabBarController {
         plusButton.snp.makeConstraints{
             $0.width.height.equalTo(65)
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(self.view.snp_bottomMargin).offset(-80)
+            $0.top.equalTo(self.view.snp_bottomMargin).offset(-70) //should be changed : not exact
             
         }
         plusButton.addTarget(self, action: #selector(plusButtonAction(sender:)),
@@ -96,7 +103,7 @@ class UnderTabBarController: UITabBarController {
         writeSentenceButton.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(plusButton.snp.top)
-            $0.width.equalTo(88)
+            $0.width.equalTo(118)
             $0.height.equalTo(40)
             
         }
@@ -105,7 +112,7 @@ class UnderTabBarController: UITabBarController {
         makeThemeButton.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.bottom.equalTo(writeSentenceButton.snp.top).offset(-18)
-            $0.width.equalTo(104)
+            $0.width.equalTo(134)
             $0.height.equalTo(40)
         }
         makeThemeButton.makeRounded(cornerRadius: 20)
