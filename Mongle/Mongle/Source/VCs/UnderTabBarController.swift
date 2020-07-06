@@ -215,6 +215,7 @@ class UnderTabBarController: UITabBarController {
             else{
             return
         }
+        hideSubMenus()
         vcName.modalPresentationStyle = .fullScreen
         
         self.present(vcName, animated: true, completion: nil)

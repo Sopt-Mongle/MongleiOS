@@ -87,6 +87,10 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     
 
     
+    @IBAction func xButtonisTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        
+    }
     
     
     
