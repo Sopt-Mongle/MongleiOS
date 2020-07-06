@@ -9,5 +9,11 @@
 import UIKit
 
 class RecentSearchCVC: UICollectionViewCell {
+    static let identifier = "recentSearchCVC"
+    
+    @IBOutlet weak var recentSearchKeyLabel: UILabel!
+    func setRecent(key:String){
+        recentSearchKeyLabel.text = key
+    }
     
 }
