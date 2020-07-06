@@ -8,15 +8,19 @@
 
 import UIKit
 
-class SearchTabMainVC: UIViewController {
+class SearchTabMainVC: UIViewController{
     
     var recentKeyArray : [String] = ["최근","검색어","테스트중","몽글","알러뷰"]
+    var recommendKeyArray : [String] = ["에세이","몽글","테마","큐레이터","몽골","오늘저녁또떡"]
     // MARK:- IBOutlet
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var stringCounter: UILabel!
     @IBOutlet weak var recentSearchCV: UICollectionView!
     @IBOutlet weak var recommendSearchCV: UICollectionView!
     
+
+    @IBAction func searchBTN(_ sender: Any) {
+    }
     @IBAction func removeSearchHistoryBTN(_ sender: Any) {
         recentKeyArray = []
         recentSearchCV.reloadData()
@@ -25,15 +29,37 @@ class SearchTabMainVC: UIViewController {
     // MARK:- LifeCycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
-        //recentSearchCV.delegate = self
+        recentSearchCV.delegate = self
         recentSearchCV.dataSource = self
-        
+        recommendSearchCV.delegate = self
+        recommendSearchCV.dataSource = self
+        //recommendSearchCV.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
+        //UserDefaults.standard.s
         //searchTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         searchTextField.becomeFirstResponder()
     }
+//
+//    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+//        let attributes = super.layoutAttributesForElements(in: rect)
+//
+//        var leftMargin = sectionInset.left
+//        var maxY: CGFloat = -1.0
+//        attributes?.forEach { layoutAttribute in
+//            if layoutAttribute.frame.origin.y >= maxY {
+//                leftMargin = sectionInset.left
+//            }
+//
+//            layoutAttribute.frame.origin.x = leftMargin
+//
+//            leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
+//            maxY = max(layoutAttribute.frame.maxY , maxY)
+//        }
+//
+//        return attributes
+//    }
     
     
     
@@ -62,40 +88,116 @@ class SearchTabMainVC: UIViewController {
 //
 //}
 extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate{
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let count = recentKeyArray.count
-        if count == 0 {
-            return 1
+        if (collectionView == recentSearchCV){
+            let count = recentKeyArray.count
+            if count == 0 {
+                return 1
+            }
+            else{
+                return recentKeyArray.count
+            }
         }
         else{
-            return recentKeyArray.count
+            return recommendKeyArray.count
         }
+        
 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecentSearchCVC", for: indexPath) as? RecentSearchCVC else {
-            return RecentSearchCVC()
-        }
-        let count = recentKeyArray.count
-        if count == 0{
-            cell.setBorder(borderColor: .clear, borderWidth: 0)
-            cell.recentSearchKeyLabel.textColor = .lightGray
-            cell.setRecent(key: "최근 검색어가 없습니다.")
+        if collectionView == recentSearchCV{
+            guard let recentCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecentSearchCVC", for: indexPath) as? RecentSearchCVC else {
+                return RecentSearchCVC()
+            }
+            let count = recentKeyArray.count
+            if count == 0{
+                recentCell.setBorder(borderColor: .clear, borderWidth: 0)
+                recentCell.recentSearchKeyLabel.textColor = .lightGray
+                recentCell.setRecent(key: "최근 검색어가 없습니다.")
+            }
+            else{
+                recentCell.layer.cornerRadius = recentCell.bounds.width/3 + 3.5
+                recentCell.setBorder(borderColor: .softGreen, borderWidth: 1)
+                recentCell.recentSearchKeyLabel.textColor = .softGreen
+                recentCell.setRecent(key: recentKeyArray[indexPath.item])
+            }
+            return recentCell
         }
         else{
-            cell.layer.cornerRadius = cell.bounds.width/3 + 3.5
-            cell.setBorder(borderColor: .softGreen, borderWidth: 1)
-            cell.recentSearchKeyLabel.textColor = .softGreen
-            cell.setRecent(key: recentKeyArray[indexPath.item])
+            guard let recommendCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendSearchCVC", for: indexPath) as? RecommendSearchCVC else {
+                return RecommendSearchCVC()
+            }
+            let count = recommendKeyArray.count
+            if count == 0{
+                recommendCell.setBorder(borderColor: .clear, borderWidth: 0)
+                recommendCell.recommendSearchKeyLabel.textColor = .lightGray
+                recommendCell.setRecommend(key: "추천 검색어가 없습니다.")
+            }
+            else{
+                recommendCell.layer.cornerRadius = recommendCell.bounds.width/3 + 3.5
+                recommendCell.backgroundColor = .ice
+                recommendCell.recommendSearchKeyLabel.textColor = .tea
+                recommendCell.setRecommend(key: recommendKeyArray[indexPath.item])
+            }
+            return recommendCell
         }
-        return cell
-   
+    
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 8
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 8
     }
+
+    
+    
+//    func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+//        let attributes = self.layoutAttributesForElements(in: rect)
+//
+//        var leftMargin = sectionInset.left
+//        var maxY: CGFloat = -1.0
+//        attributes?.forEach { layoutAttribute in
+//            if layoutAttribute.frame.origin.y >= maxY {
+//                leftMargin = sectionInset.left
+//            }
+//
+//            layoutAttribute.frame.origin.x = leftMargin
+//
+//            leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
+//            maxY = max(layoutAttribute.frame.maxY , maxY)
+//        }
+//
+//        return attributes
+//    }
+//        layout
 }
+
+//class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
+//
+//    override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+//
+//        // We may not change the original layout attributes
+//        // or UICollectionViewFlowLayout might complain.
+//        let layoutAttributesObjects = copy(super.layoutAttributesForElements(in: rect))
+//
+//        layoutAttributesObjects?.forEach({ (layoutAttributes) in
+//            if layoutAttributes.representedElementCategory == .cell { // Do not modify header views etc.
+//                let indexPath = layoutAttributes.indexPath
+//                // Retrieve the correct frame from layoutAttributesForItem(at: indexPath):
+//                if let newFrame = layoutAttributesForItem(at: indexPath)?.frame {
+//                    layoutAttributes.frame = newFrame
+//                }
+//            }
+//        })
+//
+//        return layoutAttributesObjects
+//    }
+//    private func copy(_ layoutAttributesArray: [UICollectionViewLayoutAttributes]?) -> [UICollectionViewLayoutAttributes]? {
+//        return layoutAttributesArray?.map{ $0.copy() } as? [UICollectionViewLayoutAttributes]
+//    }
+//}
+//
+

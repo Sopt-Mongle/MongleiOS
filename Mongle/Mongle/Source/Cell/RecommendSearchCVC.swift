@@ -9,7 +9,7 @@
 import UIKit
 
 class RecommendSearchCVC: UICollectionViewCell {
-    
+    static let identifier = "RecommendSearchCVC"
     @IBOutlet weak var recommendSearchKeyLabel: UILabel!
     
     func setRecommend(key:String){
