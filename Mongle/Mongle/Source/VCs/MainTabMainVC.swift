@@ -17,22 +17,54 @@ class MainTabMainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        layoutTableView.delegate = self
+        layoutTableView.dataSource = self
 
         // Do any additional setup after loading the view.
     }
     
 }
 
+
+// MARK:- Extension
+// MARK: UITableViewDelegate
 extension MainTabMainVC: UITableViewDelegate {
     
 }
 
+
+// MARK: UITableViewDataSource
 extension MainTabMainVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 4
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.section {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabFirstTVC.identifier) as? MainTabFirstTVC else {
+                return UITableViewCell()
+            }
+//            cell.backgroundColor = .brown
+            
+            return cell
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabSecondTVC.identifier) as? MainTabSecondTVC else {
+                return UITableViewCell()
+            }
+            
+            return cell
+        case 2:
+            break
+        case 3:
+            break
+        default:
+            return UITableViewCell()
+        }
         return UITableViewCell()
     }
 }
+
