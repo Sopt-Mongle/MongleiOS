@@ -11,18 +11,19 @@ import UIKit
 class WritingThemeVC: UIViewController, UITextFieldDelegate {
     
     
-
+    // MARK:- IBOutlet
     @IBOutlet weak var textQuantityLabel: UILabel!
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var themeNameTextField: UITextField!
     
     
+    // MARK:- Class Variables
     var textNum : Int?
-    let textLengthSelector : Selector =  #selector(WritingThemeVC.updateTextLength)
-    var timer : Timer!
-    var lastLetter : String?
+  
+
     
     
+    // MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,76 +34,21 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         textQuantityLabel.text = "0/80"
         textNum = 0;
         textNum = themeNameTextField.text?.count
-        lastLetter = ""
-        print(textNum!)
-        timer = Timer.scheduledTimer(timeInterval: 0.1,
-                                     target: self,
-                                     selector: textLengthSelector,
-                                     userInfo: nil,
-                                     repeats: true)
+
+        themeNameTextField.addTarget(self, action: #selector(textFieldDidChange),
+                                     for: .editingChanged)
+        
         
     }
     
-//
-//    func textField(_ textField: UITextField,
-//                   shouldChangeCharactersIn range: NSRange,
-//                   replacementString string: String) -> Bool {
-//
-//        textNum = textField.text?.count ?? 0
-//        print(lastLetter!)
-//
-////        입력
-//        if string.count==1{
-////            모음이 입력됨
-//            if collectionKorean.contains(string){
-////                lastLetter : 모음
-//                if collectionKorean.contains(lastLetter!){
-//                    print("1")
-//                    textQuantityLabel.text = String(textNum!)+"/80"
-//                }
-//
-////                lastLetter : 자음
-//                else{
-//                    print("2")
-//                    textQuantityLabel.text = String(textNum!+1)+"/80"
-//                }
-//
-//            }
-//
-////            자음이 입력됨
-//            else{
-////                lastletter가 모음
-//                if collectionKorean.contains(lastLetter!){
-//                    print("3")
-//                    textQuantityLabel.text = String(textNum!)+"/80"
-//
-//                }
-//                else{
-//                    print("4")
-//                    textQuantityLabel.text = String(textNum!+1)+"/80"
-//
-//
-//                }
-//
-//            }
-//
-//        }
-//        else{
-//
-//            textQuantityLabel.text = String(textNum!-1)+"/80"
-//
-//        }
-//
-//        lastLetter = string
-//
-//        return true
-//
-//    }
-
-
+    
+    @objc func textFieldDidChange(){
+       textNum = themeNameTextField.text?.count
+       textQuantityLabel.text = String(textNum!)+"/80"
+    }
 
    
-    
+    // MARK:- Functions
     func setThemeNameTextField(){
         themeNameTextField.setBorder(borderColor: .white, borderWidth: 1.0)
 
@@ -123,6 +69,10 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     }
     
     
+    
+    
+    // MARK:- IBAction Functions
+    
     @IBAction func resetTextQuantity(_ sender: UITextField) {
         textNum = themeNameTextField.text?.count
        
@@ -135,17 +85,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
     }
     
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation
-     before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     
     
     
