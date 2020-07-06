@@ -11,7 +11,7 @@
         <!--Search Tab MainVC-->
         <scene sceneID="Zlc-NX-NXd">
             <objects>
-                <viewController id="xgH-LR-iMl" customClass="SearchTabMainVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchTabMainVC" id="xgH-LR-iMl" customClass="SearchTabMainVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SYo-uP-pOv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
