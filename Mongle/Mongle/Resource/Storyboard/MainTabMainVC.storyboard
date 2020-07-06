@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j3y-77-Kqr">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main Tab MainVC-->
         <scene sceneID="cZV-ev-QnT">
             <objects>
-                <viewController id="j3y-77-Kqr" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainTabMainVC" id="j3y-77-Kqr" customClass="MainTabMainVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zia-wq-aKs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="S1x-AW-E1K">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainTabFirstTVC" id="S1x-AW-E1K" customClass="MainTabFirstTVC" customModule="Mongle" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="427"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S1x-AW-E1K" id="CBz-NU-jwK">
@@ -33,7 +33,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="eC6-2x-8lA" secondAttribute="height" multiplier="1:1" id="Zpi-bK-MRH"/>
                                                     </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ll9-GU-VJM">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ll9-GU-VJM">
                                                         <size key="itemSize" width="128" height="128"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -50,11 +50,21 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7T-uS-aHt" userLabel="pagecontrolview">
+                                                    <rect key="frame" x="128.66666666666666" y="396" width="118" height="17"/>
+                                                    <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="118" id="Pl4-r1-inE"/>
+                                                        <constraint firstAttribute="height" constant="17" id="dPP-vH-L8H"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="F7T-uS-aHt" firstAttribute="centerX" secondItem="CBz-NU-jwK" secondAttribute="centerX" id="3SX-OA-UZW"/>
                                                 <constraint firstItem="eC6-2x-8lA" firstAttribute="leading" secondItem="CBz-NU-jwK" secondAttribute="leading" id="6Fz-29-2yU"/>
                                                 <constraint firstAttribute="trailing" secondItem="eC6-2x-8lA" secondAttribute="trailing" id="LIe-ff-w1O"/>
                                                 <constraint firstAttribute="bottom" secondItem="eC6-2x-8lA" secondAttribute="bottom" constant="52" id="LZ6-si-w9x"/>
+                                                <constraint firstItem="F7T-uS-aHt" firstAttribute="top" secondItem="eC6-2x-8lA" secondAttribute="bottom" constant="21" id="mOg-Gc-McW"/>
                                                 <constraint firstItem="eC6-2x-8lA" firstAttribute="top" secondItem="CBz-NU-jwK" secondAttribute="top" id="muw-iD-YkW"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -87,6 +97,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mmp-2G-xp6"/>
                     </view>
+                    <connections>
+                        <outlet property="layoutTableView" destination="QVh-b9-MM8" id="CK2-s4-eNP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hom-MU-XB5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
