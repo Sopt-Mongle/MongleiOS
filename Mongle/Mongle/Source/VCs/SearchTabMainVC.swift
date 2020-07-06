@@ -12,14 +12,36 @@ class SearchTabMainVC: UIViewController{
     
     var recentKeyArray : [String] = ["최근","검색어","테스트중","몽글","알러뷰"]
     var recommendKeyArray : [String] = ["에세이","몽글","테마","큐레이터","몽골","오늘저녁또떡"]
+    var searchKey : String?
     // MARK:- IBOutlet
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var stringCounter: UILabel!
     @IBOutlet weak var recentSearchCV: UICollectionView!
     @IBOutlet weak var recommendSearchCV: UICollectionView!
+    @IBOutlet weak var searchBTN: UIButton!
     
 
-    @IBAction func searchBTN(_ sender: Any) {
+    @IBAction func touchUpSearchBTN(_ sender: Any) {
+        //searchKey = searchTextField.text
+        if searchTextField.hasText{
+            searchKey = searchTextField.text
+            if recentKeyArray.contains(searchKey!){
+                let length = recentKeyArray.count
+                for idx in 0..<length {
+                    if recentKeyArray[idx] == searchKey{
+                        recentKeyArray.remove(at:idx)
+                        break
+                    }
+                }
+            }
+            recentKeyArray.insert(searchKey!,at: 0)
+            recentSearchCV.reloadData()
+            
+        }
+        searchTextField.text = ""
+        
+        
+        
     }
     @IBAction func removeSearchHistoryBTN(_ sender: Any) {
         recentKeyArray = []
@@ -33,6 +55,7 @@ class SearchTabMainVC: UIViewController{
         recentSearchCV.dataSource = self
         recommendSearchCV.delegate = self
         recommendSearchCV.dataSource = self
+        
         //recommendSearchCV.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
         //UserDefaults.standard.s
         //searchTextField.delegate = self
@@ -118,7 +141,7 @@ extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionView
                 recentCell.setRecent(key: "최근 검색어가 없습니다.")
             }
             else{
-                recentCell.layer.cornerRadius = recentCell.bounds.width/3 + 3.5
+                //recentCell.layer.cornerRadius = recentCell.bounds.width/3 + 3.5
                 recentCell.setBorder(borderColor: .softGreen, borderWidth: 1)
                 recentCell.recentSearchKeyLabel.textColor = .softGreen
                 recentCell.setRecent(key: recentKeyArray[indexPath.item])
@@ -150,6 +173,19 @@ extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionView
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 8
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == recentSearchCV{
+            let cell = collectionView.cellForItem(at: indexPath) as? RecentSearchCVC
+            searchTextField.text = cell?.recentSearchKeyLabel.text
+            touchUpSearchBTN(self.searchBTN)
+            
+        }
+        else{
+            let cell = collectionView.cellForItem(at: indexPath) as? RecommendSearchCVC
+            searchTextField.text = cell?.recommendSearchKeyLabel.text
+            touchUpSearchBTN(self.searchBTN)
+        }
     }
 
     
