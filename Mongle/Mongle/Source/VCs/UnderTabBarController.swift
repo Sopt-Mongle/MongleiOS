@@ -15,7 +15,7 @@ class UnderTabBarController: UITabBarController {
     // MARK:- UIComponents
     
     let plusButton = UIButton().then {
-        $0.backgroundColor = .black
+        $0.setImage(UIImage(named: "plustabIc"), for: .normal)
     }
     let makeThemeButton = UIButton().then {
         $0.alpha = 0
@@ -159,7 +159,7 @@ class UnderTabBarController: UITabBarController {
     
 //        When PlustButton is Tapped
     private func showSubMenus(){
-        UIView.animate(withDuration: 1 , delay: 0, options: [.curveEaseIn], animations: {
+        UIView.animate(withDuration: 0.25 , delay: 0, options: [.curveEaseIn], animations: {
             self.plusButton.transform = CGAffineTransform(rotationAngle: .pi/4)
             [self.blurView, self.makeThemeButton, self.writeSentenceButton].forEach{
                 $0.alpha = 1
@@ -175,7 +175,7 @@ class UnderTabBarController: UITabBarController {
     
 //        When BlurView is Tapped or Plus Button is Re-Tapped
     private func hideSubMenus(){
-            UIView.animate(withDuration: 1 , delay: 0, options: [.curveEaseIn], animations: {
+        UIView.animate(withDuration: 0.25 , delay: 0, options: [.curveEaseIn], animations: {
                 self.plusButton.transform = CGAffineTransform.identity
                 [self.blurView, self.makeThemeButton, self.writeSentenceButton].forEach{
                     $0.alpha = 0
@@ -208,12 +208,15 @@ class UnderTabBarController: UITabBarController {
          hideSubMenus()
      }
     
-    @objc func makeThemeButtonAction(sender: UIButton){
-        guard let vcName = self.storyboard?.instantiateViewController(withIdentifier:
-            "WritingThemeVC") as? WritingThemeVC else{
+    @objc func makeThemeButtonAction(sender: UIButton?){
+        guard let vcName = UIStoryboard(name: "Writing_Theme",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "WritingThemeVC") as? WritingThemeVC
+            else{
             return
         }
-        vcName.modalTransitionStyle = .coverVertical
+        vcName.modalPresentationStyle = .fullScreen
+        
         self.present(vcName, animated: true, completion: nil)
         
     }
