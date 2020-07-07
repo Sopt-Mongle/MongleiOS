@@ -43,7 +43,11 @@
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
+<<<<<<< HEAD
 					<string>MainTabMain</string>
+=======
+					<string>SearchTabMain</string>
+>>>>>>> develop
 				</dict>
 			</array>
 		</dict>
@@ -51,7 +55,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>SearchTabMain</string>
+	<string>UnderTab</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
