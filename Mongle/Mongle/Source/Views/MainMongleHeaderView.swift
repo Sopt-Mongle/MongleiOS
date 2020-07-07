@@ -17,6 +17,7 @@ class MainMongleHeaderView: UIView {
     let mongleLogoImageview = UIImageView().then {
         $0.frame = CGRect(x: 0, y: 0, width: 89, height: 26)
         $0.image = UIImage(named: "mongleLogo")
+        $0.backgroundColor = .cyan
     }
     
     let searchButton = UIButton().then {
@@ -43,7 +44,7 @@ class MainMongleHeaderView: UIView {
     func setUpAutolayout(){
         // mongle logo
         mongleLogoImageview.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(4)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(4)
             $0.leading.equalToSuperview().offset(16)
             $0.width.equalTo(89)
             $0.height.equalTo(26)

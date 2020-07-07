@@ -53,7 +53,7 @@ extension MainTabFirstTVC: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         cell.displayPictureImageView.image = UIImage(named: pictures[indexPath.item])
-        cell.backgroundColor = .blue
+//        cell.backgroundColor = .blue
         return cell
     }
 }
@@ -74,5 +74,5 @@ extension MainTabFirstTVC: UICollectionViewDelegateFlowLayout {
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 //        <#code#>
 //    }
-//    
+//
 }
