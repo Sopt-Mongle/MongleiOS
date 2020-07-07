@@ -29,7 +29,36 @@ class MainTabMainVC: UIViewController {
 // MARK:- Extension
 // MARK: UITableViewDelegate
 extension MainTabMainVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            let view = MainMongleHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 58))
+//            view.backgroundColor = .gray
+            return view
+        case 1:
+            break
+        case 2:
+            break
+        case 3:
+            break
+        default:
+            break
+        }
+        
+        return UIView()
+    }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 58
+        case 1, 2, 3:
+            return 48
+        default:
+            break
+        }
+        return 0
+    }
 }
 
 
