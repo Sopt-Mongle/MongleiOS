@@ -63,7 +63,10 @@ extension MainTabMainVC: UITableViewDataSource {
             }
             return cell
         case 3:
-            break
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabFourthTVC.idnetifier) as? MainTabFourthTVC else {
+                return UITableViewCell()
+            }
+            return cell
         default:
             return UITableViewCell()
         }

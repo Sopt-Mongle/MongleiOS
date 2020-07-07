@@ -12,6 +12,8 @@
 		7F1E719724B4553F00D79516 /* MainTabThirdTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1E719624B4553F00D79516 /* MainTabThirdTVC.swift */; };
 		7F1E719924B45AB600D79516 /* MainPopularCuratorCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1E719824B45AB600D79516 /* MainPopularCuratorCVC.swift */; };
 		7F1E719B24B463A400D79516 /* MainTabFourthTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1E719A24B463A400D79516 /* MainTabFourthTVC.swift */; };
+		7F1E719D24B46E3C00D79516 /* MainPopularThemaCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1E719C24B46E3C00D79516 /* MainPopularThemaCVC.swift */; };
+		7F1E71A024B476C900D79516 /* MainMongleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1E719F24B476C900D79516 /* MainMongleHeaderView.swift */; };
 		7F6ABEB224ADE7700040746E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABEB124ADE7700040746E /* AppDelegate.swift */; };
 		7F6ABEB424ADE7700040746E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABEB324ADE7700040746E /* SceneDelegate.swift */; };
 		7F6ABEBB24ADE7720040746E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F6ABEBA24ADE7720040746E /* Assets.xcassets */; };
@@ -43,6 +45,8 @@
 		7F1E719624B4553F00D79516 /* MainTabThirdTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabThirdTVC.swift; sourceTree = "<group>"; };
 		7F1E719824B45AB600D79516 /* MainPopularCuratorCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPopularCuratorCVC.swift; sourceTree = "<group>"; };
 		7F1E719A24B463A400D79516 /* MainTabFourthTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabFourthTVC.swift; sourceTree = "<group>"; };
+		7F1E719C24B46E3C00D79516 /* MainPopularThemaCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPopularThemaCVC.swift; sourceTree = "<group>"; };
+		7F1E719F24B476C900D79516 /* MainMongleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMongleHeaderView.swift; sourceTree = "<group>"; };
 		7F27ED38D43F3B60FE12A5BC /* Pods-Mongle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mongle.release.xcconfig"; path = "Target Support Files/Pods-Mongle/Pods-Mongle.release.xcconfig"; sourceTree = "<group>"; };
 		7F6ABEAE24ADE7700040746E /* Mongle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mongle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6ABEB124ADE7700040746E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +96,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7F1E719E24B4768D00D79516 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7F1E719F24B476C900D79516 /* MainMongleHeaderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7F6ABEA524ADE7700040746E = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +149,7 @@
 		7F6ABEC624ADE7C90040746E /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				7F1E719E24B4768D00D79516 /* Views */,
 				7F6ABECD24ADE8670040746E /* VCs */,
 				7F6ABECC24ADE8610040746E /* Cell */,
 				7F6ABECB24ADE85A0040746E /* Extensions */,
@@ -203,6 +216,7 @@
 				7FCEE21E24B363CF00225CA3 /* MainTabSecondTVC.swift */,
 				7F1E719624B4553F00D79516 /* MainTabThirdTVC.swift */,
 				7F1E719824B45AB600D79516 /* MainPopularCuratorCVC.swift */,
+				7F1E719C24B46E3C00D79516 /* MainPopularThemaCVC.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -351,6 +365,7 @@
 				7F6ABED524ADE9FC0040746E /* UIImageView+Extensions.swift in Sources */,
 				7F767D7724B211D100ADF46D /* WritingThemeVC.swift in Sources */,
 				7FCEE21D24B355FC00225CA3 /* MainPictureCVC.swift in Sources */,
+				7F1E719D24B46E3C00D79516 /* MainPopularThemaCVC.swift in Sources */,
 				7FCEE21F24B363CF00225CA3 /* MainTabSecondTVC.swift in Sources */,
 				7FCEE21B24B3091C00225CA3 /* MainTabFirstTVC.swift in Sources */,
 				7F6ABEB224ADE7700040746E /* AppDelegate.swift in Sources */,
@@ -358,6 +373,7 @@
 				7F6ABED124ADE9860040746E /* UIView+Extensions.swift in Sources */,
 				B86D4C4224B2C14200C21906 /* RecommendSearchCVC.swift in Sources */,
 				7F1E719724B4553F00D79516 /* MainTabThirdTVC.swift in Sources */,
+				7F1E71A024B476C900D79516 /* MainMongleHeaderView.swift in Sources */,
 				7F1E719524B4476E00D79516 /* MainTodaySentenceCVC.swift in Sources */,
 				7F6ABED924ADEC9E0040746E /* APIConstants.swift in Sources */,
 				B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */,
