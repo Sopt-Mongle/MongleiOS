@@ -18,6 +18,8 @@ class MainTabSecondTVC: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        todaySentenceCollectionView.delegate = self
+        todaySentenceCollectionView.dataSource = self
         
     }
 
@@ -38,6 +40,23 @@ extension MainTabSecondTVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainTodaySentenceCVC.identifier, for: indexPath) as? MainTodaySentenceCVC else {
+            return UICollectionViewCell()
+        }
+        cell.sentenceLabel.text = sentences[indexPath.item]
+        
+        return cell
     }
 }
+
+extension MainTabSecondTVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 299, height: 126)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 7, left: 16, bottom: 37, right: 16)
+    }
+}
+
+
