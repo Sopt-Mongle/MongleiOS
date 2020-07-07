@@ -12,14 +12,36 @@ class SearchTabMainVC: UIViewController{
     
     var recentKeyArray : [String] = ["최근","검색어","테스트중","몽글","알러뷰"]
     var recommendKeyArray : [String] = ["에세이","몽글","테마","큐레이터","몽골","오늘저녁또떡"]
+    var searchKey : String?
     // MARK:- IBOutlet
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var stringCounter: UILabel!
     @IBOutlet weak var recentSearchCV: UICollectionView!
     @IBOutlet weak var recommendSearchCV: UICollectionView!
+    @IBOutlet weak var searchBTN: UIButton!
     
 
-    @IBAction func searchBTN(_ sender: Any) {
+    @IBAction func touchUpSearchBTN(_ sender: Any) {
+        //searchKey = searchTextField.text
+        if searchTextField.hasText{
+            searchKey = searchTextField.text
+            if recentKeyArray.contains(searchKey!){
+                let length = recentKeyArray.count
+                for idx in 0..<length {
+                    if recentKeyArray[idx] == searchKey{
+                        recentKeyArray.remove(at:idx)
+                        break
+                    }
+                }
+            }
+            recentKeyArray.insert(searchKey!,at: 0)
+            recentSearchCV.reloadData()
+            
+        }
+        searchTextField.text = ""
+        
+        
+        
     }
     @IBAction func removeSearchHistoryBTN(_ sender: Any) {
         recentKeyArray = []
@@ -33,6 +55,9 @@ class SearchTabMainVC: UIViewController{
         recentSearchCV.dataSource = self
         recommendSearchCV.delegate = self
         recommendSearchCV.dataSource = self
+        
+        initGestureRecognizer()
+        
         //recommendSearchCV.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
         //UserDefaults.standard.s
         //searchTextField.delegate = self
@@ -40,6 +65,35 @@ class SearchTabMainVC: UIViewController{
     }
     override func viewWillAppear(_ animated: Bool) {
         searchTextField.becomeFirstResponder()
+    }
+    
+    //MARK:- Set Gesture
+    func initGestureRecognizer() {
+        let textFieldTap = UITapGestureRecognizer(target: self, action: #selector(handleTapTextField(_:)))
+        textFieldTap.delegate = self
+        self.view.addGestureRecognizer(textFieldTap)
+    }
+
+    // 다른 위치 탭했을 때 키보드 없어지는 코드
+    @objc func handleTapTextField(_ sender: UITapGestureRecognizer) {
+        self.searchTextField.resignFirstResponder()
+    }
+
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {return}
+        guard let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt else {return}
+    }
+    // MARK:- register/unregister Notification Observer
+    // observer
+    func registerForKeyboardNotifications() {
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
+    func unregisterForKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 //
 //    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -87,6 +141,8 @@ class SearchTabMainVC: UIViewController{
 //    }
 //
 //}
+
+
 extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -118,7 +174,7 @@ extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionView
                 recentCell.setRecent(key: "최근 검색어가 없습니다.")
             }
             else{
-                recentCell.layer.cornerRadius = recentCell.bounds.width/3 + 3.5
+                //recentCell.layer.cornerRadius = recentCell.bounds.width/3 + 3.5
                 recentCell.setBorder(borderColor: .softGreen, borderWidth: 1)
                 recentCell.recentSearchKeyLabel.textColor = .softGreen
                 recentCell.setRecent(key: recentKeyArray[indexPath.item])
@@ -137,7 +193,8 @@ extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionView
             }
             else{
                 recommendCell.layer.cornerRadius = recommendCell.bounds.width/3 + 3.5
-                
+                recommendCell.backgroundColor = .ice
+                recommendCell.recommendSearchKeyLabel.textColor = .tea
                 recommendCell.setRecommend(key: recommendKeyArray[indexPath.item])
             }
             return recommendCell
@@ -149,6 +206,22 @@ extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionView
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 8
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == recentSearchCV{
+            let cell = collectionView.cellForItem(at: indexPath) as? RecentSearchCVC
+            if (recentKeyArray.count != 0){
+                searchTextField.text = cell?.recentSearchKeyLabel.text
+                
+                touchUpSearchBTN(self.searchBTN)
+            }
+            
+        }
+        else{
+            let cell = collectionView.cellForItem(at: indexPath) as? RecommendSearchCVC
+            searchTextField.text = cell?.recommendSearchKeyLabel.text
+            touchUpSearchBTN(self.searchBTN)
+        }
     }
 
     
@@ -200,3 +273,14 @@ extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionView
 //}
 //
 
+//MARK:- UIGestureRecognizerDelegate Extension
+//여기는 제스쳐 인식 제외하는거 false로 해줌
+extension SearchTabMainVC: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestrueRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if (touch.view?.isDescendant(of: self.searchTextField))! || (touch.view?.isDescendant(of: self.recentSearchCV))! || (touch.view?.isDescendant(of: self.recommendSearchCV))!{
+
+            return false
+        }
+        return true
+    }
+}
