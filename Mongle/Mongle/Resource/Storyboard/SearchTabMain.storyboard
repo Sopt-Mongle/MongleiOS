@@ -58,10 +58,10 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lKG-dS-PS1">
-                                <rect key="frame" x="0.0" y="167" width="375" height="52"/>
+                                <rect key="frame" x="0.0" y="172.66666666666666" width="375" height="48"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="MTz-Fo-GGb"/>
+                                    <constraint firstAttribute="height" constant="48" id="MTz-Fo-GGb"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="8" minimumInteritemSpacing="3" id="LQn-aq-skd">
                                     <size key="itemSize" width="152" height="54"/>
@@ -71,7 +71,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecentSearchCVC" id="sor-6n-73B" customClass="RecentSearchCVC" customModule="Mongle" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="0.0" width="152" height="52"/>
+                                        <rect key="frame" x="20" y="-2" width="152" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CC9-Nq-4IS">
                                             <rect key="frame" x="0.0" y="0.0" width="152" height="52"/>
@@ -102,13 +102,13 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추천 키워드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lmw-dy-d2r">
-                                <rect key="frame" x="16" y="249" width="78" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="16" y="250.66666666666663" width="69" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" semanticContentAttribute="playback" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uen-Fo-bY7">
-                                <rect key="frame" x="0.0" y="285" width="375" height="95"/>
+                                <rect key="frame" x="0.0" y="289.66666666666669" width="375" height="95"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="95" id="qdJ-x1-uTK"/>
@@ -172,13 +172,13 @@
                             <constraint firstItem="xP2-ng-tW5" firstAttribute="trailing" secondItem="US7-AI-z1w" secondAttribute="leading" constant="2" id="ACO-2l-IyU"/>
                             <constraint firstItem="T1c-4f-qv5" firstAttribute="trailing" secondItem="US7-AI-z1w" secondAttribute="trailing" constant="15" id="Arv-u7-kFr"/>
                             <constraint firstItem="Lwb-4h-hu7" firstAttribute="trailing" secondItem="QFo-py-E32" secondAttribute="leading" constant="-2" id="FIQ-7P-dMU"/>
-                            <constraint firstItem="lKG-dS-PS1" firstAttribute="top" secondItem="D7q-ZQ-n3h" secondAttribute="bottom" id="I98-np-UpX"/>
+                            <constraint firstItem="lKG-dS-PS1" firstAttribute="top" secondItem="y7v-Kt-Ghm" secondAttribute="bottom" constant="21" id="HvN-GT-flY"/>
                             <constraint firstItem="xP2-ng-tW5" firstAttribute="top" secondItem="SYo-uP-pOv" secondAttribute="top" constant="53" id="IpU-mE-6Ov"/>
                             <constraint firstItem="T1c-4f-qv5" firstAttribute="trailing" secondItem="uen-Fo-bY7" secondAttribute="trailing" id="NEh-c4-PZX"/>
                             <constraint firstItem="Lwb-4h-hu7" firstAttribute="centerY" secondItem="US7-AI-z1w" secondAttribute="centerY" id="NrT-Bl-ejp"/>
                             <constraint firstItem="Lwb-4h-hu7" firstAttribute="leading" secondItem="SYo-uP-pOv" secondAttribute="leading" constant="60" id="Oep-e6-f0l"/>
                             <constraint firstItem="y7v-Kt-Ghm" firstAttribute="top" secondItem="Lwb-4h-hu7" secondAttribute="bottom" constant="34" id="Rlh-JK-fZN"/>
-                            <constraint firstItem="uen-Fo-bY7" firstAttribute="top" secondItem="Lmw-dy-d2r" secondAttribute="bottom" constant="15" id="WgE-w2-ZMP"/>
+                            <constraint firstItem="uen-Fo-bY7" firstAttribute="top" secondItem="Lmw-dy-d2r" secondAttribute="bottom" constant="21" id="WgE-w2-ZMP"/>
                             <constraint firstItem="T1c-4f-qv5" firstAttribute="trailing" secondItem="D7q-ZQ-n3h" secondAttribute="trailing" id="Yel-bb-cHx"/>
                             <constraint firstItem="T1c-4f-qv5" firstAttribute="trailing" secondItem="lKG-dS-PS1" secondAttribute="trailing" id="eHa-ui-cHy"/>
                             <constraint firstItem="QFo-py-E32" firstAttribute="centerY" secondItem="US7-AI-z1w" secondAttribute="centerY" id="feN-xM-72E"/>

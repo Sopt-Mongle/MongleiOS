@@ -56,6 +56,8 @@ class SearchTabMainVC: UIViewController{
         recommendSearchCV.delegate = self
         recommendSearchCV.dataSource = self
         
+        initGestureRecognizer()
+        
         //recommendSearchCV.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
         //UserDefaults.standard.s
         //searchTextField.delegate = self
@@ -63,6 +65,35 @@ class SearchTabMainVC: UIViewController{
     }
     override func viewWillAppear(_ animated: Bool) {
         searchTextField.becomeFirstResponder()
+    }
+    
+    //MARK:- Set Gesture
+    func initGestureRecognizer() {
+        let textFieldTap = UITapGestureRecognizer(target: self, action: #selector(handleTapTextField(_:)))
+        textFieldTap.delegate = self
+        self.view.addGestureRecognizer(textFieldTap)
+    }
+
+    // 다른 위치 탭했을 때 키보드 없어지는 코드
+    @objc func handleTapTextField(_ sender: UITapGestureRecognizer) {
+        self.searchTextField.resignFirstResponder()
+    }
+
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {return}
+        guard let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt else {return}
+    }
+    // MARK:- register/unregister Notification Observer
+    // observer
+    func registerForKeyboardNotifications() {
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
+    func unregisterForKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 //
 //    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -110,6 +141,8 @@ class SearchTabMainVC: UIViewController{
 //    }
 //
 //}
+
+
 extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -177,8 +210,11 @@ extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == recentSearchCV{
             let cell = collectionView.cellForItem(at: indexPath) as? RecentSearchCVC
-            searchTextField.text = cell?.recentSearchKeyLabel.text
-            touchUpSearchBTN(self.searchBTN)
+            if (recentKeyArray.count != 0){
+                searchTextField.text = cell?.recentSearchKeyLabel.text
+                
+                touchUpSearchBTN(self.searchBTN)
+            }
             
         }
         else{
@@ -237,3 +273,14 @@ extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionView
 //}
 //
 
+//MARK:- UIGestureRecognizerDelegate Extension
+//여기는 제스쳐 인식 제외하는거 false로 해줌
+extension SearchTabMainVC: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestrueRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if (touch.view?.isDescendant(of: self.searchTextField))! || (touch.view?.isDescendant(of: self.recentSearchCV))! || (touch.view?.isDescendant(of: self.recommendSearchCV))!{
+
+            return false
+        }
+        return true
+    }
+}
