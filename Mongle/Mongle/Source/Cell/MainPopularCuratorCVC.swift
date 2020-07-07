@@ -9,5 +9,10 @@
 import UIKit
 
 class MainPopularCuratorCVC: UICollectionViewCell {
+    static let identifier = "MainPopularCuratorCVC"
+    
+    override func awakeFromNib() {
+        
+    }
     
 }

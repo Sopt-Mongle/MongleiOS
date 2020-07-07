@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		54DC5A9A745CCB208BCCAF82 /* Pods_Mongle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E307DC40215BE008F7EB0E1 /* Pods_Mongle.framework */; };
 		7F1E719524B4476E00D79516 /* MainTodaySentenceCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1E719424B4476E00D79516 /* MainTodaySentenceCVC.swift */; };
+		7F1E719724B4553F00D79516 /* MainTabThirdTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1E719624B4553F00D79516 /* MainTabThirdTVC.swift */; };
+		7F1E719924B45AB600D79516 /* MainPopularCuratorCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1E719824B45AB600D79516 /* MainPopularCuratorCVC.swift */; };
+		7F1E719B24B463A400D79516 /* MainTabFourthTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1E719A24B463A400D79516 /* MainTabFourthTVC.swift */; };
 		7F6ABEB224ADE7700040746E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABEB124ADE7700040746E /* AppDelegate.swift */; };
 		7F6ABEB424ADE7700040746E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABEB324ADE7700040746E /* SceneDelegate.swift */; };
 		7F6ABEBB24ADE7720040746E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F6ABEBA24ADE7720040746E /* Assets.xcassets */; };
@@ -37,6 +40,9 @@
 /* Begin PBXFileReference section */
 		0E307DC40215BE008F7EB0E1 /* Pods_Mongle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mongle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F1E719424B4476E00D79516 /* MainTodaySentenceCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTodaySentenceCVC.swift; sourceTree = "<group>"; };
+		7F1E719624B4553F00D79516 /* MainTabThirdTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabThirdTVC.swift; sourceTree = "<group>"; };
+		7F1E719824B45AB600D79516 /* MainPopularCuratorCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPopularCuratorCVC.swift; sourceTree = "<group>"; };
+		7F1E719A24B463A400D79516 /* MainTabFourthTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabFourthTVC.swift; sourceTree = "<group>"; };
 		7F27ED38D43F3B60FE12A5BC /* Pods-Mongle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mongle.release.xcconfig"; path = "Target Support Files/Pods-Mongle/Pods-Mongle.release.xcconfig"; sourceTree = "<group>"; };
 		7F6ABEAE24ADE7700040746E /* Mongle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mongle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6ABEB124ADE7700040746E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -193,7 +199,10 @@
 				B86D4C4124B2C14200C21906 /* RecommendSearchCVC.swift */,
 				7FCEE21C24B355FC00225CA3 /* MainPictureCVC.swift */,
 				7F1E719424B4476E00D79516 /* MainTodaySentenceCVC.swift */,
+				7F1E719A24B463A400D79516 /* MainTabFourthTVC.swift */,
 				7FCEE21E24B363CF00225CA3 /* MainTabSecondTVC.swift */,
+				7F1E719624B4553F00D79516 /* MainTabThirdTVC.swift */,
+				7F1E719824B45AB600D79516 /* MainPopularCuratorCVC.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -334,8 +343,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F1E719B24B463A400D79516 /* MainTabFourthTVC.swift in Sources */,
 				7F6ABEDB24ADED910040746E /* GenericResponse.swift in Sources */,
 				7F6ABED724ADEB730040746E /* UserDefaultKeys.swift in Sources */,
+				7F1E719924B45AB600D79516 /* MainPopularCuratorCVC.swift in Sources */,
 				7F6ABEDD24ADF3B20040746E /* NetworkResult.swift in Sources */,
 				7F6ABED524ADE9FC0040746E /* UIImageView+Extensions.swift in Sources */,
 				7F767D7724B211D100ADF46D /* WritingThemeVC.swift in Sources */,
@@ -346,6 +357,7 @@
 				7FCEE21924B3078E00225CA3 /* MainTabMainVC.swift in Sources */,
 				7F6ABED124ADE9860040746E /* UIView+Extensions.swift in Sources */,
 				B86D4C4224B2C14200C21906 /* RecommendSearchCVC.swift in Sources */,
+				7F1E719724B4553F00D79516 /* MainTabThirdTVC.swift in Sources */,
 				7F1E719524B4476E00D79516 /* MainTodaySentenceCVC.swift in Sources */,
 				7F6ABED924ADEC9E0040746E /* APIConstants.swift in Sources */,
 				B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */,
