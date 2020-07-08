@@ -20,18 +20,17 @@
 		7F6ABED924ADEC9E0040746E /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABED824ADEC9E0040746E /* APIConstants.swift */; };
 		7F6ABEDB24ADED910040746E /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABEDA24ADED910040746E /* GenericResponse.swift */; };
 		7F6ABEDD24ADF3B20040746E /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABEDC24ADF3B20040746E /* NetworkResult.swift */; };
-		7F6ABF0E24B1F96A0040746E /* MainTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6ABF0D24B1F96A0040746E /* MainTab.storyboard */; };
 		7F767D7724B211D100ADF46D /* WritingThemeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F767D7624B211D100ADF46D /* WritingThemeVC.swift */; };
 		B86D4C4224B2C14200C21906 /* RecommendSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86D4C4124B2C14200C21906 /* RecommendSearchCVC.swift */; };
+		B8AB121924B46C7400B60240 /* CuratorList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AB121824B46C7400B60240 /* CuratorList.storyboard */; };
+		B8AB121B24B46CC100B60240 /* CuratorListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB121A24B46CC100B60240 /* CuratorListVC.swift */; };
+		B8AB121F24B475A100B60240 /* CuratorListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB121E24B475A100B60240 /* CuratorListCVC.swift */; };
 		B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */; };
 		B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */; };
 		B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */; };
-		B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */; };
-		B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */; };
-		B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */; };
+		EC7C78EC24B2E79F00B7FCFB /* MainTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7C78EB24B2E79F00B7FCFB /* MainTab.storyboard */; };
 		EC7C78EE24B2F2A800B7FCFB /* UnderTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */; };
 		EC7C78F024B2F2DE00B7FCFB /* UnderTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */; };
-		EC7C78EC24B2E79F00B7FCFB /* MainTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7C78EB24B2E79F00B7FCFB /* MainTab.storyboard */; };
 		EC8E323324AF1B1A001AB034 /* Writing_Theme.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC8E323224AF1B1A001AB034 /* Writing_Theme.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -55,13 +54,16 @@
 		7F6ABF0D24B1F96A0040746E /* MainTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTab.storyboard; sourceTree = "<group>"; };
 		7F767D7624B211D100ADF46D /* WritingThemeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WritingThemeVC.swift; sourceTree = "<group>"; };
 		B86D4C4124B2C14200C21906 /* RecommendSearchCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendSearchCVC.swift; sourceTree = "<group>"; };
+		B8AB121824B46C7400B60240 /* CuratorList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CuratorList.storyboard; sourceTree = "<group>"; };
+		B8AB121A24B46CC100B60240 /* CuratorListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorListVC.swift; sourceTree = "<group>"; };
+		B8AB121E24B475A100B60240 /* CuratorListCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorListCVC.swift; sourceTree = "<group>"; };
 		B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchTabMain.storyboard; sourceTree = "<group>"; };
 		B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTabMainVC.swift; sourceTree = "<group>"; };
 		B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchCVC.swift; sourceTree = "<group>"; };
 		D8DC844C59312BAF341597F1 /* Pods-Mongle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mongle.debug.xcconfig"; path = "Target Support Files/Pods-Mongle/Pods-Mongle.debug.xcconfig"; sourceTree = "<group>"; };
+		EC7C78EB24B2E79F00B7FCFB /* MainTab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainTab.storyboard; sourceTree = "<group>"; };
 		EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnderTab.storyboard; sourceTree = "<group>"; };
 		EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderTabBarController.swift; sourceTree = "<group>"; };
-		EC7C78EB24B2E79F00B7FCFB /* MainTab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainTab.storyboard; sourceTree = "<group>"; };
 		EC8E323224AF1B1A001AB034 /* Writing_Theme.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Writing_Theme.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +149,7 @@
 				B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */,
 				7F6ABF0D24B1F96A0040746E /* MainTab.storyboard */,
 				EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */,
+				B8AB121824B46C7400B60240 /* CuratorList.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			children = (
 				B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */,
 				B86D4C4124B2C14200C21906 /* RecommendSearchCVC.swift */,
+				B8AB121E24B475A100B60240 /* CuratorListCVC.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -201,6 +205,7 @@
 				7F767D7624B211D100ADF46D /* WritingThemeVC.swift */,
 				B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */,
 				EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */,
+				B8AB121A24B46CC100B60240 /* CuratorListVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8AB121924B46C7400B60240 /* CuratorList.storyboard in Resources */,
 				7F6ABEBE24ADE7720040746E /* LaunchScreen.storyboard in Resources */,
 				EC7C78EE24B2F2A800B7FCFB /* UnderTab.storyboard in Resources */,
 				EC7C78EC24B2E79F00B7FCFB /* MainTab.storyboard in Resources */,
@@ -335,6 +341,7 @@
 				7F6ABEDB24ADED910040746E /* GenericResponse.swift in Sources */,
 				7F6ABED724ADEB730040746E /* UserDefaultKeys.swift in Sources */,
 				7F6ABEDD24ADF3B20040746E /* NetworkResult.swift in Sources */,
+				B8AB121B24B46CC100B60240 /* CuratorListVC.swift in Sources */,
 				7F6ABED524ADE9FC0040746E /* UIImageView+Extensions.swift in Sources */,
 				7F767D7724B211D100ADF46D /* WritingThemeVC.swift in Sources */,
 				7F6ABEB224ADE7700040746E /* AppDelegate.swift in Sources */,
@@ -347,6 +354,7 @@
 				7F6ABED324ADE9D60040746E /* UIViewController+Extensions.swift in Sources */,
 				7F6ABECF24ADE8F80040746E /* UIColor+Extensions.swift in Sources */,
 				B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */,
+				B8AB121F24B475A100B60240 /* CuratorListCVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
