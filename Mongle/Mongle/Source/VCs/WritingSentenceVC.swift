@@ -122,7 +122,8 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
            }
            noticeLabel.textColor = .black
            let attributedString = NSMutableAttributedString(string: noticeLabel.text!)
-           attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.softGreen,
+           attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                         value: UIColor.softGreen,
                                          range: (text as NSString).range(of: "한 문장"))
            noticeLabel.attributedText = attributedString
        }
