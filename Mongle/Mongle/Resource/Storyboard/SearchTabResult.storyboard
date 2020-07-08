@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mk1-5s-R89">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search Tab MainVC-->
+        <scene sceneID="DLD-Yc-u5c">
+            <objects>
+                <viewController id="mk1-5s-R89" customClass="SearchTabMainVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T04-dH-5IE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wUH-6h-2df">
+                                <rect key="frame" x="52" y="55" width="346" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="ZuN-GM-Yvh"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgD-Ew-RyS">
+                                <rect key="frame" x="4" y="53.5" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="LKY-ba-eFx"/>
+                                    <constraint firstAttribute="height" constant="48" id="nHx-NF-kGD"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="17" minY="17" maxX="18" maxY="15"/>
+                                <state key="normal" title="Button" image="searchBtnBack"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8uw-Fu-FON">
+                                <rect key="frame" x="353" y="55" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="gU0-LI-l1Y"/>
+                                    <constraint firstAttribute="height" constant="45" id="vey-oL-Ay4"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="14" minY="13" maxX="14" maxY="13"/>
+                                <state key="normal" title="Button" image="searchBtnSearch"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="키워드, 테마, 큐레이터 등을 검색하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GST-7F-Xen">
+                                <rect key="frame" x="67" y="55" width="286" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="4zA-Ub-kma"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="wUH-6h-2df" firstAttribute="leading" secondItem="35k-vu-IKc" secondAttribute="leading" constant="52" id="0nz-bS-aw1"/>
+                            <constraint firstItem="kgD-Ew-RyS" firstAttribute="centerY" secondItem="wUH-6h-2df" secondAttribute="centerY" id="ABg-1V-75H"/>
+                            <constraint firstItem="8uw-Fu-FON" firstAttribute="trailing" secondItem="wUH-6h-2df" secondAttribute="trailing" id="HMe-bU-JdJ"/>
+                            <constraint firstItem="wUH-6h-2df" firstAttribute="leading" secondItem="kgD-Ew-RyS" secondAttribute="trailing" id="OrI-xe-WMX"/>
+                            <constraint firstItem="35k-vu-IKc" firstAttribute="trailing" secondItem="wUH-6h-2df" secondAttribute="trailing" constant="16" id="SnH-SY-1Rg"/>
+                            <constraint firstItem="GST-7F-Xen" firstAttribute="top" secondItem="wUH-6h-2df" secondAttribute="top" id="hIo-Wn-8rb"/>
+                            <constraint firstItem="8uw-Fu-FON" firstAttribute="centerY" secondItem="wUH-6h-2df" secondAttribute="centerY" id="nIH-OH-6Fn"/>
+                            <constraint firstItem="wUH-6h-2df" firstAttribute="top" secondItem="35k-vu-IKc" secondAttribute="top" constant="11" id="vPC-Kr-MPf"/>
+                            <constraint firstItem="GST-7F-Xen" firstAttribute="trailing" secondItem="8uw-Fu-FON" secondAttribute="leading" id="vX5-v8-KVF"/>
+                            <constraint firstItem="GST-7F-Xen" firstAttribute="leading" secondItem="wUH-6h-2df" secondAttribute="leading" constant="15" id="z2z-jo-bg9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="35k-vu-IKc"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NPh-b2-obv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="695.6521739130435" y="-87.053571428571431"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="searchBtnBack" width="10.5" height="18.5"/>
+        <image name="searchBtnSearch" width="18" height="19"/>
+    </resources>
+</document>

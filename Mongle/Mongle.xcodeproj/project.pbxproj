@@ -25,6 +25,8 @@
 		B8AB121924B46C7400B60240 /* CuratorList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AB121824B46C7400B60240 /* CuratorList.storyboard */; };
 		B8AB121B24B46CC100B60240 /* CuratorListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB121A24B46CC100B60240 /* CuratorListVC.swift */; };
 		B8AB121F24B475A100B60240 /* CuratorListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB121E24B475A100B60240 /* CuratorListCVC.swift */; };
+		B8AB122324B5C10B00B60240 /* SearchTabResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AB122224B5C10B00B60240 /* SearchTabResult.storyboard */; };
+		B8AB122524B5C1C500B60240 /* SearchTabResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB122424B5C1C500B60240 /* SearchTabResultVC.swift */; };
 		B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */; };
 		B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */; };
 		B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */; };
@@ -57,6 +59,8 @@
 		B8AB121824B46C7400B60240 /* CuratorList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CuratorList.storyboard; sourceTree = "<group>"; };
 		B8AB121A24B46CC100B60240 /* CuratorListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorListVC.swift; sourceTree = "<group>"; };
 		B8AB121E24B475A100B60240 /* CuratorListCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorListCVC.swift; sourceTree = "<group>"; };
+		B8AB122224B5C10B00B60240 /* SearchTabResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchTabResult.storyboard; sourceTree = "<group>"; };
+		B8AB122424B5C1C500B60240 /* SearchTabResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTabResultVC.swift; sourceTree = "<group>"; };
 		B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchTabMain.storyboard; sourceTree = "<group>"; };
 		B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTabMainVC.swift; sourceTree = "<group>"; };
 		B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchCVC.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 				7F6ABF0D24B1F96A0040746E /* MainTab.storyboard */,
 				EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */,
 				B8AB121824B46C7400B60240 /* CuratorList.storyboard */,
+				B8AB122224B5C10B00B60240 /* SearchTabResult.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -206,6 +211,7 @@
 				B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */,
 				EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */,
 				B8AB121A24B46CC100B60240 /* CuratorListVC.swift */,
+				B8AB122424B5C1C500B60240 /* SearchTabResultVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -284,6 +290,7 @@
 				EC7C78EE24B2F2A800B7FCFB /* UnderTab.storyboard in Resources */,
 				EC7C78EC24B2E79F00B7FCFB /* MainTab.storyboard in Resources */,
 				EC8E323324AF1B1A001AB034 /* Writing_Theme.storyboard in Resources */,
+				B8AB122324B5C10B00B60240 /* SearchTabResult.storyboard in Resources */,
 				B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */,
 				7F6ABEBB24ADE7720040746E /* Assets.xcassets in Resources */,
 			);
@@ -353,6 +360,7 @@
 				EC7C78F024B2F2DE00B7FCFB /* UnderTabBarController.swift in Sources */,
 				7F6ABED324ADE9D60040746E /* UIViewController+Extensions.swift in Sources */,
 				7F6ABECF24ADE8F80040746E /* UIColor+Extensions.swift in Sources */,
+				B8AB122524B5C1C500B60240 /* SearchTabResultVC.swift in Sources */,
 				B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */,
 				B8AB121F24B475A100B60240 /* CuratorListCVC.swift in Sources */,
 			);

@@ -5,7 +5,6 @@
 //  Created by 이예슬 on 7/3/20.
 //  Copyright © 2020 이주혁. All rights reserved.
 //
-
 import UIKit
 
 class SearchTabMainVC: UIViewController{
@@ -142,7 +141,6 @@ class SearchTabMainVC: UIViewController{
 //
 //}
 
-
 extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -272,7 +270,6 @@ extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionView
 //    }
 //}
 //
-
 //MARK:- UIGestureRecognizerDelegate Extension
 //여기는 제스쳐 인식 제외하는거 false로 해줌
 extension SearchTabMainVC: UIGestureRecognizerDelegate {
