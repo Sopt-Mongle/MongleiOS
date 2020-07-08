@@ -17,22 +17,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syc-b5-DS5">
-                                <rect key="frame" x="-1" y="35" width="48" height="48"/>
+                                <rect key="frame" x="-1" y="35.666666666666664" width="48" height="47.999999999999993"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="0UE-zP-LfQ"/>
                                     <constraint firstAttribute="width" constant="48" id="2CR-uG-NMg"/>
                                 </constraints>
-                                <inset key="contentEdgeInsets" minX="16" minY="15" maxX="16" maxY="15"/>
+                                <inset key="contentEdgeInsets" minX="17" minY="16" maxX="23" maxY="16"/>
                                 <state key="normal" image="searchBtnBack"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="구독 중인 큐레이터" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgh-I4-aBn">
-                                <rect key="frame" x="121" y="48" width="133" height="22"/>
+                                <rect key="frame" x="121" y="48" width="133" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="Wbz-No-4D8"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c6S-0e-xBy">
-                                <rect key="frame" x="6" y="101" width="363" height="677"/>
+                                <rect key="frame" x="6" y="102" width="363" height="676"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zid-iL-K7m">
                                     <size key="itemSize" width="343" height="99"/>
