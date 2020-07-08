@@ -16,19 +16,35 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var sentenceTextView: UITextView!
+    @IBOutlet weak var xButton: UIButton!
+    @IBOutlet weak var noticeLabel: UILabel!
     
+    @IBOutlet weak var progressBar: UIProgressView!
+    
+    //MARK:- User Define items
+    
+    let innerCircle = UIView().then{
+        $0.backgroundColor = .softGreen
+        
+        
+    }
+    let outerCircle = UIView().then{
+        $0.backgroundColor = .softGreen
+        $0.alpha = 0.34
+        
+    }
+  
     
     
     // MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if sentenceTextView.text == ""{
-//            textViewDidEndEditing(sentenceTextView)
-//
-//        }
-
+        xButton.setImage(UIImage(named: "warning"), for: .normal)
+        
         setNextButton()
+        setProgressBar()
+        partialGreenColor()
         
         // Do any additional setup after loading the view.
     }
@@ -38,6 +54,9 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(_:)), name:
             UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)),
+                                               name:
+        UIResponder.keyboardWillHideNotification, object: nil)
         
     }
     
@@ -61,12 +80,30 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         }
     }
     
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+          guard let duration =
+            notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]
+              as? Double else {return}
+          guard let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey]
+              as? UInt else {return}
+          
+          UIView.animate(withDuration: duration, delay: 0.0, options: .init(rawValue: curve),
+                         animations: {
+              self.nextButton.transform = .identity
+          })
+          
+          self.view.layoutIfNeeded()
+      }
+    
     func setSentenceTextView(){
         self.sentenceTextView.layer.borderWidth = 1.0
         self.sentenceTextView.layer.borderColor = UIColor.black.cgColor
        
-        self.sentenceTextView.placeholder = "최대 280자까지 입력 가능하며, 책의 문장을 임의로 \n변형하지 않게 주의해주세요!"
-        self.sentenceTextView.textContainerInset = UIEdgeInsets(top: 16.0, left: 14.0, bottom: 0.0, right: 38.0)
+        self.sentenceTextView.placeholder =
+        "최대 280자까지 입력 가능하며, 책의 문장을 임의로 \n변형하지 않게 주의해주세요!"
+        self.sentenceTextView.textContainerInset = UIEdgeInsets(top: 16.0,
+                                                                left: 14.0,
+                                                                bottom: 0.0, right: 15.0)
         
     }
     
@@ -77,9 +114,51 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         
     }
     
+    
+    func partialGreenColor(){
+           
+           guard let text = self.noticeLabel.text else {
+               return
+           }
+           noticeLabel.textColor = .black
+           let attributedString = NSMutableAttributedString(string: noticeLabel.text!)
+           attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.softGreen,
+                                         range: (text as NSString).range(of: "한 문장"))
+           noticeLabel.attributedText = attributedString
+       }
+    func setProgressBar(){
+        
+        self.view.addSubview(outerCircle)
+        self.view.addSubview(innerCircle)
+        progressBar.progressTintColor = .softGreen
+        
+        innerCircle.snp.makeConstraints{
+            $0.width.height.equalTo(20)
+            $0.centerX.equalTo(progressBar.snp_leadingMargin)
+            $0.centerY.equalTo(progressBar.snp_centerYWithinMargins)
+            
+        }
+        innerCircle.makeRounded(cornerRadius: 10)
+        
+        outerCircle.snp.makeConstraints{
+            $0.width.height.equalTo(40)
+            $0.centerX.equalTo(progressBar.snp_leadingMargin)
+            $0.centerY.equalTo(progressBar.snp_centerYWithinMargins)
+            
+        }
+        outerCircle.makeRounded(cornerRadius: 20)
+        progressBar.progress = 0
+        
+        
+        
+    }
+    
+    
 
     
 }
+
+    //MARK:- Extensions
 
 
 extension UITextView: UITextViewDelegate {

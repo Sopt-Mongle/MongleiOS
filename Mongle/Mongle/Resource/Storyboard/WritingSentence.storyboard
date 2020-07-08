@@ -21,7 +21,6 @@
                                     <constraint firstAttribute="height" constant="18" id="857-gN-wss"/>
                                     <constraint firstAttribute="width" constant="18" id="dcn-a3-aK7"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="문장 쓰기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12r-WZ-htJ">
                                 <rect key="frame" x="150" y="48" width="71" height="23"/>
@@ -38,17 +37,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFn-xq-FyS">
-                                <rect key="frame" x="16" y="787" width="382" height="57"/>
-                                <color key="backgroundColor" red="0.23190581090000001" green="1" blue="0.060538219240000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="lXy-XZ-Sd5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="다음">
-                                    <color key="titleColor" red="0.9568960071" green="0.96459966900000005" blue="0.97254294159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9As-jG-fRc">
                                 <rect key="frame" x="16" y="194" width="382" height="146"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -59,10 +47,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFn-xq-FyS">
+                                <rect key="frame" x="16" y="823" width="382" height="57"/>
+                                <color key="backgroundColor" red="0.23190581090000001" green="1" blue="0.060538219240000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="lXy-XZ-Sd5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="다음">
+                                    <color key="titleColor" red="0.9568960071" green="0.96459966900000005" blue="0.97254294159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="NVn-hp-lIY" firstAttribute="bottom" secondItem="YFn-xq-FyS" secondAttribute="bottom" constant="18" id="4OH-hh-N5u"/>
+                            <constraint firstAttribute="bottom" secondItem="YFn-xq-FyS" secondAttribute="bottom" constant="16" id="2IR-Ll-sJ8"/>
                             <constraint firstItem="NdW-dE-BLy" firstAttribute="leading" secondItem="VA3-Tc-Rf7" secondAttribute="leadingMargin" constant="16" id="6M9-Tt-5xp"/>
                             <constraint firstItem="9As-jG-fRc" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="16" id="7VZ-np-iVf"/>
                             <constraint firstItem="NVn-hp-lIY" firstAttribute="trailing" secondItem="YFn-xq-FyS" secondAttribute="trailing" constant="16" id="D9D-nY-8fv"/>
@@ -82,7 +81,10 @@
                     </view>
                     <connections>
                         <outlet property="nextButton" destination="YFn-xq-FyS" id="DkW-vF-Sia"/>
+                        <outlet property="noticeLabel" destination="SzT-pL-G8H" id="kJr-k8-LvR"/>
+                        <outlet property="progressBar" destination="NdW-dE-BLy" id="fL1-G2-yWn"/>
                         <outlet property="sentenceTextView" destination="9As-jG-fRc" id="vma-0w-pVu"/>
+                        <outlet property="xButton" destination="hNO-zA-3Ms" id="m5i-CE-ekn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oD8-dZ-4uc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

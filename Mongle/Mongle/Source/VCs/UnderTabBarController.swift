@@ -48,6 +48,7 @@ class UnderTabBarController: UITabBarController {
         
         setTabBar()
         print(self.tabBar.frame.height)
+       
         
         
     }
@@ -58,6 +59,7 @@ class UnderTabBarController: UITabBarController {
     // MARK:- Class Functions
     
     func setTabBar(){
+        self.tabBar.frame.size.height = self.tabBar.frame.height + 10
         
         
 //        Setting bar properties
