@@ -32,6 +32,8 @@
 		EC7C78EE24B2F2A800B7FCFB /* UnderTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */; };
 		EC7C78F024B2F2DE00B7FCFB /* UnderTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */; };
 		EC8E323324AF1B1A001AB034 /* Writing_Theme.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC8E323224AF1B1A001AB034 /* Writing_Theme.storyboard */; };
+		ECEF22BA24B4A3B200933534 /* WritingSentence.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECEF22B924B4A3B200933534 /* WritingSentence.storyboard */; };
+		ECEF22BC24B4A3DF00933534 /* WritingSentenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEF22BB24B4A3DF00933534 /* WritingSentenceVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +67,8 @@
 		EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnderTab.storyboard; sourceTree = "<group>"; };
 		EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderTabBarController.swift; sourceTree = "<group>"; };
 		EC8E323224AF1B1A001AB034 /* Writing_Theme.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Writing_Theme.storyboard; sourceTree = "<group>"; };
+		ECEF22B924B4A3B200933534 /* WritingSentence.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WritingSentence.storyboard; sourceTree = "<group>"; };
+		ECEF22BB24B4A3DF00933534 /* WritingSentenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingSentenceVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,7 @@
 				B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */,
 				7F6ABF0D24B1F96A0040746E /* MainTab.storyboard */,
 				EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */,
+				ECEF22B924B4A3B200933534 /* WritingSentence.storyboard */,
 				B8AB121824B46C7400B60240 /* CuratorList.storyboard */,
 			);
 			path = Storyboard;
@@ -205,6 +210,7 @@
 				7F767D7624B211D100ADF46D /* WritingThemeVC.swift */,
 				B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */,
 				EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */,
+				ECEF22BB24B4A3DF00933534 /* WritingSentenceVC.swift */,
 				B8AB121A24B46CC100B60240 /* CuratorListVC.swift */,
 			);
 			path = VCs;
@@ -286,6 +292,7 @@
 				EC8E323324AF1B1A001AB034 /* Writing_Theme.storyboard in Resources */,
 				B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */,
 				7F6ABEBB24ADE7720040746E /* Assets.xcassets in Resources */,
+				ECEF22BA24B4A3B200933534 /* WritingSentence.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +350,7 @@
 				7F6ABEDD24ADF3B20040746E /* NetworkResult.swift in Sources */,
 				B8AB121B24B46CC100B60240 /* CuratorListVC.swift in Sources */,
 				7F6ABED524ADE9FC0040746E /* UIImageView+Extensions.swift in Sources */,
+				ECEF22BC24B4A3DF00933534 /* WritingSentenceVC.swift in Sources */,
 				7F767D7724B211D100ADF46D /* WritingThemeVC.swift in Sources */,
 				7F6ABEB224ADE7700040746E /* AppDelegate.swift in Sources */,
 				7F6ABED124ADE9860040746E /* UIView+Extensions.swift in Sources */,
