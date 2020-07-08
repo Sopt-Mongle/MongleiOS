@@ -18,27 +18,27 @@
 
 ### 탭바 커스텀
 
-<img src="./docs/asset/yjtab.png" width = 300>
-<img src="./docs/asset/yjtab2.png" width = 300>
+<img src="./docs/asset/yjtab.png" width = 250>
+<img src="./docs/asset/yjtab2.png" width = 250>
 
 ## 테마 만들기
 
-<img src="./docs/asset/yjthema.png" width = 300>
-<img src="./docs/asset/yjthema2.png" width = 300>
+<img src="./docs/asset/yjthema.png" width = 250>
+<img src="./docs/asset/yjthema2.png" width = 250>
 
 ### 메인 화면
 
-<img src="./docs/asset/jhmain1.png" width = 300>
+<img src="./docs/asset/jhmain1.png" width = 250>
 
-<img src="./docs/asset/jhmain2.png" width = 300>
+<img src="./docs/asset/jhmain2.png" width = 250>
 
 ### 검색
 
-<img src="./docs/asset/yssearch.png" width = 300>
+<img src="./docs/asset/yssearch.png" width = 250>
 
 ### 큐레이터 리스트
 
-<img src="./docs/asset/yscur.png" width = 300>
+<img src="./docs/asset/yscur.png" width = 250>
 
 ## 📝 [Coding Convention Rule](./docs/CodingConventionRule.md)
 
