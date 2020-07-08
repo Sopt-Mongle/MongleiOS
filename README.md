@@ -24,7 +24,7 @@
 
 <img src="./docs/asset/yjtab.png" width = 300><img src="./docs/asset/yjtab2.png" width = 300>
 
-## 테마 만들기
+### 테마 만들기
 
 <img src="./docs/asset/yjthema.png" width = 300><img src="./docs/asset/yjthema2.png" width = 300>
 
