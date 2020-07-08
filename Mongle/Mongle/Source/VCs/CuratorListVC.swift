@@ -1,0 +1,66 @@
+//
+//  CuratorListVC.swift
+//  Mongle
+//
+//  Created by 이예슬 on 7/7/20.
+//  Copyright © 2020 이주혁. All rights reserved.
+//
+
+import UIKit
+
+class CuratorListVC: UIViewController {
+    var curatorInfoList : [[String]] = [["봄","대학내일 | 인생회고"],["예슬","아예일까 | 디예일까"],["래리유","빵쟁이 | 동현"],["아요","아요짱 | 아요러브"],["메롱","배고파 | 죽겠어"],["메롱","배고파 | 죽겠어"],["메롱","배고파 | 죽겠어"],["메롱","배고파 | 죽겠어"],["메롱","배고파 | 죽겠어"]]
+    // MARK:- IBOutlet
+    @IBOutlet weak var curatorListCV: UICollectionView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        curatorListCV.delegate = self
+        curatorListCV.dataSource = self
+        // Do any additional setup after loading the view.
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
+// MARK:- Extensions
+extension CuratorListVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return curatorInfoList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CuratorListCVC", for: indexPath) as? CuratorListCVC else{ return CuratorListCVC()}
+        cell.curatorNameLabel.text = curatorInfoList[indexPath.item][0]
+        cell.curatorInfoLabel.text = curatorInfoList[indexPath.item][1]
+        
+        return cell
+    }
+    
+    //flow layout
+    //cell width height 지정
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 343, height: 99)
+    }
+    //cell content inset 지정
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 11, left: 10, bottom: 10, right: 10)
+    }
+    //cell 상 하 간격 지정
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
+    }
+    //cell 좌 우 간격 지정
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+}
