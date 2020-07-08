@@ -4,8 +4,6 @@
 
 ## Team Mongle-iOS 👨🏻‍💻🧑🏻‍💻👩🏻‍💻
 
----
-
 <img src="./docs/asset/mongles.png" width = 300>
 
 - 김윤재 [qodhrkawk](https://github.com/qodhrkawk)
@@ -14,15 +12,9 @@
 
 ## 앱 아이콘
 
----
-
 ## Work-Flow
 
----
-
 ## 기능
-
----
 
 ### 탭바 커스텀
 
@@ -50,15 +42,9 @@
 
 ## 📝 [Coding Convention Rule](./docs/CodingConventionRule.md)
 
----
-
 ## 🤝 [Team Rule](./docs/TeamRule.md)
 
----
-
 ## Dependencies
-
----
 
 ```
 pod 'Alamofire', '~> 4.8.2'
