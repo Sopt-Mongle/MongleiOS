@@ -29,9 +29,16 @@
 <img src="./docs/asset/yjtab.png" width = 300>
 <img src="./docs/asset/yjtab2.png" width = 300>
 
+## 테마 만들기
+
+<img src="./docs/asset/yjthema.png" width = 300>
+<img src="./docs/asset/yjthema2.png" width = 300>
+
 ### 메인 화면
 
-<img src="./docs/asset/yjtab.png" width = 300>
+<img src="./docs/asset/jhmain1.png" width = 300>
+
+<img src="./docs/asset/jhmain2.png" width = 300>
 
 ### 검색
 
@@ -41,11 +48,11 @@
 
 <img src="./docs/asset/yscur.png" width = 300>
 
-## [Coding Convention Rule](./docs/CodingConventionRule.md)
+## 📝 [Coding Convention Rule](./docs/CodingConventionRule.md)
 
 ---
 
-## [Team Rule](./docs/TeamRule.md)
+## 🤝 [Team Rule](./docs/TeamRule.md)
 
 ---
 
