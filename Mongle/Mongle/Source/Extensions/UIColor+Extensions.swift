@@ -32,4 +32,9 @@ extension UIColor {
       return UIColor(red: 207.0 / 255.0, green: 50.0 / 255.0, blue: 50.0 / 255.0, alpha: 1.0)
     }
     
+    
+    @nonobjc class var veryLightPinkFive: UIColor {
+      return UIColor(white: 219.0 / 255.0, alpha: 1.0)
+    }
+    
 }
