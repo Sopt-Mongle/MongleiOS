@@ -17,11 +17,11 @@ class MainMongleHeaderView: UIView {
     let mongleLogoImageview = UIImageView().then {
         $0.frame = CGRect(x: 0, y: 0, width: 89, height: 26)
         $0.image = UIImage(named: "mongleLogo")
-        $0.backgroundColor = .cyan
     }
     
     let searchButton = UIButton().then {
         $0.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
+        
         $0.setImage(UIImage(named: "searchBtnSearch"), for: .normal)
 //        $0.contentEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
 

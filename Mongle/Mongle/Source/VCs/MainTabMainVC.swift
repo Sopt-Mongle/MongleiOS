@@ -33,14 +33,19 @@ extension MainTabMainVC: UITableViewDelegate {
         switch section {
         case 0:
             let view = MainMongleHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 58))
-//            view.backgroundColor = .gray
             return view
         case 1:
-            break
+            let view = MainTabDefaultHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 58))
+            view.setLabel(text: "오늘의 문장")
+            return view
         case 2:
-            break
+            let view = MainTabDefaultHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 58))
+            view.setLabel(text: "지금 인기있는 큐레이터")
+            return view
         case 3:
-            break
+            let view = MainTabDefaultHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 58))
+            view.setLabel(text: "인기있는 테마")
+            return view
         default:
             break
         }
@@ -77,8 +82,6 @@ extension MainTabMainVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabFirstTVC.identifier) as? MainTabFirstTVC else {
                 return UITableViewCell()
             }
-//            cell.backgroundColor = .brown
-            
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabSecondTVC.identifier) as? MainTabSecondTVC else {

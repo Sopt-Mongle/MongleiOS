@@ -67,6 +67,12 @@
                                                 </collectionView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7T-uS-aHt" userLabel="pagecontrolview">
                                                     <rect key="frame" x="128.66666666666666" y="396" width="118" height="17"/>
+                                                    <subviews>
+                                                        <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="7b1-UB-bM4">
+                                                            <rect key="frame" x="45" y="-10" width="39" height="37"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </pageControl>
+                                                    </subviews>
                                                     <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="118" id="Pl4-r1-inE"/>
@@ -218,13 +224,13 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJ9-Ie-Gvf">
-                                                                        <rect key="frame" x="32.666666666666664" y="74" width="31" height="15"/>
+                                                                        <rect key="frame" x="32.666666666666664" y="80" width="31" height="15"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3f-8z-erq">
-                                                                        <rect key="frame" x="34.666666666666664" y="92" width="27" height="12"/>
+                                                                        <rect key="frame" x="34.666666666666664" y="98" width="27" height="12"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -232,7 +238,7 @@
                                                                 </subviews>
                                                                 <constraints>
                                                                     <constraint firstItem="W3f-8z-erq" firstAttribute="centerX" secondItem="4Is-bj-uaF" secondAttribute="centerX" id="4T7-ue-wwt"/>
-                                                                    <constraint firstItem="wJ9-Ie-Gvf" firstAttribute="top" secondItem="tS4-Qz-L4c" secondAttribute="bottom" constant="8" id="BgK-Sk-bsC"/>
+                                                                    <constraint firstItem="wJ9-Ie-Gvf" firstAttribute="top" secondItem="tS4-Qz-L4c" secondAttribute="bottom" constant="14" id="BgK-Sk-bsC"/>
                                                                     <constraint firstItem="wJ9-Ie-Gvf" firstAttribute="centerX" secondItem="4Is-bj-uaF" secondAttribute="centerX" id="YbP-J5-Rhr"/>
                                                                     <constraint firstItem="tS4-Qz-L4c" firstAttribute="top" secondItem="4Is-bj-uaF" secondAttribute="top" constant="10" id="f0U-Oz-DCq"/>
                                                                     <constraint firstItem="W3f-8z-erq" firstAttribute="top" secondItem="wJ9-Ie-Gvf" secondAttribute="bottom" constant="3" id="hxX-dG-h4j"/>
@@ -255,7 +261,7 @@
                                             <outlet property="popularCuratorCollectionView" destination="2GH-jR-ZsL" id="sbF-cC-HkM"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainTabFourthTVC" rowHeight="207" id="YaK-IW-nE4" customClass="MainTabFourthTVC" customModule="Mongle" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainTabFourthTVC" id="YaK-IW-nE4" customClass="MainTabFourthTVC" customModule="Mongle" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="791.33333206176758" width="375" height="207"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YaK-IW-nE4" id="edH-fX-oDb">

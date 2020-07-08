@@ -41,7 +41,6 @@ extension MainTabThirdTVC: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainPopularCuratorCVC.identifier, for: indexPath) as? MainPopularCuratorCVC else {
             return UICollectionViewCell()
         }
-        
         return cell
     }
 
