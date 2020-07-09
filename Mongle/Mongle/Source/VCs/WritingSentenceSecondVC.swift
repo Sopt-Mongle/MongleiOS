@@ -45,7 +45,7 @@ class WritingSentenceSecondVC: UIViewController {
         
         
     }
-    
+    static var isVisited : Bool = false
     
 //    MARK:- LifeCycle Methods
     
@@ -68,6 +68,9 @@ class WritingSentenceSecondVC: UIViewController {
         setProgressBar()
     }
     
+ 
+    
+    
 //    MARK:- User Define Functions
     func partialGreenColor(){
         
@@ -88,6 +91,9 @@ class WritingSentenceSecondVC: UIViewController {
           
       }
     @IBAction func backButton(_ sender: Any) {
+        
+        WritingSentenceSecondVC.isVisited = true
+//        WritingSentenceVC.secondToFirstLevelAnimation()
         dismiss(animated: true, completion: nil)
     }
     
@@ -101,22 +107,76 @@ class WritingSentenceSecondVC: UIViewController {
         progressBar.progressTintColor = .softGreen
         
         innerCircle.snp.makeConstraints{
-            $0.width.height.equalTo(15)
+            $0.width.height.equalTo(12)
             $0.centerX.equalTo(progressBar.snp_leadingMargin)
             $0.centerY.equalTo(progressBar.snp_centerYWithinMargins)
             
         }
-        innerCircle.makeRounded(cornerRadius: 7)
+        innerCircle.makeRounded(cornerRadius: 6)
         
         outerCircle.snp.makeConstraints{
-            $0.width.height.equalTo(30)
+            $0.width.height.equalTo(26)
             $0.centerX.equalTo(progressBar.snp_leadingMargin)
             $0.centerY.equalTo(progressBar.snp_centerYWithinMargins)
             
         }
-        outerCircle.makeRounded(cornerRadius: 15)
+        outerCircle.makeRounded(cornerRadius: 13)
+
+        secondLevelAnimation()
+        
+        
+    }
+    
+    func secondLevelAnimation() {
         progressBar.progress = 0
-//        progressBar.setProgress(0.5, animated: true)
+        //        progressBar.setProgress(0.5, animated: true)
+        self.innerCircle2.snp.makeConstraints{
+            $0.width.height.equalTo(12)
+            $0.centerX.equalTo(self.progressBar.snp_centerXWithinMargins)
+            $0.centerY.equalTo(self.progressBar.snp_centerYWithinMargins)
+            
+        }
+        self.innerCircle2.makeRounded(cornerRadius: 6)
+        
+        self.outerCircle2.snp.makeConstraints{
+            $0.width.height.equalTo(26)
+            $0.centerX.equalTo(self.progressBar.snp_centerXWithinMargins)
+            $0.centerY.equalTo(self.progressBar.snp_centerYWithinMargins)
+            
+        }
+        self.outerCircle2.makeRounded(cornerRadius: 13)
+        outerCircle2.alpha = 0
+        innerCircle2.alpha = 0
+        
+        
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
+            self.progressBar.layoutIfNeeded()
+            
+        }, completion: { finished in
+            self.progressBar.progress = 0.5
+            UIView.animate(withDuration: 0.75 , delay: 0.5, options: [.curveEaseIn], animations: {
+                self.outerCircle2.alpha = 0.34
+                self.innerCircle2.alpha = 1
+                self.outerCircle2.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                self.innerCircle2.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+
+                
+            }, completion:nil)
+            
+            
+            
+            UIView.animate(withDuration: 0.75 , delay: 0.0, options: [.curveEaseIn], animations: {
+                self.progressBar.layoutIfNeeded()
+            }, completion:nil)
+        })
+        
+        
+        
+    }
+    
+    func secondToFirstLevelAnimation(){
+        
         self.innerCircle2.snp.makeConstraints{
             $0.width.height.equalTo(15)
             $0.centerX.equalTo(self.progressBar.snp_centerXWithinMargins)
@@ -132,23 +192,23 @@ class WritingSentenceSecondVC: UIViewController {
             
         }
         self.outerCircle2.makeRounded(cornerRadius: 15)
-        outerCircle2.alpha = 0
-        innerCircle2.alpha = 0
+        outerCircle2.alpha = 0.34
+        innerCircle2.alpha = 1
+        progressBar.progress = 0.5
         
-       
         
         UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
             self.progressBar.layoutIfNeeded()
             
         }, completion: { finished in
-            self.progressBar.progress = 0.5
+            self.progressBar.progress = 0.0
             UIView.animate(withDuration: 0.75 , delay: 0.5, options: [.curveEaseIn], animations: {
-                self.outerCircle2.alpha = 0.34
-                self.innerCircle2.alpha = 1
+                self.outerCircle2.alpha = 0
+                self.innerCircle2.alpha = 0
                 self.outerCircle2.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                 self.innerCircle2.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                 
-               
+                
             }, completion:nil)
             
             
@@ -159,10 +219,7 @@ class WritingSentenceSecondVC: UIViewController {
         })
         
         
-        
     }
-    
-    
     
     
     

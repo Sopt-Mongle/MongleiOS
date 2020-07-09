@@ -29,7 +29,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NdW-dE-BLy">
-                                <rect key="frame" x="36" y="125.5" width="334" height="2"/>
+                                <rect key="frame" x="16" y="125.5" width="374" height="2"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="마음에 드는 한 문장을 적어주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SzT-pL-G8H">
                                 <rect key="frame" x="15" y="156" width="228.5" height="21"/>
@@ -65,10 +65,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="YFn-xq-FyS" secondAttribute="bottom" constant="16" id="2IR-Ll-sJ8"/>
-                            <constraint firstItem="NdW-dE-BLy" firstAttribute="leading" secondItem="VA3-Tc-Rf7" secondAttribute="leadingMargin" constant="16" id="6M9-Tt-5xp"/>
+                            <constraint firstItem="NdW-dE-BLy" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="16" id="6M9-Tt-5xp"/>
                             <constraint firstItem="9As-jG-fRc" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="16" id="7VZ-np-iVf"/>
                             <constraint firstItem="NVn-hp-lIY" firstAttribute="trailing" secondItem="YFn-xq-FyS" secondAttribute="trailing" constant="16" id="D9D-nY-8fv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="NdW-dE-BLy" secondAttribute="trailing" constant="24" id="HQs-vq-SJc"/>
+                            <constraint firstItem="NVn-hp-lIY" firstAttribute="trailing" secondItem="NdW-dE-BLy" secondAttribute="trailing" constant="24" id="HQs-vq-SJc"/>
                             <constraint firstItem="hNO-zA-3Ms" firstAttribute="top" secondItem="NVn-hp-lIY" secondAttribute="top" constant="8.5999999999999996" id="HSX-bM-Exj"/>
                             <constraint firstItem="SzT-pL-G8H" firstAttribute="top" secondItem="NdW-dE-BLy" secondAttribute="bottom" constant="28.5" id="PHT-IV-sAe"/>
                             <constraint firstItem="9As-jG-fRc" firstAttribute="top" secondItem="SzT-pL-G8H" secondAttribute="bottom" constant="17" id="Wao-SE-j4J"/>
