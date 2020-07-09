@@ -24,8 +24,10 @@ class MainMongleHeaderView: UIView {
         
         $0.setImage(UIImage(named: "searchBtnSearch"), for: .normal)
 //        $0.contentEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-
     }
+    
+    var searchButtomDelegate: (()->()) = { }
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

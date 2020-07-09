@@ -23,7 +23,11 @@ class MainTabDefaultHeaderView: UIView {
     let selectButton = UIButton().then {
         $0.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
         $0.setImage(UIImage(named: "mainBtnMore"), for: .normal)
+        $0.addTarget(self, action: #selector(touchUpButton), for: .touchUpInside)
     }
+    
+    var delegate: SectionSelectedDelegate?
+    var selectedSectionIdx: Int?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,9 +57,13 @@ class MainTabDefaultHeaderView: UIView {
     func setLabel(text: String){
         self.sectionLabel.text = text
     }
+    
+    @objc func touchUpButton(){
+        self.delegate?.touchUpSection(sectionIdx: self.selectedSectionIdx ?? 0)
+    }
 
 }
 
-protocol SectionSelectDelegate {
-    func touchUpSection(sender: UIView)
+protocol SectionSelectedDelegate {
+    func touchUpSection(sectionIdx: Int)
 }

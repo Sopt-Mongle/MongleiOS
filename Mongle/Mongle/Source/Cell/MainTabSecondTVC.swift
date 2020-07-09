@@ -17,16 +17,12 @@ class MainTabSecondTVC: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         todaySentenceCollectionView.delegate = self
         todaySentenceCollectionView.dataSource = self
         
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
@@ -51,11 +47,11 @@ extension MainTabSecondTVC: UICollectionViewDataSource {
 
 extension MainTabSecondTVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 299, height: 126)
+        return CGSize(width: 299, height: 125)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 7, left: 16, bottom: 37, right: 16)
+        UIEdgeInsets(top: 7, left: 16, bottom: 26, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

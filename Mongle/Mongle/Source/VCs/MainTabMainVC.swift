@@ -13,19 +13,14 @@ class MainTabMainVC: UIViewController {
     //MARK:- IBOutlet
     @IBOutlet var layoutTableView: UITableView!
     
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
-
-        // Do any additional setup after loading the view.
     }
-    
 }
-
-
 // MARK:- Extension
 // MARK: UITableViewDelegate
 extension MainTabMainVC: UITableViewDelegate {
@@ -35,15 +30,15 @@ extension MainTabMainVC: UITableViewDelegate {
             let view = MainMongleHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 58))
             return view
         case 1:
-            let view = MainTabDefaultHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 58))
+            let view = MainTabDefaultHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 48))
             view.setLabel(text: "오늘의 문장")
             return view
         case 2:
-            let view = MainTabDefaultHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 58))
+            let view = MainTabDefaultHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 48))
             view.setLabel(text: "지금 인기있는 큐레이터")
             return view
         case 3:
-            let view = MainTabDefaultHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 58))
+            let view = MainTabDefaultHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 48))
             view.setLabel(text: "인기있는 테마")
             return view
         default:
@@ -62,6 +57,10 @@ extension MainTabMainVC: UITableViewDelegate {
         default:
             break
         }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
 }

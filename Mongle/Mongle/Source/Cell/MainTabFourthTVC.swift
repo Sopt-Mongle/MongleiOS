@@ -52,10 +52,7 @@ extension MainTabFourthTVC: UICollectionViewDataSource {
         cell.blurStyle = .blue
         
         return cell
-    
     }
-    
-    
 }
 
 extension MainTabFourthTVC: UICollectionViewDelegateFlowLayout {

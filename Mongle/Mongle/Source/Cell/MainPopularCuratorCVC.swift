@@ -11,8 +11,13 @@ import UIKit
 class MainPopularCuratorCVC: UICollectionViewCell {
     static let identifier = "MainPopularCuratorCVC"
     
+    @IBOutlet var profileImageView: UIImageView!
+    @IBOutlet var profileNameLabel: UILabel!
+    @IBOutlet var tagLabel: UILabel!
+    
     override func awakeFromNib() {
-        
+        profileImageView.backgroundColor = .blue
+        profileImageView.makeRounded(cornerRadius: profileImageView.frame.width / 2)
     }
     
 }

@@ -17,8 +17,8 @@ class MainTodaySentenceCVC: UICollectionViewCell {
     override func awakeFromNib() {
         self.makeRounded(cornerRadius: 10)
         self.backgroundColor = .white
-        self.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.65, radius: 3)
-        self.setBorder(borderColor: .black, borderWidth: 1)
+        self.dropShadow(color: .black, offSet: CGSize(width: 0, height: 0), opacity: 0.07, radius: 8)
+        self.setBorder(borderColor: UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 0.24), borderWidth: 1)
     }
     
 }
