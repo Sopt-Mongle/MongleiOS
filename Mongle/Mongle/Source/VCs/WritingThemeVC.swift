@@ -56,11 +56,11 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         unregisterForKeyboardNotifications()
+        
         themeNameTextField.text = ""
         
     }
     func partialGreenColor(){
-//        let range =
         
         guard let text = self.textQuantityLabel.text else {
             return
@@ -120,8 +120,11 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     }
 
     func registerForKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(_:)), name:
+            UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name:
+            UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func unregisterForKeyboardNotifications() {
@@ -134,9 +137,11 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     @objc func keyboardWillShow(_ notification: NSNotification) {
         
 
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
+            as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.3, animations: {
-                self.applyButton.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
+                self.applyButton.transform =
+                    CGAffineTransform(translationX: 0, y: -keyboardSize.height)
             })
             self.view.layoutIfNeeded()
         
@@ -145,10 +150,13 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardWillHide(_ notification: NSNotification) {
-        guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {return}
-        guard let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt else {return}
+        guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]
+            as? Double else {return}
+        guard let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey]
+            as? UInt else {return}
         
-        UIView.animate(withDuration: duration, delay: 0.0, options: .init(rawValue: curve), animations: {
+        UIView.animate(withDuration: duration, delay: 0.0, options: .init(rawValue: curve),
+                       animations: {
             self.applyButton.transform = .identity
         })
         
