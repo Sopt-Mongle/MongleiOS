@@ -14,14 +14,12 @@ class WritingSentenceSecondVC: UIViewController {
     //    MARK:- IBOutlets
     
     @IBOutlet weak var progressBar: UIProgressView!
-    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var authorTextField: UITextField!
     @IBOutlet weak var publisherTextField: UITextField!
     @IBOutlet weak var noticeLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var searchButton: UIButton!
-    
+    @IBOutlet weak var searchTextButton: UIButton!
     
     //    MARK:- User Define Variables
     let innerCircle = UIView().then{
@@ -58,8 +56,7 @@ class WritingSentenceSecondVC: UIViewController {
         backButton.setImage(UIImage(named: "searchBtnBack"), for: .normal)
         backButton.tintColor = .veryLightPink
         setNextButton()
-        searchButton.setImage(UIImage(named: "searchBtnSearch"), for: .normal)
-        searchButton.tintColor = .softGreen
+  
         setProgressBar()
         // Do any additional setup after loading the view.
     }
@@ -97,6 +94,8 @@ class WritingSentenceSecondVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    
+
     
     func setProgressBar(){
     
@@ -174,6 +173,24 @@ class WritingSentenceSecondVC: UIViewController {
         
         
     }
+    @IBAction func searchTextButtonAction(_ sender: Any) {
+        
+        
+        guard let vcName = UIStoryboard(name: "SearchBookForWriting",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "SearchBookForWritingVC")
+            as? SearchBookForWritingVC
+            else{
+                return
+        }
+        
+        vcName.modalPresentationStyle = .fullScreen
+        self.present(vcName, animated: true, completion: nil)
+        
+        
+    }
+    
+    
     
     func secondToFirstLevelAnimation(){
         

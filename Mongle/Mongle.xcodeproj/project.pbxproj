@@ -31,6 +31,9 @@
 		EC7C78EC24B2E79F00B7FCFB /* MainTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7C78EB24B2E79F00B7FCFB /* MainTab.storyboard */; };
 		EC7C78EE24B2F2A800B7FCFB /* UnderTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */; };
 		EC7C78F024B2F2DE00B7FCFB /* UnderTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */; };
+		EC86B49624B7169200DB930A /* SearchBookForWriting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC86B49524B7169200DB930A /* SearchBookForWriting.storyboard */; };
+		EC86B49824B716BB00DB930A /* SearchBookForWritingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86B49724B716BB00DB930A /* SearchBookForWritingVC.swift */; };
+		EC86B49A24B7646600DB930A /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86B49924B7646600DB930A /* UITextField+Extensions.swift */; };
 		EC8E323324AF1B1A001AB034 /* Writing_Theme.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC8E323224AF1B1A001AB034 /* Writing_Theme.storyboard */; };
 		ECA23EDE24B5F58D00C100F1 /* WritingSentenceSecond.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECA23EDD24B5F58D00C100F1 /* WritingSentenceSecond.storyboard */; };
 		ECA23EE024B5F5F100C100F1 /* WritingSentenceSecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA23EDF24B5F5F100C100F1 /* WritingSentenceSecondVC.swift */; };
@@ -68,6 +71,9 @@
 		EC7C78EB24B2E79F00B7FCFB /* MainTab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainTab.storyboard; sourceTree = "<group>"; };
 		EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnderTab.storyboard; sourceTree = "<group>"; };
 		EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderTabBarController.swift; sourceTree = "<group>"; };
+		EC86B49524B7169200DB930A /* SearchBookForWriting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchBookForWriting.storyboard; sourceTree = "<group>"; };
+		EC86B49724B716BB00DB930A /* SearchBookForWritingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookForWritingVC.swift; sourceTree = "<group>"; };
+		EC86B49924B7646600DB930A /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		EC8E323224AF1B1A001AB034 /* Writing_Theme.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Writing_Theme.storyboard; sourceTree = "<group>"; };
 		ECA23EDD24B5F58D00C100F1 /* WritingSentenceSecond.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WritingSentenceSecond.storyboard; sourceTree = "<group>"; };
 		ECA23EDF24B5F5F100C100F1 /* WritingSentenceSecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingSentenceSecondVC.swift; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 				ECEF22B924B4A3B200933534 /* WritingSentence.storyboard */,
 				B8AB121824B46C7400B60240 /* CuratorList.storyboard */,
 				ECA23EDD24B5F58D00C100F1 /* WritingSentenceSecond.storyboard */,
+				EC86B49524B7169200DB930A /* SearchBookForWriting.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -195,6 +202,7 @@
 				7F6ABED024ADE9860040746E /* UIView+Extensions.swift */,
 				7F6ABED224ADE9D60040746E /* UIViewController+Extensions.swift */,
 				7F6ABED424ADE9FC0040746E /* UIImageView+Extensions.swift */,
+				EC86B49924B7646600DB930A /* UITextField+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -214,10 +222,11 @@
 			children = (
 				7F767D7624B211D100ADF46D /* WritingThemeVC.swift */,
 				B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */,
-				EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */,
 				ECEF22BB24B4A3DF00933534 /* WritingSentenceVC.swift */,
 				B8AB121A24B46CC100B60240 /* CuratorListVC.swift */,
 				ECA23EDF24B5F5F100C100F1 /* WritingSentenceSecondVC.swift */,
+				EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */,
+				EC86B49724B716BB00DB930A /* SearchBookForWritingVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -299,6 +308,7 @@
 				EC8E323324AF1B1A001AB034 /* Writing_Theme.storyboard in Resources */,
 				B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */,
 				7F6ABEBB24ADE7720040746E /* Assets.xcassets in Resources */,
+				EC86B49624B7169200DB930A /* SearchBookForWriting.storyboard in Resources */,
 				ECEF22BA24B4A3B200933534 /* WritingSentence.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC86B49A24B7646600DB930A /* UITextField+Extensions.swift in Sources */,
 				7F6ABEDB24ADED910040746E /* GenericResponse.swift in Sources */,
 				7F6ABED724ADEB730040746E /* UserDefaultKeys.swift in Sources */,
 				7F6ABEDD24ADF3B20040746E /* NetworkResult.swift in Sources */,
@@ -360,6 +371,7 @@
 				ECEF22BC24B4A3DF00933534 /* WritingSentenceVC.swift in Sources */,
 				7F767D7724B211D100ADF46D /* WritingThemeVC.swift in Sources */,
 				7F6ABEB224ADE7700040746E /* AppDelegate.swift in Sources */,
+				EC86B49824B716BB00DB930A /* SearchBookForWritingVC.swift in Sources */,
 				7F6ABED124ADE9860040746E /* UIView+Extensions.swift in Sources */,
 				B86D4C4224B2C14200C21906 /* RecommendSearchCVC.swift in Sources */,
 				7F6ABED924ADEC9E0040746E /* APIConstants.swift in Sources */,
