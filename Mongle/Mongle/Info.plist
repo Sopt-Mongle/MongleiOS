@@ -43,7 +43,7 @@
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
-					<string>WritingSentence</string>
+					<string>ThemeInfo</string>
 				</dict>
 			</array>
 		</dict>
