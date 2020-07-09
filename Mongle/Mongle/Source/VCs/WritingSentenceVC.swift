@@ -41,7 +41,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         super.viewDidLoad()
         
         xButton.setImage(UIImage(named: "warning"), for: .normal)
-        
+        setSentenceTextView()
         setNextButton()
         setProgressBar()
         partialGreenColor()
@@ -115,6 +115,23 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     }
     
     
+    @IBAction func nextButtonAction(_ sender: Any) {
+        guard let vcName = UIStoryboard(name: "WritingSentenceSecond",
+                                               bundle: nil).instantiateViewController(
+                                                withIdentifier: "WritingSentenceSecondVC")
+            as? WritingSentenceSecondVC
+            else{
+                return
+        }
+        vcName.modalPresentationStyle = .currentContext
+        
+        
+        vcName.setProgressBar()
+        self.present(vcName, animated: true, completion: nil)
+        
+        
+        
+    }
     func partialGreenColor(){
            
            guard let text = self.noticeLabel.text else {
@@ -235,5 +252,9 @@ extension UITextView: UITextViewDelegate {
         self.resizePlaceholder()
         self.delegate = self
     }
+ 
+    
+    
+    
     
 }

@@ -23,6 +23,9 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6O-11-wPM">
                                 <rect key="frame" x="17" y="52" width="30" height="30"/>
+                                <connections>
+                                    <action selector="backButton:" destination="y4b-Zr-9EA" eventType="touchUpInside" id="soa-KY-hAx"/>
+                                </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ce9-VJ-rKo">
                                 <rect key="frame" x="16" y="123.5" width="374" height="2"/>
@@ -134,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D6m-gd-ggI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="16" y="128"/>
+            <point key="canvasLocation" x="15.942028985507248" y="127.90178571428571"/>
         </scene>
     </scenes>
 </document>

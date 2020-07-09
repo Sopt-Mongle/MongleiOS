@@ -52,7 +52,7 @@ class WritingSentenceSecondVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         partialGreenColor()
-        setProgressBar()
+        
         publisherTextField.isEnabled = false
         authorTextField.isEnabled = false
         backButton.setImage(UIImage(named: "searchBtnBack"), for: .normal)
@@ -60,10 +60,13 @@ class WritingSentenceSecondVC: UIViewController {
         setNextButton()
         searchButton.setImage(UIImage(named: "searchBtnSearch"), for: .normal)
         searchButton.tintColor = .softGreen
+        setProgressBar()
         // Do any additional setup after loading the view.
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        setProgressBar()
+    }
     
 //    MARK:- User Define Functions
     func partialGreenColor(){
@@ -84,10 +87,13 @@ class WritingSentenceSecondVC: UIViewController {
           
           
       }
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     
     func setProgressBar(){
-        
+    
         self.view.addSubview(outerCircle)
         self.view.addSubview(innerCircle)
         self.view.addSubview(outerCircle2)
@@ -131,12 +137,12 @@ class WritingSentenceSecondVC: UIViewController {
         
        
         
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
             self.progressBar.layoutIfNeeded()
             
         }, completion: { finished in
             self.progressBar.progress = 0.5
-            UIView.animate(withDuration: 0.5 , delay: 0.5, options: [.curveEaseIn], animations: {
+            UIView.animate(withDuration: 0.75 , delay: 0.5, options: [.curveEaseIn], animations: {
                 self.outerCircle2.alpha = 0.34
                 self.innerCircle2.alpha = 1
                 self.outerCircle2.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
@@ -155,5 +161,10 @@ class WritingSentenceSecondVC: UIViewController {
         
         
     }
+    
+    
+    
+    
+    
     
 }

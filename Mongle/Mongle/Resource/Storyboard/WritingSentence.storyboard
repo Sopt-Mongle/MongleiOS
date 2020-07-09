@@ -57,6 +57,9 @@
                                 <state key="normal" title="다음">
                                     <color key="titleColor" red="0.9568960071" green="0.96459966900000005" blue="0.97254294159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextButtonAction:" destination="OSC-I1-5Hp" eventType="touchUpInside" id="Ujv-W1-DxC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
