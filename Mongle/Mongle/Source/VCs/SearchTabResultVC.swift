@@ -9,22 +9,161 @@
 import UIKit
 
 class SearchTabResultVC: UIViewController {
-
+    
+    @IBOutlet weak var tabBarCV: UICollectionView!
+    @IBOutlet weak var underBarView: UIView!
+    
+    let menuItem = ["테마","문장","큐레이터"]
+    var pageInstance : SearchResultPageVC?
+    var observingList: [NSKeyValueObservation] = []
+    var underBarConstraintList: [NSLayoutConstraint] = []
+    //var nextPage : UIViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tabBarCV.delegate = self
+        tabBarCV.dataSource = self
+        
+        underBarView.backgroundColor = .softGreen
+        underBarView.translatesAutoresizingMaskIntoConstraints = false
+        let constraintHeight = underBarView.heightAnchor.constraint(equalToConstant: 2.0)
+        let constraintTop = underBarView.topAnchor.constraint(equalTo: tabBarCV.bottomAnchor)
+        let constraintWidth = underBarView.widthAnchor.constraint(equalToConstant: tabBarCV.frame.width / CGFloat(menuItem.count))
+        
+        NSLayoutConstraint.activate([constraintHeight, constraintTop,constraintWidth])
+        
+        collectionView(tabBarCV, didSelectItemAt: IndexPath(item: 0, section: 0))
+        tabBarCV.selectItem(at: IndexPath(item: 0, section: 0),
+                            animated: false,
+                            scrollPosition: .bottom)
         // Do any additional setup after loading the view.
     }
-
-
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    override func viewWillDisappear(_ animated: Bool) {
+        observingList.forEach { $0.invalidate() }
     }
-    */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pageSegue" {
+            pageInstance = segue.destination as? SearchResultPageVC
+            
+            let ob = pageInstance?
+                .keyValue
+                .observe(\.curPresentViewIndex,
+                         options: [.new, .old]) {
+                            [weak self] (changeObject, value) in
+                            
+                            self?.tabBarCV.selectItem(at: IndexPath(item: changeObject.curPresentViewIndex,
+                                                                                section: 0),animated: false,scrollPosition: .bottom)
+                            
+                            if (changeObject.curPresentViewIndex == 0){
+                                UIView.animate(withDuration: 0.3){
+                                    self!.underBarView.transform = CGAffineTransform(translationX:0 ,y: 0)
+                                }
+                            }
+                            else if(changeObject.curPresentViewIndex == 1){
+                                UIView.animate(withDuration: 0.3){
+                                    self!.underBarView.transform = CGAffineTransform(translationX:(self?.tabBarCV.frame.width)! / 3,y: 0)
+                                }
+                            }
+                            else {
+                                UIView.animate(withDuration: 0.3){
+                                    self!.underBarView.transform = CGAffineTransform(translationX:(self?.tabBarCV.frame.width)! / 3 * 2 ,y: 0)
+                                }
+                            }
+                            
+                            
+                            print("kvo test")
+                            
+            }
+            
+            observingList.append(ob!)
+            //pageInstance?.pageControlDelegate = self
+        }
+    }
 
+
+}
+extension SearchTabResultVC: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let item = indexPath.item
+        
+        guard let pageInstance = self.pageInstance else {
+            return
+        }
+        print("item : \(item)")
+        
+        
+        if item == 0 {
+            
+            pageInstance.setViewControllers([pageInstance.vcArr![item]], direction: .forward, animated: true, completion: nil)
+            pageInstance.keyValue.curPresentViewIndex = 0
+        }
+        else if item == 1 {
+            pageInstance.setViewControllers([pageInstance.vcArr![item]], direction: .forward, animated: true, completion: nil)
+            pageInstance.keyValue.curPresentViewIndex = 1
+        }
+        else{
+            pageInstance.setViewControllers([pageInstance.vcArr![item]], direction: .forward, animated: true, completion: nil)
+            pageInstance.keyValue.curPresentViewIndex = 2
+        }
+    }
+}
+
+extension SearchTabResultVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return menuItem.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultMenuCVC.identifier, for: indexPath) as? SearchResultMenuCVC
+            else {
+                return UICollectionViewCell()
+        }
+        cell.menuLabel.text = menuItem[indexPath.row]
+        
+        
+        return cell
+    }
+}
+
+extension SearchTabResultVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width / CGFloat(menuItem.count), height: collectionView.bounds.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    //    UIEdgeInset
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
 }

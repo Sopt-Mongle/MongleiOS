@@ -27,6 +27,11 @@
 		B8AB121F24B475A100B60240 /* CuratorListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB121E24B475A100B60240 /* CuratorListCVC.swift */; };
 		B8AB122324B5C10B00B60240 /* SearchTabResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AB122224B5C10B00B60240 /* SearchTabResult.storyboard */; };
 		B8AB122524B5C1C500B60240 /* SearchTabResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB122424B5C1C500B60240 /* SearchTabResultVC.swift */; };
+		B8B48A5924B6025400551F5B /* SearchResultPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B48A5824B6025400551F5B /* SearchResultPageVC.swift */; };
+		B8B48A5B24B6027C00551F5B /* SearchResultThemeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B48A5A24B6027C00551F5B /* SearchResultThemeVC.swift */; };
+		B8B48A5D24B6029100551F5B /* SearchResultSentenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B48A5C24B6029100551F5B /* SearchResultSentenceVC.swift */; };
+		B8B48A5F24B602A600551F5B /* SearchResultCuratorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B48A5E24B602A600551F5B /* SearchResultCuratorVC.swift */; };
+		B8B48ADB24B762A000551F5B /* SearchResultMenuCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B48ADA24B762A000551F5B /* SearchResultMenuCVC.swift */; };
 		B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */; };
 		B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */; };
 		B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */; };
@@ -63,6 +68,11 @@
 		B8AB121E24B475A100B60240 /* CuratorListCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorListCVC.swift; sourceTree = "<group>"; };
 		B8AB122224B5C10B00B60240 /* SearchTabResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchTabResult.storyboard; sourceTree = "<group>"; };
 		B8AB122424B5C1C500B60240 /* SearchTabResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTabResultVC.swift; sourceTree = "<group>"; };
+		B8B48A5824B6025400551F5B /* SearchResultPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultPageVC.swift; sourceTree = "<group>"; };
+		B8B48A5A24B6027C00551F5B /* SearchResultThemeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultThemeVC.swift; sourceTree = "<group>"; };
+		B8B48A5C24B6029100551F5B /* SearchResultSentenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSentenceVC.swift; sourceTree = "<group>"; };
+		B8B48A5E24B602A600551F5B /* SearchResultCuratorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCuratorVC.swift; sourceTree = "<group>"; };
+		B8B48ADA24B762A000551F5B /* SearchResultMenuCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultMenuCVC.swift; sourceTree = "<group>"; };
 		B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchTabMain.storyboard; sourceTree = "<group>"; };
 		B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTabMainVC.swift; sourceTree = "<group>"; };
 		B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchCVC.swift; sourceTree = "<group>"; };
@@ -205,6 +215,7 @@
 				B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */,
 				B86D4C4124B2C14200C21906 /* RecommendSearchCVC.swift */,
 				B8AB121E24B475A100B60240 /* CuratorListCVC.swift */,
+				B8B48ADA24B762A000551F5B /* SearchResultMenuCVC.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -218,6 +229,10 @@
 				ECEF22BB24B4A3DF00933534 /* WritingSentenceVC.swift */,
 				B8AB121A24B46CC100B60240 /* CuratorListVC.swift */,
 				B8AB122424B5C1C500B60240 /* SearchTabResultVC.swift */,
+				B8B48A5824B6025400551F5B /* SearchResultPageVC.swift */,
+				B8B48A5A24B6027C00551F5B /* SearchResultThemeVC.swift */,
+				B8B48A5C24B6029100551F5B /* SearchResultSentenceVC.swift */,
+				B8B48A5E24B602A600551F5B /* SearchResultCuratorVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -355,20 +370,25 @@
 				7F6ABEDB24ADED910040746E /* GenericResponse.swift in Sources */,
 				7F6ABED724ADEB730040746E /* UserDefaultKeys.swift in Sources */,
 				7F6ABEDD24ADF3B20040746E /* NetworkResult.swift in Sources */,
+				B8B48A5B24B6027C00551F5B /* SearchResultThemeVC.swift in Sources */,
 				B8AB121B24B46CC100B60240 /* CuratorListVC.swift in Sources */,
 				7F6ABED524ADE9FC0040746E /* UIImageView+Extensions.swift in Sources */,
 				ECEF22BC24B4A3DF00933534 /* WritingSentenceVC.swift in Sources */,
 				7F767D7724B211D100ADF46D /* WritingThemeVC.swift in Sources */,
 				7F6ABEB224ADE7700040746E /* AppDelegate.swift in Sources */,
 				7F6ABED124ADE9860040746E /* UIView+Extensions.swift in Sources */,
+				B8B48ADB24B762A000551F5B /* SearchResultMenuCVC.swift in Sources */,
 				B86D4C4224B2C14200C21906 /* RecommendSearchCVC.swift in Sources */,
 				7F6ABED924ADEC9E0040746E /* APIConstants.swift in Sources */,
 				B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */,
 				7F6ABEB424ADE7700040746E /* SceneDelegate.swift in Sources */,
+				B8B48A5D24B6029100551F5B /* SearchResultSentenceVC.swift in Sources */,
 				EC7C78F024B2F2DE00B7FCFB /* UnderTabBarController.swift in Sources */,
+				B8B48A5924B6025400551F5B /* SearchResultPageVC.swift in Sources */,
 				7F6ABED324ADE9D60040746E /* UIViewController+Extensions.swift in Sources */,
 				7F6ABECF24ADE8F80040746E /* UIColor+Extensions.swift in Sources */,
 				B8AB122524B5C1C500B60240 /* SearchTabResultVC.swift in Sources */,
+				B8B48A5F24B602A600551F5B /* SearchResultCuratorVC.swift in Sources */,
 				B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */,
 				B8AB121F24B475A100B60240 /* CuratorListCVC.swift in Sources */,
 			);
