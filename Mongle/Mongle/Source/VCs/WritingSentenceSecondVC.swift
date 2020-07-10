@@ -57,7 +57,7 @@ class WritingSentenceSecondVC: UIViewController {
         backButton.tintColor = .veryLightPink
         setNextButton()
   
-        setProgressBar()
+
         // Do any additional setup after loading the view.
     }
     
@@ -147,8 +147,6 @@ class WritingSentenceSecondVC: UIViewController {
         outerCircle2.alpha = 0
         innerCircle2.alpha = 0
         
-        
-        
         UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
             self.progressBar.layoutIfNeeded()
             
@@ -159,7 +157,7 @@ class WritingSentenceSecondVC: UIViewController {
                 self.innerCircle2.alpha = 1
                 self.outerCircle2.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                 self.innerCircle2.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-
+                
                 
             }, completion:nil)
             

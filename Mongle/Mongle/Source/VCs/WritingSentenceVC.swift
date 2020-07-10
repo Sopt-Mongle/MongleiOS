@@ -73,22 +73,23 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         UIResponder.keyboardWillHideNotification, object: nil)
        
         
-        if WritingSentenceSecondVC.isVisited == true{
-            UIView.animate(withDuration: 0.0, animations: {
-                self.progressBar.progress = 0.5
-            })
-            
-            self.outerCircle2.alpha = 0.34
-            self.innerCircle2.alpha = 1
-            
-            self.secondToFirstLevelAnimation()
-            
-          
-        
-        }
+//        if WritingSentenceSecondVC.isVisited == true{
+//            UIView.animate(withDuration: 0.0, animations: {
+//                self.progressBar.progress = 0.0
+//            })
+//            
+//            self.outerCircle2.alpha = 0.34
+//            self.innerCircle2.alpha = 1
+//            
+////            self.secondToFirstLevelAnimation()
+//            
+//          
+//        
+//        }
     }
     override func viewDidDisappear(_ animated: Bool) {
-        self.progressBar.progress = 0.5
+//        self.progressBar.progress = 0
+//        progressBar.layoutIfNeeded()
     }
     
     
@@ -136,11 +137,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
                                                                 bottom: 0.0, right: 15.0)
         
     }
-    
-    func setProgressBarSecond(){
-        self.progressBar.progress = 0.5
-        
-    }
+   
     
     func setNextButton(){
         self.nextButton.backgroundColor = .softGreen
