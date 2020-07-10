@@ -129,6 +129,7 @@ class UnderTabBarController: UITabBarController {
                                   action: #selector(makeThemeButtonAction), for: .touchUpInside)
         makeThemeButton.titleLabel?.font = UIFont(name:
         "American Typewriter", size: 15)
+        writeSentenceButton.addTarget(self, action: #selector(makeSentenceButtonAction), for: .touchUpInside)
         
         
 //        Setting temporary VCs to check implementation
@@ -244,6 +245,20 @@ class UnderTabBarController: UITabBarController {
                                             withIdentifier: "WritingThemeVC") as? WritingThemeVC
             else{
             return
+        }
+        hideSubMenus()
+        vcName.modalPresentationStyle = .fullScreen
+        
+        self.present(vcName, animated: true, completion: nil)
+        
+    }
+    
+    @objc func makeSentenceButtonAction(sender: UIButton?){
+        guard let vcName = UIStoryboard(name: "WritingSentence",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "WritingSentenceVC") as? WritingSentenceVC
+            else{
+                return
         }
         hideSubMenus()
         vcName.modalPresentationStyle = .fullScreen

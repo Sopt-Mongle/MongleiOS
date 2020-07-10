@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Third View Of Writing SentenceVC-->
+        <scene sceneID="P4D-fr-ILk">
+            <objects>
+                <viewController storyboardIdentifier="WritingSentenceThirdVC" id="U3D-Sp-0zr" customClass="ThirdViewOfWritingSentenceVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3g2-ah-kKP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="문장 쓰기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVi-ps-HAa">
+                                <rect key="frame" x="154" y="48" width="67" height="21.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eck-ol-tKt">
+                                <rect key="frame" x="17" y="53" width="10.666666666666664" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="3fb-zk-l43"/>
+                                    <constraint firstAttribute="width" constant="10.699999999999999" id="NE4-rl-J7W"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="U3D-Sp-0zr" eventType="touchUpInside" id="YhJ-8I-y5E"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한 문장이 담길 테마를 선택해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZY-k8-R9A">
+                                <rect key="frame" x="16" y="154.66666666666666" width="257.66666666666669" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jPD-ad-iP7">
+                                <rect key="frame" x="16" y="192.66666666666666" width="343" height="84.999999999999972"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="mNQ-a4-Ozw"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ozm-DD-S0L">
+                                <rect key="frame" x="16" y="294.66666666666669" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="5Ff-c3-bRf"/>
+                                </constraints>
+                                <state key="normal" title="테마 선택하기"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3m-Hw-ArA">
+                                <rect key="frame" x="16" y="705" width="343" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="VtF-Gf-rue"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="등록하기"/>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VtC-Ut-45K">
+                                <rect key="frame" x="28.666666666666657" y="124.33333333333333" width="318" height="2"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ozm-DD-S0L" firstAttribute="leading" secondItem="2gU-gQ-Vtn" secondAttribute="leading" constant="16" id="0Kn-Vi-yyQ"/>
+                            <constraint firstItem="Ozm-DD-S0L" firstAttribute="top" secondItem="jPD-ad-iP7" secondAttribute="bottom" constant="17" id="5Xx-Vd-hTB"/>
+                            <constraint firstItem="2gU-gQ-Vtn" firstAttribute="trailing" secondItem="q3m-Hw-ArA" secondAttribute="trailing" constant="16" id="6Wg-GO-F1m"/>
+                            <constraint firstItem="2gU-gQ-Vtn" firstAttribute="trailing" secondItem="jPD-ad-iP7" secondAttribute="trailing" constant="16" id="EVT-ip-sKa"/>
+                            <constraint firstItem="FVi-ps-HAa" firstAttribute="centerX" secondItem="2gU-gQ-Vtn" secondAttribute="centerX" id="Fa4-J3-6WO"/>
+                            <constraint firstItem="VtC-Ut-45K" firstAttribute="top" secondItem="FVi-ps-HAa" secondAttribute="bottom" constant="54.5" id="Gg0-4N-6dG"/>
+                            <constraint firstItem="VtC-Ut-45K" firstAttribute="leading" secondItem="3g2-ah-kKP" secondAttribute="leading" constant="28.5" id="MEa-fM-5xP"/>
+                            <constraint firstItem="FVi-ps-HAa" firstAttribute="top" secondItem="2gU-gQ-Vtn" secondAttribute="top" constant="4" id="O2l-Bb-eKy"/>
+                            <constraint firstAttribute="bottom" secondItem="q3m-Hw-ArA" secondAttribute="bottom" constant="50" id="P3s-JD-ySB"/>
+                            <constraint firstItem="q3m-Hw-ArA" firstAttribute="leading" secondItem="2gU-gQ-Vtn" secondAttribute="leading" constant="16" id="Pqa-fi-Ysr"/>
+                            <constraint firstAttribute="trailing" secondItem="VtC-Ut-45K" secondAttribute="trailing" constant="28.5" id="SEq-72-gyJ"/>
+                            <constraint firstItem="iZY-k8-R9A" firstAttribute="top" secondItem="VtC-Ut-45K" secondAttribute="bottom" constant="28.5" id="YDw-Gt-opm"/>
+                            <constraint firstItem="2gU-gQ-Vtn" firstAttribute="trailing" secondItem="Ozm-DD-S0L" secondAttribute="trailing" constant="16" id="Yrr-sC-d62"/>
+                            <constraint firstItem="iZY-k8-R9A" firstAttribute="leading" secondItem="2gU-gQ-Vtn" secondAttribute="leading" constant="16" id="dv9-H9-lp3"/>
+                            <constraint firstItem="eck-ol-tKt" firstAttribute="leading" secondItem="2gU-gQ-Vtn" secondAttribute="leading" constant="17" id="gtb-Gi-Stz"/>
+                            <constraint firstItem="jPD-ad-iP7" firstAttribute="leading" secondItem="2gU-gQ-Vtn" secondAttribute="leading" constant="16" id="jdC-kO-R6r"/>
+                            <constraint firstItem="eck-ol-tKt" firstAttribute="top" secondItem="2gU-gQ-Vtn" secondAttribute="top" constant="9" id="s2t-LQ-euE"/>
+                            <constraint firstItem="jPD-ad-iP7" firstAttribute="top" secondItem="iZY-k8-R9A" secondAttribute="bottom" constant="17" id="ypG-vF-QQa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2gU-gQ-Vtn"/>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="eck-ol-tKt" id="IyW-qh-ftw"/>
+                        <outlet property="progressBar" destination="VtC-Ut-45K" id="e4A-vw-rvZ"/>
+                        <outlet property="registButton" destination="q3m-Hw-ArA" id="OsC-Ic-MCu"/>
+                        <outlet property="selectButton" destination="Ozm-DD-S0L" id="7bw-iz-O35"/>
+                        <outlet property="themeTextView" destination="jPD-ad-iP7" id="FxI-il-eMr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="upZ-ho-GfM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="17" y="74"/>
+        </scene>
+    </scenes>
+</document>

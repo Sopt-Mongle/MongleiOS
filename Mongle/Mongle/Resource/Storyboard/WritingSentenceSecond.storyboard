@@ -28,7 +28,7 @@
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ce9-VJ-rKo">
-                                <rect key="frame" x="16" y="123.5" width="374" height="2"/>
+                                <rect key="frame" x="28.5" y="123.5" width="357" height="2"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한 문장이 담긴 책을 추가해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rN5-CB-EAH">
                                 <rect key="frame" x="16" y="154" width="242" height="21"/>
@@ -66,6 +66,9 @@
                                 <state key="normal" title="다음">
                                     <color key="titleColor" red="0.9568960071" green="0.96459966900000005" blue="0.97254294159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextButtonAction:" destination="y4b-Zr-9EA" eventType="touchUpInside" id="AdU-Ic-v6P"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qVS-ie-4Q1">
                                 <rect key="frame" x="16" y="386" width="382" height="45"/>
@@ -85,9 +88,16 @@
                                     <action selector="searchTextButtonAction:" destination="y4b-Zr-9EA" eventType="touchUpInside" id="TN9-EA-K0m"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJY-xG-ROP">
+                                <rect key="frame" x="43" y="201" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="hJY-xG-ROP" firstAttribute="leading" secondItem="nHd-h6-V3T" secondAttribute="leading" constant="31" id="0lD-c5-O2J"/>
                             <constraint firstItem="nHd-h6-V3T" firstAttribute="trailing" secondItem="mWK-if-Poa" secondAttribute="trailing" constant="16" id="1eb-Uw-vA3"/>
                             <constraint firstItem="0jo-5a-qh6" firstAttribute="leading" secondItem="nHd-h6-V3T" secondAttribute="leading" constant="15" id="5nS-6X-ici"/>
                             <constraint firstItem="A4M-Af-Peq" firstAttribute="leading" secondItem="nHd-h6-V3T" secondAttribute="leading" constant="15" id="81M-pZ-EAb"/>
@@ -96,7 +106,7 @@
                             <constraint firstItem="nHd-h6-V3T" firstAttribute="trailing" secondItem="sVg-t2-zaN" secondAttribute="trailing" constant="16" id="D9o-q8-eks"/>
                             <constraint firstItem="Dk3-Qz-IBR" firstAttribute="centerX" secondItem="nHd-h6-V3T" secondAttribute="centerX" id="EZh-NM-511"/>
                             <constraint firstItem="ce9-VJ-rKo" firstAttribute="top" secondItem="Dk3-Qz-IBR" secondAttribute="bottom" constant="54.5" id="Fan-Oc-gKI"/>
-                            <constraint firstItem="nHd-h6-V3T" firstAttribute="trailing" secondItem="ce9-VJ-rKo" secondAttribute="trailing" constant="24" id="G1S-Tp-6eP"/>
+                            <constraint firstItem="nHd-h6-V3T" firstAttribute="trailing" secondItem="ce9-VJ-rKo" secondAttribute="trailing" constant="28.5" id="G1S-Tp-6eP"/>
                             <constraint firstItem="0jo-5a-qh6" firstAttribute="top" secondItem="sVg-t2-zaN" secondAttribute="bottom" constant="43" id="GUB-OT-qVV"/>
                             <constraint firstItem="WbP-if-Rh9" firstAttribute="leading" secondItem="nHd-h6-V3T" secondAttribute="leading" constant="16" id="M7B-Dr-TNO"/>
                             <constraint firstItem="sVg-t2-zaN" firstAttribute="top" secondItem="rN5-CB-EAH" secondAttribute="bottom" constant="17" id="Nf2-LG-lhe"/>
@@ -104,8 +114,9 @@
                             <constraint firstItem="WbP-if-Rh9" firstAttribute="top" secondItem="0jo-5a-qh6" secondAttribute="bottom" constant="11" id="R73-1a-7Pf"/>
                             <constraint firstItem="B6O-11-wPM" firstAttribute="top" secondItem="nHd-h6-V3T" secondAttribute="top" constant="8" id="Rfs-mw-iAX"/>
                             <constraint firstItem="sVg-t2-zaN" firstAttribute="leading" secondItem="nHd-h6-V3T" secondAttribute="leading" constant="16" id="TKe-4Q-0h0"/>
-                            <constraint firstItem="ce9-VJ-rKo" firstAttribute="leading" secondItem="nHd-h6-V3T" secondAttribute="leading" constant="16" id="Vri-HN-D0K"/>
+                            <constraint firstItem="ce9-VJ-rKo" firstAttribute="leading" secondItem="nHd-h6-V3T" secondAttribute="leading" constant="28.5" id="Vri-HN-D0K"/>
                             <constraint firstItem="B6O-11-wPM" firstAttribute="leading" secondItem="nHd-h6-V3T" secondAttribute="leading" constant="17" id="eHS-mX-9dC"/>
+                            <constraint firstItem="hJY-xG-ROP" firstAttribute="top" secondItem="rN5-CB-EAH" secondAttribute="bottom" constant="30" id="fvW-fc-RaA"/>
                             <constraint firstItem="nHd-h6-V3T" firstAttribute="trailing" secondItem="WbP-if-Rh9" secondAttribute="trailing" constant="16" id="h9W-2e-fGX"/>
                             <constraint firstItem="mWK-if-Poa" firstAttribute="leading" secondItem="nHd-h6-V3T" secondAttribute="leading" constant="16" id="hTA-F6-Sas"/>
                             <constraint firstItem="nHd-h6-V3T" firstAttribute="bottom" secondItem="mWK-if-Poa" secondAttribute="bottom" constant="11" id="hwr-Cq-LZD"/>
@@ -119,6 +130,7 @@
                     <connections>
                         <outlet property="authorTextField" destination="WbP-if-Rh9" id="yGF-DV-u8F"/>
                         <outlet property="backButton" destination="B6O-11-wPM" id="Zc8-w6-Qyk"/>
+                        <outlet property="bookTitleLabel" destination="hJY-xG-ROP" id="ihU-jK-Kp0"/>
                         <outlet property="nextButton" destination="mWK-if-Poa" id="hwU-Ku-4YC"/>
                         <outlet property="noticeLabel" destination="rN5-CB-EAH" id="OF4-XX-yoF"/>
                         <outlet property="progressBar" destination="ce9-VJ-rKo" id="Oey-tB-K7k"/>

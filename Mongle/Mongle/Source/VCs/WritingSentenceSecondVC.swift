@@ -21,6 +21,8 @@ class WritingSentenceSecondVC: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var searchTextButton: UIButton!
     
+    @IBOutlet weak var bookTitleLabel: UILabel!
+    
     //    MARK:- User Define Variables
     let innerCircle = UIView().then{
         $0.backgroundColor = .softGreen
@@ -40,11 +42,26 @@ class WritingSentenceSecondVC: UIViewController {
     let outerCircle2 = UIView().then{
         $0.backgroundColor = .softGreen
         $0.alpha = 0.34
+    
+    }
+    let smallCircle = UIView().then{
+        $0.backgroundColor = .veryLightPinkSeven
         
         
     }
+    
+    let smallCircle2 = UIView().then{
+        $0.backgroundColor = .veryLightPinkSeven
+        
+        
+    }
+    
+    
+    static var noAnimation : Bool = false
     static var isVisited : Bool = false
     
+    static var isSearched : Bool = false
+    static var book : Book?
 //    MARK:- LifeCycle Methods
     
     override func viewDidLoad() {
@@ -57,11 +74,24 @@ class WritingSentenceSecondVC: UIViewController {
         backButton.tintColor = .veryLightPink
         setNextButton()
         searchTextButton.setImage(UIImage(named: "themeWritingSentenceBookBtnBookSearch")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        bookTitleLabel.text = ""
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        setSmallBalls()
         setProgressBar()
+        if WritingSentenceSecondVC.isSearched == true{
+            
+            setInformationsAfterSelect(book: WritingSentenceSecondVC.book!)
+        }
+        else if WritingSentenceSecondVC.noAnimation == true{
+            print("called")
+            
+        }
+        else{
+            secondLevelAnimation()
+        }
     }
     
  
@@ -94,7 +124,13 @@ class WritingSentenceSecondVC: UIViewController {
     }
     
     
-
+    func setInformationsAfterSelect(book : Book){
+        self.bookTitleLabel.text = book.bookTitle
+        self.authorTextField.text = book.bookAuthor
+        self.publisherTextField.text = book.bookPublisher
+        
+    }
+    
     
     func setProgressBar(){
     
@@ -106,7 +142,7 @@ class WritingSentenceSecondVC: UIViewController {
         
         innerCircle.snp.makeConstraints{
             $0.width.height.equalTo(12)
-            $0.centerX.equalTo(progressBar.snp_leadingMargin)
+            $0.leading.equalToSuperview().offset(23)
             $0.centerY.equalTo(progressBar.snp_centerYWithinMargins)
             
         }
@@ -114,14 +150,34 @@ class WritingSentenceSecondVC: UIViewController {
         
         outerCircle.snp.makeConstraints{
             $0.width.height.equalTo(26)
-            $0.centerX.equalTo(progressBar.snp_leadingMargin)
+            $0.leading.equalToSuperview().offset(16)
             $0.centerY.equalTo(progressBar.snp_centerYWithinMargins)
             
         }
         outerCircle.makeRounded(cornerRadius: 13)
-
-        secondLevelAnimation()
         
+        
+        
+        
+    }
+    
+    func setSmallBalls(){
+        self.view.addSubview(smallCircle)
+        self.view.addSubview(smallCircle2)
+        smallCircle.snp.makeConstraints{
+            $0.width.height.equalTo(9)
+            $0.center.equalTo(progressBar)
+            
+        }
+        smallCircle.makeRounded(cornerRadius: 4.5)
+        
+        smallCircle2.snp.makeConstraints{
+            $0.width.height.equalTo(9)
+            $0.trailing.equalToSuperview().offset(-24)
+            $0.centerY.equalTo(progressBar)
+            
+        }
+        smallCircle2.makeRounded(cornerRadius: 4.5)
         
     }
     
@@ -232,6 +288,22 @@ class WritingSentenceSecondVC: UIViewController {
             }, completion:nil)
         })
         
+        
+    }
+    
+    
+    @IBAction func nextButtonAction(_ sender: Any) {
+        guard let vcName = UIStoryboard(name: "WritingSentenceThird",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "WritingSentenceThirdVC")
+            as? ThirdViewOfWritingSentenceVC
+            else{
+                return
+        }
+        
+        vcName.modalPresentationStyle = .fullScreen
+       
+        self.present(vcName, animated: true, completion: nil)
         
     }
     

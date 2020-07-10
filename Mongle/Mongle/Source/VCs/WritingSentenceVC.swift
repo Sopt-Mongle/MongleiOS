@@ -18,7 +18,6 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     @IBOutlet weak var sentenceTextView: UITextView!
     @IBOutlet weak var xButton: UIButton!
     @IBOutlet weak var noticeLabel: UILabel!
-    
     @IBOutlet weak var progressBar: UIProgressView!
     
     //MARK:- User Define items
@@ -46,6 +45,18 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
          
      }
     
+    let smallCircle = UIView().then{
+        $0.backgroundColor = .veryLightPinkSeven
+        
+        
+    }
+    
+    let smallCircle2 = UIView().then{
+        $0.backgroundColor = .veryLightPinkSeven
+        
+        
+    }
+    
  
   
     
@@ -58,12 +69,15 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         setSentenceTextView()
         setNextButton()
         setProgressBar()
+
+        
         partialGreenColor()
         
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        setSmallBalls()
         sentenceTextView.becomeFirstResponder()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(_:)), name:
@@ -177,15 +191,38 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
                                          range: (text as NSString).range(of: "한 문장"))
            noticeLabel.attributedText = attributedString
        }
+    
+    func setSmallBalls(){
+        self.view.addSubview(smallCircle)
+        self.view.addSubview(smallCircle2)
+        smallCircle.snp.makeConstraints{
+            $0.width.height.equalTo(9)
+            $0.center.equalTo(progressBar)
+            
+        }
+        smallCircle.makeRounded(cornerRadius: 4.5)
+        
+        smallCircle2.snp.makeConstraints{
+            $0.width.height.equalTo(9)
+            $0.trailing.equalToSuperview().offset(-24)
+            $0.centerY.equalTo(progressBar)
+            
+        }
+        smallCircle2.makeRounded(cornerRadius: 4.5)
+        
+    }
+    
+    
     func setProgressBar(){
-
+        
         self.view.addSubview(outerCircle)
         self.view.addSubview(innerCircle)
         self.view.addSubview(outerCircle2)
         self.view.addSubview(innerCircle2)
         
+       
         self.innerCircle2.snp.makeConstraints{
-            $0.width.height.equalTo(12)
+            $0.width.height.equalTo(9)
             $0.centerX.equalTo(self.progressBar.snp_centerXWithinMargins)
             $0.centerY.equalTo(self.progressBar.snp_centerYWithinMargins)
             
@@ -209,7 +246,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         
         innerCircle.snp.makeConstraints{
             $0.width.height.equalTo(12)
-            $0.centerX.equalTo(progressBar.snp_leadingMargin)
+            $0.leading.equalToSuperview().offset(23)
             $0.centerY.equalTo(progressBar.snp_centerYWithinMargins)
             
         }
@@ -217,7 +254,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         
         outerCircle.snp.makeConstraints{
             $0.width.height.equalTo(26)
-            $0.centerX.equalTo(progressBar.snp_leadingMargin)
+            $0.leading.equalToSuperview().offset(16)
             $0.centerY.equalTo(progressBar.snp_centerYWithinMargins)
             
         }
@@ -241,36 +278,13 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         UIView.animate(withDuration: 3, animations: {
             self.progressBar.layoutIfNeeded()
         })
-        
-        
-    
-//
-//        UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
-//            self.progressBar.layoutIfNeeded()
-//
-//
-//        }, completion: { finished in
-//            self.progressBar.progress = 0
-//            UIView.animate(withDuration: 0.75 , delay: 0.0, options: [.curveEaseIn], animations: {
-//                self.outerCircle2.alpha = 0
-//                self.innerCircle2.alpha = 0
-//                self.outerCircle2.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-//                self.innerCircle2.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-//                self.progressBar.setProgress(1.0, animated: true)
-//                self.progressBar.transform = CGAffineTransform.identity
-//            }, completion:nil)
-//
-//
-//
-//            UIView.animate(withDuration: 0.75 , delay: 0.0, options: [.curveEaseIn], animations: {
-//
-//                self.progressBar.layoutIfNeeded()
-//            }, completion:nil)
-//        })
-//
-        
+
     }
     
+    
+    @IBAction func xButtonAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     
     
