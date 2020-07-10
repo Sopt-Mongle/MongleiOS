@@ -52,6 +52,9 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         
     }
     
+    static var textViewInput : String?
+    static var fromAfterView : Bool =  false
+    
     
     
     
@@ -68,6 +71,12 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setSmallBalls()
         setProgressBar()
+        
+        if ThirdViewOfWritingSentenceVC.fromAfterView == true {
+            self.themeTextView.text = ThirdViewOfWritingSentenceVC.textViewInput
+            
+        }
+        
         
        
     }
@@ -216,6 +225,13 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         
         vcName.modalPresentationStyle = .fullScreen
         self.present(vcName, animated: true, completion: nil)
+        
+        
+        
+    }
+    
+    
+    @IBAction func registerButtonAction(_ sender: Any) {
         
         
     }

@@ -41,7 +41,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gjC-WD-8YW">
-                                <rect key="frame" x="16" y="158.5" width="382" height="630.5"/>
+                                <rect key="frame" x="16" y="182.5" width="382" height="606.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="tintColor" red="0.9568960071" green="0.96459966900000005" blue="0.97254294159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ybu-No-p1a">
                                     <size key="itemSize" width="128" height="128"/>
@@ -50,7 +51,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ThemeSelectForSentence" id="g6k-cF-WYG" customClass="ThemeSelectForSentenceCVC" customModule="Mongle" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ThemeSelectionCell" id="g6k-cF-WYG" customClass="ThemeSelectForSentenceCVC" customModule="Mongle" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EdQ-pL-zYf">
@@ -99,6 +100,9 @@
                                     <constraint firstAttribute="height" constant="19" id="McA-zK-7qP"/>
                                     <constraint firstAttribute="width" constant="18" id="dIE-xf-siU"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="searchButtonAction:" destination="Bh9-Nr-MLf" eventType="touchUpInside" id="dJT-Pj-WT6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -116,8 +120,8 @@
                             <constraint firstItem="mLx-7d-McK" firstAttribute="leading" secondItem="tjf-iZ-GTd" secondAttribute="leading" constant="17" id="VRX-aj-eBa"/>
                             <constraint firstItem="q3X-OD-Vkx" firstAttribute="centerX" secondItem="tjf-iZ-GTd" secondAttribute="centerX" id="VzY-3c-grD"/>
                             <constraint firstItem="gjC-WD-8YW" firstAttribute="leading" secondItem="tjf-iZ-GTd" secondAttribute="leading" constant="16" id="eXt-3L-TWS"/>
+                            <constraint firstItem="gjC-WD-8YW" firstAttribute="top" secondItem="aSC-KL-YYg" secondAttribute="bottom" constant="24" id="hLK-mZ-hdG"/>
                             <constraint firstItem="tjf-iZ-GTd" firstAttribute="trailing" secondItem="SbW-AV-blp" secondAttribute="trailing" constant="16" id="mk5-xh-Yon"/>
-                            <constraint firstItem="gjC-WD-8YW" firstAttribute="top" secondItem="aSC-KL-YYg" secondAttribute="bottom" id="ruL-Qi-4JI"/>
                             <constraint firstItem="tjf-iZ-GTd" firstAttribute="trailing" secondItem="gjC-WD-8YW" secondAttribute="trailing" constant="16" id="z0v-iD-EpL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tjf-iZ-GTd"/>

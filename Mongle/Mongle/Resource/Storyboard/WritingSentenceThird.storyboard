@@ -64,6 +64,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="등록하기"/>
+                                <connections>
+                                    <action selector="registerButtonAction:" destination="U3D-Sp-0zr" eventType="touchUpInside" id="moQ-Ym-MTe"/>
+                                </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VtC-Ut-45K">
                                 <rect key="frame" x="28.666666666666657" y="124.33333333333333" width="318" height="2"/>

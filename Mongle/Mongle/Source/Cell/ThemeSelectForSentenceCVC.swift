@@ -32,8 +32,9 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
     
     //MARK:- User Define Functions
     func setItems(_ theme : ThemeForSentence){
-        themeImageView.image = UIImage(named: theme.imgName)
+        themeImageView.image = UIImage(named: theme.imgName)?.withRenderingMode(.alwaysOriginal)
         themeTitleLabel.text = theme.themeTitle
+        themeTitleLabel.textColor = .white
         
     }
     
