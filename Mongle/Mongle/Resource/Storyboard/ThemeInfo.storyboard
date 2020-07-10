@@ -38,7 +38,7 @@
                                         </constraints>
                                         <state key="normal" image="searchBtnBack"/>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mongleCharacters" translatesAutoresizingMaskIntoConstraints="NO" id="iWI-Mv-FuQ">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="themeImgCurator" translatesAutoresizingMaskIntoConstraints="NO" id="iWI-Mv-FuQ">
                                         <rect key="frame" x="16" y="127.66666666666669" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="EMr-25-627"/>
@@ -144,7 +144,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ysq-Tf-WJw">
                                                                     <rect key="frame" x="0.0" y="0.0" width="42.333333333333336" height="12"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mongleCharacters" translatesAutoresizingMaskIntoConstraints="NO" id="eYt-Tr-2Vo">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="themeIcSentenceLike" translatesAutoresizingMaskIntoConstraints="NO" id="eYt-Tr-2Vo">
                                                                             <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="12" id="caj-XF-SeV"/>
@@ -162,7 +162,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MhH-vg-8E7">
                                                                     <rect key="frame" x="72.333333333333343" y="0.0" width="42.333333333333343" height="12"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mongleCharacters" translatesAutoresizingMaskIntoConstraints="NO" id="Egf-M7-T4w">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="themeIcSentenceBookmark" translatesAutoresizingMaskIntoConstraints="NO" id="Egf-M7-T4w">
                                                                             <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="12" id="UTQ-qk-0Gc"/>
@@ -216,6 +216,36 @@
                                     <constraint firstAttribute="bottom" secondItem="7tc-cv-PKZ" secondAttribute="bottom" id="lKc-42-S2a"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOx-yo-vKk">
+                                <rect key="frame" x="0.0" y="721" width="375" height="57"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vZ-i9-jeT">
+                                        <rect key="frame" x="0.0" y="0.0" width="55" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="8vZ-i9-jeT" secondAttribute="height" multiplier="55:57" id="fkS-EK-CU3"/>
+                                        </constraints>
+                                        <state key="normal" image="themeBtnBookmark"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xd-z8-Jyb">
+                                        <rect key="frame" x="55" y="0.0" width="320" height="57"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="테마에 문장 쓰기">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="8vZ-i9-jeT" firstAttribute="top" secondItem="sOx-yo-vKk" secondAttribute="top" id="0uP-Rh-HSA"/>
+                                    <constraint firstItem="3Xd-z8-Jyb" firstAttribute="leading" secondItem="8vZ-i9-jeT" secondAttribute="trailing" id="1DK-Ry-BXg"/>
+                                    <constraint firstItem="8vZ-i9-jeT" firstAttribute="leading" secondItem="sOx-yo-vKk" secondAttribute="leading" id="HLX-37-okP"/>
+                                    <constraint firstAttribute="bottom" secondItem="8vZ-i9-jeT" secondAttribute="bottom" id="KaK-nS-Xo6"/>
+                                    <constraint firstItem="3Xd-z8-Jyb" firstAttribute="top" secondItem="sOx-yo-vKk" secondAttribute="top" id="bkz-Cz-WRT"/>
+                                    <constraint firstAttribute="trailing" secondItem="3Xd-z8-Jyb" secondAttribute="trailing" id="lyH-ox-cKC"/>
+                                    <constraint firstAttribute="width" secondItem="sOx-yo-vKk" secondAttribute="height" multiplier="125:19" id="sGc-KH-l2j"/>
+                                    <constraint firstAttribute="bottom" secondItem="3Xd-z8-Jyb" secondAttribute="bottom" id="weo-jG-bby"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -224,13 +254,16 @@
                             <constraint firstItem="Hu0-vn-sXz" firstAttribute="top" secondItem="KBc-dx-DTB" secondAttribute="top" constant="217" id="DY4-zf-jcn"/>
                             <constraint firstItem="ron-ju-hMk" firstAttribute="leading" secondItem="CjG-wk-vGM" secondAttribute="leading" id="JrZ-Pq-JeS"/>
                             <constraint firstItem="Hu0-vn-sXz" firstAttribute="top" secondItem="KAx-an-jsX" secondAttribute="bottom" constant="19.666666666666657" id="ML0-fz-ohY"/>
+                            <constraint firstItem="CjG-wk-vGM" firstAttribute="trailing" secondItem="sOx-yo-vKk" secondAttribute="trailing" id="Nd3-p5-9LY"/>
                             <constraint firstItem="Hu0-vn-sXz" firstAttribute="leading" secondItem="CjG-wk-vGM" secondAttribute="leading" id="PgZ-2F-sfD"/>
                             <constraint firstItem="i8f-0R-EAS" firstAttribute="top" secondItem="ron-ju-hMk" secondAttribute="top" id="QmH-PI-4FL"/>
                             <constraint firstItem="ron-ju-hMk" firstAttribute="top" secondItem="KBc-dx-DTB" secondAttribute="top" id="VkY-vB-gWq"/>
                             <constraint firstItem="i8f-0R-EAS" firstAttribute="trailing" secondItem="ron-ju-hMk" secondAttribute="trailing" id="ZtR-kq-4UJ"/>
                             <constraint firstItem="CjG-wk-vGM" firstAttribute="bottom" secondItem="Hu0-vn-sXz" secondAttribute="bottom" id="g7d-zJ-Swf"/>
                             <constraint firstItem="i8f-0R-EAS" firstAttribute="bottom" secondItem="ron-ju-hMk" secondAttribute="bottom" id="hMN-Kh-aFv"/>
+                            <constraint firstItem="sOx-yo-vKk" firstAttribute="leading" secondItem="CjG-wk-vGM" secondAttribute="leading" id="uen-wl-YQe"/>
                             <constraint firstItem="i8f-0R-EAS" firstAttribute="leading" secondItem="ron-ju-hMk" secondAttribute="leading" id="yY9-se-SVS"/>
+                            <constraint firstItem="CjG-wk-vGM" firstAttribute="bottom" secondItem="sOx-yo-vKk" secondAttribute="bottom" id="yq4-Xz-vUm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CjG-wk-vGM"/>
                     </view>
@@ -248,5 +281,9 @@
     <resources>
         <image name="mongleCharacters" width="75" height="78"/>
         <image name="searchBtnBack" width="10.333333015441895" height="18.666666030883789"/>
+        <image name="themeBtnBookmark" width="55" height="57"/>
+        <image name="themeIcSentenceBookmark" width="11" height="11"/>
+        <image name="themeIcSentenceLike" width="12" height="12"/>
+        <image name="themeImgCurator" width="24" height="24"/>
     </resources>
 </document>
