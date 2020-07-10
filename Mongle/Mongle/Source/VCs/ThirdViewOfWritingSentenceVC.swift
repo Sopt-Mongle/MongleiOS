@@ -203,4 +203,23 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         dismiss(animated: true, completion: nil)
         
     }
+    
+    
+    @IBAction func selectButtonAction(_ sender: Any) {
+        guard let vcName = UIStoryboard(name: "ThemeSelectForWriteSentence",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "ThemeSelectForWritingSentenceVC")
+            as? ThemeSelectForWritingSentenceVC
+            else{
+                return
+        }
+        
+        vcName.modalPresentationStyle = .fullScreen
+        self.present(vcName, animated: true, completion: nil)
+        
+        
+    }
+    
+    
+    
 }

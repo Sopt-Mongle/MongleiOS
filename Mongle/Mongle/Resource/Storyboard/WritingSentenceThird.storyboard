@@ -53,6 +53,9 @@
                                     <constraint firstAttribute="height" constant="45" id="5Ff-c3-bRf"/>
                                 </constraints>
                                 <state key="normal" title="테마 선택하기"/>
+                                <connections>
+                                    <action selector="selectButtonAction:" destination="U3D-Sp-0zr" eventType="touchUpInside" id="zo8-CG-PX4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3m-Hw-ArA">
                                 <rect key="frame" x="16" y="705" width="343" height="57"/>

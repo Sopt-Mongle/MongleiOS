@@ -51,6 +51,9 @@
 		EC88960424B83D4D008D29E2 /* SearchedBookTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC88960324B83D4D008D29E2 /* SearchedBookTVC.swift */; };
 		EC88960624B869E9008D29E2 /* WritingSentenceThird.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC88960524B869E9008D29E2 /* WritingSentenceThird.storyboard */; };
 		EC88960A24B86AE8008D29E2 /* ThirdViewOfWritingSentenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC88960924B86AE8008D29E2 /* ThirdViewOfWritingSentenceVC.swift */; };
+		EC88960C24B87F3D008D29E2 /* ThemeSelectForWriteSentence.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC88960B24B87F3D008D29E2 /* ThemeSelectForWriteSentence.storyboard */; };
+		EC88960E24B87F66008D29E2 /* ThemeSelectForWritingSentenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC88960D24B87F66008D29E2 /* ThemeSelectForWritingSentenceVC.swift */; };
+		EC88961224B88AE4008D29E2 /* ThemeSelectForSentenceCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC88961124B88AE4008D29E2 /* ThemeSelectForSentenceCVC.swift */; };
 		EC8E323324AF1B1A001AB034 /* Writing_Theme.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC8E323224AF1B1A001AB034 /* Writing_Theme.storyboard */; };
 		ECA23EDE24B5F58D00C100F1 /* WritingSentenceSecond.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECA23EDD24B5F58D00C100F1 /* WritingSentenceSecond.storyboard */; };
 		ECA23EE024B5F5F100C100F1 /* WritingSentenceSecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA23EDF24B5F5F100C100F1 /* WritingSentenceSecondVC.swift */; };
@@ -107,6 +110,9 @@
 		EC88960324B83D4D008D29E2 /* SearchedBookTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedBookTVC.swift; sourceTree = "<group>"; };
 		EC88960524B869E9008D29E2 /* WritingSentenceThird.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WritingSentenceThird.storyboard; sourceTree = "<group>"; };
 		EC88960924B86AE8008D29E2 /* ThirdViewOfWritingSentenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewOfWritingSentenceVC.swift; sourceTree = "<group>"; };
+		EC88960B24B87F3D008D29E2 /* ThemeSelectForWriteSentence.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ThemeSelectForWriteSentence.storyboard; sourceTree = "<group>"; };
+		EC88960D24B87F66008D29E2 /* ThemeSelectForWritingSentenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectForWritingSentenceVC.swift; sourceTree = "<group>"; };
+		EC88961124B88AE4008D29E2 /* ThemeSelectForSentenceCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectForSentenceCVC.swift; sourceTree = "<group>"; };
 		EC8E323224AF1B1A001AB034 /* Writing_Theme.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Writing_Theme.storyboard; sourceTree = "<group>"; };
 		ECA23EDD24B5F58D00C100F1 /* WritingSentenceSecond.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WritingSentenceSecond.storyboard; sourceTree = "<group>"; };
 		ECA23EDF24B5F5F100C100F1 /* WritingSentenceSecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingSentenceSecondVC.swift; sourceTree = "<group>"; };
@@ -211,6 +217,7 @@
 				EC86B49524B7169200DB930A /* SearchBookForWriting.storyboard */,
 				7F1E71A724B7A72400D79516 /* ThemeInfo.storyboard */,
 				EC88960524B869E9008D29E2 /* WritingSentenceThird.storyboard */,
+				EC88960B24B87F3D008D29E2 /* ThemeSelectForWriteSentence.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -267,6 +274,7 @@
 				B8AB121E24B475A100B60240 /* CuratorListCVC.swift */,
 				EC88960324B83D4D008D29E2 /* SearchedBookTVC.swift */,
 				7F1E71AB24B7BC6900D79516 /* SentenceInThemeTVC.swift */,
+				EC88961124B88AE4008D29E2 /* ThemeSelectForSentenceCVC.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -284,6 +292,7 @@
 				EC86B49724B716BB00DB930A /* SearchBookForWritingVC.swift */,
 				7F1E71A924B7BADB00D79516 /* ThemeInfoVC.swift */,
 				EC88960924B86AE8008D29E2 /* ThirdViewOfWritingSentenceVC.swift */,
+				EC88960D24B87F66008D29E2 /* ThemeSelectForWritingSentenceVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -362,6 +371,7 @@
 				EC7C78EE24B2F2A800B7FCFB /* UnderTab.storyboard in Resources */,
 				ECA23EDE24B5F58D00C100F1 /* WritingSentenceSecond.storyboard in Resources */,
 				EC8E323324AF1B1A001AB034 /* Writing_Theme.storyboard in Resources */,
+				EC88960C24B87F3D008D29E2 /* ThemeSelectForWriteSentence.storyboard in Resources */,
 				B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */,
 				7F1E71A824B7A72400D79516 /* ThemeInfo.storyboard in Resources */,
 				7F1E71A424B504CF00D79516 /* MainTabMain.storyboard in Resources */,
@@ -426,6 +436,7 @@
 				7F6ABEDB24ADED910040746E /* GenericResponse.swift in Sources */,
 				7F6ABED724ADEB730040746E /* UserDefaultKeys.swift in Sources */,
 				7F1E719924B45AB600D79516 /* MainPopularCuratorCVC.swift in Sources */,
+				EC88961224B88AE4008D29E2 /* ThemeSelectForSentenceCVC.swift in Sources */,
 				7F6ABEDD24ADF3B20040746E /* NetworkResult.swift in Sources */,
 				B8AB121B24B46CC100B60240 /* CuratorListVC.swift in Sources */,
 				EC88960424B83D4D008D29E2 /* SearchedBookTVC.swift in Sources */,
@@ -439,6 +450,7 @@
 				7F1E71A224B4A40B00D79516 /* MainTabDefaultHeaderView.swift in Sources */,
 				7FCEE21F24B363CF00225CA3 /* MainTabSecondTVC.swift in Sources */,
 				7FCEE21B24B3091C00225CA3 /* MainTabFirstTVC.swift in Sources */,
+				EC88960E24B87F66008D29E2 /* ThemeSelectForWritingSentenceVC.swift in Sources */,
 				7F6ABEB224ADE7700040746E /* AppDelegate.swift in Sources */,
 				EC86B49824B716BB00DB930A /* SearchBookForWritingVC.swift in Sources */,
 				7FCEE21924B3078E00225CA3 /* MainTabMainVC.swift in Sources */,
