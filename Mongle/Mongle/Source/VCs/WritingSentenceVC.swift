@@ -33,6 +33,20 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         $0.alpha = 0.34
         
     }
+    
+    let innerCircle2 = UIView().then{
+         $0.backgroundColor = .softGreen
+         
+         
+     }
+     let outerCircle2 = UIView().then{
+         $0.backgroundColor = .softGreen
+         $0.alpha = 0.34
+         
+         
+     }
+    
+ 
   
     
     
@@ -40,8 +54,8 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        xButton.setImage(UIImage(named: "warning"), for: .normal)
-        
+        xButton.setImage(UIImage(named: "writingThemeBtnClose")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        setSentenceTextView()
         setNextButton()
         setProgressBar()
         partialGreenColor()
@@ -57,9 +71,26 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)),
                                                name:
         UIResponder.keyboardWillHideNotification, object: nil)
+       
         
+//        if WritingSentenceSecondVC.isVisited == true{
+//            UIView.animate(withDuration: 0.0, animations: {
+//                self.progressBar.progress = 0.0
+//            })
+//            
+//            self.outerCircle2.alpha = 0.34
+//            self.innerCircle2.alpha = 1
+//            
+////            self.secondToFirstLevelAnimation()
+//            
+//          
+//        
+//        }
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+//        self.progressBar.progress = 0
+//        progressBar.layoutIfNeeded()
+    }
     
     
     // MARK:- User Define Functions
@@ -106,6 +137,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
                                                                 bottom: 0.0, right: 15.0)
         
     }
+   
     
     func setNextButton(){
         self.nextButton.backgroundColor = .softGreen
@@ -115,6 +147,24 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     }
     
     
+    @IBAction func nextButtonAction(_ sender: Any) {
+        guard let vcName = UIStoryboard(name: "WritingSentenceSecond",
+                                               bundle: nil).instantiateViewController(
+                                                withIdentifier: "WritingSentenceSecondVC")
+            as? WritingSentenceSecondVC
+            else{
+                return
+        }
+        vcName.modalPresentationStyle = .currentContext
+        
+        
+        vcName.setProgressBar()
+        self.present(vcName, animated: true, completion: nil)
+//        self.progressBar.progress = 0.5
+        
+        
+        
+    }
     func partialGreenColor(){
            
            guard let text = self.noticeLabel.text else {
@@ -122,43 +172,111 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
            }
            noticeLabel.textColor = .black
            let attributedString = NSMutableAttributedString(string: noticeLabel.text!)
-           attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.softGreen,
+           attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                         value: UIColor.softGreen,
                                          range: (text as NSString).range(of: "한 문장"))
            noticeLabel.attributedText = attributedString
        }
     func setProgressBar(){
-        
+
         self.view.addSubview(outerCircle)
         self.view.addSubview(innerCircle)
+        self.view.addSubview(outerCircle2)
+        self.view.addSubview(innerCircle2)
+        
+        self.innerCircle2.snp.makeConstraints{
+            $0.width.height.equalTo(12)
+            $0.centerX.equalTo(self.progressBar.snp_centerXWithinMargins)
+            $0.centerY.equalTo(self.progressBar.snp_centerYWithinMargins)
+            
+            
+        }
+        innerCircle2.makeRounded(cornerRadius: 6)
+        innerCircle2.alpha = 0
+        
+        
+        self.outerCircle2.snp.makeConstraints{
+            $0.width.height.equalTo(26)
+            $0.centerX.equalTo(self.progressBar.snp_centerXWithinMargins)
+            $0.centerY.equalTo(self.progressBar.snp_centerYWithinMargins)
+            
+        }
+        outerCircle2.makeRounded(cornerRadius: 13)
+        outerCircle2.alpha = 0
+        
+     
         progressBar.progressTintColor = .softGreen
         
         innerCircle.snp.makeConstraints{
-            $0.width.height.equalTo(20)
+            $0.width.height.equalTo(12)
             $0.centerX.equalTo(progressBar.snp_leadingMargin)
             $0.centerY.equalTo(progressBar.snp_centerYWithinMargins)
             
         }
-        innerCircle.makeRounded(cornerRadius: 10)
+        innerCircle.makeRounded(cornerRadius: 6)
         
         outerCircle.snp.makeConstraints{
-            $0.width.height.equalTo(40)
+            $0.width.height.equalTo(26)
             $0.centerX.equalTo(progressBar.snp_leadingMargin)
             $0.centerY.equalTo(progressBar.snp_centerYWithinMargins)
             
         }
-        outerCircle.makeRounded(cornerRadius: 20)
+        outerCircle.makeRounded(cornerRadius: 13)
         progressBar.progress = 0
+        
+        
         
         
         
     }
     
     
-
+    
+    
+    func secondToFirstLevelAnimation(){
+        
+        self.outerCircle2.alpha = 0
+        self.innerCircle2.alpha = 0
+        self.progressBar.setProgress(0, animated: true)
+        UIView.animate(withDuration: 3, animations: {
+            self.progressBar.layoutIfNeeded()
+        })
+        
+        
+    
+//
+//        UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
+//            self.progressBar.layoutIfNeeded()
+//
+//
+//        }, completion: { finished in
+//            self.progressBar.progress = 0
+//            UIView.animate(withDuration: 0.75 , delay: 0.0, options: [.curveEaseIn], animations: {
+//                self.outerCircle2.alpha = 0
+//                self.innerCircle2.alpha = 0
+//                self.outerCircle2.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+//                self.innerCircle2.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+//                self.progressBar.setProgress(1.0, animated: true)
+//                self.progressBar.transform = CGAffineTransform.identity
+//            }, completion:nil)
+//
+//
+//
+//            UIView.animate(withDuration: 0.75 , delay: 0.0, options: [.curveEaseIn], animations: {
+//
+//                self.progressBar.layoutIfNeeded()
+//            }, completion:nil)
+//        })
+//
+        
+    }
+    
+    
+    
     
 }
 
-    //MARK:- Extensions
+//MARK:- Extensions
 
 
 extension UITextView: UITextViewDelegate {
@@ -208,7 +326,7 @@ extension UITextView: UITextViewDelegate {
             let labelWidth = self.frame.width - (labelX * 2)
             let labelHeight = placeholderLabel.frame.height*2
             placeholderLabel.numberOfLines = 0;
-
+            
             placeholderLabel.frame = CGRect(x: labelX, y: labelY,
                                             width: labelWidth, height: labelHeight)
         }
@@ -227,12 +345,18 @@ extension UITextView: UITextViewDelegate {
         
         placeholderLabel.isHidden = !self.text.isEmpty
         
-//        self.textContainerInset = UIEdgeInsets(top: 18.0, left: 200.0, bottom: 0.0, right: 38.0)
+        //        self.textContainerInset = UIEdgeInsets(top: 18.0, left: 200.0, bottom: 0.0, right: 38.0)
 //        self.contentInset = UIEdgeInsets(top: 18, left: 14, bottom: 0, right: 38)
     
         self.addSubview(placeholderLabel)
         self.resizePlaceholder()
         self.delegate = self
     }
+    
+    
+ 
+    
+    
+    
     
 }
