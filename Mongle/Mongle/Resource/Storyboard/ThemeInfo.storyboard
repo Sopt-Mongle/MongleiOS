@@ -37,6 +37,9 @@
                                             <constraint firstAttribute="height" constant="48" id="v2D-n7-iar"/>
                                         </constraints>
                                         <state key="normal" image="searchBtnBack"/>
+                                        <connections>
+                                            <action selector="touchUpBackButtonWithSender:" destination="C1y-yQ-wMX" eventType="touchUpInside" id="5Js-Oj-6yz"/>
+                                        </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="themeImgCurator" translatesAutoresizingMaskIntoConstraints="NO" id="iWI-Mv-FuQ">
                                         <rect key="frame" x="16" y="127.66666666666669" width="24" height="24"/>
@@ -106,10 +109,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hu0-vn-sXz">
-                                <rect key="frame" x="0.0" y="217" width="375" height="561"/>
+                                <rect key="frame" x="0.0" y="217" width="375" height="504"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="19" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="7tc-cv-PKZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="561"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="504"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SentenceInThemeTVC" id="en6-lY-0C6" customClass="SentenceInThemeTVC" customModule="Mongle" customModuleProvider="target">
@@ -207,13 +210,22 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="themeBoxBlur" translatesAutoresizingMaskIntoConstraints="NO" id="sDC-rn-E5u">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="sDC-rn-E5u" secondAttribute="height" multiplier="375:53" id="oZl-9c-iDq"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="7tc-cv-PKZ" firstAttribute="top" secondItem="Hu0-vn-sXz" secondAttribute="top" id="6UQ-YG-Jsg"/>
                                     <constraint firstAttribute="trailing" secondItem="7tc-cv-PKZ" secondAttribute="trailing" id="Kws-Cs-xck"/>
                                     <constraint firstItem="7tc-cv-PKZ" firstAttribute="leading" secondItem="Hu0-vn-sXz" secondAttribute="leading" id="LQJ-BD-JCl"/>
+                                    <constraint firstItem="sDC-rn-E5u" firstAttribute="top" secondItem="Hu0-vn-sXz" secondAttribute="top" id="fUF-ws-LpV"/>
+                                    <constraint firstItem="sDC-rn-E5u" firstAttribute="leading" secondItem="Hu0-vn-sXz" secondAttribute="leading" id="kcQ-T8-HhK"/>
                                     <constraint firstAttribute="bottom" secondItem="7tc-cv-PKZ" secondAttribute="bottom" id="lKc-42-S2a"/>
+                                    <constraint firstAttribute="trailing" secondItem="sDC-rn-E5u" secondAttribute="trailing" id="sID-Tz-BjU"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOx-yo-vKk">
@@ -259,7 +271,7 @@
                             <constraint firstItem="i8f-0R-EAS" firstAttribute="top" secondItem="ron-ju-hMk" secondAttribute="top" id="QmH-PI-4FL"/>
                             <constraint firstItem="ron-ju-hMk" firstAttribute="top" secondItem="KBc-dx-DTB" secondAttribute="top" id="VkY-vB-gWq"/>
                             <constraint firstItem="i8f-0R-EAS" firstAttribute="trailing" secondItem="ron-ju-hMk" secondAttribute="trailing" id="ZtR-kq-4UJ"/>
-                            <constraint firstItem="CjG-wk-vGM" firstAttribute="bottom" secondItem="Hu0-vn-sXz" secondAttribute="bottom" id="g7d-zJ-Swf"/>
+                            <constraint firstItem="sOx-yo-vKk" firstAttribute="top" secondItem="Hu0-vn-sXz" secondAttribute="bottom" id="g7d-zJ-Swf"/>
                             <constraint firstItem="i8f-0R-EAS" firstAttribute="bottom" secondItem="ron-ju-hMk" secondAttribute="bottom" id="hMN-Kh-aFv"/>
                             <constraint firstItem="sOx-yo-vKk" firstAttribute="leading" secondItem="CjG-wk-vGM" secondAttribute="leading" id="uen-wl-YQe"/>
                             <constraint firstItem="i8f-0R-EAS" firstAttribute="leading" secondItem="ron-ju-hMk" secondAttribute="leading" id="yY9-se-SVS"/>
@@ -271,6 +283,7 @@
                         <outlet property="sentenceTableView" destination="7tc-cv-PKZ" id="zGe-LA-oQz"/>
                         <outlet property="sentencesBackgroundView" destination="Hu0-vn-sXz" id="Omc-vB-Kig"/>
                         <outlet property="themeBackgroundView" destination="i8f-0R-EAS" id="dyz-kc-MWJ"/>
+                        <outlet property="writeInThemeButton" destination="3Xd-z8-Jyb" id="xR7-8N-Zke"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Je1-Bw-RKU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -281,6 +294,7 @@
     <resources>
         <image name="mongleCharacters" width="75" height="78"/>
         <image name="searchBtnBack" width="10.333333015441895" height="18.666666030883789"/>
+        <image name="themeBoxBlur" width="375" height="53"/>
         <image name="themeBtnBookmark" width="55" height="57"/>
         <image name="themeIcSentenceBookmark" width="11" height="11"/>
         <image name="themeIcSentenceLike" width="12" height="12"/>

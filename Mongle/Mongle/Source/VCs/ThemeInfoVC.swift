@@ -10,32 +10,62 @@ import UIKit
 
 class ThemeInfoVC: UIViewController {
     
-    @IBOutlet var sentenceTableView: UITableView!
+    //MARK:- IBOutlet
+    @IBOutlet var sentenceTableView: UITableView! {
+        didSet {
+            sentenceTableView.delegate = self
+            sentenceTableView.dataSource = self
+        }
+    }
     @IBOutlet var sentencesBackgroundView: UIView!
-    
     @IBOutlet var themeBackgroundView: UIView!
+    @IBOutlet var writeInThemeButton: UIButton!
     
     
     
-    
-    var sentences = ["아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난", "아아아아아아나난나ㅏ나난나\n나나나나나나난나ㅏ난", "아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난", "아아아아아아나난나ㅏ나난나\n나나나나나나난나ㅏ난", "아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난", "아아아아아아나난나ㅏ나난나\n나나나나나나난나ㅏ난", "아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난", "아아아아아아나난나ㅏ나난나\n나나나나나나난나ㅏ난", "아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난"]
-    
+    var sentences = [
+        "아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난아아아아아아나난나ㅏ나난",
+        "아아아아아아나난나ㅏ나난나\n나나나나나나난나ㅏ난",
+        "아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난",
+        "아아아아아아나난나ㅏ나난나\n나나나나나나난나ㅏ난",
+        "아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난",
+        "아아아아아아나난나ㅏ나난나\n나나나나나나난나ㅏ난",
+        "아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난",
+        "아아아아아아나난나ㅏ나난나\n나나나나나나난나ㅏ난",
+        "아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난"
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sentenceTableView.dataSource = self
-        sentenceTableView.delegate = self
-        themeBackgroundView.backgroundColor = UIColor(red: 90/255, green: 145 / 255, blue: 105 / 255, alpha: 0.55)
-        self.sentencesBackgroundView.layer.cornerRadius = 25
-        self.sentencesBackgroundView.clipsToBounds = true
+        setInitLayout()
+    }
+    
+    func setInitLayout(){
+        themeBackgroundView.backgroundColor = UIColor(red: 90/255,
+                                                      green: 145 / 255,
+                                                      blue: 105 / 255,
+                                                      alpha: 0.55)
+        
+        sentencesBackgroundView.layer.cornerRadius = 25
+        sentencesBackgroundView.clipsToBounds = true
+        writeInThemeButton.backgroundColor = .softGreen
+        
         // .layerMaxXMinYCorner : 오른쪽 위
         // .layerMaxXMaxYCorner : 오른쪽 아래
         // .layerMinXMaxYCorner : 왼쪽 아래
         // .layerMinXMinYCorner : 왼쪽 위
-        self.sentencesBackgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        sentencesBackgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
     }
+    
+    //MARK:- IBAction
+    @IBAction func touchUpBackButton(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 
+// MARK:- Extension
+// MARK: UITableViewDelegate
 extension ThemeInfoVC: UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -51,22 +81,22 @@ extension ThemeInfoVC: UITableViewDelegate {
     }
     
 }
-
+// MARK: UITableViewDataSource
 extension ThemeInfoVC: UITableViewDataSource {
-    
-
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sentences.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceInThemeTVC.identifier, for: indexPath) as? SentenceInThemeTVC else {
-            return UITableViewCell()
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceInThemeTVC.identifier,
+                                                       for: indexPath) as? SentenceInThemeTVC
+            else {
+                return UITableViewCell()
         }
+        
         cell.sentenceLabel.text = self.sentences[indexPath.row]
         return cell
     }
 }
-
-
