@@ -39,8 +39,17 @@ extension MainTabMainVC: UITableViewDelegate {
             return view
         case 3:
             let view = MainTabDefaultHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 48))
+            
+            view.delegate = { [weak self] in
+                guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
+                    return
+                }
+                self?.navigationController?.pushViewController(dvc, animated: true)
+//                self?.present(dvc, animated: true, completion: nil)
+            }
             view.setLabel(text: "인기있는 테마")
             return view
+            
         default:
             break
         }
@@ -101,7 +110,6 @@ extension MainTabMainVC: UITableViewDataSource {
         default:
             return UITableViewCell()
         }
-        return UITableViewCell()
     }
 }
 

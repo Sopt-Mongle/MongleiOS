@@ -26,7 +26,7 @@ class MainTabDefaultHeaderView: UIView {
         $0.addTarget(self, action: #selector(touchUpButton), for: .touchUpInside)
     }
     
-    var delegate: SectionSelectedDelegate?
+    var delegate: (()->()) = { }
     var selectedSectionIdx: Int?
     
     override init(frame: CGRect) {
@@ -59,11 +59,8 @@ class MainTabDefaultHeaderView: UIView {
     }
     
     @objc func touchUpButton(){
-        self.delegate?.touchUpSection(sectionIdx: self.selectedSectionIdx ?? 0)
+        delegate()
     }
 
 }
 
-protocol SectionSelectedDelegate {
-    func touchUpSection(sectionIdx: Int)
-}
