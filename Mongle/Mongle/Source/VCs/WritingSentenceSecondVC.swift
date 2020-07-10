@@ -56,8 +56,7 @@ class WritingSentenceSecondVC: UIViewController {
         backButton.setImage(UIImage(named: "searchBtnBack"), for: .normal)
         backButton.tintColor = .veryLightPink
         setNextButton()
-  
-
+        searchTextButton.setImage(UIImage(named: "themeWritingSentenceBookBtnBookSearch")?.withRenderingMode(.alwaysOriginal), for: .normal)
         // Do any additional setup after loading the view.
     }
     

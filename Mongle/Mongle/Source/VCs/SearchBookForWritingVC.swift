@@ -41,29 +41,7 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
     }
     var header = UIView()
     var searchKeyWord : String = ""
-    
-    let names = [
-        "1",
-        "2",
-        "3",
-        "4",
-        "4",
-        "4",
-        "4",
-        "4",
-        "4",
-        "4",
-        "4",
-        "4",
-        "4",
-        "4",
 
-        "4",
-        "4",
-        "4",
-        "4",
-    ]
-    
     var headerLabel1 = UILabel().then{
         $0.text = "'해리'검색결과"
 
@@ -75,7 +53,14 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
     var headerLabel2 = UILabel().then{
         $0.text = "총 10건"
         $0.font = UIFont.systemFont(ofSize: 13)
+        $0.textColor = .veryLightPink
     }
+    
+    var headerLine = UIView().then {
+        $0.backgroundColor = .veryLightPinkSix
+        
+    }
+    
     
     private var bookInformations : [Book] = []
     
@@ -131,31 +116,37 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
         header.backgroundColor = .white
         self.header.addSubview(headerLabel1)
         self.header.addSubview(headerLabel2)
+        self.header.addSubview(headerLine)
         
         headerLabel1.snp.makeConstraints{
 
             
-            $0.leading.equalToSuperview().offset(17)
+            $0.leading.equalToSuperview().offset(0)
             $0.top.equalToSuperview().offset(13)
             
             
         }
         headerLabel2.snp.makeConstraints{
-            $0.trailing.equalToSuperview().offset(-15)
+            $0.trailing.equalToSuperview().offset(0)
             $0.top.equalToSuperview().offset(13)
             
         }
-        
+        headerLine.snp.makeConstraints{
+            $0.height.equalTo(1)
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalToSuperview().offset(44)
+            
+        }
         
     }
     func setBookInformations(){
-        let book1 = Book(bookImgName: "mongleCharacters", bookTitle: "몽글이", bookAuthor: "이주혁", bookPublisher: "몽글")
-        let book2 = Book(bookImgName: "mongleCharacters", bookTitle: "몽글이", bookAuthor: "이주혁", bookPublisher: "몽글")
-        let book3 = Book(bookImgName: "mongleCharacters", bookTitle: "몽글이", bookAuthor: "이주혁", bookPublisher: "몽글")
-        let book4 = Book(bookImgName: "mongleCharacters", bookTitle: "몽글이", bookAuthor: "이주혁", bookPublisher: "몽글")
-        let book5 = Book(bookImgName: "mongleCharacters", bookTitle: "몽글이", bookAuthor: "이주혁", bookPublisher: "몽글")
-        let book6 = Book(bookImgName: "mongleCharacters", bookTitle: "몽글이", bookAuthor: "이주혁", bookPublisher: "몽글")
-        let book7 = Book(bookImgName: "mongleCharacters", bookTitle: "몽글이", bookAuthor: "이주혁", bookPublisher: "몽글")
+        let book1 = Book(bookImgName: "themeWritingSentenceBook4ImgBook", bookTitle: "몽글이", bookAuthor: "이주혁", bookPublisher: "몽글")
+        let book2 = Book(bookImgName: "themeWritingSentenceBook4ImgBook", bookTitle: "망글이", bookAuthor: "이예슬", bookPublisher: "몽글")
+        let book3 = Book(bookImgName: "themeWritingSentenceBook4ImgBook", bookTitle: "밍글이", bookAuthor: "박현주", bookPublisher: "몽글")
+        let book4 = Book(bookImgName: "themeWritingSentenceBook4ImgBook", bookTitle: "멍글이", bookAuthor: "유보미", bookPublisher: "몽글")
+        let book5 = Book(bookImgName: "themeWritingSentenceBook4ImgBook", bookTitle: "뮹글이", bookAuthor: "유동현", bookPublisher: "몽글")
+        let book6 = Book(bookImgName: "themeWritingSentenceBook4ImgBook", bookTitle: "몽글이", bookAuthor: "박세란", bookPublisher: "몽글")
+        let book7 = Book(bookImgName: "themeWritingSentenceBook4ImgBook", bookTitle: "맹글이", bookAuthor: "이소민", bookPublisher: "몽글")
         bookInformations = [book1,book2,book3,book4,book5,book6,book7]
     }
     
@@ -242,6 +233,11 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
     }
     
     
+    @IBAction func backButtonAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
 
 }
 
@@ -277,7 +273,6 @@ extension SearchBookForWritingVC : UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let bookCell = tableView.dequeueReusableCell(withIdentifier: "searchedBookCell", for: indexPath) as? SearchedBookTVC
             else{
-                print("우웩")
                 return UITableViewCell()}
         bookCell.setBook(bookImgName: bookInformations[indexPath.row].bookImgName, bookTitle: bookInformations[indexPath.row].bookTitle, bookAuthor: bookInformations[indexPath.row].bookAuthor, bookPublisher: bookInformations[indexPath.row].bookPublisher)
         

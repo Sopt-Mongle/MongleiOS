@@ -54,7 +54,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        xButton.setImage(UIImage(named: "warning"), for: .normal)
+        xButton.setImage(UIImage(named: "writingThemeBtnClose")?.withRenderingMode(.alwaysOriginal), for: .normal)
         setSentenceTextView()
         setNextButton()
         setProgressBar()

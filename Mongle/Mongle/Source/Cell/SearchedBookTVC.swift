@@ -17,9 +17,11 @@ class SearchedBookTVC: UITableViewCell {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var publisherLabel: UILabel!
     
+    @IBOutlet weak var bottomLine: UIView!
     
     //MARK:- lifeCycleMethods
     override func awakeFromNib() {
+        bottomLine.backgroundColor = .veryLightPinkSix
         super.awakeFromNib()
         // Initialization code
     }
@@ -35,6 +37,7 @@ class SearchedBookTVC: UITableViewCell {
         titleLabel.text = bookTitle
         authorLabel.text = bookAuthor
         publisherLabel.text = bookPublisher
+        
         
     }
 
