@@ -74,12 +74,12 @@ class SearchTabResultVC: UIViewController {
                             }
                             else if(changeObject.curPresentViewIndex == 1){
                                 UIView.animate(withDuration: 0.3){
-                                    self!.underBarView.transform = CGAffineTransform(translationX:(self?.tabBarCV.frame.width)! / 3,y: 0)
+                                    self!.underBarView.transform = CGAffineTransform(translationX:(self?.tabBarCV.frame.width)! / CGFloat((self?.menuItem.count)!),y: 0)
                                 }
                             }
                             else {
                                 UIView.animate(withDuration: 0.3){
-                                    self!.underBarView.transform = CGAffineTransform(translationX:(self?.tabBarCV.frame.width)! / 3 * 2 ,y: 0)
+                                    self!.underBarView.transform = CGAffineTransform(translationX:(self?.tabBarCV.frame.width)! / CGFloat((self?.menuItem.count)!) * 2 ,y: 0)
                                 }
                             }
                             
@@ -106,19 +106,13 @@ extension SearchTabResultVC: UICollectionViewDelegate {
         }
         print("item : \(item)")
         
-        
-        if item == 0 {
-            
+        if item - pageInstance.keyValue.curPresentViewIndex > 0{
             pageInstance.setViewControllers([pageInstance.vcArr![item]], direction: .forward, animated: true, completion: nil)
-            pageInstance.keyValue.curPresentViewIndex = 0
-        }
-        else if item == 1 {
-            pageInstance.setViewControllers([pageInstance.vcArr![item]], direction: .forward, animated: true, completion: nil)
-            pageInstance.keyValue.curPresentViewIndex = 1
+            pageInstance.keyValue.curPresentViewIndex = item
         }
         else{
-            pageInstance.setViewControllers([pageInstance.vcArr![item]], direction: .forward, animated: true, completion: nil)
-            pageInstance.keyValue.curPresentViewIndex = 2
+            pageInstance.setViewControllers([pageInstance.vcArr![item]], direction: .reverse, animated: true, completion: nil)
+            pageInstance.keyValue.curPresentViewIndex = item
         }
     }
 }

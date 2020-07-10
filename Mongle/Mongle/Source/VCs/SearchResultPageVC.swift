@@ -7,10 +7,12 @@
 //
 
 import UIKit
+
 @objc class KVOObject : NSObject {
     @objc dynamic var curPresentViewIndex: Int = 0
     
 }
+
 class SearchResultPageVC: UIPageViewController {
     
     var previousPage: UIViewController?
@@ -71,13 +73,15 @@ extension SearchResultPageVC : UIPageViewControllerDelegate {
 }
 
 extension SearchResultPageVC: UIPageViewControllerDataSource {
+    // 이 함수가 뭔지 살짝 이해 안됨
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        //이전의 뷰컨 인덱스?
+        
         guard let viewControllerIndex = vcArr?.firstIndex(of: viewController) else {
             return nil
         }
         
         let previousIndex = viewControllerIndex - 1
+        //infinite 아니고 끝에선 튕기게
         if previousIndex < 0 {
             return nil
         }
