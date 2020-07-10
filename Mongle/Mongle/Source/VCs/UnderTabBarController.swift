@@ -133,7 +133,10 @@ class UnderTabBarController: UITabBarController {
         
 //        Setting temporary VCs to check implementation
         
-        let mainVC = UIViewController()
+        guard let mainVC = UIStoryboard(name: "MainTabMain", bundle: nil)
+            .instantiateViewController(identifier: "MainTabMainVC") as? MainTabMainVC else {
+                return
+        }
       
         let curatorVC = UIViewController()
         let myVC = UIViewController()
