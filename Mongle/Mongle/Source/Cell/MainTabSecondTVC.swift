@@ -12,6 +12,7 @@ class MainTabSecondTVC: UITableViewCell {
     static let identifier = "MainTabSecondTVC"
     
     @IBOutlet var todaySentenceCollectionView: UICollectionView!
+    var selectSentenceDelegate: ((_ viewControllers: UIViewController) -> ()) = { _ in }
     
     let sentences = ["가나다라", "마바사아자차카타파하"]
     
@@ -28,7 +29,14 @@ class MainTabSecondTVC: UITableViewCell {
 }
 
 extension MainTabSecondTVC: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let dvc = UIStoryboard.init(name: "SentenceInfo", bundle: nil).instantiateViewController(identifier: "SentenceInfoVC") as? SentenceInfoVC else {
+            return
+        }
+        
+        selectSentenceDelegate(dvc)
+    }
 }
 extension MainTabSecondTVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

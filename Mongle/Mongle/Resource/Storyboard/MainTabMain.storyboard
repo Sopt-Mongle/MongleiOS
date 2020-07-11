@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="QVh-b9-MM8">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainTabFirstTVC" id="S1x-AW-E1K" customClass="MainTabFirstTVC" customModule="Mongle" customModuleProvider="target">
@@ -318,8 +318,8 @@
                                                                                 </constraints>
                                                                                 <state key="normal" image="themeIcSentenceBookmark"/>
                                                                             </button>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8C-ZJ-eVu">
-                                                                                <rect key="frame" x="18" y="18" width="123" height="20.333333333333329"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8C-ZJ-eVu">
+                                                                                <rect key="frame" x="18" y="18" width="109" height="20.333333333333329"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -330,7 +330,7 @@
                                                                             <constraint firstItem="v8C-ZJ-eVu" firstAttribute="leading" secondItem="JL1-Xj-05U" secondAttribute="leading" constant="18" id="UNW-UY-Dbs"/>
                                                                             <constraint firstAttribute="bottom" secondItem="NUd-TS-tNa" secondAttribute="bottom" constant="4" id="nwj-Az-59A"/>
                                                                             <constraint firstAttribute="trailing" secondItem="NUd-TS-tNa" secondAttribute="trailing" constant="1" id="s5r-IN-6Sc"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="v8C-ZJ-eVu" secondAttribute="trailing" constant="18" id="tJ4-Mz-RzM"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="v8C-ZJ-eVu" secondAttribute="trailing" constant="32" id="tJ4-Mz-RzM"/>
                                                                             <constraint firstItem="v8C-ZJ-eVu" firstAttribute="top" secondItem="JL1-Xj-05U" secondAttribute="top" constant="18" id="wzc-uP-mmK"/>
                                                                         </constraints>
                                                                     </view>
@@ -373,7 +373,7 @@
                         <constraints>
                             <constraint firstItem="QVh-b9-MM8" firstAttribute="leading" secondItem="mmp-2G-xp6" secondAttribute="leading" id="2n3-O2-Rzd"/>
                             <constraint firstItem="mmp-2G-xp6" firstAttribute="bottom" secondItem="QVh-b9-MM8" secondAttribute="bottom" id="6k0-um-R3T"/>
-                            <constraint firstItem="QVh-b9-MM8" firstAttribute="top" secondItem="mmp-2G-xp6" secondAttribute="top" id="Hdk-ka-4Ot"/>
+                            <constraint firstItem="QVh-b9-MM8" firstAttribute="top" secondItem="zia-wq-aKs" secondAttribute="top" id="Hdk-ka-4Ot"/>
                             <constraint firstItem="mmp-2G-xp6" firstAttribute="trailing" secondItem="QVh-b9-MM8" secondAttribute="trailing" id="W23-OO-F4b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mmp-2G-xp6"/>
