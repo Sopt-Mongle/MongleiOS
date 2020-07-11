@@ -22,6 +22,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     //MARK:- User Define Variables
     var themes : [ThemeForSentence] = []
     var searchKeyWord : String?
+    var checkIndex : Int?
     
     
     //MARK:- LifeCycleMethods
@@ -33,6 +34,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         themeCollectionView.dataSource = self
         themeCollectionView.delegate = self
         setThemes()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -48,6 +50,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         
         themeTextField.placeholder = "테마를 검색해주세요"
         themeTextField.addLeftPadding(left: 10)
+        
         
         
         //themeCollectionView.backgroundColor = .clear
@@ -84,18 +87,20 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     
     @IBAction func searchButtonAction(_ sender: Any) {
         searchKeyWord = themeTextField.text
+        themeCollectionView.reloadData()
        
-        for j in 0...themeCollectionView.numberOfItems(inSection: 0) - 1
-        {
-            if let cell = themeCollectionView.cellForItem(at: NSIndexPath(row: j, section: 0) as IndexPath) {
-                                
-            }
-            
-        }
-     
-     
+
         
     }
+
+    
+    @IBAction func selectButtonAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        
+        
+    }
+    
+    
     
     
 }
@@ -107,12 +112,12 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell {
-            print("1")
             guard let themeCell = collectionView.dequeueReusableCell(withReuseIdentifier: ThemeSelectForSentenceCVC.identifier, for: indexPath) as? ThemeSelectForSentenceCVC else {
                 
                 return UICollectionViewCell()}
-            themeCell.setItems(themes[indexPath.row])
-            
+            var check : Bool = indexPath.row == checkIndex
+            themeCell.setItems(themes[indexPath.row], self.themeTextField.text!,check)
+           
             return themeCell
     }
     
@@ -134,7 +139,10 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         ThirdViewOfWritingSentenceVC.fromAfterView = true
         ThirdViewOfWritingSentenceVC.textViewInput = themes[indexPath.row].themeTitle
-        dismiss(animated: true, completion: nil)
+        checkIndex = indexPath.row
+        self.themeCollectionView.reloadData()
+        
+      
     }
     
     

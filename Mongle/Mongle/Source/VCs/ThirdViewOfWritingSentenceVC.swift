@@ -60,15 +60,19 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
     
     //MARK:- LifeCycle Methods
 
+    
 
     override func viewDidLoad() {
-       
+        print(#function)
+//        self.progressBar.setProgress(0.5, animated: false)
+        self.progressBar.progress = 0.5
         super.viewDidLoad()
         
         setItems()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        print(#function)
         setSmallBalls()
         setProgressBar()
         
@@ -157,13 +161,13 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         }
         outerCircle2.makeRounded(cornerRadius: 13)
         thirdLevelAnimation()
-        
+//        self.progressBar.progress = 1.0
         
     }
     
     func thirdLevelAnimation() {
         
-         //        progressBar.setProgress(0.5, animated: true)
+//                 progressBar.setProgress(0.55, animated: false)
         self.innerCircle3.snp.makeConstraints{
             $0.width.height.equalTo(12)
             $0.trailing.equalToSuperview().offset(-23)
@@ -183,7 +187,8 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
          innerCircle3.alpha = 0
          
          UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
-             self.progressBar.layoutIfNeeded()
+            
+//             self.progressBar.layoutIfNeeded()
              
          }, completion: { finished in
             self.progressBar.progress = 1.0
@@ -232,6 +237,15 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
     
     
     @IBAction func registerButtonAction(_ sender: Any) {
+        guard let vcName = UIStoryboard(name: "EndOfWritingSentence",
+                                              bundle: nil).instantiateViewController(
+                                                  withIdentifier: "EndOfWritingSentenceVC")
+                  as? EndOfWritingSentenceVC
+                  else{
+                      return
+              }
+        vcName.modalPresentationStyle = .fullScreen
+        self.present(vcName, animated: true, completion: nil)
         
         
     }

@@ -17,6 +17,7 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
 
     @IBOutlet weak var themeTitleLabel: UILabel!
     
+    @IBOutlet weak var checkImageView: UIImageView!
     
     //MARK:- User Define Variables
     static let identifier : String = "ThemeSelectionCell"
@@ -31,10 +32,26 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
     }
     
     //MARK:- User Define Functions
-    func setItems(_ theme : ThemeForSentence){
+    func setItems(_ theme : ThemeForSentence, _ searchKeyWord : String, _ shouldBeChecked : Bool){
         themeImageView.image = UIImage(named: theme.imgName)?.withRenderingMode(.alwaysOriginal)
         themeTitleLabel.text = theme.themeTitle
         themeTitleLabel.textColor = .white
+        checkImageView.image = UIImage(named: "themeImgCurator")
+        checkImageView.alpha = 0
+        
+        guard let text = themeTitleLabel.text else {
+            return
+        }
+       
+        let attributedString = NSMutableAttributedString(string: themeTitleLabel.text!)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                      value: UIColor.softGreen,
+                                      range: (text as NSString).range(of: searchKeyWord))
+        themeTitleLabel.attributedText = attributedString
+        
+        if shouldBeChecked {
+            checkImageView.alpha = 0.5
+        }
         
     }
     

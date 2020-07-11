@@ -67,19 +67,27 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ysy-Bd-iiT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="cvk-54-kIl" secondAttribute="trailing" id="0Ej-c4-r9m"/>
                                                 <constraint firstItem="C5e-rt-pEW" firstAttribute="top" secondItem="EdQ-pL-zYf" secondAttribute="top" constant="18" id="Ee1-XC-Duh"/>
+                                                <constraint firstItem="Ysy-Bd-iiT" firstAttribute="top" secondItem="EdQ-pL-zYf" secondAttribute="top" id="OwB-Nd-E7C"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ysy-Bd-iiT" secondAttribute="bottom" id="U0R-DJ-w9v"/>
                                                 <constraint firstItem="cvk-54-kIl" firstAttribute="leading" secondItem="EdQ-pL-zYf" secondAttribute="leading" id="WLH-gu-NUQ"/>
                                                 <constraint firstAttribute="bottom" secondItem="cvk-54-kIl" secondAttribute="bottom" id="XEb-fz-HBc"/>
                                                 <constraint firstItem="C5e-rt-pEW" firstAttribute="leading" secondItem="EdQ-pL-zYf" secondAttribute="leading" constant="19" id="fNd-dK-wvG"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ysy-Bd-iiT" secondAttribute="trailing" id="gxC-4c-2t1"/>
                                                 <constraint firstAttribute="trailing" secondItem="C5e-rt-pEW" secondAttribute="trailing" constant="51" id="hnx-fc-6KA"/>
+                                                <constraint firstItem="Ysy-Bd-iiT" firstAttribute="leading" secondItem="EdQ-pL-zYf" secondAttribute="leading" id="mZJ-wu-q8u"/>
                                                 <constraint firstItem="cvk-54-kIl" firstAttribute="top" secondItem="EdQ-pL-zYf" secondAttribute="top" id="yCu-oe-ee2"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="tintColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
+                                            <outlet property="checkImageView" destination="Ysy-Bd-iiT" id="gbb-TO-o0d"/>
                                             <outlet property="themeImageView" destination="cvk-54-kIl" id="eku-4k-NJk"/>
                                             <outlet property="themeTitleLabel" destination="C5e-rt-pEW" id="jn2-Zw-A9E"/>
                                         </connections>
@@ -93,6 +101,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="테마 선택하기"/>
+                                <connections>
+                                    <action selector="selectButtonAction:" destination="Bh9-Nr-MLf" eventType="touchUpInside" id="shB-HX-IIO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tza-oA-R2f">
                                 <rect key="frame" x="363" y="126.5" width="18" height="19"/>
