@@ -24,12 +24,12 @@ class ThemeMakeImagesCVC: UICollectionViewCell {
     
     
     func setItems(_ imgName : String, _ check : Bool){
-        checkImage.image = UIImage(named: "maengleCharacters")
+        checkImage.image = UIImage(named: "writingTheme3ImgCheck")?.withRenderingMode(.alwaysOriginal)
         checkImage.alpha = 0
         themeImage.image = UIImage(named: imgName)
         
         if(check == true){
-            checkImage.alpha = 0.5
+            checkImage.alpha = 1
         }
        
         

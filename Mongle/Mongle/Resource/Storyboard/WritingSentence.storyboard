@@ -70,9 +70,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeo-pa-eLF">
+                                <rect key="frame" x="365" y="353" width="33" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="NVn-hp-lIY" firstAttribute="trailing" secondItem="zeo-pa-eLF" secondAttribute="trailing" constant="16" id="0b1-Up-sI1"/>
                             <constraint firstAttribute="bottom" secondItem="YFn-xq-FyS" secondAttribute="bottom" constant="16" id="2IR-Ll-sJ8"/>
                             <constraint firstItem="NdW-dE-BLy" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="28.5" id="6M9-Tt-5xp"/>
                             <constraint firstItem="9As-jG-fRc" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="16" id="7VZ-np-iVf"/>
@@ -82,6 +89,7 @@
                             <constraint firstItem="SzT-pL-G8H" firstAttribute="top" secondItem="NdW-dE-BLy" secondAttribute="bottom" constant="28.5" id="PHT-IV-sAe"/>
                             <constraint firstItem="mEB-zl-umZ" firstAttribute="top" secondItem="SzT-pL-G8H" secondAttribute="bottom" constant="32" id="THq-4i-iXf"/>
                             <constraint firstItem="9As-jG-fRc" firstAttribute="top" secondItem="SzT-pL-G8H" secondAttribute="bottom" constant="17" id="Wao-SE-j4J"/>
+                            <constraint firstItem="zeo-pa-eLF" firstAttribute="top" secondItem="9As-jG-fRc" secondAttribute="bottom" constant="13" id="bwr-c8-bL1"/>
                             <constraint firstItem="NdW-dE-BLy" firstAttribute="top" secondItem="12r-WZ-htJ" secondAttribute="bottom" constant="54.5" id="dWg-Yd-Dhx"/>
                             <constraint firstItem="NVn-hp-lIY" firstAttribute="trailing" secondItem="9As-jG-fRc" secondAttribute="trailing" constant="16" id="gkU-Gg-4ur"/>
                             <constraint firstItem="mEB-zl-umZ" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="35" id="hPC-0G-Fdc"/>
@@ -99,6 +107,7 @@
                         <outlet property="placeholderLabel" destination="mEB-zl-umZ" id="RPr-mw-XAW"/>
                         <outlet property="progressBar" destination="NdW-dE-BLy" id="fL1-G2-yWn"/>
                         <outlet property="sentenceTextView" destination="9As-jG-fRc" id="vma-0w-pVu"/>
+                        <outlet property="textQuantityLabel" destination="zeo-pa-eLF" id="yFH-f4-rPP"/>
                         <outlet property="xButton" destination="hNO-zA-3Ms" id="m5i-CE-ekn"/>
                     </connections>
                 </viewController>

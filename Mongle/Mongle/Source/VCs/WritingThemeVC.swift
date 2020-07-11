@@ -251,7 +251,7 @@ UICollectionViewDelegateFlowLayout {
             let check : Bool = indexPath.item == checkIndex
             themeCell.setItems(images[indexPath.item], check)
           
-            
+            themeCell.makeRounded(cornerRadius: 10)
             return themeCell
     }
     

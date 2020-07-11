@@ -86,7 +86,7 @@ class WritingSentenceSecondVC: UIViewController {
             setInformationsAfterSelect(book: WritingSentenceSecondVC.book!)
         }
         else if WritingSentenceSecondVC.noAnimation == true{
-            print("called")
+         
             
         }
         else{

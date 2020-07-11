@@ -25,6 +25,7 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var firstLabel: UILabel!
     @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet weak var textQuantityLabel: UILabel!
     
     //MARK:- User Define Variables
     
@@ -79,6 +80,7 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
         bookTableView.dataSource = self
         setTableViewHeader()
         
+        
     }
     
     
@@ -109,6 +111,8 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
             
         }
     }
+    
+    
     func setTableViewHeader(){
         header = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
         header.backgroundColor = .white
@@ -161,6 +165,11 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
         containView.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1)
         containView.makeRounded(cornerRadius: 5)
         searchTextField.setBorder(borderColor: .red, borderWidth: 0)
+        searchTextField.placeholder = "책 제목을 검색해주세요"
+        searchTextField.addTarget(self, action: #selector(textFieldDidChange),
+        for: .editingChanged)
+        textQuantityLabel.textColor = .veryLightPink
+        
         searchButton.backgroundColor = .white
         searchButton.setImage(UIImage(named: "searchBtnSearch"), for: .normal)
         searchButton.tintColor = .softGreen
@@ -221,6 +230,7 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
         smallCircle.alpha = 0
         smallCircle2.alpha = 0
         partialGreenColor()
+        self.textQuantityLabel.alpha = 0
         self.view.endEditing(true)
 //        self.tempView.isHidden = true
         
@@ -239,6 +249,32 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
         headerLabel1.attributedText = attributedString
     }
     
+    @objc func textFieldDidChange(){
+    
+        textQuantityLabel.text = String(searchTextField.text!.count)+"/40"
+        partialGreenColor2()
+    }
+
+    
+   
+    func partialGreenColor2(){
+        guard let text = self.textQuantityLabel.text else {
+            return
+        }
+        textQuantityLabel.textColor = .softGreen
+        let attributedString = NSMutableAttributedString(string: textQuantityLabel.text!)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                      value: UIColor.veryLightPink,
+                                      range: (text as NSString).range(of: "/40"))
+        if searchTextField.text == "" {
+            textQuantityLabel.textColor = .veryLightPink
+        }
+        
+        
+        textQuantityLabel.attributedText = attributedString
+        
+        
+    }
     
     @IBAction func backButtonAction(_ sender: Any) {
         WritingSentenceSecondVC.noAnimation = true

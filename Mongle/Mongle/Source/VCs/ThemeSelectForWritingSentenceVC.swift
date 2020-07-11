@@ -18,6 +18,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     @IBOutlet weak var themeCollectionView: UICollectionView!
     
     
+    @IBOutlet weak var blurView: UIImageView!
     
     //MARK:- User Define Variables
     var themes : [ThemeForSentence] = []
@@ -59,14 +60,14 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         themeTextField.placeholder = "테마를 검색해주세요"
         themeTextField.addLeftPadding(left: 10)
         
-        
+        blurView.image = UIImage(named: "writingSentenceTheme2BoxBlur")?.withRenderingMode(.alwaysOriginal)
         
         //themeCollectionView.backgroundColor = .clear
         
     }
     
     func setThemes(){
-        let theme1 = ThemeForSentence(imgName: "maengleCharacters", themeTitle: "테마 없는 문장",state : false)
+        let theme1 = ThemeForSentence(imgName: "writingSentenceTheme2ImgThemeX", themeTitle: "테마 없는 문장",state : false)
         let theme2 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
         let theme3 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "브랜딩이 어려울 때 영감을 주는 문장",state : true)
         let theme4 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
@@ -158,7 +159,7 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
         
         
             themeCell.setItems(themes[indexPath.item], self.themeTextField.text!,check)
-          
+            themeCell.makeRounded(cornerRadius: 22)
             
             return themeCell
     }

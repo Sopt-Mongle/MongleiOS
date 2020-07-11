@@ -67,7 +67,9 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
 //        self.progressBar.setProgress(0.5, animated: false)
         self.progressBar.progress = 0.5
         super.viewDidLoad()
-        
+        themeTextView.isEditable = false
+        themeTextView.backgroundColor = .whiteTwo
+       
         setItems()
         // Do any additional setup after loading the view.
     }
@@ -78,6 +80,7 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         
         if ThirdViewOfWritingSentenceVC.fromAfterView == true {
             self.themeTextView.text = ThirdViewOfWritingSentenceVC.textViewInput
+            themeTextView.backgroundColor = .white
             ballAppearAnimation()
             
         }

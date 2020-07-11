@@ -166,10 +166,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/40" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOp-6I-xOB">
+                                <rect key="frame" x="330.33333333333331" y="171" width="28.666666666666686" height="15.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="LOp-6I-xOB" firstAttribute="top" secondItem="MJ4-WX-aTV" secondAttribute="bottom" constant="13" id="0eb-ix-rNa"/>
                             <constraint firstItem="BZg-2D-s7e" firstAttribute="top" secondItem="kef-lC-Dpf" secondAttribute="top" constant="9" id="3OS-3i-yyP"/>
+                            <constraint firstItem="kef-lC-Dpf" firstAttribute="trailing" secondItem="LOp-6I-xOB" secondAttribute="trailing" constant="16" id="BU6-bL-tdt"/>
                             <constraint firstItem="fwB-2k-nX6" firstAttribute="top" secondItem="MJ4-WX-aTV" secondAttribute="bottom" constant="5" id="EHN-SO-Zhy"/>
                             <constraint firstItem="dTs-2t-ptV" firstAttribute="top" secondItem="kef-lC-Dpf" secondAttribute="top" constant="69" id="ELh-gu-W2H"/>
                             <constraint firstItem="BZg-2D-s7e" firstAttribute="leading" secondItem="kef-lC-Dpf" secondAttribute="leading" constant="17" id="FIY-vp-QiB"/>
@@ -197,6 +205,7 @@
                         <outlet property="searchTextField" destination="dTs-2t-ptV" id="eKw-qL-Jgq"/>
                         <outlet property="secondLabel" destination="9nk-kk-0cz" id="emo-Fa-XSF"/>
                         <outlet property="tempView" destination="fwB-2k-nX6" id="HRR-1G-dg1"/>
+                        <outlet property="textQuantityLabel" destination="LOp-6I-xOB" id="jPb-9K-lyI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8x-CE-xWB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

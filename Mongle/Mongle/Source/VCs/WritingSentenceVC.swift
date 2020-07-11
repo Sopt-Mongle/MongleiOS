@@ -20,6 +20,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     @IBOutlet weak var noticeLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var placeholderLabel: UILabel!
+    @IBOutlet weak var textQuantityLabel: UILabel!
     
     //MARK:- User Define items
     
@@ -72,14 +73,18 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setSmallBalls()
-        xButton.setImage(UIImage(named: "writingThemeBtnClose")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        xButton.setImage(UIImage(named: "writingThemeBtnClose")?.withRenderingMode(.alwaysOriginal),
+                         for: .normal)
         setSentenceTextView()
         setNextButton()
         setProgressBar()
         sentenceTextView.delegate = self
-      
+        textQuantityLabel.text = "0/280"
+        textQuantityLabel.textColor = .veryLightPink
+        
     
         partialGreenColor()
+        
         
         // Do any additional setup after loading the view.
     }
@@ -149,18 +154,33 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
       }
     func textViewDidChange(_ textView: UITextView) {
         if sentenceTextView.text.count == 1 {
-            ballAppearAnimation()
             placeholderLabel.alpha = 0
+            textQuantityLabel.text = String(sentenceTextView.text.count) + "/280"
+            ballAppearAnimation()
+           
+            
+            
         }
         else if sentenceTextView.text.count == 0{
             placeholderLabel.alpha = 1
+            textQuantityLabel.text = "0/280"
+            textQuantityLabel.textColor = .veryLightPink
+            
             ballHideAnimation()
         }
+        else{
+            
+            textQuantityLabel.text = String(sentenceTextView.text.count) + "/280"
+            
+        }
+        partialGreenColor2()
+        
     }
     
     func setSentenceTextView(){
         self.sentenceTextView.layer.borderWidth = 1.0
-        self.sentenceTextView.layer.borderColor = UIColor.black.cgColor
+        self.sentenceTextView.layer.borderColor = UIColor.veryLightPinkFive.cgColor
+        self.sentenceTextView.makeRounded(cornerRadius: 10)
        
         self.placeholderLabel.text =
         "최대 280자까지 입력 가능하며, 책의 문장을 임의로 \n변형하지 않게 주의해주세요!"
@@ -170,9 +190,29 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         placeholderLabel.textColor = .veryLightPink
         
     }
-   
+    
+    func partialGreenColor2(){
+        
+        
+        guard let text = self.textQuantityLabel.text else {
+            return
+        }
+        textQuantityLabel.textColor = .softGreen
+        let attributedString = NSMutableAttributedString(string: textQuantityLabel.text!)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                      value: UIColor.veryLightPink,
+                                      range: (text as NSString).range(of: "/280"))
+        if sentenceTextView.text == "" {
+            textQuantityLabel.textColor = .veryLightPink
+        }
+        
+        
+        textQuantityLabel.attributedText = attributedString
+    }
    
     
+    
+   
     
     func setNextButton(){
         self.nextButton.backgroundColor = .softGreen
