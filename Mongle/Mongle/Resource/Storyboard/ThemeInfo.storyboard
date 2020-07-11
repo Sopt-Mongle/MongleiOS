@@ -280,9 +280,13 @@
                         <viewLayoutGuide key="safeArea" id="CjG-wk-vGM"/>
                     </view>
                     <connections>
+                        <outlet property="curatorNameLabel" destination="H4s-l6-9mq" id="Fb5-7W-9Gc"/>
+                        <outlet property="curatorProfileImageView" destination="iWI-Mv-FuQ" id="5A0-w7-JJ1"/>
                         <outlet property="sentenceTableView" destination="7tc-cv-PKZ" id="zGe-LA-oQz"/>
                         <outlet property="sentencesBackgroundView" destination="Hu0-vn-sXz" id="Omc-vB-Kig"/>
                         <outlet property="themeBackgroundView" destination="i8f-0R-EAS" id="dyz-kc-MWJ"/>
+                        <outlet property="themeInfoStackView" destination="KAx-an-jsX" id="NMJ-df-bIA"/>
+                        <outlet property="themeNameLabel" destination="1ty-8Y-zWx" id="wtZ-aW-Odu"/>
                         <outlet property="writeInThemeButton" destination="3Xd-z8-Jyb" id="xR7-8N-Zke"/>
                     </connections>
                 </viewController>
