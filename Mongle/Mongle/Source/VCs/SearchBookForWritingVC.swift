@@ -255,6 +255,7 @@ extension SearchBookForWritingVC : UITableViewDelegate{
         WritingSentenceSecondVC.isSearched = true
         WritingSentenceSecondVC.book = bookInformations[indexPath.row]
         
+        
         dismiss(animated: true, completion: nil)
               
             

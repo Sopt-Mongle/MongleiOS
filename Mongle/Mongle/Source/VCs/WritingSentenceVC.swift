@@ -19,16 +19,17 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     @IBOutlet weak var xButton: UIButton!
     @IBOutlet weak var noticeLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var placeholderLabel: UILabel!
     
     //MARK:- User Define items
     
     let innerCircle = UIView().then{
-        $0.backgroundColor = .softGreen
+        $0.backgroundColor = .brownGreyThree
         
         
     }
     let outerCircle = UIView().then{
-        $0.backgroundColor = .softGreen
+        $0.backgroundColor = .brownGreyThree
         $0.alpha = 0.34
         
     }
@@ -57,6 +58,12 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         
     }
     
+    let smallCircle3 = UIView().then{
+        $0.backgroundColor = .veryLightPinkSeven
+        
+        
+    }
+    
  
   
     
@@ -64,20 +71,21 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     // MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setSmallBalls()
         xButton.setImage(UIImage(named: "writingThemeBtnClose")?.withRenderingMode(.alwaysOriginal), for: .normal)
         setSentenceTextView()
         setNextButton()
         setProgressBar()
-
-        
+        sentenceTextView.delegate = self
+      
+    
         partialGreenColor()
         
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setSmallBalls()
+    
         sentenceTextView.becomeFirstResponder()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(_:)), name:
@@ -139,19 +147,32 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
           
           self.view.layoutIfNeeded()
       }
+    func textViewDidChange(_ textView: UITextView) {
+        if sentenceTextView.text.count == 1 {
+            ballAppearAnimation()
+            placeholderLabel.alpha = 0
+        }
+        else if sentenceTextView.text.count == 0{
+            placeholderLabel.alpha = 1
+            ballHideAnimation()
+        }
+    }
     
     func setSentenceTextView(){
         self.sentenceTextView.layer.borderWidth = 1.0
         self.sentenceTextView.layer.borderColor = UIColor.black.cgColor
        
-        self.sentenceTextView.placeholder =
+        self.placeholderLabel.text =
         "최대 280자까지 입력 가능하며, 책의 문장을 임의로 \n변형하지 않게 주의해주세요!"
         self.sentenceTextView.textContainerInset = UIEdgeInsets(top: 16.0,
                                                                 left: 14.0,
                                                                 bottom: 0.0, right: 15.0)
+        placeholderLabel.textColor = .veryLightPink
         
     }
    
+   
+    
     
     func setNextButton(){
         self.nextButton.backgroundColor = .softGreen
@@ -159,6 +180,8 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         
         
     }
+    
+    
     
     
     @IBAction func nextButtonAction(_ sender: Any) {
@@ -195,22 +218,58 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     func setSmallBalls(){
         self.view.addSubview(smallCircle)
         self.view.addSubview(smallCircle2)
+        self.view.addSubview(smallCircle3)
         smallCircle.snp.makeConstraints{
             $0.width.height.equalTo(9)
-            $0.center.equalTo(progressBar)
+            $0.leading.equalToSuperview().offset(24)
+            $0.centerY.equalTo(progressBar)
             
         }
         smallCircle.makeRounded(cornerRadius: 4.5)
         
         smallCircle2.snp.makeConstraints{
             $0.width.height.equalTo(9)
+            $0.center.equalTo(progressBar)
+        }
+        smallCircle2.makeRounded(cornerRadius: 4.5)
+        
+        smallCircle3.snp.makeConstraints{
+            $0.width.height.equalTo(9)
             $0.trailing.equalToSuperview().offset(-24)
             $0.centerY.equalTo(progressBar)
             
         }
-        smallCircle2.makeRounded(cornerRadius: 4.5)
+        smallCircle3.makeRounded(cornerRadius: 4.5)
+        
+        
         
     }
+    
+    
+    
+    func ballAppearAnimation(){
+        UIView.animate(withDuration: 0.5 , delay: 0.25, options: [.curveEaseIn], animations: {
+
+            self.outerCircle.backgroundColor = .softGreen
+            self.innerCircle.backgroundColor = .softGreen
+            
+            
+        }, completion:nil)
+        
+    }
+    
+    func ballHideAnimation(){
+        UIView.animate(withDuration: 0.5 , delay: 0.25, options: [.curveEaseIn], animations: {
+
+            self.outerCircle.backgroundColor = .brownGreyThree
+            self.innerCircle.backgroundColor = .brownGreyThree
+            
+            
+        }, completion:nil)
+        
+    }
+    
+   
     
     
     func setProgressBar(){
@@ -259,6 +318,8 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
             
         }
         outerCircle.makeRounded(cornerRadius: 13)
+        innerCircle.alpha = 1
+        outerCircle.alpha = 0.34
         progressBar.progress = 0
         
         
@@ -291,86 +352,94 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
 }
 
 //MARK:- Extensions
-
-
-extension UITextView: UITextViewDelegate {
-    
-    /// Resize the placeholder when the UITextView bounds change
-    override open var bounds: CGRect {
-        didSet {
-            self.resizePlaceholder()
-        }
-    }
-    
-    /// The UITextView placeholder text
-    public var placeholder: String? {
-        get {
-            var placeholderText: String?
-            
-            if let placeholderLabel = self.viewWithTag(100) as? UILabel {
-                placeholderText = placeholderLabel.text
-            }
-            
-            return placeholderText
-        }
-        set {
-            if let placeholderLabel = self.viewWithTag(100) as! UILabel? {
-                placeholderLabel.text = newValue
-                placeholderLabel.sizeToFit()
-            } else {
-                self.addPlaceholder(newValue!)
-            }
-        }
-    }
-    
-    /// When the UITextView did change, show or hide the label based on if the UITextView is empty or not
-    ///
-    /// - Parameter textView: The UITextView that got updated
-    public func textViewDidChange(_ textView: UITextView) {
-        if let placeholderLabel = self.viewWithTag(100) as? UILabel {
-            placeholderLabel.isHidden = !self.text.isEmpty
-        }
-    }
-    
-    /// Resize the placeholder UILabel to make sure it's in the same position as the UITextView text
-    private func resizePlaceholder() {
-        if let placeholderLabel = self.viewWithTag(100) as! UILabel? {
-            let labelX = self.textContainer.lineFragmentPadding + 14
-            let labelY = self.textContainerInset.top + 7
-            let labelWidth = self.frame.width - (labelX * 2)
-            let labelHeight = placeholderLabel.frame.height*2
-            placeholderLabel.numberOfLines = 0;
-            
-            placeholderLabel.frame = CGRect(x: labelX, y: labelY,
-                                            width: labelWidth, height: labelHeight)
-        }
-    }
-    
-    /// Adds a placeholder UILabel to this UITextView
-    private func addPlaceholder(_ placeholderText: String) {
-        let placeholderLabel = UILabel()
-        
-        placeholderLabel.text = placeholderText
-        placeholderLabel.sizeToFit()
-        
-        placeholderLabel.font = self.font
-        placeholderLabel.textColor = .veryLightPinkFive
-        placeholderLabel.tag = 100
-        
-        placeholderLabel.isHidden = !self.text.isEmpty
-        
-        //        self.textContainerInset = UIEdgeInsets(top: 18.0, left: 200.0, bottom: 0.0, right: 38.0)
-//        self.contentInset = UIEdgeInsets(top: 18, left: 14, bottom: 0, right: 38)
-    
-        self.addSubview(placeholderLabel)
-        self.resizePlaceholder()
-        self.delegate = self
-    }
-    
-    
- 
-    
-    
-    
-    
-}
+//extension WritingSentenceVC: UITextViewDelegate {
+//    override func textViewDidChange(_ textView: UITextView) {
+//
+//    }
+//}
+//
+//extension UITextView: UITextViewDelegate {
+//
+//    /// Resize the placeholder when the UITextView bounds change
+//    override open var bounds: CGRect {
+//        didSet {
+//            self.resizePlaceholder()
+//        }
+//    }
+//
+//    /// The UITextView placeholder text
+//    public var placeholder: String? {
+//        get {
+//            var placeholderText: String?
+//
+//            if let placeholderLabel = self.viewWithTag(100) as? UILabel {
+//                placeholderText = placeholderLabel.text
+//            }
+//
+//            return placeholderText
+//        }
+//        set {
+//            if let placeholderLabel = self.viewWithTag(100) as! UILabel? {
+//                placeholderLabel.text = newValue
+//                placeholderLabel.sizeToFit()
+//            } else {
+//                self.addPlaceholder(newValue!)
+//            }
+//        }
+//    }
+//
+//    /// When the UITextView did change, show or hide the label based on if the UITextView is empty or not
+//    ///
+//    /// - Parameter textView: The UITextView that got updated
+//    public func textViewDidChange(_ textView: UITextView) {
+//
+//        if let placeholderLabel = self.viewWithTag(100) as? UILabel {
+//
+//            placeholderLabel.isHidden = !self.text.isEmpty
+//
+//        }
+//
+//    }
+//
+//    /// Resize the placeholder UILabel to make sure it's in the same position as the UITextView text
+//    private func resizePlaceholder() {
+//        if let placeholderLabel = self.viewWithTag(100) as! UILabel? {
+//            let labelX = self.textContainer.lineFragmentPadding + 14
+//            let labelY = self.textContainerInset.top + 7
+//            let labelWidth = self.frame.width - (labelX * 2)
+//            let labelHeight = placeholderLabel.frame.height*2
+//            placeholderLabel.numberOfLines = 0;
+//
+//            placeholderLabel.frame = CGRect(x: labelX, y: labelY,
+//                                            width: labelWidth, height: labelHeight)
+//        }
+//    }
+//
+//    /// Adds a placeholder UILabel to this UITextView
+//    private func addPlaceholder(_ placeholderText: String) {
+//        let placeholderLabel = UILabel()
+//
+//        placeholderLabel.text = placeholderText
+//        placeholderLabel.sizeToFit()
+//
+//        placeholderLabel.font = self.font
+//        placeholderLabel.textColor = .veryLightPinkFive
+//        placeholderLabel.tag = 100
+//
+//        placeholderLabel.isHidden = !self.text.isEmpty
+//
+//        //        self.textContainerInset = UIEdgeInsets(top: 18.0, left: 200.0, bottom: 0.0, right: 38.0)
+////        self.contentInset = UIEdgeInsets(top: 18, left: 14, bottom: 0, right: 38)
+//
+//        self.addSubview(placeholderLabel)
+//        self.resizePlaceholder()
+//        self.delegate = self
+//    }
+//
+//
+//
+//
+//
+//
+//
+//}

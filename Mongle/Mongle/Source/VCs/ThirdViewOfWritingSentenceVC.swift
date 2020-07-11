@@ -39,10 +39,10 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
     }
     
     let innerCircle3 = UIView().then{
-        $0.backgroundColor = .softGreen
+        $0.backgroundColor = .brownGreyThree
     }
     let outerCircle3 = UIView().then{
-        $0.backgroundColor = .softGreen
+        $0.backgroundColor = .brownGreyThree
         $0.alpha = 0.34
     }
     
@@ -78,6 +78,7 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         
         if ThirdViewOfWritingSentenceVC.fromAfterView == true {
             self.themeTextView.text = ThirdViewOfWritingSentenceVC.textViewInput
+            ballAppearAnimation()
             
         }
         
@@ -103,6 +104,10 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         registButton.makeRounded(cornerRadius: 25)
         
         themeTextView.isEditable = false
+        
+        themeTextView.textContainerInset = UIEdgeInsets(top: 16.0,
+                                                                       left: 14.0,
+                                                                       bottom: 0.0, right: 14.0)
         
     }
     
@@ -162,12 +167,6 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         outerCircle2.makeRounded(cornerRadius: 13)
         thirdLevelAnimation()
 //        self.progressBar.progress = 1.0
-        
-    }
-    
-    func thirdLevelAnimation() {
-        
-//                 progressBar.setProgress(0.55, animated: false)
         self.innerCircle3.snp.makeConstraints{
             $0.width.height.equalTo(12)
             $0.trailing.equalToSuperview().offset(-23)
@@ -181,10 +180,19 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
             $0.trailing.equalToSuperview().offset(-16)
              $0.centerY.equalTo(self.progressBar.snp_centerYWithinMargins)
              
-         }
-         self.outerCircle3.makeRounded(cornerRadius: 13)
-         outerCircle3.alpha = 0
-         innerCircle3.alpha = 0
+        }
+        self.outerCircle3.makeRounded(cornerRadius: 13)
+        outerCircle3.alpha = 0
+        innerCircle3.alpha = 0
+        self.outerCircle3.alpha = 0.34
+        self.innerCircle3.alpha = 1
+        
+    }
+    
+    func thirdLevelAnimation() {
+        
+//                 progressBar.setProgress(0.55, animated: false)
+        
          
          UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
             
@@ -192,14 +200,7 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
              
          }, completion: { finished in
             self.progressBar.progress = 1.0
-             UIView.animate(withDuration: 0.75 , delay: 0.5, options: [.curveEaseIn], animations: {
-                 self.outerCircle3.alpha = 0.34
-                 self.innerCircle3.alpha = 1
-                 self.outerCircle3.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                 self.innerCircle3.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                 
-                 
-             }, completion:nil)
+           
              
              
              
@@ -211,6 +212,14 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
          
          
      }
+    
+    func ballAppearAnimation(){
+        UIView.animate(withDuration: 0.5 , delay: 0.25, options: [.curveEaseIn], animations: {
+            self.outerCircle3.backgroundColor = .softGreen
+            self.innerCircle3.backgroundColor = .softGreen
+            
+        }, completion:nil)
+    }
 
     @IBAction func backButtonAction(_ sender: Any) {
         WritingSentenceSecondVC.noAnimation = true

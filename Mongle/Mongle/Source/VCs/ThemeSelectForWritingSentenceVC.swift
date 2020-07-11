@@ -30,12 +30,20 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         
         super.viewDidLoad()
         setItems()
+        
        
         themeCollectionView.dataSource = self
         themeCollectionView.delegate = self
         setThemes()
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        registerForKeyboardNotifications()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        unregisterForKeyboardNotifications()
     }
     
 
@@ -58,14 +66,17 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     }
     
     func setThemes(){
-        let theme1 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "기분이 우울할 때 위로가 되는 문장")
-        let theme2 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장")
-        let theme3 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "브랜딩이 어려울 때 영감을 주는 문장")
-        let theme4 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장")
-        let theme5 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "브랜딩이 어려울 때 영감을 주는 문장")
-        let theme6 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장")
+        let theme1 = ThemeForSentence(imgName: "maengleCharacters", themeTitle: "테마 없는 문장",state : false)
+        let theme2 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
+        let theme3 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "브랜딩이 어려울 때 영감을 주는 문장",state : true)
+        let theme4 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
+        let theme5 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "브랜딩이 어려울 때 영감을 주는 문장",state : true)
+        let theme7 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
+        let theme8 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
+        let theme9 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
+        let theme10 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
         
-        themes = [theme1,theme2,theme3,theme4,theme5,theme6]
+        themes = [theme1,theme2,theme3,theme4,theme5,theme7,theme8,theme9,theme10]
         
     }
     func partialGreenColor(textField : UITextField, keyword : String){
@@ -88,6 +99,8 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     @IBAction func searchButtonAction(_ sender: Any) {
         searchKeyWord = themeTextField.text
         themeCollectionView.reloadData()
+        self.view.endEditing(true)
+        
        
 
         
@@ -100,6 +113,31 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         
     }
     
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow(_:)), name:
+            UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name:
+            UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func unregisterForKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name:
+            UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name:
+            UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        self.themeCollectionView.isHidden = true
+        
+     
+    }
+    
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+   
+        self.themeCollectionView.isHidden = false
+    }
     
     
     
@@ -115,9 +153,13 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
             guard let themeCell = collectionView.dequeueReusableCell(withReuseIdentifier: ThemeSelectForSentenceCVC.identifier, for: indexPath) as? ThemeSelectForSentenceCVC else {
                 
                 return UICollectionViewCell()}
-            var check : Bool = indexPath.row == checkIndex
-            themeCell.setItems(themes[indexPath.row], self.themeTextField.text!,check)
-           
+            
+            let check : Bool = indexPath.item == checkIndex
+        
+        
+            themeCell.setItems(themes[indexPath.item], self.themeTextField.text!,check)
+          
+            
             return themeCell
     }
     
@@ -138,11 +180,10 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         ThirdViewOfWritingSentenceVC.fromAfterView = true
-        ThirdViewOfWritingSentenceVC.textViewInput = themes[indexPath.row].themeTitle
-        checkIndex = indexPath.row
+        ThirdViewOfWritingSentenceVC.textViewInput = themes[indexPath.item].themeTitle
+        checkIndex = indexPath.item
         self.themeCollectionView.reloadData()
-        
-      
+        //collectionView.reloadData()
     }
     
     

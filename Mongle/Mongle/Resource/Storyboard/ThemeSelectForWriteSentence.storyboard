@@ -62,7 +62,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C5e-rt-pEW">
-                                                    <rect key="frame" x="19" y="18" width="58" height="18"/>
+                                                    <rect key="frame" x="19" y="18" width="90" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -80,7 +80,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="cvk-54-kIl" secondAttribute="bottom" id="XEb-fz-HBc"/>
                                                 <constraint firstItem="C5e-rt-pEW" firstAttribute="leading" secondItem="EdQ-pL-zYf" secondAttribute="leading" constant="19" id="fNd-dK-wvG"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ysy-Bd-iiT" secondAttribute="trailing" id="gxC-4c-2t1"/>
-                                                <constraint firstAttribute="trailing" secondItem="C5e-rt-pEW" secondAttribute="trailing" constant="51" id="hnx-fc-6KA"/>
+                                                <constraint firstAttribute="trailing" secondItem="C5e-rt-pEW" secondAttribute="trailing" constant="19" id="hnx-fc-6KA"/>
                                                 <constraint firstItem="Ysy-Bd-iiT" firstAttribute="leading" secondItem="EdQ-pL-zYf" secondAttribute="leading" id="mZJ-wu-q8u"/>
                                                 <constraint firstItem="cvk-54-kIl" firstAttribute="top" secondItem="EdQ-pL-zYf" secondAttribute="top" id="yCu-oe-ee2"/>
                                             </constraints>
@@ -88,8 +88,10 @@
                                         <color key="tintColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="checkImageView" destination="Ysy-Bd-iiT" id="gbb-TO-o0d"/>
+                                            <outlet property="leadingConstraint" destination="fNd-dK-wvG" id="lHb-ii-DqM"/>
                                             <outlet property="themeImageView" destination="cvk-54-kIl" id="eku-4k-NJk"/>
                                             <outlet property="themeTitleLabel" destination="C5e-rt-pEW" id="jn2-Zw-A9E"/>
+                                            <outlet property="topContraint" destination="Ee1-XC-Duh" id="aGv-cj-vPc"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
