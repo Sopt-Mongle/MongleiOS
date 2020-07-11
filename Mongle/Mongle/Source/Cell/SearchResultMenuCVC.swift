@@ -13,10 +13,13 @@ class SearchResultMenuCVC: UICollectionViewCell {
     
     @IBOutlet weak var menuLabel: UILabel!
     
+    override func awakeFromNib() {
+        menuLabel.textColor = .veryLightPink
+    }
     override var isSelected: Bool {
         didSet {
-            menuLabel.textColor = isSelected ? .softGreen : .lightGray
-            menuLabel.backgroundColor = isSelected ? .lightGray : .white
+            menuLabel.textColor = isSelected ? .softGreen : .veryLightPink
+            
         }
     }
 }

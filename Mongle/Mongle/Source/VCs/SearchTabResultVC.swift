@@ -13,11 +13,12 @@ class SearchTabResultVC: UIViewController {
     @IBOutlet weak var tabBarCV: UICollectionView!
     @IBOutlet weak var underBarView: UIView!
     
+    @IBOutlet weak var searchTextField: UITextField!
     let menuItem = ["테마","문장","큐레이터"]
     var pageInstance : SearchResultPageVC?
     var observingList: [NSKeyValueObservation] = []
     var underBarConstraintList: [NSLayoutConstraint] = []
-    //var nextPage : UIViewController?
+    var searchKeyword:String? = "번아웃"
     
     override func viewDidLoad() {
         super.viewDidLoad()
