@@ -17,15 +17,21 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textQuantityLabel: UILabel!
     @IBOutlet weak var applyButton: UIButton!
     @IBOutlet weak var themeNameTextField: UITextField!
-    @IBOutlet weak var warningImageView: UIImageView!
-    @IBOutlet weak var warningLabel: UILabel!
-    @IBOutlet weak var greenLineLabel: UILabel!
     @IBOutlet weak var xButton: UIButton!
+    
+    @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet weak var themeCollectionView: UICollectionView!
+    
     
     
     // MARK:- Class Variables
     var textNum : Int?
+    
+    var images = ["mainImgTheme2","mainImgTheme2","mainImgTheme2","mainImgTheme2","mainImgTheme2",
+                  "mainImgTheme2","mainImgTheme2","mainImgTheme2","mainImgTheme2","mainImgTheme2"]
   
+    var checkIndex : Int?
+    
 
     
     
@@ -37,17 +43,24 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         setThemeNameTextField()
         // Do any additional setup after loading the view.
         setApplyButton()
-        textQuantityLabel.text = "0/80"
-        partialGreenColor()
+        textQuantityLabel.text = "0/40"
+        
         textNum = 0;
         textNum = themeNameTextField.text?.count
 
         themeNameTextField.addTarget(self, action: #selector(textFieldDidChange),
                                      for: .editingChanged)
+        textQuantityLabel.textColor = .veryLightPink
+      
+        xButton.setImage(UIImage(named: "writingThemeBtnClose")?.withRenderingMode(.alwaysOriginal),
+                         for: .normal)
+        secondLabel.textColor = .greyishBrown
+        secondLabel.text = "테마 배경 이미지를 선택해주세요!"
+        partialGreenColor2()
+        themeCollectionView.delegate = self
+        themeCollectionView.dataSource = self
+
         
-        warningLabel.alpha = 0
-        warningImageView.alpha = 0
-        xButton.setImage(UIImage(named: "searchBtnBack"), for: .normal)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -60,35 +73,63 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         themeNameTextField.text = ""
         
     }
+    
+    
+    
+    
+    
+    
+   
+    // MARK:- Functions
+    func setThemeNameTextField(){
+        themeNameTextField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
+        themeNameTextField.addLeftPadding(left: 7.5)
+        
+    }
+    
     func partialGreenColor(){
+        
         
         guard let text = self.textQuantityLabel.text else {
             return
         }
         textQuantityLabel.textColor = .softGreen
         let attributedString = NSMutableAttributedString(string: textQuantityLabel.text!)
-        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black,
-                                      range: (text as NSString).range(of: "/80"))
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                      value: UIColor.veryLightPink,
+                                      range: (text as NSString).range(of: "/40"))
+        if themeNameTextField.text == "" {
+            textQuantityLabel.textColor = .veryLightPink
+        }
         textQuantityLabel.attributedText = attributedString
+    }
+    
+    func partialGreenColor2(){
+        
+        
+        guard let text = self.secondLabel.text else {
+            return
+        }
+        let attributedString = NSMutableAttributedString(string: secondLabel.text!)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.softGreen,
+                                      range: (text as NSString).range(of: "테마 배경 이미지"))
+        
+        secondLabel.attributedText = attributedString
+        
+        
     }
     
     @objc func textFieldDidChange(){
        textNum = themeNameTextField.text?.count
-       textQuantityLabel.text = String(textNum!)+"/80"
+       textQuantityLabel.text = String(textNum!)+"/40"
         partialGreenColor()
     }
 
-   
-    // MARK:- Functions
-    func setThemeNameTextField(){
-        themeNameTextField.setBorder(borderColor: .white, borderWidth: 1.0)
-
-    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
         let newLength = (textField.text?.count)! + string.count - range.length
-        return !(newLength > 80)
+        return !(newLength > 40)
     }
     
     func setApplyButton(){
@@ -101,17 +142,12 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
 
     @objc func updateTextLength(){
         textNum = themeNameTextField.text?.count
-        textQuantityLabel.text = String(textNum!)+"/80"
+        textQuantityLabel.text = String(textNum!)+"/40"
         partialGreenColor()
         
     }
     
-    func showWarning(){
-        greenLineLabel.backgroundColor = .reddish
-        warningImageView.alpha = 1
-        warningLabel.alpha = 1
-        
-    }
+
     
      override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
 
@@ -141,7 +177,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
             as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.3, animations: {
                 self.applyButton.transform =
-                    CGAffineTransform(translationX: 0, y: -keyboardSize.height)
+                    CGAffineTransform(translationX: 0, y: -(keyboardSize.height-34))
             })
             self.view.layoutIfNeeded()
         
@@ -169,13 +205,13 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     @IBAction func resetTextQuantity(_ sender: UITextField) {
         textNum = themeNameTextField.text?.count
        
-        textQuantityLabel.text = String(textNum!)+"/80"
+        textQuantityLabel.text = String(textNum!)+"/40"
         partialGreenColor()
         
     }
     @IBAction func applyButtonAction(_ sender: Any) {
         if themeNameTextField.text?.count == 0{
-            showWarning()
+            
             
         }
         
@@ -186,6 +222,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
 
     
     @IBAction func xButtonisTapped(_ sender: Any) {
+        
         dismiss(animated: true, completion: nil)
         
     }
@@ -195,4 +232,62 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
 }
 
 
+
+extension WritingThemeVC : UICollectionViewDelegate, UICollectionViewDataSource,
+UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)
+        -> Int {
+        return images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell {
+            guard let themeCell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: ThemeMakeImagesCVC.identifier,
+                for: indexPath) as? ThemeMakeImagesCVC else {
+         
+                return UICollectionViewCell()}
+           
+            let check : Bool = indexPath.item == checkIndex
+            themeCell.setItems(images[indexPath.item], check)
+          
+            
+            return themeCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(width : 77, height: 77 )
+    }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        checkIndex = indexPath.item
+     
+        
+        self.themeCollectionView.reloadData()
+        
+        
+        
+    }
+    
+    
+}
 
