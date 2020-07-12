@@ -22,6 +22,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var secondLabel: UILabel!
     @IBOutlet weak var themeCollectionView: UICollectionView!
     
+    var theme : String?
     
     
     // MARK:- Class Variables
@@ -32,7 +33,69 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
   
     var checkIndex : Int?
     
-
+    let blurView = UIView().then{
+        $0.backgroundColor = .blur1
+//        $0.alpha = 0
+        
+    }
+    
+    let popup = UIView()
+    
+    let popUpView = UIImageView().then {
+        $0.image = UIImage(named: "searchBoxGradient")?.withRenderingMode(.alwaysOriginal)
+//        $0.alpha = 0.1
+        
+    }
+    let popUpImageView = UIImageView().then {
+        $0.image = UIImage(named: "mainImgTheme2")?.withRenderingMode(.alwaysOriginal)
+//        $0.alpha = 0.1
+        
+        
+    }
+    let popUpThemeLabel = UILabel().then {
+        $0.textColor = .white
+        $0.font = $0.font.withSize(18)
+//        $0.alpha = 0
+        $0.numberOfLines = 0
+    
+        
+    }
+    
+    let popUpAskingLabel = UILabel().then {
+        $0.textColor = .black
+        $0.font = $0.font.withSize(15)
+        $0.text = "테마를 등록하시겠어요?"
+//        $0.alpha = 0
+       
+         
+        
+    }
+    let popUpNoticeLabel = UILabel().then {
+        $0.textColor = .brownGreyThree
+        $0.numberOfLines = 0
+//        $0.alpha = 0
+        $0.textAlignment = .center
+        $0.font = $0.font.withSize(13)
+        $0.text = "테마는 한 번 등록하면\n수정 및 삭제를 할 수 없어요!"
+        
+        
+    }
+    
+    let yesButton = UIButton(type: .custom).then {
+        $0.backgroundColor = .white
+        $0.setTitleColor(.softGreen, for: .normal)
+        $0.setTitle("네", for: .normal)
+        $0.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+        $0.addTarget(self, action: #selector(yesButtonDidTap), for: .touchUpInside)
+        
+    }
+    let noButton = UIButton().then {
+        $0.backgroundColor = .white
+        $0.setTitleColor(.softGreen, for: .normal)
+        $0.setTitle("아니요", for: .normal)
+        $0.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+        $0.addTarget(self, action: #selector(noButtonTap), for: .touchUpInside)
+    }
     
     
     // MARK:- LifeCycle Methods
@@ -40,26 +103,11 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         themeNameTextField.delegate = self
-        setThemeNameTextField()
-        // Do any additional setup after loading the view.
-        setApplyButton()
-        textQuantityLabel.text = "0/40"
-        
-        textNum = 0;
-        textNum = themeNameTextField.text?.count
-
-        themeNameTextField.addTarget(self, action: #selector(textFieldDidChange),
-                                     for: .editingChanged)
-        textQuantityLabel.textColor = .veryLightPink
       
-        xButton.setImage(UIImage(named: "writingThemeBtnClose")?.withRenderingMode(.alwaysOriginal),
-                         for: .normal)
-        secondLabel.textColor = .greyishBrown
-        secondLabel.text = "테마 배경 이미지를 선택해주세요!"
-        partialGreenColor2()
         themeCollectionView.delegate = self
         themeCollectionView.dataSource = self
-
+        setItems()
+        
         
         
     }
@@ -86,6 +134,147 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         themeNameTextField.addLeftPadding(left: 7.5)
         
     }
+    @objc func noButtonTap(){
+        print("af")
+        
+        
+    }
+    
+    @objc func yesButtonDidTap(){
+        print("called")
+        yesButton.backgroundColor = .softGreen
+        yesButton.setTitleColor(.white, for: .normal)
+        
+        guard let vcName = UIStoryboard(name: "EndOfMakingTheme",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "EndOfMakingThemeVC") as? EndOfMakingThemeVC
+            else{
+                return
+        }
+        
+        vcName.modalPresentationStyle = .fullScreen
+        
+        self.present(vcName, animated: true, completion: nil)
+                
+        
+    }
+    
+    func setItems(){
+        setThemeNameTextField()
+        setApplyButton()
+        textQuantityLabel.text = "0/40"
+        
+        textNum = 0;
+        textNum = themeNameTextField.text?.count
+        
+        themeNameTextField.addTarget(self, action: #selector(textFieldDidChange),
+                                     for: .editingChanged)
+        textQuantityLabel.textColor = .veryLightPink
+        
+        xButton.setImage(UIImage(named: "writingThemeBtnClose")?.withRenderingMode(.alwaysOriginal),
+                         for: .normal)
+        secondLabel.textColor = .greyishBrown
+        secondLabel.text = "테마 배경 이미지를 선택해주세요!"
+        partialGreenColor2()
+        
+        
+    }
+    
+    func setPopUp(){
+        
+        if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
+            print("windpw")
+            window.addSubview(blurView)
+//            blurView.isUserInteractionEnabled = true
+            window.addSubview(popup)
+//            popUpView.isUserInteractionEnabled = true
+//            blurView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(yesButtonDidTap)))
+            popup.addSubview(blurView)
+            popup.addSubview(popUpView)
+            
+            blurView.snp.makeConstraints{
+                $0.top.bottom.leading.trailing.equalToSuperview()
+            }
+//            yesButton.addTarget(self, action: #selector(yesButtonDidTap), for: .touchUpInside)
+//
+            popup.snp.makeConstraints {
+                $0.top.equalToSuperview().offset(233)
+                $0.bottom.equalToSuperview().offset(-229.2)
+                $0.leading.equalToSuperview().offset(36)
+                $0.trailing.equalToSuperview().offset(-35)
+            }
+//
+            popUpView.snp.makeConstraints{
+                $0.top.bottom.leading.trailing.equalToSuperview()
+            }
+//
+            
+//            blurView.addSubview(popUpImageView)
+//            blurView.addSubview(popUpThemeLabel)
+//            blurView.addSubview(popUpAskingLabel)
+//            blurView.addSubview(popUpNoticeLabel)
+            blurView.addSubview(yesButton)
+            blurView.addSubview(noButton)
+            
+//
+            popUpImageView.snp.makeConstraints{
+                $0.top.equalToSuperview().offset(46)
+                $0.bottom.equalToSuperview().offset(-175.8)
+                $0.leading.equalToSuperview()
+                $0.trailing.equalToSuperview()
+
+            }
+//
+            popUpThemeLabel.snp.makeConstraints{
+
+                $0.leading.equalToSuperview().offset(27)
+                $0.top.equalToSuperview().offset(73)
+                $0.trailing.equalToSuperview().offset(-27)
+
+
+            }
+            popUpThemeLabel.text = themeNameTextField.text!
+
+            popUpAskingLabel.snp.makeConstraints{
+                $0.leading.equalToSuperview().offset(83)
+                $0.top.equalToSuperview().offset(200)
+                $0.trailing.equalToSuperview().offset(83)
+
+
+            }
+            popUpNoticeLabel.snp.makeConstraints{
+                $0.top.equalToSuperview().offset(228)
+                $0.centerX.equalToSuperview()
+            }
+
+
+            yesButton.snp.makeConstraints{
+                $0.top.equalToSuperview().offset(288)
+                $0.leading.equalToSuperview().offset(20)
+                $0.width.equalTo(127)
+                $0.height.equalTo(37)
+                
+            }
+            //        yesButton.addTarget(self, action: #selector(yesButtonDidTap), for: .touchUpInside)
+            
+            yesButton.makeRounded(cornerRadius: 17)
+            noButton.makeRounded(cornerRadius: 17)
+            
+            
+            noButton.snp.makeConstraints{
+                $0.trailing.equalToSuperview().offset(-16)
+                $0.top.equalToSuperview().offset(288)
+                $0.width.equalTo(127)
+                $0.height.equalTo(37)
+            }
+        }
+
+        yesButton.addTarget(self, action: #selector(yesButtonDidTap), for: .touchUpInside)
+        noButton.addTarget(self, action: #selector(noButtonTap), for: .touchUpInside)
+        print(yesButton.isUserInteractionEnabled)
+
+    }
+    
     
     func partialGreenColor(){
         
@@ -149,11 +338,11 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     
 
     
-     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
-          self.view.endEditing(true)
-
-    }
+//     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+//
+//          self.view.endEditing(true)
+//
+//    }
 
     func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(self,
@@ -210,16 +399,30 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
     }
     @IBAction func applyButtonAction(_ sender: Any) {
-        if themeNameTextField.text?.count == 0{
-            
-            
-        }
-        
-        
+//        self.popUpImageView.alpha = 1
+//        self.blurView.alpha = 1
+//        self.popUpView.alpha = 1
+//        self.popUpThemeLabel.alpha = 1
+//        self.popUpNoticeLabel.alpha = 1
+//        self.popUpAskingLabel.alpha = 1
+//        self.yesButton.alpha = 1
+//        self.noButton.alpha =  1
+        setPopUp()
+    
+        popUpThemeLabel.text = themeNameTextField.text
+//        self.yesButton.isUserInteractionEnabled = true
+//        self.popUpView.transform = CGAffineTransform(translationX: 0, y: 500)
+//
+//        UIView.animate(withDuration: 1.0,delay: 0.0, animations: {
+//
+//
+//
+//            self.popUpView.transform = .identity
+//        })
         
     }
-    
 
+    
     
     @IBAction func xButtonisTapped(_ sender: Any) {
         

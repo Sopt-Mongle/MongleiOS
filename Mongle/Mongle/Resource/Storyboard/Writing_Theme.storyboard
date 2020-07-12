@@ -73,7 +73,7 @@
                                     <color key="titleColor" red="0.9568960071" green="0.96459966900000005" blue="0.97254294159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <action selector="applyButtonAction:" destination="rnL-WS-ce3" eventType="touchUpInside" id="4ff-sv-oFp"/>
+                                    <action selector="applyButtonAction:" destination="rnL-WS-ce3" eventType="touchUpInside" id="Cbi-ih-nTP"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ql6-oh-RxW">

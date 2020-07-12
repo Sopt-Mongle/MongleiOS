@@ -14,11 +14,11 @@ extension UIColor {
     }
     
     @nonobjc class var blur1: UIColor {
-        return UIColor(white: 0, alpha: 0.35)
+        return UIColor(white: 0, alpha: 0.5)
        }
     
     @nonobjc class var blur2: UIColor {
-           return UIColor(white: 1, alpha: 0.28)
+        return UIColor(white: 1, alpha: 0.5)
           }
 
     @nonobjc class var tea: UIColor {

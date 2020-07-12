@@ -47,6 +47,9 @@
                                     <constraint firstAttribute="height" constant="44" id="mCM-cA-aoc"/>
                                 </constraints>
                                 <state key="normal" title="메인으로 돌아가기"/>
+                                <connections>
+                                    <action selector="backToMainButtonAction:" destination="dZY-uu-v5q" eventType="touchUpInside" id="NT7-td-A0u"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
