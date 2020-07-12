@@ -20,6 +20,9 @@ class WritingSentenceSecondVC: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var searchTextButton: UIButton!
+    @IBOutlet weak var labelConstraint: NSLayoutConstraint!
+    @IBOutlet weak var warningImageView: UIImageView!
+    @IBOutlet weak var warningLabel: UILabel!
     
     @IBOutlet weak var bookTitleLabel: UILabel!
     
@@ -75,6 +78,10 @@ class WritingSentenceSecondVC: UIViewController {
         setNextButton()
         searchTextButton.setImage(UIImage(named: "themeWritingSentenceBookBtnBookSearch")?.withRenderingMode(.alwaysOriginal), for: .normal)
         bookTitleLabel.text = ""
+        setWarning()
+        searchTextButton.makeRounded(cornerRadius: 10)
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -82,6 +89,7 @@ class WritingSentenceSecondVC: UIViewController {
         setSmallBalls()
         setProgressBar()
         if WritingSentenceSecondVC.isSearched == true{
+            hideWarning()
             ballAppearAnimation()
             setInformationsAfterSelect(book: WritingSentenceSecondVC.book!)
         }
@@ -245,7 +253,30 @@ class WritingSentenceSecondVC: UIViewController {
         
         
     }
+    func setWarning(){
+        warningImageView.image = UIImage(named: "warning")
+        warningLabel.textColor = .reddish
+        warningImageView.alpha = 0
+        warningLabel.alpha = 0
+        
+        
+        
+    }
     
+    func showWarning(){
+        warningLabel.alpha = 1
+        warningImageView.alpha = 1
+        labelConstraint.constant = 68
+        searchTextButton.setBorder(borderColor: .reddish, borderWidth: 1.0)
+        
+        
+    }
+    func hideWarning(){
+        warningLabel.alpha = 0
+        warningImageView.alpha = 0
+        labelConstraint.constant = 43
+        searchTextButton.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
+    }
     
     
     func secondToFirstLevelAnimation(){
@@ -303,11 +334,14 @@ class WritingSentenceSecondVC: UIViewController {
             else{
                 return
         }
-        
-        vcName.modalPresentationStyle = .fullScreen
-       
-        self.present(vcName, animated: true, completion: nil)
-        
+        if bookTitleLabel.text == ""{
+            showWarning()
+        }
+        else{
+            vcName.modalPresentationStyle = .fullScreen
+            
+            self.present(vcName, animated: true, completion: nil)
+        }
     }
     
     

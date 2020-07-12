@@ -16,14 +16,19 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var selectButton: UIButton!
     @IBOutlet weak var themeCollectionView: UICollectionView!
+    @IBOutlet weak var warningImageView: UIImageView!
+    @IBOutlet weak var warningLabel: UILabel!
     
     
     @IBOutlet weak var blurView: UIImageView!
+    @IBOutlet weak var collectionViewConstraint: NSLayoutConstraint!
+    
+    
     
     //MARK:- User Define Variables
     var themes : [ThemeForSentence] = []
     var searchKeyWord : String?
-    var checkIndex : Int?
+    var checkIndex : Int = -1
     
     
     //MARK:- LifeCycleMethods
@@ -32,7 +37,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         super.viewDidLoad()
         setItems()
         
-       
+        setWarning()
         themeCollectionView.dataSource = self
         themeCollectionView.delegate = self
         setThemes()
@@ -44,6 +49,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         registerForKeyboardNotifications()
     }
     override func viewWillDisappear(_ animated: Bool) {
+        checkIndex = -1
         unregisterForKeyboardNotifications()
     }
     
@@ -63,6 +69,30 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         blurView.image = UIImage(named: "writingSentenceTheme2BoxBlur")?.withRenderingMode(.alwaysOriginal)
         
         //themeCollectionView.backgroundColor = .clear
+        
+    }
+    
+    func setWarning(){
+        warningImageView.image = UIImage(named: "warning")
+        warningLabel.textColor = .reddish
+        warningImageView.alpha = 0
+        warningLabel.alpha = 0
+        
+        
+        
+    }
+    
+    func showWarning(){
+        warningLabel.alpha = 1
+        warningImageView.alpha = 1
+
+        collectionViewConstraint.constant = 49
+        
+    }
+    func hideWarning(){
+        warningLabel.alpha = 0
+        warningImageView.alpha = 0
+        collectionViewConstraint.constant = 24
         
     }
     
@@ -109,7 +139,16 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
 
     
     @IBAction func selectButtonAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        if checkIndex == -1{
+            showWarning()
+        }
+        else{
+            dismiss(animated: true, completion: nil)
+        }
+      
+
+        
+        
         
         
     }
@@ -182,6 +221,8 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         ThirdViewOfWritingSentenceVC.fromAfterView = true
         ThirdViewOfWritingSentenceVC.textViewInput = themes[indexPath.item].themeTitle
+        ThirdViewOfWritingSentenceVC.isSelected = true
+        hideWarning()
         checkIndex = indexPath.item
         self.themeCollectionView.reloadData()
         //collectionView.reloadData()

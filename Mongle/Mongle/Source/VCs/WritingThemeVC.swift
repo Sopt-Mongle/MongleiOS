@@ -22,6 +22,14 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var secondLabel: UILabel!
     @IBOutlet weak var themeCollectionView: UICollectionView!
     
+    @IBOutlet weak var warningImageView: UIImageView!
+    @IBOutlet weak var warningLabel: UILabel!
+    @IBOutlet weak var labelConstraints: NSLayoutConstraint!
+    
+    @IBOutlet weak var warningImageView2: UIImageView!
+    @IBOutlet weak var warningLabel2: UILabel!
+    
+    
     var theme : String?
     
     
@@ -31,7 +39,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     var images = ["mainImgTheme2","mainImgTheme2","mainImgTheme2","mainImgTheme2","mainImgTheme2",
                   "mainImgTheme2","mainImgTheme2","mainImgTheme2","mainImgTheme2","mainImgTheme2"]
   
-    var checkIndex : Int?
+    var checkIndex : Int = -1
     
     let blurView = UIView().then{
         $0.backgroundColor = .blur1
@@ -39,19 +47,16 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
     }
     
-    let popup = UIView()
-    
-    let popUpView = UIImageView().then {
-        $0.image = UIImage(named: "searchBoxGradient")?.withRenderingMode(.alwaysOriginal)
-//        $0.alpha = 0.1
-        
+    let popupView = UIView().then {
+        $0.backgroundColor = .white
     }
+    
+
     let popUpImageView = UIImageView().then {
         $0.image = UIImage(named: "mainImgTheme2")?.withRenderingMode(.alwaysOriginal)
-//        $0.alpha = 0.1
-        
-        
     }
+    
+    
     let popUpThemeLabel = UILabel().then {
         $0.textColor = .white
         $0.font = $0.font.withSize(18)
@@ -135,13 +140,17 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
     }
     @objc func noButtonTap(){
-        print("af")
+        for view in popupView.subviews {
+            view.removeFromSuperview()
+        }
+        popupView.removeFromSuperview()
+        blurView.removeFromSuperview()
+        
         
         
     }
     
     @objc func yesButtonDidTap(){
-        print("called")
         yesButton.backgroundColor = .softGreen
         yesButton.setTitleColor(.white, for: .normal)
         
@@ -163,6 +172,19 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         setThemeNameTextField()
         setApplyButton()
         textQuantityLabel.text = "0/40"
+        warningImageView.image = UIImage(named: "warning")?.withRenderingMode(.alwaysOriginal)
+        warningLabel.text = "테마 이름을 적어주세요!"
+        warningLabel.textColor = .reddish
+        warningLabel.alpha = 0
+        warningImageView.alpha = 0
+        themeNameTextField.makeRounded(cornerRadius: 10)
+    
+        warningImageView2.image = UIImage(named: "warning")?.withRenderingMode(.alwaysOriginal)
+        warningLabel2.text = "테마 배경 이미지를 선택해주세요!"
+        warningLabel2.textColor = .reddish
+        warningLabel2.alpha = 0
+        warningImageView2.alpha = 0
+        
         
         textNum = 0;
         textNum = themeNameTextField.text?.count
@@ -182,96 +204,78 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     
     func setPopUp(){
         
-        if let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-            print("windpw")
-            window.addSubview(blurView)
-//            blurView.isUserInteractionEnabled = true
-            window.addSubview(popup)
-//            popUpView.isUserInteractionEnabled = true
-//            blurView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(yesButtonDidTap)))
-            popup.addSubview(blurView)
-            popup.addSubview(popUpView)
+        self.view.addSubview(blurView)
+        self.view.addSubview(popupView)
+        popupView.addSubview(popUpImageView)
+        
+        
+        blurView.snp.makeConstraints{
+            $0.top.bottom.leading.trailing.equalToSuperview()
+        }
+        
+        popupView.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(233)
+            $0.leading.equalToSuperview().offset(36)
+            $0.trailing.equalToSuperview().offset(-35)
+            $0.bottom.equalToSuperview().offset(-229.2)
             
-            blurView.snp.makeConstraints{
-                $0.top.bottom.leading.trailing.equalToSuperview()
-            }
-//            yesButton.addTarget(self, action: #selector(yesButtonDidTap), for: .touchUpInside)
-//
-            popup.snp.makeConstraints {
-                $0.top.equalToSuperview().offset(233)
-                $0.bottom.equalToSuperview().offset(-229.2)
-                $0.leading.equalToSuperview().offset(36)
-                $0.trailing.equalToSuperview().offset(-35)
-            }
-//
-            popUpView.snp.makeConstraints{
-                $0.top.bottom.leading.trailing.equalToSuperview()
-            }
-//
+        }
+        
+        
+        popupView.addSubview(popUpThemeLabel)
+        popupView.addSubview(popUpAskingLabel)
+        popupView.addSubview(popUpNoticeLabel)
+        popupView.addSubview(yesButton)
+        popupView.addSubview(noButton)
+
+        
+        popUpImageView.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(46)
+            $0.bottom.equalToSuperview().offset(-175.8)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
             
-//            blurView.addSubview(popUpImageView)
-//            blurView.addSubview(popUpThemeLabel)
-//            blurView.addSubview(popUpAskingLabel)
-//            blurView.addSubview(popUpNoticeLabel)
-            blurView.addSubview(yesButton)
-            blurView.addSubview(noButton)
+        }
+      
+        popUpThemeLabel.snp.makeConstraints{
+            $0.leading.equalToSuperview().offset(27)
+            $0.top.equalToSuperview().offset(73)
+            $0.trailing.equalToSuperview().offset(-27)
+        }
+        
+        popUpThemeLabel.text = themeNameTextField.text!
+        
+        popUpAskingLabel.snp.makeConstraints{
+            $0.leading.equalToSuperview().offset(83)
+            $0.top.equalToSuperview().offset(200)
+            $0.trailing.equalToSuperview().offset(83)
+        }
+        popUpNoticeLabel.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(228)
+            $0.centerX.equalToSuperview()
+        }
+        
+        yesButton.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(288)
+            $0.leading.equalToSuperview().offset(20)
+            $0.width.equalTo(127)
+            $0.height.equalTo(37)
             
-//
-            popUpImageView.snp.makeConstraints{
-                $0.top.equalToSuperview().offset(46)
-                $0.bottom.equalToSuperview().offset(-175.8)
-                $0.leading.equalToSuperview()
-                $0.trailing.equalToSuperview()
-
-            }
-//
-            popUpThemeLabel.snp.makeConstraints{
-
-                $0.leading.equalToSuperview().offset(27)
-                $0.top.equalToSuperview().offset(73)
-                $0.trailing.equalToSuperview().offset(-27)
-
-
-            }
-            popUpThemeLabel.text = themeNameTextField.text!
-
-            popUpAskingLabel.snp.makeConstraints{
-                $0.leading.equalToSuperview().offset(83)
-                $0.top.equalToSuperview().offset(200)
-                $0.trailing.equalToSuperview().offset(83)
-
-
-            }
-            popUpNoticeLabel.snp.makeConstraints{
-                $0.top.equalToSuperview().offset(228)
-                $0.centerX.equalToSuperview()
-            }
-
-
-            yesButton.snp.makeConstraints{
-                $0.top.equalToSuperview().offset(288)
-                $0.leading.equalToSuperview().offset(20)
-                $0.width.equalTo(127)
-                $0.height.equalTo(37)
-                
-            }
-            //        yesButton.addTarget(self, action: #selector(yesButtonDidTap), for: .touchUpInside)
-            
-            yesButton.makeRounded(cornerRadius: 17)
-            noButton.makeRounded(cornerRadius: 17)
-            
-            
-            noButton.snp.makeConstraints{
-                $0.trailing.equalToSuperview().offset(-16)
-                $0.top.equalToSuperview().offset(288)
-                $0.width.equalTo(127)
-                $0.height.equalTo(37)
-            }
         }
 
-        yesButton.addTarget(self, action: #selector(yesButtonDidTap), for: .touchUpInside)
-        noButton.addTarget(self, action: #selector(noButtonTap), for: .touchUpInside)
-        print(yesButton.isUserInteractionEnabled)
+        yesButton.makeRounded(cornerRadius: 17)
+       
+        
+        
+        noButton.snp.makeConstraints{
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.top.equalToSuperview().offset(288)
+            $0.width.equalTo(127)
+            $0.height.equalTo(37)
+        }
+         noButton.makeRounded(cornerRadius: 17)
+        
+        
 
     }
     
@@ -309,8 +313,13 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange(){
-       textNum = themeNameTextField.text?.count
-       textQuantityLabel.text = String(textNum!)+"/40"
+        textNum = themeNameTextField.text?.count
+        textQuantityLabel.text = String(textNum!)+"/40"
+        textQuantityLabel.alpha = 1
+        setThemeNameTextField()
+        warningLabel.alpha = 0
+        warningImageView.alpha = 0
+        labelConstraints.constant = 62
         partialGreenColor()
     }
 
@@ -327,6 +336,9 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         applyButton.backgroundColor = .softGreen
         
         
+        
+        
+        
     }
 
     @objc func updateTextLength(){
@@ -338,11 +350,11 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     
 
     
-//     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-//
-//          self.view.endEditing(true)
-//
-//    }
+     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+          self.view.endEditing(true)
+
+    }
 
     func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(self,
@@ -399,17 +411,30 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
     }
     @IBAction func applyButtonAction(_ sender: Any) {
-//        self.popUpImageView.alpha = 1
-//        self.blurView.alpha = 1
-//        self.popUpView.alpha = 1
-//        self.popUpThemeLabel.alpha = 1
-//        self.popUpNoticeLabel.alpha = 1
-//        self.popUpAskingLabel.alpha = 1
-//        self.yesButton.alpha = 1
-//        self.noButton.alpha =  1
-        setPopUp()
-    
-        popUpThemeLabel.text = themeNameTextField.text
+        self.view.endEditing(true)
+
+        if themeNameTextField.text == "" {
+            warningLabel.alpha = 1
+            warningImageView.alpha = 1
+            textQuantityLabel.alpha = 0
+            themeNameTextField.setBorder(borderColor: .reddish, borderWidth: 1.0)
+            labelConstraints.constant = 87
+        }
+        else if checkIndex == -1 {
+            warningImageView2.alpha = 1
+            warningLabel2.alpha = 1
+            
+        }
+            
+        else {
+            setPopUp()
+            
+            popUpThemeLabel.text = themeNameTextField.text
+            
+        }
+        
+        
+        
 //        self.yesButton.isUserInteractionEnabled = true
 //        self.popUpView.transform = CGAffineTransform(translationX: 0, y: 500)
 //
@@ -482,6 +507,8 @@ UICollectionViewDelegateFlowLayout {
         return 8
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        warningLabel2.alpha = 0
+        warningImageView2.alpha = 0
         checkIndex = indexPath.item
      
         

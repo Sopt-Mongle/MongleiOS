@@ -123,6 +123,19 @@
                                     <action selector="selectButtonAction:" destination="Bh9-Nr-MLf" eventType="touchUpInside" id="shB-HX-IIO"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eHH-t0-Vzq">
+                                <rect key="frame" x="16" y="168.5" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="rRR-Jc-1NN"/>
+                                    <constraint firstAttribute="width" constant="15" id="upW-XI-tFg"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="테마를 선택해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWs-8M-85f">
+                                <rect key="frame" x="39" y="167.5" width="109" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -141,9 +154,13 @@
                             <constraint firstItem="mLx-7d-McK" firstAttribute="leading" secondItem="tjf-iZ-GTd" secondAttribute="leading" constant="17" id="VRX-aj-eBa"/>
                             <constraint firstItem="q3X-OD-Vkx" firstAttribute="centerX" secondItem="tjf-iZ-GTd" secondAttribute="centerX" id="VzY-3c-grD"/>
                             <constraint firstItem="toK-WJ-sOk" firstAttribute="leading" secondItem="tjf-iZ-GTd" secondAttribute="leading" id="Wsf-ZH-oxw"/>
+                            <constraint firstItem="eHH-t0-Vzq" firstAttribute="top" secondItem="aSC-KL-YYg" secondAttribute="bottom" constant="10" id="d0r-sW-EVX"/>
                             <constraint firstItem="gjC-WD-8YW" firstAttribute="leading" secondItem="tjf-iZ-GTd" secondAttribute="leading" constant="16" id="eXt-3L-TWS"/>
                             <constraint firstItem="gjC-WD-8YW" firstAttribute="top" secondItem="aSC-KL-YYg" secondAttribute="bottom" constant="24" id="hLK-mZ-hdG"/>
                             <constraint firstItem="tjf-iZ-GTd" firstAttribute="trailing" secondItem="SbW-AV-blp" secondAttribute="trailing" constant="16" id="mk5-xh-Yon"/>
+                            <constraint firstItem="nWs-8M-85f" firstAttribute="top" secondItem="aSC-KL-YYg" secondAttribute="bottom" constant="9" id="nBn-4Q-RYM"/>
+                            <constraint firstItem="nWs-8M-85f" firstAttribute="leading" secondItem="eHH-t0-Vzq" secondAttribute="trailing" constant="8" id="wBn-RW-8vB"/>
+                            <constraint firstItem="eHH-t0-Vzq" firstAttribute="leading" secondItem="tjf-iZ-GTd" secondAttribute="leading" constant="16" id="wqq-cl-udk"/>
                             <constraint firstItem="tjf-iZ-GTd" firstAttribute="trailing" secondItem="gjC-WD-8YW" secondAttribute="trailing" constant="16" id="z0v-iD-EpL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tjf-iZ-GTd"/>
@@ -151,10 +168,13 @@
                     <connections>
                         <outlet property="backButton" destination="mLx-7d-McK" id="04e-ki-3wF"/>
                         <outlet property="blurView" destination="toK-WJ-sOk" id="jGe-HW-Ma0"/>
+                        <outlet property="collectionViewConstraint" destination="hLK-mZ-hdG" id="ngo-mq-HtF"/>
                         <outlet property="searchButton" destination="Tza-oA-R2f" id="Gtt-Bo-cW4"/>
                         <outlet property="selectButton" destination="SbW-AV-blp" id="cda-pL-dGv"/>
                         <outlet property="themeCollectionView" destination="gjC-WD-8YW" id="Ao5-qM-J3X"/>
                         <outlet property="themeTextField" destination="aSC-KL-YYg" id="d6u-Qc-PMp"/>
+                        <outlet property="warningImageView" destination="eHH-t0-Vzq" id="V8B-sP-EyE"/>
+                        <outlet property="warningLabel" destination="nWs-8M-85f" id="Wdb-13-UjE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q00-X4-1vn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

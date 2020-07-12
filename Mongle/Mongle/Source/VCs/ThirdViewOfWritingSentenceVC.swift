@@ -19,6 +19,8 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
     @IBOutlet weak var selectButton: UIButton!
     @IBOutlet weak var registButton: UIButton!
     
+    @IBOutlet weak var warningImageView: UIImageView!
+    @IBOutlet weak var warningLabel: UILabel!
     
     
     //MARK:- User Define Variables
@@ -54,6 +56,7 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
     
     static var textViewInput : String?
     static var fromAfterView : Bool =  false
+    static var isSelected : Bool = false
     
     
     
@@ -69,7 +72,7 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         super.viewDidLoad()
         themeTextView.isEditable = false
         themeTextView.backgroundColor = .whiteTwo
-       
+        setWarning()
         setItems()
         // Do any additional setup after loading the view.
     }
@@ -78,12 +81,14 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         setSmallBalls()
         setProgressBar()
         
-        if ThirdViewOfWritingSentenceVC.fromAfterView == true {
+        if ThirdViewOfWritingSentenceVC.isSelected == true {
             self.themeTextView.text = ThirdViewOfWritingSentenceVC.textViewInput
             themeTextView.backgroundColor = .white
             ballAppearAnimation()
+            hideWarning()
             
         }
+       
         
         
        
@@ -192,6 +197,30 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         
     }
     
+    func setWarning(){
+        warningImageView.image = UIImage(named: "warning")
+        warningLabel.textColor = .reddish
+        warningImageView.alpha = 0
+        warningLabel.alpha = 0
+        
+        
+        
+    }
+    
+    func showWarning(){
+        warningLabel.alpha = 1
+        warningImageView.alpha = 1
+        selectButton.setBorder(borderColor: .reddish, borderWidth: 1.0)
+        
+        
+    }
+    func hideWarning(){
+        warningLabel.alpha = 0
+        warningImageView.alpha = 0
+        selectButton.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
+    }
+    
+    
     func thirdLevelAnimation() {
         
 //                 progressBar.setProgress(0.55, animated: false)
@@ -249,16 +278,23 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
     
     
     @IBAction func registerButtonAction(_ sender: Any) {
-        guard let vcName = UIStoryboard(name: "EndOfWritingSentence",
-                                              bundle: nil).instantiateViewController(
-                                                  withIdentifier: "EndOfWritingSentenceVC")
-                  as? EndOfWritingSentenceVC
-                  else{
-                      return
-              }
-        vcName.modalPresentationStyle = .fullScreen
-        self.present(vcName, animated: true, completion: nil)
+        if themeTextView.text == "" {
+            showWarning()
+            
+        }
         
+        else {
+            
+            guard let vcName = UIStoryboard(name: "EndOfWritingSentence",
+                                            bundle: nil).instantiateViewController(
+                                                withIdentifier: "EndOfWritingSentenceVC")
+                as? EndOfWritingSentenceVC
+                else{
+                    return
+            }
+            vcName.modalPresentationStyle = .fullScreen
+            self.present(vcName, animated: true, completion: nil)
+        }
         
     }
     

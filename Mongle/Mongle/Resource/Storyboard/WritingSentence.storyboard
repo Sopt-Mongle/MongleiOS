@@ -76,6 +76,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jo6-Rg-V1O">
+                                <rect key="frame" x="16" y="350" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="V2F-8e-FOR"/>
+                                    <constraint firstAttribute="width" constant="15" id="XHu-je-M3O"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한 문장을 적어주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEL-pZ-opW">
+                                <rect key="frame" x="39" y="349" width="113" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -86,6 +99,7 @@
                             <constraint firstItem="NVn-hp-lIY" firstAttribute="trailing" secondItem="YFn-xq-FyS" secondAttribute="trailing" constant="16" id="D9D-nY-8fv"/>
                             <constraint firstItem="NVn-hp-lIY" firstAttribute="trailing" secondItem="NdW-dE-BLy" secondAttribute="trailing" constant="28.5" id="HQs-vq-SJc"/>
                             <constraint firstItem="hNO-zA-3Ms" firstAttribute="top" secondItem="NVn-hp-lIY" secondAttribute="top" constant="8.5999999999999996" id="HSX-bM-Exj"/>
+                            <constraint firstItem="Jo6-Rg-V1O" firstAttribute="top" secondItem="9As-jG-fRc" secondAttribute="bottom" constant="10" id="Ltb-Z4-t6o"/>
                             <constraint firstItem="SzT-pL-G8H" firstAttribute="top" secondItem="NdW-dE-BLy" secondAttribute="bottom" constant="28.5" id="PHT-IV-sAe"/>
                             <constraint firstItem="mEB-zl-umZ" firstAttribute="top" secondItem="SzT-pL-G8H" secondAttribute="bottom" constant="32" id="THq-4i-iXf"/>
                             <constraint firstItem="9As-jG-fRc" firstAttribute="top" secondItem="SzT-pL-G8H" secondAttribute="bottom" constant="17" id="Wao-SE-j4J"/>
@@ -93,9 +107,12 @@
                             <constraint firstItem="NdW-dE-BLy" firstAttribute="top" secondItem="12r-WZ-htJ" secondAttribute="bottom" constant="54.5" id="dWg-Yd-Dhx"/>
                             <constraint firstItem="NVn-hp-lIY" firstAttribute="trailing" secondItem="9As-jG-fRc" secondAttribute="trailing" constant="16" id="gkU-Gg-4ur"/>
                             <constraint firstItem="mEB-zl-umZ" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="35" id="hPC-0G-Fdc"/>
+                            <constraint firstItem="iEL-pZ-opW" firstAttribute="top" secondItem="9As-jG-fRc" secondAttribute="bottom" constant="9" id="hSB-Ye-zBK"/>
                             <constraint firstItem="SzT-pL-G8H" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="15" id="liG-gH-1jU"/>
                             <constraint firstItem="12r-WZ-htJ" firstAttribute="leading" secondItem="hNO-zA-3Ms" secondAttribute="trailing" constant="115" id="mlp-T7-siY"/>
+                            <constraint firstItem="iEL-pZ-opW" firstAttribute="leading" secondItem="Jo6-Rg-V1O" secondAttribute="trailing" constant="8" id="n4L-7K-Es6"/>
                             <constraint firstItem="YFn-xq-FyS" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="16" id="pZ5-0e-zoL"/>
+                            <constraint firstItem="Jo6-Rg-V1O" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="16" id="w2q-Em-uIZ"/>
                             <constraint firstItem="hNO-zA-3Ms" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="17.100000000000001" id="w82-b5-NXe"/>
                             <constraint firstItem="12r-WZ-htJ" firstAttribute="top" secondItem="NVn-hp-lIY" secondAttribute="top" constant="4" id="y1L-vR-irQ"/>
                         </constraints>
@@ -108,12 +125,14 @@
                         <outlet property="progressBar" destination="NdW-dE-BLy" id="fL1-G2-yWn"/>
                         <outlet property="sentenceTextView" destination="9As-jG-fRc" id="vma-0w-pVu"/>
                         <outlet property="textQuantityLabel" destination="zeo-pa-eLF" id="yFH-f4-rPP"/>
+                        <outlet property="warningImageView" destination="Jo6-Rg-V1O" id="dlR-j8-qh1"/>
+                        <outlet property="warningLabel" destination="iEL-pZ-opW" id="f95-wr-dMI"/>
                         <outlet property="xButton" destination="hNO-zA-3Ms" id="m5i-CE-ekn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oD8-dZ-4uc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3672" y="-185"/>
+            <point key="canvasLocation" x="-3672.4637681159425" y="-185.49107142857142"/>
         </scene>
     </scenes>
 </document>
