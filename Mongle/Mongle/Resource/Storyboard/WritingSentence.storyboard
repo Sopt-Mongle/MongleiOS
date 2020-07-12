@@ -21,6 +21,9 @@
                                     <constraint firstAttribute="height" constant="18" id="857-gN-wss"/>
                                     <constraint firstAttribute="width" constant="18" id="dcn-a3-aK7"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="xButtonAction:" destination="OSC-I1-5Hp" eventType="touchUpInside" id="LdM-Pn-onA"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="문장 쓰기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12r-WZ-htJ">
                                 <rect key="frame" x="150" y="48" width="71" height="23"/>
@@ -29,7 +32,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NdW-dE-BLy">
-                                <rect key="frame" x="16" y="125.5" width="374" height="2"/>
+                                <rect key="frame" x="28.5" y="125.5" width="357" height="2"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="마음에 드는 한 문장을 적어주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SzT-pL-G8H">
                                 <rect key="frame" x="15" y="156" width="228.5" height="21"/>
@@ -61,19 +64,27 @@
                                     <action selector="nextButtonAction:" destination="OSC-I1-5Hp" eventType="touchUpInside" id="Ujv-W1-DxC"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEB-zl-umZ">
+                                <rect key="frame" x="35" y="209" width="37.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="YFn-xq-FyS" secondAttribute="bottom" constant="16" id="2IR-Ll-sJ8"/>
-                            <constraint firstItem="NdW-dE-BLy" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="16" id="6M9-Tt-5xp"/>
+                            <constraint firstItem="NdW-dE-BLy" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="28.5" id="6M9-Tt-5xp"/>
                             <constraint firstItem="9As-jG-fRc" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="16" id="7VZ-np-iVf"/>
                             <constraint firstItem="NVn-hp-lIY" firstAttribute="trailing" secondItem="YFn-xq-FyS" secondAttribute="trailing" constant="16" id="D9D-nY-8fv"/>
-                            <constraint firstItem="NVn-hp-lIY" firstAttribute="trailing" secondItem="NdW-dE-BLy" secondAttribute="trailing" constant="24" id="HQs-vq-SJc"/>
+                            <constraint firstItem="NVn-hp-lIY" firstAttribute="trailing" secondItem="NdW-dE-BLy" secondAttribute="trailing" constant="28.5" id="HQs-vq-SJc"/>
                             <constraint firstItem="hNO-zA-3Ms" firstAttribute="top" secondItem="NVn-hp-lIY" secondAttribute="top" constant="8.5999999999999996" id="HSX-bM-Exj"/>
                             <constraint firstItem="SzT-pL-G8H" firstAttribute="top" secondItem="NdW-dE-BLy" secondAttribute="bottom" constant="28.5" id="PHT-IV-sAe"/>
+                            <constraint firstItem="mEB-zl-umZ" firstAttribute="top" secondItem="SzT-pL-G8H" secondAttribute="bottom" constant="32" id="THq-4i-iXf"/>
                             <constraint firstItem="9As-jG-fRc" firstAttribute="top" secondItem="SzT-pL-G8H" secondAttribute="bottom" constant="17" id="Wao-SE-j4J"/>
                             <constraint firstItem="NdW-dE-BLy" firstAttribute="top" secondItem="12r-WZ-htJ" secondAttribute="bottom" constant="54.5" id="dWg-Yd-Dhx"/>
                             <constraint firstItem="NVn-hp-lIY" firstAttribute="trailing" secondItem="9As-jG-fRc" secondAttribute="trailing" constant="16" id="gkU-Gg-4ur"/>
+                            <constraint firstItem="mEB-zl-umZ" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="35" id="hPC-0G-Fdc"/>
                             <constraint firstItem="SzT-pL-G8H" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="15" id="liG-gH-1jU"/>
                             <constraint firstItem="12r-WZ-htJ" firstAttribute="leading" secondItem="hNO-zA-3Ms" secondAttribute="trailing" constant="115" id="mlp-T7-siY"/>
                             <constraint firstItem="YFn-xq-FyS" firstAttribute="leading" secondItem="NVn-hp-lIY" secondAttribute="leading" constant="16" id="pZ5-0e-zoL"/>
@@ -85,6 +96,7 @@
                     <connections>
                         <outlet property="nextButton" destination="YFn-xq-FyS" id="DkW-vF-Sia"/>
                         <outlet property="noticeLabel" destination="SzT-pL-G8H" id="kJr-k8-LvR"/>
+                        <outlet property="placeholderLabel" destination="mEB-zl-umZ" id="RPr-mw-XAW"/>
                         <outlet property="progressBar" destination="NdW-dE-BLy" id="fL1-G2-yWn"/>
                         <outlet property="sentenceTextView" destination="9As-jG-fRc" id="vma-0w-pVu"/>
                         <outlet property="xButton" destination="hNO-zA-3Ms" id="m5i-CE-ekn"/>
@@ -92,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oD8-dZ-4uc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3694" y="-183"/>
+            <point key="canvasLocation" x="-3672" y="-185"/>
         </scene>
     </scenes>
 </document>

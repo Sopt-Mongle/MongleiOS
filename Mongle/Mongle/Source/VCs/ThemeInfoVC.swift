@@ -20,11 +20,19 @@ class ThemeInfoVC: UIViewController {
     @IBOutlet var sentencesBackgroundView: UIView!
     @IBOutlet var themeBackgroundView: UIView!
     @IBOutlet var writeInThemeButton: UIButton!
+    @IBOutlet var themeInfoStackView: UIStackView!
+    @IBOutlet var themeNameLabel: UILabel!
     
+    @IBOutlet var curatorProfileImageView: UIImageView!
+    @IBOutlet var curatorNameLabel: UILabel!
+    
+    
+    //MARK:- Property
+    var hasTheme: Bool = true
     
     
     var sentences = [
-        "아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난아아아아아아나난나ㅏ나난",
+        "아아아아아아나난나ㅏ나난나나\n나나나나나난나ㅏ난아아아아아아나난나ㅏ나난",
         "아아아아아아나난나ㅏ나난나\n나나나나나나난나ㅏ난",
         "아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난",
         "아아아아아아나난나ㅏ나난나\n나나나나나나난나ㅏ난",
@@ -34,6 +42,7 @@ class ThemeInfoVC: UIViewController {
         "아아아아아아나난나ㅏ나난나\n나나나나나나난나ㅏ난",
         "아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난"
     ]
+    var themeText: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,15 +50,26 @@ class ThemeInfoVC: UIViewController {
     }
     
     func setInitLayout(){
-        themeBackgroundView.backgroundColor = UIColor(red: 90/255,
-                                                      green: 145 / 255,
-                                                      blue: 105 / 255,
-                                                      alpha: 0.55)
+        if hasTheme {
+            self.themeNameLabel.text = themeText ?? ""
+            themeBackgroundView.backgroundColor = UIColor(red: 90/255,
+                                                          green: 145 / 255,
+                                                          blue: 105 / 255,
+                                                          alpha: 0.55)
+        }
+        else {
+            curatorProfileImageView.isHidden = true
+            themeBackgroundView.backgroundColor = .veryLightPink
+            themeInfoStackView.alpha = 0
+            curatorNameLabel.snp.makeConstraints {
+                $0.leading.equalToSuperview().offset(16)
+            }
+        }
+        
         
         sentencesBackgroundView.layer.cornerRadius = 25
         sentencesBackgroundView.clipsToBounds = true
         writeInThemeButton.backgroundColor = .softGreen
-        
         // .layerMaxXMinYCorner : 오른쪽 위
         // .layerMaxXMaxYCorner : 오른쪽 아래
         // .layerMinXMaxYCorner : 왼쪽 아래
