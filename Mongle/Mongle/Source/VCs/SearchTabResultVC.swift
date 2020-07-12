@@ -26,6 +26,7 @@ class SearchTabResultVC: UIViewController {
         tabBarCV.delegate = self
         tabBarCV.dataSource = self
         
+        searchTextField.text = searchKeyword
         underBarView.backgroundColor = .softGreen
         underBarView.translatesAutoresizingMaskIntoConstraints = false
         let constraintHeight = underBarView.heightAnchor.constraint(equalToConstant: 2.0)

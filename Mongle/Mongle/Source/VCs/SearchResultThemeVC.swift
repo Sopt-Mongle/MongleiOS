@@ -36,31 +36,38 @@ class SearchResultThemeVC: UIViewController {
 
 extension SearchResultThemeVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let themeHeaderView = UIView()
-        let resultCountLabel = UILabel()
-        resultCountLabel.text = "검색된 테마 23개"
-        resultCountLabel.font = UIFont.systemFont(ofSize: 13)
-        themeHeaderView.addSubview(resultCountLabel)
+        
+        let resultCountLabel = UILabel().then {
+            $0.text = "검색된 테마 23개"
+            $0.font = UIFont.systemFont(ofSize: 13)
+        }
+        let dividerView = UIView().then {
+            $0.backgroundColor = .veryLightPink
+        }
+        let themeHeaderView = UIView().then {
+            $0.addSubview(dividerView)
+            $0.addSubview(resultCountLabel)
+            $0.backgroundColor = .white
+        }
         resultCountLabel.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(16)
             $0.top.equalToSuperview().offset(12)
             $0.trailing.equalToSuperview().offset(-260)
         }
-        let dividerView = UIView()
-        themeHeaderView.addSubview(dividerView)
-        dividerView.backgroundColor = .veryLightPink
         dividerView.snp.makeConstraints{
             $0.width.equalToSuperview()
             $0.height.equalTo(0.5)
             $0.top.equalTo(resultCountLabel.snp.bottom).offset(11)
             $0.bottom.equalToSuperview()
-            
-            
         }
+        
         return themeHeaderView
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
@@ -70,9 +77,17 @@ extension SearchResultThemeVC: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //검색어 색깔 설정하기
+//        guard let text = .text else {
+//             return
+//         }
+//
+//         let attributedString = NSMutableAttributedString(string: themeTitleLabel.text!)
+//         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.softGreen,
+//                                       range: (text as NSString).range(of: searchKeyWord))
+//         themeTitleLabel.attributedText = attributedString
         guard let cell = themeTableView.dequeueReusableCell(withIdentifier: "searchResultThemeTVC", for: indexPath) as? SearchResultThemeTVC else { return UITableViewCell() }
         return cell
     }
-    
     
 }
