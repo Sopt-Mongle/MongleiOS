@@ -12,9 +12,14 @@ class SentenceInfoVC: UIViewController {
     
     //MARK:- IBOutlet
     @IBOutlet var layoutTableView: UITableView!
+    @IBOutlet var likeAndBookmarkView: UIView!
     
     var themeText: String = "브랜딩이 어려울 때, 영감을 주는 문장"
-
+    
+    var hasTheme: Bool = true
+    var isMySentence: Bool = true
+    var canDisplayOtherSentece: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutTableView.delegate = self
@@ -24,6 +29,8 @@ class SentenceInfoVC: UIViewController {
     @objc func touchUpBackButton(){
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
 }
 
 //MARK:- Extension
@@ -53,11 +60,15 @@ extension SentenceInfoVC: UITableViewDelegate {
         if section == 0 {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 144))
             
+            
             let imageView = UIImageView(image: UIImage(named: "mongleCharacters"))
             imageView.backgroundColor = .brown
             
             let blurView = UIView().then {
-                $0.backgroundColor = UIColor(red: 90 / 255, green: 145 / 255, blue: 105 / 255, alpha: 0.55)
+               
+                    
+                    $0.backgroundColor = UIColor(red: 90 / 255, green: 145 / 255, blue: 105 / 255, alpha: 0.55)
+
             }
             
             let backButton = UIButton().then {
@@ -70,6 +81,12 @@ extension SentenceInfoVC: UITableViewDelegate {
                 $0.text = themeText
                 $0.textColor = .white
                 $0.font = UIFont.systemFont(ofSize: 18)
+            }
+            
+            if !hasTheme {
+                blurView.backgroundColor = .brownGreyThree
+                backButton.imageView?.tintColor = .white
+                likeAndBookmarkView.isHidden = true
             }
             
             view.addSubview(imageView)
@@ -165,7 +182,13 @@ extension SentenceInfoVC: UITableViewDelegate {
 extension SentenceInfoVC: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        if canDisplayOtherSentece {
+            return 2
+        }
+        else {
+            return 1
+        }
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
@@ -178,15 +201,21 @@ extension SentenceInfoVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceInfoTVC.identifier) else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceInfoTVC.identifier) as? SentenceInfoTVC else {
                 return UITableViewCell()
             }
+            cell.editButtonDelegate = { [weak self] sheet in
+                self?.present(sheet, animated: true, completion: nil)
+                
+            }
+            cell.editButton.isHidden = !isMySentence
+            
             return cell
         }
         else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceInThemeTVC.identifier) else {
                 return UITableViewCell()
-            }
+            }   
             
             return cell
         }
