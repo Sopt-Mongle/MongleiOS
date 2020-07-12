@@ -144,6 +144,17 @@
                                                         <constraint firstItem="VgR-e6-buW" firstAttribute="leading" secondItem="Dh8-31-nHh" secondAttribute="leading" id="z6c-Jf-MQZ"/>
                                                     </constraints>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ku-Q0-YFr">
+                                                    <rect key="frame" x="299" y="165.33333333333334" width="48" height="48"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="48" id="pmn-3a-ec2"/>
+                                                        <constraint firstAttribute="height" constant="48" id="z0R-49-hN6"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="touchUpEditButtonWithSender:" destination="rzz-hj-wEs" eventType="touchUpInside" id="Dxq-0e-St0"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="oFA-74-0DZ" firstAttribute="top" secondItem="wFt-IT-Wyd" secondAttribute="bottom" constant="52" id="1uT-lO-DHK"/>
@@ -151,10 +162,12 @@
                                                 <constraint firstItem="wFt-IT-Wyd" firstAttribute="top" secondItem="3UE-Uw-XSO" secondAttribute="bottom" constant="15" id="4cF-Jb-vej"/>
                                                 <constraint firstAttribute="trailing" secondItem="wFt-IT-Wyd" secondAttribute="trailing" constant="28" id="GEM-Xf-ofl"/>
                                                 <constraint firstItem="3UE-Uw-XSO" firstAttribute="leading" secondItem="8wQ-KA-hOB" secondAttribute="leading" constant="28" id="K06-Kq-WWO"/>
+                                                <constraint firstItem="8ku-Q0-YFr" firstAttribute="trailing" secondItem="oFA-74-0DZ" secondAttribute="trailing" id="KWo-FK-m6O"/>
                                                 <constraint firstAttribute="trailing" secondItem="oFA-74-0DZ" secondAttribute="trailing" constant="28" id="QIG-7i-Cuf"/>
                                                 <constraint firstItem="uI2-W8-mJV" firstAttribute="leading" secondItem="8wQ-KA-hOB" secondAttribute="leading" constant="28" id="VoM-dV-8TI"/>
                                                 <constraint firstAttribute="trailing" secondItem="77k-LW-Bmh" secondAttribute="trailing" id="WmB-oA-Squ"/>
                                                 <constraint firstItem="oFA-74-0DZ" firstAttribute="leading" secondItem="8wQ-KA-hOB" secondAttribute="leading" constant="28" id="Zm2-aG-x0R"/>
+                                                <constraint firstItem="8ku-Q0-YFr" firstAttribute="top" secondItem="oFA-74-0DZ" secondAttribute="bottom" id="cW3-yN-uQY"/>
                                                 <constraint firstAttribute="bottom" secondItem="77k-LW-Bmh" secondAttribute="bottom" id="dAf-Ho-Zsd"/>
                                                 <constraint firstItem="77k-LW-Bmh" firstAttribute="top" secondItem="uI2-W8-mJV" secondAttribute="bottom" constant="54.666666666666657" id="gOS-3c-MsD"/>
                                                 <constraint firstItem="uI2-W8-mJV" firstAttribute="top" secondItem="oFA-74-0DZ" secondAttribute="bottom" constant="14" id="iPV-GZ-6ep"/>
@@ -162,6 +175,9 @@
                                                 <constraint firstItem="77k-LW-Bmh" firstAttribute="leading" secondItem="8wQ-KA-hOB" secondAttribute="leading" id="zln-yR-hdI"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="editButton" destination="8ku-Q0-YFr" id="4rs-os-gzU"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SentenceInThemeTVC" id="Tw6-o6-1wC" customClass="SentenceInThemeTVC" customModule="Mongle" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="479.33333206176758" width="375" height="91"/>
@@ -376,6 +392,7 @@
                     </view>
                     <connections>
                         <outlet property="layoutTableView" destination="pCd-12-Rm6" id="lHl-f8-Vvk"/>
+                        <outlet property="likeAndBookmarkView" destination="ilp-5f-nzg" id="F8e-Zu-PZh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Da-af-jGX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
