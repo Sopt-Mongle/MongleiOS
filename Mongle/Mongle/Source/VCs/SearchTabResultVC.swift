@@ -107,7 +107,7 @@ extension SearchTabResultVC: UICollectionViewDelegate {
             return
         }
         print("item : \(item)")
-        
+        pageInstance.searchKey = searchKeyword ?? ""
         if item - pageInstance.keyValue.curPresentViewIndex > 0{
             pageInstance.setViewControllers([pageInstance.vcArr![item]], direction: .forward, animated: true, completion: nil)
             pageInstance.keyValue.curPresentViewIndex = item

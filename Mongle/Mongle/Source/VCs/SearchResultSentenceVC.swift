@@ -9,7 +9,7 @@
 import UIKit
 
 class SearchResultSentenceVC: UIViewController {
-
+    var searchKey:String = "봄"
     @IBOutlet weak var sentenceTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,7 @@ extension SearchResultSentenceVC: UITableViewDelegate{
         let resultCountLabel = UILabel().then {
             $0.text = "검색된 문장 23개"
             $0.font = UIFont.systemFont(ofSize: 13)
+            $0.textColor = .brownishGrey
         }
         let dividerView = UIView().then {
             $0.backgroundColor = .veryLightPink
@@ -75,6 +76,15 @@ extension SearchResultSentenceVC: UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultSentenceTVC", for: indexPath) as? SearchResultSentenceTVC else{
             return UITableViewCell()
         }
+        let text = cell.sentenceLabel.text
+        
+        
+        let attributedString = NSMutableAttributedString(string: cell.sentenceLabel.text!)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                      value: UIColor.softGreen,
+                                      range: (text as! NSString).range(of: searchKey))
+        cell.sentenceLabel.attributedText = attributedString
+        
         return cell
     }
     

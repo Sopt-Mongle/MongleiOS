@@ -21,6 +21,7 @@ class SearchResultPageVC: UIPageViewController {
     let identifiers: NSArray = ["SearchResultThemeVC", "SearchResultSentenceVC","SearchResultCuratorVC"]
     var vcArr: [UIViewController]?
     var keyValue = KVOObject()
+    var searchKey : String = ""
 //    @objc dynamic var curPresentViewIndex: Int = 0
     
     override func viewDidLoad() {

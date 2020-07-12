@@ -9,7 +9,7 @@
 import UIKit
 
 class SearchResultThemeVC: UIViewController {
-    
+    var searchKey:String = "번아웃"
     // MARK: - Outlet
     @IBOutlet weak var themeTableView: UITableView!
     
@@ -40,6 +40,7 @@ extension SearchResultThemeVC: UITableViewDelegate{
         let resultCountLabel = UILabel().then {
             $0.text = "검색된 테마 23개"
             $0.font = UIFont.systemFont(ofSize: 13)
+            $0.textColor = .brownishGrey
         }
         let dividerView = UIView().then {
             $0.backgroundColor = .veryLightPink
@@ -77,16 +78,18 @@ extension SearchResultThemeVC: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //검색어 색깔 설정하기
-//        guard let text = .text else {
-//             return
-//         }
-//
-//         let attributedString = NSMutableAttributedString(string: themeTitleLabel.text!)
-//         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.softGreen,
-//                                       range: (text as NSString).range(of: searchKeyWord))
-//         themeTitleLabel.attributedText = attributedString
+        
         guard let cell = themeTableView.dequeueReusableCell(withIdentifier: "searchResultThemeTVC", for: indexPath) as? SearchResultThemeTVC else { return UITableViewCell() }
+        
+        let text = cell.themeTitleLabel.text
+        
+        
+        let attributedString = NSMutableAttributedString(string: cell.themeTitleLabel.text!)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                      value: UIColor.softGreen,
+                                      range: (text as! NSString).range(of: searchKey))
+        cell.themeTitleLabel.attributedText = attributedString
+        
         return cell
     }
     

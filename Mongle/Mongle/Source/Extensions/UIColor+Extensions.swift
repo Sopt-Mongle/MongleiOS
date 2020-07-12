@@ -41,5 +41,8 @@ extension UIColor {
     @nonobjc class var veryLightPinkSix: UIColor {
       return UIColor(white: 231.0 / 255.0, alpha: 1.0)
     }
+    @nonobjc class var brownishGrey: UIColor {
+      return UIColor(white: 101.0 / 255.0, alpha: 1.0)
+    }
 
 }
