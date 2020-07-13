@@ -14,8 +14,6 @@ class MainTabFourthTVC: UITableViewCell {
     
     static let idnetifier = "MainTabFourthTVC"
 
-    let themas = ["가나다라마바사아자차", "가나다라마바사아자차", "가나다라마바사아자차"]
-    
     @IBOutlet var popularThemaCollectionview: UICollectionView! {
         didSet {
             popularThemaCollectionview.delegate = self
@@ -23,20 +21,30 @@ class MainTabFourthTVC: UITableViewCell {
         }
     }
     
+    
+    let themas = ["가나다라마바사아자차", "가나다라마바사아자차", "가나다라마바사아자차"]
+    var selectedCell: ((_ viewController: UIViewController) -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 }
 
 extension MainTabFourthTVC: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
+            return
+        }
+        dvc.themeText = themas[indexPath.item]
+        if let delegate = selectedCell {
+            delegate(dvc)
+        }
+    }
 }
 
 extension MainTabFourthTVC: UICollectionViewDataSource {
@@ -48,7 +56,7 @@ extension MainTabFourthTVC: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainPopularThemaCVC.identifier, for: indexPath) as? MainPopularThemaCVC else {
             return UICollectionViewCell()
         }
-        
+        cell.themaNameLabel.text = themas[indexPath.item]
         cell.blurStyle = .blue
         
         return cell
@@ -64,5 +72,3 @@ extension MainTabFourthTVC: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 5, left: 16, bottom: 43, right: 16)
     }
 }
-
-
