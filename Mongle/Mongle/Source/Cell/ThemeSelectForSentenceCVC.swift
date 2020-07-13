@@ -27,17 +27,7 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
     static let identifier : String = "ThemeSelectionCell"
     
     
-//    override var isSelected: Bool {
-//        didSet {
-//            if isSelected {
-//                checkImageView.alpha = 1
-//            }
-//            else {
-//                checkImageView.alpha = 0
-//            }
-//        }
-//    }
-    
+
     
     //MARK:- LifeCycle Methods
     override func awakeFromNib() {
@@ -53,7 +43,7 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
             themeImageView.image = UIImage(named: theme.imgName)?.withRenderingMode(.alwaysOriginal)
             themeTitleLabel.text = theme.themeTitle
             themeTitleLabel.textColor = .white
-            checkImageView.image = UIImage(named: "themeImgCurator")
+            checkImageView.image = UIImage(named: "writingTheme3ImgCheck")
             checkImageView.alpha = 0
             
             guard let text = themeTitleLabel.text else {
@@ -70,7 +60,7 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
                 themeTitleLabel.textAlignment = .left
 
             if shouldBeChecked {
-                checkImageView.alpha = 0.5
+                checkImageView.alpha = 1
             }
         }
         
@@ -81,10 +71,10 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
             themeTitleLabel.textAlignment = .center
             
             topContraint.constant = 74
-            checkImageView.image = UIImage(named: "themeImgCurator")
+            checkImageView.image = UIImage(named: "writingTheme3ImgCheck")
             checkImageView.alpha = 0
             if shouldBeChecked {
-                checkImageView.alpha = 0.5
+                checkImageView.alpha = 1
             }
             
             

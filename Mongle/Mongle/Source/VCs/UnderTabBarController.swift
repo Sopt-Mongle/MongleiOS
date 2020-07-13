@@ -256,7 +256,7 @@ class UnderTabBarController: UITabBarController {
     @objc func makeSentenceButtonAction(sender: UIButton?){
         guard let vcName = UIStoryboard(name: "WritingSentence",
                                         bundle: nil).instantiateViewController(
-                                            withIdentifier: "WritingSentenceVC") as? WritingSentenceVC
+                                            withIdentifier: "WritingSentenceVC") as? UINavigationController
             else{
                 return
         }
