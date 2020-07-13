@@ -29,6 +29,7 @@ class EndOfWritingSentenceVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setItems()
+        //self.view.addSubview(yesButton)
         
         // Do any additional setup after loading the view.
     }
@@ -50,6 +51,17 @@ class EndOfWritingSentenceVC: UIViewController {
         
         
     }
+     
+     
     
-
+     
+     
+     
+    
+    
+    @IBAction func backToMainButtonAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
 }
