@@ -90,6 +90,11 @@ extension MainTabMainVC: UITableViewDataSource {
                 return UITableViewCell()
             }
             
+            
+            cell.selectSentenceDelegate = {[weak self] dvc in
+                self?.navigationController?.pushViewController(dvc, animated: true)
+            }
+            
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier:MainTabThirdTVC.identifier) as? MainTabThirdTVC else {
