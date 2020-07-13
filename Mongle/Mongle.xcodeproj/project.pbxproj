@@ -53,6 +53,8 @@
 		EC7410B824BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410B724BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift */; };
 		EC7410BA24BA87F000CBAF1C /* EndOfMakingTheme.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7410B924BA87F000CBAF1C /* EndOfMakingTheme.storyboard */; };
 		EC7410BC24BA883100CBAF1C /* EndOfMakingThemeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410BB24BA883100CBAF1C /* EndOfMakingThemeVC.swift */; };
+		EC7410E024BC534100CBAF1C /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7410DF24BC534100CBAF1C /* LogIn.storyboard */; };
+		EC7410E224BC539500CBAF1C /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410E124BC539500CBAF1C /* LogInVC.swift */; };
 		EC7C78EE24B2F2A800B7FCFB /* UnderTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */; };
 		EC7C78F024B2F2DE00B7FCFB /* UnderTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */; };
 		EC86B49624B7169200DB930A /* SearchBookForWriting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC86B49524B7169200DB930A /* SearchBookForWriting.storyboard */; };
@@ -122,6 +124,8 @@
 		EC7410B724BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeMakeImagesCVC.swift; sourceTree = "<group>"; };
 		EC7410B924BA87F000CBAF1C /* EndOfMakingTheme.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EndOfMakingTheme.storyboard; sourceTree = "<group>"; };
 		EC7410BB24BA883100CBAF1C /* EndOfMakingThemeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndOfMakingThemeVC.swift; sourceTree = "<group>"; };
+		EC7410DF24BC534100CBAF1C /* LogIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
+		EC7410E124BC539500CBAF1C /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
 		EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnderTab.storyboard; sourceTree = "<group>"; };
 		EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderTabBarController.swift; sourceTree = "<group>"; };
 		EC86B49524B7169200DB930A /* SearchBookForWriting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchBookForWriting.storyboard; sourceTree = "<group>"; };
@@ -242,6 +246,7 @@
 				7F7C097224BAF714007C7C52 /* SentenceEdit.storyboard */,
 				EC7410B324BA03E800CBAF1C /* EndOfWritingSentence.storyboard */,
 				EC7410B924BA87F000CBAF1C /* EndOfMakingTheme.storyboard */,
+				EC7410DF24BC534100CBAF1C /* LogIn.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 				EC7410B524BA040300CBAF1C /* EndOfWritingSentenceVC.swift */,
 				EC7410BB24BA883100CBAF1C /* EndOfMakingThemeVC.swift */,
 				7F7C097424BAFAAE007C7C52 /* SentenceEditVC.swift */,
+				EC7410E124BC539500CBAF1C /* LogInVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -412,6 +418,7 @@
 				EC86B49624B7169200DB930A /* SearchBookForWriting.storyboard in Resources */,
 				EC88960624B869E9008D29E2 /* WritingSentenceThird.storyboard in Resources */,
 				ECEF22BA24B4A3B200933534 /* WritingSentence.storyboard in Resources */,
+				EC7410E024BC534100CBAF1C /* LogIn.storyboard in Resources */,
 				7F7C096D24B9C776007C7C52 /* SentenceInfo.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +480,7 @@
 				7F1E719924B45AB600D79516 /* MainPopularCuratorCVC.swift in Sources */,
 				EC88961224B88AE4008D29E2 /* ThemeSelectForSentenceCVC.swift in Sources */,
 				7F7C097524BAFAAE007C7C52 /* SentenceEditVC.swift in Sources */,
+				EC7410E224BC539500CBAF1C /* LogInVC.swift in Sources */,
 				7F6ABEDD24ADF3B20040746E /* NetworkResult.swift in Sources */,
 				EC7410B624BA040300CBAF1C /* EndOfWritingSentenceVC.swift in Sources */,
 				B8AB121B24B46CC100B60240 /* CuratorListVC.swift in Sources */,

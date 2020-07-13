@@ -10,7 +10,7 @@
         <!--Under Tab Bar Controller-->
         <scene sceneID="fwY-Aj-2Nl">
             <objects>
-                <viewController storyboardIdentifier="UnderTabBarController" id="GP1-GU-VhZ" customClass="UnderTabBarController" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GP1-GU-VhZ" customClass="UnderTabBarController" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5hF-hJ-X2A">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
         <!--Navigation Controller-->
         <scene sceneID="TGk-v6-6og">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="GJN-7q-o8e" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="UnderTabBarController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="GJN-7q-o8e" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6go-SM-SSH">
                         <autoresizingMask key="autoresizingMask"/>
