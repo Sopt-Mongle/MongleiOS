@@ -13,7 +13,8 @@ class SentenceInfoTVC: UITableViewCell {
     static let identifier = "SentenceInfoTVC"
     
     @IBOutlet var editButton: UIButton!
-    
+    @IBOutlet var sentenceLabel: UILabel!
+    var sentence: String?
     
     var editButtonDelegate: ((UIAlertController) -> Void) = { _ in }
     
@@ -21,6 +22,8 @@ class SentenceInfoTVC: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        print(sentence)
+        sentenceLabel.text = sentence ?? ""
         // Initialization code
     }
 
@@ -32,29 +35,6 @@ class SentenceInfoTVC: UITableViewCell {
     @IBAction func touchUpEditButton(sender: UIButton) {
         
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
-        
-        let editAction = UIAlertAction(title: "수정", style: .default) { action in
-            
-        }.then {
-            $0.titleTextColor = .black
-        }
-        
-        let deleteAction = UIAlertAction(title: "삭제", style: .default) { action in
-            
-        }.then {
-            $0.titleTextColor = .black
-        }
-        
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { action in
-        }.then {
-            $0.titleTextColor = .black
-        }
-
-        actionSheet.addAction(editAction)
-        actionSheet.addAction(deleteAction)
-        actionSheet.addAction(cancelAction)
-        
         self.editButtonDelegate(actionSheet)
     }
 

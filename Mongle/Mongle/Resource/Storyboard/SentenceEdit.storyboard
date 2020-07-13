@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zCC-F9-Jlx">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sentence EditVC-->
+        <scene sceneID="VdV-nF-trl">
+            <objects>
+                <viewController storyboardIdentifier="SentenceEditVC" id="zCC-F9-Jlx" customClass="SentenceEditVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Ra-82-Ie6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ro-L1-TTi">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="92.333333333333329"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsA-kk-x3J">
+                                        <rect key="frame" x="0.0" y="37" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="Ufd-nZ-mD5"/>
+                                            <constraint firstAttribute="height" constant="48" id="iq9-rY-gtB"/>
+                                        </constraints>
+                                        <state key="normal" image="searchBtnBack"/>
+                                        <connections>
+                                            <action selector="touchUpBackButton:" destination="zCC-F9-Jlx" eventType="touchUpInside" id="Uup-Dv-jPl"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="문장 수정하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3q-0d-UjM">
+                                        <rect key="frame" x="138" y="48" width="99" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="u3q-0d-UjM" firstAttribute="top" secondItem="7ro-L1-TTi" secondAttribute="top" constant="48" id="BM6-is-9gu"/>
+                                    <constraint firstItem="MsA-kk-x3J" firstAttribute="leading" secondItem="7ro-L1-TTi" secondAttribute="leading" id="FO8-V9-HJO"/>
+                                    <constraint firstItem="u3q-0d-UjM" firstAttribute="centerX" secondItem="7ro-L1-TTi" secondAttribute="centerX" id="e3c-Fc-dkK"/>
+                                    <constraint firstAttribute="width" secondItem="7ro-L1-TTi" secondAttribute="height" multiplier="69:17" id="kcD-8v-iyL"/>
+                                    <constraint firstItem="MsA-kk-x3J" firstAttribute="top" secondItem="7ro-L1-TTi" secondAttribute="top" constant="37" id="qa9-fE-0oU"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5Ws-rj-kLv">
+                                <rect key="frame" x="16" y="92.333333333333314" width="343" height="410"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5Ws-rj-kLv" secondAttribute="height" multiplier="343:410" id="eiR-J6-PBf"/>
+                                </constraints>
+                                <string key="text">처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으로 인해 
+생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고 있는 풍경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 가나다라 마바사</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/280" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSP-QO-OJ0">
+                                <rect key="frame" x="322" y="515.33333333333337" width="37" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFe-cy-R3F">
+                                <rect key="frame" x="16" y="705" width="343" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YFe-cy-R3F" secondAttribute="height" multiplier="343:57" id="TKg-WK-N7P"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6L6-Zu-xtK" firstAttribute="trailing" secondItem="7ro-L1-TTi" secondAttribute="trailing" id="AMA-Ht-RjN"/>
+                            <constraint firstItem="7ro-L1-TTi" firstAttribute="top" secondItem="9Ra-82-Ie6" secondAttribute="top" id="Dcq-KQ-Dv4"/>
+                            <constraint firstItem="6L6-Zu-xtK" firstAttribute="trailing" secondItem="5Ws-rj-kLv" secondAttribute="trailing" constant="16" id="FKh-kl-khK"/>
+                            <constraint firstItem="7ro-L1-TTi" firstAttribute="leading" secondItem="6L6-Zu-xtK" secondAttribute="leading" id="Fel-Tn-BFc"/>
+                            <constraint firstItem="YFe-cy-R3F" firstAttribute="leading" secondItem="6L6-Zu-xtK" secondAttribute="leading" constant="16" id="G1s-sc-qna"/>
+                            <constraint firstItem="6L6-Zu-xtK" firstAttribute="trailing" secondItem="YFe-cy-R3F" secondAttribute="trailing" constant="16" id="JCP-WL-czV"/>
+                            <constraint firstItem="JSP-QO-OJ0" firstAttribute="top" secondItem="5Ws-rj-kLv" secondAttribute="bottom" constant="13" id="KHP-wr-Hre"/>
+                            <constraint firstItem="5Ws-rj-kLv" firstAttribute="leading" secondItem="6L6-Zu-xtK" secondAttribute="leading" constant="16" id="NlK-Vw-AFx"/>
+                            <constraint firstItem="6L6-Zu-xtK" firstAttribute="bottom" secondItem="YFe-cy-R3F" secondAttribute="bottom" constant="16" id="Vyl-pJ-8Ap"/>
+                            <constraint firstItem="5Ws-rj-kLv" firstAttribute="top" secondItem="7ro-L1-TTi" secondAttribute="bottom" id="cn9-Wy-B3O"/>
+                            <constraint firstItem="JSP-QO-OJ0" firstAttribute="trailing" secondItem="5Ws-rj-kLv" secondAttribute="trailing" id="lb8-0K-sYh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6L6-Zu-xtK"/>
+                    </view>
+                    <connections>
+                        <outlet property="editButton" destination="YFe-cy-R3F" id="lBJ-Sb-Q9C"/>
+                        <outlet property="sentenceTextView" destination="5Ws-rj-kLv" id="q5B-8q-m3s"/>
+                        <outlet property="textCountLabel" destination="JSP-QO-OJ0" id="1h4-Ep-3DC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BGr-Tf-qnG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="142" y="116"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="searchBtnBack" width="10.333333015441895" height="18.666666030883789"/>
+    </resources>
+</document>

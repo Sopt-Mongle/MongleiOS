@@ -14,16 +14,26 @@ class SentenceInfoVC: UIViewController {
     @IBOutlet var layoutTableView: UITableView!
     @IBOutlet var likeAndBookmarkView: UIView!
     
+    //MARK:- Property
     var themeText: String = "브랜딩이 어려울 때, 영감을 주는 문장"
-    
+    var sentenceText: String = """
+처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호
+감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍
+경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으
+로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정
+과 머금고있는 풍경과 분위기까지. 처음 마주할 때의
+인상, 사소한 것으로 인해 생기는 호감, 
+"""
     var hasTheme: Bool = true
     var isMySentence: Bool = true
     var canDisplayOtherSentece: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
+        
     }
     
     @objc func touchUpBackButton(){
@@ -204,10 +214,36 @@ extension SentenceInfoVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceInfoTVC.identifier) as? SentenceInfoTVC else {
                 return UITableViewCell()
             }
+            print(self.sentenceText)
+            cell.sentenceLabel.text = self.sentenceText
             cell.editButtonDelegate = { [weak self] sheet in
-                self?.present(sheet, animated: true, completion: nil)
+                let editAction = UIAlertAction(title: "수정", style: .default) { action in
+                    guard let dvc = UIStoryboard.init(name: "SentenceEdit", bundle: nil).instantiateViewController(identifier: "SentenceEditVC") as? SentenceEditVC else {
+                        return
+                    }
+                    dvc.text = self?.sentenceText
+                    self?.navigationController?.pushViewController(dvc, animated: true)
+                }.then {
+                    $0.titleTextColor = .black
+                }
                 
+                let deleteAction = UIAlertAction(title: "삭제", style: .default) { action in
+                    
+                }.then {
+                    $0.titleTextColor = .black
+                }
+                
+                let cancelAction = UIAlertAction(title: "취소", style: .cancel) { action in
+                }.then {
+                    $0.titleTextColor = .black
+                }
+
+                sheet.addAction(editAction)
+                sheet.addAction(deleteAction)
+                sheet.addAction(cancelAction)
+                self?.present(sheet, animated: true, completion: nil)
             }
+        
             cell.editButton.isHidden = !isMySentence
             
             return cell
