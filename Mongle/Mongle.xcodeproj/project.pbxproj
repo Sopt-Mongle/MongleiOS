@@ -56,6 +56,13 @@
 		B8B48AE324B9845800551F5B /* SearchResultThemeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B48AE224B9845800551F5B /* SearchResultThemeTVC.swift */; };
 		B8B48AE524B9847500551F5B /* SearchResultSentenceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B48AE424B9847500551F5B /* SearchResultSentenceTVC.swift */; };
 		B8B48B2924BB3DEE00551F5B /* SearchResultCuratorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B48B2824BB3DED00551F5B /* SearchResultCuratorHeaderView.swift */; };
+		B8B48B2B24BC66B700551F5B /* CuratorTabMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B48B2A24BC66B700551F5B /* CuratorTabMain.storyboard */; };
+		B8B48B2D24BC66DD00551F5B /* CuratorTabKeyword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B48B2C24BC66DD00551F5B /* CuratorTabKeyword.storyboard */; };
+		B8B48B2F24BC66F400551F5B /* CuratorTabInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B48B2E24BC66F400551F5B /* CuratorTabInfo.storyboard */; };
+		B8B48B3124BC673C00551F5B /* CuratorTabMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B48B3024BC673C00551F5B /* CuratorTabMainVC.swift */; };
+		B8B48B3324BC675000551F5B /* CuratorTabKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B48B3224BC675000551F5B /* CuratorTabKeyword.swift */; };
+		B8B48B3524BC676500551F5B /* CuratorTabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B48B3424BC676500551F5B /* CuratorTabInfo.swift */; };
+		B8B48B3724BC878C00551F5B /* CuratorTabMainTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B48B3624BC878C00551F5B /* CuratorTabMainTVC.swift */; };
 		B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */; };
 		B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */; };
 		B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */; };
@@ -135,6 +142,13 @@
 		B8B48AE224B9845800551F5B /* SearchResultThemeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultThemeTVC.swift; sourceTree = "<group>"; };
 		B8B48AE424B9847500551F5B /* SearchResultSentenceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSentenceTVC.swift; sourceTree = "<group>"; };
 		B8B48B2824BB3DED00551F5B /* SearchResultCuratorHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCuratorHeaderView.swift; sourceTree = "<group>"; };
+		B8B48B2A24BC66B700551F5B /* CuratorTabMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CuratorTabMain.storyboard; sourceTree = "<group>"; };
+		B8B48B2C24BC66DD00551F5B /* CuratorTabKeyword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CuratorTabKeyword.storyboard; sourceTree = "<group>"; };
+		B8B48B2E24BC66F400551F5B /* CuratorTabInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CuratorTabInfo.storyboard; sourceTree = "<group>"; };
+		B8B48B3024BC673C00551F5B /* CuratorTabMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorTabMainVC.swift; sourceTree = "<group>"; };
+		B8B48B3224BC675000551F5B /* CuratorTabKeyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorTabKeyword.swift; sourceTree = "<group>"; };
+		B8B48B3424BC676500551F5B /* CuratorTabInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorTabInfo.swift; sourceTree = "<group>"; };
+		B8B48B3624BC878C00551F5B /* CuratorTabMainTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorTabMainTVC.swift; sourceTree = "<group>"; };
 		B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchTabMain.storyboard; sourceTree = "<group>"; };
 		B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTabMainVC.swift; sourceTree = "<group>"; };
 		B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchCVC.swift; sourceTree = "<group>"; };
@@ -265,6 +279,9 @@
 				7F7C097224BAF714007C7C52 /* SentenceEdit.storyboard */,
 				EC7410B324BA03E800CBAF1C /* EndOfWritingSentence.storyboard */,
 				EC7410B924BA87F000CBAF1C /* EndOfMakingTheme.storyboard */,
+				B8B48B2A24BC66B700551F5B /* CuratorTabMain.storyboard */,
+				B8B48B2C24BC66DD00551F5B /* CuratorTabKeyword.storyboard */,
+				B8B48B2E24BC66F400551F5B /* CuratorTabInfo.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -329,6 +346,7 @@
 				7F7C097024BA2EE7007C7C52 /* SentenceInfoTVC.swift */,
 				EC88961124B88AE4008D29E2 /* ThemeSelectForSentenceCVC.swift */,
 				EC7410B724BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift */,
+				B8B48B3624BC878C00551F5B /* CuratorTabMainTVC.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -356,6 +374,9 @@
 				EC7410B524BA040300CBAF1C /* EndOfWritingSentenceVC.swift */,
 				EC7410BB24BA883100CBAF1C /* EndOfMakingThemeVC.swift */,
 				7F7C097424BAFAAE007C7C52 /* SentenceEditVC.swift */,
+				B8B48B3024BC673C00551F5B /* CuratorTabMainVC.swift */,
+				B8B48B3224BC675000551F5B /* CuratorTabKeyword.swift */,
+				B8B48B3424BC676500551F5B /* CuratorTabInfo.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -432,6 +453,7 @@
 				B8AB121924B46C7400B60240 /* CuratorList.storyboard in Resources */,
 				7F6ABEBE24ADE7720040746E /* LaunchScreen.storyboard in Resources */,
 				EC7C78EE24B2F2A800B7FCFB /* UnderTab.storyboard in Resources */,
+				B8B48B2B24BC66B700551F5B /* CuratorTabMain.storyboard in Resources */,
 				EC7410B424BA03E800CBAF1C /* EndOfWritingSentence.storyboard in Resources */,
 				EC7410BA24BA87F000CBAF1C /* EndOfMakingTheme.storyboard in Resources */,
 				ECA23EDE24B5F58D00C100F1 /* WritingSentenceSecond.storyboard in Resources */,
@@ -439,9 +461,11 @@
 				B8AB122324B5C10B00B60240 /* SearchTabResult.storyboard in Resources */,
 				EC88960C24B87F3D008D29E2 /* ThemeSelectForWriteSentence.storyboard in Resources */,
 				B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */,
+				B8B48B2D24BC66DD00551F5B /* CuratorTabKeyword.storyboard in Resources */,
 				7F1E71A824B7A72400D79516 /* ThemeInfo.storyboard in Resources */,
 				7F7C097324BAF714007C7C52 /* SentenceEdit.storyboard in Resources */,
 				7F1E71A424B504CF00D79516 /* MainTabMain.storyboard in Resources */,
+				B8B48B2F24BC66F400551F5B /* CuratorTabInfo.storyboard in Resources */,
 				7F6ABEBB24ADE7720040746E /* Assets.xcassets in Resources */,
 				EC86B49624B7169200DB930A /* SearchBookForWriting.storyboard in Resources */,
 				EC88960624B869E9008D29E2 /* WritingSentenceThird.storyboard in Resources */,
@@ -505,6 +529,7 @@
 				7F6ABED724ADEB730040746E /* UserDefaultKeys.swift in Sources */,
 				7F7C097124BA2EE7007C7C52 /* SentenceInfoTVC.swift in Sources */,
 				7F1E719924B45AB600D79516 /* MainPopularCuratorCVC.swift in Sources */,
+				B8B48B3124BC673C00551F5B /* CuratorTabMainVC.swift in Sources */,
 				B8B48B2924BB3DEE00551F5B /* SearchResultCuratorHeaderView.swift in Sources */,
 				7F6ABEDD24ADF3B20040746E /* NetworkResult.swift in Sources */,
 				B8B48A5B24B6027C00551F5B /* SearchResultThemeVC.swift in Sources */,
@@ -520,9 +545,11 @@
 				7F767D7724B211D100ADF46D /* WritingThemeVC.swift in Sources */,
 				7FCEE21D24B355FC00225CA3 /* MainPictureCVC.swift in Sources */,
 				B8B48AE324B9845800551F5B /* SearchResultThemeTVC.swift in Sources */,
+				B8B48B3524BC676500551F5B /* CuratorTabInfo.swift in Sources */,
 				7F1E719D24B46E3C00D79516 /* MainPopularThemaCVC.swift in Sources */,
 				EC88960A24B86AE8008D29E2 /* ThirdViewOfWritingSentenceVC.swift in Sources */,
 				7F1E71A224B4A40B00D79516 /* MainTabDefaultHeaderView.swift in Sources */,
+				B8B48B3324BC675000551F5B /* CuratorTabKeyword.swift in Sources */,
 				7FCEE21F24B363CF00225CA3 /* MainTabSecondTVC.swift in Sources */,
 				7FCEE21B24B3091C00225CA3 /* MainTabFirstTVC.swift in Sources */,
 				7F7C096F24BA2910007C7C52 /* SentenceInfoVC.swift in Sources */,
@@ -546,6 +573,7 @@
 				7F6ABEB424ADE7700040746E /* SceneDelegate.swift in Sources */,
 				B8B48A5D24B6029100551F5B /* SearchResultSentenceVC.swift in Sources */,
 				EC7C78F024B2F2DE00B7FCFB /* UnderTabBarController.swift in Sources */,
+				B8B48B3724BC878C00551F5B /* CuratorTabMainTVC.swift in Sources */,
 				B8B48A5924B6025400551F5B /* SearchResultPageVC.swift in Sources */,
 				7F6ABED324ADE9D60040746E /* UIViewController+Extensions.swift in Sources */,
 				7F6ABECF24ADE8F80040746E /* UIColor+Extensions.swift in Sources */,
