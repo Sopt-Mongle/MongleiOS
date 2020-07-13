@@ -1,5 +1,5 @@
 //
-//  CuratorTabKeyword.swift
+//  CuratorTabInfo.swift
 //  Mongle
 //
 //  Created by 이예슬 on 7/13/20.
@@ -8,13 +8,11 @@
 
 import UIKit
 
-class CuratorTabKeyword: UIViewController {
-    
-    var selectedKeyword:String?
-    @IBOutlet weak var keywordTitleLabel: UILabel!
+class CuratorTabInfoVC: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        keywordTitleLabel.text = selectedKeyword
+
         // Do any additional setup after loading the view.
     }
     

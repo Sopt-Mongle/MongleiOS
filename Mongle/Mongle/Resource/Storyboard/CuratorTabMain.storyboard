@@ -100,6 +100,9 @@
                                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="감성자극"/>
+                                                            <connections>
+                                                                <action selector="touchKeywordBTN:" destination="8gF-jx-CzC" eventType="touchUpInside" id="JCs-e1-9yC"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7L-EX-8oH">
                                                             <rect key="frame" x="125" y="0.0" width="125" height="50"/>
@@ -107,11 +110,17 @@
                                                             <inset key="contentEdgeInsets" minX="-1" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="-1" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <state key="normal" title="동기부여"/>
+                                                            <connections>
+                                                                <action selector="touchKeywordBTN:" destination="8gF-jx-CzC" eventType="touchUpInside" id="qtq-Ae-d9j"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwr-52-RC0">
                                                             <rect key="frame" x="250" y="0.0" width="125" height="50"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="자기계발"/>
+                                                            <connections>
+                                                                <action selector="touchKeywordBTN:" destination="8gF-jx-CzC" eventType="touchUpInside" id="LMU-UE-HsC"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -124,17 +133,26 @@
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="깊은생각"/>
+                                                            <connections>
+                                                                <action selector="touchKeywordBTN:" destination="8gF-jx-CzC" eventType="touchUpInside" id="IZi-TA-aRa"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ffy-B2-4Ti">
                                                             <rect key="frame" x="125" y="0.0" width="125" height="50"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="독서기록"/>
+                                                            <connections>
+                                                                <action selector="touchKeywordBTN:" destination="8gF-jx-CzC" eventType="touchUpInside" id="uu8-Rj-Yc2"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAs-cf-DEc">
                                                             <rect key="frame" x="250" y="0.0" width="125" height="50"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="일상문장"/>
+                                                            <connections>
+                                                                <action selector="touchKeywordBTN:" destination="8gF-jx-CzC" eventType="touchUpInside" id="wM3-rR-RUd"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

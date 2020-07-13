@@ -10,12 +10,25 @@ import UIKit
 
 class CuratorTabMainVC: UIViewController {
     
+    var keywordList:[String] = ["감성자극","동기부여","자기계발","깊은생각","독서기록","일상문장"]
+    
     //MARK:- IBOutlet
     @IBOutlet weak var curatorTabTableView: UITableView!
     @IBOutlet weak var popularCollectionView: UICollectionView!
- 
-    
     @IBOutlet var keywordBTN: [UIButton]!
+    
+    @IBAction func touchKeywordBTN(_ sender: UIButton) {
+        guard let keywordVC = UIStoryboard(name:"CuratorTabKeyword",bundle:nil).instantiateViewController(identifier: "CuratorTabKeywordVC") as? CuratorTabKeywordVC else {
+            return
+            
+        }
+        print(#function)
+        print(sender.tag)
+        keywordVC.selectedKeyword = keywordList[sender.tag]
+        self.navigationController?.pushViewController(keywordVC, animated: true)
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,13 +36,17 @@ class CuratorTabMainVC: UIViewController {
         curatorTabTableView.dataSource = self
         popularCollectionView.delegate = self
         popularCollectionView.dataSource = self
-        
+        var idx = 0
         for btn in keywordBTN{
+            btn.setTitle(keywordList[idx], for: .normal)
             btn.setTitleColor(.brownGrey, for: .normal)
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+            btn.tag = idx
+            idx += 1
 //            btn.setBorder(borderColor: .brownGrey, borderWidth: 1)
             //btn.backgroundColor = .white
             btn.setBackgroundImage(UIImage(named:"curatorBtnKeyword1"), for: .normal)
+            
             
             
         }
