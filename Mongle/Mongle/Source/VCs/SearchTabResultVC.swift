@@ -10,15 +10,22 @@ import UIKit
 
 class SearchTabResultVC: UIViewController {
     
-    @IBOutlet weak var tabBarCV: UICollectionView!
-    @IBOutlet weak var underBarView: UIView!
-    
-    @IBOutlet weak var searchTextField: UITextField!
     let menuItem = ["테마","문장","큐레이터"]
     var pageInstance : SearchResultPageVC?
     var observingList: [NSKeyValueObservation] = []
     var underBarConstraintList: [NSLayoutConstraint] = []
-    var searchKeyword:String? = "번아웃"
+    var searchKeyword:String = ""
+    //MARK:- IBOutlet
+    @IBOutlet weak var tabBarCV: UICollectionView!
+    @IBOutlet weak var underBarView: UIView!
+    @IBOutlet weak var searchTextField: UITextField!
+    
+    @IBAction func touchUpSearch(_ sender: Any) {
+        
+    }
+    @IBAction func touchUpBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +46,8 @@ class SearchTabResultVC: UIViewController {
         tabBarCV.selectItem(at: IndexPath(item: 0, section: 0),
                             animated: false,
                             scrollPosition: .bottom)
+        print(#function)
+        print(searchKeyword)
         // Do any additional setup after loading the view.
     }
     
@@ -59,7 +68,7 @@ class SearchTabResultVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pageSegue" {
             pageInstance = segue.destination as? SearchResultPageVC
-            
+            pageInstance?.searchKey = self.searchKeyword
             let ob = pageInstance?
                 .keyValue
                 .observe(\.curPresentViewIndex,
@@ -107,7 +116,7 @@ extension SearchTabResultVC: UICollectionViewDelegate {
             return
         }
         print("item : \(item)")
-        pageInstance.searchKey = searchKeyword ?? ""
+//        pageInstance.searchKey = searchKeyword ?? "실ㄹㄹㄹㄹㄹㄹㄹㄹㄹ패"
         if item - pageInstance.keyValue.curPresentViewIndex > 0{
             pageInstance.setViewControllers([pageInstance.vcArr![item]], direction: .forward, animated: true, completion: nil)
             pageInstance.keyValue.curPresentViewIndex = item

@@ -9,21 +9,22 @@ import UIKit
 
 class SearchTabMainVC: UIViewController{
     
+    
     var recentKeyArray : [String] = ["최근","검색어","테스트중","몽글","알러뷰"]
     var recommendKeyArray : [String] = ["에세이","몽글","테마","큐레이터","몽골","오늘저녁또떡"]
     var searchKey : String?
+    
     // MARK:- IBOutlet
     @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var stringCounter: UILabel!
     @IBOutlet weak var recentSearchCV: UICollectionView!
     @IBOutlet weak var recommendSearchCV: UICollectionView!
     @IBOutlet weak var searchBTN: UIButton!
     
-
+    // MARK:= IBAction
     @IBAction func touchUpSearchBTN(_ sender: Any) {
         //searchKey = searchTextField.text
         if searchTextField.hasText{
-            searchKey = searchTextField.text
+            searchKey = searchTextField.text ?? ""
             if recentKeyArray.contains(searchKey!){
                 let length = recentKeyArray.count
                 for idx in 0..<length {
@@ -37,14 +38,18 @@ class SearchTabMainVC: UIViewController{
             recentSearchCV.reloadData()
             
         }
+        
         searchTextField.text = ""
         let sb = UIStoryboard.init(name: "SearchTabResult", bundle: nil)
         if let dvc = sb.instantiateViewController(identifier: "searchTabResultVC") as? SearchTabResultVC {
-            dvc.searchKeyword = self.searchKey
+            dvc.searchKeyword = self.searchKey ?? "실패"
             self.navigationController?.pushViewController(dvc, animated: true)
         }
         
         
+    }
+    @IBAction func touchUpBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func removeSearchHistoryBTN(_ sender: Any) {
         recentKeyArray = []
@@ -61,10 +66,6 @@ class SearchTabMainVC: UIViewController{
         
         initGestureRecognizer()
         
-        //recommendSearchCV.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
-        //UserDefaults.standard.s
-        //searchTextField.delegate = self
-        // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         searchTextField.becomeFirstResponder()
@@ -98,52 +99,7 @@ class SearchTabMainVC: UIViewController{
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-//
-//    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-//        let attributes = super.layoutAttributesForElements(in: rect)
-//
-//        var leftMargin = sectionInset.left
-//        var maxY: CGFloat = -1.0
-//        attributes?.forEach { layoutAttribute in
-//            if layoutAttribute.frame.origin.y >= maxY {
-//                leftMargin = sectionInset.left
-//            }
-//
-//            layoutAttribute.frame.origin.x = leftMargin
-//
-//            leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
-//            maxY = max(layoutAttribute.frame.maxY , maxY)
-//        }
-//
-//        return attributes
-//    }
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
-
-//extension SearchTabMainVC: UITextFieldDelegate{
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        let strLength = textField.text?.count ?? 0
-//        //print(strLength)
-//        let lngthToAdd = string.count
-//        //print(lngthToAdd)
-//        let lengthCount = strLength + lngthToAdd
-//        self.stringCounter.text = "\(lengthCount)"
-//        return true
-//    }
-//
-//}
 
 extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate{
     
@@ -226,54 +182,7 @@ extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionView
         }
     }
 
-    
-    
-//    func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-//        let attributes = self.layoutAttributesForElements(in: rect)
-//
-//        var leftMargin = sectionInset.left
-//        var maxY: CGFloat = -1.0
-//        attributes?.forEach { layoutAttribute in
-//            if layoutAttribute.frame.origin.y >= maxY {
-//                leftMargin = sectionInset.left
-//            }
-//
-//            layoutAttribute.frame.origin.x = leftMargin
-//
-//            leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
-//            maxY = max(layoutAttribute.frame.maxY , maxY)
-//        }
-//
-//        return attributes
-//    }
-//        layout
 }
-
-//class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
-//
-//    override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-//
-//        // We may not change the original layout attributes
-//        // or UICollectionViewFlowLayout might complain.
-//        let layoutAttributesObjects = copy(super.layoutAttributesForElements(in: rect))
-//
-//        layoutAttributesObjects?.forEach({ (layoutAttributes) in
-//            if layoutAttributes.representedElementCategory == .cell { // Do not modify header views etc.
-//                let indexPath = layoutAttributes.indexPath
-//                // Retrieve the correct frame from layoutAttributesForItem(at: indexPath):
-//                if let newFrame = layoutAttributesForItem(at: indexPath)?.frame {
-//                    layoutAttributes.frame = newFrame
-//                }
-//            }
-//        })
-//
-//        return layoutAttributesObjects
-//    }
-//    private func copy(_ layoutAttributesArray: [UICollectionViewLayoutAttributes]?) -> [UICollectionViewLayoutAttributes]? {
-//        return layoutAttributesArray?.map{ $0.copy() } as? [UICollectionViewLayoutAttributes]
-//    }
-//}
-//
 //MARK:- UIGestureRecognizerDelegate Extension
 //여기는 제스쳐 인식 제외하는거 false로 해줌
 extension SearchTabMainVC: UIGestureRecognizerDelegate {

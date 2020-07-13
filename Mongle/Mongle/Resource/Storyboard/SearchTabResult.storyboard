@@ -110,6 +110,9 @@
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="17" minY="17" maxX="18" maxY="15"/>
                                 <state key="normal" title="Button" image="searchBtnBack"/>
+                                <connections>
+                                    <action selector="touchUpBack:" destination="mk1-5s-R89" eventType="touchUpInside" id="utk-bG-c46"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8uw-Fu-FON">
                                 <rect key="frame" x="314" y="55" width="45" height="45"/>
@@ -119,6 +122,9 @@
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="14" minY="13" maxX="14" maxY="13"/>
                                 <state key="normal" title="Button" image="searchBtnSearch"/>
+                                <connections>
+                                    <action selector="touchUpSearch:" destination="mk1-5s-R89" eventType="touchUpInside" id="ydk-GR-abL"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GST-7F-Xen">
                                 <rect key="frame" x="67" y="55" width="247" height="45"/>

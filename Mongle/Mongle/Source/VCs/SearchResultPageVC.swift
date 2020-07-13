@@ -21,16 +21,33 @@ class SearchResultPageVC: UIPageViewController {
     let identifiers: NSArray = ["SearchResultThemeVC", "SearchResultSentenceVC","SearchResultCuratorVC"]
     var vcArr: [UIViewController]?
     var keyValue = KVOObject()
-    var searchKey : String = ""
-//    @objc dynamic var curPresentViewIndex: Int = 0
+    var searchKey : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(searchKey)
         self.delegate = self
         self.dataSource = self
         vcArr = identifiers.compactMap {
-            let vc = self.storyboard?.instantiateViewController(identifier: $0 as! String)
-            return vc
+            let id = $0 as! String
+            
+            if id == "SearchResultThemeVC" {
+                let vc = self.storyboard?.instantiateViewController(identifier: $0 as! String) as! SearchResultThemeVC
+                vc.searchKey = self.searchKey ?? ""
+                return vc
+            }
+            else if id == "SearchResultSentenceVC"{
+                let vc = self.storyboard?.instantiateViewController(identifier: $0 as! String) as! SearchResultSentenceVC
+                vc.searchKey = self.searchKey ?? ""
+                return vc
+            }
+            else{
+                let vc = self.storyboard?.instantiateViewController(identifier: $0 as! String) as! SearchResultCuratorVC
+                vc.searchKey = self.searchKey ?? ""
+                return vc
+            }
+            
+            
         }
         if let firstVC = vcArr?.first {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
@@ -47,9 +64,7 @@ class SearchResultPageVC: UIPageViewController {
 extension SearchResultPageVC : UIPageViewControllerDelegate {
     //이부분만
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        //print(pageViewController.viewControllers!.first!.view.tag)
-        //print(pageViewController.presentingViewController)
-        //print(previousViewControllers)
+
         if completed {
             previousPage = previousViewControllers[0]
             realNextPage = nextPage
@@ -64,8 +79,7 @@ extension SearchResultPageVC : UIPageViewControllerDelegate {
                 self.keyValue.curPresentViewIndex = 2
             }
         }
-        
-        
+    
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
@@ -96,6 +110,7 @@ extension SearchResultPageVC: UIPageViewControllerDataSource {
         guard let viewControllerIndex = vcArr?.firstIndex(of: viewController) else {
             return nil
         }
+        
 
         let nextIndex = viewControllerIndex + 1
         if nextIndex >= vcArr!.count {
