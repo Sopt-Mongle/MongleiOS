@@ -44,6 +44,9 @@
                                 </constraints>
                                 <color key="tintColor" red="0.62352941176470589" green="0.62352941176470589" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button" image="searchBtnBack"/>
+                                <connections>
+                                    <action selector="touchUpBack:" destination="xgH-LR-iMl" eventType="touchUpInside" id="K5w-e3-JRH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFo-py-E32">
                                 <rect key="frame" x="327" y="68.333333333333329" width="18" height="18"/>
