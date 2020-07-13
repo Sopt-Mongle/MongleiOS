@@ -4,6 +4,7 @@ PODS:
   - Kingfisher (5.10.1):
     - Kingfisher/Core (= 5.10.1)
   - Kingfisher/Core (5.10.1)
+  - lottie-ios (3.1.8)
   - SnapKit (5.0.1)
   - Then (2.7.0)
 
@@ -11,6 +12,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.8.2)
   - Hero
   - Kingfisher (~> 5.0)
+  - lottie-ios
   - SnapKit (~> 5.0.0)
   - Then
 
@@ -19,6 +21,7 @@ SPEC REPOS:
     - Alamofire
     - Hero
     - Kingfisher
+    - lottie-ios
     - SnapKit
     - Then
 
@@ -26,9 +29,10 @@ SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Hero: b7385b75e7259da62f4f85462f59a5082d66b058
   Kingfisher: eb36b7dfcc78d60877051c92c119a2865972961a
+  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 8763cade33064c482429c93f99a1e5be61000256
+PODFILE CHECKSUM: 552af6139898608d98aaf78b6a2a27ac2f7d7ffb
 
 COCOAPODS: 1.9.3

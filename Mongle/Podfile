@@ -11,7 +11,7 @@ pod 'SnapKit', '~> 5.0.0'
 
 pod 'Then'
 pod 'Hero'
-
+pod 'lottie-ios'
 
   # Pods for Mongle
 
