@@ -91,7 +91,7 @@
         <!--Search Tab ResultVC-->
         <scene sceneID="DLD-Yc-u5c">
             <objects>
-                <viewController id="mk1-5s-R89" customClass="SearchTabResultVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchTabResultVC" id="mk1-5s-R89" customClass="SearchTabResultVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T04-dH-5IE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -38,7 +38,11 @@ class SearchTabMainVC: UIViewController{
             
         }
         searchTextField.text = ""
-        
+        let sb = UIStoryboard.init(name: "SearchTabResult", bundle: nil)
+        if let dvc = sb.instantiateViewController(identifier: "searchTabResultVC") as? SearchTabResultVC {
+            dvc.searchKeyword = self.searchKey
+            self.navigationController?.pushViewController(dvc, animated: true)
+        }
         
         
     }
