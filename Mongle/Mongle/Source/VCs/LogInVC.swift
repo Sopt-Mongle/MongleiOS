@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class LogInVC: UIViewController {
     
@@ -30,14 +31,38 @@ class LogInVC: UIViewController {
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var seperateImageView2: UIImageView!
+    
+    //MARK:- User Define Variables
+    
+    let animView = AnimationView(name: "43-emoji-wink")
+    
+    
+    
     //MARK:- LifeCycle Methods
 
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        setItems()
+        self.view.addSubview(animView)
+        animView.frame = animView.superview!.bounds
+        animView.contentMode = .scaleAspectFit
+        hideAllItems()
+        
+        animView.play { (finish) in
+            super.viewDidLoad()
+            self.animView.removeFromSuperview()
+            self.unHideAllItems()
+            self.setItems()
+            
+        }
+        animView.loopMode = .playOnce
+        
+        
+        
+        
+       
         // Do any additional setup after loading the view.
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         registerForKeyboardNotifications()
@@ -93,6 +118,22 @@ class LogInVC: UIViewController {
                
     
     }
+    
+    func hideAllItems(){
+        [idTextField, passwordTextField,loginButton ,signUpButton, findIDButton,findPasswordButton].forEach { item in
+            item.alpha = 0
+            
+        }
+        
+    }
+    
+    func unHideAllItems(){
+        [idTextField, passwordTextField,loginButton , signUpButton, findIDButton,findPasswordButton].forEach { item in
+            item.alpha = 1
+            
+        }
+    }
+    
     func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(_:)), name:

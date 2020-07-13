@@ -13,12 +13,10 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
     //MARK:- IBOutlets
     
     @IBOutlet weak var backButton: UIButton!
-    
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var themeTextView: UITextView!
     @IBOutlet weak var selectButton: UIButton!
     @IBOutlet weak var registButton: UIButton!
-    
     @IBOutlet weak var warningImageView: UIImageView!
     @IBOutlet weak var warningLabel: UILabel!
     
@@ -71,7 +69,7 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         self.progressBar.progress = 0.5
         super.viewDidLoad()
         themeTextView.isEditable = false
-        themeTextView.backgroundColor = .whiteTwo
+        themeTextView.backgroundColor = .whiteThree
         setWarning()
         setItems()
         // Do any additional setup after loading the view.
@@ -83,7 +81,6 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         
         if self.isSelected == true {
             self.themeTextView.text = self.textViewInput
-            themeTextView.backgroundColor = .white
             ballAppearAnimation()
             hideWarning()
             
@@ -112,7 +109,7 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         registButton.makeRounded(cornerRadius: 25)
         
         themeTextView.isEditable = false
-        
+        themeTextView.backgroundColor = .whiteThree
         themeTextView.textContainerInset = UIEdgeInsets(top: 16.0,
                                                                        left: 14.0,
                                                                        bottom: 0.0, right: 14.0)
