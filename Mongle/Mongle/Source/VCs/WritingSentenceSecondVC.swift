@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WritingSentenceSecondVC: UIViewController {
+class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
 
     
     //    MARK:- IBOutlets
@@ -23,8 +23,9 @@ class WritingSentenceSecondVC: UIViewController {
     @IBOutlet weak var labelConstraint: NSLayoutConstraint!
     @IBOutlet weak var warningImageView: UIImageView!
     @IBOutlet weak var warningLabel: UILabel!
-    
     @IBOutlet weak var bookTitleLabel: UILabel!
+    
+    
     
     //    MARK:- User Define Variables
     let innerCircle = UIView().then{
@@ -60,11 +61,11 @@ class WritingSentenceSecondVC: UIViewController {
     }
     
     
-    static var noAnimation : Bool = false
+    var noAnimation : Bool = false
     static var isVisited : Bool = false
     
-    static var isSearched : Bool = false
-    static var book : Book?
+    var isSearched : Bool = false
+    var book : Book?
 //    MARK:- LifeCycle Methods
     
     override func viewDidLoad() {
@@ -88,12 +89,12 @@ class WritingSentenceSecondVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setSmallBalls()
         setProgressBar()
-        if WritingSentenceSecondVC.isSearched == true{
+        if isSearched == true{
             hideWarning()
             ballAppearAnimation()
-            setInformationsAfterSelect(book: WritingSentenceSecondVC.book!)
+            
         }
-        else if WritingSentenceSecondVC.noAnimation == true{
+        else if self.noAnimation == true{
          
             
         }
@@ -130,7 +131,7 @@ class WritingSentenceSecondVC: UIViewController {
         
         WritingSentenceSecondVC.isVisited = true
 //        WritingSentenceVC.secondToFirstLevelAnimation()
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -140,6 +141,7 @@ class WritingSentenceSecondVC: UIViewController {
         self.publisherTextField.text = book.bookPublisher
         
     }
+    
     
     
     func setProgressBar(){
@@ -247,7 +249,7 @@ class WritingSentenceSecondVC: UIViewController {
             else{
                 return
         }
-        
+        vcName.bookSendDelegate = self
         vcName.modalPresentationStyle = .fullScreen
         self.present(vcName, animated: true, completion: nil)
         
@@ -338,13 +340,28 @@ class WritingSentenceSecondVC: UIViewController {
             showWarning()
         }
         else{
-            vcName.modalPresentationStyle = .fullScreen
+            vcName.modalPresentationStyle = .currentContext
             
-            self.present(vcName, animated: true, completion: nil)
+            self.navigationController?.pushViewController(vcName, animated: true)
         }
     }
     
     
+    //MARK:- Data Transfer Protocol
+    func sendBookData(Data: Book,isSelected : Bool, noAnimation : Bool) {
+        self.isSearched = isSelected
+        self.noAnimation = noAnimation
+        
+        setInformationsAfterSelect(book: Data)
+        
+    }
+    
+    
+}
+
+
+protocol BookSearchDataDelegate {
+    func sendBookData(Data : Book, isSelected : Bool,noAnimation : Bool)
     
     
 }

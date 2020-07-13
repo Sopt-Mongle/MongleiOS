@@ -33,7 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aSC-KL-YYg">
-                                <rect key="frame" x="16" y="113.5" width="382" height="45"/>
+                                <rect key="frame" x="16" y="102" width="382" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="JvS-4Y-Iu9"/>
                                 </constraints>
@@ -41,7 +41,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gjC-WD-8YW">
-                                <rect key="frame" x="16" y="182.5" width="382" height="606.5"/>
+                                <rect key="frame" x="16" y="171" width="382" height="618"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="tintColor" red="0.9568960071" green="0.96459966900000005" blue="0.97254294159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ybu-No-p1a">
@@ -96,8 +96,14 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="toK-WJ-sOk">
+                                <rect key="frame" x="0.0" y="712" width="414" height="184"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="184" id="awX-cg-7UB"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tza-oA-R2f">
-                                <rect key="frame" x="363" y="126.5" width="18" height="19"/>
+                                <rect key="frame" x="363" y="115.5" width="18" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="McA-zK-7qP"/>
                                     <constraint firstAttribute="width" constant="18" id="dIE-xf-siU"/>
@@ -106,12 +112,6 @@
                                     <action selector="searchButtonAction:" destination="Bh9-Nr-MLf" eventType="touchUpInside" id="dJT-Pj-WT6"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="toK-WJ-sOk">
-                                <rect key="frame" x="0.0" y="712" width="414" height="184"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="184" id="awX-cg-7UB"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SbW-AV-blp">
                                 <rect key="frame" x="16" y="789" width="382" height="57"/>
                                 <constraints>
@@ -124,14 +124,14 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eHH-t0-Vzq">
-                                <rect key="frame" x="16" y="168.5" width="15" height="15"/>
+                                <rect key="frame" x="16" y="157" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="rRR-Jc-1NN"/>
                                     <constraint firstAttribute="width" constant="15" id="upW-XI-tFg"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="테마를 선택해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWs-8M-85f">
-                                <rect key="frame" x="39" y="167.5" width="109" height="16"/>
+                                <rect key="frame" x="39" y="156" width="109" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -139,13 +139,13 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="aSC-KL-YYg" firstAttribute="top" secondItem="q3X-OD-Vkx" secondAttribute="bottom" constant="44" id="7eY-6X-nzq"/>
+                            <constraint firstItem="aSC-KL-YYg" firstAttribute="top" secondItem="CMp-ko-Je9" secondAttribute="top" constant="102" id="7eY-6X-nzq"/>
                             <constraint firstItem="tjf-iZ-GTd" firstAttribute="trailing" secondItem="toK-WJ-sOk" secondAttribute="trailing" id="9JK-Wf-qTa"/>
                             <constraint firstItem="tjf-iZ-GTd" firstAttribute="trailing" secondItem="aSC-KL-YYg" secondAttribute="trailing" constant="16" id="9oK-Un-ZMn"/>
                             <constraint firstAttribute="bottom" secondItem="toK-WJ-sOk" secondAttribute="bottom" id="DIJ-le-StU"/>
                             <constraint firstItem="mLx-7d-McK" firstAttribute="top" secondItem="tjf-iZ-GTd" secondAttribute="top" constant="9" id="G1g-2B-qVD"/>
                             <constraint firstItem="aSC-KL-YYg" firstAttribute="leading" secondItem="tjf-iZ-GTd" secondAttribute="leading" constant="16" id="GcA-2H-8kZ"/>
-                            <constraint firstItem="Tza-oA-R2f" firstAttribute="top" secondItem="tjf-iZ-GTd" secondAttribute="top" constant="82.5" id="HcC-zI-TeL"/>
+                            <constraint firstItem="Tza-oA-R2f" firstAttribute="top" secondItem="CMp-ko-Je9" secondAttribute="top" constant="115.5" id="HcC-zI-TeL"/>
                             <constraint firstItem="SbW-AV-blp" firstAttribute="leading" secondItem="tjf-iZ-GTd" secondAttribute="leading" constant="16" id="JmC-27-x7z"/>
                             <constraint firstItem="q3X-OD-Vkx" firstAttribute="top" secondItem="tjf-iZ-GTd" secondAttribute="top" constant="4" id="QFk-eU-VK6"/>
                             <constraint firstItem="tjf-iZ-GTd" firstAttribute="trailing" secondItem="Tza-oA-R2f" secondAttribute="trailing" constant="32.799999999999997" id="REz-w1-QmY"/>

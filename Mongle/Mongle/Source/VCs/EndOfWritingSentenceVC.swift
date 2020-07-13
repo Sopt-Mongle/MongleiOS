@@ -60,8 +60,7 @@ class EndOfWritingSentenceVC: UIViewController {
     
     
     @IBAction func backToMainButtonAction(_ sender: Any) {
-        self.presentingViewController?.presentingViewController?.presentingViewController?
-            .presentingViewController?.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         
     }
     

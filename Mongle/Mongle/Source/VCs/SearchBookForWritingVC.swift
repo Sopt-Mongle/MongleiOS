@@ -60,7 +60,7 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
         
     }
     
-    
+    var bookSendDelegate : BookSearchDataDelegate?
     private var bookInformations : [Book] = []
     
    
@@ -277,7 +277,10 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func backButtonAction(_ sender: Any) {
-        WritingSentenceSecondVC.noAnimation = true
+        
+        bookSendDelegate?.sendBookData(Data: Book(bookImgName: "", bookTitle: "", bookAuthor: "",
+                                                  bookPublisher: ""), isSelected: false,
+        noAnimation: true)
         dismiss(animated: true, completion: nil)
         
     }
@@ -288,9 +291,12 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
 
 extension SearchBookForWritingVC : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        WritingSentenceSecondVC.isSearched = true
-        WritingSentenceSecondVC.book = bookInformations[indexPath.row]
         
+       
+        
+        
+        bookSendDelegate?.sendBookData(Data: bookInformations[indexPath.row], isSelected: true,
+                                       noAnimation: true)
         
         dismiss(animated: true, completion: nil)
               

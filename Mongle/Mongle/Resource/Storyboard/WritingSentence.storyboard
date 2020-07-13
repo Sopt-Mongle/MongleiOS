@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OSC-I1-5Hp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TrT-uc-Sd6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -10,7 +10,7 @@
         <!--Writing SentenceVC-->
         <scene sceneID="W3h-J6-Cr5">
             <objects>
-                <viewController storyboardIdentifier="WritingSentenceVC" id="OSC-I1-5Hp" customClass="WritingSentenceVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OSC-I1-5Hp" customClass="WritingSentenceVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VA3-Tc-Rf7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,6 +118,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NVn-hp-lIY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Py2-7n-UD2"/>
                     <connections>
                         <outlet property="nextButton" destination="YFn-xq-FyS" id="DkW-vF-Sia"/>
                         <outlet property="noticeLabel" destination="SzT-pL-G8H" id="kJr-k8-LvR"/>
@@ -131,6 +132,23 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oD8-dZ-4uc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2762.3188405797105" y="-185.49107142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dDe-wv-aBh">
+            <objects>
+                <navigationController storyboardIdentifier="WritingSentenceVC" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="TrT-uc-Sd6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dFZ-HQ-MnP">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OSC-I1-5Hp" kind="relationship" relationship="rootViewController" id="RfG-q4-cXq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xnt-vC-Cur" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3672.4637681159425" y="-185.49107142857142"/>
         </scene>

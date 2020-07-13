@@ -54,9 +54,9 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         
     }
     
-    static var textViewInput : String?
-    static var fromAfterView : Bool =  false
-    static var isSelected : Bool = false
+    var textViewInput : String?
+    var fromAfterView : Bool =  false
+    var isSelected : Bool = false
     
     
     
@@ -66,7 +66,7 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
     
 
     override func viewDidLoad() {
-        print(#function)
+        
 //        self.progressBar.setProgress(0.5, animated: false)
         self.progressBar.progress = 0.5
         super.viewDidLoad()
@@ -77,12 +77,12 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        print(#function)
+     
         setSmallBalls()
         setProgressBar()
         
-        if ThirdViewOfWritingSentenceVC.isSelected == true {
-            self.themeTextView.text = ThirdViewOfWritingSentenceVC.textViewInput
+        if self.isSelected == true {
+            self.themeTextView.text = self.textViewInput
             themeTextView.backgroundColor = .white
             ballAppearAnimation()
             hideWarning()
@@ -254,8 +254,8 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
     }
 
     @IBAction func backButtonAction(_ sender: Any) {
-        WritingSentenceSecondVC.noAnimation = true
-        dismiss(animated: true, completion: nil)
+        
+        self.navigationController?.popViewController(animated: true)
         
     }
     
@@ -269,6 +269,7 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
                 return
         }
         
+        vcName.themeDelegate = self
         vcName.modalPresentationStyle = .fullScreen
         self.present(vcName, animated: true, completion: nil)
         
@@ -292,12 +293,27 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
                 else{
                     return
             }
-            vcName.modalPresentationStyle = .fullScreen
-            self.present(vcName, animated: true, completion: nil)
+            vcName.modalPresentationStyle = .currentContext
+            self.navigationController?.pushViewController(vcName, animated: true)
         }
         
     }
     
     
     
+}
+
+extension ThirdViewOfWritingSentenceVC : ThemeSendDelegate {
+    func sendTheme(themeText: String, isSelected: Bool, fromAfter: Bool) {
+        self.textViewInput = themeText
+        self.isSelected = isSelected
+        self.fromAfterView = fromAfter
+
+    }
+}
+
+
+
+protocol ThemeSendDelegate {
+    func sendTheme(themeText : String, isSelected : Bool, fromAfter : Bool)
 }

@@ -26,6 +26,8 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     
     //MARK:- User Define items
     
+    var bookDelegate : BookSearchDataDelegate?
+    
     let innerCircle = UIView().then{
         $0.backgroundColor = .brownGreyThree
         
@@ -241,9 +243,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
             else{
                 return
         }
-        vcName.modalPresentationStyle = .currentContext
-        
-        
+     
         
         if sentenceTextView.text == ""{
             warningLabel.alpha = 1
@@ -253,10 +253,16 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         
         else {
             
-            vcName.setProgressBar()
-            self.present(vcName, animated: true, completion: nil)
+            
+            vcName.modalPresentationStyle = .currentContext
+            self.navigationController?.pushViewController(vcName, animated: true)
+            
+            
+            
+//            vcName.setProgressBar()
+//            self.present(vcName, animated: true, completion: nil)
         }
-//        self.progressBar.progress = 0.5
+
         
         
         
@@ -354,7 +360,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
             $0.width.height.equalTo(26)
             $0.centerX.equalTo(self.progressBar.snp_centerXWithinMargins)
             $0.centerY.equalTo(self.progressBar.snp_centerYWithinMargins)
-            
+             
         }
         outerCircle2.makeRounded(cornerRadius: 13)
         outerCircle2.alpha = 0
@@ -403,6 +409,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     
     
     @IBAction func xButtonAction(_ sender: Any) {
+        
         dismiss(animated: true, completion: nil)
     }
     
