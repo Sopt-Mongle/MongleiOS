@@ -35,10 +35,12 @@
 		7F7C096D24B9C776007C7C52 /* SentenceInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F7C096C24B9C776007C7C52 /* SentenceInfo.storyboard */; };
 		7F7C096F24BA2910007C7C52 /* SentenceInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7C096E24BA2910007C7C52 /* SentenceInfoVC.swift */; };
 		7F7C097124BA2EE7007C7C52 /* SentenceInfoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7C097024BA2EE7007C7C52 /* SentenceInfoTVC.swift */; };
-		7FC5B4D124BB58E3007C1725 /* WritingSentenceInTheme.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC5B4D024BB58E3007C1725 /* WritingSentenceInTheme.storyboard */; };
-		7FC5B4D324BB61A4007C1725 /* WritingSentenceInThemeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5B4D224BB61A4007C1725 /* WritingSentenceInThemeVC.swift */; };
 		7F7C097324BAF714007C7C52 /* SentenceEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F7C097224BAF714007C7C52 /* SentenceEdit.storyboard */; };
 		7F7C097524BAFAAE007C7C52 /* SentenceEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7C097424BAFAAE007C7C52 /* SentenceEditVC.swift */; };
+		7FC5B4D124BB58E3007C1725 /* WritingSentenceInTheme.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC5B4D024BB58E3007C1725 /* WritingSentenceInTheme.storyboard */; };
+		7FC5B4D324BB61A4007C1725 /* WritingSentenceInThemeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5B4D224BB61A4007C1725 /* WritingSentenceInThemeVC.swift */; };
+		7FC5B4D524BC6C78007C1725 /* AddBookToSentence.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC5B4D424BC6C78007C1725 /* AddBookToSentence.storyboard */; };
+		7FC5B4D724BC6D2B007C1725 /* AddBookToSentenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5B4D624BC6D2B007C1725 /* AddBookToSentenceVC.swift */; };
 		7FCEE21924B3078E00225CA3 /* MainTabMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCEE21824B3078E00225CA3 /* MainTabMainVC.swift */; };
 		7FCEE21B24B3091C00225CA3 /* MainTabFirstTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCEE21A24B3091C00225CA3 /* MainTabFirstTVC.swift */; };
 		7FCEE21D24B355FC00225CA3 /* MainPictureCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCEE21C24B355FC00225CA3 /* MainPictureCVC.swift */; };
@@ -102,10 +104,12 @@
 		7F7C096C24B9C776007C7C52 /* SentenceInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SentenceInfo.storyboard; sourceTree = "<group>"; };
 		7F7C096E24BA2910007C7C52 /* SentenceInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceInfoVC.swift; sourceTree = "<group>"; };
 		7F7C097024BA2EE7007C7C52 /* SentenceInfoTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceInfoTVC.swift; sourceTree = "<group>"; };
-		7FC5B4D024BB58E3007C1725 /* WritingSentenceInTheme.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WritingSentenceInTheme.storyboard; sourceTree = "<group>"; };
-		7FC5B4D224BB61A4007C1725 /* WritingSentenceInThemeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingSentenceInThemeVC.swift; sourceTree = "<group>"; };
 		7F7C097224BAF714007C7C52 /* SentenceEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SentenceEdit.storyboard; sourceTree = "<group>"; };
 		7F7C097424BAFAAE007C7C52 /* SentenceEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceEditVC.swift; sourceTree = "<group>"; };
+		7FC5B4D024BB58E3007C1725 /* WritingSentenceInTheme.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WritingSentenceInTheme.storyboard; sourceTree = "<group>"; };
+		7FC5B4D224BB61A4007C1725 /* WritingSentenceInThemeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingSentenceInThemeVC.swift; sourceTree = "<group>"; };
+		7FC5B4D424BC6C78007C1725 /* AddBookToSentence.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddBookToSentence.storyboard; sourceTree = "<group>"; };
+		7FC5B4D624BC6D2B007C1725 /* AddBookToSentenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookToSentenceVC.swift; sourceTree = "<group>"; };
 		7FCEE21824B3078E00225CA3 /* MainTabMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabMainVC.swift; sourceTree = "<group>"; };
 		7FCEE21A24B3091C00225CA3 /* MainTabFirstTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabFirstTVC.swift; sourceTree = "<group>"; };
 		7FCEE21C24B355FC00225CA3 /* MainPictureCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPictureCVC.swift; sourceTree = "<group>"; };
@@ -240,6 +244,7 @@
 				EC88960B24B87F3D008D29E2 /* ThemeSelectForWriteSentence.storyboard */,
 				7F7C097224BAF714007C7C52 /* SentenceEdit.storyboard */,
 				EC7410B324BA03E800CBAF1C /* EndOfWritingSentence.storyboard */,
+				7FC5B4D424BC6C78007C1725 /* AddBookToSentence.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 				EC7410B524BA040300CBAF1C /* EndOfWritingSentenceVC.swift */,
 				7FC5B4D224BB61A4007C1725 /* WritingSentenceInThemeVC.swift */,
 				7F7C097424BAFAAE007C7C52 /* SentenceEditVC.swift */,
+				7FC5B4D624BC6D2B007C1725 /* AddBookToSentenceVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -408,6 +414,7 @@
 				7F6ABEBB24ADE7720040746E /* Assets.xcassets in Resources */,
 				EC86B49624B7169200DB930A /* SearchBookForWriting.storyboard in Resources */,
 				EC88960624B869E9008D29E2 /* WritingSentenceThird.storyboard in Resources */,
+				7FC5B4D524BC6C78007C1725 /* AddBookToSentence.storyboard in Resources */,
 				ECEF22BA24B4A3B200933534 /* WritingSentence.storyboard in Resources */,
 				7F7C096D24B9C776007C7C52 /* SentenceInfo.storyboard in Resources */,
 			);
@@ -487,6 +494,7 @@
 				7FCEE21B24B3091C00225CA3 /* MainTabFirstTVC.swift in Sources */,
 				7F7C096F24BA2910007C7C52 /* SentenceInfoVC.swift in Sources */,
 				EC88960E24B87F66008D29E2 /* ThemeSelectForWritingSentenceVC.swift in Sources */,
+				7FC5B4D724BC6D2B007C1725 /* AddBookToSentenceVC.swift in Sources */,
 				7F6ABEB224ADE7700040746E /* AppDelegate.swift in Sources */,
 				EC86B49824B716BB00DB930A /* SearchBookForWritingVC.swift in Sources */,
 				7FCEE21924B3078E00225CA3 /* MainTabMainVC.swift in Sources */,

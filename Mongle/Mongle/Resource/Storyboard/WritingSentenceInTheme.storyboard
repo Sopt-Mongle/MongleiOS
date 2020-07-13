@@ -10,7 +10,7 @@
         <!--Writing Sentence In ThemeVC-->
         <scene sceneID="Imi-uy-UeB">
             <objects>
-                <viewController id="3H5-ot-vwD" customClass="WritingSentenceInThemeVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WritingSentenceInThemeVC" id="3H5-ot-vwD" customClass="WritingSentenceInThemeVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tmN-wg-fU4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,6 +25,9 @@
                                             <constraint firstAttribute="width" constant="48" id="q5A-vN-78c"/>
                                         </constraints>
                                         <state key="normal" image="searchBtnBack"/>
+                                        <connections>
+                                            <action selector="touchUpBackButton:" destination="3H5-ot-vwD" eventType="touchUpInside" id="FFU-je-45F"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="테마에 문장 쓰기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogp-Fj-Nvf">
                                         <rect key="frame" x="128.33333333333334" y="48" width="118.33333333333334" height="21"/>
@@ -45,60 +48,18 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xe8-V3-RQN">
                                 <rect key="frame" x="16" y="98" width="229" height="21"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="마음에">
-                                        <attributes>
-                                            <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
+                                    <fragment content="마음에 드는 ">
                                         <attributes>
                                             <font key="NSFont" metaFont="system" size="17"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="드는">
-                                        <attributes>
-                                            <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system" size="17"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="한">
-                                        <attributes>
-                                            <color key="NSColor" red="0.45098039215686275" green="0.75294117647058822" blue="0.53333333333333333" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
+                                    <fragment content="한 문장">
                                         <attributes>
                                             <color key="NSColor" red="0.45098039215686275" green="0.75294117647058822" blue="0.53333333333333333" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" metaFont="system" size="17"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="문장">
-                                        <attributes>
-                                            <color key="NSColor" red="0.45098039215686275" green="0.75294117647058822" blue="0.53333333333333333" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="을">
-                                        <attributes>
-                                            <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system" size="17"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="적어주세요">
-                                        <attributes>
-                                            <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="!">
+                                    <fragment content="을 적어주세요!">
                                         <attributes>
                                             <font key="NSFont" metaFont="system" size="17"/>
                                         </attributes>
@@ -136,13 +97,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiB-z3-TA2">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiB-z3-TA2">
                                 <rect key="frame" x="16" y="340" width="129" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="LDs-Ox-dln"/>
-                                    <constraint firstAttribute="width" constant="129" id="PjU-Ug-cua"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="touchUpCallInNoThemeSentenceButton:" destination="3H5-ot-vwD" eventType="touchUpInside" id="4cB-qV-H2H"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/280" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vn-cR-SVA">
                                 <rect key="frame" x="322" y="353" width="37" height="16"/>
@@ -163,13 +124,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="LiB-z3-TA2" firstAttribute="leading" secondItem="GfX-in-vfv" secondAttribute="leading" constant="16" id="5Cc-3u-7YE"/>
                             <constraint firstItem="6qG-qb-chJ" firstAttribute="leading" secondItem="GfX-in-vfv" secondAttribute="leading" id="68g-tl-MBq"/>
                             <constraint firstItem="6qG-qb-chJ" firstAttribute="top" secondItem="tmN-wg-fU4" secondAttribute="top" id="D2j-jh-5KA"/>
                             <constraint firstItem="GfX-in-vfv" firstAttribute="trailing" secondItem="Dyt-wq-SLM" secondAttribute="trailing" constant="16" id="K5E-lZ-3av"/>
                             <constraint firstItem="GfX-in-vfv" firstAttribute="trailing" secondItem="Qk4-e1-vuC" secondAttribute="trailing" constant="16" id="KvY-EP-gH7"/>
                             <constraint firstItem="5vn-cR-SVA" firstAttribute="top" secondItem="Qk4-e1-vuC" secondAttribute="bottom" constant="13" id="NG2-gV-40X"/>
-                            <constraint firstItem="LiB-z3-TA2" firstAttribute="top" secondItem="Qk4-e1-vuC" secondAttribute="bottom" id="OFX-M5-NbH"/>
                             <constraint firstItem="GfX-in-vfv" firstAttribute="trailing" secondItem="6qG-qb-chJ" secondAttribute="trailing" id="Ops-16-jQJ"/>
                             <constraint firstItem="GfX-in-vfv" firstAttribute="trailing" secondItem="7HK-a6-teY" secondAttribute="trailing" constant="16" id="WLL-0e-uLX"/>
                             <constraint firstItem="7HK-a6-teY" firstAttribute="leading" secondItem="GfX-in-vfv" secondAttribute="leading" constant="16" id="ZIQ-TH-UkG"/>
@@ -185,6 +144,7 @@
                         <viewLayoutGuide key="safeArea" id="GfX-in-vfv"/>
                     </view>
                     <connections>
+                        <outlet property="callInNoThemeSentenceButton" destination="LiB-z3-TA2" id="Jc3-qq-8zx"/>
                         <outlet property="nextButton" destination="7HK-a6-teY" id="j09-kx-YDs"/>
                         <outlet property="sentenceTextView" destination="Qk4-e1-vuC" id="0eH-Kx-2qW"/>
                         <outlet property="textCountLabel" destination="5vn-cR-SVA" id="RNE-UI-wJp"/>
