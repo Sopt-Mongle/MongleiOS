@@ -14,11 +14,11 @@ extension UIColor {
     }
     
     @nonobjc class var blur1: UIColor {
-        return UIColor(white: 0, alpha: 0.35)
+        return UIColor(white: 0, alpha: 0.5)
        }
     
     @nonobjc class var blur2: UIColor {
-           return UIColor(white: 1, alpha: 0.28)
+        return UIColor(white: 1, alpha: 0.5)
           }
 
     @nonobjc class var tea: UIColor {
@@ -41,6 +41,9 @@ extension UIColor {
     @nonobjc class var veryLightPinkSix: UIColor {
       return UIColor(white: 231.0 / 255.0, alpha: 1.0)
     }
+    @nonobjc class var brownishGrey: UIColor {
+      return UIColor(white: 101.0 / 255.0, alpha: 1.0)
+    }
     
     @nonobjc class var veryLightPinkSeven: UIColor {
       return UIColor(white: 222.0 / 255.0, alpha: 1.0)
@@ -52,6 +55,18 @@ extension UIColor {
     
     @nonobjc class var brownGreyThree: UIColor {
       return UIColor(white: 167.0 / 255.0, alpha: 1.0)
+    }
+
+    @nonobjc class var greyishBrown: UIColor {
+      return UIColor(white: 86.0 / 255.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var whiteTwo: UIColor {
+      return UIColor(white: 248.0 / 255.0, alpha: 1.0)
+    }
+
+    @nonobjc class var greyishBrownTwo: UIColor {
+      return UIColor(white: 83.0 / 255.0, alpha: 1.0)
     }
 
 

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Then
+import SnapKit
 
 class ThemeSelectForWritingSentenceVC: UIViewController {
     
@@ -16,13 +18,32 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var selectButton: UIButton!
     @IBOutlet weak var themeCollectionView: UICollectionView!
+    @IBOutlet weak var warningImageView: UIImageView!
+    @IBOutlet weak var warningLabel: UILabel!
+    
+    
+    @IBOutlet weak var blurView: UIImageView!
+    @IBOutlet weak var collectionViewConstraint: NSLayoutConstraint!
     
     
     
     //MARK:- User Define Variables
     var themes : [ThemeForSentence] = []
     var searchKeyWord : String?
-    var checkIndex : Int?
+    var checkIndex : Int = -1
+    var isSearched : Bool = false
+    var searchResultLabel = UILabel().then {
+        $0.text = "검색결과"
+        $0.alpha = 0
+    }
+    
+    var resultQuantityLabel = UILabel().then {
+        $0.alpha = 0
+        $0.text = "총"
+    }
+    var isWarning : Bool = false
+    var themeDelegate : ThemeSendDelegate?
+    
     
     
     //MARK:- LifeCycleMethods
@@ -31,7 +52,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         super.viewDidLoad()
         setItems()
         
-       
+        setWarning()
         themeCollectionView.dataSource = self
         themeCollectionView.delegate = self
         setThemes()
@@ -43,6 +64,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         registerForKeyboardNotifications()
     }
     override func viewWillDisappear(_ animated: Bool) {
+        checkIndex = -1
         unregisterForKeyboardNotifications()
     }
     
@@ -59,14 +81,68 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         themeTextField.placeholder = "테마를 검색해주세요"
         themeTextField.addLeftPadding(left: 10)
         
-        
+        blurView.image = UIImage(named: "writingSentenceTheme2BoxBlur")?.withRenderingMode(.alwaysOriginal)
         
         //themeCollectionView.backgroundColor = .clear
         
     }
     
+    func setWarning(){
+        warningImageView.image = UIImage(named: "warning")
+        warningLabel.textColor = .reddish
+        warningImageView.alpha = 0
+        warningLabel.alpha = 0
+        
+        
+        
+    }
+    
+    func showWarning(){
+        print(isSearched)
+        warningLabel.alpha = 1
+        warningImageView.alpha = 1
+        
+        if isSearched == true{
+        
+            
+            collectionViewConstraint.constant = 73
+            searchResultLabel.snp.remakeConstraints{
+                $0.leading.equalToSuperview().offset(17)
+                $0.top.equalToSuperview().offset(187)
+                
+            }
+                
+            resultQuantityLabel.snp.remakeConstraints {
+                $0.top.equalToSuperview().offset(188)
+                $0.trailing.equalToSuperview().offset(-15)
+            }
+            
+        }
+        else{
+            collectionViewConstraint.constant = 49
+            
+
+            
+        }
+
+        
+    }
+    func hideWarning(){
+        warningLabel.alpha = 0
+        warningImageView.alpha = 0
+        
+        if isSearched {
+            collectionViewConstraint.constant = 48
+        }
+        else {
+            collectionViewConstraint.constant = 24
+        }
+        
+        
+    }
+    
     func setThemes(){
-        let theme1 = ThemeForSentence(imgName: "maengleCharacters", themeTitle: "테마 없는 문장",state : false)
+        let theme1 = ThemeForSentence(imgName: "writingSentenceTheme2ImgThemeX", themeTitle: "테마 없는 문장",state : false)
         let theme2 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
         let theme3 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "브랜딩이 어려울 때 영감을 주는 문장",state : true)
         let theme4 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
@@ -92,6 +168,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     }
     
     @IBAction func backButtonAction(_ sender: Any) {
+        themeDelegate?.sendTheme(themeText: "", isSelected: false, fromAfter: true)
         dismiss(animated: true, completion: nil)
     }
     
@@ -99,16 +176,97 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     @IBAction func searchButtonAction(_ sender: Any) {
         searchKeyWord = themeTextField.text
         themeCollectionView.reloadData()
+        isSearched = true
+        setResultLabels()
+        
+        
+        
+        
+        
         self.view.endEditing(true)
         
        
 
         
     }
-
+    
+    func setResultLabels(){
+        
+        self.view.addSubview(searchResultLabel)
+        self.view.addSubview(resultQuantityLabel)
+        
+        searchResultLabel.text = "'" + themeTextField.text! + "'검색결과"
+        guard let text = searchResultLabel.text else {
+            return
+        }
+        searchResultLabel.textColor = .softGreen
+        let attributedString = NSMutableAttributedString(string: searchResultLabel.text!)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.greyishBrownTwo,
+                                      range: (text as NSString).range(of: "검색결과"))
+        searchResultLabel.attributedText = attributedString
+        searchResultLabel.font = searchResultLabel.font.withSize(13)
+        
+        resultQuantityLabel.font = resultQuantityLabel.font.withSize(13)
+        
+        
+        resultQuantityLabel.text = "총 10건"
+        resultQuantityLabel.textColor = .veryLightPink
+        
+        
+        if isWarning{
+            collectionViewConstraint.constant = 73
+            searchResultLabel.snp.makeConstraints {
+                $0.leading.equalToSuperview().offset(17)
+                $0.top.equalToSuperview().offset(187)
+            }
+            
+            resultQuantityLabel.snp.makeConstraints {
+                $0.top.equalToSuperview().offset(188)
+                $0.trailing.equalToSuperview().offset(-15)
+            }
+            
+        }
+        else{
+            collectionViewConstraint.constant = 48
+            searchResultLabel.snp.makeConstraints {
+                $0.leading.equalToSuperview().offset(17)
+                $0.top.equalToSuperview().offset(162)
+            }
+            
+            resultQuantityLabel.snp.makeConstraints {
+                $0.top.equalToSuperview().offset(163)
+                $0.trailing.equalToSuperview().offset(-15)
+            }
+        }
+       
+        
+       
+        
+        searchResultLabel.alpha = 1
+        resultQuantityLabel.alpha = 1
+        
+        
+        
+    }
+    
+   
+    
     
     @IBAction func selectButtonAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        if checkIndex == -1{
+            isWarning = true
+            showWarning()
+            
+        }
+        else{
+            
+            dismiss(animated: true, completion: nil)
+        }
+      
+    
+
+        
+        
         
         
     }
@@ -158,7 +316,7 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
         
         
             themeCell.setItems(themes[indexPath.item], self.themeTextField.text!,check)
-          
+            themeCell.makeRounded(cornerRadius: 22)
             
             return themeCell
     }
@@ -179,9 +337,28 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
         return 11
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        ThirdViewOfWritingSentenceVC.fromAfterView = true
-        ThirdViewOfWritingSentenceVC.textViewInput = themes[indexPath.item].themeTitle
+ 
+        
+        themeDelegate?.sendTheme(themeText: themes[indexPath.item].themeTitle,
+                                 isSelected: true, fromAfter: true)
+        hideWarning()
+        isWarning = true
         checkIndex = indexPath.item
+        
+        if isSearched {
+            searchResultLabel.snp.remakeConstraints{
+                $0.top.equalToSuperview().offset(162)
+                $0.leading.equalToSuperview().offset(17)
+                
+            }
+            resultQuantityLabel.snp.remakeConstraints{
+                $0.top.equalToSuperview().offset(163)
+                $0.trailing.equalToSuperview().offset(-15)
+            }
+            
+            
+        }
+       
         self.themeCollectionView.reloadData()
         //collectionView.reloadData()
     }

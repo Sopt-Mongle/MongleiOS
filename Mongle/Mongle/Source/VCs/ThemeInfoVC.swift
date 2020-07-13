@@ -26,6 +26,8 @@ class ThemeInfoVC: UIViewController {
     @IBOutlet var curatorProfileImageView: UIImageView!
     @IBOutlet var curatorNameLabel: UILabel!
     
+    @IBOutlet var bottomBackgroundView: UIView!
+    @IBOutlet var sentencesBackGroudViewBottomConstraint: NSLayoutConstraint!
     
     //MARK:- Property
     var hasTheme: Bool = true
@@ -56,11 +58,17 @@ class ThemeInfoVC: UIViewController {
                                                           green: 145 / 255,
                                                           blue: 105 / 255,
                                                           alpha: 0.55)
+            sentencesBackGroudViewBottomConstraint.constant = 0
+            bottomBackgroundView.isHidden = false
         }
         else {
+            sentencesBackgroundView.backgroundColor = .black
+            sentencesBackGroudViewBottomConstraint.constant = -bottomBackgroundView.frame.height
+            
             curatorProfileImageView.isHidden = true
             themeBackgroundView.backgroundColor = .veryLightPink
-            themeInfoStackView.alpha = 0
+            themeInfoStackView.isHidden = true
+            bottomBackgroundView.isHidden = true
             curatorNameLabel.snp.makeConstraints {
                 $0.leading.equalToSuperview().offset(16)
             }
@@ -80,7 +88,17 @@ class ThemeInfoVC: UIViewController {
     //MARK:- IBAction
     @IBAction func touchUpBackButton(sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func touchUpWriteInSentenceInThemeButton(_ sender: UIButton) {
+
+        guard let dvc = UIStoryboard(name: "WritingSentenceInTheme", bundle: nil).instantiateViewController(identifier: "WritingSentenceInThemeVC") as? WritingSentenceInThemeVC else {
+            return
+        }
+        self.navigationController?.pushViewController(dvc, animated: true)
+    }
+    
     
 }
 

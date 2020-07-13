@@ -14,6 +14,7 @@ class CuratorListCVC: UICollectionViewCell {
     
     @IBOutlet weak var curatorNameLabel: UILabel!
     @IBOutlet weak var curatorProfileImageView: UIImageView!
+    @IBOutlet weak var subscriberLabel: UILabel!
     @IBOutlet weak var curatorInfoLabel: UILabel!
     @IBOutlet weak var subscribeBTN: UIButton!
     
@@ -34,9 +35,12 @@ class CuratorListCVC: UICollectionViewCell {
     override func awakeFromNib() {
         subscribeBTN.layer.cornerRadius = subscribeBTN.frame.width/4
         subscribeBTN.backgroundColor = .softGreen
-        self.setBorder(borderColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0.07), borderWidth: 1)
-        self.makeRounded(cornerRadius: 20)
-        self.dropShadow(color: .black, offSet: CGSize(width: 0, height: 0), opacity: 0.07, radius: 10)
+        subscriberLabel.text = "구독자 540명"
+        subscriberLabel.textColor = .veryLightPink
+        curatorInfoLabel.textColor = .veryLightPink
+        //self.setBorder(borderColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0.07), borderWidth: 1)
+        //self.makeRounded(cornerRadius: 20)
+        
         self.backgroundColor = .white
         
     }

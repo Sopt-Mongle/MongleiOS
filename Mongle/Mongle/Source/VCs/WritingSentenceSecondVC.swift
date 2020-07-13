@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WritingSentenceSecondVC: UIViewController {
+class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
 
     
     //    MARK:- IBOutlets
@@ -20,8 +20,12 @@ class WritingSentenceSecondVC: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var searchTextButton: UIButton!
-    
+    @IBOutlet weak var labelConstraint: NSLayoutConstraint!
+    @IBOutlet weak var warningImageView: UIImageView!
+    @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var bookTitleLabel: UILabel!
+    
+    
     
     //    MARK:- User Define Variables
     let innerCircle = UIView().then{
@@ -57,11 +61,11 @@ class WritingSentenceSecondVC: UIViewController {
     }
     
     
-    static var noAnimation : Bool = false
+    var noAnimation : Bool = false
     static var isVisited : Bool = false
     
-    static var isSearched : Bool = false
-    static var book : Book?
+    var isSearched : Bool = false
+    var book : Book?
 //    MARK:- LifeCycle Methods
     
     override func viewDidLoad() {
@@ -75,18 +79,23 @@ class WritingSentenceSecondVC: UIViewController {
         setNextButton()
         searchTextButton.setImage(UIImage(named: "themeWritingSentenceBookBtnBookSearch")?.withRenderingMode(.alwaysOriginal), for: .normal)
         bookTitleLabel.text = ""
+        setWarning()
+        searchTextButton.makeRounded(cornerRadius: 10)
+        
+        
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setSmallBalls()
         setProgressBar()
-        if WritingSentenceSecondVC.isSearched == true{
+        if isSearched == true{
+            hideWarning()
             ballAppearAnimation()
-            setInformationsAfterSelect(book: WritingSentenceSecondVC.book!)
+            
         }
-        else if WritingSentenceSecondVC.noAnimation == true{
-            print("called")
+        else if self.noAnimation == true{
+         
             
         }
         else{
@@ -122,7 +131,7 @@ class WritingSentenceSecondVC: UIViewController {
         
         WritingSentenceSecondVC.isVisited = true
 //        WritingSentenceVC.secondToFirstLevelAnimation()
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -132,6 +141,7 @@ class WritingSentenceSecondVC: UIViewController {
         self.publisherTextField.text = book.bookPublisher
         
     }
+    
     
     
     func setProgressBar(){
@@ -239,13 +249,36 @@ class WritingSentenceSecondVC: UIViewController {
             else{
                 return
         }
-        
+        vcName.bookSendDelegate = self
         vcName.modalPresentationStyle = .fullScreen
         self.present(vcName, animated: true, completion: nil)
         
         
     }
+    func setWarning(){
+        warningImageView.image = UIImage(named: "warning")
+        warningLabel.textColor = .reddish
+        warningImageView.alpha = 0
+        warningLabel.alpha = 0
+        
+        
+        
+    }
     
+    func showWarning(){
+        warningLabel.alpha = 1
+        warningImageView.alpha = 1
+        labelConstraint.constant = 68
+        searchTextButton.setBorder(borderColor: .reddish, borderWidth: 1.0)
+        
+        
+    }
+    func hideWarning(){
+        warningLabel.alpha = 0
+        warningImageView.alpha = 0
+        labelConstraint.constant = 43
+        searchTextButton.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
+    }
     
     
     func secondToFirstLevelAnimation(){
@@ -303,14 +336,32 @@ class WritingSentenceSecondVC: UIViewController {
             else{
                 return
         }
+        if bookTitleLabel.text == ""{
+            showWarning()
+        }
+        else{
+            vcName.modalPresentationStyle = .currentContext
+            
+            self.navigationController?.pushViewController(vcName, animated: true)
+        }
+    }
+    
+    
+    //MARK:- Data Transfer Protocol
+    func sendBookData(Data: Book,isSelected : Bool, noAnimation : Bool) {
+        self.isSearched = isSelected
+        self.noAnimation = noAnimation
         
-        vcName.modalPresentationStyle = .fullScreen
-       
-        self.present(vcName, animated: true, completion: nil)
+        setInformationsAfterSelect(book: Data)
         
     }
     
     
+}
+
+
+protocol BookSearchDataDelegate {
+    func sendBookData(Data : Book, isSelected : Bool,noAnimation : Bool)
     
     
 }

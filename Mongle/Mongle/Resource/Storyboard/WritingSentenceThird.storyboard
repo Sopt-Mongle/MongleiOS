@@ -71,6 +71,19 @@
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VtC-Ut-45K">
                                 <rect key="frame" x="28.666666666666657" y="124.33333333333333" width="318" height="2"/>
                             </progressView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="omb-ah-El0">
+                                <rect key="frame" x="16" y="349.66666666666669" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="NQY-wo-ckr"/>
+                                    <constraint firstAttribute="width" constant="15" id="Sl5-TQ-TCE"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="테마를 선택해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e08-eR-dBi">
+                                <rect key="frame" x="39" y="348.66666666666669" width="109" height="15.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -81,15 +94,19 @@
                             <constraint firstItem="FVi-ps-HAa" firstAttribute="centerX" secondItem="2gU-gQ-Vtn" secondAttribute="centerX" id="Fa4-J3-6WO"/>
                             <constraint firstItem="VtC-Ut-45K" firstAttribute="top" secondItem="FVi-ps-HAa" secondAttribute="bottom" constant="54.5" id="Gg0-4N-6dG"/>
                             <constraint firstItem="VtC-Ut-45K" firstAttribute="leading" secondItem="3g2-ah-kKP" secondAttribute="leading" constant="28.5" id="MEa-fM-5xP"/>
+                            <constraint firstItem="omb-ah-El0" firstAttribute="top" secondItem="Ozm-DD-S0L" secondAttribute="bottom" constant="10" id="NKJ-kQ-Tua"/>
                             <constraint firstItem="FVi-ps-HAa" firstAttribute="top" secondItem="2gU-gQ-Vtn" secondAttribute="top" constant="4" id="O2l-Bb-eKy"/>
                             <constraint firstAttribute="bottom" secondItem="q3m-Hw-ArA" secondAttribute="bottom" constant="50" id="P3s-JD-ySB"/>
                             <constraint firstItem="q3m-Hw-ArA" firstAttribute="leading" secondItem="2gU-gQ-Vtn" secondAttribute="leading" constant="16" id="Pqa-fi-Ysr"/>
                             <constraint firstAttribute="trailing" secondItem="VtC-Ut-45K" secondAttribute="trailing" constant="28.5" id="SEq-72-gyJ"/>
                             <constraint firstItem="iZY-k8-R9A" firstAttribute="top" secondItem="VtC-Ut-45K" secondAttribute="bottom" constant="28.5" id="YDw-Gt-opm"/>
+                            <constraint firstItem="omb-ah-El0" firstAttribute="leading" secondItem="2gU-gQ-Vtn" secondAttribute="leading" constant="16" id="YWp-XL-Pee"/>
                             <constraint firstItem="2gU-gQ-Vtn" firstAttribute="trailing" secondItem="Ozm-DD-S0L" secondAttribute="trailing" constant="16" id="Yrr-sC-d62"/>
                             <constraint firstItem="iZY-k8-R9A" firstAttribute="leading" secondItem="2gU-gQ-Vtn" secondAttribute="leading" constant="16" id="dv9-H9-lp3"/>
                             <constraint firstItem="eck-ol-tKt" firstAttribute="leading" secondItem="2gU-gQ-Vtn" secondAttribute="leading" constant="17" id="gtb-Gi-Stz"/>
+                            <constraint firstItem="e08-eR-dBi" firstAttribute="leading" secondItem="omb-ah-El0" secondAttribute="trailing" constant="8" id="hZe-y3-vU5"/>
                             <constraint firstItem="jPD-ad-iP7" firstAttribute="leading" secondItem="2gU-gQ-Vtn" secondAttribute="leading" constant="16" id="jdC-kO-R6r"/>
+                            <constraint firstItem="e08-eR-dBi" firstAttribute="top" secondItem="Ozm-DD-S0L" secondAttribute="bottom" constant="9" id="q9D-3g-w9b"/>
                             <constraint firstItem="eck-ol-tKt" firstAttribute="top" secondItem="2gU-gQ-Vtn" secondAttribute="top" constant="9" id="s2t-LQ-euE"/>
                             <constraint firstItem="jPD-ad-iP7" firstAttribute="top" secondItem="iZY-k8-R9A" secondAttribute="bottom" constant="17" id="ypG-vF-QQa"/>
                         </constraints>
@@ -101,11 +118,13 @@
                         <outlet property="registButton" destination="q3m-Hw-ArA" id="OsC-Ic-MCu"/>
                         <outlet property="selectButton" destination="Ozm-DD-S0L" id="7bw-iz-O35"/>
                         <outlet property="themeTextView" destination="jPD-ad-iP7" id="FxI-il-eMr"/>
+                        <outlet property="warningImageView" destination="omb-ah-El0" id="pei-Lb-qG7"/>
+                        <outlet property="warningLabel" destination="e08-eR-dBi" id="eE9-Y0-ZXy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="upZ-ho-GfM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="17" y="74"/>
+            <point key="canvasLocation" x="16.800000000000001" y="73.891625615763544"/>
         </scene>
     </scenes>
 </document>

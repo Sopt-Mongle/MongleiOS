@@ -111,7 +111,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hu0-vn-sXz">
                                 <rect key="frame" x="0.0" y="217" width="375" height="504"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="19" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="7tc-cv-PKZ">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="19" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="7tc-cv-PKZ">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="504"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
@@ -210,10 +210,10 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="themeBoxBlur" translatesAutoresizingMaskIntoConstraints="NO" id="sDC-rn-E5u">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="themeBoxBlur" translatesAutoresizingMaskIntoConstraints="NO" id="sDC-rn-E5u">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="19"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="sDC-rn-E5u" secondAttribute="height" multiplier="375:53" id="oZl-9c-iDq"/>
+                                            <constraint firstAttribute="height" constant="19" id="TcF-8X-FXY"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -244,6 +244,9 @@
                                         <state key="normal" title="테마에 문장 쓰기">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="touchUpWriteInSentenceInThemeButton:" destination="C1y-yQ-wMX" eventType="touchUpInside" id="XUd-2u-Yx9"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -280,9 +283,11 @@
                         <viewLayoutGuide key="safeArea" id="CjG-wk-vGM"/>
                     </view>
                     <connections>
+                        <outlet property="bottomBackgroundView" destination="sOx-yo-vKk" id="vvX-Kd-1lh"/>
                         <outlet property="curatorNameLabel" destination="H4s-l6-9mq" id="Fb5-7W-9Gc"/>
                         <outlet property="curatorProfileImageView" destination="iWI-Mv-FuQ" id="5A0-w7-JJ1"/>
                         <outlet property="sentenceTableView" destination="7tc-cv-PKZ" id="zGe-LA-oQz"/>
+                        <outlet property="sentencesBackGroudViewBottomConstraint" destination="g7d-zJ-Swf" id="5uQ-ml-PDI"/>
                         <outlet property="sentencesBackgroundView" destination="Hu0-vn-sXz" id="Omc-vB-Kig"/>
                         <outlet property="themeBackgroundView" destination="i8f-0R-EAS" id="dyz-kc-MWJ"/>
                         <outlet property="themeInfoStackView" destination="KAx-an-jsX" id="NMJ-df-bIA"/>
