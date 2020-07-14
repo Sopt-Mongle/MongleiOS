@@ -80,7 +80,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     
     var emailIsWarning : Int = 0
-    var passwordIsWarning : Bool = false
+    var passwordIsWarning : Int = 0
     
     
     
@@ -147,7 +147,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
         signUpScrollView.addSubview(nickNameQuantityLabel)
         nickNameQuantityLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(527)
+            $0.top.equalToSuperview().offset(527 + emailIsWarning + passwordIsWarning)
+            print(527 + emailIsWarning + passwordIsWarning)
             $0.trailing.equalToSuperview().offset(-28)
             
             
@@ -207,6 +208,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             let move = CGPoint(x: 0, y: 280)
             signUpScrollView.setContentOffset(move, animated: false)
             hideNickNameWarning()
+            updateNicknameQuantity()
         }
         else if textField == emailTextField{
             
@@ -351,9 +353,18 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
     }
     @objc func updateNicknameQuantity(){
+        
         nickNameQuantityLabel.alpha = 1
         nickNameQuantityLabel.text = String(nickNameTextField.text!.count) + "/6"
         partialGreenColor()
+        nickNameQuantityLabel.snp.remakeConstraints {
+            $0.top.equalToSuperview().offset(527 + emailIsWarning + passwordIsWarning)
+            print(527 + emailIsWarning + passwordIsWarning)
+            $0.trailing.equalToSuperview().offset(-28)
+            
+        }
+        
+        
         
     }
     
@@ -390,7 +401,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     func showPasswordWarning(){
-        passwordIsWarning = true
+        passwordIsWarning = 25
         
         passWordToNIckNameConstraint.constant = 59
         self.signUpScrollView.addSubview(passwordWarningImageView)
@@ -423,7 +434,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     func hidePasswordWarning(){
-        passwordIsWarning = false
+        passwordIsWarning = 0
         passWordToNIckNameConstraint.constant = 34
         passwordWarningLabel.removeFromSuperview()
         passwordWarningImageView.removeFromSuperview()
@@ -520,6 +531,15 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
         
     }
+    
+    func showNickNameDuplicate(){
+        nickNameWarningLabel.text = "이미 사용 중인 닉네임이에요!"
+        nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1.0)
+        nickNameWarningLabel.alpha = 1
+        nickNameWarningImageView.alpha = 1
+        
+    }
+    
     func hideNickNameWarning(){
         nickNameTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         nickNameWarningLabel.alpha = 0
@@ -533,7 +553,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         if emailTextField.text == ""{
             showEmailWarning()
             
-            if passwordIsWarning {
+            if passwordIsWarning == 25 {
                 hidePasswordWarning()
                 showPasswordWarning()
                 
@@ -557,14 +577,23 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             secondPasswordBegin()
         }
         else if nickNameTextField.text == "123" {
-            
+            showNickNameDuplicate()
             
         }
         
             
         else {
-            dismiss(animated: true, completion: nil)
+            guard let vcName = UIStoryboard(name: "UnderTab",
+                                            bundle: nil).instantiateViewController(
+                                                withIdentifier: "UnderTabBarController") as? UINavigationController
+                else{
+                    return
+            }
             
+            vcName.modalPresentationStyle = .fullScreen
+            
+            self.present(vcName, animated: true, completion: nil)
+           
             
         }
         
@@ -574,6 +603,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func backButtonAction(_ sender: Any) {
+        
+        
         
         dismiss(animated: true, completion: nil)
         

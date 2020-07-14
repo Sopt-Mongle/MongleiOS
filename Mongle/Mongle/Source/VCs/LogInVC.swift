@@ -81,7 +81,7 @@ class LogInVC: UIViewController {
         $0.backgroundColor = .white
         $0.makeRounded(cornerRadius: 19)
         $0.setBorder(borderColor: .softGreen, borderWidth: 1.0)
-        
+        $0.addTarget(self, action: #selector(signUpButtonInPopUp), for: .touchUpInside)
         
     }
     let blurView = UIImageView().then {
@@ -118,17 +118,8 @@ class LogInVC: UIViewController {
 
             if self.runCount == 29 {
                 timer.invalidate()
-                self.monglesImageView.transform = CGAffineTransform(translationX: 0, y: -50)
-                UIView.animate(withDuration: 1.0, animations: {
+                self.animate1()
                     
-                    self.unHideAllItems()
-                    self.monglesImageView.transform = .identity
-                    self.setItems()
-                    self.splash.stopAnimatingGIF()
-                    self.splash.removeFromSuperview()
-                    
-                })
-               
             }
         }
         
@@ -172,6 +163,95 @@ class LogInVC: UIViewController {
         self.splash.animate(withGIFNamed: "Comp 2_1")
         
     }
+    @objc func signUpButtonInPopUp(){
+        guard let vcName = UIStoryboard(name: "SignUp",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "SignUpVC") as? SignUpVC
+            else{
+                return
+        }
+        
+        vcName.modalPresentationStyle = .fullScreen
+        
+        self.present(vcName, animated: true, completion: nil)
+        
+    }
+    
+    func animate1(){
+        self.monglesImageView.transform = CGAffineTransform(translationX: 0, y: -50)
+        UIView.animate(withDuration: 1.0, animations: {
+            
+            self.unHideAllItems()
+            self.monglesImageView.transform = .identity
+            self.setItems()
+            self.splash.stopAnimatingGIF()
+            self.splash.removeFromSuperview()
+            
+        })
+        
+    }
+    
+    func animate2(){
+        UIView.animate(withDuration: 1.0, animations: {
+            self.unHideAllItems()
+            
+            self.setItems()
+            self.splash.stopAnimatingGIF()
+            self.splash.removeFromSuperview()
+            
+        })
+        
+        
+        UIView.animate(withDuration: 8.0, animations: {
+            self.monglesImageView.transform = CGAffineTransform(translationX: -500, y: 0)
+            self.monglesImageView.transform = CGAffineTransform(rotationAngle: 360)
+            self.monglesImageView.transform = CGAffineTransform(scaleX: 100000, y: 100000)
+            
+        
+            
+            
+            
+            
+        })
+        
+        UIView.animate(withDuration: 1.0, animations: {
+            self.monglesImageView.transform = .identity
+            
+        })
+        
+        
+    }
+    
+    func animate3() {
+    
+        UIView.animate(withDuration: 1.0, animations: {
+            self.unHideAllItems()
+            self.setItems()
+     
+            self.splash.stopAnimatingGIF()
+            self.splash.removeFromSuperview()
+            
+        }, completion: {finish in
+            
+           
+            
+            
+            UIView.animate(withDuration: 2.0, delay: 0.0, options: .repeat , animations: {
+        
+                self.monglesImageView.transform = CGAffineTransform(translationX: -5000, y: -5000)
+                let pos = CGRect(x: Int.random(in : -500...500), y: Int.random(in : -500...500), width: Int.random(in : -500...500), height: Int.random(in : -500...500))
+                
+                self.monglesImageView.frame = pos
+            
+            })
+            
+            
+            
+        })
+        
+        
+    }
+    
     
     func setItems(){
        
@@ -404,6 +484,7 @@ class LogInVC: UIViewController {
         
         
         
+        
     }
     
     
@@ -439,4 +520,9 @@ extension UIView {
         }
         
         return totalTextFields
-    }}
+    }
+    
+}
+
+
+
