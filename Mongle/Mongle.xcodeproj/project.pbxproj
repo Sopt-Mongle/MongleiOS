@@ -53,6 +53,8 @@
 		7FCEE21F24B363CF00225CA3 /* MainTabSecondTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCEE21E24B363CF00225CA3 /* MainTabSecondTVC.swift */; };
 		7FFEA26424BE138F003D381A /* AppInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA26324BE138F003D381A /* AppInfo.storyboard */; };
 		7FFEA26624BE1B54003D381A /* AppInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA26524BE1B54003D381A /* AppInfoVC.swift */; };
+		7FFEA26824BE1E05003D381A /* Mongles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA26724BE1E05003D381A /* Mongles.storyboard */; };
+		7FFEA26A24BE3317003D381A /* MonglesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA26924BE3317003D381A /* MonglesVC.swift */; };
 		B86D4C4224B2C14200C21906 /* RecommendSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86D4C4124B2C14200C21906 /* RecommendSearchCVC.swift */; };
 		B8AB121924B46C7400B60240 /* CuratorList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AB121824B46C7400B60240 /* CuratorList.storyboard */; };
 		B8AB121B24B46CC100B60240 /* CuratorListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB121A24B46CC100B60240 /* CuratorListVC.swift */; };
@@ -147,6 +149,8 @@
 		7FCEE21E24B363CF00225CA3 /* MainTabSecondTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabSecondTVC.swift; sourceTree = "<group>"; };
 		7FFEA26324BE138F003D381A /* AppInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppInfo.storyboard; sourceTree = "<group>"; };
 		7FFEA26524BE1B54003D381A /* AppInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoVC.swift; sourceTree = "<group>"; };
+		7FFEA26724BE1E05003D381A /* Mongles.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mongles.storyboard; sourceTree = "<group>"; };
+		7FFEA26924BE3317003D381A /* MonglesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonglesVC.swift; sourceTree = "<group>"; };
 		B86D4C4124B2C14200C21906 /* RecommendSearchCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendSearchCVC.swift; sourceTree = "<group>"; };
 		B8AB121824B46C7400B60240 /* CuratorList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CuratorList.storyboard; sourceTree = "<group>"; };
 		B8AB121A24B46CC100B60240 /* CuratorListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorListVC.swift; sourceTree = "<group>"; };
@@ -302,6 +306,7 @@
 				7FB4203224BCA2FB00294314 /* MySetting.storyboard */,
 				7FB4203824BCC18D00294314 /* ProfileEdit.storyboard */,
 				7FFEA26324BE138F003D381A /* AppInfo.storyboard */,
+				7FFEA26724BE1E05003D381A /* Mongles.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -401,6 +406,7 @@
 				7FB4203424BCA92900294314 /* MySettingVC.swift */,
 				7FB4203A24BCDF5E00294314 /* ProfileEditVC.swift */,
 				7FFEA26524BE1B54003D381A /* AppInfoVC.swift */,
+				7FFEA26924BE3317003D381A /* MonglesVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -494,6 +500,7 @@
 				B8AB122324B5C10B00B60240 /* SearchTabResult.storyboard in Resources */,
 				EC88960C24B87F3D008D29E2 /* ThemeSelectForWriteSentence.storyboard in Resources */,
 				B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */,
+				7FFEA26824BE1E05003D381A /* Mongles.storyboard in Resources */,
 				7F1E71A824B7A72400D79516 /* ThemeInfo.storyboard in Resources */,
 				7F7C097324BAF714007C7C52 /* SentenceEdit.storyboard in Resources */,
 				7F1E71A424B504CF00D79516 /* MainTabMain.storyboard in Resources */,
@@ -583,6 +590,7 @@
 				7F767D7724B211D100ADF46D /* WritingThemeVC.swift in Sources */,
 				7FCEE21D24B355FC00225CA3 /* MainPictureCVC.swift in Sources */,
 				B8B48AE324B9845800551F5B /* SearchResultThemeTVC.swift in Sources */,
+				7FFEA26A24BE3317003D381A /* MonglesVC.swift in Sources */,
 				7F1E719D24B46E3C00D79516 /* MainPopularThemaCVC.swift in Sources */,
 				7FC5B4D324BB61A4007C1725 /* WritingSentenceInThemeVC.swift in Sources */,
 				EC88960A24B86AE8008D29E2 /* ThirdViewOfWritingSentenceVC.swift in Sources */,
