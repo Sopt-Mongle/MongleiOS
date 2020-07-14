@@ -172,6 +172,7 @@
                         <outlet property="seperateImageView2" destination="VuT-Sk-86Y" id="Vie-27-kvZ"/>
                         <outlet property="signUpButton" destination="gzD-S9-orH" id="Nae-09-BpS"/>
                         <outlet property="textImageView" destination="3sC-he-YSd" id="h5x-yI-Uxf"/>
+                        <outlet property="totalView" destination="f6D-xL-Vve" id="bas-q8-BwJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hl-gL-CBC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

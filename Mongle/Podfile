@@ -12,7 +12,7 @@ pod 'SnapKit', '~> 5.0.0'
 pod 'Then'
 pod 'Hero'
 pod 'lottie-ios'
-
+pod 'Gifu'
   # Pods for Mongle
 
 end

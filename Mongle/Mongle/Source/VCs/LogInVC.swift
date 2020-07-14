@@ -8,6 +8,8 @@
 
 import UIKit
 import Lottie
+import Gifu
+
 
 class LogInVC: UIViewController {
     
@@ -31,10 +33,16 @@ class LogInVC: UIViewController {
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var seperateImageView2: UIImageView!
+    @IBOutlet var totalView: UIView!
     
     //MARK:- User Define Variables
     
     let animView = AnimationView(name: "43-emoji-wink")
+    
+    let splash = GIFImageView()
+    
+    
+   
     
     let alertView = UIView().then {
         $0.backgroundColor = .clear
@@ -80,25 +88,61 @@ class LogInVC: UIViewController {
         $0.image = UIImage(named: "loginPopupBg")
         
     }
+    var runCount = 0
     
     
     //MARK:- LifeCycle Methods
 
 
     override func viewDidLoad() {
-        self.view.addSubview(animView)
-        animView.frame = animView.superview!.bounds
-        animView.contentMode = .scaleAspectFit
-        hideAllItems()
+         super.viewDidLoad()
+        self.view.backgroundColor = .white
         
-        animView.play { (finish) in
-            super.viewDidLoad()
-            self.animView.removeFromSuperview()
-            self.unHideAllItems()
-            self.setItems()
+        hideAllItems()
+        self.view.addSubview(splash)
+       
+        
+        splash.snp.makeConstraints{
+            $0.width.equalTo(400)
+            $0.height.equalTo(250)
+            $0.center.equalToSuperview()
             
         }
-        animView.loopMode = .playOnce
+        
+        
+        splashPlay()
+        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            self.runCount += 1
+            
+
+            if self.runCount == 29 {
+                timer.invalidate()
+                self.monglesImageView.transform = CGAffineTransform(translationX: 0, y: -50)
+                UIView.animate(withDuration: 1.0, animations: {
+                    
+                    self.unHideAllItems()
+                    self.monglesImageView.transform = .identity
+                    self.setItems()
+                    self.splash.stopAnimatingGIF()
+                    self.splash.removeFromSuperview()
+                    
+                })
+               
+            }
+        }
+        
+        
+       
+        
+        
+        
+        
+        
+        
+        
+       
+        
         
         
         
@@ -123,8 +167,14 @@ class LogInVC: UIViewController {
  
 
     //MARK:- User Define Functions
+    @objc func splashPlay(){
+
+        self.splash.animate(withGIFNamed: "Comp 2_1")
+        
+    }
     
     func setItems(){
+       
         quoteImageView.image = UIImage(named: "loginImgMarks")
         textImageView.image = UIImage(named: "invalidName")
         monglesImageView.image = UIImage(named: "loginImgMongle")
@@ -164,7 +214,7 @@ class LogInVC: UIViewController {
     }
     
     func hideAllItems(){
-        [idTextField, passwordTextField,loginButton ,signUpButton, findIDButton,findPasswordButton].forEach { item in
+        [idTextField, passwordTextField,loginButton , signUpButton, findIDButton,findPasswordButton,quoteImageView,textImageView, monglesImageView,backGroundView].forEach { item in
             item.alpha = 0
             
         }
@@ -172,7 +222,7 @@ class LogInVC: UIViewController {
     }
     
     func unHideAllItems(){
-        [idTextField, passwordTextField,loginButton , signUpButton, findIDButton,findPasswordButton].forEach { item in
+        [idTextField, passwordTextField,loginButton , signUpButton, findIDButton,findPasswordButton,quoteImageView,textImageView, monglesImageView,backGroundView].forEach { item in
             item.alpha = 1
             
         }

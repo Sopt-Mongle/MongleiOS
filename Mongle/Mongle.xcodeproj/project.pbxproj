@@ -66,6 +66,8 @@
 		EC148CF924BC67E7006925A0 /* 43-emoji-wink.json in Resources */ = {isa = PBXBuildFile; fileRef = EC148CF824BC67E7006925A0 /* 43-emoji-wink.json */; };
 		EC6B709524BD760B00151A3B /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC6B709424BD760B00151A3B /* SignUp.storyboard */; };
 		EC6B709724BD762A00151A3B /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6B709624BD762A00151A3B /* SignUpVC.swift */; };
+		EC6B70BD24BDD43600151A3B /* Comp 2_1.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC6B70BC24BDD43600151A3B /* Comp 2_1.gif */; };
+		EC6B70C124BDE73700151A3B /* Comp 1.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC6B70C024BDE73700151A3B /* Comp 1.gif */; };
 		EC7410B424BA03E800CBAF1C /* EndOfWritingSentence.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7410B324BA03E800CBAF1C /* EndOfWritingSentence.storyboard */; };
 		EC7410B624BA040300CBAF1C /* EndOfWritingSentenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410B524BA040300CBAF1C /* EndOfWritingSentenceVC.swift */; };
 		EC7410B824BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410B724BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift */; };
@@ -155,6 +157,8 @@
 		EC148CF824BC67E7006925A0 /* 43-emoji-wink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "43-emoji-wink.json"; sourceTree = "<group>"; };
 		EC6B709424BD760B00151A3B /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		EC6B709624BD762A00151A3B /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		EC6B70BC24BDD43600151A3B /* Comp 2_1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Comp 2_1.gif"; sourceTree = "<group>"; };
+		EC6B70C024BDE73700151A3B /* Comp 1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Comp 1.gif"; sourceTree = "<group>"; };
 		EC7410B324BA03E800CBAF1C /* EndOfWritingSentence.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EndOfWritingSentence.storyboard; sourceTree = "<group>"; };
 		EC7410B524BA040300CBAF1C /* EndOfWritingSentenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndOfWritingSentenceVC.swift; sourceTree = "<group>"; };
 		EC7410B724BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeMakeImagesCVC.swift; sourceTree = "<group>"; };
@@ -399,6 +403,8 @@
 		EC148CF724BC67D3006925A0 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				EC6B70C024BDE73700151A3B /* Comp 1.gif */,
+				EC6B70BC24BDD43600151A3B /* Comp 2_1.gif */,
 				EC148CF824BC67E7006925A0 /* 43-emoji-wink.json */,
 			);
 			path = SupportFiles;
@@ -473,9 +479,11 @@
 				EC7410BA24BA87F000CBAF1C /* EndOfMakingTheme.storyboard in Resources */,
 				ECA23EDE24B5F58D00C100F1 /* WritingSentenceSecond.storyboard in Resources */,
 				EC8E323324AF1B1A001AB034 /* Writing_Theme.storyboard in Resources */,
+				EC6B70BD24BDD43600151A3B /* Comp 2_1.gif in Resources */,
 				B8AB122324B5C10B00B60240 /* SearchTabResult.storyboard in Resources */,
 				EC88960C24B87F3D008D29E2 /* ThemeSelectForWriteSentence.storyboard in Resources */,
 				B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */,
+				EC6B70C124BDE73700151A3B /* Comp 1.gif in Resources */,
 				7F1E71A824B7A72400D79516 /* ThemeInfo.storyboard in Resources */,
 				7F7C097324BAF714007C7C52 /* SentenceEdit.storyboard in Resources */,
 				7F1E71A424B504CF00D79516 /* MainTabMain.storyboard in Resources */,

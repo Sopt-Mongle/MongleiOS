@@ -71,6 +71,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
     }
     
+    let nickNameQuantityLabel = UILabel().then {
+        $0.text = ""
+        $0.font = $0.font.withSize(13)
+        $0.textColor = .veryLightPink
+        
+    }
+    
     
     var emailIsWarning : Int = 0
     var passwordIsWarning : Bool = false
@@ -136,11 +143,37 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         passWordTextField2.addTarget(self, action: #selector(comparePasswords), for: .editingChanged)
         nickNameWarningLabel.alpha = 0
         nickNameWarningImageView.alpha = 0
+        nickNameTextField.addTarget(self, action: #selector(updateNicknameQuantity), for: .editingChanged)
+        
+        signUpScrollView.addSubview(nickNameQuantityLabel)
+        nickNameQuantityLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(527)
+            $0.trailing.equalToSuperview().offset(-28)
+            
+            
+        }
         
         self.view.getTextFieldsInView(view: self.view).forEach{
             $0.delegate = self
             
         }
+    }
+    
+    func partialGreenColor(){
+        
+        
+        guard let text = self.nickNameQuantityLabel.text else {
+            return
+        }
+        nickNameQuantityLabel.textColor = .softGreen
+        let attributedString = NSMutableAttributedString(string: nickNameQuantityLabel.text!)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                      value: UIColor.veryLightPink,
+                                      range: (text as NSString).range(of: "/6"))
+        if nickNameQuantityLabel.text == "" {
+            nickNameQuantityLabel.textColor = .veryLightPink
+        }
+        nickNameQuantityLabel.attributedText = attributedString
     }
     
     func registerForKeyboardNotifications() {
@@ -189,6 +222,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         if textField == passWordTextField2{
             secondPasswordEnd()
         }
+        else if textField == nickNameTextField {
+            nickNameQuantityLabel.alpha = 0
+        }
         
         
         
@@ -208,8 +244,10 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
              passWordTextField2.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         case nickNameTextField :
             hideNickNameWarning()
-             nickNameTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
-        
+            nickNameTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+            let newLength = (textField.text?.count)! + string.count - range.length
+            return !(newLength > 6)
+            
         default:
             return true
         }
@@ -312,7 +350,12 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
         
     }
-    
+    @objc func updateNicknameQuantity(){
+        nickNameQuantityLabel.alpha = 1
+        nickNameQuantityLabel.text = String(nickNameTextField.text!.count) + "/6"
+        partialGreenColor()
+        
+    }
     
     func showEmailWarning(){
         emailToPassWordConstraint.constant = 59
@@ -469,6 +512,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
     }
     func showNickNameWarning(){
+        nickNameWarningLabel.text = "닉네임을 입력해주세요!"
         nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1.0)
         nickNameWarningLabel.alpha = 1
         nickNameWarningImageView.alpha = 1
@@ -511,6 +555,10 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             passWordTextField2.setBorder(borderColor: .reddish, borderWidth: 1.0)
             
             secondPasswordBegin()
+        }
+        else if nickNameTextField.text == "123" {
+            
+            
         }
         
             
