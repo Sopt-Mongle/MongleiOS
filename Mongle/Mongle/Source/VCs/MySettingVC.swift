@@ -79,7 +79,11 @@ extension MySettingVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            break
+            guard let dvc = UIStoryboard(name: "ProfileEdit", bundle: nil).instantiateViewController(identifier: "ProfileEditVC") as? ProfileEditVC else {
+                return
+            }
+            dvc.modalPresentationStyle = .fullScreen
+            self.present(dvc, animated: true, completion: nil)
         case 1:
             break
         default:
