@@ -31,6 +31,8 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     
     
     var theme : String?
+    var yesIsTapping : Bool = false
+    
     
     
     // MARK:- Class Variables
@@ -48,12 +50,18 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     }
     
     let popupView = UIView().then {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .clear
+    }
+    
+    let popUpContainerView = UIImageView().then {
+        $0.image = UIImage(named: "writingThemeCheckImgPopup")
+        
     }
     
 
     let popUpImageView = UIImageView().then {
-        $0.image = UIImage(named: "mainImgTheme2")?.withRenderingMode(.alwaysOriginal)
+        $0.image = UIImage(named: "writingThemeCheckImgTheme")
+        $0.layer.masksToBounds = true
     }
     
     
@@ -87,11 +95,13 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     }
     
     let yesButton = UIButton(type: .custom).then {
-        $0.backgroundColor = .white
-        $0.setTitleColor(.softGreen, for: .normal)
+      
+        $0.backgroundColor = .softGreen
+        $0.setTitleColor(.white, for: .normal)
         $0.setTitle("네", for: .normal)
         $0.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         $0.addTarget(self, action: #selector(yesButtonDidTap), for: .touchUpInside)
+        
         
     }
     let noButton = UIButton().then {
@@ -150,10 +160,9 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
     }
     
+    
     @objc func yesButtonDidTap(){
-        yesButton.backgroundColor = .softGreen
-        yesButton.setTitleColor(.white, for: .normal)
-        
+   
         guard let vcName = UIStoryboard(name: "EndOfMakingTheme",
                                         bundle: nil).instantiateViewController(
                                             withIdentifier: "EndOfMakingThemeVC") as? EndOfMakingThemeVC
@@ -165,7 +174,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
         self.present(vcName, animated: true, completion: nil)
                 
-        
+         print("calledButtonDidTap")
     }
     
     func setItems(){
@@ -206,6 +215,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
         self.view.addSubview(blurView)
         self.view.addSubview(popupView)
+        popupView.addSubview(popUpContainerView)
         popupView.addSubview(popUpImageView)
         
         
@@ -220,6 +230,13 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
             $0.bottom.equalToSuperview().offset(-229.2)
             
         }
+        popUpContainerView.snp.makeConstraints{
+            $0.top.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            
+        }
         
         
         popupView.addSubview(popUpThemeLabel)
@@ -229,11 +246,13 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         popupView.addSubview(noButton)
 
         
+      
+        
         popUpImageView.snp.makeConstraints{
             $0.top.equalToSuperview().offset(46)
             $0.bottom.equalToSuperview().offset(-175.8)
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
+            $0.leading.equalToSuperview().offset(2)
+            $0.trailing.equalToSuperview().offset(-2)
             
         }
       
@@ -351,8 +370,8 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
 
     
      override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
           self.view.endEditing(true)
+            
 
     }
 
