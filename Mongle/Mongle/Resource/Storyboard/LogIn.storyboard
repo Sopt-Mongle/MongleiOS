@@ -28,7 +28,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z8u-Gu-SgQ">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="437"/>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="awA-8z-038">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="awA-8z-038">
                                         <rect key="frame" x="28" y="112" width="319" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="4cR-s5-0Gb"/>
@@ -36,7 +36,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dld-lB-cOo">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Dld-lB-cOo">
                                         <rect key="frame" x="28" y="59" width="319" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="x4T-2F-Epb"/>
@@ -63,6 +63,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="signUpButton:" destination="kJn-c1-6Jy" eventType="touchUpInside" id="SDV-M9-gRq"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6U-Wp-rp9">
                                         <rect key="frame" x="131" y="247" width="88" height="28"/>
@@ -169,6 +172,7 @@
                         <outlet property="seperateImageView2" destination="VuT-Sk-86Y" id="Vie-27-kvZ"/>
                         <outlet property="signUpButton" destination="gzD-S9-orH" id="Nae-09-BpS"/>
                         <outlet property="textImageView" destination="3sC-he-YSd" id="h5x-yI-Uxf"/>
+                        <outlet property="totalView" destination="f6D-xL-Vve" id="bas-q8-BwJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hl-gL-CBC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

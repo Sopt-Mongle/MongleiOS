@@ -74,6 +74,10 @@
 		B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */; };
 		B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */; };
 		EC148CF924BC67E7006925A0 /* 43-emoji-wink.json in Resources */ = {isa = PBXBuildFile; fileRef = EC148CF824BC67E7006925A0 /* 43-emoji-wink.json */; };
+		EC6B709524BD760B00151A3B /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC6B709424BD760B00151A3B /* SignUp.storyboard */; };
+		EC6B709724BD762A00151A3B /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6B709624BD762A00151A3B /* SignUpVC.swift */; };
+		EC6B70BD24BDD43600151A3B /* Comp 2_1.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC6B70BC24BDD43600151A3B /* Comp 2_1.gif */; };
+		EC6B70C124BDE73700151A3B /* Comp 1.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC6B70C024BDE73700151A3B /* Comp 1.gif */; };
 		EC7410B424BA03E800CBAF1C /* EndOfWritingSentence.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7410B324BA03E800CBAF1C /* EndOfWritingSentence.storyboard */; };
 		EC7410B624BA040300CBAF1C /* EndOfWritingSentenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410B524BA040300CBAF1C /* EndOfWritingSentenceVC.swift */; };
 		EC7410B824BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410B724BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift */; };
@@ -171,6 +175,10 @@
 		B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchCVC.swift; sourceTree = "<group>"; };
 		D8DC844C59312BAF341597F1 /* Pods-Mongle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mongle.debug.xcconfig"; path = "Target Support Files/Pods-Mongle/Pods-Mongle.debug.xcconfig"; sourceTree = "<group>"; };
 		EC148CF824BC67E7006925A0 /* 43-emoji-wink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "43-emoji-wink.json"; sourceTree = "<group>"; };
+		EC6B709424BD760B00151A3B /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		EC6B709624BD762A00151A3B /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		EC6B70BC24BDD43600151A3B /* Comp 2_1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Comp 2_1.gif"; sourceTree = "<group>"; };
+		EC6B70C024BDE73700151A3B /* Comp 1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Comp 1.gif"; sourceTree = "<group>"; };
 		EC7410B324BA03E800CBAF1C /* EndOfWritingSentence.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EndOfWritingSentence.storyboard; sourceTree = "<group>"; };
 		EC7410B524BA040300CBAF1C /* EndOfWritingSentenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndOfWritingSentenceVC.swift; sourceTree = "<group>"; };
 		EC7410B724BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeMakeImagesCVC.swift; sourceTree = "<group>"; };
@@ -303,6 +311,7 @@
 				7FC5B4D424BC6C78007C1725 /* AddBookToSentence.storyboard */,
 				EC7410B924BA87F000CBAF1C /* EndOfMakingTheme.storyboard */,
 				EC7410DF24BC534100CBAF1C /* LogIn.storyboard */,
+				EC6B709424BD760B00151A3B /* SignUp.storyboard */,
 				7FB4203224BCA2FB00294314 /* MySetting.storyboard */,
 				7FB4203824BCC18D00294314 /* ProfileEdit.storyboard */,
 				7FFEA26324BE138F003D381A /* AppInfo.storyboard */,
@@ -403,6 +412,7 @@
 				EC7410BB24BA883100CBAF1C /* EndOfMakingThemeVC.swift */,
 				7F7C097424BAFAAE007C7C52 /* SentenceEditVC.swift */,
 				EC7410E124BC539500CBAF1C /* LogInVC.swift */,
+				EC6B709624BD762A00151A3B /* SignUpVC.swift */,
 				7FB4203424BCA92900294314 /* MySettingVC.swift */,
 				7FB4203A24BCDF5E00294314 /* ProfileEditVC.swift */,
 				7FFEA26524BE1B54003D381A /* AppInfoVC.swift */,
@@ -423,6 +433,8 @@
 		EC148CF724BC67D3006925A0 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				EC6B70C024BDE73700151A3B /* Comp 1.gif */,
+				EC6B70BC24BDD43600151A3B /* Comp 2_1.gif */,
 				EC148CF824BC67E7006925A0 /* 43-emoji-wink.json */,
 			);
 			path = SupportFiles;
@@ -497,16 +509,19 @@
 				EC7410BA24BA87F000CBAF1C /* EndOfMakingTheme.storyboard in Resources */,
 				ECA23EDE24B5F58D00C100F1 /* WritingSentenceSecond.storyboard in Resources */,
 				EC8E323324AF1B1A001AB034 /* Writing_Theme.storyboard in Resources */,
+				EC6B70BD24BDD43600151A3B /* Comp 2_1.gif in Resources */,
 				B8AB122324B5C10B00B60240 /* SearchTabResult.storyboard in Resources */,
 				EC88960C24B87F3D008D29E2 /* ThemeSelectForWriteSentence.storyboard in Resources */,
 				B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */,
 				7FFEA26824BE1E05003D381A /* Mongles.storyboard in Resources */,
+				EC6B70C124BDE73700151A3B /* Comp 1.gif in Resources */,
 				7F1E71A824B7A72400D79516 /* ThemeInfo.storyboard in Resources */,
 				7F7C097324BAF714007C7C52 /* SentenceEdit.storyboard in Resources */,
 				7F1E71A424B504CF00D79516 /* MainTabMain.storyboard in Resources */,
 				7F6ABEBB24ADE7720040746E /* Assets.xcassets in Resources */,
 				EC86B49624B7169200DB930A /* SearchBookForWriting.storyboard in Resources */,
 				EC88960624B869E9008D29E2 /* WritingSentenceThird.storyboard in Resources */,
+				EC6B709524BD760B00151A3B /* SignUp.storyboard in Resources */,
 				7FC5B4D524BC6C78007C1725 /* AddBookToSentence.storyboard in Resources */,
 				ECEF22BA24B4A3B200933534 /* WritingSentence.storyboard in Resources */,
 				7FB4203324BCA2FC00294314 /* MySetting.storyboard in Resources */,
@@ -571,6 +586,7 @@
 				7F6ABEDB24ADED910040746E /* GenericResponse.swift in Sources */,
 				7F6ABED724ADEB730040746E /* UserDefaultKeys.swift in Sources */,
 				7F7C097124BA2EE7007C7C52 /* SentenceInfoTVC.swift in Sources */,
+				EC6B709724BD762A00151A3B /* SignUpVC.swift in Sources */,
 				7F1E719924B45AB600D79516 /* MainPopularCuratorCVC.swift in Sources */,
 				7FB4203724BCAD2200294314 /* SettingTVC.swift in Sources */,
 				B8B48B2924BB3DEE00551F5B /* SearchResultCuratorHeaderView.swift in Sources */,
@@ -767,13 +783,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HAWSBW2KW5;
+				DEVELOPMENT_TEAM = 6ZTQ76LJPZ;
 				INFOPLIST_FILE = Mongle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.juhyeoklee.Mongle;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.juhyeoklee.Mongle2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -786,13 +802,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HAWSBW2KW5;
+				DEVELOPMENT_TEAM = 6ZTQ76LJPZ;
 				INFOPLIST_FILE = Mongle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.juhyeoklee.Mongle;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.juhyeoklee.Mongle2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
