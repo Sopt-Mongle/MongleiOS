@@ -42,10 +42,11 @@ class CuratorTabMainVC: UIViewController {
             btn.setTitleColor(.brownGrey, for: .normal)
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
             btn.tag = idx
+            btn.backgroundColor = .white
             idx += 1
 //            btn.setBorder(borderColor: .brownGrey, borderWidth: 1)
             //btn.backgroundColor = .white
-            btn.setBackgroundImage(UIImage(named:"curatorBtnKeyword1"), for: .normal)
+            
             
             
             
@@ -90,6 +91,13 @@ extension CuratorTabMainVC: UITableViewDataSource{
 
 //popularCollectionViewCell
 extension CuratorTabMainVC: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let curatorInfoVC = UIStoryboard(name:"CuratorTabInfo",bundle:nil).instantiateViewController(identifier: "CuratorTabInfoVC") as? CuratorTabInfoVC else{
+            return
+        }
+        self.navigationController?.pushViewController(curatorInfoVC, animated: true)
+    }
+    
     
 }
 extension CuratorTabMainVC: UICollectionViewDelegateFlowLayout{

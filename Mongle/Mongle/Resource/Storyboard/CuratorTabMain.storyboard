@@ -89,14 +89,18 @@
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ntI-8g-64q">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fiJ-tv-jkQ">
+                                            <rect key="frame" x="0.0" y="200" width="375" height="102"/>
+                                            <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="ntI-8g-64q">
                                             <rect key="frame" x="0.0" y="201" width="375" height="100"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="sme-bG-gkd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="sme-bG-gkd">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49.666666666666664"/>
                                                     <subviews>
                                                         <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Srh-Km-dno">
-                                                            <rect key="frame" x="0.0" y="0.0" width="125" height="50"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="124.33333333333333" height="49.666666666666664"/>
                                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="감성자극"/>
@@ -105,7 +109,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7L-EX-8oH">
-                                                            <rect key="frame" x="125" y="0.0" width="125" height="50"/>
+                                                            <rect key="frame" x="125.33333333333334" y="0.0" width="124.33333333333334" height="49.666666666666664"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <inset key="contentEdgeInsets" minX="-1" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <inset key="imageEdgeInsets" minX="-1" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -115,7 +119,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwr-52-RC0">
-                                                            <rect key="frame" x="250" y="0.0" width="125" height="50"/>
+                                                            <rect key="frame" x="250.66666666666666" y="0.0" width="124.33333333333334" height="49.666666666666664"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="자기계발"/>
                                                             <connections>
@@ -123,13 +127,13 @@
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="oor-By-Uuf">
-                                                    <rect key="frame" x="0.0" y="50" width="375" height="50"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="oor-By-Uuf">
+                                                    <rect key="frame" x="0.0" y="50.666666666666657" width="375" height="49.333333333333343"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSr-KB-O8Q">
-                                                            <rect key="frame" x="0.0" y="0.0" width="125" height="50"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="124.33333333333333" height="49.333333333333336"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="깊은생각"/>
@@ -138,7 +142,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ffy-B2-4Ti">
-                                                            <rect key="frame" x="125" y="0.0" width="125" height="50"/>
+                                                            <rect key="frame" x="125.33333333333334" y="0.0" width="124.33333333333334" height="49.333333333333336"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="독서기록"/>
@@ -147,7 +151,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAs-cf-DEc">
-                                                            <rect key="frame" x="250" y="0.0" width="125" height="50"/>
+                                                            <rect key="frame" x="250.66666666666666" y="0.0" width="124.33333333333334" height="49.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="일상문장"/>
                                                             <connections>
@@ -155,10 +159,10 @@
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="2Mt-75-k7i"/>
                                             </constraints>
@@ -169,9 +173,13 @@
                                         <constraint firstItem="HrQ-NN-Bqw" firstAttribute="top" secondItem="3cs-Ks-9lT" secondAttribute="top" id="2tR-eL-dDu"/>
                                         <constraint firstAttribute="trailing" secondItem="9oi-p6-YxO" secondAttribute="trailing" id="9UL-K9-6kY"/>
                                         <constraint firstItem="HrQ-NN-Bqw" firstAttribute="leading" secondItem="3cs-Ks-9lT" secondAttribute="leading" constant="16" id="KWM-VJ-ozB"/>
+                                        <constraint firstItem="fiJ-tv-jkQ" firstAttribute="bottom" secondItem="ntI-8g-64q" secondAttribute="bottom" constant="1" id="Mzo-Uq-H2h"/>
+                                        <constraint firstItem="fiJ-tv-jkQ" firstAttribute="top" secondItem="ntI-8g-64q" secondAttribute="top" constant="-1" id="ULm-hz-Ogy"/>
+                                        <constraint firstAttribute="trailing" secondItem="fiJ-tv-jkQ" secondAttribute="trailing" id="UMI-0y-vI7"/>
                                         <constraint firstItem="9oi-p6-YxO" firstAttribute="leading" secondItem="3cs-Ks-9lT" secondAttribute="leading" id="XlS-64-Ul2"/>
                                         <constraint firstItem="ntI-8g-64q" firstAttribute="leading" secondItem="3cs-Ks-9lT" secondAttribute="leading" id="e8D-9x-jB3"/>
                                         <constraint firstItem="9oi-p6-YxO" firstAttribute="top" secondItem="HrQ-NN-Bqw" secondAttribute="bottom" constant="14" id="jqf-rN-dRT"/>
+                                        <constraint firstItem="fiJ-tv-jkQ" firstAttribute="leading" secondItem="3cs-Ks-9lT" secondAttribute="leading" id="kIw-tc-Gjg"/>
                                         <constraint firstItem="ntI-8g-64q" firstAttribute="top" secondItem="9oi-p6-YxO" secondAttribute="bottom" constant="30" id="o74-8p-NXZ"/>
                                         <constraint firstAttribute="trailing" secondItem="ntI-8g-64q" secondAttribute="trailing" id="q9a-1a-onU"/>
                                     </constraints>

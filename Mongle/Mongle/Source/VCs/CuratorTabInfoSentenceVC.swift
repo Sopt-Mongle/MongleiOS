@@ -34,6 +34,11 @@ extension CuratorTabInfoSentenceVC: UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        guard let sentenceVC = UIStoryboard(name:"SentenceInfo",bundle:nil).instantiateViewController(identifier: "SentenceInfoVC") as? SentenceInfoVC else {
+            return
+            
+        }
+        self.navigationController?.pushViewController(sentenceVC, animated: true)
     }
     
 }

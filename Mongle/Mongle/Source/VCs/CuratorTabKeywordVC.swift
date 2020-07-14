@@ -37,6 +37,12 @@ class CuratorTabKeywordVC: UIViewController {
 
 }
 extension CuratorTabKeywordVC: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let curatorInfoVC = UIStoryboard(name:"CuratorTabInfo",bundle:nil).instantiateViewController(identifier: "CuratorTabInfoVC") as? CuratorTabInfoVC else{
+            return
+        }
+        self.navigationController?.pushViewController(curatorInfoVC, animated: true)
+    }
     
 }
 extension CuratorTabKeywordVC: UICollectionViewDataSource{
