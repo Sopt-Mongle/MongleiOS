@@ -18,7 +18,7 @@ class MySettingVC: UIViewController {
         }
     }
     // MARK:- Property
-    var settingNames = ["프로필 수정", "앱정보"]
+    var settingNames = ["프로필 수정", "앱정보", "몽글즈"]
     
     //MARK:- Lifecycle
     override func viewDidLoad() {
@@ -85,7 +85,15 @@ extension MySettingVC: UITableViewDelegate {
             dvc.modalPresentationStyle = .fullScreen
             self.present(dvc, animated: true, completion: nil)
         case 1:
-            break
+            guard let dvc = UIStoryboard(name: "AppInfo", bundle: nil).instantiateViewController(identifier: "AppInfoVC") as? AppInfoVC else {
+                return
+            }
+            self.present(dvc, animated: true, completion: nil)
+        case 2:
+            guard let dvc = UIStoryboard(name: "Mongles", bundle: nil).instantiateViewController(identifier: "MonglesVC") as? MonglesVC else {
+                return
+            }
+            self.present(dvc, animated: true, completion: nil)
         default:
             break
         }
