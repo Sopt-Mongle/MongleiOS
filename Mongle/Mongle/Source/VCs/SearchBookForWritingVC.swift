@@ -248,6 +248,7 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
           
       }
     func showEmpty(){
+        bookTableView.isHidden = true
         self.view.addSubview(emptyImageView)
         self.view.addSubview(emptyLabel1)
         self.view.addSubview(emptyLabel2)
@@ -282,6 +283,7 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
         //Temp logic
         if searchTextField.text == "" {
             showEmpty()
+            self.view.endEditing(true)
             
         }
         

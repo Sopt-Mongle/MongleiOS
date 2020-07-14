@@ -63,7 +63,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     var isWarning : Bool = false
     var themeDelegate : ThemeSendDelegate?
     
-    
+    var shouldBeHidden : Bool = false
     
     //MARK:- LifeCycleMethods
     override func viewDidLoad() {
@@ -232,20 +232,24 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     @IBAction func searchButtonAction(_ sender: Any) {
         
         if themeTextField.text == "으악" {
+            shouldBeHidden = true
+            themeCollectionView.reloadData()
             showEmpty()
-            
+            self.view.endEditing(true)
         }
         else{
+            
             hideEmpty()
-            themeCollectionView.isHidden = false
+            
             searchKeyWord = themeTextField.text
-            themeCollectionView.reloadData()
+            
             isSearched = true
             setResultLabels()
+            shouldBeHidden = false
             
             
             
-            
+            themeCollectionView.reloadData()
             
             self.view.endEditing(true)
         }
@@ -367,6 +371,10 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
 
 extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if shouldBeHidden{
+            return 0
+        }
+        
         return themes.count
     }
     
