@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dZY-uu-v5q">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -15,34 +15,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sOH-F3-DCV">
-                                <rect key="frame" x="166" y="190" width="82" height="86"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="82" id="QUt-bE-MZB"/>
-                                    <constraint firstAttribute="height" constant="86" id="WsG-bO-UAS"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="문장이 등록되었습니다!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJx-lL-7u6">
-                                <rect key="frame" x="115.5" y="355" width="183.5" height="24"/>
+                                <rect key="frame" x="115.5" y="411" width="183.5" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PwP-97-7ij">
-                                <rect key="frame" x="71" y="467" width="272" height="44"/>
+                                <rect key="frame" x="71" y="523" width="272" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="TXC-5E-rlZ"/>
                                 </constraints>
                                 <state key="normal" title="문장 확인하러가기"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9P-dN-9nC">
-                                <rect key="frame" x="188.5" y="399" width="37.5" height="18"/>
+                                <rect key="frame" x="188.5" y="455" width="37.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J5Q-bQ-XSR">
-                                <rect key="frame" x="71" y="527" width="272" height="44"/>
+                                <rect key="frame" x="71" y="583" width="272" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="mCM-cA-aoc"/>
                                 </constraints>
@@ -51,6 +44,12 @@
                                     <action selector="backToMainButtonAction:" destination="dZY-uu-v5q" eventType="touchUpInside" id="NT7-td-A0u"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sOH-F3-DCV">
+                                <rect key="frame" x="59" y="162" width="297" height="212"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="212" id="WsG-bO-UAS"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -58,14 +57,15 @@
                             <constraint firstItem="J9P-dN-9nC" firstAttribute="centerX" secondItem="Zkg-X4-zat" secondAttribute="centerX" id="2TK-59-NSh"/>
                             <constraint firstItem="dJx-lL-7u6" firstAttribute="centerX" secondItem="Zkg-X4-zat" secondAttribute="centerX" id="7uy-rh-Gm2"/>
                             <constraint firstItem="J5Q-bQ-XSR" firstAttribute="leading" secondItem="Zkg-X4-zat" secondAttribute="leading" constant="71" id="A6P-H5-tpm"/>
-                            <constraint firstItem="sOH-F3-DCV" firstAttribute="top" secondItem="lmU-H2-x5G" secondAttribute="top" constant="190" id="EyX-Bg-Iee"/>
+                            <constraint firstItem="sOH-F3-DCV" firstAttribute="top" secondItem="lmU-H2-x5G" secondAttribute="top" constant="163" id="EyX-Bg-Iee"/>
                             <constraint firstItem="Zkg-X4-zat" firstAttribute="trailing" secondItem="PwP-97-7ij" secondAttribute="trailing" constant="71" id="KM2-6U-IM0"/>
-                            <constraint firstItem="sOH-F3-DCV" firstAttribute="centerX" secondItem="Zkg-X4-zat" secondAttribute="centerX" id="KOI-N4-NWz"/>
-                            <constraint firstItem="dJx-lL-7u6" firstAttribute="top" secondItem="sOH-F3-DCV" secondAttribute="bottom" constant="79" id="Srt-tP-3aj"/>
+                            <constraint firstItem="dJx-lL-7u6" firstAttribute="top" secondItem="sOH-F3-DCV" secondAttribute="bottom" constant="36" id="Srt-tP-3aj"/>
                             <constraint firstItem="J5Q-bQ-XSR" firstAttribute="top" secondItem="PwP-97-7ij" secondAttribute="bottom" constant="16" id="TWi-KV-mNR"/>
                             <constraint firstItem="Zkg-X4-zat" firstAttribute="trailing" secondItem="J5Q-bQ-XSR" secondAttribute="trailing" constant="71" id="f6S-Zb-g70"/>
                             <constraint firstItem="J9P-dN-9nC" firstAttribute="top" secondItem="dJx-lL-7u6" secondAttribute="bottom" constant="20" id="fA6-qR-Ozc"/>
                             <constraint firstItem="PwP-97-7ij" firstAttribute="top" secondItem="J9P-dN-9nC" secondAttribute="bottom" constant="50" id="nhs-iL-Qe5"/>
+                            <constraint firstItem="sOH-F3-DCV" firstAttribute="leading" secondItem="Zkg-X4-zat" secondAttribute="leading" constant="59" id="uGI-4z-E6O"/>
+                            <constraint firstItem="Zkg-X4-zat" firstAttribute="trailing" secondItem="sOH-F3-DCV" secondAttribute="trailing" constant="58" id="xii-zA-kvI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zkg-X4-zat"/>
                     </view>

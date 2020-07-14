@@ -583,9 +583,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
             
         else {
-            guard let vcName = UIStoryboard(name: "UnderTab",
+            guard let vcName = UIStoryboard(name: "SignUpEnd",
                                             bundle: nil).instantiateViewController(
-                                                withIdentifier: "UnderTabBarController") as? UINavigationController
+                                                withIdentifier: "SignUpEndVC") as? SignUpEndVC
                 else{
                     return
             }

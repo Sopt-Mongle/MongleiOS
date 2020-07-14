@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "toastBoxSentenceMongle.png",
+      "scale" : "1x",
+      "idiom" : "universal"
+    },
+    {
+      "scale" : "2x",
+      "filename" : "toastBoxSentenceMongle@2x.png",
+      "idiom" : "universal"
+    },
+    {
+      "scale" : "3x",
+      "idiom" : "universal",
+      "filename" : "toastBoxSentenceMongle@3x.png"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

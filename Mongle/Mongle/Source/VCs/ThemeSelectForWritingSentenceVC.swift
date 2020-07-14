@@ -192,7 +192,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     }
     
     func setThemes(){
-        let theme1 = ThemeForSentence(imgName: "writingSentenceTheme2ImgThemeX", themeTitle: "테마 없는 문장",state : false)
+        let theme1 = ThemeForSentence(imgName: "writingSentenceTheme3ImgThemeX", themeTitle: "테마 없는 문장",state : true)
         let theme2 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
         let theme3 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "브랜딩이 어려울 때 영감을 주는 문장",state : true)
         let theme4 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
