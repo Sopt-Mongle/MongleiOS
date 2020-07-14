@@ -103,8 +103,8 @@ class LogInVC: UIViewController {
        
         
         splash.snp.makeConstraints{
-            $0.width.equalTo(400)
-            $0.height.equalTo(250)
+            $0.width.equalTo(350)
+            $0.height.equalTo(200)
             $0.center.equalToSuperview()
             
         }
@@ -437,11 +437,13 @@ class LogInVC: UIViewController {
         
     }
     
+    @IBAction func findIdButtonAction(_ sender: Any) {
+     
+        
+    }
     
     
-
-    
-    
+   
     @IBAction func logInButtonAction(_ sender: Any) {
         
         if idTextField.text == "임정은" {

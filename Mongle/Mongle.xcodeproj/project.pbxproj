@@ -70,6 +70,8 @@
 		B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */; };
 		B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */; };
 		EC148CF924BC67E7006925A0 /* 43-emoji-wink.json in Resources */ = {isa = PBXBuildFile; fileRef = EC148CF824BC67E7006925A0 /* 43-emoji-wink.json */; };
+		EC178CCC24BE26F5008CF514 /* SignUpEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC178CCB24BE26F5008CF514 /* SignUpEnd.storyboard */; };
+		EC178CCE24BE2719008CF514 /* SignUpEndVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC178CCD24BE2719008CF514 /* SignUpEndVC.swift */; };
 		EC6B709524BD760B00151A3B /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC6B709424BD760B00151A3B /* SignUp.storyboard */; };
 		EC6B709724BD762A00151A3B /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6B709624BD762A00151A3B /* SignUpVC.swift */; };
 		EC6B70BD24BDD43600151A3B /* Comp 2_1.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC6B70BC24BDD43600151A3B /* Comp 2_1.gif */; };
@@ -167,6 +169,8 @@
 		B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchCVC.swift; sourceTree = "<group>"; };
 		D8DC844C59312BAF341597F1 /* Pods-Mongle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mongle.debug.xcconfig"; path = "Target Support Files/Pods-Mongle/Pods-Mongle.debug.xcconfig"; sourceTree = "<group>"; };
 		EC148CF824BC67E7006925A0 /* 43-emoji-wink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "43-emoji-wink.json"; sourceTree = "<group>"; };
+		EC178CCB24BE26F5008CF514 /* SignUpEnd.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpEnd.storyboard; sourceTree = "<group>"; };
+		EC178CCD24BE2719008CF514 /* SignUpEndVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEndVC.swift; sourceTree = "<group>"; };
 		EC6B709424BD760B00151A3B /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		EC6B709624BD762A00151A3B /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		EC6B70BC24BDD43600151A3B /* Comp 2_1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Comp 2_1.gif"; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 				EC6B709424BD760B00151A3B /* SignUp.storyboard */,
 				7FB4203224BCA2FB00294314 /* MySetting.storyboard */,
 				7FB4203824BCC18D00294314 /* ProfileEdit.storyboard */,
+				EC178CCB24BE26F5008CF514 /* SignUpEnd.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -405,7 +410,7 @@
 				EC6B709624BD762A00151A3B /* SignUpVC.swift */,
 				7FB4203424BCA92900294314 /* MySettingVC.swift */,
 				7FB4203A24BCDF5E00294314 /* ProfileEditVC.swift */,
-
+				EC178CCD24BE2719008CF514 /* SignUpEndVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC178CCC24BE26F5008CF514 /* SignUpEnd.storyboard in Resources */,
 				B8AB121924B46C7400B60240 /* CuratorList.storyboard in Resources */,
 				7FC5B4D124BB58E3007C1725 /* WritingSentenceInTheme.storyboard in Resources */,
 				7F6ABEBE24ADE7720040746E /* LaunchScreen.storyboard in Resources */,
@@ -618,6 +624,7 @@
 				EC7410B824BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift in Sources */,
 				B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */,
 				ECA23EE024B5F5F100C100F1 /* WritingSentenceSecondVC.swift in Sources */,
+				EC178CCE24BE2719008CF514 /* SignUpEndVC.swift in Sources */,
 				7F6ABEB424ADE7700040746E /* SceneDelegate.swift in Sources */,
 				7FB4203B24BCDF5E00294314 /* ProfileEditVC.swift in Sources */,
 				B8B48A5D24B6029100551F5B /* SearchResultSentenceVC.swift in Sources */,

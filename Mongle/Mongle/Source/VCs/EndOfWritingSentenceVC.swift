@@ -30,8 +30,11 @@ class EndOfWritingSentenceVC: UIViewController {
         super.viewDidLoad()
         setItems()
         //self.view.addSubview(yesButton)
-        
+        imageAnimation1()
+         
         // Do any additional setup after loading the view.
+        
+        
     }
     
 
@@ -40,7 +43,7 @@ class EndOfWritingSentenceVC: UIViewController {
     func setItems(){
         secondLabel.text = "몽글이님의 문장으로\n몽글이 더욱 풍부해졌어요!"
         secondLabel.textColor = .brownGreyTwo
-        EndImageView.image = UIImage(named: "maengleCharacters")?.withRenderingMode(.alwaysOriginal)
+        EndImageView.image = UIImage(named: "writingSentenceFinishImgSentence")?.withRenderingMode(.alwaysOriginal)
         sentenceCheckButton.backgroundColor = .softGreen
         sentenceCheckButton.setTitleColor(.white, for: .normal)
         sentenceCheckButton.makeRounded(cornerRadius: 21)
@@ -51,8 +54,43 @@ class EndOfWritingSentenceVC: UIViewController {
         
         
     }
+    
+    
      
-     
+    func imageAnimation1(){
+        UIView.animate(withDuration: 0.34, animations: {
+            self.EndImageView.transform = CGAffineTransform(rotationAngle: 12/180)
+            
+            
+        }, completion: { finish in
+            UIView.animate(withDuration: 0.34, animations: {
+                self.EndImageView.transform = CGAffineTransform(rotationAngle: -12/180)
+                
+                
+            },completion: { finish in
+                
+                UIView.animate(withDuration: 0.34, animations: {
+                    self.EndImageView.transform = CGAffineTransform(rotationAngle: 0/180)
+                })
+                
+            })
+            
+            
+            
+        })
+       
+        
+        
+    }
+    
+    func imageAnimation(){
+        UIView.animate(withDuration: 0.5, animations: {
+            self.EndImageView.transform = CGAffineTransform(rotationAngle: -1/180)
+            
+            
+        })
+        
+    }
     
      
      
