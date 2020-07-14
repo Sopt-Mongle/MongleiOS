@@ -12,6 +12,7 @@ class MainTabSecondTVC: UITableViewCell {
     static let identifier = "MainTabSecondTVC"
     
     @IBOutlet var todaySentenceCollectionView: UICollectionView!
+    
     var selectSentenceDelegate: ((_ viewControllers: UIViewController) -> ()) = { _ in }
     
     let sentences = ["가나다라", "마바사아자차카타파하"]
