@@ -15,6 +15,7 @@ class CuratorTabMainTVC: UITableViewCell {
     @IBOutlet weak var themeCuratorCountLabel: UILabel!
     @IBOutlet weak var curatorListCollectionView: UICollectionView!
     
+    var selectSentenceDelegate: ((_ viewControllers: UIViewController) -> ()) = { _ in }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,9 +39,12 @@ class CuratorTabMainTVC: UITableViewCell {
 
 //curatorListCollectionView
 extension CuratorTabMainTVC: UICollectionViewDelegate{
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let curatorInfoVC = UIStoryboard(name:"CuratorTabInfo",bundle:nil).instantiateViewController(identifier: "CuratorTabInfoVC") as? CuratorTabInfoVC else {
+            return
+        }
+        selectSentenceDelegate(curatorInfoVC)
+    }
 }
 extension CuratorTabMainTVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

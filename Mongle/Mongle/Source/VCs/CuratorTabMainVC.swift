@@ -67,7 +67,9 @@ class CuratorTabMainVC: UIViewController {
 }
 
 extension CuratorTabMainVC: UITableViewDelegate{
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }
 extension CuratorTabMainVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,7 +78,9 @@ extension CuratorTabMainVC: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CuratorTabMainTVC", for: indexPath) as? CuratorTabMainTVC else{ return UITableViewCell()}
-        
+        cell.selectSentenceDelegate = { [weak self] dvc in
+            self?.navigationController?.pushViewController(dvc, animated: true)
+        }
         return cell
         
     }
