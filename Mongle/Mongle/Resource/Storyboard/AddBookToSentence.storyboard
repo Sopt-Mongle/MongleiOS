@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Book To SentenceVC-->
+        <scene sceneID="ec9-ZL-FTY">
+            <objects>
+                <viewController storyboardIdentifier="AddBookToSentenceVC" id="nOL-EY-d1h" customClass="AddBookToSentenceVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="izK-bS-5JN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="테마에 문장 쓰기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7FW-if-3Iu">
+                                <rect key="frame" x="147.5" y="48" width="119" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pyM-Gn-ZxQ">
+                                <rect key="frame" x="0.0" y="37" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="Ga1-pF-eIb"/>
+                                    <constraint firstAttribute="height" constant="48" id="kGY-j8-eLJ"/>
+                                </constraints>
+                                <state key="normal" image="searchBtnBack"/>
+                                <connections>
+                                    <action selector="backButton:" destination="nOL-EY-d1h" eventType="touchUpInside" id="bC5-9Q-l31"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한 문장이 담긴 책을 추가해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9K-4F-2BM">
+                                <rect key="frame" x="16" y="97" width="242" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="작가/옮긴이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXT-7A-bt2">
+                                <rect key="frame" x="15" y="208" width="70" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="출판사" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0I-5V-1bz">
+                                <rect key="frame" x="15" y="300" width="39" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S8i-eg-9PE">
+                                <rect key="frame" x="16" y="237" width="382" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="cC1-K4-Kkt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PbV-Oy-Dhy">
+                                <rect key="frame" x="16" y="794" width="382" height="57"/>
+                                <color key="backgroundColor" red="0.52136768109999998" green="1" blue="0.26290879" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="sZ7-Xe-FHl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="다음">
+                                    <color key="titleColor" red="0.9568960071" green="0.96459966900000005" blue="0.97254294159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="24z-ck-m5l">
+                                <rect key="frame" x="16" y="329" width="382" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="8Tl-s6-Ogz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60K-D8-bCs">
+                                <rect key="frame" x="16" y="135" width="382" height="30"/>
+                                <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchTextButtonAction:" destination="nOL-EY-d1h" eventType="touchUpInside" id="CFr-vG-ZYW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDH-3N-CRx">
+                                <rect key="frame" x="31" y="148" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="pyM-Gn-ZxQ" firstAttribute="top" secondItem="izK-bS-5JN" secondAttribute="top" constant="37" id="4lY-Oq-aFi"/>
+                            <constraint firstItem="v0I-5V-1bz" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" constant="15" id="B4t-uk-emp"/>
+                            <constraint firstItem="v0I-5V-1bz" firstAttribute="top" secondItem="S8i-eg-9PE" secondAttribute="bottom" constant="18" id="E5u-b9-lSq"/>
+                            <constraint firstItem="PbV-Oy-Dhy" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" constant="16" id="GIr-bz-Lhq"/>
+                            <constraint firstItem="A06-aJ-v94" firstAttribute="trailing" secondItem="S8i-eg-9PE" secondAttribute="trailing" constant="16" id="J2X-Fx-tPi"/>
+                            <constraint firstItem="60K-D8-bCs" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" constant="16" id="M7a-db-AtG"/>
+                            <constraint firstItem="24z-ck-m5l" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" constant="16" id="PTL-2F-lSV"/>
+                            <constraint firstItem="CXT-7A-bt2" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" constant="15" id="RDI-R0-GYI"/>
+                            <constraint firstItem="CXT-7A-bt2" firstAttribute="top" secondItem="60K-D8-bCs" secondAttribute="bottom" constant="43" id="Uhs-Df-OhS"/>
+                            <constraint firstItem="pyM-Gn-ZxQ" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" id="X3F-I7-nKk"/>
+                            <constraint firstItem="Y9K-4F-2BM" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" constant="16" id="Xlw-Ko-5E1"/>
+                            <constraint firstItem="eDH-3N-CRx" firstAttribute="top" secondItem="Y9K-4F-2BM" secondAttribute="bottom" constant="30" id="Y5f-DD-ZyQ"/>
+                            <constraint firstItem="7FW-if-3Iu" firstAttribute="centerX" secondItem="A06-aJ-v94" secondAttribute="centerX" id="bpb-GX-A8h"/>
+                            <constraint firstItem="A06-aJ-v94" firstAttribute="trailing" secondItem="60K-D8-bCs" secondAttribute="trailing" constant="16" id="cWW-kE-uLY"/>
+                            <constraint firstItem="24z-ck-m5l" firstAttribute="top" secondItem="v0I-5V-1bz" secondAttribute="bottom" constant="11" id="dVb-2b-yti"/>
+                            <constraint firstItem="A06-aJ-v94" firstAttribute="bottom" secondItem="PbV-Oy-Dhy" secondAttribute="bottom" constant="11" id="fz4-tQ-H1t"/>
+                            <constraint firstItem="Y9K-4F-2BM" firstAttribute="top" secondItem="7FW-if-3Iu" secondAttribute="bottom" constant="27" id="gDt-fq-KnK"/>
+                            <constraint firstItem="A06-aJ-v94" firstAttribute="trailing" secondItem="24z-ck-m5l" secondAttribute="trailing" constant="16" id="iW1-4n-V2w"/>
+                            <constraint firstItem="S8i-eg-9PE" firstAttribute="top" secondItem="CXT-7A-bt2" secondAttribute="bottom" constant="11" id="mAW-cs-H7p"/>
+                            <constraint firstItem="A06-aJ-v94" firstAttribute="trailing" secondItem="PbV-Oy-Dhy" secondAttribute="trailing" constant="16" id="o0q-wG-ykt"/>
+                            <constraint firstItem="eDH-3N-CRx" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" constant="31" id="ogj-nP-Zzy"/>
+                            <constraint firstItem="S8i-eg-9PE" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" constant="16" id="vP1-rh-mcf"/>
+                            <constraint firstItem="7FW-if-3Iu" firstAttribute="top" secondItem="A06-aJ-v94" secondAttribute="top" constant="4" id="wco-Wh-DdL"/>
+                            <constraint firstItem="60K-D8-bCs" firstAttribute="top" secondItem="Y9K-4F-2BM" secondAttribute="bottom" constant="17" id="x30-ur-o6G"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="A06-aJ-v94"/>
+                    </view>
+                    <connections>
+                        <outlet property="authorTextField" destination="S8i-eg-9PE" id="deC-WI-taD"/>
+                        <outlet property="backButton" destination="pyM-Gn-ZxQ" id="mUp-MK-Y2V"/>
+                        <outlet property="bookTitleLabel" destination="eDH-3N-CRx" id="ssQ-WM-REr"/>
+                        <outlet property="nextButton" destination="PbV-Oy-Dhy" id="f9w-W9-Hdn"/>
+                        <outlet property="noticeLabel" destination="Y9K-4F-2BM" id="uhy-pq-4v2"/>
+                        <outlet property="publisherTextField" destination="24z-ck-m5l" id="OTa-xb-QJ8"/>
+                        <outlet property="searchTextButton" destination="60K-D8-bCs" id="OP2-RA-TDu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jbu-n1-e4w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="15.942028985507248" y="127.90178571428571"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="searchBtnBack" width="10.5" height="18.5"/>
+    </resources>
+</document>

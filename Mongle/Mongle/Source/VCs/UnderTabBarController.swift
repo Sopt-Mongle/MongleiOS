@@ -47,7 +47,6 @@ class UnderTabBarController: UITabBarController {
         // Do any additional setup after loading the view.
         
         setTabBar()
-        print(self.tabBar.frame.height)
        
         
         
