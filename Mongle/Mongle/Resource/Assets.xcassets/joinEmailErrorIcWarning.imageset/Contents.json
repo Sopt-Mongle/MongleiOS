@@ -2,18 +2,18 @@
   "images" : [
     {
       "scale" : "1x",
-      "filename" : "invalidName.png",
+      "filename" : "joinEmailErrorIcWarning.png",
       "idiom" : "universal"
     },
     {
       "scale" : "2x",
       "idiom" : "universal",
-      "filename" : "invalidName@2x.png"
+      "filename" : "joinEmailErrorIcWarning@2x.png"
     },
     {
+      "scale" : "3x",
       "idiom" : "universal",
-      "filename" : "invalidName@3x.png",
-      "scale" : "3x"
+      "filename" : "joinEmailErrorIcWarning@3x.png"
     }
   ],
   "info" : {
