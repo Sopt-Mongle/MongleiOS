@@ -18,7 +18,7 @@ class MySettingVC: UIViewController {
         }
     }
     // MARK:- Property
-    var settingNames = ["프로필 수정", "앱정보"]
+    var settingNames = ["프로필 수정", "앱정보", "몽글즈"]
     
     //MARK:- Lifecycle
     override func viewDidLoad() {
