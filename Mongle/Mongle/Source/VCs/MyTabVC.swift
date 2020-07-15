@@ -36,14 +36,13 @@ class MyTabVC: UIViewController {
         item = 0
         if item - (pageInstance?.keyValue.curPresentViewIndex)! > 0{
             pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .forward, animated: true, completion: nil)
-            pageInstance?.keyValue.curPresentViewIndex = item
         }
         else{
             pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .reverse, animated: true, completion: nil)
-            pageInstance?.keyValue.curPresentViewIndex = item
+
         }
     
-        pageInstance?.keyValue.curPresentViewIndex = 0
+        pageInstance?.keyValue.curPresentViewIndex = item
         themeMenuBTN.setTitleColor(.softGreen, for: .normal)
         themeMenuLabel.textColor = .softGreen
         sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
@@ -55,13 +54,11 @@ class MyTabVC: UIViewController {
         item = 1
         if item - (pageInstance?.keyValue.curPresentViewIndex)! > 0{
             pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .forward, animated: true, completion: nil)
-            pageInstance?.keyValue.curPresentViewIndex = item
         }
         else{
             pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .reverse, animated: true, completion: nil)
-            pageInstance?.keyValue.curPresentViewIndex = item
         }
-        pageInstance?.keyValue.curPresentViewIndex = 0
+        pageInstance?.keyValue.curPresentViewIndex = item
         themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
         themeMenuLabel.textColor = .veryLightPink
         sentenceMenuBTN.setTitleColor(.softGreen, for: .normal)
@@ -73,13 +70,13 @@ class MyTabVC: UIViewController {
         item = 2
         if item - (pageInstance?.keyValue.curPresentViewIndex)! > 0{
             pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .forward, animated: true, completion: nil)
-            pageInstance?.keyValue.curPresentViewIndex = item
+            
         }
         else{
             pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .reverse, animated: true, completion: nil)
-            pageInstance?.keyValue.curPresentViewIndex = item
+            
         }
-        pageInstance?.keyValue.curPresentViewIndex = 0
+        pageInstance?.keyValue.curPresentViewIndex = item
         themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
         themeMenuLabel.textColor = .veryLightPink
         sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
@@ -105,7 +102,7 @@ class MyTabVC: UIViewController {
             let ob = pageInstance?.keyValue.observe(\.curPresentViewIndex,
                          options: [.new, .old]) {
                             [weak self] (changeObject, value) in
-
+                            print(changeObject.curPresentViewIndex)
                             if (changeObject.curPresentViewIndex == 0){
                                 UIView.animate(withDuration: 0.3){
                                     self!.themeMenuBTN.setTitleColor(.softGreen, for: .normal)
@@ -131,10 +128,10 @@ class MyTabVC: UIViewController {
                                 UIView.animate(withDuration: 0.3){
                                     self!.themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
                                     self!.themeMenuLabel.textColor = .veryLightPink
-                                    self!.sentenceMenuBTN.setTitleColor(.softGreen, for: .normal)
-                                    self!.sentenceMenuLabel.textColor = .softGreen
-                                    self!.curatorMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-                                    self!.curatorMenuLabel.textColor = .veryLightPink
+                                    self!.sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                                    self!.sentenceMenuLabel.textColor = .veryLightPink
+                                    self!.curatorMenuBTN.setTitleColor(.softGreen, for: .normal)
+                                    self!.curatorMenuLabel.textColor = .softGreen
                                 }
                             }
                             

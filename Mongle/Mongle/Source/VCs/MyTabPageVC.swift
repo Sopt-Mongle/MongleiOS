@@ -59,7 +59,7 @@ extension MyTabPageVC: UIPageViewControllerDelegate {
             previousPage = previousViewControllers[0]
             realNextPage = nextPage
             print(realNextPage)
-            if realNextPage is Mongle.CuratorTabInfoThemeVC {
+            if realNextPage is Mongle.MyTabThemeVC {
                 self.keyValue.curPresentViewIndex = 0
             
             }
