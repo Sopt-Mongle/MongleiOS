@@ -141,6 +141,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         registerButton.backgroundColor = .softGreen
         registerButton.makeRounded(cornerRadius: 30)
         passWordTextField2.addTarget(self, action: #selector(comparePasswords), for: .editingChanged)
+        passWordTextField.addTarget(self, action: #selector(comparePasswords), for: .editingChanged)
         nickNameWarningLabel.alpha = 0
         nickNameWarningImageView.alpha = 0
         nickNameTextField.addTarget(self, action: #selector(updateNicknameQuantity), for: .editingChanged)
@@ -198,7 +199,6 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         if textField == passWordTextField || textField == passWordTextField2 {
             let move = CGPoint(x: 0, y: 162)
             signUpScrollView.setContentOffset(move, animated: false)
-            
             hidePasswordWarning()
             
         
@@ -239,7 +239,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             hideEmailWarning()
             emailTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         case passWordTextField:
+           
             hidePasswordWarning()
+            comparePasswords()
              passWordTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         case passWordTextField2 :
             
@@ -336,7 +338,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     @objc func comparePasswords(){
         
-        if passWordTextField.text == passWordTextField2.text && passWordTextField.text != ""{
+        if passWordTextField.text == passWordTextField2.text && passWordTextField.text != "" && passWordTextField2.text != ""{
             
             self.passwordWarningLabel.text = "비밀번호가 일치해요!"
             self.passwordWarningImageView.image = UIImage(named: "joinPassword5IcPossible")
@@ -346,7 +348,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             
             
         }
-        else {
+        else if passWordTextField2.text != ""{
             secondPasswordBegin()
         }
         
@@ -434,6 +436,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     func hidePasswordWarning(){
+        print("callse")
         passwordIsWarning = 0
         passWordToNIckNameConstraint.constant = 34
         passwordWarningLabel.removeFromSuperview()

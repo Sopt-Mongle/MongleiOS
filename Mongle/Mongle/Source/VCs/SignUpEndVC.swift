@@ -32,10 +32,48 @@ class SignUpEndVC: UIViewController {
         endButton.setTitle("메인으로 가기", for: .normal)
         endButton.setTitleColor(.white, for: .normal)
         endButton.makeRounded(cornerRadius: 20)
+        imageAnimation1()
         
         
         // Do any additional setup after loading the view.
     }
+    
+    func imageAnimation1(){
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.endImageView.transform = CGAffineTransform(rotationAngle: -24/180)
+                          
+            
+        }, completion: { finish in
+        UIView.animate(withDuration: 0.5, animations: {
+               self.endImageView.transform = CGAffineTransform(rotationAngle: 24/180)
+               
+               
+           }, completion: { finish in
+            
+            UIView.animate(withDuration: 0.5, delay : 0.5, animations: {
+                   self.endImageView.transform = CGAffineTransform(rotationAngle: -24/180)
+                   
+                   
+               },completion: { finish in
+                   
+                UIView.animate(withDuration: 0.5 , animations: {
+                       self.endImageView.transform = CGAffineTransform(rotationAngle: 0/180)
+                   })
+                   
+               })
+               
+               
+               
+           })
+        })
+          
+           
+           
+       }
+    
+  
+    
     
     @IBAction func endButtonAction(_ sender: Any) {
         guard let vcName = UIStoryboard(name: "UnderTab",
