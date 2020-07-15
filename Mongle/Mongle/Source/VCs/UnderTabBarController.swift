@@ -138,7 +138,10 @@ class UnderTabBarController: UITabBarController {
                 return
         }
       
-        let curatorVC = UIViewController()
+        guard let curatorVC = UIStoryboard(name:"CuratorTabMain",bundle:nil).instantiateViewController(identifier: "CuratorTabMainVC") as? CuratorTabMainVC else {
+            return
+            
+        }
         let myVC = UIViewController()
      
         guard let searchVC = UIStoryboard(name: "SearchTabMain",
@@ -161,7 +164,6 @@ class UnderTabBarController: UITabBarController {
         tmpVC.title = ""
         
         mainVC.view.backgroundColor = .white
-        curatorVC.view.backgroundColor = .brown
         myVC.view.backgroundColor = .systemPink
         
         tmpVC.view.backgroundColor = .black

@@ -9,7 +9,11 @@
 import Foundation
 
 struct APIConstants {
-    static let baseURL = ""
+    static let baseURL = "http://18.189.125.26:3000"
+    
+    static let signupURL = baseURL + "/users/signup"
+    static let signinURL = baseURL + "/users/signin"
+    
     
     
 }
