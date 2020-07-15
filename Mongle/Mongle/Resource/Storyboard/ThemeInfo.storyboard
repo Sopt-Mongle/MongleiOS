@@ -246,6 +246,9 @@
                                             <constraint firstAttribute="width" secondItem="8vZ-i9-jeT" secondAttribute="height" multiplier="55:57" id="fkS-EK-CU3"/>
                                         </constraints>
                                         <state key="normal" image="themeBtnBookmark"/>
+                                        <connections>
+                                            <action selector="touchUpBookMarkButtonWithSender:" destination="C1y-yQ-wMX" eventType="touchUpInside" id="IMm-oG-fB4"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xd-z8-Jyb">
                                         <rect key="frame" x="55" y="0.0" width="320" height="57"/>
