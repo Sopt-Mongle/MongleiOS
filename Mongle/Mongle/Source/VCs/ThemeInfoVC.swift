@@ -26,11 +26,13 @@ class ThemeInfoVC: UIViewController {
     @IBOutlet var curatorProfileImageView: UIImageView!
     @IBOutlet var curatorNameLabel: UILabel!
     
+    @IBOutlet var themeImageView: UIImageView!
     @IBOutlet var bottomBackgroundView: UIView!
     @IBOutlet var sentencesBackGroudViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet var backButton: UIButton!
     //MARK:- Property
-    var hasTheme: Bool = true
+    var hasTheme: Bool = false
     
     
     var sentences = [
@@ -52,21 +54,20 @@ class ThemeInfoVC: UIViewController {
     }
     
     func setInitLayout(){
+        themeBackgroundView.backgroundColor = .clear
         if hasTheme {
             self.themeNameLabel.text = themeText ?? ""
-            themeBackgroundView.backgroundColor = UIColor(red: 90/255,
-                                                          green: 145 / 255,
-                                                          blue: 105 / 255,
-                                                          alpha: 0.55)
             sentencesBackGroudViewBottomConstraint.constant = 0
             bottomBackgroundView.isHidden = false
+            themeImageView.image = UIImage(named: "sentenceThemeOImgTheme")
         }
         else {
+            backButton.setImage(UIImage(named: "sentenceThemeXBtnBack"), for: .normal)
+            themeImageView.image = UIImage(named: "themeWritingThemeXSentenceBg")
             sentencesBackgroundView.backgroundColor = .black
             sentencesBackGroudViewBottomConstraint.constant = -bottomBackgroundView.frame.height
             
             curatorProfileImageView.isHidden = true
-            themeBackgroundView.backgroundColor = .veryLightPink
             themeInfoStackView.isHidden = true
             bottomBackgroundView.isHidden = true
             curatorNameLabel.snp.makeConstraints {
@@ -116,6 +117,14 @@ extension ThemeInfoVC: UITableViewDelegate {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 19))
         //view.backgroundColor = .blue
         return view
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let dvc = UIStoryboard(name: "SentenceInfo", bundle: nil).instantiateViewController(identifier: "SentenceInfoVC") as? SentenceInfoVC else {
+            return
+        }
+        dvc.sentenceText = self.sentences[indexPath.row]
+        self.navigationController?.pushViewController(dvc, animated: true)
     }
     
 }

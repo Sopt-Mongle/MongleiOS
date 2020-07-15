@@ -22,7 +22,7 @@ class MainTabFourthTVC: UITableViewCell {
     }
     
     
-    let themas = ["가나다라마바사아자차", "가나다라마바사아자차", "가나다라마바사아자차"]
+    let themas = ["브랜딩이 어려울 때영감을 주는 문장", "번아웃을 극복하고 싶을 때 봐야하는 문장문장", "가나다라마바사아자차"]
     var selectedCell: ((_ viewController: UIViewController) -> Void)?
     
     override func awakeFromNib() {
@@ -57,7 +57,6 @@ extension MainTabFourthTVC: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         cell.themaNameLabel.text = themas[indexPath.item]
-        cell.blurStyle = .blue
         
         return cell
     }

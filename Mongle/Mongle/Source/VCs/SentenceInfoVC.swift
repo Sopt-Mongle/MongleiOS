@@ -13,20 +13,23 @@ class SentenceInfoVC: UIViewController {
     //MARK:- IBOutlet
     @IBOutlet var layoutTableView: UITableView!
     @IBOutlet var likeAndBookmarkView: UIView!
+    @IBOutlet var tableViewBottomConstraint: NSLayoutConstraint!
     
+    //MARK:- UI Component
+    lazy var popup = MonglePopupView(frame: CGRect(x: 0, y: 0, width: 304, height: 193))
+    lazy var blur = UIView().then {
+        $0.backgroundColor = .black
+        $0.alpha = 0.5
+    }
     //MARK:- Property
     var themeText: String = "브랜딩이 어려울 때, 영감을 주는 문장"
     var sentenceText: String = """
-처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호
-감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍
-경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으
-로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정
-과 머금고있는 풍경과 분위기까지. 처음 마주할 때의
-인상, 사소한 것으로 인해 생기는 호감, 
+처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의인상,사소한 것으로 인해 생기는 호감,
 """
-    var hasTheme: Bool = true
+    var hasTheme: Bool = false
     var isMySentence: Bool = true
     var canDisplayOtherSentece: Bool = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +39,45 @@ class SentenceInfoVC: UIViewController {
         
     }
     
+    func showPopUp(){
+        
+        popup.setPopUp(state: .delete,
+                yesHandler: { [weak self] in
+                    print(#function)
+                    self?.navigationController?.popViewController(animated: true)
+                    
+        },
+                noHandler: {[weak self] in
+                    self?.blur.removeFromSuperview()
+                    self?.popup.removeFromSuperview()
+                    
+        },
+                confirmHandler: nil)
+    
+        
+        self.view.addSubview(blur)
+        self.view.addSubview(popup)
+        
+        blur.snp.makeConstraints {
+            $0.top.leading.trailing.bottom.equalToSuperview()
+        }
+        popup.snp.makeConstraints {
+            $0.width.equalTo(304)
+            $0.height.equalTo(193)
+            $0.centerX.centerY.equalToSuperview()
+        }
+    }
+    
     @objc func touchUpBackButton(){
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func touchUpOtherThemeButton(){
+        guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
+            return
+        }
+        
+        self.navigationController?.pushViewController(dvc, animated: true)
     }
     
     
@@ -46,6 +86,15 @@ class SentenceInfoVC: UIViewController {
 //MARK:- Extension
 //MARK: UITableViewDelegate
 extension SentenceInfoVC: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            guard let dvc = UIStoryboard(name: "SentenceInfo", bundle: nil).instantiateViewController(identifier: "SentenceInfoVC") as? SentenceInfoVC else {
+                return
+            }
+            self.navigationController?.pushViewController(dvc, animated: true)
+        }
+    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
@@ -71,42 +120,31 @@ extension SentenceInfoVC: UITableViewDelegate {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 144))
             
             
-            let imageView = UIImageView(image: UIImage(named: "mongleCharacters"))
-            imageView.backgroundColor = .brown
-            
-            let blurView = UIView().then {
-               
-                    
-                    $0.backgroundColor = UIColor(red: 90 / 255, green: 145 / 255, blue: 105 / 255, alpha: 0.55)
-
-            }
+            var imageView = UIImageView(image: UIImage(named: "sentenceThemeOImgTheme"))
             
             let backButton = UIButton().then {
                 $0.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
-                $0.setImage(UIImage(named: "searchBtnBack"), for: .normal)
+                $0.setImage(UIImage(named: "sentenceThemeOBtnBack"), for: .normal)
                 $0.addTarget(self, action: #selector(touchUpBackButton), for: .touchUpInside)
             }
             
             let themeLabel = UILabel().then {
                 $0.text = themeText
                 $0.textColor = .white
-                $0.font = UIFont.systemFont(ofSize: 18)
+                $0.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18.0)!
             }
             
             if !hasTheme {
-                blurView.backgroundColor = .brownGreyThree
-                backButton.imageView?.tintColor = .white
+                self.tableViewBottomConstraint.constant = -likeAndBookmarkView.frame.height
+                themeLabel.text = "테마 없는 문장"
+                imageView = UIImageView(image: UIImage(named: "sentenceThemeXBgThemeX"))
+                backButton.setImage(UIImage(named: "sentenceThemeXBtnBack"), for: .normal)
                 likeAndBookmarkView.isHidden = true
             }
             
             view.addSubview(imageView)
-            view.addSubview(blurView)
             view.addSubview(backButton)
             view.addSubview(themeLabel)
-            
-            blurView.snp.makeConstraints {
-                $0.top.leading.trailing.bottom.equalToSuperview()
-            }
             
             imageView.snp.makeConstraints {
                 $0.top.leading.trailing.bottom.equalToSuperview()
@@ -151,8 +189,8 @@ extension SentenceInfoVC: UITableViewDelegate {
                 $0.text = "테마 보러 가기"
             }
             let image = UIImageView().then {
-                $0.image = UIImage(named: "searchBtnBack")
-                $0.backgroundColor = .red
+                $0.image = UIImage(named: "mySettingsIcArrow1")
+                $0.frame = CGRect(x: 0, y: 0, width: 4, height: 8)
             }
             
             let stackView = UIStackView().then {
@@ -161,14 +199,24 @@ extension SentenceInfoVC: UITableViewDelegate {
                 $0.spacing = 6
                 $0.axis = .horizontal
             }
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpOtherThemeButton))
+            
             let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: 343, height: 45)).then {
                 $0.makeRounded(cornerRadius: 10)
-                $0.backgroundColor = .veryLightPink
+                $0.backgroundColor = UIColor(red: 188 / 255, green: 188 / 255, blue: 188 / 255, alpha: 0.19)
                 $0.addSubview(stackView)
+                $0.isUserInteractionEnabled = true
+                $0.addGestureRecognizer(tapGesture)
             }
+            
             
             stackView.snp.makeConstraints {
                 $0.centerX.centerY.equalToSuperview()
+            }
+            
+            image.snp.makeConstraints {
+                $0.width.equalTo(4)
+                $0.height.equalTo(8)
             }
             
             
@@ -214,7 +262,6 @@ extension SentenceInfoVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceInfoTVC.identifier) as? SentenceInfoTVC else {
                 return UITableViewCell()
             }
-            print(self.sentenceText)
             cell.sentenceLabel.text = self.sentenceText
             cell.editButtonDelegate = { [weak self] sheet in
                 let editAction = UIAlertAction(title: "수정", style: .default) { action in
@@ -227,8 +274,9 @@ extension SentenceInfoVC: UITableViewDataSource {
                     $0.titleTextColor = .black
                 }
                 
-                let deleteAction = UIAlertAction(title: "삭제", style: .default) { action in
+                let deleteAction = UIAlertAction(title: "삭제", style: .default) {[weak self] action in
                     
+                    self?.showPopUp()
                 }.then {
                     $0.titleTextColor = .black
                 }

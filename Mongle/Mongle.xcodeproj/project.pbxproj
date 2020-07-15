@@ -55,6 +55,15 @@
 		7FFEA26624BE1B54003D381A /* AppInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA26524BE1B54003D381A /* AppInfoVC.swift */; };
 		7FFEA26824BE1E05003D381A /* Mongles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA26724BE1E05003D381A /* Mongles.storyboard */; };
 		7FFEA26A24BE3317003D381A /* MonglesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA26924BE3317003D381A /* MonglesVC.swift */; };
+		7FFEA27824BE441F003D381A /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA27024BE441E003D381A /* AppleSDGothicNeoL.ttf */; };
+		7FFEA27924BE441F003D381A /* AppleSDGothicNeoH.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA27124BE441E003D381A /* AppleSDGothicNeoH.ttf */; };
+		7FFEA27A24BE441F003D381A /* AppleSDGothicNeoSB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA27224BE441E003D381A /* AppleSDGothicNeoSB.ttf */; };
+		7FFEA27B24BE441F003D381A /* AppleSDGothicNeoUL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA27324BE441E003D381A /* AppleSDGothicNeoUL.ttf */; };
+		7FFEA27C24BE441F003D381A /* AppleSDGothicNeoB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA27424BE441E003D381A /* AppleSDGothicNeoB.ttf */; };
+		7FFEA27D24BE441F003D381A /* AppleSDGothicNeoEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA27524BE441F003D381A /* AppleSDGothicNeoEB.ttf */; };
+		7FFEA27E24BE441F003D381A /* AppleSDGothicNeoR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA27624BE441F003D381A /* AppleSDGothicNeoR.ttf */; };
+		7FFEA27F24BE441F003D381A /* AppleSDGothicNeoM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA27724BE441F003D381A /* AppleSDGothicNeoM.ttf */; };
+		7FFEA28124BECD70003D381A /* MonglePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA28024BECD70003D381A /* MonglePopupView.swift */; };
 		B86D4C4224B2C14200C21906 /* RecommendSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86D4C4124B2C14200C21906 /* RecommendSearchCVC.swift */; };
 		B8AB121924B46C7400B60240 /* CuratorList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AB121824B46C7400B60240 /* CuratorList.storyboard */; };
 		B8AB121B24B46CC100B60240 /* CuratorListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB121A24B46CC100B60240 /* CuratorListVC.swift */; };
@@ -157,6 +166,15 @@
 		7FFEA26524BE1B54003D381A /* AppInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoVC.swift; sourceTree = "<group>"; };
 		7FFEA26724BE1E05003D381A /* Mongles.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mongles.storyboard; sourceTree = "<group>"; };
 		7FFEA26924BE3317003D381A /* MonglesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonglesVC.swift; sourceTree = "<group>"; };
+		7FFEA27024BE441E003D381A /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
+		7FFEA27124BE441E003D381A /* AppleSDGothicNeoH.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoH.ttf; sourceTree = "<group>"; };
+		7FFEA27224BE441E003D381A /* AppleSDGothicNeoSB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoSB.ttf; sourceTree = "<group>"; };
+		7FFEA27324BE441E003D381A /* AppleSDGothicNeoUL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoUL.ttf; sourceTree = "<group>"; };
+		7FFEA27424BE441E003D381A /* AppleSDGothicNeoB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoB.ttf; sourceTree = "<group>"; };
+		7FFEA27524BE441F003D381A /* AppleSDGothicNeoEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoEB.ttf; sourceTree = "<group>"; };
+		7FFEA27624BE441F003D381A /* AppleSDGothicNeoR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoR.ttf; sourceTree = "<group>"; };
+		7FFEA27724BE441F003D381A /* AppleSDGothicNeoM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoM.ttf; sourceTree = "<group>"; };
+		7FFEA28024BECD70003D381A /* MonglePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonglePopupView.swift; sourceTree = "<group>"; };
 		B86D4C4124B2C14200C21906 /* RecommendSearchCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendSearchCVC.swift; sourceTree = "<group>"; };
 		B8AB121824B46C7400B60240 /* CuratorList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CuratorList.storyboard; sourceTree = "<group>"; };
 		B8AB121A24B46CC100B60240 /* CuratorListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorListVC.swift; sourceTree = "<group>"; };
@@ -233,6 +251,7 @@
 			children = (
 				7F1E719F24B476C900D79516 /* MainMongleHeaderView.swift */,
 				7F1E71A124B4A40B00D79516 /* MainTabDefaultHeaderView.swift */,
+				7FFEA28024BECD70003D381A /* MonglePopupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -270,6 +289,7 @@
 		7F6ABEC524ADE7C10040746E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				7FFEA26F24BE43EC003D381A /* Fonts */,
 				EC148CF724BC67D3006925A0 /* SupportFiles */,
 				7F6ABEC924ADE8490040746E /* Xibs */,
 				7F6ABEC824ADE8390040746E /* APIService */,
@@ -427,6 +447,21 @@
 			path = VCs;
 			sourceTree = "<group>";
 		};
+		7FFEA26F24BE43EC003D381A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7FFEA27424BE441E003D381A /* AppleSDGothicNeoB.ttf */,
+				7FFEA27524BE441F003D381A /* AppleSDGothicNeoEB.ttf */,
+				7FFEA27124BE441E003D381A /* AppleSDGothicNeoH.ttf */,
+				7FFEA27024BE441E003D381A /* AppleSDGothicNeoL.ttf */,
+				7FFEA27724BE441F003D381A /* AppleSDGothicNeoM.ttf */,
+				7FFEA27624BE441F003D381A /* AppleSDGothicNeoR.ttf */,
+				7FFEA27224BE441E003D381A /* AppleSDGothicNeoSB.ttf */,
+				7FFEA27324BE441E003D381A /* AppleSDGothicNeoUL.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		926DF08E8FB83D8573256DC2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,15 +543,21 @@
 			files = (
 				EC178CCC24BE26F5008CF514 /* SignUpEnd.storyboard in Resources */,
 				B8AB121924B46C7400B60240 /* CuratorList.storyboard in Resources */,
+				7FFEA27924BE441F003D381A /* AppleSDGothicNeoH.ttf in Resources */,
+				7FFEA27F24BE441F003D381A /* AppleSDGothicNeoM.ttf in Resources */,
 				7FC5B4D124BB58E3007C1725 /* WritingSentenceInTheme.storyboard in Resources */,
 				7F6ABEBE24ADE7720040746E /* LaunchScreen.storyboard in Resources */,
 				EC7C78EE24B2F2A800B7FCFB /* UnderTab.storyboard in Resources */,
+				7FFEA27E24BE441F003D381A /* AppleSDGothicNeoR.ttf in Resources */,
+				7FFEA27C24BE441F003D381A /* AppleSDGothicNeoB.ttf in Resources */,
 				EC7410B424BA03E800CBAF1C /* EndOfWritingSentence.storyboard in Resources */,
 				EC148CF924BC67E7006925A0 /* 43-emoji-wink.json in Resources */,
 				EC7410BA24BA87F000CBAF1C /* EndOfMakingTheme.storyboard in Resources */,
+				7FFEA27A24BE441F003D381A /* AppleSDGothicNeoSB.ttf in Resources */,
 				ECA23EDE24B5F58D00C100F1 /* WritingSentenceSecond.storyboard in Resources */,
 				EC8E323324AF1B1A001AB034 /* Writing_Theme.storyboard in Resources */,
 				EC6B70BD24BDD43600151A3B /* Comp 2_1.gif in Resources */,
+				7FFEA27824BE441F003D381A /* AppleSDGothicNeoL.ttf in Resources */,
 				B8AB122324B5C10B00B60240 /* SearchTabResult.storyboard in Resources */,
 				EC88960C24B87F3D008D29E2 /* ThemeSelectForWriteSentence.storyboard in Resources */,
 				B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */,
@@ -524,9 +565,11 @@
 				EC6B70C124BDE73700151A3B /* Comp 1.gif in Resources */,
 				7F1E71A824B7A72400D79516 /* ThemeInfo.storyboard in Resources */,
 				7F7C097324BAF714007C7C52 /* SentenceEdit.storyboard in Resources */,
+				7FFEA27D24BE441F003D381A /* AppleSDGothicNeoEB.ttf in Resources */,
 				7F1E71A424B504CF00D79516 /* MainTabMain.storyboard in Resources */,
 				7F6ABEBB24ADE7720040746E /* Assets.xcassets in Resources */,
 				EC86B49624B7169200DB930A /* SearchBookForWriting.storyboard in Resources */,
+				7FFEA27B24BE441F003D381A /* AppleSDGothicNeoUL.ttf in Resources */,
 				EC88960624B869E9008D29E2 /* WritingSentenceThird.storyboard in Resources */,
 				EC6B709524BD760B00151A3B /* SignUp.storyboard in Resources */,
 				7FC5B4D524BC6C78007C1725 /* AddBookToSentence.storyboard in Resources */,
@@ -619,6 +662,7 @@
 				EC88960A24B86AE8008D29E2 /* ThirdViewOfWritingSentenceVC.swift in Sources */,
 				7F1E71A224B4A40B00D79516 /* MainTabDefaultHeaderView.swift in Sources */,
 				7FCEE21F24B363CF00225CA3 /* MainTabSecondTVC.swift in Sources */,
+				7FFEA28124BECD70003D381A /* MonglePopupView.swift in Sources */,
 				7FCEE21B24B3091C00225CA3 /* MainTabFirstTVC.swift in Sources */,
 				7F7C096F24BA2910007C7C52 /* SentenceInfoVC.swift in Sources */,
 				EC88960E24B87F66008D29E2 /* ThemeSelectForWritingSentenceVC.swift in Sources */,

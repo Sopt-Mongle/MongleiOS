@@ -19,6 +19,14 @@ class MainTabMainVC: UIViewController {
         super.viewDidLoad()
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
+        for family: String in UIFont.familyNames
+        {
+            print("\(family)")
+            for names: String in UIFont.fontNames(forFamilyName: family)
+            {
+                print("== \(names)")
+            }
+        }
     }
 }
 // MARK:- Extension
@@ -39,11 +47,16 @@ extension MainTabMainVC: UITableViewDelegate {
             return view
         case 3:
             let view = MainTabDefaultHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 48))
-            
-            view.delegate = { }
-            view.setLabel(text: "인기있는 테마")
+            view.setLabel(text: "오늘 가장 많이 저장된 테마")
             return view
-            
+        case 4:
+            let view = MainTabDefaultHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 48))
+            view.setLabel(text: "문장을 기다리고 있는 테마")
+            return view
+        case 5:
+            let view = MainTabDefaultHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 48))
+            view.setLabel(text: "요즘 사람들이 많이 본 테마")
+            return view
         default:
             break
         }
@@ -55,7 +68,7 @@ extension MainTabMainVC: UITableViewDelegate {
         switch section {
         case 0:
             return 58
-        case 1, 2, 3:
+        case 1, 2, 3, 4, 5:
             return 48
         default:
             break
@@ -72,7 +85,7 @@ extension MainTabMainVC: UITableViewDelegate {
 // MARK: UITableViewDataSource
 extension MainTabMainVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 6
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -89,8 +102,6 @@ extension MainTabMainVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabSecondTVC.identifier) as? MainTabSecondTVC else {
                 return UITableViewCell()
             }
-            
-            
             cell.selectSentenceDelegate = {[weak self] dvc in
                 self?.navigationController?.pushViewController(dvc, animated: true)
             }
@@ -102,6 +113,22 @@ extension MainTabMainVC: UITableViewDataSource {
             }
             return cell
         case 3:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabFourthTVC.idnetifier) as? MainTabFourthTVC else {
+                return UITableViewCell()
+            }
+            cell.selectedCell = { [weak self] vc in
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+            return cell
+        case 4:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabFourthTVC.idnetifier) as? MainTabFourthTVC else {
+                return UITableViewCell()
+            }
+            cell.selectedCell = { [weak self] vc in
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+            return cell
+        case 5:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabFourthTVC.idnetifier) as? MainTabFourthTVC else {
                 return UITableViewCell()
             }
