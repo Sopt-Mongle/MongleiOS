@@ -12,4 +12,6 @@ import Foundation
 // 유저 디폴트에 저장는 키값 모음
 enum UserDefaultKeys: String {
     case token="token"
+    
+    
 }

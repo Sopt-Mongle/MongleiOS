@@ -28,7 +28,7 @@ class EndOfMakingThemeVC: UIViewController {
     
     
     func setItems(){
-        mongleImageView.image = UIImage(named: "maengleCharacters")?.withRenderingMode(.alwaysOriginal)
+        mongleImageView.image = UIImage(named: "writingThemeFinishImgMongleTheme")?.withRenderingMode(.alwaysOriginal)
         
         firstLabel.text = "테마가 등록되었습니다!"
         secondLabel.text = "몽글이님의 테마를 의미있는 문장으로\n채워보는 건 어떨까요?"

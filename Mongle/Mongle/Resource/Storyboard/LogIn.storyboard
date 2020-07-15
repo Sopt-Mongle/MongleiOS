@@ -146,7 +146,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.98432296509999995" green="0.98430186509999995" blue="0.98430591820000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="SdA-xr-Jbg" firstAttribute="trailing" secondItem="vqZ-Vv-3Fw" secondAttribute="trailing" constant="28" id="70i-Dp-oBk"/>
                             <constraint firstItem="PSL-gp-YOC" firstAttribute="leading" secondItem="SdA-xr-Jbg" secondAttribute="leading" id="8b1-Qf-PEQ"/>

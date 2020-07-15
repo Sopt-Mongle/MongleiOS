@@ -1,5 +1,5 @@
 //
-//  SignInService.swift
+//  ThemeImageForWriteService.swift
 //  Mongle
 //
 //  Created by Yunjae Kim on 2020/07/15.
@@ -10,20 +10,14 @@ import Foundation
 import Alamofire
 
 
-
-struct SignInService {
-    static let shared = SignInService()
+struct ThemeImageForWriteService {
     
-    private func makeParameter(_ email : String,_ password : String)-> Parameters{
-        return ["email" : email, "password" : password]
-    }
-    
-    func signin(email : String, password : String, completion : @escaping (NetworkResult<Any>) -> Void){
+    static let shared = ThemeImageForWriteService()
+    func themeSetService(completion : @escaping (NetworkResult<Any>) -> Void) {
         let header : HTTPHeaders = ["Content-Type" : "application/json"]
-        
-        let dataRequest = Alamofire.request(APIConstants.signinURL,
-                                            method: .post,
-                                            parameters: makeParameter(email, password),
+        let dataRequest = Alamofire.request(APIConstants.getThemeImageForWritingURL,
+                                            method: .get,
+                           
                                             encoding: JSONEncoding.default,
                                             headers: header)
         
@@ -31,12 +25,14 @@ struct SignInService {
         dataRequest.responseData { dataResponse in
             switch dataResponse.result {
             case .success :
+                print("======================1=======================")
                 guard let statusCode = dataResponse.response?.statusCode else {return}
-                guard let data = dataResponse.value else {return}
+                guard let data = dataResponse.result.value else {return}
                 let networkResult = self.judge(by: statusCode, data)
                 completion(networkResult)
-              
+                
             case .failure :
+                print("======================2=======================")
                 completion(.networkFail)
                 
                 
@@ -48,15 +44,13 @@ struct SignInService {
         
         
         
-        
     }
     
     private func judge(by statusCode : Int , _ data : Data) -> NetworkResult<Any> {
         switch statusCode{
         case 200 :
-            return isUser(by: data)
-        case 400 :
-            return .pathErr
+            
+            return getImages(by: data)
         case 600 :
             return .serverErr
         default :
@@ -66,19 +60,21 @@ struct SignInService {
         
     }
     
-    private func isUser(by data : Data) -> NetworkResult<Any> {
+    private func getImages(by data : Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<SigninData>.self, from: data)
-            else { return .serverErr }
-        guard let tokenData = decodedData.data else { return .requestErr(decodedData.message) }
-        return .success(tokenData.accessToken)
+        guard let decodedData = try? decoder.decode(GenericResponse<[ThemeImageforWriteInformation]>.self, from: data)
+            else { return .pathErr }
         
+        guard let datas = decodedData.data else{
+            return .requestErr(decodedData.message)
+        }
+            
+        
+        
+        
+        return .success(datas)
         
     }
     
-    
-    
-    
- 
-    
+        
 }
