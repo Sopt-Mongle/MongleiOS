@@ -160,7 +160,7 @@ class LogInVC: UIViewController {
     //MARK:- User Define Functions
     @objc func splashPlay(){
 
-        self.splash.animate(withGIFNamed: "Comp 2_1")
+        self.splash.animate(withGIFNamed: "Comp 3")
         
     }
     @objc func signUpButtonInPopUp(){
@@ -383,7 +383,7 @@ class LogInVC: UIViewController {
         idTextField.becomeFirstResponder()
         blurView.removeFromSuperview()
         alertView.removeFromSuperview()
-  }
+    }
     
     func showAlert(){
         self.view.addSubview(blurView)
@@ -397,7 +397,7 @@ class LogInVC: UIViewController {
         
         blurView.snp.makeConstraints{
             $0.top.bottom.leading.trailing.equalToSuperview()
-       
+            
         }
         alertView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(290)
@@ -438,13 +438,68 @@ class LogInVC: UIViewController {
     }
     
     @IBAction func findIdButtonAction(_ sender: Any) {
-     
+        
+        
+    }
+    
+    func signup(){
+        
+        
+        
         
     }
     
     
-   
+    
     @IBAction func logInButtonAction(_ sender: Any) {
+        
+        
+        
+        guard let email = idTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        
+        SignInService.shared.signin(email: email,
+                                    password: password)  { networkResult in
+                                        switch networkResult {
+                                        case .success(let token) :
+                                            guard let token = token as? String else { return }
+                                            UserDefaults.standard.set(token, forKey: "token")
+                                            guard let vcName = UIStoryboard(name: "UnderTab",
+                                                                            bundle: nil).instantiateViewController(
+                                                                                withIdentifier: "UnderTabBarController") as? UINavigationController
+                                                else{
+                                                    return
+                                            }
+                                            
+                                            vcName.modalPresentationStyle = .fullScreen
+                                            
+                                            self.present(vcName, animated: true, completion: nil)
+                                            
+                                        case .requestErr(let message):
+                                            print("request")
+                                            guard let message = message as? String else {return}
+                                            let alertViewController = UIAlertController(
+                                                title: "로그인 실패",
+                                                message: message,
+                                                preferredStyle: .alert)
+                                            let action = UIAlertAction(title: "확인",
+                                                                       style: .cancel,
+                                                                       handler: nil)
+                                            alertViewController.addAction(action)
+                                            self.present(alertViewController, animated: true,
+                                                         completion: nil)
+                                        case .pathErr: print("path")
+                                        case .serverErr: print("serverErr")
+                                        case .networkFail: print("networkFails2")
+                                            
+                                        }
+                                        
+                                        
+        }
+        
+        
+        
+        
         
         if idTextField.text == "임정은" {
             self.view.endEditing(true)
@@ -453,16 +508,7 @@ class LogInVC: UIViewController {
         }
         else{
             
-            guard let vcName = UIStoryboard(name: "UnderTab",
-                                            bundle: nil).instantiateViewController(
-                                                withIdentifier: "UnderTabBarController") as? UINavigationController
-                else{
-                    return
-            }
-            
-            vcName.modalPresentationStyle = .fullScreen
-            
-            self.present(vcName, animated: true, completion: nil)
+         
         }
     }
     
