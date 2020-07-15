@@ -46,10 +46,10 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5Ws-rj-kLv">
-                                <rect key="frame" x="16" y="92.333333333333314" width="343" height="410"/>
+                                <rect key="frame" x="16" y="92.333333333333314" width="343" height="277"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="5Ws-rj-kLv" secondAttribute="height" multiplier="343:410" id="eiR-J6-PBf"/>
+                                    <constraint firstAttribute="width" secondItem="5Ws-rj-kLv" secondAttribute="height" multiplier="343:277" id="m1D-jY-Db2"/>
                                 </constraints>
                                 <string key="text">처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으로 인해 
 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고 있는 풍경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 가나다라 마바사</string>
@@ -58,7 +58,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/280" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSP-QO-OJ0">
-                                <rect key="frame" x="322" y="515.33333333333337" width="37" height="16"/>
+                                <rect key="frame" x="322" y="382.33333333333331" width="37" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -69,6 +69,9 @@
                                     <constraint firstAttribute="width" secondItem="YFe-cy-R3F" secondAttribute="height" multiplier="343:57" id="TKg-WK-N7P"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="touchEditButton:" destination="zCC-F9-Jlx" eventType="touchUpInside" id="9K4-2j-UMR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

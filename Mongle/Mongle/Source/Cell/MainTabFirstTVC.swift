@@ -17,7 +17,7 @@ class MainTabFirstTVC: UITableViewCell {
     
     
     // MARK:- Property
-    let pictures = ["mongleCharacters", "mongleCharacters", "mongleCharacters", "mongleCharacters"]
+    let pictures = ["mainImgEditorpick", "mainImgEditorpick", "mainImgEditorpick", "mainImgEditorpick"]
     var pageViewWidth : Int = 0
     var displayIndex: Int = 0
     var displayCell =  UICollectionViewCell()

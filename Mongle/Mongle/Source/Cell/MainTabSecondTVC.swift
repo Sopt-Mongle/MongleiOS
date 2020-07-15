@@ -15,7 +15,7 @@ class MainTabSecondTVC: UITableViewCell {
     
     var selectSentenceDelegate: ((_ viewControllers: UIViewController) -> ()) = { _ in }
     
-    let sentences = ["가나다라", "마바사아자차카타파하"]
+    let sentences = ["결국 봄이 언제나 찾아왔지만, 하마터면 오지않을 뻔했던 봄을 생각하면 마음이 섬찟해진다. ", "결국 봄이 언제나 찾아왔지만, 하마터면 오지않을 뻔했던 봄을 생각하면 마음이 섬찟해진다. "]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,7 +35,7 @@ extension MainTabSecondTVC: UICollectionViewDelegate {
         guard let dvc = UIStoryboard.init(name: "SentenceInfo", bundle: nil).instantiateViewController(identifier: "SentenceInfoVC") as? SentenceInfoVC else {
             return
         }
-        
+        dvc.isMySentence = false
         selectSentenceDelegate(dvc)
     }
 }
