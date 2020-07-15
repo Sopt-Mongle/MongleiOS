@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 class ThemeMakeImagesCVC: UICollectionViewCell {
     static let identifier : String = "themeMakeImages"
@@ -23,10 +25,10 @@ class ThemeMakeImagesCVC: UICollectionViewCell {
     }
     
     
-    func setItems(_ imgName : String, _ check : Bool){
+    func setItems(_ imgURLName : String, _ check : Bool){
         checkImage.image = UIImage(named: "writingTheme3ImgCheck")?.withRenderingMode(.alwaysOriginal)
         checkImage.alpha = 0
-        themeImage.image = UIImage(named: imgName)
+        themeImage.imageFromUrl(imgURLName, defaultImgPath: "")
         
         if(check == true){
             checkImage.alpha = 1

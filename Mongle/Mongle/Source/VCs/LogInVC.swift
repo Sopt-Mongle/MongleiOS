@@ -96,7 +96,8 @@ class LogInVC: UIViewController {
 
     override func viewDidLoad() {
          super.viewDidLoad()
-        self.view.backgroundColor = .white
+      
+        
         
         hideAllItems()
         self.view.addSubview(splash)
@@ -126,11 +127,7 @@ class LogInVC: UIViewController {
         
        
         
-        
-        
-        
-        
-        
+       
         
        
         
@@ -453,7 +450,7 @@ class LogInVC: UIViewController {
     
     @IBAction func logInButtonAction(_ sender: Any) {
         
-        
+        self.view.endEditing(true)
         
         guard let email = idTextField.text else {return}
         guard let password = passwordTextField.text else {return}
@@ -463,6 +460,7 @@ class LogInVC: UIViewController {
                                         switch networkResult {
                                         case .success(let token) :
                                             guard let token = token as? String else { return }
+                                            print(token)
                                             UserDefaults.standard.set(token, forKey: "token")
                                             guard let vcName = UIStoryboard(name: "UnderTab",
                                                                             bundle: nil).instantiateViewController(
@@ -476,21 +474,10 @@ class LogInVC: UIViewController {
                                             self.present(vcName, animated: true, completion: nil)
                                             
                                         case .requestErr(let message):
-                                            print("request")
-                                            guard let message = message as? String else {return}
-                                            let alertViewController = UIAlertController(
-                                                title: "로그인 실패",
-                                                message: message,
-                                                preferredStyle: .alert)
-                                            let action = UIAlertAction(title: "확인",
-                                                                       style: .cancel,
-                                                                       handler: nil)
-                                            alertViewController.addAction(action)
-                                            self.present(alertViewController, animated: true,
-                                                         completion: nil)
-                                        case .pathErr: print("path")
-                                        case .serverErr: print("serverErr")
-                                        case .networkFail: print("networkFails2")
+                                            self.showAlert()
+                                        case .pathErr: self.showAlert()
+                                        case .serverErr: self.showAlert()
+                                        case .networkFail: self.showAlert()
                                             
                                         }
                                         
@@ -501,15 +488,7 @@ class LogInVC: UIViewController {
         
         
         
-        if idTextField.text == "임정은" {
-            self.view.endEditing(true)
-            showAlert()
-            
-        }
-        else{
-            
-         
-        }
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
