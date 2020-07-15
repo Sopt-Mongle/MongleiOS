@@ -91,15 +91,43 @@ extension UIViewController {
         return value_
     }//func gfno
     
-    
-    // Change Int-vlaue to price-format
-//    func makeIntValueToPriceFormat(price: Int) -> String{
-//        var result = ""
-//        let quotient = Int(price / 1000)
-//        let rest = price % 1000
+    func showToast(text: String){
+        let toast = ToastView(frame: CGRect(x: 0, y: 0, width: 343, height: 84))
+        toast.setLabel(text: text)
+        toast.alpha = 0
+        self.view.addSubview(toast)
+        
+        toast.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.bottom.equalToSuperview().offset(-115)
+        }
+        
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            toast.alpha = 1
+            
+        },completion: { finish in
+            UIView.animate(withDuration: 0.3, delay: 0.7, animations: {
+                toast.alpha = 0
+
+            }, completion: { finish in
+                if finish {
+                    toast.removeFromSuperview()
+                }
+//                toast.removeFromSuperview()
+            })
+        })
+        
 //
+//        UIView.animate(withDuration: 0.1, animations: {
+//            toast.alpha = 1
+//        }, completion: { finish in
+//            UIView.animate(withDuration: 0.3,delay: 1.0, animations: {
+//            }, completion: { finish in
+//                toast.removeFromSuperview()
+//            })
 //
-//        return "\(quotient),\(rest)"
-//    }
-    
+//        })
+    }
 }

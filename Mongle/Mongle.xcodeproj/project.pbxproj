@@ -64,6 +64,7 @@
 		7FFEA27E24BE441F003D381A /* AppleSDGothicNeoR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA27624BE441F003D381A /* AppleSDGothicNeoR.ttf */; };
 		7FFEA27F24BE441F003D381A /* AppleSDGothicNeoM.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA27724BE441F003D381A /* AppleSDGothicNeoM.ttf */; };
 		7FFEA28124BECD70003D381A /* MonglePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA28024BECD70003D381A /* MonglePopupView.swift */; };
+		7FFEA28324BF4839003D381A /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA28224BF4839003D381A /* ToastView.swift */; };
 		B86D4C4224B2C14200C21906 /* RecommendSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86D4C4124B2C14200C21906 /* RecommendSearchCVC.swift */; };
 		B8AB121924B46C7400B60240 /* CuratorList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AB121824B46C7400B60240 /* CuratorList.storyboard */; };
 		B8AB121B24B46CC100B60240 /* CuratorListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB121A24B46CC100B60240 /* CuratorListVC.swift */; };
@@ -190,6 +191,7 @@
 		7FFEA27624BE441F003D381A /* AppleSDGothicNeoR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoR.ttf; sourceTree = "<group>"; };
 		7FFEA27724BE441F003D381A /* AppleSDGothicNeoM.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoM.ttf; sourceTree = "<group>"; };
 		7FFEA28024BECD70003D381A /* MonglePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonglePopupView.swift; sourceTree = "<group>"; };
+		7FFEA28224BF4839003D381A /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		B86D4C4124B2C14200C21906 /* RecommendSearchCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendSearchCVC.swift; sourceTree = "<group>"; };
 		B8AB121824B46C7400B60240 /* CuratorList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CuratorList.storyboard; sourceTree = "<group>"; };
 		B8AB121A24B46CC100B60240 /* CuratorListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorListVC.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				7F1E719F24B476C900D79516 /* MainMongleHeaderView.swift */,
 				7F1E71A124B4A40B00D79516 /* MainTabDefaultHeaderView.swift */,
 				7FFEA28024BECD70003D381A /* MonglePopupView.swift */,
+				7FFEA28224BF4839003D381A /* ToastView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -681,6 +684,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC86B49A24B7646600DB930A /* UITextField+Extensions.swift in Sources */,
+				7FFEA28324BF4839003D381A /* ToastView.swift in Sources */,
 				7F1E719B24B463A400D79516 /* MainTabFourthTVC.swift in Sources */,
 				7F6ABEDB24ADED910040746E /* GenericResponse.swift in Sources */,
 				7F6ABED724ADEB730040746E /* UserDefaultKeys.swift in Sources */,

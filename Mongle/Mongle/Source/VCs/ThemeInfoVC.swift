@@ -32,7 +32,7 @@ class ThemeInfoVC: UIViewController {
     
     @IBOutlet var backButton: UIButton!
     //MARK:- Property
-    var hasTheme: Bool = false
+    var hasTheme: Bool = true
     
     
     var sentences = [
@@ -98,6 +98,10 @@ class ThemeInfoVC: UIViewController {
             return
         }
         self.navigationController?.pushViewController(dvc, animated: true)
+    }
+    
+    @IBAction func touchUpBookMarkButton(sender: UIButton) {
+        self.showToast(text: "토스트메세지 테스트")
     }
     
     
