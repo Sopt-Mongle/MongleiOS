@@ -16,15 +16,12 @@ struct APIConstants {
     static let getThemeImageForWritingURL = baseURL + "/post/themeImg"
     static let makeThemeURL = baseURL + "/post/theme"
     static let bookSearchForWritingURL = baseURL + "/post/bookSearch"
-<<<<<<< HEAD
     static let recentSearchURL = baseURL + "/search/recent"
     static let recommendSearchURL = baseURL + "/search/recommend"
     
-=======
     static let postSentenceURL = baseURL + "/post/sentence"
     static let ThemeSelectForWriteURL = baseURL + "/post/theme"
     static let searchThemeURL = baseURL + "/search/theme"
->>>>>>> develop
     
     
 }
