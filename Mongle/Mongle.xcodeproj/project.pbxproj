@@ -116,6 +116,8 @@
 		EC759C4024BEF121001D2F81 /* ThemeImageForWriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC759C3F24BEF121001D2F81 /* ThemeImageForWriteService.swift */; };
 		EC759C4224BF45B2001D2F81 /* ThemeMakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC759C4124BF45B2001D2F81 /* ThemeMakeData.swift */; };
 		EC759C4424BF45C3001D2F81 /* ThemeMakeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC759C4324BF45C3001D2F81 /* ThemeMakeService.swift */; };
+		EC759C4624BF7219001D2F81 /* BookSearchForWritingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC759C4524BF7219001D2F81 /* BookSearchForWritingService.swift */; };
+		EC759C4824BF7380001D2F81 /* BookSearchForWritingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC759C4724BF7380001D2F81 /* BookSearchForWritingData.swift */; };
 		EC7C78EE24B2F2A800B7FCFB /* UnderTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */; };
 		EC7C78F024B2F2DE00B7FCFB /* UnderTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */; };
 		EC86B49624B7169200DB930A /* SearchBookForWriting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC86B49524B7169200DB930A /* SearchBookForWriting.storyboard */; };
@@ -248,6 +250,8 @@
 		EC759C3F24BEF121001D2F81 /* ThemeImageForWriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeImageForWriteService.swift; sourceTree = "<group>"; };
 		EC759C4124BF45B2001D2F81 /* ThemeMakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeMakeData.swift; sourceTree = "<group>"; };
 		EC759C4324BF45C3001D2F81 /* ThemeMakeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeMakeService.swift; sourceTree = "<group>"; };
+		EC759C4524BF7219001D2F81 /* BookSearchForWritingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchForWritingService.swift; sourceTree = "<group>"; };
+		EC759C4724BF7380001D2F81 /* BookSearchForWritingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchForWritingData.swift; sourceTree = "<group>"; };
 		EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnderTab.storyboard; sourceTree = "<group>"; };
 		EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderTabBarController.swift; sourceTree = "<group>"; };
 		EC86B49524B7169200DB930A /* SearchBookForWriting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchBookForWriting.storyboard; sourceTree = "<group>"; };
@@ -398,6 +402,7 @@
 				EC759C3924BED53E001D2F81 /* SignInService.swift */,
 				EC759C3F24BEF121001D2F81 /* ThemeImageForWriteService.swift */,
 				EC759C4324BF45C3001D2F81 /* ThemeMakeService.swift */,
+				EC759C4524BF7219001D2F81 /* BookSearchForWritingService.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -417,6 +422,7 @@
 				EC759C3B24BED5CD001D2F81 /* SigninData.swift */,
 				EC759C3D24BEF01A001D2F81 /* ThemeImageDataForWrite.swift */,
 				EC759C4124BF45B2001D2F81 /* ThemeMakeData.swift */,
+				EC759C4724BF7380001D2F81 /* BookSearchForWritingData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -723,6 +729,7 @@
 				ECEF22BC24B4A3DF00933534 /* WritingSentenceVC.swift in Sources */,
 				EC759C4224BF45B2001D2F81 /* ThemeMakeData.swift in Sources */,
 				7F767D7724B211D100ADF46D /* WritingThemeVC.swift in Sources */,
+				EC759C4824BF7380001D2F81 /* BookSearchForWritingData.swift in Sources */,
 				7FCEE21D24B355FC00225CA3 /* MainPictureCVC.swift in Sources */,
 				B8B48AE324B9845800551F5B /* SearchResultThemeTVC.swift in Sources */,
 				EC759C3A24BED53E001D2F81 /* SignInService.swift in Sources */,
@@ -775,6 +782,7 @@
 				7F6ABECF24ADE8F80040746E /* UIColor+Extensions.swift in Sources */,
 				B8AB122524B5C1C500B60240 /* SearchTabResultVC.swift in Sources */,
 				B8B48A5F24B602A600551F5B /* SearchResultCuratorVC.swift in Sources */,
+				EC759C4624BF7219001D2F81 /* BookSearchForWritingService.swift in Sources */,
 				B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */,
 				B8AB121F24B475A100B60240 /* CuratorListCVC.swift in Sources */,
 				7F1E71AC24B7BC6900D79516 /* SentenceInThemeTVC.swift in Sources */,
