@@ -13,14 +13,15 @@ import Alamofire
 struct ThemeSelectForWriteService {
     
     static let shared = ThemeSelectForWriteService()
+    
     func themeShow(completion : @escaping (NetworkResult<Any>) -> Void) {
+        
         let header : HTTPHeaders = ["Content-Type" : "application/json"]
+        
         let dataRequest = Alamofire.request(APIConstants.ThemeSelectForWriteURL,
                                             method: .get,
                                             encoding: JSONEncoding.default,
                                             headers: header)
-        
-        
         
         dataRequest.responseData { dataResponse in
             switch dataResponse.result {
@@ -36,27 +37,18 @@ struct ThemeSelectForWriteService {
                 print("here2")
                 completion(.networkFail)
                 
-                
             }
-            
-            
         }
-        
-        
-        
-        
     }
     
     private func judge(by statusCode : Int , _ data : Data) -> NetworkResult<Any> {
         switch statusCode{
         case 200 :
-            
             return setThemes(by: data)
         case 600 :
             return .serverErr
         default :
             return .networkFail
-            
         }
         
     }
@@ -66,7 +58,6 @@ struct ThemeSelectForWriteService {
         guard let decodedData = try? decoder.decode(GenericResponse<[ThemeSelectForWriteData]>.self, from: data)
             else { return .pathErr }
         
-       
         guard let data = decodedData.data else{
             print(decodedData.message)
             return .requestErr(decodedData.message)

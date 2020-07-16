@@ -204,10 +204,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         
      
         let noName  = ThemeSelectForWriteData(themeIdx: 0, theme: "테마 없는 문장", themeImg: "writingSentenceTheme3ImgThemeX", themeImgIdx: 0, saves: 0, writer: "", writerImg: "", alreadyBookmarked: false)
-        
-       
-        
-        
+
         themes = []
         
         ThemeSelectForWriteService.shared.themeShow() { networkResult in
@@ -226,7 +223,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
                     self.showEmpty()
                 }
                
-             
+                print("heeeeere")
                 self.themeCollectionView.reloadData()
                 
             case .requestErr(let message):
@@ -239,9 +236,6 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
                 
                 
             }
-            
-            
-            
             
         }
         
