@@ -535,10 +535,12 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     func showNickNameDuplicate(){
-        nickNameWarningLabel.text = "이미 사용 중인 닉네임이에요!"
-        nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1.0)
-        nickNameWarningLabel.alpha = 1
-        nickNameWarningImageView.alpha = 1
+//        nickNameWarningLabel.text = "이미 사용 중인 닉네임이에요!"
+//        nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1.0)
+//        nickNameWarningLabel.alpha = 1
+//        nickNameWarningImageView.alpha = 1
+        
+        self.showToast(text: "이미 사용 중인 닉네임이에요!")
         
     }
     
@@ -606,17 +608,17 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                                         switch networkResult {
                                         case .success(let token) :
                                             print("success")
-                                            guard let token = token as? String else { return }
-                                            UserDefaults.standard.set(token, forKey: "token")
+                                            
                                             guard let vcName = UIStoryboard(name: "SignUpEnd",
                                                                             bundle: nil).instantiateViewController(
                                                                                 withIdentifier: "SignUpEndVC") as? SignUpEndVC
                                                 else{
+                                                    
                                                     return
                                             }
                                             
                                             vcName.modalPresentationStyle = .fullScreen
-                                            
+                                           
                                             self.present(vcName, animated: true, completion: nil)
                                             
                                         case .requestErr(let message):

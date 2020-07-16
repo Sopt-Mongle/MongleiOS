@@ -256,8 +256,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
             
             vcName.modalPresentationStyle = .currentContext
             self.navigationController?.pushViewController(vcName, animated: true)
-            
-            
+            vcName.sentenceForPost = sentenceTextView.text!
             
 //            vcName.setProgressBar()
 //            self.present(vcName, animated: true, completion: nil)

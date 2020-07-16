@@ -50,7 +50,7 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
 
     }
     var headerLabel2 = UILabel().then{
-        $0.text = "총 10건"
+        $0.text = ""
         $0.font = UIFont.systemFont(ofSize: 13)
         $0.textColor = .veryLightPink
     }
@@ -80,7 +80,7 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
     }
     
     var bookSendDelegate : BookSearchDataDelegate?
-    private var bookInformations : [Book] = []
+    var bookInformations : [Book] = []
     
    
     
@@ -93,7 +93,7 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         searchTextField.delegate = self
        
-        setBookInformations()
+        
         setItems()
         bookTableView.delegate = self
         bookTableView.dataSource = self
@@ -160,22 +160,47 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
         }
         
     }
-    func setBookInformations(){
-        let book1 = Book(bookImgName: "themeWritingSentenceBook4ImgBook",
-                         bookTitle: "몽글이", bookAuthor: "이주혁", bookPublisher: "몽글")
-        let book2 = Book(bookImgName: "themeWritingSentenceBook4ImgBook",
-                         bookTitle: "망글이", bookAuthor: "이예슬", bookPublisher: "몽글")
-        let book3 = Book(bookImgName: "themeWritingSentenceBook4ImgBook",
-                         bookTitle: "밍글이", bookAuthor: "박현주", bookPublisher: "몽글")
-        let book4 = Book(bookImgName: "themeWritingSentenceBook4ImgBook",
-                         bookTitle: "멍글이", bookAuthor: "유보미", bookPublisher: "몽글")
-        let book5 = Book(bookImgName: "themeWritingSentenceBook4ImgBook",
-                         bookTitle: "뮹글이", bookAuthor: "유동현", bookPublisher: "몽글")
-        let book6 = Book(bookImgName: "themeWritingSentenceBook4ImgBook",
-                         bookTitle: "몽글이", bookAuthor: "박세란", bookPublisher: "몽글")
-        let book7 = Book(bookImgName: "themeWritingSentenceBook4ImgBook",
-                         bookTitle: "맹글이", bookAuthor: "이소민", bookPublisher: "몽글")
-        bookInformations = [book1,book2,book3,book4,book5,book6,book7]
+    func setBookInformations(title : String){
+        bookInformations = []
+        BookSearchForWritingService.shared.bookSearch(title: title) { networkResult in
+            switch networkResult{
+            case .success(let data) :
+                
+                guard let bookDatas = data as? [BookSearchForWritingData]  else {return}
+                
+                if bookDatas.count == 0{
+                    self.showEmpty()
+                    self.view.endEditing(true)
+                    
+                }
+                
+                
+                
+                for bookData  in bookDatas{
+                    self.bookInformations.append(Book(bookImgName: bookData.thumbnail, bookTitle: bookData.title, bookAuthors: bookData.authors, bookPublisher: bookData.publisher))
+                }
+                
+                self.hideEmpty()
+                self.bookTableView.reloadData()
+                self.headerLabel2.text = "총" + String(bookDatas.count) + "건"
+                
+            case .requestErr(let message):
+                guard let message = message as? String else {return}
+                self.showEmpty()
+                print(message)
+            case .pathErr: print("pathErr")
+            case .serverErr: print("serverErr")
+            case .networkFail: print("networkFail")
+                
+                
+                
+            }
+        }
+        
+        
+        
+        
+      
     }
     
     
@@ -290,6 +315,7 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
         else{
             hideEmpty()
             self.bookTableView.isHidden = false
+            setBookInformations(title: searchTextField.text!)
             searchKeyWord = searchTextField.text!
             headerLabel1.text = "'" + searchKeyWord+"'" + "검색결과"
             smallCircle.alpha = 0
@@ -345,9 +371,7 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
     
     @IBAction func backButtonAction(_ sender: Any) {
         
-        bookSendDelegate?.sendBookData(Data: Book(bookImgName: "", bookTitle: "", bookAuthor: "",
-                                                  bookPublisher: ""), isSelected: false,
-        noAnimation: true)
+       
         dismiss(animated: true, completion: nil)
         
     }
@@ -400,10 +424,12 @@ extension SearchBookForWritingVC : UITableViewDataSource{
                 return UITableViewCell()}
         bookCell.setBook(bookImgName: bookInformations[indexPath.row].bookImgName,
                          bookTitle: bookInformations[indexPath.row].bookTitle,
-                         bookAuthor: bookInformations[indexPath.row].bookAuthor,
+                         bookAuthors: bookInformations[indexPath.row].bookAuthors,
                          bookPublisher: bookInformations[indexPath.row].bookPublisher)
-        
+    
         return bookCell
+        
+        
         
         
     }

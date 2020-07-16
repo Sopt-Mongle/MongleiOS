@@ -1,5 +1,5 @@
 //
-//  SignUpService.swift
+//  ThemeImageForWriteService.swift
 //  Mongle
 //
 //  Created by Yunjae Kim on 2020/07/15.
@@ -10,39 +10,37 @@ import Foundation
 import Alamofire
 
 
-
-struct SignUpService {
-    static let shared = SignUpService()
+struct ThemeSelectForWriteService {
     
-    private func makeParameter(_ email : String,_ password : String, _ name : String)-> Parameters{
-        return ["email" : email, "password" : password, "name" : name]
-    }
-    
-    func signup(email : String, password : String, name : String, completion : @escaping (NetworkResult<Any>) -> Void){
+    static let shared = ThemeSelectForWriteService()
+    func themeShow(completion : @escaping (NetworkResult<Any>) -> Void) {
         let header : HTTPHeaders = ["Content-Type" : "application/json"]
-        
-        let dataRequest = Alamofire.request(APIConstants.signupURL,
-                                            method: .post,
-                                            parameters: makeParameter(email, password,name),
+        let dataRequest = Alamofire.request(APIConstants.ThemeSelectForWriteURL,
+                                            method: .get,
                                             encoding: JSONEncoding.default,
                                             headers: header)
+        
         
         
         dataRequest.responseData { dataResponse in
             switch dataResponse.result {
             case .success :
+                print("here1")
+              
                 guard let statusCode = dataResponse.response?.statusCode else {return}
-                guard let data = dataResponse.value else {return}
+                guard let data = dataResponse.result.value else {return}
                 let networkResult = self.judge(by: statusCode, data)
                 completion(networkResult)
-              
+                
             case .failure :
+                print("here2")
                 completion(.networkFail)
                 
                 
             }
+            
+            
         }
-        
         
         
         
@@ -52,9 +50,8 @@ struct SignUpService {
     private func judge(by statusCode : Int , _ data : Data) -> NetworkResult<Any> {
         switch statusCode{
         case 200 :
-            return isSignUp(by: data)
-        case 400 :
-            return .pathErr
+            
+            return setThemes(by: data)
         case 600 :
             return .serverErr
         default :
@@ -64,31 +61,20 @@ struct SignUpService {
         
     }
     
-    private func isSignUp(by data : Data) -> NetworkResult<Any> {
+    private func setThemes(by data : Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<SignupData>.self, from: data) else { return .serverErr }
-        if (decodedData.success){
-            print(decodedData.status)
+        guard let decodedData = try? decoder.decode(GenericResponse<[ThemeSelectForWriteData]>.self, from: data)
+            else { return .pathErr }
+        
+       
+        guard let data = decodedData.data else{
             print(decodedData.message)
-            return .success(data)
+            return .requestErr(decodedData.message)
         }
-        
-        return .requestErr(decodedData.message)
-        
+
+        return .success(data)
         
     }
     
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
- 
-    
+        
 }

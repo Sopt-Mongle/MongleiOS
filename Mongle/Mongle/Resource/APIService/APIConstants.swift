@@ -16,8 +16,7 @@ struct APIConstants {
     static let signinURL = baseURL + "/users/signin"
     static let getThemeImageForWritingURL = baseURL + "/post/themeImg"
     static let makeThemeURL = baseURL + "/post/theme"
-    
-    
+
     //Editor's Pick
     static let mainEditorPick = baseURL + "/main/editorsPick"
     // 오늘의 문장 목록 조회
@@ -30,4 +29,11 @@ struct APIConstants {
     static let mainWaitThemesURL = baseURL + "/main/waitThemes"
     // 최근 3일 조회수 많은 테마 목록 조회
     static let mainNowThemesURL = baseURL + "/main/nowThemes"
+
+    static let bookSearchForWritingURL = baseURL + "/post/bookSearch"
+    static let postSentenceURL = baseURL + "/post/sentence"
+    static let ThemeSelectForWriteURL = baseURL + "/post/theme"
+    static let searchThemeURL = baseURL + "/search/theme"
+    
+
 }

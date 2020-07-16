@@ -8,17 +8,25 @@
 
 import UIKit
 
-class SearchResultSentenceTVC: UITableViewCell {
+class SentenceMoreTVC: UITableViewCell {
 
     var isWritten = false
+    var moreBTNDelegate: ((UIAlertController) -> Void) = { _ in }
     @IBOutlet weak var themeLabel: UILabel!
     @IBOutlet weak var sentenceLabel: UILabel!
     @IBOutlet weak var curatorLabel: UILabel!
+    @IBOutlet weak var moreBTN: UIButton!
     @IBOutlet weak var curatorSquare: UIView!
+   
 
+    @IBAction func touchUpMore(_ sender: Any) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        self.moreBTNDelegate(actionSheet)
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        moreBTN.setImage(UIImage(named:"mySentenceMyBtnMore1"), for: .normal)
+        moreBTN.setTitle("",for:.normal)
         self.themeLabel.text = "번아웃을 극복하고 싶을 때 봐야하는 문장"
         self.themeLabel.textColor = .veryLightPink
         self.sentenceLabel.text = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔했던 봄을 생각하면 마음이 섬찟해진다."
@@ -35,3 +43,4 @@ class SearchResultSentenceTVC: UITableViewCell {
     }
 
 }
+
