@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -15,12 +15,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k1o-Hh-wiA">
-                                <rect key="frame" x="66" y="160" width="277" height="306"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="k1o-Hh-wiA" secondAttribute="height" multiplier="277:306" id="aak-AJ-iTn"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skO-kW-AOP">
                                 <rect key="frame" x="183" y="495" width="48" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -52,6 +46,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k1o-Hh-wiA">
+                                <rect key="frame" x="57" y="159" width="277" height="306"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="306" id="wlR-Eb-PNN"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -63,7 +63,6 @@
                             <constraint firstItem="Goz-xr-RVR" firstAttribute="leading" secondItem="bvJ-aQ-dZo" secondAttribute="leading" constant="71" id="VKa-ao-mcG"/>
                             <constraint firstItem="Goz-xr-RVR" firstAttribute="top" secondItem="oUf-Nb-QKg" secondAttribute="bottom" constant="50" id="Y70-Ft-6Fk"/>
                             <constraint firstItem="k1o-Hh-wiA" firstAttribute="leading" secondItem="bvJ-aQ-dZo" secondAttribute="leading" constant="66" id="eGF-RN-5Vk"/>
-                            <constraint firstAttribute="bottom" secondItem="k1o-Hh-wiA" secondAttribute="bottom" constant="430" id="ghx-rW-Q2K"/>
                             <constraint firstItem="Shk-zb-1B3" firstAttribute="leading" secondItem="bvJ-aQ-dZo" secondAttribute="leading" constant="71" id="hCn-rs-8oZ"/>
                             <constraint firstItem="oUf-Nb-QKg" firstAttribute="top" secondItem="skO-kW-AOP" secondAttribute="bottom" constant="20" id="kEJ-EW-OkE"/>
                             <constraint firstItem="skO-kW-AOP" firstAttribute="centerX" secondItem="bvJ-aQ-dZo" secondAttribute="centerX" id="nZE-Fv-yny"/>
@@ -75,8 +74,10 @@
                     <connections>
                         <outlet property="backToMainButton" destination="Shk-zb-1B3" id="0Um-Ip-XCi"/>
                         <outlet property="firstLabel" destination="skO-kW-AOP" id="fd6-fK-gaL"/>
+                        <outlet property="imageTopConstraint" destination="oNe-MT-YgD" id="PJG-Na-ZRf"/>
                         <outlet property="mongleImageView" destination="k1o-Hh-wiA" id="VAA-bI-Y6Z"/>
                         <outlet property="secondLabel" destination="oUf-Nb-QKg" id="iIk-7b-12T"/>
+                        <outlet property="topConstraint2" destination="19l-Sm-bDu" id="WWF-He-XFs"/>
                         <outlet property="writeSentenceButton" destination="Goz-xr-RVR" id="Jaw-0n-fIg"/>
                     </connections>
                 </viewController>

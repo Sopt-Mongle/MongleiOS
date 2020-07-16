@@ -277,7 +277,7 @@ class LogInVC: UIViewController {
         findPasswordButton.setTitle("비밀번호 찾기", for: .normal)
         findPasswordButton.setTitleColor(.veryLightPink, for: .normal)
         
-        idTextField.placeholder = "아이디를 입력해주세요"
+        idTextField.placeholder = "이메일을 주소를 입력해주세요"
         idTextField.makeRounded(cornerRadius: 10)
         idTextField.addLeftPadding(left: 7.5)
         idTextField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)

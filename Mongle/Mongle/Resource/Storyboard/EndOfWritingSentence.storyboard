@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dZY-uu-v5q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dZY-uu-v5q">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -27,6 +27,9 @@
                                     <constraint firstAttribute="height" constant="44" id="TXC-5E-rlZ"/>
                                 </constraints>
                                 <state key="normal" title="문장 확인하러가기"/>
+                                <connections>
+                                    <action selector="sentenceCheckButtonAction:" destination="dZY-uu-v5q" eventType="touchUpInside" id="LqF-l6-qLk"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9P-dN-9nC">
                                 <rect key="frame" x="188.5" y="455" width="37.5" height="18"/>
@@ -45,7 +48,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sOH-F3-DCV">
-                                <rect key="frame" x="59" y="162" width="297" height="212"/>
+                                <rect key="frame" x="59" y="161" width="297" height="212"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="212" id="WsG-bO-UAS"/>
                                 </constraints>
@@ -75,6 +78,7 @@
                         <outlet property="firstLabel" destination="dJx-lL-7u6" id="g7v-wf-wdD"/>
                         <outlet property="secondLabel" destination="J9P-dN-9nC" id="KUf-Cw-weW"/>
                         <outlet property="sentenceCheckButton" destination="PwP-97-7ij" id="Pfp-uH-u9u"/>
+                        <outlet property="topConstraint" destination="EyX-Bg-Iee" id="DzA-Y2-bIG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UrF-Pm-PMD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

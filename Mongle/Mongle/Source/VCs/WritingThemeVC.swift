@@ -117,6 +117,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         $0.addTarget(self, action: #selector(noButtonTap), for: .touchUpInside)
     }
     
+    let deviceBound = UIScreen.main.bounds.height/812.0
     
     
     // MARK:- LifeCycle Methods
@@ -296,10 +297,11 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         }
         
         popupView.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(233)
+            $0.top.equalToSuperview().offset(233*deviceBound)
             $0.leading.equalToSuperview().offset(36)
             $0.trailing.equalToSuperview().offset(-35)
-            $0.bottom.equalToSuperview().offset(-229.2)
+            $0.height.equalTo(350*deviceBound)
+            $0.bottom.equalToSuperview().offset(-229.2*deviceBound)
             
         }
         popUpContainerView.snp.makeConstraints{
@@ -325,8 +327,8 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
       
         
         popUpImageView.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(46)
-            $0.bottom.equalToSuperview().offset(-175.8)
+            $0.top.equalToSuperview().offset(46*deviceBound)
+            $0.bottom.equalToSuperview().offset(-175.8*deviceBound)
             $0.leading.equalToSuperview().offset(2)
             $0.trailing.equalToSuperview().offset(-2)
             
@@ -334,7 +336,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
       
         popUpThemeLabel.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(27)
-            $0.top.equalToSuperview().offset(73)
+            $0.top.equalToSuperview().offset(73*deviceBound)
             $0.trailing.equalToSuperview().offset(-27)
         }
         
@@ -342,16 +344,16 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
         popUpAskingLabel.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(83)
-            $0.top.equalToSuperview().offset(200)
+            $0.top.equalToSuperview().offset(200*deviceBound)
             $0.trailing.equalToSuperview().offset(83)
         }
         popUpNoticeLabel.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(228)
+            $0.top.equalToSuperview().offset(228*deviceBound)
             $0.centerX.equalToSuperview()
         }
         
         yesButton.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(288)
+            $0.top.equalToSuperview().offset(288*deviceBound)
             $0.leading.equalToSuperview().offset(20)
             $0.width.equalTo(127)
             $0.height.equalTo(37)
@@ -364,7 +366,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
         noButton.snp.makeConstraints{
             $0.trailing.equalToSuperview().offset(-16)
-            $0.top.equalToSuperview().offset(288)
+            $0.top.equalToSuperview().offset(288*deviceBound)
             $0.width.equalTo(127)
             $0.height.equalTo(37)
         }
