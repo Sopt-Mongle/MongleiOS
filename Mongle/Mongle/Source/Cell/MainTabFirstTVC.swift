@@ -17,7 +17,7 @@ class MainTabFirstTVC: UITableViewCell {
     
     
     // MARK:- Property
-    let pictures = ["mainImgEditorpick", "mainImgEditorpick", "mainImgEditorpick", "mainImgEditorpick"]
+    var pictures = ["mainImgEditorpick", "mainImgEditorpick", "mainImgEditorpick", "mainImgEditorpick"]
     var pageViewWidth : Int = 0
     var displayIndex: Int = 0
     var displayCell =  UICollectionViewCell()
@@ -25,6 +25,7 @@ class MainTabFirstTVC: UITableViewCell {
     // MARK:- Override Method
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         pageViewWidth = (pictures.count - 1) * 7 + 19 + (pictures.count - 1) * 7
         
         mainDisplayPictureCollectionView.delegate = self

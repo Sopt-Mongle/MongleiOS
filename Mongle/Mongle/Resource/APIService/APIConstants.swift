@@ -17,6 +17,12 @@ struct APIConstants {
     static let makeThemeURL = baseURL + "/post/theme"
     
     
-    
-    
+    //Editor's Pick
+    static let mainEditorPick = baseURL + "/main/editorsPick"
+    // 오늘의 문장 목록 조회
+    static let mainSentencesURL = baseURL + "/main/sentences"
+    // 지금 인기있는 큐레이터 목록 조회
+    static let mainCuratorURL = baseURL + "/main/curators"
+    // 오늘 하루 저장이 가장 많이 된 테마목록 조회
+    static let mainThemesURL = baseURL + "/main/themes"
 }

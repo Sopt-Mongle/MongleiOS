@@ -13,18 +13,79 @@ class MainTabMainVC: UIViewController {
     //MARK:- IBOutlet
     @IBOutlet var layoutTableView: UITableView!
     
-
+    //
+    var imgString: [String] = []
+    var sentence: [TodaySentenceData] = []
+    var curators: [MainCuratorData] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getEditorsContentsData()
+        getTodaySentence()
+        getCurators()
+        
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
-        for family: String in UIFont.familyNames
-        {
-            print("\(family)")
-            for names: String in UIFont.fontNames(forFamilyName: family)
-            {
-                print("== \(names)")
+    }
+    
+    func getCurators(){
+        MainService.shared.getPopularCurator { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let _data = data as? [MainCuratorData] {
+                    self.curators = _data
+                }
+                print(self.curators)
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "")
+            case .pathErr:
+                break
+            case .serverErr:
+                break
+            case .networkFail:
+                break
+            }
+        }
+    }
+    
+    func getTodaySentence(){
+        MainService.shared.getTodaySentence { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let _data = data as? [TodaySentenceData] {
+                    self.sentence = _data
+                }
+                print(self.sentence)
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "")
+            case .pathErr:
+                break
+            case .serverErr:
+                break
+            case .networkFail:
+                break
+            }
+        }
+    }
+    func getEditorsContentsData(){
+        MainService.shared.getEditorsPick { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data_ = data as? [EditorPickData] {
+                    data_.forEach {
+                        self.imgString.append($0.illust)
+                    }
+                }
+                print(self.imgString)
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "")
+            case .pathErr:
+                break
+            case .serverErr:
+                break
+            case .networkFail:
+                break
             }
         }
     }
@@ -97,6 +158,7 @@ extension MainTabMainVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabFirstTVC.identifier) as? MainTabFirstTVC else {
                 return UITableViewCell()
             }
+            cell.pictures = self.imgString
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabSecondTVC.identifier) as? MainTabSecondTVC else {
