@@ -59,8 +59,8 @@ extension MyTabSentenceVC: UITableViewDelegate{
             $0.backgroundColor = .white
         }
         
-        let savedThemeLabel = UILabel().then {
-            $0.text = "저장한 테마"
+        let savedSentenceLabel = UILabel().then {
+            $0.text = "저장한 문장"
             $0.textColor = .veryLightPink
             $0.textAlignment = .center
             $0.backgroundColor = .white
@@ -69,8 +69,8 @@ extension MyTabSentenceVC: UITableViewDelegate{
             
             headerView.addSubview($0)
         }
-        let madeThemeLabel = UILabel().then {
-            $0.text = "만든 테마"
+        let madeSentenceLabel = UILabel().then {
+            $0.text = "쓴 문장"
             $0.textColor = .white
             $0.textAlignment = .center
             $0.backgroundColor = .softGreen
@@ -80,13 +80,13 @@ extension MyTabSentenceVC: UITableViewDelegate{
             headerView.addSubview($0)
         }
         
-        let savedThemeTouchArea = UIButton().then{
+        let savedSentenceTouchArea = UIButton().then{
             $0.setTitle("", for: .normal)
             $0.backgroundColor = .clear
             $0.addTarget(self, action: #selector(self.savedThemeDidTap), for: .touchUpInside)
             headerView.addSubview($0)
         }
-        let madeThemeTouchArea = UIButton().then{
+        let madeSentenceTouchArea = UIButton().then{
             $0.setTitle("", for: .normal)
             $0.backgroundColor = .clear
             $0.addTarget(self, action: #selector(self.madeThemeDidTap), for: .touchUpInside)
@@ -100,30 +100,30 @@ extension MyTabSentenceVC: UITableViewDelegate{
 //
         
         if self.doNotReload{
-            savedThemeLabel.textColor = .veryLightPink
-            savedThemeLabel.backgroundColor = .white
-            madeThemeLabel.textColor = .white
-            madeThemeLabel.backgroundColor = .softGreen
+            savedSentenceLabel.textColor = .veryLightPink
+            savedSentenceLabel.backgroundColor = .white
+            madeSentenceLabel.textColor = .white
+            madeSentenceLabel.backgroundColor = .softGreen
             
             
         }
         else {
-            madeThemeLabel.textColor = .veryLightPink
-            madeThemeLabel.backgroundColor = .white
-            savedThemeLabel.textColor = .white
-            savedThemeLabel.backgroundColor = .softGreen
+            madeSentenceLabel.textColor = .veryLightPink
+            madeSentenceLabel.backgroundColor = .white
+            savedSentenceLabel.textColor = .white
+            savedSentenceLabel.backgroundColor = .softGreen
             
         }
         
-        savedThemeLabel.snp.makeConstraints{
+        savedSentenceLabel.snp.makeConstraints{
             $0.width.equalTo(82)
             $0.height.equalTo(28)
             $0.top.equalToSuperview().offset(9)
             $0.left.equalToSuperview().offset(218)
             $0.bottom.equalToSuperview().offset(-12)
         }
-        madeThemeLabel.snp.makeConstraints{
-            $0.width.equalTo(72)
+        madeSentenceLabel.snp.makeConstraints{
+            $0.width.equalTo(62)
             $0.height.equalTo(28)
             $0.top.equalToSuperview().offset(9)
             $0.left.equalToSuperview().offset(300)
@@ -136,13 +136,13 @@ extension MyTabSentenceVC: UITableViewDelegate{
             $0.right.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
-        savedThemeTouchArea.snp.makeConstraints{
+        savedSentenceTouchArea.snp.makeConstraints{
             $0.width.equalTo(84)
             $0.top.equalToSuperview()
             $0.left.equalToSuperview().offset(203)
             $0.bottom.equalToSuperview()
         }
-        madeThemeTouchArea.snp.makeConstraints{
+        madeSentenceTouchArea.snp.makeConstraints{
             $0.width.equalTo(84)
             $0.top.equalToSuperview()
             $0.left.equalToSuperview().offset(287)
