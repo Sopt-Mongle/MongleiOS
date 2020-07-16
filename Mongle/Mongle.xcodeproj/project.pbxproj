@@ -97,6 +97,8 @@
 		B8E2E14D24BEE0B000595752 /* MyTabSentenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2E14C24BEE0B000595752 /* MyTabSentenceVC.swift */; };
 		B8E2E14F24BEE0E900595752 /* MyTabCuratorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2E14E24BEE0E900595752 /* MyTabCuratorVC.swift */; };
 		B8E2E15124C0317D00595752 /* SentenceMoreTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2E15024C0317C00595752 /* SentenceMoreTVC.swift */; };
+		B8E2E15324C0586800595752 /* SearchMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2E15224C0586800595752 /* SearchMainService.swift */; };
+		B8E2E15524C05B3100595752 /* SearchThemeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2E15424C05B3100595752 /* SearchThemeData.swift */; };
 		B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */; };
 		B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */; };
 		B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */; };
@@ -237,6 +239,8 @@
 		B8E2E14C24BEE0B000595752 /* MyTabSentenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabSentenceVC.swift; sourceTree = "<group>"; };
 		B8E2E14E24BEE0E900595752 /* MyTabCuratorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabCuratorVC.swift; sourceTree = "<group>"; };
 		B8E2E15024C0317C00595752 /* SentenceMoreTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceMoreTVC.swift; sourceTree = "<group>"; };
+		B8E2E15224C0586800595752 /* SearchMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMainService.swift; sourceTree = "<group>"; };
+		B8E2E15424C05B3100595752 /* SearchThemeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchThemeData.swift; sourceTree = "<group>"; };
 		B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchTabMain.storyboard; sourceTree = "<group>"; };
 		B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTabMainVC.swift; sourceTree = "<group>"; };
 		B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchCVC.swift; sourceTree = "<group>"; };
@@ -418,6 +422,7 @@
 				EC759C3F24BEF121001D2F81 /* ThemeImageForWriteService.swift */,
 				EC759C4324BF45C3001D2F81 /* ThemeMakeService.swift */,
 				EC759C4524BF7219001D2F81 /* BookSearchForWritingService.swift */,
+				B8E2E15224C0586800595752 /* SearchMainService.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -438,6 +443,7 @@
 				EC759C3D24BEF01A001D2F81 /* ThemeImageDataForWrite.swift */,
 				EC759C4124BF45B2001D2F81 /* ThemeMakeData.swift */,
 				EC759C4724BF7380001D2F81 /* BookSearchForWritingData.swift */,
+				B8E2E15424C05B3100595752 /* SearchThemeData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -783,6 +789,7 @@
 				7FFEA26624BE1B54003D381A /* AppInfoVC.swift in Sources */,
 				EC759C3824BEB7C3001D2F81 /* SignUpService.swift in Sources */,
 				B8B48ADB24B762A000551F5B /* SearchResultMenuCVC.swift in Sources */,
+				B8E2E15524C05B3100595752 /* SearchThemeData.swift in Sources */,
 				B86D4C4224B2C14200C21906 /* RecommendSearchCVC.swift in Sources */,
 				7F1E719724B4553F00D79516 /* MainTabThirdTVC.swift in Sources */,
 				7F1E71A024B476C900D79516 /* MainMongleHeaderView.swift in Sources */,
@@ -811,6 +818,7 @@
 				B8E2E14D24BEE0B000595752 /* MyTabSentenceVC.swift in Sources */,
 				B8B48A5F24B602A600551F5B /* SearchResultCuratorVC.swift in Sources */,
 				EC759C4624BF7219001D2F81 /* BookSearchForWritingService.swift in Sources */,
+				B8E2E15324C0586800595752 /* SearchMainService.swift in Sources */,
 				B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */,
 				B8AB121F24B475A100B60240 /* CuratorListCVC.swift in Sources */,
 				7F1E71AC24B7BC6900D79516 /* SentenceInThemeTVC.swift in Sources */,
