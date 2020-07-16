@@ -608,7 +608,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                                         switch networkResult {
                                         case .success(let token) :
                                             print("success")
-                                            
+                                            guard let token = token as? String else { return }
+                                            print(token)
+                                            UserDefaults.standard.set(token, forKey: "token")
                                             guard let vcName = UIStoryboard(name: "SignUpEnd",
                                                                             bundle: nil).instantiateViewController(
                                                                                 withIdentifier: "SignUpEndVC") as? SignUpEndVC

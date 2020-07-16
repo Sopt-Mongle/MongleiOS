@@ -63,6 +63,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
 
     let popUpImageView = UIImageView().then {
         $0.image = UIImage(named: "writingThemeCheckImgTheme")
+        $0.contentMode = .scaleAspectFill
         $0.layer.masksToBounds = true
         $0.layer.cornerRadius = 10
         $0.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
@@ -192,7 +193,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
                                                 
                                               case .requestErr(let message):
                                                   guard let message = message as? String else {return}
-                                                print(message)
+                                                  
                                               case .pathErr: print("pathErr")
                                               case .serverErr: print("serverErr")
                                               case .networkFail: print("networkFail")
@@ -227,6 +228,8 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
                 self.present(vcName, animated: true, completion: nil)
             case .requestErr(let message):
                 guard let message = message as? String else {return}
+                self.noButtonTap()
+                self.showToast(text: message)
                 print(message)
             case .pathErr: print("path")
             case .serverErr: print("sever")
@@ -418,6 +421,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         warningImageView.alpha = 0
         labelConstraints.constant = 62
         partialGreenColor()
+        themeNameTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
     }
 
     
@@ -436,6 +440,16 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
         
         
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        themeNameTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+        
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+         themeNameTextField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
     }
 
     @objc func updateTextLength(){
@@ -602,7 +616,7 @@ UICollectionViewDelegateFlowLayout {
         checkIndex = indexPath.item
         selectedURL = imagesURL[indexPath.item]
         selectedIdx = indexPath.item
-        
+        self.view.endEditing(true)
         self.themeCollectionView.reloadData()
         
         

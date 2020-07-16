@@ -11,5 +11,5 @@ import Alamofire
 
 
 struct SignupData : Codable {
-    var token : String
+    var accessToken : String
 }

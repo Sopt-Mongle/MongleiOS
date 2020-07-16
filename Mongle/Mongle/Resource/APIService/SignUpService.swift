@@ -67,18 +67,12 @@ struct SignUpService {
     private func isSignUp(by data : Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
         guard let decodedData = try? decoder.decode(GenericResponse<SignupData>.self, from: data) else { return .serverErr }
-        if (decodedData.success){
-            print(decodedData.status)
-            print(decodedData.message)
-            return .success(data)
-        }
-        
-        return .requestErr(decodedData.message)
-        
+        guard let tokenData = decodedData.data else { return .requestErr(decodedData.message) }
+        return .success(tokenData.accessToken)
         
     }
     
-   
+    
     
     
     
