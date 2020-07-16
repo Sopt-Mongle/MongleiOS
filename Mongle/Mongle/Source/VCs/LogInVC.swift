@@ -73,7 +73,7 @@ class LogInVC: UIViewController {
         $0.backgroundColor = .softGreen
         $0.makeRounded(cornerRadius: 19)
         $0.addTarget(self, action: #selector(yesButtonAction), for: .touchUpInside)
-        
+        $0.titleLabel?.font = $0.titleLabel?.font.withSize(13)
     }
     let alertButton2 = UIButton().then {
         $0.setTitle("회원가입", for: .normal)
@@ -82,6 +82,7 @@ class LogInVC: UIViewController {
         $0.makeRounded(cornerRadius: 19)
         $0.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         $0.addTarget(self, action: #selector(signUpButtonInPopUp), for: .touchUpInside)
+        $0.titleLabel?.font = $0.titleLabel?.font.withSize(13)
         
     }
     let blurView = UIImageView().then {

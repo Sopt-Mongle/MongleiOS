@@ -55,9 +55,13 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
     var textViewInput : String?
     var fromAfterView : Bool =  false
     var isSelected : Bool = false
+    var sentenceForPost : String = ""
+    var bookForPost : String = ""
+    var authorForPost : String = ""
+    var publisherForPost : String = ""
+    var themeNameForPost : String = ""
     
-    
-    
+    var themeIdxForPost : Int = 0
     
     //MARK:- LifeCycle Methods
 
@@ -275,6 +279,38 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
     }
     
     
+    func postSentence(){
+        PostBookService.shared.postBook(sentence: sentenceForPost  , title: bookForPost, author: authorForPost, publisher: publisherForPost, themeIdx: themeIdxForPost) { networkResult in
+            switch networkResult{
+            case .success(_) :
+                
+                
+                guard let vcName = UIStoryboard(name: "EndOfWritingSentence",
+                                                bundle: nil).instantiateViewController(
+                                                    withIdentifier: "EndOfWritingSentenceVC")
+                    as? EndOfWritingSentenceVC
+                    else{
+                        return
+                }
+                vcName.modalPresentationStyle = .currentContext
+                self.navigationController?.pushViewController(vcName, animated: true)
+            case .requestErr(let message):
+                guard let message = message as? String else {return}
+                print(message)
+            case .pathErr: print("path")
+            case .serverErr: print("sever")
+            case .networkFail: print("net")
+                
+                
+            }
+            
+            
+            
+            
+        }
+    }
+    
+    
     @IBAction func registerButtonAction(_ sender: Any) {
         if themeTextView.text == "" {
             showWarning()
@@ -283,15 +319,17 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
         
         else {
             
-            guard let vcName = UIStoryboard(name: "EndOfWritingSentence",
-                                            bundle: nil).instantiateViewController(
-                                                withIdentifier: "EndOfWritingSentenceVC")
-                as? EndOfWritingSentenceVC
-                else{
-                    return
-            }
-            vcName.modalPresentationStyle = .currentContext
-            self.navigationController?.pushViewController(vcName, animated: true)
+            postSentence()
+            
+//            guard let vcName = UIStoryboard(name: "EndOfWritingSentence",
+//                                            bundle: nil).instantiateViewController(
+//                                                withIdentifier: "EndOfWritingSentenceVC")
+//                as? EndOfWritingSentenceVC
+//                else{
+//                    return
+//            }
+//            vcName.modalPresentationStyle = .currentContext
+//            self.navigationController?.pushViewController(vcName, animated: true)
         }
         
     }
@@ -301,10 +339,11 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
 }
 
 extension ThirdViewOfWritingSentenceVC : ThemeSendDelegate {
-    func sendTheme(themeText: String, isSelected: Bool, fromAfter: Bool) {
+    func sendTheme(themeText: String, isSelected: Bool, fromAfter: Bool, themeIdx : Int) {
         self.textViewInput = themeText
         self.isSelected = isSelected
         self.fromAfterView = fromAfter
+        self.themeIdxForPost = themeIdx
 
     }
 }
@@ -312,5 +351,5 @@ extension ThirdViewOfWritingSentenceVC : ThemeSendDelegate {
 
 
 protocol ThemeSendDelegate {
-    func sendTheme(themeText : String, isSelected : Bool, fromAfter : Bool)
+    func sendTheme(themeText : String, isSelected : Bool, fromAfter : Bool,themeIdx : Int)
 }
