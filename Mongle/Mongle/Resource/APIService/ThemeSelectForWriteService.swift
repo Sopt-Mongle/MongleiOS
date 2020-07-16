@@ -68,6 +68,7 @@ struct ThemeSelectForWriteService {
         
        
         guard let data = decodedData.data else{
+            print(decodedData.message)
             return .requestErr(decodedData.message)
         }
 

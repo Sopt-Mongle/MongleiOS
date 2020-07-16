@@ -25,6 +25,8 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     @IBOutlet weak var blurView: UIImageView!
     @IBOutlet weak var collectionViewConstraint: NSLayoutConstraint!
     
+    var themeIdxForPost : Int = 0
+    
     
     
     //MARK:- User Define Variables
@@ -197,19 +199,34 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     
     func setThemes(){
         
+        
+        searched = false
+        
+     
+        let noName  = ThemeSelectForWriteData(themeIdx: 0, theme: "테마 없는 문장", themeImg: "writingSentenceTheme3ImgThemeX", themeImgIdx: 0, saves: 0, writer: "", writerImg: "", alreadyBookmarked: false)
+        
+       
+        
+        
         themes = []
+        
         ThemeSelectForWriteService.shared.themeShow() { networkResult in
             switch networkResult {
             case .success(let data) :
                 print("successsssssssssss")
+                
                 guard let themeForSentences = data as? [ThemeSelectForWriteData] else {return}
                 
-                
+                self.themes.append(noName)
                 for themeForSentence in themeForSentences{
                     self.themes.append(themeForSentence)
                     
                 }
-                
+                if themeForSentences.count == 0 {
+                    self.showEmpty()
+                }
+               
+             
                 self.themeCollectionView.reloadData()
                 
             case .requestErr(let message):
@@ -243,7 +260,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     }
     
     @IBAction func backButtonAction(_ sender: Any) {
-        themeDelegate?.sendTheme(themeText: "", isSelected: false, fromAfter: true)
+        themeDelegate?.sendTheme(themeText: "", isSelected: false, fromAfter: true, themeIdx: themeIdxForPost)
         dismiss(animated: true, completion: nil)
     }
     func hideEmpty(){
@@ -255,10 +272,13 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     }
     
     func searchThemes(searchKeyWord : String){
-        themes = []
+        searched  = true
+        themesBySearch = []
+        hideEmpty()
         SearchThemeService.shared.search(words: searchKeyWord) { networkResult in
             switch networkResult {
             case .success(let data) :
+                self.hideEmpty()
                 guard let themesbysearch = data as? [SearchThemeData] else {return}
                 
                 
@@ -267,11 +287,25 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
                     
                 }
                 
+                self.resultQuantityLabel.text! = "총" + String(self.themesBySearch.count) + "건"
+                self.resultQuantityLabel.alpha = 1
+                if themesbysearch.count == 0{
+                    self.showEmpty()
+                }
+                
+                
+                
+                
+                
+                
                 self.themeCollectionView.reloadData()
                 
             case .requestErr(let message):
                 print("reqqqqqqqqqqqqq")
                 guard let message = message as? String else {return}
+                if message == "해당하는 테마가 없습니다."{
+                    self.showEmpty()
+                }
                 print(message)
             case .pathErr: print("pathErr")
             case .serverErr: print("serverErr")
@@ -291,17 +325,17 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     }
     
     @IBAction func searchButtonAction(_ sender: Any) {
-        
+        searched = true
+        self.view.endEditing(true)
         if themeTextField.text == "으악" {
             shouldBeHidden = true
             themeCollectionView.reloadData()
-            showEmpty()
-            self.view.endEditing(true)
+            
+            
         }
         else{
             
             hideEmpty()
-            
             
             
             searchKeyWord = themeTextField.text
@@ -310,10 +344,11 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
             setResultLabels()
             shouldBeHidden = false
             
+            searchThemes(searchKeyWord: themeTextField.text!)
+            
             
             
             themeCollectionView.reloadData()
-            
             self.view.endEditing(true)
         }
         
@@ -340,7 +375,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         resultQuantityLabel.font = resultQuantityLabel.font.withSize(13)
         
         
-        resultQuantityLabel.text = "총 10건"
+        resultQuantityLabel.text = ""
         resultQuantityLabel.textColor = .veryLightPink
         
         
@@ -442,6 +477,7 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
             
         }
         else {
+         
             return themes.count
         }
         
@@ -458,17 +494,19 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
             if isSearched {
                 let tmpTheme = themesBySearch[indexPath.item]
                 let input = ThemeForSentence(imgName: tmpTheme.themeImg, themeTitle: tmpTheme.theme, state: check)
-                themeCell.setItems(input, self.themeTextField.text!,check)
+                themeCell.setItems(input, self.themeTextField.text!,check,isFirst:  false)
                 themeCell.makeRounded(cornerRadius: 22)
             }
                 
             else {
+                
+                
                 let tmpTheme = themes[indexPath.item]
                 
                 let input = ThemeForSentence(imgName: tmpTheme.themeImg, themeTitle: tmpTheme.theme, state: check)
                 
-                
-                themeCell.setItems(input, self.themeTextField.text!,check)
+                print(themes[indexPath.item].theme)
+                themeCell.setItems(input, self.themeTextField.text!,check, isFirst: themes[indexPath.item].themeIdx == 0)
                 themeCell.makeRounded(cornerRadius: 22)
                 
             }
@@ -495,16 +533,20 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if searched{
+            themeIdxForPost = themesBySearch[indexPath.item].themeIdx
             themeDelegate?.sendTheme(themeText: themesBySearch[indexPath.item].theme,
-                                     isSelected: true, fromAfter: true)
+                                     isSelected: true, fromAfter: true,themeIdx: themeIdxForPost)
             
             
             
         }
         else{
             
+            themeIdxForPost = themes[indexPath.item].themeIdx
+            print(themeIdxForPost)
             themeDelegate?.sendTheme(themeText: themes[indexPath.item].theme,
-                                     isSelected: true, fromAfter: true)
+                                     isSelected: true, fromAfter: true, themeIdx: themeIdxForPost)
+            
             
         }
         hideWarning()

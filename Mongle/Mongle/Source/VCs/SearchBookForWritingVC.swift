@@ -168,6 +168,11 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
                 
                 guard let bookDatas = data as? [BookSearchForWritingData]  else {return}
                 
+                if bookDatas.count == 0{
+                    self.showEmpty()
+                    self.view.endEditing(true)
+                    
+                }
                 
                 
                 
@@ -175,12 +180,13 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
                     self.bookInformations.append(Book(bookImgName: bookData.thumbnail, bookTitle: bookData.title, bookAuthors: bookData.authors, bookPublisher: bookData.publisher))
                 }
                 
-                
+                self.hideEmpty()
                 self.bookTableView.reloadData()
                 self.headerLabel2.text = "총" + String(bookDatas.count) + "건"
                 
             case .requestErr(let message):
                 guard let message = message as? String else {return}
+                self.showEmpty()
                 print(message)
             case .pathErr: print("pathErr")
             case .serverErr: print("serverErr")

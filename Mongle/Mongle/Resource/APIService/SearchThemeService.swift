@@ -13,18 +13,17 @@ struct SearchThemeService {
     static let shared = SearchThemeService()
     
     private func makeParameter(_ words : String)-> Parameters{
-        return ["query" : words]
+        return ["words" : words]
     }
     
     
     func search(words : String, completion : @escaping (NetworkResult<Any>) -> Void) {
-        let header : HTTPHeaders = ["Content-Type" : "application/json"]
-        let dataRequest = Alamofire.request(APIConstants.ThemeSelectForWriteURL,
+        let header : HTTPHeaders = ["Content-Type" : "application/json" , "token": UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue)!]
+        let dataRequest = Alamofire.request(APIConstants.searchThemeURL,
                                             method: .get,
                                             parameters: makeParameter(words),
-                                            encoding: JSONEncoding.default,
+                                            encoding: URLEncoding.default,
                                             headers: header)
-        
         
         
         dataRequest.responseData { dataResponse in
@@ -36,7 +35,6 @@ struct SearchThemeService {
                 completion(networkResult)
                 
             case .failure :
-                print("here2")
                 completion(.networkFail)
                 
                 
@@ -69,6 +67,7 @@ struct SearchThemeService {
     }
     
     private func searchThemes(by data : Data) -> NetworkResult<Any> {
+      
         let decoder = JSONDecoder()
         guard let decodedData = try? decoder.decode(GenericResponse<[SearchThemeData]>.self, from: data)
             else { return .pathErr }

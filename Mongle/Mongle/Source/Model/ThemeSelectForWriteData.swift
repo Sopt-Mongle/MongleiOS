@@ -17,5 +17,18 @@ struct ThemeSelectForWriteData : Codable {
     let alreadyBookmarked: Bool
     
     
+    init(themeIdx : Int, theme : String, themeImg : String, themeImgIdx : Int, saves : Int, writer : String, writerImg : String,
+         alreadyBookmarked : Bool) {
+        self.themeIdx = themeIdx
+        self.theme = theme
+        self.themeImg = themeImg
+        self.themeImgIdx = themeImgIdx
+        self.saves = saves
+        self.writer = writer
+        self.writerImg = writerImg
+        self.alreadyBookmarked = alreadyBookmarked
+           
+    }
+    
     
 }
