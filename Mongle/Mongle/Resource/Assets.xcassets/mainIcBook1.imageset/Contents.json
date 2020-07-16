@@ -1,19 +1,19 @@
 {
   "images" : [
     {
-      "filename" : "mainImgEditorpick.png",
       "scale" : "1x",
+      "filename" : "mainIcBook1.png",
       "idiom" : "universal"
     },
     {
+      "filename" : "mainIcBook1@2x.png",
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "mainImgEditorpick@2x.png"
+      "scale" : "2x"
     },
     {
+      "scale" : "3x",
       "idiom" : "universal",
-      "filename" : "mainImgEditorpick@3x.png",
-      "scale" : "3x"
+      "filename" : "mainIcBook1@3x.png"
     }
   ],
   "info" : {

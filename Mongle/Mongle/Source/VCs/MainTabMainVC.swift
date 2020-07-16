@@ -13,18 +13,120 @@ class MainTabMainVC: UIViewController {
     //MARK:- IBOutlet
     @IBOutlet var layoutTableView: UITableView!
     
-
+    //
+    var imgString: [String] = []
+    var sentences: [TodaySentenceData] = []
+    var curators: [MainCuratorData] = []
+    var themes: [MainThemeData] = []
+    var themesList: [[MainThemeData]] = [[],[],[]]
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getEditorsContentsData()
+        getTodaySentence()
+        getCurators()
+        
+        getThemeList(flag: 0)
+        getThemeList(flag: 1)
+        getThemeList(flag: 2)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(#function)
+        
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
-        for family: String in UIFont.familyNames
-        {
-            print("\(family)")
-            for names: String in UIFont.fontNames(forFamilyName: family)
-            {
-                print("== \(names)")
+    }
+    
+    func getThemeList(flag: Int) {
+        MainService.shared.getThemeList(flag: flag){ networkResult in
+            switch networkResult{
+            case .success(let data):
+                if let _data = data as? [MainThemeData] {
+                    self.themesList[flag] = _data
+                    print(_data)
+                    self.showToast(text:"\(flag)통신성공")
+                    DispatchQueue.main.async {
+                        self.layoutTableView.reloadSections(IndexSet(arrayLiteral: flag + 3), with: .automatic)
+                    }
+                }
+                
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
+        }
+    }
+    
+    func getCurators(){
+        MainService.shared.getPopularCurator { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let _data = data as? [MainCuratorData] {
+                    self.curators = _data
+                }
+                DispatchQueue.main.async {
+                    self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 2), with: .automatic)
+                }
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "")
+            case .pathErr:
+                break
+            case .serverErr:
+                break
+            case .networkFail:
+                break
+            }
+        }
+    }
+    
+    func getTodaySentence(){
+        MainService.shared.getTodaySentence { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let _data = data as? [TodaySentenceData] {
+                    self.sentences = _data
+                    
+                    DispatchQueue.main.async {
+                        self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 1), with: .automatic)
+                    }
+                }
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "")
+            case .pathErr:
+                break
+            case .serverErr:
+                break
+            case .networkFail:
+                break
+            }
+        }
+    }
+    func getEditorsContentsData(){
+        MainService.shared.getEditorsPick { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let data_ = data as? [EditorPickData] {
+                    data_.forEach {
+                        self.imgString.append($0.illust)
+                    }
+                }
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
             }
         }
     }
@@ -105,12 +207,16 @@ extension MainTabMainVC: UITableViewDataSource {
             cell.selectSentenceDelegate = {[weak self] dvc in
                 self?.navigationController?.pushViewController(dvc, animated: true)
             }
+            cell.sentences = self.sentences
+            cell.todaySentenceCollectionView.reloadData()
             
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier:MainTabThirdTVC.identifier) as? MainTabThirdTVC else {
                 return UITableViewCell()
             }
+            cell.curators = self.curators
+            cell.popularCuratorCollectionView.reloadData()
             return cell
         case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabFourthTVC.idnetifier) as? MainTabFourthTVC else {
@@ -119,6 +225,10 @@ extension MainTabMainVC: UITableViewDataSource {
             cell.selectedCell = { [weak self] vc in
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
+            let themes = self.themesList[0]
+            cell.themas = themes
+            cell.popularThemaCollectionview.reloadData()
+            
             return cell
         case 4:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabFourthTVC.idnetifier) as? MainTabFourthTVC else {
@@ -127,6 +237,9 @@ extension MainTabMainVC: UITableViewDataSource {
             cell.selectedCell = { [weak self] vc in
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
+            let themes = self.themesList[1]
+            cell.themas = themes
+            cell.popularThemaCollectionview.reloadData()
             return cell
         case 5:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabFourthTVC.idnetifier) as? MainTabFourthTVC else {
@@ -135,6 +248,9 @@ extension MainTabMainVC: UITableViewDataSource {
             cell.selectedCell = { [weak self] vc in
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
+            let themes = self.themesList[2]
+            cell.themas = themes
+            cell.popularThemaCollectionview.reloadData()
             return cell
         default:
             return UITableViewCell()

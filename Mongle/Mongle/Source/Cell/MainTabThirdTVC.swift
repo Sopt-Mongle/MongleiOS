@@ -13,7 +13,8 @@ class MainTabThirdTVC: UITableViewCell {
 
     @IBOutlet var popularCuratorCollectionView: UICollectionView!
     
-    let curators = ["예슬", "주혁", "윤재", "윤재", "윤재", "윤재"]
+//    let curators = ["예슬", "주혁", "윤재", "윤재", "윤재", "윤재"]
+    var curators: [MainCuratorData] = []
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -38,6 +39,8 @@ extension MainTabThirdTVC: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainPopularCuratorCVC.identifier, for: indexPath) as? MainPopularCuratorCVC else {
             return UICollectionViewCell()
         }
+        let curator = self.curators[indexPath.item]
+        cell.setData(imgUrl: curator.img ?? "themeImgCurator", name: curator.name, tag: curator.keyword ?? " ")
         return cell
     }
 

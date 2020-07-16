@@ -10,12 +10,9 @@ import UIKit
 
 class MainPictureCVC: UICollectionViewCell {
     static let identifier = "MainPictureCVC"
-    
-    
+
     @IBOutlet var displayPictureImageView: UIImageView!
-    
-    
     override func awakeFromNib() {
-        
+
     }
 }

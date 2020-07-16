@@ -21,4 +21,8 @@ class MainTodaySentenceCVC: UICollectionViewCell {
         self.setBorder(borderColor: UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 0.24), borderWidth: 1)
     }
     
+    func setData(sentence: String, bookName: String) {
+        sentenceLabel.text = sentence
+        bookLabel.text = bookName
+    }
 }

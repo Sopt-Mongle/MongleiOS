@@ -21,8 +21,8 @@ class MainTabFourthTVC: UITableViewCell {
         }
     }
     
-    
-    let themas = ["브랜딩이 어려울 때영감을 주는 문장", "번아웃을 극복하고 싶을 때 봐야하는 문장문장", "가나다라마바사아자차"]
+    var themas: [MainThemeData] = []
+//    var themas = ["브랜딩이 어려울 때영감을 주는 문장", "번아웃을 극복하고 싶을 때 봐야하는 문장문장", "가나다라마바사아자차"]
     var selectedCell: ((_ viewController: UIViewController) -> Void)?
     
     override func awakeFromNib() {
@@ -40,7 +40,7 @@ extension MainTabFourthTVC: UICollectionViewDelegate {
         guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
             return
         }
-        dvc.themeText = themas[indexPath.item]
+//        dvc.themeText = themas[indexPath.item]
         if let delegate = selectedCell {
             delegate(dvc)
         }
@@ -56,7 +56,9 @@ extension MainTabFourthTVC: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainPopularThemaCVC.identifier, for: indexPath) as? MainPopularThemaCVC else {
             return UICollectionViewCell()
         }
-        cell.themaNameLabel.text = themas[indexPath.item]
+        
+        let theme = self.themas[indexPath.item]
+        cell.setData(name: theme.theme, count: theme.sentenceNum, imageUrl: theme.themeImg, isBookMark: theme.alreadyBookmarked)
         
         return cell
     }
