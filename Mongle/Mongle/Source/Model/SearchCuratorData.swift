@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+struct SearchCuratorData: Codable {
+    var curatorIdx: Int
+    var name: String
+    var img: String?
+    var introduce, keyword: String?
+    var subscribe: Int
+    var alreadySubscribed: Bool
+}

@@ -9,7 +9,8 @@
 import UIKit
 
 class SearchResultThemeVC: UIViewController {
-    var searchKey:String = "번아웃"
+    var searchKey:String = ""
+    var themeList:[SearchThemeData] = []
     // MARK: - Outlet
     @IBOutlet weak var themeTableView: UITableView!
     
@@ -20,25 +21,62 @@ class SearchResultThemeVC: UIViewController {
         themeTableView.reloadData()
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        setSearchThemeData(searchKey)
+        
     }
-    */
-
+    func setSearchThemeData(_ searchKey: String){
+        SearchThemeService.shared.search(words:searchKey) { networkResult in
+            switch networkResult {
+            case .success(let searchResult):
+                guard let data = searchResult as? [SearchThemeData] else {
+                    return
+                }
+                
+                self.themeList = data
+                print("최근검색어: \(data)개")
+                DispatchQueue.main.async {
+                    self.themeTableView.reloadData()
+                }
+                
+                
+            case .requestErr(let message):
+                
+                guard let message = message as? String else { return }
+            
+                self.showToast(text: message)
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+            
+            
+        }
+    }
 }
+
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destination.
+ // Pass the selected object to the new view controller.
+ }
+ */
+
+
 
 extension SearchResultThemeVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let resultCountLabel = UILabel().then {
-            $0.text = "검색된 테마 23개"
+            $0.text = "검색된 테마 \(themeList.count)개"
             $0.font = UIFont.systemFont(ofSize: 13)
             $0.textColor = .brownishGrey
         }
@@ -74,12 +112,15 @@ extension SearchResultThemeVC: UITableViewDelegate{
 }
 extension SearchResultThemeVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return themeList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = themeTableView.dequeueReusableCell(withIdentifier: "searchResultThemeTVC", for: indexPath) as? SearchResultThemeTVC else { return UITableViewCell() }
+        cell.themeTitleLabel.text = themeList[indexPath.row].theme
+        cell.bookmarkCount = "\(themeList[indexPath.row].saves)"
+        cell.sentenceCount = "\(themeList[indexPath.row].sentenceNum)"
         
         let text = cell.themeTitleLabel.text
         

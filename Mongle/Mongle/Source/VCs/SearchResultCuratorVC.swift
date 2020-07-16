@@ -9,52 +9,89 @@
 import UIKit
 
 class SearchResultCuratorVC: UIViewController {
-    var searchKey = "스리"
-    
+    var searchKey = ""
+    var curatorList : [SearchCuratorData] = []
+    //MARK:- IBOutlet
     @IBOutlet weak var curatorCollectionView: UICollectionView!
+    
+    //MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         curatorCollectionView.delegate = self
         curatorCollectionView.dataSource = self
         
-        // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        setSearchCuratorData(searchKey)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setSearchCuratorData(_ searchKey: String){
+        SearchCuratorService.shared.search(words:searchKey) { networkResult in
+            switch networkResult {
+            case .success(let searchResult):
+                guard let data = searchResult as? [SearchCuratorData] else {
+                    return
+                }
+                
+                self.curatorList = data
+                print("최근검색어: \(data)")
+                DispatchQueue.main.async {
+                    self.curatorCollectionView.reloadData()
+                }
+                
+                
+            case .requestErr(let message):
+                
+                guard let message = message as? String else { return }
+                
+                self.showToast(text: message)
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        
+        }
+      
     }
-    */
-
+    
+    
 }
 extension SearchResultCuratorVC: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-       
-       //ofKind에 UICollectionView.elementKindSectionHeader로 헤더를 설정해주고
-       //withReuseIdentifier에 헤더뷰 identifier를 넣어주고
-       //생성한 헤더뷰로 캐스팅해준다.
-       let headerview =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SearchResultCuratorHeaderView", for: indexPath) as! SearchResultCuratorHeaderView
-    
-       return headerview
+        
+        
+        let headerview =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SearchResultCuratorHeaderView", for: indexPath) as! SearchResultCuratorHeaderView
+        headerview.headerViewLabel.text
+            = "검색된 큐레이터 \(curatorList.count)명"
+        return headerview
     }
 }
 extension SearchResultCuratorVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return curatorList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CuratorListCVC", for: indexPath) as? CuratorListCVC else{ return CuratorListCVC()}
         
-        cell.curatorNameLabel.text = "예스리"
-        
-        cell.curatorInfoLabel.text = "대학내일"
+        cell.curatorNameLabel.text = curatorList[indexPath.item].name
+        cell.subscriberNum = curatorList[indexPath.item].subscribe
+        cell.curatorProfileImageView.imageFromUrl(curatorList[indexPath.item].img, defaultImgPath: "maengleCharacters")
+        cell.subscribeBTN.isSelected = curatorList[indexPath.item].alreadySubscribed
+        cell.curatorIdx = curatorList[indexPath.item].curatorIdx
+        if curatorList[indexPath.item].alreadySubscribed{
+            cell.subscribeBTN.backgroundColor = .veryLightPinkSeven
+        }
+        else{
+            cell.subscribeBTN.backgroundColor = .softGreen
+        }
+    
         let text = cell.curatorNameLabel.text
         
         

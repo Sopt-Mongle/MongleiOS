@@ -61,9 +61,13 @@ class SearchTabResultVC: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
     override func viewWillDisappear(_ animated: Bool) {
         observingList.forEach { $0.invalidate() }
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pageSegue" {

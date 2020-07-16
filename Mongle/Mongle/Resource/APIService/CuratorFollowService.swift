@@ -1,5 +1,5 @@
 //
-//  SearchSentenceService.swift
+//  CuratorFollowService.swift
 //  Mongle
 //
 //  Created by 이예슬 on 7/17/20.
@@ -9,19 +9,14 @@
 import Foundation
 import Alamofire
 
-struct SearchSentenceService {
-    static let shared = SearchSentenceService()
+struct CuratorFollowService {
+    static let shared = CuratorFollowService()
     
-    private func makeParameter(_ words : String)-> Parameters{
-        return ["words" : words]
-    }
-    
-    
-    func search(words : String, completion : @escaping (NetworkResult<Any>) -> Void) {
-        let header : HTTPHeaders = ["Content-Type" : "application/json"]
-        let dataRequest = Alamofire.request(APIConstants.searchSentenceURL,
-                                            method: .get,
-                                            parameters: makeParameter(words),
+    func follow(followedIdx : Int, completion : @escaping (NetworkResult<Any>) -> Void) {
+        let header : HTTPHeaders = ["Content-Type" : "application/json","token" : UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue)!]
+        let dataRequest = Alamofire.request(APIConstants.curatorURL+"/\(followedIdx)",
+                                            method: .put,
+                                            parameters: nil,
                                             encoding: URLEncoding.default,
                                             headers: header)
         
@@ -36,7 +31,6 @@ struct SearchSentenceService {
                 
             case .failure :
                 completion(.networkFail)
-                
                 
                 
             }
@@ -54,7 +48,7 @@ struct SearchSentenceService {
         switch statusCode{
         case 200 :
             
-            return searchSentences(by: data)
+            return getBool(by: data)
         case 400:
             return showErrorMessage(by : data)
         case 600 :
@@ -66,10 +60,10 @@ struct SearchSentenceService {
         
     }
     
-    private func searchSentences(by data : Data) -> NetworkResult<Any> {
+    private func getBool(by data : Data) -> NetworkResult<Any> {
       
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<[SearchSentenceData]>.self, from: data)
+        guard let decodedData = try? decoder.decode(GenericResponse<Bool>.self, from: data)
             else { return .pathErr }
         
         
@@ -83,7 +77,7 @@ struct SearchSentenceService {
     
     private func showErrorMessage(by data : Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<[SearchSentenceData]>.self, from: data)
+        guard let decodedData = try? decoder.decode(GenericResponse<Bool>.self, from: data)
             else { return .pathErr }
         
         print(decodedData.message)
@@ -97,4 +91,6 @@ struct SearchSentenceService {
     
     
 }
+
+
 

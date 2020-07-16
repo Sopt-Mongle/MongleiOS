@@ -22,6 +22,8 @@ struct APIConstants {
     static let postSentenceURL = baseURL + "/post/sentence"
     static let ThemeSelectForWriteURL = baseURL + "/post/theme"
     static let searchThemeURL = baseURL + "/search/theme"
-    
+    static let searchSentenceURL = baseURL + "/search/sentence"
+    static let searchCuratorURL = baseURL + "/search/curator"
+    static let curatorURL = baseURL + "/curator"
     
 }

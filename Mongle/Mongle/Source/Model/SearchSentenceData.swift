@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+struct SearchSentenceData: Codable {
+    var sentenceIdx: Int
+    var sentence: String
+    var themeIdx: Int
+    var theme: String
+    var likes, saves: Int
+    var writer: String
+    var writerImg: String?
+    var title, author: String
+    var publisher, timestamp: String
+}
