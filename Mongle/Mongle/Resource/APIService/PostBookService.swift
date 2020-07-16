@@ -12,6 +12,7 @@ import Alamofire
 struct PostBookService {
     
     static let shared = PostBookService()
+
     
     
     private func makeParameter(sentence : String , title : String, author : String ,

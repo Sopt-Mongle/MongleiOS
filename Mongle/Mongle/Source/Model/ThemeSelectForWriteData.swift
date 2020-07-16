@@ -10,14 +10,20 @@ import Foundation
 
 struct ThemeSelectForWriteData : Codable {
     
+//    let themeIdx: Int
+//    let theme, themeImg: String
+//    let themeImgIdx, saves: Int
+//    let writer, writerImg: String
+//    let alreadyBookmarked: Bool
     let themeIdx: Int
-    let theme, themeImg: String
+    let theme: String
+    let themeImg: String
     let themeImgIdx, saves: Int
-    let writer, writerImg: String
+    let writer : String
+    let writerImg: String?
     let alreadyBookmarked: Bool
     
-    
-    init(themeIdx : Int, theme : String, themeImg : String, themeImgIdx : Int, saves : Int, writer : String, writerImg : String,
+    init(themeIdx : Int, theme : String, themeImg : String, themeImgIdx : Int, saves : Int, writer : String, writerImg : String?,
          alreadyBookmarked : Bool) {
         self.themeIdx = themeIdx
         self.theme = theme
@@ -29,6 +35,4 @@ struct ThemeSelectForWriteData : Codable {
         self.alreadyBookmarked = alreadyBookmarked
            
     }
-    
-    
 }

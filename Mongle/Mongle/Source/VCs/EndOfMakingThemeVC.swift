@@ -17,7 +17,12 @@ class EndOfMakingThemeVC: UIViewController {
     @IBOutlet weak var secondLabel: UILabel!
     @IBOutlet weak var backToMainButton: UIButton!
     
-
+    @IBOutlet weak var imageTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topConstraint2: NSLayoutConstraint!
+    
+    let deviceBound = UIScreen.main.bounds.height/812.0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -40,9 +45,40 @@ class EndOfMakingThemeVC: UIViewController {
         writeSentenceButton.setTitleColor(.white, for: .normal)
         backToMainButton.setTitleColor(.softGreen, for: .normal)
         secondLabel.textAlignment = .center
+        if deviceBound < 1{
+            imageTopConstraint.constant = 50
+        }
+       
+        mongleImageView.frame.size.height *= deviceBound
+        
+        UIView.animate(withDuration: 1.0, animations: {
+            self.mongleImageView.transform = CGAffineTransform(translationX: 0, y: 600)
+            
+            
+        }, completion: { finished in
+            
+            UIView.animate(withDuration: 3.0,  delay : 0, options: [.curveEaseIn], animations: {
+                self.mongleImageView.transform = .identity
+                
+            }, completion :{ finished in
+                
+                UIView.animate(withDuration: 1.0, animations: {
+                    self.mongleImageView.transform = CGAffineTransform(translationX: 0, y: -600)
+                    
+                },completion: {finished in
+                    UIView.animate(withDuration: 3.0, delay : 0.5,  animations: {
+                     
+                        self.mongleImageView.transform = CGAffineTransform(translationX: 0, y: 0)
+                    })
+                    
+                    
+                })
+            })
+            
+        })
+        
     }
     
-
     
     
     

@@ -31,6 +31,7 @@ struct ThemeSelectForWriteService {
                 guard let statusCode = dataResponse.response?.statusCode else {return}
                 guard let data = dataResponse.result.value else {return}
                 let networkResult = self.judge(by: statusCode, data)
+                
                 completion(networkResult)
                 
             case .failure :
@@ -57,12 +58,12 @@ struct ThemeSelectForWriteService {
         let decoder = JSONDecoder()
         guard let decodedData = try? decoder.decode(GenericResponse<[ThemeSelectForWriteData]>.self, from: data)
             else { return .pathErr }
-        
+        print(decodedData)
         guard let data = decodedData.data else{
             print(decodedData.message)
             return .requestErr(decodedData.message)
         }
-
+        
         return .success(data)
         
     }

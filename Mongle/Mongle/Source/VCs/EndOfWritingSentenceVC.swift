@@ -19,10 +19,11 @@ class EndOfWritingSentenceVC: UIViewController {
     @IBOutlet weak var sentenceCheckButton: UIButton!
     @IBOutlet weak var backToMainButton: UIButton!
     
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
     //MARK:- User Define Variables
     
-    
+    let deviceBound = UIScreen.main.bounds.height/812.0
     
     
     //MARK:- LifeCycle Methods
@@ -50,6 +51,11 @@ class EndOfWritingSentenceVC: UIViewController {
         backToMainButton.setTitleColor(.softGreen, for: .normal)
         backToMainButton.makeRounded(cornerRadius: 21)
         backToMainButton.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+        
+        if deviceBound < 1{
+            topConstraint.constant = 70
+            
+        }
         
         
         
@@ -93,8 +99,24 @@ class EndOfWritingSentenceVC: UIViewController {
     }
     
      
-     
-     
+    
+    
+    @IBAction func sentenceCheckButtonAction(_ sender: Any) {
+//        dismiss(animated: true, completion: nil)
+//        guard let vcName = UIStoryboard(name: "SentenceInfo",
+//                                        bundle: nil).instantiateViewController(
+//                                            withIdentifier: "SentenceInfoVC")
+//            as? SentenceInfoVC
+//            else{
+//                return
+//        }
+//
+//
+//        vcName.modalPresentationStyle = .fullScreen
+//        self.present(vcName, animated: true, completion: nil)
+        
+        
+    }
     
     
     @IBAction func backToMainButtonAction(_ sender: Any) {

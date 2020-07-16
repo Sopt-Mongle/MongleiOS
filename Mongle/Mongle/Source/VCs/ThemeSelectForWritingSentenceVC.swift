@@ -77,9 +77,11 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         setItems()
         
         setWarning()
+        
+        setThemes()
         themeCollectionView.dataSource = self
         themeCollectionView.delegate = self
-        setThemes()
+        
         
         
         // Do any additional setup after loading the view.
