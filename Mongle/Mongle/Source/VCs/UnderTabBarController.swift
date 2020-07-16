@@ -142,7 +142,13 @@ class UnderTabBarController: UITabBarController {
             return
             
         }
-        let myVC = UIViewController()
+        guard let myVC = UIStoryboard(name: "MyTab",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "MyTabVC") as? MyTabVC
+            else{
+            
+            return
+        }
      
         guard let searchVC = UIStoryboard(name: "SearchTabMain",
                                         bundle: nil).instantiateViewController(
@@ -164,7 +170,6 @@ class UnderTabBarController: UITabBarController {
         tmpVC.title = ""
         
         mainVC.view.backgroundColor = .white
-        myVC.view.backgroundColor = .systemPink
         
         tmpVC.view.backgroundColor = .black
         

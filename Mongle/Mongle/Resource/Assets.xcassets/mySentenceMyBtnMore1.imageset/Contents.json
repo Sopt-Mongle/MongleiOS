@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "searchBoxGradient.png",
+      "filename" : "mySentenceMyBtnMore1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "searchBoxGradient@2x.png",
+      "filename" : "mySentenceMyBtnMore1@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "searchBoxGradient@3x.png",
+      "filename" : "mySentenceMyBtnMore1@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -19,5 +19,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
   }
 }
