@@ -253,10 +253,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultSentenceTVC" id="DaC-7g-bhZ" customClass="SearchResultSentenceTVC" customModule="Mongle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="121"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="120.66666412353516"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DaC-7g-bhZ" id="wcy-Eh-g0e">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120.66666412353516"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFi-Aw-XM3">
@@ -272,13 +272,14 @@
                                                     <rect key="frame" x="16" y="38" width="337" height="41"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="41" id="qXs-1O-7Z0"/>
+                                                        <constraint firstAttribute="width" constant="337" id="vMK-GN-jlJ"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNN-zu-G4n">
-                                                    <rect key="frame" x="33" y="88" width="42" height="15"/>
+                                                    <rect key="frame" x="33" y="88" width="42" height="14.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -303,7 +304,6 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="gNN-zu-G4n" secondAttribute="trailing" constant="285" id="YxY-dn-CC0"/>
                                                 <constraint firstItem="gNN-zu-G4n" firstAttribute="leading" secondItem="wcy-Eh-g0e" secondAttribute="leading" constant="33" id="av5-qI-Cb0"/>
                                                 <constraint firstAttribute="bottom" secondItem="gNN-zu-G4n" secondAttribute="bottom" constant="18" id="bmw-y9-OVF"/>
-                                                <constraint firstAttribute="trailing" secondItem="4C2-Ms-pBy" secondAttribute="trailing" constant="22" id="dAy-kg-mcN"/>
                                                 <constraint firstItem="fvi-wa-pa5" firstAttribute="leading" secondItem="wcy-Eh-g0e" secondAttribute="leading" constant="16" id="dKs-dh-EDS"/>
                                             </constraints>
                                         </tableViewCellContentView>
