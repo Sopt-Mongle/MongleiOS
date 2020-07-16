@@ -52,7 +52,7 @@ class SearchTabMainVC: UIViewController{
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func removeSearchHistoryBTN(_ sender: Any) {
-        recentKeyArray = []
+        
         deleteRecentSearch()
     }
     
@@ -147,9 +147,7 @@ class SearchTabMainVC: UIViewController{
                 self.simpleAlert(title: "error", message: message)
                 self.showToast(text: message)
                 print("ㅁㅁ\(message)")
-                DispatchQueue.main.async {
-                    self.recentSearchCV.reloadData()
-                }
+                self.setRecentSearchData()
 
                 
             case .requestErr(let message):
