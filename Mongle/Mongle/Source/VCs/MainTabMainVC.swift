@@ -15,18 +15,55 @@ class MainTabMainVC: UIViewController {
     
     //
     var imgString: [String] = []
-    var sentence: [TodaySentenceData] = []
+    var sentences: [TodaySentenceData] = []
     var curators: [MainCuratorData] = []
+    var themes: [MainThemeData] = []
+    var themesList: [[MainThemeData]] = [[],[],[]]
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         getEditorsContentsData()
         getTodaySentence()
         getCurators()
         
+        getThemeList(flag: 0)
+        getThemeList(flag: 1)
+        getThemeList(flag: 2)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print(#function)
+        
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
+    }
+    
+    func getThemeList(flag: Int) {
+        MainService.shared.getThemeList(flag: flag){ networkResult in
+            switch networkResult{
+            case .success(let data):
+                if let _data = data as? [MainThemeData] {
+                    self.themesList[flag] = _data
+                    print(_data)
+                    self.showToast(text:"\(flag)통신성공")
+                    DispatchQueue.main.async {
+                        self.layoutTableView.reloadSections(IndexSet(arrayLiteral: flag + 3), with: .automatic)
+                    }
+                }
+                
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
+        }
     }
     
     func getCurators(){
@@ -36,7 +73,9 @@ class MainTabMainVC: UIViewController {
                 if let _data = data as? [MainCuratorData] {
                     self.curators = _data
                 }
-                print(self.curators)
+                DispatchQueue.main.async {
+                    self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 2), with: .automatic)
+                }
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "")
             case .pathErr:
@@ -54,9 +93,12 @@ class MainTabMainVC: UIViewController {
             switch networkResult {
             case .success(let data):
                 if let _data = data as? [TodaySentenceData] {
-                    self.sentence = _data
+                    self.sentences = _data
+                    
+                    DispatchQueue.main.async {
+                        self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 1), with: .automatic)
+                    }
                 }
-                print(self.sentence)
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "")
             case .pathErr:
@@ -77,15 +119,14 @@ class MainTabMainVC: UIViewController {
                         self.imgString.append($0.illust)
                     }
                 }
-                print(self.imgString)
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "")
             case .pathErr:
-                break
+                print("pathErr")
             case .serverErr:
-                break
+                print("serverErr")
             case .networkFail:
-                break
+                print("networkFail")
             }
         }
     }
@@ -158,7 +199,6 @@ extension MainTabMainVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabFirstTVC.identifier) as? MainTabFirstTVC else {
                 return UITableViewCell()
             }
-            cell.pictures = self.imgString
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabSecondTVC.identifier) as? MainTabSecondTVC else {
@@ -167,12 +207,16 @@ extension MainTabMainVC: UITableViewDataSource {
             cell.selectSentenceDelegate = {[weak self] dvc in
                 self?.navigationController?.pushViewController(dvc, animated: true)
             }
+            cell.sentences = self.sentences
+            cell.todaySentenceCollectionView.reloadData()
             
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier:MainTabThirdTVC.identifier) as? MainTabThirdTVC else {
                 return UITableViewCell()
             }
+            cell.curators = self.curators
+            cell.popularCuratorCollectionView.reloadData()
             return cell
         case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabFourthTVC.idnetifier) as? MainTabFourthTVC else {
@@ -181,6 +225,10 @@ extension MainTabMainVC: UITableViewDataSource {
             cell.selectedCell = { [weak self] vc in
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
+            let themes = self.themesList[0]
+            cell.themas = themes
+            cell.popularThemaCollectionview.reloadData()
+            
             return cell
         case 4:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabFourthTVC.idnetifier) as? MainTabFourthTVC else {
@@ -189,6 +237,9 @@ extension MainTabMainVC: UITableViewDataSource {
             cell.selectedCell = { [weak self] vc in
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
+            let themes = self.themesList[1]
+            cell.themas = themes
+            cell.popularThemaCollectionview.reloadData()
             return cell
         case 5:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabFourthTVC.idnetifier) as? MainTabFourthTVC else {
@@ -197,6 +248,9 @@ extension MainTabMainVC: UITableViewDataSource {
             cell.selectedCell = { [weak self] vc in
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
+            let themes = self.themesList[2]
+            cell.themas = themes
+            cell.popularThemaCollectionview.reloadData()
             return cell
         default:
             return UITableViewCell()

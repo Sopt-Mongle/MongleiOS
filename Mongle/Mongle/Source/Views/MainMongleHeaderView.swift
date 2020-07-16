@@ -21,7 +21,7 @@ class MainMongleHeaderView: UIView {
     
     let searchButton = UIButton().then {
         $0.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
-        $0.setImage(UIImage(named: "searchBtnSearch"), for: .normal)
+        $0.setImage(UIImage(named: "mainBtnSearch"), for: .normal)
     }
     
     var searchButtomDelegate: (()->()) = { }

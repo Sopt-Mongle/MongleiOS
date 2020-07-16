@@ -94,15 +94,26 @@ struct MainService {
         }
     }
     
-    func getThemeList(completion: @escaping ((NetworkResult<Any>)->Void)){
+    func getThemeList(flag: Int, completion: @escaping ((NetworkResult<Any>)->Void)){
         let token = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue)!
         
         let header: HTTPHeaders = [
             "Content-Type" : "application/json",
             "token":token
         ]
+        var url = ""
+        switch flag {
+        case 0:
+            url = APIConstants.mainThemesURL
+        case 1:
+            url = APIConstants.mainWaitThemesURL
+        case 2:
+            url = APIConstants.mainNowThemesURL
+        default:
+            break
+        }
         
-        Alamofire.request(APIConstants.mainThemesURL,
+        Alamofire.request(url,
                           method: .get,
                           parameters: nil,
                           encoding: JSONEncoding.default,
@@ -115,7 +126,7 @@ struct MainService {
                                 guard let data = response.value else {
                                     return
                                 }
-//                                completion(self.judgeThemeList(status: statusCode, data: data))
+                                completion(self.judgeThemeList(status: statusCode, data: data))
                             case .failure(let err):
                                 print(err)
                                 completion(.networkFail)
@@ -123,37 +134,33 @@ struct MainService {
         }
     }
     
-//    private func judgeThemeList(status: Int, data: Data) -> NetworkResult<Any> {
-//        let decoder = JSONDecoder()
-//
-//        switch status {
-//        case 200:
-//            break
-//        case 400..<500:
-//            break
-//        case 600:
-//            break
-//        default:
-//            break
-//        }
-//    }
+    private func judgeThemeList(status: Int, data: Data) -> NetworkResult<Any> {
+        let decoder = JSONDecoder()
+        guard let decodedData = try? decoder.decode(GenericResponse<[MainThemeData]>.self, from: data) else {
+            return .pathErr
+        }
+        switch status {
+        case 200:
+            return .success(decodedData.data)
+        case 400..<500:
+            return .requestErr(decodedData.message)
+        case 600:
+            return .serverErr
+        default:
+            return .networkFail
+        }
+    }
     
     private func judgePopularCurator(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
+        guard let decodedData = try? decoder.decode(GenericResponse<[MainCuratorData]>.self, from: data) else {
+            return .pathErr
+        }
         
         switch status {
         case 200:
-            guard let decodedData = try? decoder.decode(GenericResponse<[MainCuratorData]>.self, from: data) else {
-                return .pathErr
-            }
-            
             return .success(decodedData.data)
-            
         case 400:
-            guard let decodedData = try? decoder.decode(GenericResponse<[MainCuratorData]>.self, from: data)
-                else {
-                    return .pathErr
-            }
             return .requestErr(decodedData.message)
         case 600:
             return .serverErr
@@ -165,19 +172,15 @@ struct MainService {
     
     private func searchTodaySentence(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
+        guard let decodedData = try? decoder.decode(GenericResponse<[TodaySentenceData]>.self, from: data)
+            else {
+                return .pathErr
+        }
         
         switch status {
         case 200:
-            guard let decodedData = try? decoder.decode(GenericResponse<[TodaySentenceData]>.self, from: data)
-                else {
-                    return .pathErr
-            }
             return .success(decodedData.data)
         case 400, 401:
-            guard let decodedData = try? decoder.decode(GenericResponse<[TodaySentenceData]>.self, from: data)
-                else {
-                    return .pathErr
-            }
             return .requestErr(decodedData.message)
         case 600:
             return .serverErr
@@ -188,27 +191,19 @@ struct MainService {
     
     private func judge(by statusCode : Int , _ data : Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        
+        guard let decodedData = try? decoder.decode(GenericResponse<[EditorPickData]>.self, from: data)
+            else {
+                return .pathErr
+        }
         switch statusCode{
         case 200 :
-            
-            guard let decodedData = try? decoder.decode(GenericResponse<[EditorPickData]>.self, from: data)
-                else {
-                    return .pathErr
-            }
             return .success(decodedData.data)
         case 400 :
-            guard let decodedData = try? decoder.decode(GenericResponse<[EditorPickData]>.self, from: data)
-                else {
-                    return .pathErr
-            }
             return .requestErr(decodedData.message)
         case 600 :
             return .serverErr
         default :
             return .networkFail
-            
         }
-        
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 
 struct APIConstants {
     static let baseURL = "http://3.34.20.225:3000"
+//    static let baseURL = "http://18.189.125.26:3000"
     
     static let signupURL = baseURL + "/users/signup"
     static let signinURL = baseURL + "/users/signin"
@@ -25,4 +26,8 @@ struct APIConstants {
     static let mainCuratorURL = baseURL + "/main/curators"
     // 오늘 하루 저장이 가장 많이 된 테마목록 조회
     static let mainThemesURL = baseURL + "/main/themes"
+    // 문장을 기다리고 있는 테마 목록 조회
+    static let mainWaitThemesURL = baseURL + "/main/waitThemes"
+    // 최근 3일 조회수 많은 테마 목록 조회
+    static let mainNowThemesURL = baseURL + "/main/nowThemes"
 }

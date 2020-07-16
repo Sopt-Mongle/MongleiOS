@@ -10,8 +10,9 @@ import Foundation
 
 
 struct MainThemeData: Codable {
-    var themeIdx: Int
-    var theme, themeImg: String
+    var themeIdx: Int?
+    var theme: String
+    var themeImg: String
     var saves: Int
     var alreadyBookmarked: Bool
     var sentenceNum: Int

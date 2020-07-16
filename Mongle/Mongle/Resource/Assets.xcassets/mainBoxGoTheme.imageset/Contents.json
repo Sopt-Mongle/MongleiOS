@@ -1,18 +1,18 @@
 {
   "images" : [
     {
-      "filename" : "mainImgEditorpick.png",
       "scale" : "1x",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "mainBoxGoTheme.png"
+    },
+    {
+      "filename" : "mainBoxGoTheme@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "mainImgEditorpick@2x.png"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "mainImgEditorpick@3x.png",
+      "filename" : "mainBoxGoTheme@3x.png",
       "scale" : "3x"
     }
   ],
