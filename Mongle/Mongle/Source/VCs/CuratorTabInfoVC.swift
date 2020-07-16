@@ -10,10 +10,8 @@ import UIKit
 
 class CuratorTabInfoVC: UIViewController {
     
-    let menuItem = ["테마","문장","큐레이터"]
     var pageInstance : CuratorTabInfoPageVC?
     var observingList: [NSKeyValueObservation] = []
-    var searchKeyword:String = ""
     
     
     //MARK: - IBOutlet
@@ -76,7 +74,6 @@ class CuratorTabInfoVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pageSegue" {
             pageInstance = segue.destination as? CuratorTabInfoPageVC
-            pageInstance?.searchKey = self.searchKeyword
             let ob = pageInstance?
                 .keyValue
                 .observe(\.curPresentViewIndex,
