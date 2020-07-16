@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import Then
+import Kingfisher
 
 class ThemeSelectForSentenceCVC: UICollectionViewCell {
     
@@ -16,7 +17,7 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
     //MARK:- IBOutlets
     
     @IBOutlet weak var themeImageView: UIImageView!
-
+    
     @IBOutlet weak var themeTitleLabel: UILabel!
     
     @IBOutlet weak var checkImageView: UIImageView!
@@ -27,24 +28,36 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
     static let identifier : String = "ThemeSelectionCell"
     
     
-
+    
     
     //MARK:- LifeCycle Methods
     override func awakeFromNib() {
         themeImageView.image = UIImage(named: "mainImgTheme2")?.withRenderingMode(.alwaysOriginal)
         themeTitleLabel.text = "가나다라마"
+        themeImageView.contentMode = .scaleAspectFill
         
     }
     
     //MARK:- User Define Functions
-    func setItems(_ theme : ThemeForSentence, _ searchKeyWord : String, _ shouldBeChecked : Bool){
+    func setItems(_ theme : ThemeForSentence, _ searchKeyWord : String, _ shouldBeChecked : Bool, isFirst :  Bool){
         if theme.state == true
-            {
-            themeImageView.image = UIImage(named: theme.imgName)?.withRenderingMode(.alwaysOriginal)
+        {
+            if isFirst == true {
+                themeImageView.image = UIImage(named: "writingSentenceTheme3ImgThemeX")
+                
+            }
+            else{
+                
+                
+                themeImageView.imageFromUrl(theme.imgName, defaultImgPath: "")
+                
+            }
+            //            themeImageView.image = UIImage(named: "writingSentenceTheme3ImgThemeX")
             themeTitleLabel.text = theme.themeTitle
             themeTitleLabel.textColor = .white
             checkImageView.image = UIImage(named: "writingTheme3ImgCheck")
             checkImageView.alpha = 0
+            
             
             guard let text = themeTitleLabel.text else {
                 return
@@ -55,22 +68,29 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
                                           value: UIColor.softGreen,
                                           range: (text as NSString).range(of: searchKeyWord))
             themeTitleLabel.attributedText = attributedString
-           topContraint.constant = 18
-           leadingConstraint.constant = 19
-                themeTitleLabel.textAlignment = .left
-
+            topContraint.constant = 18
+            leadingConstraint.constant = 19
+            themeTitleLabel.textAlignment = .left
+            
             if shouldBeChecked {
                 checkImageView.alpha = 1
             }
+            
         }
-        
+            
         else{
-            themeImageView.image = UIImage(named: theme.imgName)?.withRenderingMode(.alwaysOriginal)
+            if isFirst == true {
+                themeImageView.image = UIImage(named: "writingSentenceTheme3ImgThemeX")
+                
+            }
+            else{
+                themeImageView.imageFromUrl(theme.imgName, defaultImgPath: "")
+            }
             themeTitleLabel.text = theme.themeTitle
             themeTitleLabel.textColor = .white
-            themeTitleLabel.textAlignment = .center
+//            themeTitleLabel.textAlignment = .center
             
-            topContraint.constant = 74
+//            topContraint.constant = 74
             checkImageView.image = UIImage(named: "writingTheme3ImgCheck")
             checkImageView.alpha = 0
             if shouldBeChecked {
@@ -81,7 +101,7 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
         }
     }
     
-  
+    
     
     
 }
