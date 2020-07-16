@@ -12,6 +12,7 @@ class SearchResultSentenceVC: UIViewController {
     var sentenceList : [SearchSentenceData] = []
     var searchKey:String = ""
     @IBOutlet weak var sentenceTableView: UITableView!
+    @IBOutlet weak var noSentenceView: UIView!
     
     //MARK:- LifeCycle Methods
     override func viewDidLoad() {
@@ -22,6 +23,12 @@ class SearchResultSentenceVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool){
         setSearchSentenceData(searchKey)
+        if sentenceList.count == 0{
+            noSentenceView.isHidden = false
+        }
+        else{
+            noSentenceView.isHidden = true
+        }
     }
     func setSearchSentenceData(_ searchKey: String){
         SearchSentenceService.shared.search(words:searchKey) { networkResult in
@@ -35,6 +42,12 @@ class SearchResultSentenceVC: UIViewController {
                 print("최근검색어: \(data)")
                 DispatchQueue.main.async {
                     self.sentenceTableView.reloadData()
+                    if self.sentenceList.count == 0{
+                        self.noSentenceView.isHidden = false
+                    }
+                    else{
+                        self.noSentenceView.isHidden = true
+                    }
                 }
                 
                 

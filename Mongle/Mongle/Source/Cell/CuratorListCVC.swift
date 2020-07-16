@@ -34,7 +34,8 @@ class CuratorListCVC: UICollectionViewCell {
         subscribeBTN.setTitleColor(UIColor(red:181/255,green:181/255,blue:181/255, alpha:1.0), for: .selected)
         subscribeBTN.setTitle("구독",for: .normal)
         subscribeBTN.setTitleColor(.white, for: .normal)
-
+        curatorProfileImageView.makeRounded(cornerRadius: curatorProfileImageView.frame.width/2)
+        curatorProfileImageView.contentMode = .scaleAspectFill
         if subscribeBTN.isSelected {
             subscribeBTN.backgroundColor = .veryLightPinkSeven
         }

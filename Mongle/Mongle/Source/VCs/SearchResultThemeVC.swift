@@ -13,13 +13,14 @@ class SearchResultThemeVC: UIViewController {
     var themeList:[SearchThemeData] = []
     // MARK: - Outlet
     @IBOutlet weak var themeTableView: UITableView!
+    @IBOutlet weak var noThemeView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         themeTableView.delegate = self
         themeTableView.dataSource = self
         themeTableView.reloadData()
-        // Do any additional setup after loading the view.
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         setSearchThemeData(searchKey)
@@ -37,6 +38,12 @@ class SearchResultThemeVC: UIViewController {
                 print("최근검색어: \(data)개")
                 DispatchQueue.main.async {
                     self.themeTableView.reloadData()
+                    if self.themeList.count == 0{
+                        self.noThemeView.isHidden = false
+                    }
+                    else{
+                        self.noThemeView.isHidden = true
+                    }
                 }
                 
                 
@@ -112,6 +119,7 @@ extension SearchResultThemeVC: UITableViewDelegate{
 }
 extension SearchResultThemeVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return themeList.count
     }
     

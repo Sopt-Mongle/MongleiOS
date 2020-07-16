@@ -13,16 +13,19 @@ class SearchResultCuratorVC: UIViewController {
     var curatorList : [SearchCuratorData] = []
     //MARK:- IBOutlet
     @IBOutlet weak var curatorCollectionView: UICollectionView!
+    @IBOutlet weak var noCuratorView: UIView!
     
     //MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         curatorCollectionView.delegate = self
         curatorCollectionView.dataSource = self
+
         
     }
     override func viewWillAppear(_ animated: Bool) {
         setSearchCuratorData(searchKey)
+        
     }
     
     func setSearchCuratorData(_ searchKey: String){
@@ -37,6 +40,12 @@ class SearchResultCuratorVC: UIViewController {
                 print("최근검색어: \(data)")
                 DispatchQueue.main.async {
                     self.curatorCollectionView.reloadData()
+                    if self.curatorList.count == 0{
+                        self.noCuratorView.isHidden = false
+                    }
+                    else{
+                        self.noCuratorView.isHidden = true
+                    }
                 }
                 
                 
