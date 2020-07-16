@@ -28,7 +28,9 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     
     
     //MARK:- User Define Variables
-    var themes : [ThemeForSentence] = []
+    var themes : [ThemeSelectForWriteData] = []
+    var themesBySearch : [SearchThemeData] = []
+    
     var searchKeyWord : String?
     var checkIndex : Int = -1
     var isSearched : Bool = false
@@ -64,6 +66,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     var themeDelegate : ThemeSendDelegate?
     
     var shouldBeHidden : Bool = false
+    var searched : Bool = false
     
     //MARK:- LifeCycleMethods
     override func viewDidLoad() {
@@ -76,6 +79,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         themeCollectionView.delegate = self
         setThemes()
         
+        
         // Do any additional setup after loading the view.
     }
     
@@ -87,8 +91,8 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         unregisterForKeyboardNotifications()
     }
     
-
-   
+    
+    
     //MARK:- User Define Functions
     func setItems(){
         backButton.setImage(UIImage(named: "searchBtnBack")?.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -153,7 +157,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         warningImageView.alpha = 1
         
         if isSearched == true{
-        
+            
             
             collectionViewConstraint.constant = 73
             searchResultLabel.snp.remakeConstraints{
@@ -161,7 +165,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
                 $0.top.equalToSuperview().offset(187)
                 
             }
-                
+            
             resultQuantityLabel.snp.remakeConstraints {
                 $0.top.equalToSuperview().offset(188)
                 $0.trailing.equalToSuperview().offset(-15)
@@ -171,10 +175,10 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         else{
             collectionViewConstraint.constant = 49
             
-
+            
             
         }
-
+        
         
     }
     func hideWarning(){
@@ -192,17 +196,38 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     }
     
     func setThemes(){
-        let theme1 = ThemeForSentence(imgName: "writingSentenceTheme3ImgThemeX", themeTitle: "테마 없는 문장",state : true)
-        let theme2 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
-        let theme3 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "브랜딩이 어려울 때 영감을 주는 문장",state : true)
-        let theme4 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
-        let theme5 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "브랜딩이 어려울 때 영감을 주는 문장",state : true)
-        let theme7 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
-        let theme8 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
-        let theme9 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
-        let theme10 = ThemeForSentence(imgName: "mainImgTheme2", themeTitle: "번아웃을 극복하고 싶을 때 봐야하는 문장",state : true)
         
-        themes = [theme1,theme2,theme3,theme4,theme5,theme7,theme8,theme9,theme10]
+        themes = []
+        ThemeSelectForWriteService.shared.themeShow() { networkResult in
+            switch networkResult {
+            case .success(let data) :
+                print("successsssssssssss")
+                guard let themeForSentences = data as? [ThemeSelectForWriteData] else {return}
+                
+                
+                for themeForSentence in themeForSentences{
+                    self.themes.append(themeForSentence)
+                    
+                }
+                
+                self.themeCollectionView.reloadData()
+                
+            case .requestErr(let message):
+                print("reqqqqqqqqqqqqq")
+                guard let message = message as? String else {return}
+                print(message)
+            case .pathErr: print("pathErr")
+            case .serverErr: print("serverErr")
+            case .networkFail: print("networkFail")
+                
+                
+            }
+            
+            
+            
+            
+        }
+        
         
     }
     func partialGreenColor(textField : UITextField, keyword : String){
@@ -229,6 +254,42 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         
     }
     
+    func searchThemes(searchKeyWord : String){
+        themes = []
+        SearchThemeService.shared.search(words: searchKeyWord) { networkResult in
+            switch networkResult {
+            case .success(let data) :
+                guard let themesbysearch = data as? [SearchThemeData] else {return}
+                
+                
+                for theme in themesbysearch{
+                    self.themesBySearch.append(theme)
+                    
+                }
+                
+                self.themeCollectionView.reloadData()
+                
+            case .requestErr(let message):
+                print("reqqqqqqqqqqqqq")
+                guard let message = message as? String else {return}
+                print(message)
+            case .pathErr: print("pathErr")
+            case .serverErr: print("serverErr")
+            case .networkFail: print("networkFail")
+                
+                
+            }
+            
+            
+            
+            
+        }
+        
+        
+        
+        
+    }
+    
     @IBAction func searchButtonAction(_ sender: Any) {
         
         if themeTextField.text == "으악" {
@@ -240,6 +301,8 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         else{
             
             hideEmpty()
+            
+            
             
             searchKeyWord = themeTextField.text
             
@@ -254,7 +317,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
             self.view.endEditing(true)
         }
         
-
+        
         
     }
     
@@ -306,9 +369,9 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
                 $0.trailing.equalToSuperview().offset(-15)
             }
         }
-       
         
-       
+        
+        
         
         searchResultLabel.alpha = 1
         resultQuantityLabel.alpha = 1
@@ -317,7 +380,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         
     }
     
-   
+    
     
     
     @IBAction func selectButtonAction(_ sender: Any) {
@@ -330,9 +393,9 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
             
             dismiss(animated: true, completion: nil)
         }
-      
-    
-
+        
+        
+        
         
         
         
@@ -357,11 +420,11 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     @objc func keyboardWillShow(_ notification: NSNotification) {
         self.themeCollectionView.isHidden = true
         
-     
+        
     }
     
     @objc func keyboardWillHide(_ notification: NSNotification) {
-   
+        
         self.themeCollectionView.isHidden = false
     }
     
@@ -374,8 +437,14 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
         if shouldBeHidden{
             return 0
         }
+        if searched {
+            return themesBySearch.count
+            
+        }
+        else {
+            return themes.count
+        }
         
-        return themes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
@@ -385,16 +454,31 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
                 return UICollectionViewCell()}
             
             let check : Bool = indexPath.item == checkIndex
-        
-        
-            themeCell.setItems(themes[indexPath.item], self.themeTextField.text!,check)
-            themeCell.makeRounded(cornerRadius: 22)
+            
+            if isSearched {
+                let tmpTheme = themesBySearch[indexPath.item]
+                let input = ThemeForSentence(imgName: tmpTheme.themeImg, themeTitle: tmpTheme.theme, state: check)
+                themeCell.setItems(input, self.themeTextField.text!,check)
+                themeCell.makeRounded(cornerRadius: 22)
+            }
+                
+            else {
+                let tmpTheme = themes[indexPath.item]
+                
+                let input = ThemeForSentence(imgName: tmpTheme.themeImg, themeTitle: tmpTheme.theme, state: check)
+                
+                
+                themeCell.setItems(input, self.themeTextField.text!,check)
+                themeCell.makeRounded(cornerRadius: 22)
+                
+            }
+            
             
             return themeCell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         return CGSize(width : 166, height: 166 )
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -409,10 +493,20 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
         return 11
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
- 
         
-        themeDelegate?.sendTheme(themeText: themes[indexPath.item].themeTitle,
-                                 isSelected: true, fromAfter: true)
+        if searched{
+            themeDelegate?.sendTheme(themeText: themesBySearch[indexPath.item].theme,
+                                     isSelected: true, fromAfter: true)
+            
+            
+            
+        }
+        else{
+            
+            themeDelegate?.sendTheme(themeText: themes[indexPath.item].theme,
+                                     isSelected: true, fromAfter: true)
+            
+        }
         hideWarning()
         isWarning = true
         checkIndex = indexPath.item
@@ -430,15 +524,15 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
             
             
         }
-       
+        
         self.themeCollectionView.reloadData()
         //collectionView.reloadData()
+        
     }
     
     
+    
 }
-
-
 
 
 

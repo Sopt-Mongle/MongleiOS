@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import Then
+import Kingfisher
 
 class ThemeSelectForSentenceCVC: UICollectionViewCell {
     
@@ -33,18 +34,21 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
     override func awakeFromNib() {
         themeImageView.image = UIImage(named: "mainImgTheme2")?.withRenderingMode(.alwaysOriginal)
         themeTitleLabel.text = "가나다라마"
+        themeImageView.contentMode = .scaleAspectFill
         
     }
     
     //MARK:- User Define Functions
     func setItems(_ theme : ThemeForSentence, _ searchKeyWord : String, _ shouldBeChecked : Bool){
         if theme.state == true
-            {
-            themeImageView.image = UIImage(named: theme.imgName)?.withRenderingMode(.alwaysOriginal)
+        {
+            themeImageView.imageFromUrl(theme.imgName, defaultImgPath: "")
+            
             themeTitleLabel.text = theme.themeTitle
             themeTitleLabel.textColor = .white
             checkImageView.image = UIImage(named: "writingTheme3ImgCheck")
             checkImageView.alpha = 0
+            
             
             guard let text = themeTitleLabel.text else {
                 return
@@ -65,7 +69,7 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
         }
         
         else{
-            themeImageView.image = UIImage(named: theme.imgName)?.withRenderingMode(.alwaysOriginal)
+            themeImageView.imageFromUrl(theme.imgName, defaultImgPath: "")
             themeTitleLabel.text = theme.themeTitle
             themeTitleLabel.textColor = .white
             themeTitleLabel.textAlignment = .center
