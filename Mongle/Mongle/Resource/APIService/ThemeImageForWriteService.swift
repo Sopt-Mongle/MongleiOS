@@ -17,9 +17,9 @@ struct ThemeImageForWriteService {
         let header : HTTPHeaders = ["Content-Type" : "application/json"]
         let dataRequest = Alamofire.request(APIConstants.getThemeImageForWritingURL,
                                             method: .get,
-                           
                                             encoding: JSONEncoding.default,
                                             headers: header)
+        
         
         
         dataRequest.responseData { dataResponse in

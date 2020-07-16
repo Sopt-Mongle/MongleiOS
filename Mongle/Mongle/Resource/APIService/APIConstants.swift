@@ -15,7 +15,7 @@ struct APIConstants {
     static let signinURL = baseURL + "/users/signin"
     static let getThemeImageForWritingURL = baseURL + "/post/themeImg"
     static let makeThemeURL = baseURL + "/post/theme"
-    
+    static let bookSearchForWritingURL = baseURL + "/post/bookSearch"
     
     
     

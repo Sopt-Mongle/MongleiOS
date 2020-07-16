@@ -74,6 +74,8 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         
         publisherTextField.isEnabled = false
         authorTextField.isEnabled = false
+        authorTextField.addLeftPadding(left: 7.5)
+        publisherTextField.addLeftPadding(left: 7.5)
         backButton.setImage(UIImage(named: "searchBtnBack"), for: .normal)
         backButton.tintColor = .veryLightPink
         setNextButton()
@@ -137,7 +139,13 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
     
     func setInformationsAfterSelect(book : Book){
         self.bookTitleLabel.text = book.bookTitle
-        self.authorTextField.text = book.bookAuthor
+        
+        self.authorTextField.text = ""
+        for author in book.bookAuthors{
+            self.authorTextField.text! += author + " "
+        }
+        
+        
         self.publisherTextField.text = book.bookPublisher
         
     }
