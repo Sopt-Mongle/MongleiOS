@@ -109,6 +109,7 @@ extension SearchResultSentenceVC: UITableViewDelegate{
             return
             
         }
+        sentenceVC.sentenceIdx = self.sentenceList[indexPath.row].sentenceIdx
         self.navigationController?.pushViewController(sentenceVC, animated: true)
     }
     

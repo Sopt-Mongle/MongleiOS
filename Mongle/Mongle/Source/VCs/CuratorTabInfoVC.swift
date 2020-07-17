@@ -32,13 +32,7 @@ class CuratorTabInfoVC: UIViewController {
     
     @IBAction func touchUpSubscribe(_ sender: Any) {
         follow(idx: curatorIdx)
-        
-//        if subscribeBTN.isSelected {
-//            subscribeBTN.backgroundColor = .veryLightPinkSeven
-//        }
-//        else{
-//            subscribeBTN.backgroundColor = .softGreen
-//        }
+      
     }
     @IBAction func touchUpBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -71,13 +65,17 @@ class CuratorTabInfoVC: UIViewController {
         subscribeBTN.setTitleColor(.white, for: .normal)
         curatorImageView.contentMode = .scaleAspectFill
         
+        
     }
     override func viewWillAppear(_ animated: Bool){
         getCuratorData()
-        setSubscribeBTN()
-        setMenu()
+        
         self.curatorImageView.makeRounded(cornerRadius: self.curatorImageView.frame.width/2)
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        observingList.forEach { $0.invalidate() }
+    }
+    //MARK: - Custom Methods
     func getCuratorData(){
         CuratorInfoService.shared.getCuratorInfo(curatorIdx: self.curatorIdx){ networkResult in
             switch networkResult {
@@ -101,17 +99,13 @@ class CuratorTabInfoVC: UIViewController {
                 else{
                     self.subscribeBTN.backgroundColor = .softGreen
                 }
-                print("큐레이터 정보: \(data)개")
-                self.pageInstance?.curatorData = self.curatorData
-                DispatchQueue.main.async {
-                    //self.pageInstance.reloadData()
-                    //                        if self.themeList.count == 0{
-                    //                            self.noThemeView.isHidden = false
-                    //                        }
-                    //                        else{
-                    //                            self.noThemeView.isHidden = true
-                    //                        }
+                DispatchQueue.main.async{
+                    self.setMenu()
+                    self.setSubscribeBTN()
                 }
+                print("큐레이터 정보: \(data)개")
+                //self.pageInstance?.curatorIdx = self.curatorIdx
+                
                 
                 
             case .requestErr(let message):
@@ -132,14 +126,12 @@ class CuratorTabInfoVC: UIViewController {
             
         }
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        observingList.forEach { $0.invalidate() }
-    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pageSegue" {
             pageInstance = segue.destination as? CuratorTabInfoPageVC
-            //pageInstance!.curatorData = self.curatorData
+            pageInstance?.curatorIdx = self.curatorIdx
             let ob = pageInstance?
                 .keyValue
                 .observe(\.curPresentViewIndex,
