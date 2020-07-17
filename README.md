@@ -131,6 +131,32 @@ layout constant에 곱해주어 다른 기기에서 알맞게 작용하게 적�
 
 
 
+### 3. 서버 통신 중 nil값이 입력일 때 
+
+#### 문제점
+
+문제가 되었던 데이터 구조는 아래와 같음. 잘 되던 통신이 갑자기 되지 않아 당황하고 한참 이유를 찾았는데,
+알고보니 문장 작성에서 '테마 없는 문장'을 선택하고 post하고 난 뒤  테마를 서버에서 get할 때,  writerImg가 nil로
+들어와서 에러가 나는 상황이었음.
+
+    struct ThemeSelectForWriteData : Codable {
+        
+        let themeIdx: Int
+        let theme, themeImg: String
+        let themeImgIdx, saves: Int
+        let writer, writerImg: String
+        let alreadyBookmarked: Bool
+     
+    }
+
+따라서 위의 구조에서 writerImg를 optional로 바꿔주니 해결되는 문제였음
+
+#### 배운 점 
+
+서버와의 통신 과정에서 optional 처리가 매우 중요하다는 것을 알게 되었다. 이후에 비슷한 에러를 수차례 만나게 되었고,
+처음 이 에러에 직면했을 때엔 해결하는 데 많은 시간이 걸렸지만 이후에는 쉽게 해결할 수 있었다.
+
+
 
 
 
