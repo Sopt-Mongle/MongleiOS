@@ -81,7 +81,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     var emailIsWarning : Int = 0
     var passwordIsWarning : Int = 0
-    
+    let deviceBound = UIScreen.main.bounds.height/812.0
     
     
     
@@ -158,8 +158,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             $0.delegate = self
             
         }
+        
+        emailTextField.keyboardType = .emailAddress
+        
     }
     
+    
+
     func partialGreenColor(){
         
         
@@ -554,7 +559,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func registerButtonAction(_ sender: Any) {
         self.view.endEditing(true)
-        if emailTextField.text == ""{
+        if emailTextField.text == "" || emailTextField.text?.isValidEmailAddress() == false{
             showEmailWarning()
             
             if passwordIsWarning == 25 {
@@ -608,7 +613,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                                         switch networkResult {
                                         case .success(let token) :
                                             print("success")
-                                            
+                                            guard let token = token as? String else { return }
+                                            print(token)
+                                            UserDefaults.standard.set(token, forKey: "token")
                                             guard let vcName = UIStoryboard(name: "SignUpEnd",
                                                                             bundle: nil).instantiateViewController(
                                                                                 withIdentifier: "SignUpEndVC") as? SignUpEndVC
@@ -655,4 +662,25 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
         
     
+}
+
+extension Character {
+    var isAscii: Bool {
+        return unicodeScalars.allSatisfy { $0.isASCII }
+    }
+    var ascii: UInt32? {
+        return isAscii ? unicodeScalars.first?.value : nil
+    }
+}
+extension StringProtocol {
+    var ascii: [UInt32] {
+        return compactMap { $0.ascii }
+    }
+}
+extension String {
+   func isValidEmailAddress() -> Bool {
+       let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+     let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+     return emailTest.evaluate(with: self)
+  }
 }

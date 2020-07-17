@@ -168,8 +168,7 @@ class UnderTabBarController: UITabBarController {
         plusButton.addTarget(self, action: #selector(plusButtonAction(sender:)),
                              for: .touchUpInside)
         
-        
-//        plusButton.dropShadow(color: .black11, offSet: <#T##CGSize#>, opacity: <#T##Float#>, radius: <#T##CGFloat#>)
+        plusButton.dropShadow(color: .black11, offSet: CGSize(width: 0, height: 6), opacity: 0.28, radius: 10)
         
         writeSentenceButton.snp.makeConstraints{
             $0.centerX.equalToSuperview()

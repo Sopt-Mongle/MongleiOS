@@ -45,7 +45,13 @@ class EndOfMakingThemeVC: UIViewController {
         writeSentenceButton.setTitleColor(.white, for: .normal)
         backToMainButton.setTitleColor(.softGreen, for: .normal)
         secondLabel.textAlignment = .center
+        
+        print(deviceBound)
+        print(deviceBound)
+        print(deviceBound)
         if deviceBound < 1{
+            print("called")
+            print("called")
             imageTopConstraint.constant = 50
         }
        
