@@ -17,16 +17,18 @@ class MainTabFirstTVC: UITableViewCell {
     
     
     // MARK:- Property
-    var pictures = ["mainImgEditorpick", "mainImgEditorpick", "mainImgEditorpick", "mainImgEditorpick"]
+//    var pictures = ["mainImgEditorpick", "mainImgEditorpick", "mainImgEditorpick", "mainImgEditorpick"]
     var pageViewWidth : Int = 0
     var displayIndex: Int = 0
     var displayCell =  UICollectionViewCell()
+    
+    var editorData: [EditorPickData] = []
     
     // MARK:- Override Method
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        pageViewWidth = (pictures.count - 1) * 7 + 19 + (pictures.count - 1) * 7
+        pageViewWidth = (editorData.count - 1) * 7 + 19 + (editorData.count - 1) * 7
         
         mainDisplayPictureCollectionView.delegate = self
         mainDisplayPictureCollectionView.dataSource = self
@@ -50,7 +52,7 @@ extension MainTabFirstTVC: UICollectionViewDelegate {
 extension MainTabFirstTVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return pictures.count
+        return editorData.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -60,8 +62,8 @@ extension MainTabFirstTVC: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainPictureCVC.identifier, for: indexPath) as? MainPictureCVC else {
                 return UICollectionViewCell()
             }
-            cell.displayPictureImageView.image = UIImage(named: pictures[indexPath.item])
-            
+//            cell.displayPictureImageView.image = UIImage(named: editorData[indexPath.item].illust)
+            cell.displayPictureImageView.image = UIImage(named: "mainImgEditorpick")
             return cell
         }
         else if collectionView == pageCollectionView {

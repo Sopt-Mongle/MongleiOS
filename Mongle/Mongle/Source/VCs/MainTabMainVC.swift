@@ -14,7 +14,7 @@ class MainTabMainVC: UIViewController {
     @IBOutlet var layoutTableView: UITableView!
     
     //
-    var imgString: [String] = []
+    var editorsTheme: [EditorPickData] = []
     var sentences: [TodaySentenceData] = []
     var curators: [MainCuratorData] = []
     var themes: [MainThemeData] = []
@@ -115,8 +115,9 @@ class MainTabMainVC: UIViewController {
             switch networkResult {
             case .success(let data):
                 if let data_ = data as? [EditorPickData] {
-                    data_.forEach {
-                        self.imgString.append($0.illust)
+                    self.editorsTheme = data_
+                    DispatchQueue.main.async {
+                        self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
                     }
                 }
             case .requestErr(let msg):
@@ -199,6 +200,9 @@ extension MainTabMainVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabFirstTVC.identifier) as? MainTabFirstTVC else {
                 return UITableViewCell()
             }
+            cell.editorData = self.editorsTheme
+            cell.mainDisplayPictureCollectionView.reloadData()
+            cell.pageCollectionView.reloadData()
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabSecondTVC.identifier) as? MainTabSecondTVC else {

@@ -15,6 +15,15 @@ class SentenceInfoVC: UIViewController {
     @IBOutlet var likeAndBookmarkView: UIView!
     @IBOutlet var tableViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet var likeCountLabel: UILabel!
+    @IBOutlet var bookCountLabel: UILabel!
+    
+    @IBOutlet var likeImageview: UIImageView!
+    @IBOutlet var bookmarkImageView: UIImageView!
+    
+    @IBOutlet var likeView: UIView!
+    @IBOutlet var bookmarkView: UIView!
+    
     //MARK:- UI Component
     lazy var popup = MonglePopupView(frame: CGRect(x: 0, y: 0, width: 304, height: 193))
     lazy var blur = UIView().then {
@@ -26,18 +35,168 @@ class SentenceInfoVC: UIViewController {
     var sentenceText: String = """
 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의인상,사소한 것으로 인해 생기는 호감,
 """
+    var sentence: Sentence?
+    var themeImage: UIImage?
+    var otherSentences: [Sentence] = []
     var hasTheme: Bool = true
     var isMySentence: Bool = true
     var canDisplayOtherSentece: Bool = true
-    
+    var sentenceIdx: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        addGesture()
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
-        
     }
+    override func viewWillAppear(_ animated: Bool) {
+        getSentenceInfo()
+        getOtherSentece()
+    }
+    
+    func getSentenceInfo(){
+        SentenceService.shared.getSentence(idx: self.sentenceIdx ?? 0) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let _data = data as? [Sentence] {
+                    self.sentence = _data[0]
+
+                    self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
+                    self.updateStateLayout()
+                }
+                self.showToast(text: "d연결성공")
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
+        }
+    }
+    func getOtherSentece(){
+        SentenceService.shared.getSentence(idx: self.sentenceIdx ?? 0) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let _data = data as? [Sentence] {
+                    self.otherSentences = _data
+//                    print(self.ot)
+                    self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 1), with: .automatic)
+                    self.showToast(text: "다른 문장 성공")
+                }
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "request err")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
+        }
+    }
+    
+    func updateStateLayout(){
+        
+        guard let _sentence = self.sentence else {
+            return
+        }
+        var likeCountText = "\(_sentence.likes)"
+        var savesCountText = "\(_sentence.saves)"
+        
+        if _sentence.likes > 1000 {
+            likeCountText = "999+"
+        }
+        if _sentence.saves > 1000 {
+            savesCountText = "999+"
+        }
+        self.likeCountLabel.text = likeCountText
+        self.bookCountLabel.text = savesCountText
+        
+        if _sentence.alreadyLiked {
+            self.likeCountLabel.textColor = .softGreen
+        }
+        else {
+            self.likeCountLabel.textColor = .veryLightPink
+            
+        }
+        
+        if _sentence.alreadyBookmarked {
+            self.bookCountLabel.textColor = .softGreen
+        }
+        else {
+            self.bookCountLabel.textColor = .veryLightPink
+        }
+    }
+    
+    func addGesture(){
+        let likeTapGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpLike))
+        let saveTapGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpBookmark))
+        self.likeView.isUserInteractionEnabled = true
+        self.bookmarkView.isUserInteractionEnabled = true
+        
+        self.likeView.addGestureRecognizer(likeTapGesture)
+        self.bookmarkView.addGestureRecognizer(saveTapGesture)
+    }
+    
+    @objc func touchUpLike(){
+        SentenceService.shared.putSentenceLike(idx: self.sentenceIdx ?? 0) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let _data = data as? SentenceLikeData {
+                    self.sentence?.alreadyLiked = _data.isLike
+                    self.sentence?.likes = _data.likes
+                    self.updateStateLayout()
+                    if _data.isLike {
+                        self.showToast(text: "좋아요 성공")
+                    }
+                    else {
+                        self.showToast(text: "좋아요 해제")
+                    }
+                }
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
+        }
+    }
+    
+    @objc func touchUpBookmark(){
+        SentenceService.shared.putBookmark(idx: self.sentenceIdx ?? 0) { networkResult in
+            switch networkResult {
+                
+            case .success(let data):
+                
+                if let _data = data as? SentenceBookmarkData {
+                    self.sentence?.alreadyBookmarked = _data.isSave
+                    self.sentence?.saves = _data.saves
+                    self.updateStateLayout()
+                    if _data.isSave {
+                        self.showToast(text: "북마크 성공")
+                    }
+                    else {
+                        self.showToast(text: "북마크 해제")
+                    }
+                }
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "requestErr")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
+        }
+    }
+    
     
     func showPopUp(){
         
@@ -120,7 +279,7 @@ extension SentenceInfoVC: UITableViewDelegate {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 144))
             
             
-            var imageView = UIImageView(image: UIImage(named: "sentenceThemeOImgTheme"))
+            var imageView = UIImageView(image: self.themeImage)
             
             let backButton = UIButton().then {
                 $0.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
@@ -253,7 +412,7 @@ extension SentenceInfoVC: UITableViewDataSource {
             return 1
         }
         else {
-            return 2
+            return self.otherSentences.count
         }
     }
     
@@ -262,7 +421,17 @@ extension SentenceInfoVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceInfoTVC.identifier) as? SentenceInfoTVC else {
                 return UITableViewCell()
             }
-            cell.sentenceLabel.text = self.sentenceText
+            cell.setSentenceData(sentence: self.sentence?.sentence ?? "",
+                                 profileImg: self.sentence?.writerImg ?? "",
+                                 curatorName: self.sentence?.writer ?? "",
+                                 isLiked: true,
+                                 isBookmarked: true)
+            cell.setBookData(bookName: self.sentence?.title ?? "",
+                             writerName: self.sentence?.author ?? "",
+                             publisherName: self.sentence?.publisher ?? "",
+                             bookImageUrl: self.sentence?.writerImg ?? "")
+            
+//            cell.sentenceLabel.text = self.sentenceText
             cell.editButtonDelegate = { [weak self] sheet in
                 let editAction = UIAlertAction(title: "수정", style: .default) { action in
                     guard let dvc = UIStoryboard.init(name: "SentenceEdit", bundle: nil).instantiateViewController(identifier: "SentenceEditVC") as? SentenceEditVC else {
@@ -297,11 +466,18 @@ extension SentenceInfoVC: UITableViewDataSource {
             return cell
         }
         else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceInThemeTVC.identifier) else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceInThemeTVC.identifier, for: indexPath) as? SentenceInThemeTVC else {
                 return UITableViewCell()
-            }   
-            
+            }
+            print(indexPath.row)
+            let otherSentnece = self.otherSentences[indexPath.row]
+
+            cell.setData(sentence: otherSentnece.sentence,
+                         bookName: otherSentnece.title,
+                         likeCount: otherSentnece.likes,
+                         bookMarkCount: otherSentnece.saves)
             return cell
+            
         }
     }
 }

@@ -36,10 +36,11 @@ class MainTabFourthTVC: UITableViewCell {
 
 extension MainTabFourthTVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let theme = self.themas[indexPath.item]
         guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
             return
         }
+        dvc.themeIdx = theme.themeIdx
 //        dvc.themeText = themas[indexPath.item]
         if let delegate = selectedCell {
             delegate(dvc)
