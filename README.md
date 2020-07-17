@@ -29,11 +29,13 @@
 
 ## 실행 화면 캡쳐
 
-### 1. 로그인 / 회원가입
+### 스플래시
 <img src="./docs/asset/loginAnim.gif" width = 300>
 
 
-<img src="./docs/asset/yjthema.png" width = 300><img src="./docs/asset/yjthema2.png" width = 300>
+### 1. 로그인 / 회원가입
+<img src="./docs/asset/login1.png" width = 300><img src="./docs/asset/login2.png" width = 300>
+<img src="./docs/asset/login3.png" width = 300>
 
 ### 메인 화면
 
