@@ -9,10 +9,10 @@
 import UIKit
 
 class SearchResultCuratorHeaderView: UICollectionReusableView {
-        
+    var curatorNum = 0
     @IBOutlet weak var headerViewLabel: UILabel!
     override func awakeFromNib() {
-        headerViewLabel.text = "검색된 큐레이터 8명"
+        headerViewLabel.text = "검색된 큐레이터 \(curatorNum)명"
         headerViewLabel.textColor = .brownishGrey
     }
 }

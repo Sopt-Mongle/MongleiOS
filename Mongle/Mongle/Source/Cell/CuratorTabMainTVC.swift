@@ -15,6 +15,8 @@ class CuratorTabMainTVC: UITableViewCell {
     @IBOutlet weak var themeCuratorCountLabel: UILabel!
     @IBOutlet weak var curatorListCollectionView: UICollectionView!
     
+    var curatorList:[CuratorInTheme] = []
+    var count = 0
     var selectSentenceDelegate: ((_ viewControllers: UIViewController) -> ()) = { _ in }
     
     override func awakeFromNib() {
@@ -22,17 +24,16 @@ class CuratorTabMainTVC: UITableViewCell {
         
         curatorListCollectionView.delegate = self
         curatorListCollectionView.dataSource = self
-        
+        themeTitleImageView.contentMode = .scaleAspectFill
         themeTitleLabel.text = "흔들리는 꽃들 속에서 네 샴푸향이 느껴진거야 스쳐 지나간건가 뒤돌아보는 문장"
-        themeCuratorCountLabel.text = "큐레이터 53명"
-        // Initialization code
+        themeCuratorCountLabel.text = "큐레이터 \(count)명"
+        
     }
    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }
@@ -72,6 +73,23 @@ extension CuratorTabMainTVC: UICollectionViewDataSource{
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CuratorListCVC", for: indexPath) as? CuratorListCVC else{
             return UICollectionViewCell()
         }
+        cell.curatorNameLabel.text = curatorList[indexPath.item].name
+        cell.curatorProfileImageView.imageFromUrl(curatorList[indexPath.item].img, defaultImgPath: "maengleCharacters")
+        cell.curatorInfoLabel.text = curatorList[indexPath.item].keyword
+        cell.subscriberLabel.text = "구독자 \(curatorList[indexPath.item].subscribe)명"
+        cell.curatorIdx = curatorList[indexPath.item].curatorIdx
+        
+        cell.subscribeBTN.isSelected = curatorList[indexPath.item].alreadySubscribed
+        if cell.subscribeBTN.isSelected{
+            
+            cell.subscribeBTN.backgroundColor = .veryLightPinkSeven
+        }
+        else{
+
+            cell.subscribeBTN.backgroundColor = .softGreen
+        }
+        
+        
         return cell
     }
 }

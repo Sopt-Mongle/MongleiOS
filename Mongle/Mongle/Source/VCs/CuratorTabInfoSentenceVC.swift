@@ -10,12 +10,16 @@ import UIKit
 
 class CuratorTabInfoSentenceVC: UIViewController {
     var searchKey:String = "봄"
+    var sentenceList:[CuratorSentence] = []
     @IBOutlet weak var sentenceTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         sentenceTableView.delegate = self
         sentenceTableView.dataSource = self
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        sentenceTableView.reloadData()
     }
     
 
@@ -44,7 +48,7 @@ extension CuratorTabInfoSentenceVC: UITableViewDelegate{
 }
 extension CuratorTabInfoSentenceVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return sentenceList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

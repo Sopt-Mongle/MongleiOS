@@ -70,17 +70,61 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eCY-sh-iHY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchResultThemeEmptyImgMongle" translatesAutoresizingMaskIntoConstraints="NO" id="Fiv-Km-W1G">
+                                        <rect key="frame" x="144.66666666666666" y="214" width="86" height="67"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="67" id="9fj-Gs-iPh"/>
+                                            <constraint firstAttribute="width" constant="86" id="NTq-bO-opG"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색 결과가 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SD-TP-XAl">
+                                        <rect key="frame" x="118.66666666666669" y="296" width="138" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="Jxj-m4-e4h"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다른 키워드로 검색해보세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4p-hW-ccM">
+                                        <rect key="frame" x="114.33333333333333" y="321" width="146.33333333333337" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="j9U-dj-edR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="0SD-TP-XAl" firstAttribute="top" secondItem="Fiv-Km-W1G" secondAttribute="bottom" constant="15" id="DZ5-Du-nBN"/>
+                                    <constraint firstItem="U4p-hW-ccM" firstAttribute="top" secondItem="0SD-TP-XAl" secondAttribute="bottom" constant="6" id="Niv-IH-wcP"/>
+                                    <constraint firstItem="U4p-hW-ccM" firstAttribute="centerX" secondItem="eCY-sh-iHY" secondAttribute="centerX" id="Qbb-4c-LV5"/>
+                                    <constraint firstItem="Fiv-Km-W1G" firstAttribute="centerX" secondItem="eCY-sh-iHY" secondAttribute="centerX" id="Y5C-fl-6th"/>
+                                    <constraint firstItem="0SD-TP-XAl" firstAttribute="centerX" secondItem="eCY-sh-iHY" secondAttribute="centerX" id="aON-oi-NgM"/>
+                                    <constraint firstItem="Fiv-Km-W1G" firstAttribute="top" secondItem="eCY-sh-iHY" secondAttribute="top" constant="214" id="ywB-LD-t1J"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Pvf-Ht-j15" firstAttribute="bottom" secondItem="eCY-sh-iHY" secondAttribute="bottom" id="4l6-oM-dwp"/>
+                            <constraint firstItem="eCY-sh-iHY" firstAttribute="top" secondItem="XzI-LC-k15" secondAttribute="top" id="5Hk-Hd-jrg"/>
                             <constraint firstItem="2of-tg-yVe" firstAttribute="leading" secondItem="Pvf-Ht-j15" secondAttribute="leading" id="CIR-fQ-WhO"/>
                             <constraint firstItem="Pvf-Ht-j15" firstAttribute="bottom" secondItem="2of-tg-yVe" secondAttribute="bottom" id="NQk-sj-R37"/>
+                            <constraint firstItem="Pvf-Ht-j15" firstAttribute="trailing" secondItem="eCY-sh-iHY" secondAttribute="trailing" id="ffa-lH-jW0"/>
                             <constraint firstItem="Pvf-Ht-j15" firstAttribute="trailing" secondItem="2of-tg-yVe" secondAttribute="trailing" id="opc-9a-jVn"/>
                             <constraint firstItem="2of-tg-yVe" firstAttribute="top" secondItem="Pvf-Ht-j15" secondAttribute="top" id="pUM-Io-7Hs"/>
+                            <constraint firstItem="eCY-sh-iHY" firstAttribute="leading" secondItem="Pvf-Ht-j15" secondAttribute="leading" id="tau-rh-kPw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Pvf-Ht-j15"/>
                     </view>
                     <connections>
+                        <outlet property="noThemeView" destination="eCY-sh-iHY" id="B7s-HL-Z0h"/>
                         <outlet property="themeTableView" destination="2of-tg-yVe" id="hKr-Yf-2Rr"/>
                     </connections>
                 </viewController>
@@ -253,14 +297,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultSentenceTVC" id="DaC-7g-bhZ" customClass="SearchResultSentenceTVC" customModule="Mongle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="120.66666412353516"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="121.33333587646484"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DaC-7g-bhZ" id="wcy-Eh-g0e">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120.66666412353516"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="121.33333587646484"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFi-Aw-XM3">
-                                                    <rect key="frame" x="16" y="19" width="203" height="16"/>
+                                                    <rect key="frame" x="16" y="19" width="259" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="YKb-y8-MEP"/>
                                                     </constraints>
@@ -279,15 +323,24 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNN-zu-G4n">
-                                                    <rect key="frame" x="33" y="88" width="42" height="14.666666666666671"/>
+                                                    <rect key="frame" x="33" y="88" width="177" height="15.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvi-wa-pa5">
                                                     <rect key="frame" x="16" y="90" width="11" height="11"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchResultSentenceIcCurator1" translatesAutoresizingMaskIntoConstraints="NO" id="gCj-kd-ZtQ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="11" height="11"/>
+                                                        </imageView>
+                                                    </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="gCj-kd-ZtQ" secondAttribute="bottom" id="0gU-9D-CYP"/>
+                                                        <constraint firstItem="gCj-kd-ZtQ" firstAttribute="top" secondItem="fvi-wa-pa5" secondAttribute="top" id="9Cl-BT-WGP"/>
+                                                        <constraint firstItem="gCj-kd-ZtQ" firstAttribute="leading" secondItem="fvi-wa-pa5" secondAttribute="leading" id="EbZ-P5-Xyx"/>
+                                                        <constraint firstAttribute="trailing" secondItem="gCj-kd-ZtQ" secondAttribute="trailing" id="Zl8-yc-oJY"/>
                                                         <constraint firstAttribute="width" constant="11" id="b0Z-hk-Ayn"/>
                                                         <constraint firstAttribute="height" constant="11" id="cbc-wr-CTG"/>
                                                     </constraints>
@@ -300,8 +353,8 @@
                                                 <constraint firstItem="4C2-Ms-pBy" firstAttribute="top" secondItem="aFi-Aw-XM3" secondAttribute="bottom" constant="3" id="IyV-h4-GEc"/>
                                                 <constraint firstItem="aFi-Aw-XM3" firstAttribute="top" secondItem="wcy-Eh-g0e" secondAttribute="top" constant="19" id="LcW-9h-5ba"/>
                                                 <constraint firstItem="aFi-Aw-XM3" firstAttribute="leading" secondItem="wcy-Eh-g0e" secondAttribute="leading" constant="16" id="Oiz-4e-p86"/>
-                                                <constraint firstAttribute="trailing" secondItem="aFi-Aw-XM3" secondAttribute="trailing" constant="156" id="UBX-4Q-SNy"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="gNN-zu-G4n" secondAttribute="trailing" constant="285" id="YxY-dn-CC0"/>
+                                                <constraint firstAttribute="trailing" secondItem="aFi-Aw-XM3" secondAttribute="trailing" constant="100" id="UBX-4Q-SNy"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gNN-zu-G4n" secondAttribute="trailing" constant="150" id="YxY-dn-CC0"/>
                                                 <constraint firstItem="gNN-zu-G4n" firstAttribute="leading" secondItem="wcy-Eh-g0e" secondAttribute="leading" constant="33" id="av5-qI-Cb0"/>
                                                 <constraint firstAttribute="bottom" secondItem="gNN-zu-G4n" secondAttribute="bottom" constant="18" id="bmw-y9-OVF"/>
                                                 <constraint firstItem="fvi-wa-pa5" firstAttribute="leading" secondItem="wcy-Eh-g0e" secondAttribute="leading" constant="16" id="dKs-dh-EDS"/>
@@ -316,17 +369,61 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5M6-Ya-OhS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchResultThemeEmptyImgMongle" translatesAutoresizingMaskIntoConstraints="NO" id="KjQ-JO-lyZ">
+                                        <rect key="frame" x="144.66666666666666" y="214" width="86" height="67"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="67" id="K6x-Mf-b5M"/>
+                                            <constraint firstAttribute="width" constant="86" id="j8O-eg-HvP"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색 결과가 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zue-ww-OX1">
+                                        <rect key="frame" x="118.66666666666669" y="296" width="138" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="pqI-zF-ez4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다른 키워드로 검색해보세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PA7-VZ-7G1">
+                                        <rect key="frame" x="114.33333333333333" y="321" width="146.33333333333337" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="2ke-Vi-XLm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.73725490199999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="PA7-VZ-7G1" firstAttribute="centerX" secondItem="5M6-Ya-OhS" secondAttribute="centerX" id="87I-2s-j17"/>
+                                    <constraint firstItem="PA7-VZ-7G1" firstAttribute="top" secondItem="zue-ww-OX1" secondAttribute="bottom" constant="6" id="EL3-AO-Xts"/>
+                                    <constraint firstItem="zue-ww-OX1" firstAttribute="centerX" secondItem="5M6-Ya-OhS" secondAttribute="centerX" id="kq3-D7-IOm"/>
+                                    <constraint firstItem="zue-ww-OX1" firstAttribute="top" secondItem="KjQ-JO-lyZ" secondAttribute="bottom" constant="15" id="pd9-OC-iP1"/>
+                                    <constraint firstItem="KjQ-JO-lyZ" firstAttribute="top" secondItem="5M6-Ya-OhS" secondAttribute="top" constant="214" id="qsE-zs-vbu"/>
+                                    <constraint firstItem="KjQ-JO-lyZ" firstAttribute="centerX" secondItem="5M6-Ya-OhS" secondAttribute="centerX" id="ykB-6u-VSa"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Ngy-ur-akv" firstAttribute="leading" secondItem="stP-NN-QuC" secondAttribute="leading" id="Hf3-cC-3CI"/>
+                            <constraint firstItem="5M6-Ya-OhS" firstAttribute="top" secondItem="1Lw-Uo-cRO" secondAttribute="top" id="Ks0-rl-t7m"/>
                             <constraint firstItem="stP-NN-QuC" firstAttribute="bottom" secondItem="Ngy-ur-akv" secondAttribute="bottom" id="PdA-RV-C7x"/>
                             <constraint firstItem="stP-NN-QuC" firstAttribute="trailing" secondItem="Ngy-ur-akv" secondAttribute="trailing" id="XsT-Uj-7g5"/>
+                            <constraint firstItem="stP-NN-QuC" firstAttribute="bottom" secondItem="5M6-Ya-OhS" secondAttribute="bottom" id="lqu-al-LYm"/>
                             <constraint firstItem="Ngy-ur-akv" firstAttribute="top" secondItem="stP-NN-QuC" secondAttribute="top" id="os1-iT-jMe"/>
+                            <constraint firstItem="5M6-Ya-OhS" firstAttribute="trailing" secondItem="stP-NN-QuC" secondAttribute="trailing" id="s5h-z5-Jc8"/>
+                            <constraint firstItem="5M6-Ya-OhS" firstAttribute="leading" secondItem="stP-NN-QuC" secondAttribute="leading" id="yib-n5-PIX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="stP-NN-QuC"/>
                     </view>
                     <connections>
+                        <outlet property="noSentenceView" destination="5M6-Ya-OhS" id="qTT-fy-9g6"/>
                         <outlet property="sentenceTableView" destination="Ngy-ur-akv" id="uRa-4g-NAy"/>
                     </connections>
                 </viewController>
@@ -469,18 +566,62 @@
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EBO-jY-Pdf">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchResultThemeEmptyImgMongle" translatesAutoresizingMaskIntoConstraints="NO" id="gfO-wh-3aD">
+                                        <rect key="frame" x="144.66666666666666" y="214" width="86" height="67"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="86" id="Wdq-5T-VOL"/>
+                                            <constraint firstAttribute="height" constant="67" id="vHQ-PL-D9p"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색 결과가 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFG-k1-5K2">
+                                        <rect key="frame" x="118.66666666666669" y="296" width="138" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="Dbp-Ki-drW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다른 키워드로 검색해보세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LaX-wJ-ZGg">
+                                        <rect key="frame" x="114.33333333333333" y="321" width="146.33333333333337" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="6eT-qd-w4L"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.73725490199999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="gfO-wh-3aD" firstAttribute="centerX" secondItem="EBO-jY-Pdf" secondAttribute="centerX" id="Lj1-c2-P03"/>
+                                    <constraint firstItem="LaX-wJ-ZGg" firstAttribute="top" secondItem="fFG-k1-5K2" secondAttribute="bottom" constant="6" id="WFj-tv-f2R"/>
+                                    <constraint firstItem="gfO-wh-3aD" firstAttribute="top" secondItem="EBO-jY-Pdf" secondAttribute="top" constant="214" id="bSJ-Es-unI"/>
+                                    <constraint firstItem="LaX-wJ-ZGg" firstAttribute="centerX" secondItem="EBO-jY-Pdf" secondAttribute="centerX" id="ozE-5U-7ZF"/>
+                                    <constraint firstItem="fFG-k1-5K2" firstAttribute="top" secondItem="gfO-wh-3aD" secondAttribute="bottom" constant="15" id="qfz-nb-HTu"/>
+                                    <constraint firstItem="fFG-k1-5K2" firstAttribute="centerX" secondItem="EBO-jY-Pdf" secondAttribute="centerX" id="rbh-xN-V06"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ZUW-In-bnf" firstAttribute="top" secondItem="M2n-Mx-2ss" secondAttribute="top" id="3k9-7j-B4o"/>
                             <constraint firstItem="ZUW-In-bnf" firstAttribute="leading" secondItem="M2n-Mx-2ss" secondAttribute="leading" id="M1y-Sb-3pL"/>
+                            <constraint firstItem="EBO-jY-Pdf" firstAttribute="trailing" secondItem="M2n-Mx-2ss" secondAttribute="trailing" id="PcT-vw-KcS"/>
+                            <constraint firstItem="EBO-jY-Pdf" firstAttribute="leading" secondItem="M2n-Mx-2ss" secondAttribute="leading" id="hZl-tW-1Nc"/>
+                            <constraint firstItem="EBO-jY-Pdf" firstAttribute="top" secondItem="hdC-g5-QCg" secondAttribute="top" id="huq-M7-TxP"/>
                             <constraint firstItem="M2n-Mx-2ss" firstAttribute="bottom" secondItem="ZUW-In-bnf" secondAttribute="bottom" id="lF4-gm-aLO"/>
+                            <constraint firstItem="M2n-Mx-2ss" firstAttribute="bottom" secondItem="EBO-jY-Pdf" secondAttribute="bottom" id="mRJ-MG-jc7"/>
                             <constraint firstItem="M2n-Mx-2ss" firstAttribute="trailing" secondItem="ZUW-In-bnf" secondAttribute="trailing" id="qbs-fS-sGe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="M2n-Mx-2ss"/>
                     </view>
                     <connections>
                         <outlet property="curatorCollectionView" destination="ZUW-In-bnf" id="IX5-cZ-jmm"/>
+                        <outlet property="noCuratorView" destination="EBO-jY-Pdf" id="fiU-Cl-ODi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wa2-vX-FgI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -506,7 +647,9 @@
     <resources>
         <image name="mongleCharacters" width="75" height="78"/>
         <image name="searchBtnBack" width="10.333333015441895" height="18.666666030883789"/>
-        <image name="searchBtnSearch" width="18" height="19"/>
+        <image name="searchBtnSearch" width="18" height="18"/>
+        <image name="searchResultSentenceIcCurator1" width="11" height="11"/>
+        <image name="searchResultThemeEmptyImgMongle" width="86" height="67.333335876464844"/>
         <image name="themeIcSentenceBookmark" width="11" height="11"/>
     </resources>
 </document>

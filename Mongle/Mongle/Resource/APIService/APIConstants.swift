@@ -39,9 +39,17 @@ struct APIConstants {
     static let postSetThemeURL = baseURL + "/post/setTheme"
     
     static let bookSearchForWritingURL = baseURL + "/post/bookSearch"
+    static let recentSearchURL = baseURL + "/search/recent"
+    static let recommendSearchURL = baseURL + "/search/recommend"
+    
     static let postSentenceURL = baseURL + "/post/sentence"
     static let ThemeSelectForWriteURL = baseURL + "/post/theme"
     static let searchThemeURL = baseURL + "/search/theme"
-    
 
+    static let searchSentenceURL = baseURL + "/search/sentence"
+    static let searchCuratorURL = baseURL + "/search/curator"
+    static let curatorURL = baseURL + "/curator"
+    static let curatorRecommendURL =  curatorURL + "/recommend"
+    static let themeInCuratorURL = curatorURL + "/themeInCurator"
+    
 }

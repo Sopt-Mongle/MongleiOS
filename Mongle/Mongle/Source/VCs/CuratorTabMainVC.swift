@@ -11,6 +11,8 @@ import UIKit
 class CuratorTabMainVC: UIViewController {
     
     var keywordList:[String] = ["감성자극","동기부여","자기계발","깊은생각","독서기록","일상문장"]
+    var popularList:[CuratorRecommendData] = []
+    var themeList:[CuratorTabTheme] = []
     
     //MARK:- IBOutlet
     @IBOutlet weak var curatorTabTableView: UITableView!
@@ -25,10 +27,12 @@ class CuratorTabMainVC: UIViewController {
         print(#function)
         print(sender.tag)
         keywordVC.selectedKeyword = keywordList[sender.tag]
+        keywordVC.keywordIdx = sender.tag + 1
         self.navigationController?.pushViewController(keywordVC, animated: true)
         
         
     }
+    //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,26 +48,80 @@ class CuratorTabMainVC: UIViewController {
             btn.tag = idx
             btn.backgroundColor = .white
             idx += 1
-//            btn.setBorder(borderColor: .brownGrey, borderWidth: 1)
-            //btn.backgroundColor = .white
-            
-            
-            
             
         }
-        // Do any additional setup after loading the view.
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        setRecommendedCurator()
+        setThemeInCurator()
     }
-    */
+    func setRecommendedCurator(){
+        CuratorRecommendService.shared.getRecommend(){ networkResult in
+            switch networkResult {
+            case .success(let recommend):
+                guard let data = recommend as? [CuratorRecommendData] else {
+                    return
+                }
+                
+                self.popularList = data
+                print("추천 큐레이터: \(data)")
+                DispatchQueue.main.async {
+                    self.popularCollectionView.reloadData()
+                    
+                }
+                
+                
+            case .requestErr(let message):
+                
+                guard let message = message as? String else { return }
+                
+                self.showToast(text: message)
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+            
+        }
+        
+    }
+    func setThemeInCurator(){
+        ThemeInCuratorService.shared.getCurator(){
+            networkResult in
+            switch networkResult {
+            case .success(let theme):
+                guard let data = theme as? ThemeInCuratorData else {
+                    return
+                }
+                
+                self.themeList = data.theme
+                print("테마 속 큐레이터: \(data)")
+                DispatchQueue.main.async {
+                    self.curatorTabTableView.reloadData()
+                }
+                
+                
+            case .requestErr(let message):
+                
+                guard let message = message as? String else { return }
+                
+                self.showToast(text: message)
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
 
 }
 
@@ -74,14 +132,20 @@ extension CuratorTabMainVC: UITableViewDelegate{
 }
 extension CuratorTabMainVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return themeList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CuratorTabMainTVC", for: indexPath) as? CuratorTabMainTVC else{ return UITableViewCell()}
+        cell.curatorList = self.themeList[indexPath.row].curators
         cell.selectSentenceDelegate = { [weak self] dvc in
             self?.navigationController?.pushViewController(dvc, animated: true)
         }
+        cell.count = self.themeList[indexPath.row].curatorNum
+        cell.themeTitleLabel.text = self.themeList[indexPath.row].theme
+        cell.themeTitleImageView.imageFromUrl(self.themeList[indexPath.row].themeImg, defaultImgPath: "mainImgTheme1")
+        cell.themeCuratorCountLabel.text = "큐레이터 \(self.themeList[indexPath.row].curatorNum)명"
+        cell.curatorListCollectionView.reloadData()
         return cell
         
     }
@@ -95,6 +159,7 @@ extension CuratorTabMainVC: UICollectionViewDelegate{
         guard let curatorInfoVC = UIStoryboard(name:"CuratorTabInfo",bundle:nil).instantiateViewController(identifier: "CuratorTabInfoVC") as? CuratorTabInfoVC else{
             return
         }
+        curatorInfoVC.curatorIdx = popularList[indexPath.item].curatorIdx
         self.navigationController?.pushViewController(curatorInfoVC, animated: true)
     }
     
@@ -115,14 +180,14 @@ extension CuratorTabMainVC: UICollectionViewDelegateFlowLayout{
 }
 extension CuratorTabMainVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return popularList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainPopularCuratorCVC", for: indexPath) as? MainPopularCuratorCVC else{ return UICollectionViewCell() }
-        cell.profileNameLabel.text = "이예슬"
-//        cell.profileImageView.image = UIImage(named:"maengleCharacters")
-//        cell.profileImageView.backgroundColor = .yellow
+        cell.profileNameLabel.text = self.popularList[indexPath.item].name
+        cell.profileImageView.imageFromUrl(self.popularList[indexPath.item].img, defaultImgPath: "mongleCharacters")
+        cell.tagLabel.text = self.popularList[indexPath.item].keyword
         
         return cell
     }

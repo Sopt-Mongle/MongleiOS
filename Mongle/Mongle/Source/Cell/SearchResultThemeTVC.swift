@@ -12,8 +12,8 @@ class SearchResultThemeTVC: UITableViewCell {
     // MARK: - Outlet
     @IBOutlet weak var themeTitleLabel: UILabel!
     @IBOutlet weak var themeInfoLabel: UILabel!
-    var bookmarkCount: String = "107"
-    var sentenceCount: String = "15"
+    var bookmarkCount: String = "0"
+    var sentenceCount: String = "0"
     
     override func awakeFromNib() {
         super.awakeFromNib()
