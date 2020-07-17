@@ -43,13 +43,14 @@
 
 
 ### x. 문장 쓰기 화면
-<img src="./docs/asset/writesentenceflow.gif" width = 400>
-<p> <\p>
 <img src="./docs/asset/writesentence1.png" width = 400><img src="./docs/asset/writesentence2.png" width = 400>
 <img src="./docs/asset/writesentence3.png" width = 400><img src="./docs/asset/writesentence4.png" width = 400>
 <img src="./docs/asset/writesentence5.png" width = 400><img src="./docs/asset/writesentence6.png" width = 400>
 <img src="./docs/asset/writesentence7.png" width = 400><img src="./docs/asset/writesentence8.png" width = 400>
 
+### x. 테마 만들기 화면
+<img src="./docs/asset/maketheme1.png" width = 400><img src="./docs/asset/maketheme2.png" width = 400>
+<img src="./docs/asset/maketheme3.png" width = 400><img src="./docs/asset/maketheme4.png" width = 400>
 
 
 ### 검색
