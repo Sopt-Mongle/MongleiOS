@@ -20,6 +20,13 @@ class WritingSentenceInThemeVC: UIViewController {
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var callInNoThemeSentenceButton: UIButton!
     
+    //MARK:- Property
+    var themeIdx: Int?
+    var themeName: String?
+    var selectedSentence: NoThemeSentence?
+    var isSentenceSelected: Bool = false
+    
+    
     //MARK:- UI Component
     lazy var warningImageView: UIImageView = UIImageView().then {
         $0.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
@@ -92,6 +99,9 @@ class WritingSentenceInThemeVC: UIViewController {
         nextButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         nextButton.setTitleColor(.white, for: .normal)
         setNonWarningState()
+        
+        self.themeLabel.text = self.themeName
+
     }
     
     func setAttributeCountLabel(count: Int){
@@ -194,10 +204,43 @@ class WritingSentenceInThemeVC: UIViewController {
     @IBAction func touchUpNextButton(_ sender: UIButton) {
         if isValidInputTextView() {
             setNonWarningState()
-            guard let dvc = UIStoryboard(name: "AddBookToSentence", bundle: nil).instantiateViewController(identifier: "AddBookToSentenceVC") as? AddBookToSentenceVC else {
-                return
+            if isSentenceSelected {
+                NoThemeSentenceService
+                    .shared
+                    .registThemeSentence(themeIdx: self.themeIdx ?? 0,
+                                         sentenceIdx: self.selectedSentence?.sentenceIdx ?? 0,
+                                         sentence: self.selectedSentence?.sentence ?? "",
+                                         title: self.selectedSentence?.title ?? "",
+                                         author: self.selectedSentence?.author ?? "",
+                                         publisher: self.selectedSentence?.publisher ?? "") { networkResult in
+                                            switch networkResult {
+                                            case .success(_):
+                                                self.showToast(text: "등록성공")
+                                                
+                                                let dvc = UIStoryboard(name: "EndOfWritingSentence", bundle: nil).instantiateViewController(identifier: "EndOfWritingSentenceVC") as! EndOfWritingSentenceVC
+                                                self.present(dvc, animated: true, completion: {
+                                                    self.navigationController?.popViewController(animated: false)
+                                                })
+                                            case .requestErr(let msg):
+                                                self.showToast(text: msg as? String ?? "request err")
+                                            case .pathErr:
+                                                self.showToast(text: "path err")
+                                            case .serverErr:
+                                                self.showToast(text: "Server ERr")
+                                            case .networkFail:
+                                                self.showToast(text: "network fail")
+                                            }
+                }
             }
-            self.navigationController?.pushViewController(dvc, animated: true)
+            else {
+                guard let dvc = UIStoryboard(name: "AddBookToSentence", bundle: nil).instantiateViewController(identifier: "AddBookToSentenceVC") as? AddBookToSentenceVC else {
+                    return
+                }
+                dvc.sentence = self.sentenceTextView.text
+                dvc.themeIdx = self.themeIdx
+                self.navigationController?.pushViewController(dvc, animated: true)
+            }
+            
         }
         else {
             setWarningState()
@@ -214,7 +257,16 @@ class WritingSentenceInThemeVC: UIViewController {
         }
         dvc.hasTheme = false
         dvc.modalPresentationStyle = .fullScreen
-//        dvc
+        dvc.noThemeSentenceSelectedDelegate = { [weak self] sentence in
+            self?.selectedSentence = sentence
+            self?.isSentenceSelected = true
+            self?.sentenceTextView.isEditable = false
+            self?.sentenceTextView.text = sentence.sentence
+            self?.setAttributeCountLabel(count: sentence.sentence.count)
+            self?.isInitial = false
+            self?.sentenceTextView.textColor = .black
+        }
+        
         self.present(dvc, animated: true, completion: nil)
     }
 }
@@ -264,6 +316,9 @@ extension WritingSentenceInThemeVC: UITextViewDelegate {
     }
 }
 
-
-
-
+struct BookForRregistModel {
+    var sentence: String
+    var title: String
+    var author: String
+    var publisher: String
+}

@@ -35,7 +35,11 @@ class UnderTabBarController: UITabBarController {
         $0.backgroundColor = .blur1
     }
     
-    
+    let seperateLine = UIView().then {
+        $0.backgroundColor = .veryLightPinkFour
+        
+        
+    }
     
     
     
@@ -52,14 +56,79 @@ class UnderTabBarController: UITabBarController {
         
     }
     
+    
+    override func viewDidLayoutSubviews() {
+        let deviceBound = UIScreen.main.bounds.height/812.0
+        
+        
+    
+        super.viewDidLayoutSubviews()
+        if(deviceBound < 1){
+            tabBar.frame.size.height = 93*deviceBound - 10
+            tabBar.frame.origin.y = view.frame.height - 93*deviceBound - 10
+            seperateLine.snp.makeConstraints{
+                
+                $0.bottom.equalToSuperview().offset(-self.tabBar.frame.size.height-10)
+                $0.height.equalTo(1)
+                $0.leading.trailing.equalToSuperview()
+                
+            }
+            
+            blurView.snp.makeConstraints {
+                $0.top.left.right.equalToSuperview()
+                //            $0.bottom.equalTo(self.view.snp_bottomMargin).offset(-80)
+                $0.bottom.equalToSuperview().offset(-self.tabBar.frame.size.height - 10)
+                
+                
+                
+            }
+        }
+        else {
+            tabBar.frame.size.height = 93*deviceBound
+            tabBar.frame.origin.y = view.frame.height - 93*deviceBound
+            seperateLine.snp.makeConstraints{
+                
+                $0.bottom.equalToSuperview().offset(-self.tabBar.frame.size.height)
+                $0.height.equalTo(1)
+                $0.leading.trailing.equalToSuperview()
+                
+            }
+            blurView.snp.makeConstraints {
+                $0.top.left.right.equalToSuperview()
+                //            $0.bottom.equalTo(self.view.snp_bottomMargin).offset(-80)
+                $0.bottom.equalToSuperview().offset(-self.tabBar.frame.size.height)
+                
+                
+                
+            }
+            
+            
+        }
+        
+        
+        plusButton.snp.makeConstraints{
+            $0.width.height.equalTo(65*1/((1/sqrt(deviceBound))))
+            $0.centerX.equalToSuperview()
+            //            $0.bottom.equalTo(self.view.safeAreaInsets.bottom).offset(-41) //should be changed : not exact
+            $0.bottom.equalToSuperview().offset(-41*deviceBound)
+        }
+        
+        
+        
+        
+        
+    }
+    
 
-    
-    
+
+
     // MARK:- Class Functions
     
     func setTabBar(){
-        self.tabBar.frame.size.height = self.tabBar.frame.height + 10
         
+
+        
+
         
 //        Setting bar properties
         self.tabBar.barStyle = .black
@@ -77,7 +146,7 @@ class UnderTabBarController: UITabBarController {
             [NSAttributedString.Key : Any], for: .normal)
         
         
-        
+        self.view.addSubview(seperateLine)
 //        adding button, blur view
         self.view.addSubview(blurView)
         self.view.addSubview(makeThemeButton)
@@ -85,24 +154,21 @@ class UnderTabBarController: UITabBarController {
         self.view.addSubview(plusButton)
         
         
+        
+
+
+       
 //        setting contraints
-        blurView.snp.makeConstraints {
-            $0.top.left.right.equalToSuperview()
-            $0.bottom.equalTo(self.view.snp_bottomMargin).offset(-self.tabBar.frame.height)
-            
-        }
+        
+        
         blurView.addGestureRecognizer(UITapGestureRecognizer(target: self,
                                                              action: #selector(blurViewDidTap)))
         
-        plusButton.snp.makeConstraints{
-            $0.width.height.equalTo(65)
-            $0.centerX.equalToSuperview()
-            $0.bottom.equalTo(self.view.safeAreaInsets.bottom).offset(-41) //should be changed : not exact
-            
-        }
+        
         plusButton.addTarget(self, action: #selector(plusButtonAction(sender:)),
                              for: .touchUpInside)
         
+        plusButton.dropShadow(color: .black11, offSet: CGSize(width: 0, height: 6), opacity: 0.28, radius: 10)
         
         writeSentenceButton.snp.makeConstraints{
             $0.centerX.equalToSuperview()
@@ -123,6 +189,8 @@ class UnderTabBarController: UITabBarController {
             $0.height.equalTo(40)
         }
         
+        makeThemeButton.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.28, radius: 10)
+        
         makeThemeButton.makeRounded(cornerRadius: 20)
         makeThemeButton.addTarget(self,
                                   action: #selector(makeThemeButtonAction), for: .touchUpInside)
@@ -138,8 +206,17 @@ class UnderTabBarController: UITabBarController {
                 return
         }
       
-        let curatorVC = UIViewController()
-        let myVC = UIViewController()
+        guard let curatorVC = UIStoryboard(name:"CuratorTabMain",bundle:nil).instantiateViewController(identifier: "CuratorTabMainVC") as? CuratorTabMainVC else {
+            return
+            
+        }
+        guard let myVC = UIStoryboard(name: "MyTab",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "MyTabVC") as? MyTabVC
+            else{
+            
+            return
+        }
      
         guard let searchVC = UIStoryboard(name: "SearchTabMain",
                                         bundle: nil).instantiateViewController(
@@ -154,15 +231,13 @@ class UnderTabBarController: UITabBarController {
         let tmpVC = UIViewController() // dummy VC for spacing (should be modified to offset)
       
         
-        mainVC.title = "메인"
-        searchVC.title = "검색"
-        curatorVC.title = "큐레이터"
-        myVC.title = "내 서재"
+        mainVC.title = ""
+        searchVC.title = ""
+        curatorVC.title = ""
+        myVC.title = ""
         tmpVC.title = ""
         
         mainVC.view.backgroundColor = .white
-        curatorVC.view.backgroundColor = .brown
-        myVC.view.backgroundColor = .systemPink
         
         tmpVC.view.backgroundColor = .black
         
@@ -170,16 +245,49 @@ class UnderTabBarController: UITabBarController {
         
         
         
-//        Adding ViewControllers to TabBar
+        
+        //        Adding ViewControllers to TabBar
         
         self.viewControllers = [mainVC,searchVC,tmpVC,curatorVC,myVC]
+        let myTabBarItem1 = (self.tabBar.items?[0])! as UITabBarItem
+        let myTabBarItem2 = (self.tabBar.items?[1])! as UITabBarItem
+        let myTabBarItem3 = (self.tabBar.items?[2])! as UITabBarItem
+        let myTabBarItem4 = (self.tabBar.items?[3])! as UITabBarItem
+        let myTabBarItem5 = (self.tabBar.items?[4])! as UITabBarItem
         
-
-//        Disabling tmpVC
+        
+        myTabBarItem1.image = UIImage(named : "navigationBar3IcMain")?.withRenderingMode(.alwaysOriginal)
+        myTabBarItem1.selectedImage = UIImage(named : "navigationBar2IcMain")?.withRenderingMode(.alwaysOriginal)
+        
+        myTabBarItem2.image = UIImage(named : "navigationBar3IcSearch")?.withRenderingMode(.alwaysOriginal)
+        myTabBarItem2.selectedImage = UIImage(named : "navigationBar2IcSearch")?.withRenderingMode(.alwaysOriginal)
+        
+    
+        
+        myTabBarItem4.image = UIImage(named : "navigationBar3IcCurator")?.withRenderingMode(.alwaysOriginal)
+        myTabBarItem4.selectedImage = UIImage(named : "navigationBar2IcCurator")?.withRenderingMode(.alwaysOriginal)
+        
+        myTabBarItem5.image = UIImage(named : "navigationBar3IcMy")?.withRenderingMode(.alwaysOriginal)
+        myTabBarItem5.selectedImage = UIImage(named : "navigationBar2IcMy")?.withRenderingMode(.alwaysOriginal)
+        
+        
+        //        Disabling tmpVC
         if let arrayOfTabBarItems = self.tabBar.items as AnyObject as? NSArray,let
            tabBarItem = arrayOfTabBarItems[2] as? UITabBarItem {
            tabBarItem.isEnabled = false
         }
+        
+        
+        myTabBarItem1.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        myTabBarItem2.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        myTabBarItem4.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        myTabBarItem5.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+//        self.tabBar.frame.size.height = 93
+//        self.tabBar.frame.origin.y = view.frame.height - 93
+//
+       
+  
         
         
         

@@ -29,6 +29,17 @@
 	<string></string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>AppleSDGothicNeoB</string>
+		<string>AppleSDGothicNeoEB</string>
+		<string>AppleSDGothicNeoH</string>
+		<string>AppleSDGothicNeoL</string>
+		<string>AppleSDGothicNeoM</string>
+		<string>AppleSDGothicNeoR</string>
+		<string>AppleSDGothicNeoSB</string>
+		<string>AppleSDGothicNeoUL</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -43,7 +54,7 @@
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
-					<string>UnderTab</string>
+					<string>LogIn</string>
 				</dict>
 			</array>
 		</dict>

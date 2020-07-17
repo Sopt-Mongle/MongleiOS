@@ -81,7 +81,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     var emailIsWarning : Int = 0
     var passwordIsWarning : Int = 0
-    
+    let deviceBound = UIScreen.main.bounds.height/812.0
     
     
     
@@ -141,6 +141,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         registerButton.backgroundColor = .softGreen
         registerButton.makeRounded(cornerRadius: 30)
         passWordTextField2.addTarget(self, action: #selector(comparePasswords), for: .editingChanged)
+        passWordTextField.addTarget(self, action: #selector(comparePasswords), for: .editingChanged)
         nickNameWarningLabel.alpha = 0
         nickNameWarningImageView.alpha = 0
         nickNameTextField.addTarget(self, action: #selector(updateNicknameQuantity), for: .editingChanged)
@@ -148,7 +149,6 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         signUpScrollView.addSubview(nickNameQuantityLabel)
         nickNameQuantityLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(527 + emailIsWarning + passwordIsWarning)
-            print(527 + emailIsWarning + passwordIsWarning)
             $0.trailing.equalToSuperview().offset(-28)
             
             
@@ -158,8 +158,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             $0.delegate = self
             
         }
+        
+        emailTextField.keyboardType = .emailAddress
+        
     }
     
+    
+
     func partialGreenColor(){
         
         
@@ -198,7 +203,6 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         if textField == passWordTextField || textField == passWordTextField2 {
             let move = CGPoint(x: 0, y: 162)
             signUpScrollView.setContentOffset(move, animated: false)
-            
             hidePasswordWarning()
             
         
@@ -239,7 +243,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             hideEmailWarning()
             emailTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         case passWordTextField:
+           
             hidePasswordWarning()
+            comparePasswords()
              passWordTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         case passWordTextField2 :
             
@@ -336,7 +342,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     @objc func comparePasswords(){
         
-        if passWordTextField.text == passWordTextField2.text && passWordTextField.text != ""{
+        if passWordTextField.text == passWordTextField2.text && passWordTextField.text != "" && passWordTextField2.text != ""{
             
             self.passwordWarningLabel.text = "비밀번호가 일치해요!"
             self.passwordWarningImageView.image = UIImage(named: "joinPassword5IcPossible")
@@ -346,7 +352,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             
             
         }
-        else {
+        else if passWordTextField2.text != ""{
             secondPasswordBegin()
         }
         
@@ -359,7 +365,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         partialGreenColor()
         nickNameQuantityLabel.snp.remakeConstraints {
             $0.top.equalToSuperview().offset(527 + emailIsWarning + passwordIsWarning)
-            print(527 + emailIsWarning + passwordIsWarning)
+            
             $0.trailing.equalToSuperview().offset(-28)
             
         }
@@ -434,6 +440,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     func hidePasswordWarning(){
+        
         passwordIsWarning = 0
         passWordToNIckNameConstraint.constant = 34
         passwordWarningLabel.removeFromSuperview()
@@ -533,10 +540,12 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     func showNickNameDuplicate(){
-        nickNameWarningLabel.text = "이미 사용 중인 닉네임이에요!"
-        nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1.0)
-        nickNameWarningLabel.alpha = 1
-        nickNameWarningImageView.alpha = 1
+//        nickNameWarningLabel.text = "이미 사용 중인 닉네임이에요!"
+//        nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1.0)
+//        nickNameWarningLabel.alpha = 1
+//        nickNameWarningImageView.alpha = 1
+        
+        self.showToast(text: "이미 사용 중인 닉네임이에요!")
         
     }
     
@@ -550,7 +559,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func registerButtonAction(_ sender: Any) {
         self.view.endEditing(true)
-        if emailTextField.text == ""{
+        if emailTextField.text == "" || emailTextField.text?.isValidEmailAddress() == false{
             showEmailWarning()
             
             if passwordIsWarning == 25 {
@@ -576,25 +585,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             
             secondPasswordBegin()
         }
-        else if nickNameTextField.text == "123" {
-            showNickNameDuplicate()
-            
-        }
-        
-            
         else {
-            guard let vcName = UIStoryboard(name: "UnderTab",
-                                            bundle: nil).instantiateViewController(
-                                                withIdentifier: "UnderTabBarController") as? UINavigationController
-                else{
-                    return
-            }
-            
-            vcName.modalPresentationStyle = .fullScreen
-            
-            self.present(vcName, animated: true, completion: nil)
-           
-            
+            signup()
         }
         
         
@@ -610,8 +602,85 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
     }
     
+    func signup(){
+        guard let email = emailTextField.text else {return}
+        guard let password = passWordTextField.text else {return}
+        guard let name = nickNameTextField.text else {return}
+        
+        SignUpService.shared.signup(email: email,
+                                    password: password,
+                                    name: name)  { networkResult in
+                                        switch networkResult {
+                                        case .success(let token) :
+                                            print("success")
+                                            guard let token = token as? String else { return }
+                                            print(token)
+                                            UserDefaults.standard.set(token, forKey: "token")
+                                            guard let vcName = UIStoryboard(name: "SignUpEnd",
+                                                                            bundle: nil).instantiateViewController(
+                                                                                withIdentifier: "SignUpEndVC") as? SignUpEndVC
+                                                else{
+                                                    
+                                                    return
+                                            }
+                                            
+                                            vcName.modalPresentationStyle = .fullScreen
+                                           
+                                            self.present(vcName, animated: true, completion: nil)
+                                            
+                                        case .requestErr(let message):
+                                            print("request")
+                                            guard let message = message as? String else {return}
+                                            let alertViewController = UIAlertController(
+                                                title: "회원가입 실패",
+                                                message: message,
+                                                preferredStyle: .alert)
+                                            let action = UIAlertAction(title: "확인",
+                                                                       style: .cancel,
+                                                                       handler: nil)
+                                            alertViewController.addAction(action)
+                                            self.present(alertViewController, animated: true,
+                                                         completion: nil)
+                                        case .pathErr: self.showNickNameDuplicate()
+                                        case .serverErr: print("serverErr")
+                                        case .networkFail: print("networkFails2")
+                                  
+                                            
+                                        }
+                                        
+                                        
+        }
+        
+        
+        
+        
+    }
+    
+    
+    
     
     
         
     
+}
+
+extension Character {
+    var isAscii: Bool {
+        return unicodeScalars.allSatisfy { $0.isASCII }
+    }
+    var ascii: UInt32? {
+        return isAscii ? unicodeScalars.first?.value : nil
+    }
+}
+extension StringProtocol {
+    var ascii: [UInt32] {
+        return compactMap { $0.ascii }
+    }
+}
+extension String {
+   func isValidEmailAddress() -> Bool {
+       let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+     let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+     return emailTest.evaluate(with: self)
+  }
 }

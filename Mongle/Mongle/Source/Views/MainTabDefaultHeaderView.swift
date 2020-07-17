@@ -16,17 +16,10 @@ class MainTabDefaultHeaderView: UIView {
         $0.frame = CGRect(x: 0, y: 0, width: 81, height: 22)
         $0.textColor = .black
         $0.text = ""
-        $0.font = UIFont.systemFont(ofSize: 18)
+        $0.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18)!
         $0.sizeToFit()
     }
-    
-    let selectButton = UIButton().then {
-        $0.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
-        $0.setImage(UIImage(named: "mainBtnMore"), for: .normal)
-        $0.addTarget(self, action: #selector(touchUpButton), for: .touchUpInside)
-    }
-    
-    var delegate: (()->()) = { }
+
     var selectedSectionIdx: Int?
     
     override init(frame: CGRect) {
@@ -41,7 +34,6 @@ class MainTabDefaultHeaderView: UIView {
     
     func addView(){
         self.addSubview(sectionLabel)
-        self.addSubview(selectButton)
     }
     
     func setAutoLayout(){
@@ -49,18 +41,9 @@ class MainTabDefaultHeaderView: UIView {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(16)
         }
-        self.selectButton.snp.makeConstraints {
-            $0.top.trailing.bottom.equalToSuperview()
-            $0.height.width.equalTo(48)
-        }
     }
     func setLabel(text: String){
         self.sectionLabel.text = text
     }
-    
-    @objc func touchUpButton(){
-        delegate()
-    }
-
 }
 

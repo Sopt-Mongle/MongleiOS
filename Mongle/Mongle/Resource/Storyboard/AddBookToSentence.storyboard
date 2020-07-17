@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -32,10 +32,68 @@
                                     <action selector="backButton:" destination="nOL-EY-d1h" eventType="touchUpInside" id="bC5-9Q-l31"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한 문장이 담긴 책을 추가해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9K-4F-2BM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9K-4F-2BM">
                                 <rect key="frame" x="16" y="97" width="242" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <nil key="textColor"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="한">
+                                        <attributes>
+                                            <color key="NSColor" red="0.45098039215686275" green="0.75294117647058822" blue="0.53333333333333333" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="18" name=".AppleSDGothicNeoI-Regular"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.45098039215686275" green="0.75294117647058822" blue="0.53333333333333333" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" metaFont="system" size="18"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="문장">
+                                        <attributes>
+                                            <color key="NSColor" red="0.45098039215686275" green="0.75294117647058822" blue="0.53333333333333333" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="18" name=".AppleSDGothicNeoI-Regular"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="이">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".AppleSDGothicNeoI-Regular"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="18"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="담긴">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".AppleSDGothicNeoI-Regular"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="18"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="책을">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".AppleSDGothicNeoI-Regular"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="18"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="추가해주세요">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".AppleSDGothicNeoI-Regular"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="!">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="18"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="작가/옮긴이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXT-7A-bt2">
@@ -68,6 +126,9 @@
                                 <state key="normal" title="다음">
                                     <color key="titleColor" red="0.9568960071" green="0.96459966900000005" blue="0.97254294159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchUpNextButtonWithSender:" destination="nOL-EY-d1h" eventType="touchUpInside" id="PdB-Xu-SSD"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="24z-ck-m5l">
                                 <rect key="frame" x="16" y="329" width="382" height="45"/>
@@ -87,8 +148,8 @@
                                     <action selector="searchTextButtonAction:" destination="nOL-EY-d1h" eventType="touchUpInside" id="CFr-vG-ZYW"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDH-3N-CRx">
-                                <rect key="frame" x="31" y="148" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDH-3N-CRx">
+                                <rect key="frame" x="31" y="148" width="333" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -108,6 +169,7 @@
                             <constraint firstItem="pyM-Gn-ZxQ" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" id="X3F-I7-nKk"/>
                             <constraint firstItem="Y9K-4F-2BM" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" constant="16" id="Xlw-Ko-5E1"/>
                             <constraint firstItem="eDH-3N-CRx" firstAttribute="top" secondItem="Y9K-4F-2BM" secondAttribute="bottom" constant="30" id="Y5f-DD-ZyQ"/>
+                            <constraint firstItem="A06-aJ-v94" firstAttribute="trailing" secondItem="eDH-3N-CRx" secondAttribute="trailing" constant="50" id="b89-16-zj2"/>
                             <constraint firstItem="7FW-if-3Iu" firstAttribute="centerX" secondItem="A06-aJ-v94" secondAttribute="centerX" id="bpb-GX-A8h"/>
                             <constraint firstItem="A06-aJ-v94" firstAttribute="trailing" secondItem="60K-D8-bCs" secondAttribute="trailing" constant="16" id="cWW-kE-uLY"/>
                             <constraint firstItem="24z-ck-m5l" firstAttribute="top" secondItem="v0I-5V-1bz" secondAttribute="bottom" constant="11" id="dVb-2b-yti"/>

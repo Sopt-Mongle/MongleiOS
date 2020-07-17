@@ -17,7 +17,12 @@ class EndOfMakingThemeVC: UIViewController {
     @IBOutlet weak var secondLabel: UILabel!
     @IBOutlet weak var backToMainButton: UIButton!
     
-
+    @IBOutlet weak var imageTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topConstraint2: NSLayoutConstraint!
+    
+    let deviceBound = UIScreen.main.bounds.height/812.0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -28,7 +33,7 @@ class EndOfMakingThemeVC: UIViewController {
     
     
     func setItems(){
-        mongleImageView.image = UIImage(named: "maengleCharacters")?.withRenderingMode(.alwaysOriginal)
+        mongleImageView.image = UIImage(named: "writingThemeFinishImgMongleTheme")?.withRenderingMode(.alwaysOriginal)
         
         firstLabel.text = "테마가 등록되었습니다!"
         secondLabel.text = "몽글이님의 테마를 의미있는 문장으로\n채워보는 건 어떨까요?"
@@ -40,9 +45,46 @@ class EndOfMakingThemeVC: UIViewController {
         writeSentenceButton.setTitleColor(.white, for: .normal)
         backToMainButton.setTitleColor(.softGreen, for: .normal)
         secondLabel.textAlignment = .center
+        
+        print(deviceBound)
+        print(deviceBound)
+        print(deviceBound)
+        if deviceBound < 1{
+            print("called")
+            print("called")
+            imageTopConstraint.constant = 50
+        }
+       
+        mongleImageView.frame.size.height *= deviceBound
+        
+        UIView.animate(withDuration: 1.0, animations: {
+            self.mongleImageView.transform = CGAffineTransform(translationX: 0, y: 600)
+            
+            
+        }, completion: { finished in
+            
+            UIView.animate(withDuration: 3.0,  delay : 0, options: [.curveEaseIn], animations: {
+                self.mongleImageView.transform = .identity
+                
+            }, completion :{ finished in
+                
+                UIView.animate(withDuration: 1.0, animations: {
+                    self.mongleImageView.transform = CGAffineTransform(translationX: 0, y: -600)
+                    
+                },completion: {finished in
+                    UIView.animate(withDuration: 3.0, delay : 0.5,  animations: {
+                     
+                        self.mongleImageView.transform = CGAffineTransform(translationX: 0, y: 0)
+                    })
+                    
+                    
+                })
+            })
+            
+        })
+        
     }
     
-
     
     
     

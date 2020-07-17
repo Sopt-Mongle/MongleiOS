@@ -90,6 +90,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         warningLabel.alpha = 0
         warningImageView.alpha = 0
         
+        
     
         partialGreenColor()
         
@@ -166,7 +167,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
             textQuantityLabel.text = String(sentenceTextView.text.count) + "/280"
             warningLabel.alpha = 0
             warningImageView.alpha = 0
-            sentenceTextView.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
+            sentenceTextView.setBorder(borderColor: .softGreen, borderWidth: 1.0)
             ballAppearAnimation()
            
             
@@ -190,7 +191,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     
     func setSentenceTextView(){
         self.sentenceTextView.layer.borderWidth = 1.0
-        self.sentenceTextView.layer.borderColor = UIColor.veryLightPinkFive.cgColor
+        self.sentenceTextView.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         self.sentenceTextView.makeRounded(cornerRadius: 10)
        
         self.placeholderLabel.text =
@@ -256,8 +257,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
             
             vcName.modalPresentationStyle = .currentContext
             self.navigationController?.pushViewController(vcName, animated: true)
-            
-            
+            vcName.sentenceForPost = sentenceTextView.text!
             
 //            vcName.setProgressBar()
 //            self.present(vcName, animated: true, completion: nil)
@@ -267,6 +267,9 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         
         
     }
+    
+    
+    
     func partialGreenColor(){
            
            guard let text = self.noticeLabel.text else {

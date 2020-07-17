@@ -1,19 +1,19 @@
 {
   "images" : [
     {
-      "filename" : "searchResultThemeEmptyImgMongle.png",
       "idiom" : "universal",
+      "filename" : "searchResultThemeEmptyImgMongle.png",
       "scale" : "1x"
     },
     {
-      "filename" : "searchResultThemeEmptyImgMongle@2x.png",
       "scale" : "2x",
+      "filename" : "searchResultThemeEmptyImgMongle@2x.png",
       "idiom" : "universal"
     },
     {
+      "scale" : "3x",
       "filename" : "searchResultThemeEmptyImgMongle@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

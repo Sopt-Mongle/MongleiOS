@@ -10,8 +10,8 @@ import UIKit
 class SearchTabMainVC: UIViewController{
     
     
-    var recentKeyArray : [String] = ["최근","검색어","테스트중","몽글","알러뷰"]
-    var recommendKeyArray : [String] = ["에세이","몽글","테마","큐레이터","몽골","오늘저녁또떡"]
+    var recentKeyArray : [String] = []
+    var recommendKeyArray : [String] = []
     var searchKey : String?
     
     // MARK:- IBOutlet
@@ -52,8 +52,7 @@ class SearchTabMainVC: UIViewController{
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func removeSearchHistoryBTN(_ sender: Any) {
-        recentKeyArray = []
-        recentSearchCV.reloadData()
+        deleteRecentSearch()
     }
     
     // MARK:- LifeCycle Method
@@ -69,6 +68,107 @@ class SearchTabMainVC: UIViewController{
     }
     override func viewWillAppear(_ animated: Bool) {
         searchTextField.becomeFirstResponder()
+        setRecentSearchData()
+        setRecommendSearchData()
+    }
+    
+    func setRecentSearchData(){
+        SearchMainService.shared.getRecentSearch() { networkResult in
+            switch networkResult {
+            case .success(let searchKeys):
+                guard let data = searchKeys as? [String] else {
+                    return
+                }
+                
+                self.recentKeyArray = data
+                print("ㅁㅁㅁㅁㅁ최근검색어\(data)ㅁㅁㅁㅁㅁ")
+                DispatchQueue.main.async {
+                    self.recentSearchCV.reloadData()
+                }
+
+                
+            case .requestErr(let message):
+            
+                guard let message = message as? String else { return }
+                self.simpleAlert(title: "error", message: message)
+                self.showToast(text: message)
+                print("ㅁㅁ\(message)")
+            case .pathErr:
+                
+                print("ㅁㅁpath")
+            case .serverErr:
+                 print("ㅁㅁserverErr")
+            case .networkFail:
+                print("ㅁㅁnetworkFail")
+            }
+                
+            
+        }
+    }
+    func setRecommendSearchData(){
+        SearchMainService.shared.getRecommendSearch() { networkResult in
+            switch networkResult {
+            case .success(let searchKeys):
+                guard let data = searchKeys as? [String] else {
+                    return
+                }
+                
+                self.recommendKeyArray = data
+                print("ㅁㅁㅁㅁㅁ추천검색어\(data)ㅁㅁㅁㅁㅁ")
+                DispatchQueue.main.async {
+                    self.recommendSearchCV.reloadData()
+                }
+
+                
+            case .requestErr(let message):
+            
+                guard let message = message as? String else { return }
+                self.simpleAlert(title: "error", message: message)
+                self.showToast(text: message)
+                print("ㅁㅁ\(message)")
+            case .pathErr:
+                
+                print("ㅁㅁpath")
+            case .serverErr:
+                 print("ㅁㅁserverErr")
+            case .networkFail:
+                print("ㅁㅁnetworkFail")
+            }
+                
+            
+        }
+    }
+    func deleteRecentSearch(){
+        SearchMainService.shared.deleteRecentSearch() { networkResult in
+            switch networkResult {
+            case .success(let message):
+                print("qqqqqqqqqqq\(message)")
+                guard let message = message as? String else { return }
+                self.showToast(text: message)
+                
+                self.recentKeyArray = []
+                self.recentSearchCV.reloadData()
+                //self.setRecentSearchData()
+                
+                
+                
+            case .requestErr(let message):
+            
+                guard let message = message as? String else { return }
+                self.simpleAlert(title: "error", message: message)
+                self.showToast(text: message)
+                print("ㅁㅁ\(message)")
+            case .pathErr:
+                
+                print("ㅁㅁpath")
+            case .serverErr:
+                 print("ㅁㅁserverErr")
+            case .networkFail:
+                print("ㅁㅁnetworkFail")
+            }
+                
+            
+        }
     }
     
     //MARK:- Set Gesture

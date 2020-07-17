@@ -64,6 +64,7 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
     var noAnimation : Bool = false
     static var isVisited : Bool = false
     
+    var sentenceForPost : String = ""
     var isSearched : Bool = false
     var book : Book?
 //    MARK:- LifeCycle Methods
@@ -74,6 +75,8 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         
         publisherTextField.isEnabled = false
         authorTextField.isEnabled = false
+        authorTextField.addLeftPadding(left: 7.5)
+        publisherTextField.addLeftPadding(left: 7.5)
         backButton.setImage(UIImage(named: "searchBtnBack"), for: .normal)
         backButton.tintColor = .veryLightPink
         setNextButton()
@@ -137,7 +140,13 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
     
     func setInformationsAfterSelect(book : Book){
         self.bookTitleLabel.text = book.bookTitle
-        self.authorTextField.text = book.bookAuthor
+        
+        self.authorTextField.text = ""
+        for author in book.bookAuthors{
+            self.authorTextField.text! += author + " "
+        }
+        
+        
         self.publisherTextField.text = book.bookPublisher
         
     }
@@ -343,6 +352,13 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
             vcName.modalPresentationStyle = .currentContext
             
             self.navigationController?.pushViewController(vcName, animated: true)
+            vcName.bookForPost = bookTitleLabel.text!
+            vcName.authorForPost = authorTextField.text!
+            vcName.publisherForPost = publisherTextField.text!
+            vcName.sentenceForPost = self.sentenceForPost
+            
+            
+            
         }
     }
     

@@ -14,15 +14,21 @@ class SentenceInfoTVC: UITableViewCell {
     
     @IBOutlet var editButton: UIButton!
     @IBOutlet var sentenceLabel: UILabel!
+    @IBOutlet var curatorProfileImageView: UIImageView!
+    @IBOutlet var curatorNameLabel: UILabel!
+    
+    @IBOutlet var bookNameLabel: UILabel!
+    @IBOutlet var bookWriterNameLabel: UILabel!
+    @IBOutlet var bookPublisherNameLabel: UILabel!
+    
+    @IBOutlet var bookImageView: UIImageView!
+    
     var sentence: String?
-    
     var editButtonDelegate: ((UIAlertController) -> Void) = { _ in }
-    
-
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        print(sentence)
+//        print(sentence)
         sentenceLabel.text = sentence ?? ""
         // Initialization code
     }
@@ -37,7 +43,24 @@ class SentenceInfoTVC: UITableViewCell {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         self.editButtonDelegate(actionSheet)
     }
-
+    
+    func setSentenceData(sentence: String,
+                         profileImg: String,
+                         curatorName: String,
+                         isLiked: Bool,
+                         isBookmarked: Bool){
+        self.sentenceLabel.text = sentence
+        self.curatorProfileImageView.imageFromUrl(profileImg, defaultImgPath: "themeImgCurator")
+        self.curatorNameLabel.text = curatorName
+    }
+    
+    func setBookData(bookName: String, writerName: String, publisherName: String, bookImageUrl: String) {
+        self.bookNameLabel.text = bookName
+        self.bookWriterNameLabel.text = writerName
+        self.bookPublisherNameLabel.text = publisherName
+//        self.bookImageView.imageFromUrl(bookImageUrl, defaultImgPath: "themeWritingSentenceBook4ImgBook")
+        self.bookImageView.image = UIImage(named: "themeWritingSentenceBook4ImgBook")
+    }
 }
 
 

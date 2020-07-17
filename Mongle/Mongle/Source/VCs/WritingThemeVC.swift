@@ -9,6 +9,7 @@
 import UIKit
 import Then
 import SnapKit
+import Kingfisher
 
 class WritingThemeVC: UIViewController, UITextFieldDelegate {
     
@@ -38,8 +39,9 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     // MARK:- Class Variables
     var textNum : Int?
     
-    var images = ["mainImgTheme2","mainImgTheme2","mainImgTheme2","mainImgTheme2","mainImgTheme2",
-                  "mainImgTheme2","mainImgTheme2","mainImgTheme2","mainImgTheme2","mainImgTheme2"]
+//    var images = ["mainImgTheme2","mainImgTheme2","mainImgTheme2","mainImgTheme2","mainImgTheme2",
+//                  "mainImgTheme2","mainImgTheme2","mainImgTheme2","mainImgTheme2","mainImgTheme2"]
+    var imagesURL : [String] = []
   
     var checkIndex : Int = -1
     
@@ -61,7 +63,11 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
 
     let popUpImageView = UIImageView().then {
         $0.image = UIImage(named: "writingThemeCheckImgTheme")
+        $0.contentMode = .scaleAspectFill
         $0.layer.masksToBounds = true
+        $0.layer.cornerRadius = 10
+        $0.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
     }
     
     
@@ -112,12 +118,16 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         $0.addTarget(self, action: #selector(noButtonTap), for: .touchUpInside)
     }
     
+    let deviceBound = UIScreen.main.bounds.height/812.0
+    
     
     // MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         themeNameTextField.delegate = self
+        setThemeImages()
+        
       
         themeCollectionView.delegate = self
         themeCollectionView.dataSource = self
@@ -137,7 +147,8 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
     }
     
-    
+    var selectedURL : String = ""
+    var selectedIdx : Int = -1
     
     
     
@@ -161,20 +172,82 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     }
     
     
+    func setThemeImages(){
+        
+        
+        ThemeImageForWriteService.shared.themeSetService()  { networkResult in
+                                              switch networkResult {
+                                              case .success(let data) :
+                                                
+                                                guard let imageDatas = data as? [ThemeImageforWriteInformation]  else {return}
+                                        
+                                                
+                                                
+                                                
+                                                for imageData  in imageDatas{
+                                                    self.imagesURL.append(imageData.img)
+                                    
+                                                }
+                                                
+                                                self.themeCollectionView.reloadData()
+                                                
+                                              case .requestErr(let message):
+                                                  guard let message = message as? String else {return}
+                                                  
+                                              case .pathErr: print("pathErr")
+                                              case .serverErr: print("serverErr")
+                                              case .networkFail: print("networkFail")
+                                                  
+                                              }
+                                              
+                                              
+              }
+        
+        
+        
+        
+    }
+    
+    
+    
     @objc func yesButtonDidTap(){
-   
-        guard let vcName = UIStoryboard(name: "EndOfMakingTheme",
-                                        bundle: nil).instantiateViewController(
-                                            withIdentifier: "EndOfMakingThemeVC") as? EndOfMakingThemeVC
-            else{
-                return
+        
+        ThemeMakeService.shared.themeMake(theme: themeNameTextField.text!, themeImgIdx: selectedIdx)
+        { networkResult in
+            switch networkResult {
+            case .success(_) :
+                guard let vcName = UIStoryboard(name: "EndOfMakingTheme",
+                                                bundle: nil).instantiateViewController(
+                                                    withIdentifier: "EndOfMakingThemeVC") as? EndOfMakingThemeVC
+                    else{
+                        return
+                }
+                
+                vcName.modalPresentationStyle = .fullScreen
+                
+                self.present(vcName, animated: true, completion: nil)
+            case .requestErr(let message):
+                guard let message = message as? String else {return}
+                self.noButtonTap()
+                self.showToast(text: message)
+                print(message)
+            case .pathErr: print("path")
+            case .serverErr: print("sever")
+            case .networkFail: print("net")
+                
+                
+                
+                
+                
+                
+                
+            }
         }
         
-        vcName.modalPresentationStyle = .fullScreen
         
-        self.present(vcName, animated: true, completion: nil)
-                
-         print("calledButtonDidTap")
+        
+        
+        print("calledButtonDidTap")
     }
     
     func setItems(){
@@ -219,15 +292,19 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         popupView.addSubview(popUpImageView)
         
         
+        
+        popUpImageView.imageFromUrl(selectedURL, defaultImgPath: "")
+        
         blurView.snp.makeConstraints{
             $0.top.bottom.leading.trailing.equalToSuperview()
         }
         
         popupView.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(233)
-            $0.leading.equalToSuperview().offset(36)
-            $0.trailing.equalToSuperview().offset(-35)
-            $0.bottom.equalToSuperview().offset(-229.2)
+            $0.top.equalToSuperview().offset(233*deviceBound)
+            $0.leading.equalToSuperview().offset(36/deviceBound)
+            $0.trailing.equalToSuperview().offset(-35/deviceBound)
+            $0.height.equalTo(350*deviceBound)
+            $0.bottom.equalToSuperview().offset(-229.2*deviceBound)
             
         }
         popUpContainerView.snp.makeConstraints{
@@ -244,13 +321,17 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         popupView.addSubview(popUpNoticeLabel)
         popupView.addSubview(yesButton)
         popupView.addSubview(noButton)
+        
+        yesButton.titleLabel?.font = .systemFont(ofSize: 13)
+        noButton.titleLabel?.font = .systemFont(ofSize: 13)
+        
 
         
       
         
         popUpImageView.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(46)
-            $0.bottom.equalToSuperview().offset(-175.8)
+            $0.top.equalToSuperview().offset(46*deviceBound)
+            $0.bottom.equalToSuperview().offset(-175.8*deviceBound)
             $0.leading.equalToSuperview().offset(2)
             $0.trailing.equalToSuperview().offset(-2)
             
@@ -258,7 +339,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
       
         popUpThemeLabel.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(27)
-            $0.top.equalToSuperview().offset(73)
+            $0.top.equalToSuperview().offset(73*deviceBound)
             $0.trailing.equalToSuperview().offset(-27)
         }
         
@@ -266,18 +347,18 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
         popUpAskingLabel.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(83)
-            $0.top.equalToSuperview().offset(200)
+            $0.top.equalToSuperview().offset(200*deviceBound)
             $0.trailing.equalToSuperview().offset(83)
         }
         popUpNoticeLabel.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(228)
+            $0.top.equalToSuperview().offset(228*deviceBound)
             $0.centerX.equalToSuperview()
         }
         
         yesButton.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(288)
-            $0.leading.equalToSuperview().offset(20)
-            $0.width.equalTo(127)
+            $0.top.equalToSuperview().offset(288*deviceBound)
+            $0.leading.equalToSuperview().offset(20/deviceBound)
+            $0.width.equalTo(127*deviceBound)
             $0.height.equalTo(37)
             
         }
@@ -287,9 +368,9 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
         
         noButton.snp.makeConstraints{
-            $0.trailing.equalToSuperview().offset(-16)
-            $0.top.equalToSuperview().offset(288)
-            $0.width.equalTo(127)
+            $0.trailing.equalToSuperview().offset(-16/deviceBound)
+            $0.top.equalToSuperview().offset(288*deviceBound)
+            $0.width.equalTo(127*deviceBound)
             $0.height.equalTo(37)
         }
          noButton.makeRounded(cornerRadius: 17)
@@ -340,6 +421,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         warningImageView.alpha = 0
         labelConstraints.constant = 62
         partialGreenColor()
+        themeNameTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
     }
 
     
@@ -358,6 +440,16 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
         
         
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        themeNameTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+        
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+         themeNameTextField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
     }
 
     @objc func updateTextLength(){
@@ -454,15 +546,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
         
         
-//        self.yesButton.isUserInteractionEnabled = true
-//        self.popUpView.transform = CGAffineTransform(translationX: 0, y: 500)
-//
-//        UIView.animate(withDuration: 1.0,delay: 0.0, animations: {
-//
-//
-//
-//            self.popUpView.transform = .identity
-//        })
+
         
     }
 
@@ -484,7 +568,7 @@ extension WritingThemeVC : UICollectionViewDelegate, UICollectionViewDataSource,
 UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)
         -> Int {
-        return images.count
+        return imagesURL.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
@@ -496,7 +580,8 @@ UICollectionViewDelegateFlowLayout {
                 return UICollectionViewCell()}
            
             let check : Bool = indexPath.item == checkIndex
-            themeCell.setItems(images[indexPath.item], check)
+            themeCell.setItems(imagesURL[indexPath.item], check)
+            
           
             themeCell.makeRounded(cornerRadius: 10)
             return themeCell
@@ -529,8 +614,9 @@ UICollectionViewDelegateFlowLayout {
         warningLabel2.alpha = 0
         warningImageView2.alpha = 0
         checkIndex = indexPath.item
-     
-        
+        selectedURL = imagesURL[indexPath.item]
+        selectedIdx = indexPath.item
+        self.view.endEditing(true)
         self.themeCollectionView.reloadData()
         
         

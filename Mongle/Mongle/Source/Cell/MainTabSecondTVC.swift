@@ -12,9 +12,11 @@ class MainTabSecondTVC: UITableViewCell {
     static let identifier = "MainTabSecondTVC"
     
     @IBOutlet var todaySentenceCollectionView: UICollectionView!
+    
     var selectSentenceDelegate: ((_ viewControllers: UIViewController) -> ()) = { _ in }
     
-    let sentences = ["가나다라", "마바사아자차카타파하"]
+//    let sentences = ["결국 봄이 언제나 찾아왔지만, 하마터면 오지않을 뻔했던 봄을 생각하면 마음이 섬찟해진다. ", "결국 봄이 언제나 찾아왔지만, 하마터면 오지않을 뻔했던 봄을 생각하면 마음이 섬찟해진다. "]
+    var sentences: [TodaySentenceData] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,7 +36,8 @@ extension MainTabSecondTVC: UICollectionViewDelegate {
         guard let dvc = UIStoryboard.init(name: "SentenceInfo", bundle: nil).instantiateViewController(identifier: "SentenceInfoVC") as? SentenceInfoVC else {
             return
         }
-        
+        dvc.sentenceIdx = self.sentences[indexPath.item].sentenceIdx
+        dvc.isMySentence = false
         selectSentenceDelegate(dvc)
     }
 }
@@ -47,8 +50,8 @@ extension MainTabSecondTVC: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainTodaySentenceCVC.identifier, for: indexPath) as? MainTodaySentenceCVC else {
             return UICollectionViewCell()
         }
-        cell.sentenceLabel.text = sentences[indexPath.item]
-        
+        let sentence = sentences[indexPath.item]
+        cell.setData(sentence: sentence.sentence, bookName: sentence.title)
         return cell
     }
 }

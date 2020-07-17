@@ -7,6 +7,11 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleSDGothicNeoR.ttf">
+            <string>AppleSDGothicNeoR00</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Search Tab MainVC-->
         <scene sceneID="Zlc-NX-NXd">
@@ -16,52 +21,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="US7-AI-z1w">
-                                <rect key="frame" x="44" y="55" width="316" height="45"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchBox" translatesAutoresizingMaskIntoConstraints="NO" id="US7-AI-z1w">
+                                <rect key="frame" x="42" y="55" width="318" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="US7-AI-z1w" secondAttribute="height" multiplier="317:45" id="Tgf-rG-rGL"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="책 제목을 검색해주세요" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Lwb-4h-hu7">
-                                <rect key="frame" x="60" y="55" width="265" height="45"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="키워드, 테마, 큐레이터 등을 검색하세요." adjustsFontForContentSizeCategory="YES" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Lwb-4h-hu7">
+                                <rect key="frame" x="57" y="55" width="265" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="E4a-86-BUu"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근 키워드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7v-Kt-Ghm">
-                                <rect key="frame" x="16" y="134" width="69" height="17.666666666666657"/>
+                                <rect key="frame" x="16" y="134" width="69" height="18.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xP2-ng-tW5">
-                                <rect key="frame" x="3" y="53" width="43" height="48"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xP2-ng-tW5">
+                                <rect key="frame" x="1" y="53" width="43" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="43" id="jCD-tc-A9T"/>
                                     <constraint firstAttribute="height" constant="48" id="wnh-f1-C1q"/>
                                 </constraints>
                                 <color key="tintColor" red="0.62352941176470589" green="0.62352941176470589" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button" image="searchBtnBack"/>
+                                <state key="normal" image="searchBtnBack"/>
                                 <connections>
                                     <action selector="touchUpBack:" destination="xgH-LR-iMl" eventType="touchUpInside" id="K5w-e3-JRH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFo-py-E32">
-                                <rect key="frame" x="327" y="68.333333333333329" width="18" height="18"/>
+                                <rect key="frame" x="315" y="55" width="45" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="CdM-RU-Haz"/>
-                                    <constraint firstAttribute="width" constant="18" id="Yh8-l9-STf"/>
+                                    <constraint firstAttribute="height" constant="45" id="CdM-RU-Haz"/>
+                                    <constraint firstAttribute="width" constant="45" id="Yh8-l9-STf"/>
                                 </constraints>
                                 <color key="tintColor" red="0.45098039220000002" green="0.75294117650000003" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Button" image="searchBtnSearch"/>
+                                <state key="normal" image="searchBtnSearch"/>
                                 <connections>
                                     <action selector="touchUpSearchBTN:" destination="xgH-LR-iMl" eventType="touchUpInside" id="GYY-n1-pzQ"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lKG-dS-PS1">
-                                <rect key="frame" x="0.0" y="172.66666666666666" width="375" height="48"/>
+                                <rect key="frame" x="0.0" y="173.33333333333334" width="375" height="48"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="MTz-Fo-GGb"/>
@@ -105,13 +110,13 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추천 키워드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lmw-dy-d2r">
-                                <rect key="frame" x="16" y="250.66666666666663" width="69" height="18"/>
+                                <rect key="frame" x="16" y="251.33333333333337" width="69" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" semanticContentAttribute="playback" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uen-Fo-bY7">
-                                <rect key="frame" x="0.0" y="289.66666666666669" width="375" height="95"/>
+                                <rect key="frame" x="0.0" y="290.33333333333331" width="375" height="95"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="95" id="qdJ-x1-uTK"/>
@@ -174,20 +179,20 @@
                             <constraint firstItem="lKG-dS-PS1" firstAttribute="leading" secondItem="T1c-4f-qv5" secondAttribute="leading" id="A7C-NO-qeF"/>
                             <constraint firstItem="xP2-ng-tW5" firstAttribute="trailing" secondItem="US7-AI-z1w" secondAttribute="leading" constant="2" id="ACO-2l-IyU"/>
                             <constraint firstItem="T1c-4f-qv5" firstAttribute="trailing" secondItem="US7-AI-z1w" secondAttribute="trailing" constant="15" id="Arv-u7-kFr"/>
-                            <constraint firstItem="Lwb-4h-hu7" firstAttribute="trailing" secondItem="QFo-py-E32" secondAttribute="leading" constant="-2" id="FIQ-7P-dMU"/>
+                            <constraint firstItem="Lwb-4h-hu7" firstAttribute="trailing" secondItem="QFo-py-E32" secondAttribute="leading" constant="7" id="FIQ-7P-dMU"/>
                             <constraint firstItem="lKG-dS-PS1" firstAttribute="top" secondItem="y7v-Kt-Ghm" secondAttribute="bottom" constant="21" id="HvN-GT-flY"/>
                             <constraint firstItem="xP2-ng-tW5" firstAttribute="top" secondItem="SYo-uP-pOv" secondAttribute="top" constant="53" id="IpU-mE-6Ov"/>
                             <constraint firstItem="T1c-4f-qv5" firstAttribute="trailing" secondItem="uen-Fo-bY7" secondAttribute="trailing" id="NEh-c4-PZX"/>
                             <constraint firstItem="Lwb-4h-hu7" firstAttribute="centerY" secondItem="US7-AI-z1w" secondAttribute="centerY" id="NrT-Bl-ejp"/>
-                            <constraint firstItem="Lwb-4h-hu7" firstAttribute="leading" secondItem="SYo-uP-pOv" secondAttribute="leading" constant="60" id="Oep-e6-f0l"/>
+                            <constraint firstItem="Lwb-4h-hu7" firstAttribute="leading" secondItem="US7-AI-z1w" secondAttribute="leading" constant="15" id="Oep-e6-f0l"/>
                             <constraint firstItem="y7v-Kt-Ghm" firstAttribute="top" secondItem="Lwb-4h-hu7" secondAttribute="bottom" constant="34" id="Rlh-JK-fZN"/>
                             <constraint firstItem="uen-Fo-bY7" firstAttribute="top" secondItem="Lmw-dy-d2r" secondAttribute="bottom" constant="21" id="WgE-w2-ZMP"/>
                             <constraint firstItem="T1c-4f-qv5" firstAttribute="trailing" secondItem="D7q-ZQ-n3h" secondAttribute="trailing" id="Yel-bb-cHx"/>
                             <constraint firstItem="T1c-4f-qv5" firstAttribute="trailing" secondItem="lKG-dS-PS1" secondAttribute="trailing" id="eHa-ui-cHy"/>
                             <constraint firstItem="QFo-py-E32" firstAttribute="centerY" secondItem="US7-AI-z1w" secondAttribute="centerY" id="feN-xM-72E"/>
                             <constraint firstItem="D7q-ZQ-n3h" firstAttribute="top" secondItem="US7-AI-z1w" secondAttribute="bottom" constant="19" id="hkW-ey-o4g"/>
-                            <constraint firstItem="QFo-py-E32" firstAttribute="trailing" secondItem="US7-AI-z1w" secondAttribute="trailing" constant="-15" id="jh0-g1-b1P"/>
-                            <constraint firstItem="US7-AI-z1w" firstAttribute="leading" secondItem="T1c-4f-qv5" secondAttribute="leading" constant="44" id="kCL-Df-wJe"/>
+                            <constraint firstItem="QFo-py-E32" firstAttribute="trailing" secondItem="US7-AI-z1w" secondAttribute="trailing" id="jh0-g1-b1P"/>
+                            <constraint firstItem="US7-AI-z1w" firstAttribute="leading" secondItem="T1c-4f-qv5" secondAttribute="leading" constant="42" id="kCL-Df-wJe"/>
                             <constraint firstItem="D7q-ZQ-n3h" firstAttribute="centerY" secondItem="y7v-Kt-Ghm" secondAttribute="centerY" id="nY1-Ga-StH"/>
                             <constraint firstItem="US7-AI-z1w" firstAttribute="top" secondItem="T1c-4f-qv5" secondAttribute="top" constant="11" id="rig-iW-4hC"/>
                             <constraint firstItem="Lmw-dy-d2r" firstAttribute="top" secondItem="lKG-dS-PS1" secondAttribute="bottom" constant="30" id="u2G-UI-M0t"/>
@@ -206,11 +211,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oPu-RO-34i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1210.4000000000001" y="-597.04433497536945"/>
+            <point key="canvasLocation" x="1444" y="-772"/>
         </scene>
     </scenes>
     <resources>
+        <image name="searchBox" width="317" height="45"/>
         <image name="searchBtnBack" width="10.333333015441895" height="18.666666030883789"/>
-        <image name="searchBtnSearch" width="18" height="19"/>
+        <image name="searchBtnSearch" width="18" height="18"/>
     </resources>
 </document>

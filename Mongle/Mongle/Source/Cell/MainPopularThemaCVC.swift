@@ -12,31 +12,28 @@ class MainPopularThemaCVC: UICollectionViewCell {
     static let identifier = "MainPopularThemaCVC"
     
     @IBOutlet var backgroundImageView: UIImageView!
-    @IBOutlet var blurView: UIView!
     @IBOutlet var themaNameLabel: UILabel!
+    @IBOutlet var sentenceCountLabel: UILabel!
+    @IBOutlet var bookMarkCountLabel: UILabel!
     
-    
-    
-    var blurStyle: BlurStyle = .blue
+    @IBOutlet var bookMarkImageView: UIImageView!
     
     override func awakeFromNib() {
         self.makeRounded(cornerRadius: 10)
-        
-        switch blurStyle {
-        case .blue:
-            blurView.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 0.3)
-            
-        case .green:
-            blurView.backgroundColor = UIColor(red: 0, green: 1, blue: 0, alpha: 0.3)
-        case .red:
-            blurView.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.3)
-        }
     }
-}
-
-
-
-// MARK:- Enum Blur Style
-enum BlurStyle {
-    case blue, green, red
+    
+    func setData(name: String, count: Int, imageUrl: String, isBookMark: Bool){
+        self.themaNameLabel.text = name
+        self.sentenceCountLabel.text = "문장 \(count)개"
+        if isBookMark {
+            bookMarkImageView.image = UIImage(named: "mainIcBookmark1")
+//            mainIcBookmark1
+//            themeIcBookmarkGreen
+        }
+        else {
+            bookMarkImageView.image = UIImage(named: "themeIcBookmarkGreen")
+        }
+        self.backgroundImageView.imageFromUrl(imageUrl, defaultImgPath: "writingSentenceTheme3ImgThemeX")
+        
+    }
 }

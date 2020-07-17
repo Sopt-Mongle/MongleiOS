@@ -27,6 +27,9 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z8u-Gu-SgQ">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="437"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="z8u-Gu-SgQ" secondAttribute="height" multiplier="375:437" id="yNo-KB-eFt"/>
+                                        </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="awA-8z-038">
                                         <rect key="frame" x="28" y="112" width="319" height="45"/>
@@ -75,6 +78,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="findIdButtonAction:" destination="kJn-c1-6Jy" eventType="touchUpInside" id="xU4-bH-mVq"/>
+                                        </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rx9-Kw-n8M">
                                         <rect key="frame" x="130" y="255" width="1" height="12"/>
@@ -143,7 +149,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.98432296509999995" green="0.98430186509999995" blue="0.98430591820000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="SdA-xr-Jbg" firstAttribute="trailing" secondItem="vqZ-Vv-3Fw" secondAttribute="trailing" constant="28" id="70i-Dp-oBk"/>
                             <constraint firstItem="PSL-gp-YOC" firstAttribute="leading" secondItem="SdA-xr-Jbg" secondAttribute="leading" id="8b1-Qf-PEQ"/>
