@@ -19,6 +19,12 @@ class AddBookToSentenceVC: UIViewController {
     
     @IBOutlet weak var bookTitleLabel: UILabel!
 
+    
+    var sentence: String?
+    var themeIdx: Int?
+    var bookInfo: Book?
+    
+    var isFill: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,7 +56,7 @@ class AddBookToSentenceVC: UIViewController {
             else{
                 return
         }
-        
+        vcName.bookSendDelegate = self
         vcName.modalPresentationStyle = .fullScreen
         self.present(vcName, animated: true, completion: nil)
         
@@ -60,14 +66,44 @@ class AddBookToSentenceVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func touchUpNextButton(sender: UIButton){
+        if isFill {
+            PostBookService
+                .shared
+                .postBook(sentence: self.sentence ?? "",
+                          title: self.bookInfo?.bookTitle ?? "",
+                          author: self.bookInfo?.bookAuthors[0] ?? "",
+                          publisher: self.bookInfo?.bookPublisher ?? "",
+                          themeIdx: self.themeIdx ?? 0) { networkResult in
+                            switch networkResult{
+                            case .success(_):
+                                self.showToast(text: "등록 완료")
+                                guard let dvc = UIStoryboard(name: "EndOfWritingSentence", bundle: nil).instantiateViewController(identifier: "EndOfWritingSentenceVC") as? EndOfWritingSentenceVC else {
+                                    return
+                                }
+                                self.navigationController?.pushViewController(dvc, animated: true)
+                            case .requestErr(let msg):
+                                self.showToast(text: msg as? String ?? "request err")
+                            case .pathErr:
+                                self.showToast(text: "pathErr")
+                            case .serverErr:
+                                self.showToast(text: "serverErr")
+                            case .networkFail:
+                                self.showToast(text: "networkFail")
+                                
+                            }
+            }
+        }
     }
-    */
-
 }
+
+extension AddBookToSentenceVC: BookSearchDataDelegate {
+    func sendBookData(Data: Book, isSelected: Bool, noAnimation: Bool) {
+        self.bookInfo = Data
+        self.authorTextField.text = Data.bookAuthors[0]
+        self.bookTitleLabel.text = Data.bookTitle
+        self.publisherTextField.text = Data.bookPublisher
+        self.isFill = true
+    }
+}
+

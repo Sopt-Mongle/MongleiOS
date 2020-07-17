@@ -203,7 +203,6 @@ struct SentenceService {
             return .serverErr
         default:
             return .networkFail
-        
         }
     }
 }

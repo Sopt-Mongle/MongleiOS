@@ -34,22 +34,18 @@ class ThemeInfoVC: UIViewController {
     
     @IBOutlet var backButton: UIButton!
     //MARK:- Property
+    var themeImage: UIImage?
     var hasTheme: Bool = true
     var themeIdx: Int?
     var themeData: Theme?
     var sentences: [Sentence] = []
-//    var sentences = [
-//        "아아아아아아나난나ㅏ나난나나\n나나나나나난나ㅏ난아아아아아아나난나ㅏ나난",
-//        "아아아아아아나난나ㅏ나난나\n나나나나나나난나ㅏ난",
-//        "아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난",
-//        "아아아아아아나난나ㅏ나난나\n나나나나나나난나ㅏ난",
-//        "아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난",
-//        "아아아아아아나난나ㅏ나난나\n나나나나나나난나ㅏ난",
-//        "아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난",
-//        "아아아아아아나난나ㅏ나난나\n나나나나나나난나ㅏ난",
-//        "아아아아아아나난나ㅏ나난나나나나나나나난나ㅏ난"
-//    ]
+    
+    var noThemeSentence: [NoThemeSentence] = []
+    var noThemeCount: Int = 0
     var themeText: String?
+    
+    var noThemeSentenceSelectedDelegate:(NoThemeSentence)->Void = { _ in }
+//    var selectBookDelegate: BookSearchDataDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,12 +59,15 @@ class ThemeInfoVC: UIViewController {
     func setInitLayout(){
         themeBackgroundView.backgroundColor = .clear
         if hasTheme {
+            
             self.themeNameLabel.text = themeText ?? ""
             sentencesBackGroudViewBottomConstraint.constant = 0
             bottomBackgroundView.isHidden = false
-            themeImageView.image = UIImage(named: "sentenceThemeOImgTheme")
+            themeImageView.image = themeImage
+//                UIImage(named: "sentenceThemeOImgTheme")
         }
         else {
+            themeNameLabel.text = "테마 없는 문장"
             backButton.setImage(UIImage(named: "sentenceThemeXBtnBack"), for: .normal)
             themeImageView.image = UIImage(named: "themeWritingThemeXSentenceBg")
             sentencesBackgroundView.backgroundColor = .black
@@ -94,25 +93,53 @@ class ThemeInfoVC: UIViewController {
     }
     
     func setThemeData(){
-        ThemeService.shared.getThemeInfo(idx: self.themeIdx ?? 0) { networkResult in
-            switch networkResult {
-            case .success(let data):
-                if let _data = data as? ThemeInfoData {
-                    self.themeData = _data.theme[0]
-                    self.sentences = _data.sentence
-                    self.updateLayout()
-                    self.sentenceTableView.reloadData()
+        
+        if self.hasTheme {
+            self.showToast(text: "has theme")
+            ThemeService.shared.getThemeInfo(idx: self.themeIdx ?? 0) { networkResult in
+                switch networkResult {
+                case .success(let data):
                     self.showToast(text: "연결성공")
+                    if let _data = data as? ThemeInfoData {
+                        print("------------------------------")
+                        print(_data)
+                        self.themeData = _data.theme[0]
+                        self.sentences = _data.sentence
+                        self.updateLayout()
+                        self.sentenceTableView.reloadData()
+                        
+                    }
+                    
+                case .requestErr(let msg):
+                    self.showToast(text: msg as! String)
+                case .pathErr:
+                    self.showToast(text: "pathErr")
+                case .serverErr:
+                    self.showToast(text: "serverErr")
+                case .networkFail:
+                    self.showToast(text: "networkFail")
                 }
-                
-            case .requestErr(let msg):
-                self.showToast(text: msg as! String)
-            case .pathErr:
-                self.showToast(text: "pathErr")
-            case .serverErr:
-                self.showToast(text: "serverErr")
-            case .networkFail:
-                self.showToast(text: "networkFail")
+            }
+        }
+        else {
+            ThemeService.shared.getNoThemeSentenceInfo{ networkResult in
+                switch networkResult {
+                case .success(let data):
+                    if let _data = data as? NoThemeData {
+                        self.noThemeCount = _data.num
+                        self.noThemeSentence = _data.sentences
+                        self.curatorNameLabel.text = "문장 \(_data.num)개"
+                        self.sentenceTableView.reloadData()
+                    }
+                case .requestErr(let msg):
+                    self.showToast(text: msg as? String ?? "")
+                case .pathErr:
+                    self.showToast(text: "pathErr")
+                case .serverErr:
+                    self.showToast(text: "serverErr")
+                case .networkFail:
+                    self.showToast(text: "networkFail")
+                }
             }
         }
     }
@@ -137,6 +164,8 @@ class ThemeInfoVC: UIViewController {
         guard let dvc = UIStoryboard(name: "WritingSentenceInTheme", bundle: nil).instantiateViewController(identifier: "WritingSentenceInThemeVC") as? WritingSentenceInThemeVC else {
             return
         }
+        dvc.themeIdx = self.themeIdx
+        dvc.themeName = self.themeData?.theme
         self.navigationController?.pushViewController(dvc, animated: true)
     }
     
@@ -186,19 +215,33 @@ extension ThemeInfoVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let dvc = UIStoryboard(name: "SentenceInfo", bundle: nil).instantiateViewController(identifier: "SentenceInfoVC") as? SentenceInfoVC else {
-            return
+        if hasTheme {
+            let sentence = self.sentences[indexPath.row]
+            guard let dvc = UIStoryboard(name: "SentenceInfo", bundle: nil).instantiateViewController(identifier: "SentenceInfoVC") as? SentenceInfoVC else {
+                return
+            }
+            dvc.sentenceIdx = sentence.sentenceIdx
+            self.navigationController?.pushViewController(dvc, animated: true)
         }
-//        dvc.sentenceText = self.sentences[indexPath.row]
-        self.navigationController?.pushViewController(dvc, animated: true)
+        else {
+            let sentence = self.noThemeSentence[indexPath.row]
+            self.noThemeSentenceSelectedDelegate(sentence)
+            dump(sentence)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
-    
 }
 // MARK: UITableViewDataSource
 extension ThemeInfoVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sentences.count
+        if self.hasTheme {
+            return self.sentences.count
+        }
+        else {
+            return self.noThemeSentence.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView,
@@ -208,13 +251,23 @@ extension ThemeInfoVC: UITableViewDataSource {
             else {
                 return UITableViewCell()
         }
-        let sentence = sentences[indexPath.row]
-        cell.setData(sentence: sentence.sentence,
-                     bookName: sentence.title,
-                     likeCount: sentence.likes,
-                     bookMarkCount: sentence.saves)
         
-//        cell.sentenceLabel.text = self.sentences[indexPath.row]
+        if self.hasTheme {
+            let sentence = sentences[indexPath.row]
+            cell.setData(sentence: sentence.sentence,
+                         bookName: sentence.title ?? "",
+                         likeCount: sentence.likes,
+                         bookMarkCount: sentence.saves)
+            
+        }
+        else {
+            print(indexPath.row)
+            let sentence = self.noThemeSentence[indexPath.row]
+            cell.setNoThemeData(sentence: sentence.sentence,
+                                bookName: sentence.title)
+        }
+        
+        //        cell.sentenceLabel.text = self.sentences[indexPath.row]
         return cell
     }
 }

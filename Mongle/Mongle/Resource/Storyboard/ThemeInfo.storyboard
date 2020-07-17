@@ -145,7 +145,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="몽글이 몽글몽글" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9DZ-1C-YeD">
-                                                            <rect key="frame" x="36.999999999999993" y="49.666666666666664" width="82.333333333333314" height="15.999999999999993"/>
+                                                            <rect key="frame" x="37" y="49.666666666666664" width="208" height="15.999999999999993"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="13"/>
                                                             <color key="textColor" red="0.65490196078431373" green="0.65490196078431373" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -195,6 +195,7 @@
                                                     <constraints>
                                                         <constraint firstItem="GJE-jW-QX4" firstAttribute="top" secondItem="cGJ-AL-ekh" secondAttribute="bottom" constant="12" id="1o0-dy-7Ph"/>
                                                         <constraint firstItem="GJE-jW-QX4" firstAttribute="leading" secondItem="GBn-bT-4Pz" secondAttribute="leading" constant="16" id="4aE-9e-Vgp"/>
+                                                        <constraint firstAttribute="trailing" secondItem="9DZ-1C-YeD" secondAttribute="trailing" constant="130" id="Aan-wr-F8C"/>
                                                         <constraint firstItem="9DZ-1C-YeD" firstAttribute="leading" secondItem="GJE-jW-QX4" secondAttribute="trailing" constant="5" id="JKc-XX-wQb"/>
                                                         <constraint firstItem="9DZ-1C-YeD" firstAttribute="centerY" secondItem="GJE-jW-QX4" secondAttribute="centerY" id="K0R-Tr-8Ap"/>
                                                         <constraint firstAttribute="bottom" secondItem="GJE-jW-QX4" secondAttribute="bottom" constant="26" id="WnE-Wn-FOV"/>
@@ -209,6 +210,7 @@
                                                     <outlet property="bookNameLabel" destination="9DZ-1C-YeD" id="1OX-Ab-b5h"/>
                                                     <outlet property="bookmarkCountLabel" destination="3O2-Xz-Gyg" id="Nqh-f7-hsA"/>
                                                     <outlet property="bookmarkImageView" destination="Egf-M7-T4w" id="HFs-fh-5AJ"/>
+                                                    <outlet property="likeAndBookmarkCountStackview" destination="hEp-D2-JAa" id="W2H-Hg-Dno"/>
                                                     <outlet property="likeCountLabel" destination="Nbm-xi-I7q" id="PrB-sY-PMl"/>
                                                     <outlet property="likeImageView" destination="eYt-Tr-2Vo" id="cf0-8j-bFo"/>
                                                     <outlet property="sentenceLabel" destination="cGJ-AL-ekh" id="WDn-vf-vx9"/>

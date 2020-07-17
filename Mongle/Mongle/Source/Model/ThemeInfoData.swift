@@ -16,20 +16,20 @@ struct ThemeInfoData: Codable {
 
 // MARK: - Sentence
 struct Sentence: Codable {
-    var sentenceIdx: Int
+    var sentenceIdx: Int?
     var sentence: String
     var likes, saves: Int
-    var writer, writerImg, title, author: String
+    var writer, writerImg, title, author: String?
     var publisher, timestamp: String
     var alreadyLiked, alreadyBookmarked: Bool
 }
 
 //// MARK: - Theme
 struct Theme: Codable {
-    var themeIdx: Int
-    var theme, themeImg: String
+    var themeIdx: Int?
+    var theme, themeImg: String?
     var saves: Int
-    var writer, writerImg: String
+    var writer, writerImg: String?
     var alreadyBookmarked: Bool
     var sentenceNum: Int
 }

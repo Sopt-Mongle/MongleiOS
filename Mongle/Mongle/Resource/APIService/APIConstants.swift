@@ -31,9 +31,13 @@ struct APIConstants {
     static let mainNowThemesURL = baseURL + "/main/nowThemes"
     // 테마 상세조회 (/detail/theme/:themeIdx)
     static let detailThemeURL = baseURL + "/detail/theme"
-//    문장 상세조회 (/detail/sentence/:sentenceIdx)
+    //  문장 상세조회 (/detail/sentence/:sentenceIdx)
     static let detailSentenceURL = baseURL + "/detail/sentence"
-
+    //테마 없는 문장 목록 조회 (/post/emptySentence)
+    static let postEmptySentenceURL = baseURL + "/post/emptySentence"
+//    테마 없는 문장 테마 지정하기 (/post/setTheme)
+    static let postSetThemeURL = baseURL + "/post/setTheme"
+    
     static let bookSearchForWritingURL = baseURL + "/post/bookSearch"
     static let postSentenceURL = baseURL + "/post/sentence"
     static let ThemeSelectForWriteURL = baseURL + "/post/theme"

@@ -41,7 +41,7 @@ extension MainTabFourthTVC: UICollectionViewDelegate {
             return
         }
         dvc.themeIdx = theme.themeIdx
-//        dvc.themeText = themas[indexPath.item]
+        
         if let delegate = selectedCell {
             delegate(dvc)
         }
