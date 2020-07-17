@@ -42,6 +42,8 @@
 
 
 ### x. 문장 쓰기 화면
+
+
 <img src="./docs/asset/writesentence1.png" width = 400><img src="./docs/asset/writesentence2.png" width = 400>
 <img src="./docs/asset/writesentence3.png" width = 400><img src="./docs/asset/ritesentence4.png" width = 400>
 <img src="./docs/asset/writesentence5.png" width = 400><img src="./docs/asset/writesentence6.png" width = 400>
@@ -53,6 +55,8 @@
 
 
 ### 검색
+
+
 
 
 ### 큐레이터 리스트
@@ -107,16 +111,88 @@
 
 
 
-## 어려웠던 점과 이를 통해 배운 점
+## 어려웠던 기능 + 배운 점
 ### 1. 어려운 상단 탭바 구조
-문제점 : 
+
+#### 어려운 점
 
 
-배운 점 :
+#### 배운 점
 
-### 2. SnapKit 을 통한 Auto Layout
 
-#### 문제점
+### 2. 어려운 하단 탭바 구조
+
+#### 어려운 점
+
+몽글의 하단 커스텀 탭바는 탭바 위에 버튼이 하나 있고, 그 버튼이 눌리면 배경이 blur처리 되면서 회전을 하고, 두 가지 
+서브 기능을 하는 버튼이 나타나야 함. 따라서 SnapKit을 활용해 버튼의 레이아웃을 잡고,  애니메이션을 통해 버튼의 회전을 
+구현함. 이 버튼의 핵심 기능의 function은 아래와 같음.
+
+    private func showSubMenus(){
+           UIView.animate(withDuration: 0.25 , delay: 0, options: [.curveEaseIn], animations: {
+               self.plusButton.transform = CGAffineTransform(rotationAngle: .pi/4)
+               [self.blurView, self.makeThemeButton, self.writeSentenceButton].forEach{
+                   $0.alpha = 1
+                   if $0 != self.blurView {
+                       $0.transform = CGAffineTransform(translationX: 0, y: -25)
+                   }
+               }
+               
+           },completion: nil)
+           
+           
+       }
+       
+
+#### 배운 점
+이 하단 탭바를 앱잼 초기에 구현했는데, 이 때 SnapKit과 Then, animation에 대해서 전반적으로 이해할 수 있었음.
+특히 animation을 잘 이해하고 재미를 붙이게 되어서 이후 다양한 구현에 애니메이션을 수월하게 사용할 수 있었음.
+예시로, 문장 쓰기 뷰에서 progress bar 애니메이션을 다음과 같이 구현할 수 있었음.
+
+    func ballAppearAnimation(){
+           UIView.animate(withDuration: 0.5 , delay: 0.25, options: [.curveEaseIn], animations: {
+               self.innerCircle2.backgroundColor = .softGreen
+               self.outerCircle2.backgroundColor = .softGreen
+               
+           }, completion:nil)
+           
+       }
+
+    func secondLevelAnimation() {
+          progressBar.progress = 0
+          //        progressBar.setProgress(0.5, animated: true)
+         
+          
+          UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
+              self.progressBar.layoutIfNeeded()
+              
+          }, completion: { finished in
+              self.progressBar.progress = 0.5
+             
+              
+              
+              
+              UIView.animate(withDuration: 0.75 , delay: 0.0, options: [.curveEaseIn], animations: {
+                  self.progressBar.layoutIfNeeded()
+              }, completion:nil)
+          })
+          
+          
+          
+      }
+      
+
+구현 화면
+<img src="./docs/asset/writesentenceAnim.gif" width = 400>
+
+
+
+
+
+
+### 3.  SnapKit 을 통한 Auto Layout
+
+#### 어려운 점
 SnapKit과 Then을 통해 수월하게 auto layout을 잡을 수 있었으나, 상수 값으로 layout을 잡을 떄 기기가 달라지면 비율이
 꺠지거나 위치가 너무 치우치는 상황이 발생했음. 
 
@@ -131,9 +207,9 @@ layout constant에 곱해주어 다른 기기에서 알맞게 작용하게 적�
 
 
 
-### 3. 서버 통신 중 nil값이 입력일 때 
+### 4. 서버 통신 중 nil값이 입력일 때 
 
-#### 문제점
+#### 어려운 점
 
 문제가 되었던 데이터 구조는 아래와 같음. 잘 되던 통신이 갑자기 되지 않아 당황하고 한참 이유를 찾았는데,
 알고보니 문장 작성에서 '테마 없는 문장'을 선택하고 post하고 난 뒤  테마를 서버에서 get할 때,  writerImg가 nil로
@@ -151,12 +227,26 @@ layout constant에 곱해주어 다른 기기에서 알맞게 작용하게 적�
 
 따라서 위의 구조에서 writerImg를 optional로 바꿔주니 해결되는 문제였음
 
+    struct ThemeSelectForWriteData : Codable {
+           
+           let themeIdx: Int
+           let theme: String
+           let themeImg: String
+           let themeImgIdx, saves: Int
+           let writer : String
+           let writerImg: String?
+           let alreadyBookmarked: Bool
+        
+       }
+
+
+
 #### 배운 점 
+
 
 서버와의 통신 과정에서 optional 처리가 매우 중요하다는 것을 알게 되었다. 이후에 비슷한 에러를 수차례 만나게 되었고,
 처음 이 에러에 직면했을 때엔 해결하는 데 많은 시간이 걸렸지만 이후에는 쉽게 해결할 수 있었다.
-
-
+이후에 nil 값이 들어올 수 있는 데이터는 optional 처리를 해주기로 했다.
 
 
 
