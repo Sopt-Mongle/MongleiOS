@@ -15,6 +15,8 @@ class CuratorTabMainTVC: UITableViewCell {
     @IBOutlet weak var themeCuratorCountLabel: UILabel!
     @IBOutlet weak var curatorListCollectionView: UICollectionView!
     
+    var dataList:[CuratorInTheme] = []
+    var count = 0
     var selectSentenceDelegate: ((_ viewControllers: UIViewController) -> ()) = { _ in }
     
     override func awakeFromNib() {
@@ -22,9 +24,9 @@ class CuratorTabMainTVC: UITableViewCell {
         
         curatorListCollectionView.delegate = self
         curatorListCollectionView.dataSource = self
-        
+        themeTitleImageView.contentMode = .scaleAspectFill
         themeTitleLabel.text = "흔들리는 꽃들 속에서 네 샴푸향이 느껴진거야 스쳐 지나간건가 뒤돌아보는 문장"
-        themeCuratorCountLabel.text = "큐레이터 53명"
+        themeCuratorCountLabel.text = "큐레이터 \(count)명"
         // Initialization code
     }
    

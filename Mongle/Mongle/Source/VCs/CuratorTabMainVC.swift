@@ -12,6 +12,7 @@ class CuratorTabMainVC: UIViewController {
     
     var keywordList:[String] = ["감성자극","동기부여","자기계발","깊은생각","독서기록","일상문장"]
     var popularList:[CuratorRecommendData] = []
+    var themeList:[CuratorTabTheme] = []
     
     //MARK:- IBOutlet
     @IBOutlet weak var curatorTabTableView: UITableView!
@@ -52,6 +53,7 @@ class CuratorTabMainVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         setRecommendedCurator()
+        setThemeInCurator()
     }
     func setRecommendedCurator(){
         CuratorRecommendService.shared.getRecommend(){ networkResult in
@@ -62,7 +64,7 @@ class CuratorTabMainVC: UIViewController {
                 }
                 
                 self.popularList = data
-                print("최근검색어: \(data)")
+                print("추천 큐레이터: \(data)")
                 DispatchQueue.main.async {
                     self.popularCollectionView.reloadData()
                     
@@ -87,6 +89,38 @@ class CuratorTabMainVC: UIViewController {
         }
         
     }
+    func setThemeInCurator(){
+        ThemeInCuratorService.shared.getCurator(){
+            networkResult in
+            switch networkResult {
+            case .success(let theme):
+                guard let data = theme as? ThemeInCuratorData else {
+                    return
+                }
+                
+                self.themeList = data.theme
+                print("테마 속 큐레이터: \(data)")
+                DispatchQueue.main.async {
+                    self.curatorTabTableView.reloadData()
+                }
+                
+                
+            case .requestErr(let message):
+                
+                guard let message = message as? String else { return }
+                
+                self.showToast(text: message)
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
 
 }
 
@@ -97,7 +131,7 @@ extension CuratorTabMainVC: UITableViewDelegate{
 }
 extension CuratorTabMainVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return themeList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -105,6 +139,10 @@ extension CuratorTabMainVC: UITableViewDataSource{
         cell.selectSentenceDelegate = { [weak self] dvc in
             self?.navigationController?.pushViewController(dvc, animated: true)
         }
+        cell.count = self.themeList[indexPath.row].curatorNum
+        cell.themeTitleLabel.text = self.themeList[indexPath.row].theme
+        cell.themeTitleImageView.imageFromUrl(self.themeList[indexPath.row].themeImg, defaultImgPath: "mainImgTheme1")
+        cell.themeCuratorCountLabel.text = "큐레이터 \(self.themeList[indexPath.row].curatorNum)명"
         return cell
         
     }

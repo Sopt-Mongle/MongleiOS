@@ -107,6 +107,8 @@
 		B8E2E16524C17D1B00595752 /* CuratorInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2E16424C17D1B00595752 /* CuratorInfoData.swift */; };
 		B8E2E16724C1B48500595752 /* CuratorRecommendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2E16624C1B48500595752 /* CuratorRecommendService.swift */; };
 		B8E2E16924C1B58E00595752 /* CuratorRecommendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2E16824C1B58E00595752 /* CuratorRecommendData.swift */; };
+		B8E2E16B24C1BBAE00595752 /* ThemeInCuratorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2E16A24C1BBAE00595752 /* ThemeInCuratorService.swift */; };
+		B8E2E16D24C1BC7900595752 /* ThemeInCuratorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2E16C24C1BC7900595752 /* ThemeInCuratorData.swift */; };
 		B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */; };
 		B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */; };
 		B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */; };
@@ -263,6 +265,8 @@
 		B8E2E16424C17D1B00595752 /* CuratorInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorInfoData.swift; sourceTree = "<group>"; };
 		B8E2E16624C1B48500595752 /* CuratorRecommendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorRecommendService.swift; sourceTree = "<group>"; };
 		B8E2E16824C1B58E00595752 /* CuratorRecommendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorRecommendData.swift; sourceTree = "<group>"; };
+		B8E2E16A24C1BBAE00595752 /* ThemeInCuratorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeInCuratorService.swift; sourceTree = "<group>"; };
+		B8E2E16C24C1BC7900595752 /* ThemeInCuratorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeInCuratorData.swift; sourceTree = "<group>"; };
 		B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchTabMain.storyboard; sourceTree = "<group>"; };
 		B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTabMainVC.swift; sourceTree = "<group>"; };
 		B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchCVC.swift; sourceTree = "<group>"; };
@@ -459,6 +463,7 @@
 				B8E2E16024C0D48800595752 /* CuratorFollowService.swift */,
 				B8E2E16224C17C8000595752 /* CuratorInfoService.swift */,
 				B8E2E16624C1B48500595752 /* CuratorRecommendService.swift */,
+				B8E2E16A24C1BBAE00595752 /* ThemeInCuratorService.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -486,6 +491,7 @@
 				B8E2E15C24C0AA9A00595752 /* SearchCuratorData.swift */,
 				B8E2E16424C17D1B00595752 /* CuratorInfoData.swift */,
 				B8E2E16824C1B58E00595752 /* CuratorRecommendData.swift */,
+				B8E2E16C24C1BC7900595752 /* ThemeInCuratorData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -832,6 +838,7 @@
 				7FC5B4D724BC6D2B007C1725 /* AddBookToSentenceVC.swift in Sources */,
 				7F6ABEB224ADE7700040746E /* AppDelegate.swift in Sources */,
 				EC759C3E24BEF01A001D2F81 /* ThemeImageDataForWrite.swift in Sources */,
+				B8E2E16D24C1BC7900595752 /* ThemeInCuratorData.swift in Sources */,
 				EC86B49824B716BB00DB930A /* SearchBookForWritingVC.swift in Sources */,
 				7FCEE21924B3078E00225CA3 /* MainTabMainVC.swift in Sources */,
 				7F6ABED124ADE9860040746E /* UIView+Extensions.swift in Sources */,
@@ -848,6 +855,7 @@
 				7F1E719524B4476E00D79516 /* MainTodaySentenceCVC.swift in Sources */,
 				B8E2E14324BE16B200595752 /* CuratorTabInfoPageVC.swift in Sources */,
 				EC7410BC24BA883100CBAF1C /* EndOfMakingThemeVC.swift in Sources */,
+				B8E2E16B24C1BBAE00595752 /* ThemeInCuratorService.swift in Sources */,
 				B8B48AE124B9832D00551F5B /* SearchResultCuratorCVC.swift in Sources */,
 				7F6ABED924ADEC9E0040746E /* APIConstants.swift in Sources */,
 				EC7410B824BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift in Sources */,
