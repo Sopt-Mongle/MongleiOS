@@ -136,6 +136,7 @@ extension CuratorTabMainVC: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CuratorTabMainTVC", for: indexPath) as? CuratorTabMainTVC else{ return UITableViewCell()}
+        cell.curatorList = self.themeList[indexPath.row].curators
         cell.selectSentenceDelegate = { [weak self] dvc in
             self?.navigationController?.pushViewController(dvc, animated: true)
         }
@@ -143,6 +144,7 @@ extension CuratorTabMainVC: UITableViewDataSource{
         cell.themeTitleLabel.text = self.themeList[indexPath.row].theme
         cell.themeTitleImageView.imageFromUrl(self.themeList[indexPath.row].themeImg, defaultImgPath: "mainImgTheme1")
         cell.themeCuratorCountLabel.text = "큐레이터 \(self.themeList[indexPath.row].curatorNum)명"
+        cell.curatorListCollectionView.reloadData()
         return cell
         
     }
