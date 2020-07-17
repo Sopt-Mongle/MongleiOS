@@ -40,12 +40,14 @@
 
 
 ### 2. 메인 화면
+오늘의 문장, 큐레이터, 추천 테마를 보여줌. 각각을 선택하면 상세 뷰로 넘어가고, 해당 테마/문장을 수정할 수 있음.
 
 
 
 
 
-### x. 문장 쓰기 화면
+
+### 2-1. 문장 쓰기 화면
 
 문장 작성하는 플로우.  원이 불이 들어오는 애니메이션과 프로그레스 바가 진행되는 애니메이션으로 진척도를 나타냄.
 
@@ -54,12 +56,37 @@
 <img src="./docs/asset/writesentence5.png" width = 400><img src="./docs/asset/writesentence6.png" width = 400>
 <img src="./docs/asset/writesentence7.png" width = 400><img src="./docs/asset/writesentence8.png" width = 400>
 
-### x. 테마 만들기 화면
+### 2-2. 테마 만들기 화면
 
 테마 만들기. 테마 생성 직전 팝업을 보여줌.
 
 <img src="./docs/asset/maketheme1.png" width = 400><img src="./docs/asset/maketheme2.png" width = 400>
 <img src="./docs/asset/maketheme3.png" width = 400><img src="./docs/asset/maketheme4.png" width = 400>
+
+
+
+
+### 3. 검색 화면
+
+하나의 검색어로 테마, 문장, 큐레이터 검색 가능. 최근 키워드와 추천 키워드 제공
+
+
+
+### 4. 큐레이터 화면
+
+큐레이터 리스트를 보여주고, 추천 큐레이터도 보여줌. 큐레이터를 누르면 큐레이터 상세 뷰를 보여줌.
+
+
+### 5. 내 서재 화면
+
+저장한/작성한 테마,문장,큐레이터를 보여줌.
+
+
+
+
+
+
+
 
 
 ### 검색
@@ -190,7 +217,7 @@
       }
       
 
-<img src="./docs/asset/writesentenceAnim.gif" width = 200>
+<img src="./docs/asset/writesentenceAnim.gif" width = 300>
 
 
 
