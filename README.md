@@ -24,7 +24,7 @@
 ### 스플래시
 스플래시 애니메이션 이후 로그인 화면으로 넘어감
 
-<img src="./docs/asset/loginAnim.gif" width = 400>
+<img src="./docs/asset/splashAnim.gif" width = 400>
 
 
 ### 1-1. 로그인
@@ -55,7 +55,9 @@
 <img src="./docs/asset/writesentence7.png" width = 400><img src="./docs/asset/writesentence8.png" width = 400>
 
 ### x. 테마 만들기 화면
+
 테마 만들기. 테마 생성 직전 팝업을 보여줌.
+
 <img src="./docs/asset/maketheme1.png" width = 400><img src="./docs/asset/maketheme2.png" width = 400>
 <img src="./docs/asset/maketheme3.png" width = 400><img src="./docs/asset/maketheme4.png" width = 400>
 
