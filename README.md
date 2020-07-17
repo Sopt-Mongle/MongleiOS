@@ -2,6 +2,20 @@
 
 ![](./docs/asset/monglelogo.png)
 
+<br><br>
+
+```
+📌 책도 가볍게 즐길 수 없을까?
+
+📌 책 속에 담겨있는 짧지만 강렬한 문장들은 우리에게 영감을 주기도 하고, 마음 속 커다란 울림을 주기도 합니다.
+
+📌 몽글은 문장들에 호기심이 많고 감수성이 뛰어난 이들에게 새로운 문장공유 경험을 제공합니다.
+
+📌 우리가 만드는 문장 큐레이션 플랫폼
+```
+
+<br>
+
 ## Team Mongle-iOS 👨🏻‍💻🧑🏻‍💻👩🏻‍💻
 
 <img src="./docs/asset/mongles.png" width = 300>
@@ -163,6 +177,8 @@
 서브 기능을 하는 버튼이 나타나야 함. 따라서 SnapKit을 활용해 버튼의 레이아웃을 잡고,  애니메이션을 통해 버튼의 회전을 
 구현함. 이 버튼의 핵심 기능의 function은 아래와 같음.
 
+```swift
+
     private func showSubMenus(){
            UIView.animate(withDuration: 0.25 , delay: 0, options: [.curveEaseIn], animations: {
                self.plusButton.transform = CGAffineTransform(rotationAngle: .pi/4)
@@ -177,12 +193,16 @@
            
            
        }
+
+```
        
 
 #### 배운 점
 이 하단 탭바를 앱잼 초기에 구현했는데, 이 때 SnapKit과 Then, animation에 대해서 전반적으로 이해할 수 있었음.
 특히 animation을 잘 이해하고 재미를 붙이게 되어서 이후 다양한 구현에 애니메이션을 수월하게 사용할 수 있었음.
 예시로, 문장 쓰기 뷰에서 progress bar 애니메이션을 다음과 같이 구현할 수 있었음.
+
+```swift
 
     func ballAppearAnimation(){
            UIView.animate(withDuration: 0.5 , delay: 0.25, options: [.curveEaseIn], animations: {
@@ -216,6 +236,8 @@
           
       }
       
+```
+
 
 <img src="./docs/asset/writesentenceAnim.gif" width = 300>
 
@@ -233,8 +255,12 @@ SnapKit과 Then을 통해 수월하게 auto layout을 잡을 수 있었으나, �
 #### 배운 점
 
 해당 문제를 해결하기 위해 다음과 같은 상수를 사용했음.
+```swift
 
      let deviceBound = UIScreen.main.bounds.height/812.0
+     
+```
+     
 
 SnapKit을 이용해 코드로 잡아준 Layout은 주로 기기의 height 차이에 의해 발생하는데, 이를 해결하기 위해 위의 상수를
 layout constant에 곱해주어 다른 기기에서 알맞게 작용하게 적용했음.
@@ -248,6 +274,8 @@ layout constant에 곱해주어 다른 기기에서 알맞게 작용하게 적�
 문제가 되었던 데이터 구조는 아래와 같음. 잘 되던 통신이 갑자기 되지 않아 당황하고 한참 이유를 찾았는데,
 알고보니 문장 작성에서 '테마 없는 문장'을 선택하고 post하고 난 뒤  테마를 서버에서 get할 때,  writerImg가 nil로
 들어와서 에러가 나는 상황이었음.
+
+```swift
 
     struct ThemeSelectForWriteData : Codable {
         
@@ -272,15 +300,17 @@ layout constant에 곱해주어 다른 기기에서 알맞게 작용하게 적�
            let alreadyBookmarked: Bool
         
        }
+       
+```
 
 
 
 #### 배운 점 
 
 
-서버와의 통신 과정에서 optional 처리가 매우 중요하다는 것을 알게 되었다. 이후에 비슷한 에러를 수차례 만나게 되었고,
-처음 이 에러에 직면했을 때엔 해결하는 데 많은 시간이 걸렸지만 이후에는 쉽게 해결할 수 있었다.
-이후에 nil 값이 들어올 수 있는 데이터는 optional 처리를 해주기로 했다.
+서버와의 통신 과정에서 optional 처리가 매우 중요하다는 것을 알게 되었음. 이후에 비슷한 에러를 수차례 만나게 되었고,
+처음 이 에러에 직면했을 때엔 해결하는 데 많은 시간이 걸렸지만 이후에는 쉽게 해결할 수 있었음.
+이후에 nil 값이 들어올 수 있는 데이터는 optional 처리를 해주기로 함.
 
 
 
