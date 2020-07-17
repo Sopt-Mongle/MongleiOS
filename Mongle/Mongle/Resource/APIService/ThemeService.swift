@@ -108,4 +108,50 @@ struct ThemeService {
             return .networkFail
         }
     }
+    
+    func getNoThemeSentenceInfo(completion: @escaping ((NetworkResult<Any>) -> Void)) {
+        let token = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue)!
+        
+        let header: HTTPHeaders = [
+            "Content-Type":"application/json",
+            "token":token
+        ]
+        
+        Alamofire.request(APIConstants.postEmptySentenceURL,
+                          method: .get,
+                          parameters: nil,
+                          encoding: JSONEncoding.default,
+                          headers: header).responseData { response in
+                            switch response.result {
+                            case .success:
+                                guard let statusCode = response.response?.statusCode else {
+                                    return
+                                }
+                                guard let data = response.value else {
+                                    return
+                                }
+                                completion(self.judegeNoThemeSentence(status: statusCode, data: data))
+                            case .failure(let err):
+                                print(err)
+                                completion(.networkFail)
+                            }
+        }
+    }
+    
+    private func judegeNoThemeSentence(status: Int, data: Data) -> NetworkResult<Any>{
+        let decoder = JSONDecoder()
+        guard let decodedData = try? decoder.decode(GenericResponse<NoThemeData>.self, from: data) else {
+            return .pathErr
+        }
+        switch status {
+        case 200:
+            return .success(decodedData.data)
+        case 400..<500:
+            return .requestErr(decodedData.message)
+        case 600:
+            return .serverErr
+        default:
+            return .networkFail
+        }
+    }
 }

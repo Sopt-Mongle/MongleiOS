@@ -45,6 +45,8 @@
 		7FA8C4B524C101E000317F43 /* SentenceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA8C4B424C101E000317F43 /* SentenceData.swift */; };
 		7FA8C4B724C1753A00317F43 /* SentenceLikeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA8C4B624C1753A00317F43 /* SentenceLikeData.swift */; };
 		7FA8C4B924C17C5100317F43 /* SentenceBookmarkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA8C4B824C17C5100317F43 /* SentenceBookmarkData.swift */; };
+		7FA8C4BB24C19FFD00317F43 /* NoThemeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA8C4BA24C19FFD00317F43 /* NoThemeData.swift */; };
+		7FA8C4BD24C1BFB000317F43 /* NoThemeSentenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA8C4BC24C1BFB000317F43 /* NoThemeSentenceService.swift */; };
 		7FB4203324BCA2FC00294314 /* MySetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FB4203224BCA2FB00294314 /* MySetting.storyboard */; };
 		7FB4203524BCA92900294314 /* MySettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB4203424BCA92900294314 /* MySettingVC.swift */; };
 		7FB4203724BCAD2200294314 /* SettingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB4203624BCAD2200294314 /* SettingTVC.swift */; };
@@ -203,6 +205,8 @@
 		7FA8C4B424C101E000317F43 /* SentenceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceData.swift; sourceTree = "<group>"; };
 		7FA8C4B624C1753A00317F43 /* SentenceLikeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceLikeData.swift; sourceTree = "<group>"; };
 		7FA8C4B824C17C5100317F43 /* SentenceBookmarkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceBookmarkData.swift; sourceTree = "<group>"; };
+		7FA8C4BA24C19FFD00317F43 /* NoThemeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoThemeData.swift; sourceTree = "<group>"; };
+		7FA8C4BC24C1BFB000317F43 /* NoThemeSentenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoThemeSentenceService.swift; sourceTree = "<group>"; };
 		7FB4203224BCA2FB00294314 /* MySetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MySetting.storyboard; sourceTree = "<group>"; };
 		7FB4203424BCA92900294314 /* MySettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingVC.swift; sourceTree = "<group>"; };
 		7FB4203624BCAD2200294314 /* SettingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVC.swift; sourceTree = "<group>"; };
@@ -460,6 +464,7 @@
 				EC759C5124C03C77001D2F81 /* SearchThemeService.swift */,
 				7FA8C4AC24C0C64F00317F43 /* ThemeService.swift */,
 				7FA8C4B224C0FB5C00317F43 /* SentenceService.swift */,
+				7FA8C4BC24C1BFB000317F43 /* NoThemeSentenceService.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -492,6 +497,7 @@
 				7FA8C4B024C0EFB900317F43 /* ThemeBookmarkData.swift */,
 				7FA8C4B624C1753A00317F43 /* SentenceLikeData.swift */,
 				7FA8C4B824C17C5100317F43 /* SentenceBookmarkData.swift */,
+				7FA8C4BA24C19FFD00317F43 /* NoThemeData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -785,6 +791,7 @@
 				7F6ABEDB24ADED910040746E /* GenericResponse.swift in Sources */,
 				7F6ABED724ADEB730040746E /* UserDefaultKeys.swift in Sources */,
 				B8E2E14124BE15F300595752 /* CuratorTabInfoSentenceVC.swift in Sources */,
+				7FA8C4BB24C19FFD00317F43 /* NoThemeData.swift in Sources */,
 				7F7C097124BA2EE7007C7C52 /* SentenceInfoTVC.swift in Sources */,
 				EC6B709724BD762A00151A3B /* SignUpVC.swift in Sources */,
 				7F1E719924B45AB600D79516 /* MainPopularCuratorCVC.swift in Sources */,
@@ -845,6 +852,7 @@
 				7F6ABED124ADE9860040746E /* UIView+Extensions.swift in Sources */,
 				B8B48AE524B9847500551F5B /* SearchResultSentenceTVC.swift in Sources */,
 				7FFEA26624BE1B54003D381A /* AppInfoVC.swift in Sources */,
+				7FA8C4BD24C1BFB000317F43 /* NoThemeSentenceService.swift in Sources */,
 				EC759C3824BEB7C3001D2F81 /* SignUpService.swift in Sources */,
 				B8B48ADB24B762A000551F5B /* SearchResultMenuCVC.swift in Sources */,
 				EC759C4E24C0272A001D2F81 /* ThemeSelectForWriteService.swift in Sources */,

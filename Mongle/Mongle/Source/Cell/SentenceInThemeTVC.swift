@@ -23,6 +23,7 @@ class SentenceInThemeTVC: UITableViewCell {
     
     @IBOutlet var likeImageView: UIImageView!
     @IBOutlet var bookmarkImageView: UIImageView!
+    @IBOutlet var likeAndBookmarkCountStackview: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,7 +45,12 @@ class SentenceInThemeTVC: UITableViewCell {
         self.bookNameLabel.text = bookName
         self.likeCountLabel.text = "\(likeCount)"
         self.bookmarkCountLabel.text = "\(bookMarkCount)"
-        
+//        self.likeAndBookmarkCountStackview.isHidden = false
     }
-
+    
+    func setNoThemeData(sentence: String, bookName: String){
+        self.sentenceLabel.text = sentence
+        self.bookNameLabel.text = bookName
+        self.likeAndBookmarkCountStackview.isHidden = true
+    }
 }

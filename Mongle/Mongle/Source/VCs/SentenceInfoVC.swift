@@ -279,7 +279,7 @@ extension SentenceInfoVC: UITableViewDelegate {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 144))
             
             
-            var imageView = UIImageView(image: self.themeImage)
+            var imageView = UIImageView(image: UIImage(named: "curatorImgTheme1"))
             
             let backButton = UIButton().then {
                 $0.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
@@ -473,7 +473,7 @@ extension SentenceInfoVC: UITableViewDataSource {
             let otherSentnece = self.otherSentences[indexPath.row]
 
             cell.setData(sentence: otherSentnece.sentence,
-                         bookName: otherSentnece.title,
+                         bookName: otherSentnece.title ?? "",
                          likeCount: otherSentnece.likes,
                          bookMarkCount: otherSentnece.saves)
             return cell
