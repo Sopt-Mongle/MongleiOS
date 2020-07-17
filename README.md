@@ -30,6 +30,7 @@
 ## 실행 화면 캡쳐
 
 ### 1. 로그인 / 회원가입
+![] (LogInAnimation.gif)
 
 <img src="./docs/asset/yjthema.png" width = 300><img src="./docs/asset/yjthema2.png" width = 300>
 
