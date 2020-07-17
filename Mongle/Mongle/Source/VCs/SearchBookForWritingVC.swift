@@ -82,8 +82,7 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
     var bookSendDelegate : BookSearchDataDelegate?
     var bookInformations : [Book] = []
     
-   
-    
+    let deviceBound = UIScreen.main.bounds.height/812.0
     
     
     
@@ -277,22 +276,29 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
         self.view.addSubview(emptyImageView)
         self.view.addSubview(emptyLabel1)
         self.view.addSubview(emptyLabel2)
+        var constant = 0.0
+        if deviceBound < 1 {
+            constant = Double(deviceBound) * 125
+        }
+        
         
         emptyImageView.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(372)
-            $0.leading.equalToSuperview().offset(155)
+            $0.top.equalToSuperview().offset(372-constant)
+            $0.centerX.equalToSuperview()
             $0.width.equalTo(65)
             $0.height.equalTo(70)
         }
         emptyLabel1.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(457)
-            $0.leading.equalToSuperview().offset(121)
+            $0.top.equalToSuperview().offset(457-constant)
+            $0.centerX.equalToSuperview()
         }
         
         emptyLabel2.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(482)
+            $0.top.equalToSuperview().offset(482 - constant)
             $0.leading.equalToSuperview().offset(117)
         }
+        emptyLabel1.font = emptyLabel1.font.withSize(16)
+        emptyLabel2.font = emptyLabel2.font.withSize(13)
         firstLabel.alpha = 0
         secondLabel.alpha = 0
         smallCircle.alpha = 0
@@ -346,8 +352,19 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
     
         textQuantityLabel.text = String(searchTextField.text!.count)+"/40"
         partialGreenColor2()
+        containView.setBorder(borderColor: .softGreen, borderWidth: 1.0)
     }
 
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        containView.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+    }
+    
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        containView.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
+    }
+    
+    
     
    
     func partialGreenColor2(){

@@ -34,12 +34,14 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
     override func awakeFromNib() {
         themeImageView.image = UIImage(named: "mainImgTheme2")?.withRenderingMode(.alwaysOriginal)
         themeTitleLabel.text = "가나다라마"
-        themeImageView.contentMode = .scaleAspectFill
+        checkImageView.contentMode = .scaleAspectFit
+//        themeImageView.contentMode = .scaleAspectFill
         
     }
     
     //MARK:- User Define Functions
     func setItems(_ theme : ThemeForSentence, _ searchKeyWord : String, _ shouldBeChecked : Bool, isFirst :  Bool){
+        
         if theme.state == true
         {
             if isFirst == true {
@@ -55,7 +57,7 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
             //            themeImageView.image = UIImage(named: "writingSentenceTheme3ImgThemeX")
             themeTitleLabel.text = theme.themeTitle
             themeTitleLabel.textColor = .white
-            checkImageView.image = UIImage(named: "writingTheme3ImgCheck")
+            checkImageView.image = UIImage(named: "writingSentenceTheme3ImgSelect")
             checkImageView.alpha = 0
             
             
@@ -91,7 +93,7 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
 //            themeTitleLabel.textAlignment = .center
             
 //            topContraint.constant = 74
-            checkImageView.image = UIImage(named: "writingTheme3ImgCheck")
+            checkImageView.image = UIImage(named: "writingSentenceTheme3ImgSelect")
             checkImageView.alpha = 0
             if shouldBeChecked {
                 checkImageView.alpha = 1

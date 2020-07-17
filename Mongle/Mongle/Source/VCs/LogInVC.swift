@@ -43,7 +43,8 @@ class LogInVC: UIViewController {
     
     
    
-    
+    let deviceBound = UIScreen.main.bounds.height/812.0
+
     let alertView = UIView().then {
         $0.backgroundColor = .clear
         
@@ -90,7 +91,6 @@ class LogInVC: UIViewController {
         
     }
     var runCount = 0
-    
     
     //MARK:- LifeCycle Methods
 
@@ -393,15 +393,20 @@ class LogInVC: UIViewController {
         alertView.addSubview(alertButton1)
         alertView.addSubview(alertButton2)
         
+        alertLabel1.font = alertLabel1.font.withSize(15*sqrt(deviceBound))
+        alertLabel2.font = alertLabel2.font.withSize(13*sqrt(deviceBound))
+        alertButton1.makeRounded(cornerRadius: 19*sqrt(deviceBound))
+        alertButton2.makeRounded(cornerRadius: 19*sqrt(deviceBound))
+        
         blurView.snp.makeConstraints{
             $0.top.bottom.leading.trailing.equalToSuperview()
             
         }
         alertView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(290)
-            $0.leading.equalToSuperview().offset(36)
-            $0.trailing.equalToSuperview().offset(-35)
-            $0.bottom.equalToSuperview().offset(-289)
+            $0.top.equalToSuperview().offset(290*deviceBound)
+            $0.leading.equalToSuperview().offset(36/deviceBound)
+            $0.trailing.equalToSuperview().offset(-35/deviceBound)
+            $0.bottom.equalToSuperview().offset(-289*deviceBound)
             
             
         }
@@ -410,26 +415,28 @@ class LogInVC: UIViewController {
             
         }
         alertLabel1.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(84)
-            $0.leading.equalToSuperview().offset(56)
+            $0.top.equalToSuperview().offset(84*deviceBound)
+            $0.centerX.equalToSuperview()
+//            $0.leading.equalToSuperview().offset(56*deviceBound)
             
         }
         alertLabel2.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(112)
-            $0.leading.equalToSuperview().offset(88)
+            $0.top.equalToSuperview().offset(112*deviceBound)
+//            $0.leading.equalToSuperview().offset(88*deviceBound)
+            $0.centerX.equalToSuperview()
         }
         
         alertButton1.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(171)
-            $0.leading.equalToSuperview().offset(20)
-            $0.width.equalTo(127)
-            $0.height.equalTo(37)
+            $0.top.equalToSuperview().offset(171*deviceBound)
+            $0.leading.equalToSuperview().offset(20/deviceBound)
+            $0.width.equalTo(127*sqrt(deviceBound))
+            $0.height.equalTo(37*sqrt(deviceBound))
         }
         alertButton2.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(171)
-            $0.leading.equalToSuperview().offset(161)
-            $0.width.equalTo(127)
-            $0.height.equalTo(37)
+            $0.top.equalToSuperview().offset(171*deviceBound)
+            $0.trailing.equalToSuperview().offset(-16/(deviceBound))
+            $0.width.equalTo(127*sqrt(deviceBound))
+            $0.height.equalTo(37*sqrt(deviceBound))
         }
         
         

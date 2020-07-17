@@ -301,8 +301,8 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
         popupView.snp.makeConstraints{
             $0.top.equalToSuperview().offset(233*deviceBound)
-            $0.leading.equalToSuperview().offset(36)
-            $0.trailing.equalToSuperview().offset(-35)
+            $0.leading.equalToSuperview().offset(36/deviceBound)
+            $0.trailing.equalToSuperview().offset(-35/deviceBound)
             $0.height.equalTo(350*deviceBound)
             $0.bottom.equalToSuperview().offset(-229.2*deviceBound)
             
@@ -357,8 +357,8 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
         yesButton.snp.makeConstraints{
             $0.top.equalToSuperview().offset(288*deviceBound)
-            $0.leading.equalToSuperview().offset(20)
-            $0.width.equalTo(127)
+            $0.leading.equalToSuperview().offset(20/deviceBound)
+            $0.width.equalTo(127*deviceBound)
             $0.height.equalTo(37)
             
         }
@@ -368,9 +368,9 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         
         
         noButton.snp.makeConstraints{
-            $0.trailing.equalToSuperview().offset(-16)
+            $0.trailing.equalToSuperview().offset(-16/deviceBound)
             $0.top.equalToSuperview().offset(288*deviceBound)
-            $0.width.equalTo(127)
+            $0.width.equalTo(127*deviceBound)
             $0.height.equalTo(37)
         }
          noButton.makeRounded(cornerRadius: 17)

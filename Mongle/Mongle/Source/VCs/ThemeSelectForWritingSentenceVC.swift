@@ -10,7 +10,7 @@ import UIKit
 import Then
 import SnapKit
 
-class ThemeSelectForWritingSentenceVC: UIViewController {
+class ThemeSelectForWritingSentenceVC: UIViewController, UITextFieldDelegate {
     
     //MARK:- IBOutlet
     @IBOutlet weak var backButton: UIButton!
@@ -69,6 +69,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
     
     var shouldBeHidden : Bool = false
     var searched : Bool = false
+    let deviceBound = UIScreen.main.bounds.height/812.0
     
     //MARK:- LifeCycleMethods
     override func viewDidLoad() {
@@ -81,6 +82,8 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         setThemes()
         themeCollectionView.dataSource = self
         themeCollectionView.delegate = self
+        themeTextField.delegate = self
+        themeTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
         
         
@@ -107,6 +110,8 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         
         themeTextField.placeholder = "테마를 검색해주세요"
         themeTextField.addLeftPadding(left: 10)
+        themeTextField.makeRounded(cornerRadius: 10)
+        themeTextField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
         
         blurView.image = UIImage(named: "writingSentenceTheme2BoxBlur")?.withRenderingMode(.alwaysOriginal)
         
@@ -130,19 +135,25 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         self.view.addSubview(emptyLabel1)
         self.view.addSubview(emptyLabel2)
         
+        var constant = 0.0
+        
+        if deviceBound < 1{
+            constant = Double(deviceBound) * 125
+        }
+        
         emptyImageView.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(372)
+            $0.top.equalToSuperview().offset(372 - constant)
             $0.leading.equalToSuperview().offset(155)
             $0.width.equalTo(65)
             $0.height.equalTo(70)
         }
         emptyLabel1.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(457)
+            $0.top.equalToSuperview().offset(457-constant)
             $0.leading.equalToSuperview().offset(121)
         }
         
         emptyLabel2.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(482)
+            $0.top.equalToSuperview().offset(482-constant)
             $0.leading.equalToSuperview().offset(117)
         }
         hideWarning()
@@ -243,6 +254,24 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
         
         
     }
+    
+    
+    @objc func textFieldDidChange(){
+        themeTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+    
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+    }
+    
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
+    }
+    
+    
+    
     func partialGreenColor(textField : UITextField, keyword : String){
         
         guard let text = textField.text else {
@@ -283,7 +312,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController {
                     
                 }
                 
-                self.resultQuantityLabel.text! = "총" + String(self.themesBySearch.count) + "건"
+                self.resultQuantityLabel.text! = "총 " + String(self.themesBySearch.count) + "건"
                 self.resultQuantityLabel.alpha = 1
                 if themesbysearch.count == 0{
                     self.showEmpty()
@@ -491,7 +520,7 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
                 let tmpTheme = themesBySearch[indexPath.item]
                 let input = ThemeForSentence(imgName: tmpTheme.themeImg, themeTitle: tmpTheme.theme, state: check)
                 themeCell.setItems(input, self.themeTextField.text!,check,isFirst:  false)
-                themeCell.makeRounded(cornerRadius: 22)
+                themeCell.makeRounded(cornerRadius: 0)
             }
                 
             else {
@@ -503,7 +532,7 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
                 
                 print(themes[indexPath.item].theme)
                 themeCell.setItems(input, self.themeTextField.text!,check, isFirst: themes[indexPath.item].themeIdx == 0)
-                themeCell.makeRounded(cornerRadius: 22)
+                themeCell.makeRounded(cornerRadius: 0)
                 
             }
             
