@@ -115,6 +115,9 @@
 
 
 ## 기능 소개
+
+<div align = 'center'>
+
 |담당자|화면|기능 설명| 우선순위| 구현 여부 | 
 |:---:|:---:|:-------:|:---:|:---:|
 |이주혁|메인 화면 | 메인 화면 구조 만들기 |0순위| O | 
@@ -150,6 +153,8 @@
 || | 책 검색 : Open API 사용|0순위| O| 
 || | 문장을 추가할 테마 선택 기능|0순위| O| 
 
+
+</div>
 
 
 
@@ -239,8 +244,7 @@
 ```
 
 
-<img src="./docs/asset/writesentenceAnim.gif" width = 300>
-
+<div align="right" style="display:flex;"><img src="./docs/asset/writesentenceAnim.gif" width = "30%"></div>
 
 
 
