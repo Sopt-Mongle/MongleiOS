@@ -30,7 +30,7 @@
 ## 실행 화면 캡쳐
 
 ### 1. 로그인 / 회원가입
-<img src="./docs/asset/LogInAnimation.gif" width = 300>
+<img src="./docs/asset/loginAnim.gif" width = 300>
 
 
 <img src="./docs/asset/yjthema.png" width = 300><img src="./docs/asset/yjthema2.png" width = 300>
@@ -46,6 +46,15 @@
 ### 큐레이터 리스트
 
 <img src="./docs/asset/yscur.png" width = 300>
+
+
+
+## 기능 소개
+|화면|분류|기능 설명| 우선순위| 구현 여부
+|---|---|-------|---|---|
+|스플래시|스플래시|앱 실행 시 애니메이션 실행|1순위| O
+
+
 
 ## 📝 [Coding Convention Rule](./docs/CodingConventionRule.md)
 
