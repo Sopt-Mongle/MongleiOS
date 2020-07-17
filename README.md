@@ -37,14 +37,13 @@
 
 ### 2. 메인 화면
 
-<img src="./docs/asset/jhmain1.png" width = 300><img src="./docs/asset/jhmain2.png" width = 300>
 
 
 
 
 ### x. 문장 쓰기 화면
 <img src="./docs/asset/writesentence1.png" width = 400><img src="./docs/asset/writesentence2.png" width = 400>
-<img src="./docs/asset/writesentence3.png" width = 400><img src="./docs/asset/writesentence4.png" width = 400>
+<img src="./docs/asset/writesentence3.png" width = 400><img src="./docs/asset/ritesentence4.png" width = 400>
 <img src="./docs/asset/writesentence5.png" width = 400><img src="./docs/asset/writesentence6.png" width = 400>
 <img src="./docs/asset/writesentence7.png" width = 400><img src="./docs/asset/writesentence8.png" width = 400>
 
@@ -55,11 +54,10 @@
 
 ### 검색
 
-<img src="./docs/asset/yssearch.png" width = 300>
 
 ### 큐레이터 리스트
 
-<img src="./docs/asset/yscur.png" width = 300>
+
 
 
 
@@ -144,6 +142,18 @@ layout constant에 곱해주어 다른 기기에서 알맞게 작용하게 적�
 ## 📝 [Coding Convention Rule](./docs/CodingConventionRule.md)
 
 ## 🤝 [Team Rule](./docs/TeamRule.md)
+
+
+## People
+
+### 이주혁
+빛 아요 리드개발자 . 차기 아요 팟장
+
+### 이예슬
+
+### 김윤재 
+
+
 
 ## Dependencies
 
