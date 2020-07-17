@@ -60,6 +60,7 @@ class CuratorTabInfoVC: UIViewController {
         sentenceMenuBTN.setTitleColor(.softGreen, for: .normal)
         sentenceMenuLabel.textColor = .softGreen
     }
+    
     //MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,9 +69,16 @@ class CuratorTabInfoVC: UIViewController {
         subscribeBTN.setTitleColor(UIColor(red:181/255,green:181/255,blue:181/255, alpha:1.0), for: .selected)
         subscribeBTN.setTitle("구독",for: .normal)
         subscribeBTN.setTitleColor(.white, for: .normal)
+        curatorImageView.contentMode = .scaleAspectFill
         
     }
     override func viewWillAppear(_ animated: Bool){
+        getCuratorData()
+        setSubscribeBTN()
+        setMenu()
+        self.curatorImageView.makeRounded(cornerRadius: self.curatorImageView.frame.width/2)
+    }
+    func getCuratorData(){
         CuratorInfoService.shared.getCuratorInfo(curatorIdx: self.curatorIdx){ networkResult in
             switch networkResult {
             case .success(let curatorInfo):
@@ -94,6 +102,7 @@ class CuratorTabInfoVC: UIViewController {
                     self.subscribeBTN.backgroundColor = .softGreen
                 }
                 print("큐레이터 정보: \(data)개")
+                self.pageInstance?.curatorData = self.curatorData
                 DispatchQueue.main.async {
                     //self.pageInstance.reloadData()
                     //                        if self.themeList.count == 0{
@@ -122,12 +131,7 @@ class CuratorTabInfoVC: UIViewController {
             
             
         }
-        
-        setSubscribeBTN()
-        setMenu()
-        self.curatorImageView.makeRounded(cornerRadius: self.curatorImageView.frame.width/2)
     }
-    
     override func viewWillDisappear(_ animated: Bool) {
         observingList.forEach { $0.invalidate() }
     }
@@ -135,6 +139,7 @@ class CuratorTabInfoVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pageSegue" {
             pageInstance = segue.destination as? CuratorTabInfoPageVC
+            //pageInstance!.curatorData = self.curatorData
             let ob = pageInstance?
                 .keyValue
                 .observe(\.curPresentViewIndex,

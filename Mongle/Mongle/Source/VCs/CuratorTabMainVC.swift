@@ -27,6 +27,7 @@ class CuratorTabMainVC: UIViewController {
         print(#function)
         print(sender.tag)
         keywordVC.selectedKeyword = keywordList[sender.tag]
+        keywordVC.keywordIdx = sender.tag + 1
         self.navigationController?.pushViewController(keywordVC, animated: true)
         
         
@@ -158,6 +159,7 @@ extension CuratorTabMainVC: UICollectionViewDelegate{
         guard let curatorInfoVC = UIStoryboard(name:"CuratorTabInfo",bundle:nil).instantiateViewController(identifier: "CuratorTabInfoVC") as? CuratorTabInfoVC else{
             return
         }
+        curatorInfoVC.curatorIdx = popularList[indexPath.item].curatorIdx
         self.navigationController?.pushViewController(curatorInfoVC, animated: true)
     }
     

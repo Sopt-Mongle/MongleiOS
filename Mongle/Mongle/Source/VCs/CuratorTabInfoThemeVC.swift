@@ -9,6 +9,7 @@
 import UIKit
 
 class CuratorTabInfoThemeVC: UIViewController {
+    var themeList :[CuratorTheme]=[]
     var searchKey:String = "번아웃"
     // MARK: - Outlet
     @IBOutlet weak var themeTableView: UITableView!
@@ -17,8 +18,11 @@ class CuratorTabInfoThemeVC: UIViewController {
         super.viewDidLoad()
         themeTableView.delegate = self
         themeTableView.dataSource = self
-        themeTableView.reloadData()
+        
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        themeTableView.reloadData()
     }
     
 

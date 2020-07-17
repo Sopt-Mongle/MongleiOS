@@ -72,7 +72,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0p-JM-B5C">
-                                                    <rect key="frame" x="105" y="74.666666666666671" width="31" height="14.333333333333329"/>
+                                                    <rect key="frame" x="105" y="74.666666666666671" width="140" height="14.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -111,6 +111,7 @@
                                                 <constraint firstItem="W8B-J8-hEM" firstAttribute="leading" secondItem="TkI-tQ-YSw" secondAttribute="leading" id="5vx-hR-f6N"/>
                                                 <constraint firstItem="GnB-aI-Jho" firstAttribute="top" secondItem="TkI-tQ-YSw" secondAttribute="top" constant="28" id="D46-Ia-PKG"/>
                                                 <constraint firstItem="BSG-QW-UI0" firstAttribute="leading" secondItem="lef-yV-mDn" secondAttribute="leading" id="Gfx-Hy-MD0"/>
+                                                <constraint firstItem="dVu-qR-hC6" firstAttribute="leading" secondItem="f0p-JM-B5C" secondAttribute="trailing" constant="10" id="Jwx-VO-0S3"/>
                                                 <constraint firstItem="lef-yV-mDn" firstAttribute="top" secondItem="TkI-tQ-YSw" secondAttribute="top" constant="30" id="RSL-q5-ZAw"/>
                                                 <constraint firstItem="f0p-JM-B5C" firstAttribute="top" secondItem="BSG-QW-UI0" secondAttribute="bottom" constant="8" id="Sre-gm-g2Y"/>
                                                 <constraint firstItem="GnB-aI-Jho" firstAttribute="leading" secondItem="TkI-tQ-YSw" secondAttribute="leading" constant="18" id="fAr-Ou-34z"/>

@@ -9,7 +9,7 @@
 import UIKit
 
 class CuratorTabInfoPageVC: UIPageViewController {
-
+    var curatorData :CuratorInfoData?
     var previousPage: UIViewController?
     var nextPage: UIViewController?
     var realNextPage: UIViewController?
@@ -28,12 +28,14 @@ class CuratorTabInfoPageVC: UIPageViewController {
             
             if id == "CuratorTabInfoThemeVC" {
                 let vc = self.storyboard?.instantiateViewController(identifier: $0 as! String) as! CuratorTabInfoThemeVC
+                //vc.themeList = curatorData!.theme
                 vc.searchKey = self.searchKey ?? ""
                 return vc
             }
             
             else{
                 let vc = self.storyboard?.instantiateViewController(identifier: $0 as! String) as! CuratorTabInfoSentenceVC
+                //vc.sentenceList = curatorData!.sentence
                 vc.searchKey = self.searchKey ?? ""
                 return vc
             }

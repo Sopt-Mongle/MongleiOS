@@ -330,8 +330,17 @@
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvi-wa-pa5">
                                                     <rect key="frame" x="16" y="90" width="11" height="11"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchResultSentenceIcCurator1" translatesAutoresizingMaskIntoConstraints="NO" id="gCj-kd-ZtQ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="11" height="11"/>
+                                                        </imageView>
+                                                    </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="gCj-kd-ZtQ" secondAttribute="bottom" id="0gU-9D-CYP"/>
+                                                        <constraint firstItem="gCj-kd-ZtQ" firstAttribute="top" secondItem="fvi-wa-pa5" secondAttribute="top" id="9Cl-BT-WGP"/>
+                                                        <constraint firstItem="gCj-kd-ZtQ" firstAttribute="leading" secondItem="fvi-wa-pa5" secondAttribute="leading" id="EbZ-P5-Xyx"/>
+                                                        <constraint firstAttribute="trailing" secondItem="gCj-kd-ZtQ" secondAttribute="trailing" id="Zl8-yc-oJY"/>
                                                         <constraint firstAttribute="width" constant="11" id="b0Z-hk-Ayn"/>
                                                         <constraint firstAttribute="height" constant="11" id="cbc-wr-CTG"/>
                                                     </constraints>
@@ -639,6 +648,7 @@
         <image name="mongleCharacters" width="75" height="78"/>
         <image name="searchBtnBack" width="10.333333015441895" height="18.666666030883789"/>
         <image name="searchBtnSearch" width="18" height="18"/>
+        <image name="searchResultSentenceIcCurator1" width="11" height="11"/>
         <image name="searchResultThemeEmptyImgMongle" width="86" height="67.333335876464844"/>
         <image name="themeIcSentenceBookmark" width="11" height="11"/>
     </resources>
