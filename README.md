@@ -116,7 +116,7 @@
 
 ## 기능 소개
 
-<div align = 'center'>
+<div align = 'center' div align="center" style="display:flex;">
 
 |담당자|화면|기능 설명| 우선순위| 구현 여부 | 
 |:---:|:---:|:-------:|:---:|:---:|
@@ -244,7 +244,7 @@
 ```
 
 
-<div align="right" style="display:flex;"><img src="./docs/asset/writesentenceAnim.gif" width = "30%"></div>
+<div align="center" style="display:flex;"><img src="./docs/asset/writesentenceAnim.gif" width = "30%"></div>
 
 
 
