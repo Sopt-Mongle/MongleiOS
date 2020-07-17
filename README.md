@@ -33,9 +33,15 @@
 <img src="./docs/asset/loginAnim.gif" width = 400>
 
 
-### 1. 로그인 / 회원가입
+### 1-1. 로그인
 <img src="./docs/asset/login1.png" width = 400><img src="./docs/asset/login2.png" width = 400>
 <img src="./docs/asset/login3.png" width = 400>
+
+### 1-2. 회원가입
+<img src="./docs/asset/signup1.png" width = 400><img src="./docs/asset/signup2.png" width = 400>
+<img src="./docs/asset/signup3.png" width = 400><img src="./docs/asset/signup4.png" width = 400>
+
+
 
 ### 메인 화면
 
