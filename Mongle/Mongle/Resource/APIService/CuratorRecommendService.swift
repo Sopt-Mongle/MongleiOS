@@ -1,5 +1,5 @@
 //
-//  CuratorInfoService.swift
+//  CuratorRecommendService.swift
 //  Mongle
 //
 //  Created by 이예슬 on 7/17/20.
@@ -9,12 +9,12 @@
 import Foundation
 import Alamofire
 
-struct CuratorInfoService {
-    static let shared = CuratorInfoService()
+struct CuratorRecommendService {
+    static let shared = CuratorRecommendService()
     
-    func getCuratorInfo(curatorIdx : Int, completion : @escaping (NetworkResult<Any>) -> Void) {
-        let header : HTTPHeaders = ["Content-Type" : "application/json","token" : UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue)!]
-        let dataRequest = Alamofire.request(APIConstants.curatorURL+"/\(curatorIdx)",
+    func getRecommend(completion : @escaping (NetworkResult<Any>) -> Void) {
+        let header : HTTPHeaders = ["Content-Type" : "application/json"]
+        let dataRequest = Alamofire.request(APIConstants.curatorRecommendURL,
                                             method: .get,
                                             parameters: nil,
                                             encoding: URLEncoding.default,
@@ -47,7 +47,7 @@ struct CuratorInfoService {
     private func judge(by statusCode : Int , _ data : Data) -> NetworkResult<Any> {
         switch statusCode{
         case 200 :
-            return getCuratorData(by: data)
+            return getRecommendedCurator(by: data)
         case 400:
             return showErrorMessage(by : data)
         case 600 :
@@ -57,12 +57,13 @@ struct CuratorInfoService {
             
         }
         
+        
     }
     
-    private func getCuratorData(by data : Data) -> NetworkResult<Any> {
+    private func getRecommendedCurator(by data : Data) -> NetworkResult<Any> {
       
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<CuratorInfoData>.self, from: data)
+        guard let decodedData = try? decoder.decode(GenericResponse<[CuratorRecommendData]>.self, from: data)
             else { return .pathErr }
         
         
@@ -76,7 +77,7 @@ struct CuratorInfoService {
     
     private func showErrorMessage(by data : Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<CuratorInfoData>.self, from: data)
+        guard let decodedData = try? decoder.decode(GenericResponse<[CuratorRecommendData]>.self, from: data)
             else { return .pathErr }
         
         print(decodedData.message)

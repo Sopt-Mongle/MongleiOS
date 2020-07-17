@@ -85,6 +85,7 @@ extension SearchResultCuratorVC: UICollectionViewDelegate{
         guard let curatorInfoVC = UIStoryboard(name:"CuratorTabInfo",bundle:nil).instantiateViewController(identifier: "CuratorTabInfoVC") as? CuratorTabInfoVC else{
             return
         }
+        curatorInfoVC.curatorIdx = curatorList[indexPath.item].curatorIdx
         self.navigationController?.pushViewController(curatorInfoVC, animated: true)
     }
 }

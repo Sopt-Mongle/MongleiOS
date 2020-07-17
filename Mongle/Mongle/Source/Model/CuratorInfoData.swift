@@ -9,32 +9,33 @@
 import Foundation
 
 struct CuratorInfoData: Codable {
-    var profile: [Profile]
-    var theme: [Theme]
-    var sentence: [Sentence]
+    var profile: [CuratorProfile]
+    var theme: [CuratorTheme]
+    var sentence: [CuratorSentence]
 }
 
 // MARK: - Profile
-struct Profile: Codable {
-    var curatorIdx: Int
-    var name, img, keyword: String?
+struct CuratorProfile: Codable {
+    var curatorIdx,keywordIdx: Int
+    var name, img, keyword,introduce: String?
     var subscribe: Int
     var alreadySubscribed: Bool
 }
 
 // MARK: - Sentence
-struct Sentence: Codable {
+struct CuratorSentence: Codable {
     var sentenceIdx: Int
     var sentence: String
     var likes, saves: Int
     var writer, writerImg, title, author: String?
     var publisher, timestamp: String
     var alreadyLiked, alreadyBookmarked: Bool
+    var thumbnail:String?
 }
 
 // MARK: - Theme
-struct Theme: Codable {
-    var themeIdx: Int
+struct CuratorTheme: Codable {
+    var themeIdx,themeImgIdx: Int
     var theme, themeImg: String?
     var saves: Int
     var writer, writerImg: String?

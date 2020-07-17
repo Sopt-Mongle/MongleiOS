@@ -11,6 +11,7 @@ import UIKit
 class CuratorTabMainVC: UIViewController {
     
     var keywordList:[String] = ["감성자극","동기부여","자기계발","깊은생각","독서기록","일상문장"]
+    var popularList:[CuratorRecommendData] = []
     
     //MARK:- IBOutlet
     @IBOutlet weak var curatorTabTableView: UITableView!
@@ -29,6 +30,7 @@ class CuratorTabMainVC: UIViewController {
         
         
     }
+    //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,26 +46,47 @@ class CuratorTabMainVC: UIViewController {
             btn.tag = idx
             btn.backgroundColor = .white
             idx += 1
-//            btn.setBorder(borderColor: .brownGrey, borderWidth: 1)
-            //btn.backgroundColor = .white
-            
-            
-            
             
         }
-        // Do any additional setup after loading the view.
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        setRecommendedCurator()
     }
-    */
+    func setRecommendedCurator(){
+        CuratorRecommendService.shared.getRecommend(){ networkResult in
+            switch networkResult {
+            case .success(let recommend):
+                guard let data = recommend as? [CuratorRecommendData] else {
+                    return
+                }
+                
+                self.popularList = data
+                print("최근검색어: \(data)")
+                DispatchQueue.main.async {
+                    self.popularCollectionView.reloadData()
+                    
+                }
+                
+                
+            case .requestErr(let message):
+                
+                guard let message = message as? String else { return }
+                
+                self.showToast(text: message)
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+            
+        }
+        
+    }
 
 }
 
@@ -115,14 +138,14 @@ extension CuratorTabMainVC: UICollectionViewDelegateFlowLayout{
 }
 extension CuratorTabMainVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return popularList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainPopularCuratorCVC", for: indexPath) as? MainPopularCuratorCVC else{ return UICollectionViewCell() }
-        cell.profileNameLabel.text = "이예슬"
-//        cell.profileImageView.image = UIImage(named:"maengleCharacters")
-//        cell.profileImageView.backgroundColor = .yellow
+        cell.profileNameLabel.text = self.popularList[indexPath.item].name
+        cell.profileImageView.imageFromUrl(self.popularList[indexPath.item].img, defaultImgPath: "mongleCharacters")
+        cell.tagLabel.text = self.popularList[indexPath.item].keyword
         
         return cell
     }

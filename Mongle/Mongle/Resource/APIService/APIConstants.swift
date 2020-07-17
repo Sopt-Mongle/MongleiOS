@@ -25,5 +25,6 @@ struct APIConstants {
     static let searchSentenceURL = baseURL + "/search/sentence"
     static let searchCuratorURL = baseURL + "/search/curator"
     static let curatorURL = baseURL + "/curator"
+    static let curatorRecommendURL =  curatorURL + "/recommend"
     
 }

@@ -16,8 +16,9 @@ class MainPopularCuratorCVC: UICollectionViewCell {
     @IBOutlet var tagLabel: UILabel!
     
     override func awakeFromNib() {
-        profileImageView.backgroundColor = .blue
+    
         profileImageView.makeRounded(cornerRadius: profileImageView.frame.width / 2)
+        profileImageView.contentMode = .scaleAspectFill
     }
     
 }

@@ -21,13 +21,12 @@ class SearchTabResultVC: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     
     @IBAction func touchUpSearch(_ sender: Any) {
-        
-//        guard let themeVC = self.storyboard?.instantiateViewController(withIdentifier:
-//            "SearchResultThemeVC") as? SearchResultThemeVC else {
-//                return UIViewController()
-//        }
-//        themeVC.themeTableView.reloadData()
-//        self.pageInstance.view
+        searchKeyword = searchTextField.text!
+        guard let themeVC = self.storyboard?.instantiateViewController(withIdentifier:
+            "SearchResultThemeVC") as? SearchResultThemeVC else {
+                return
+        }
+        //themeVC.setSearchThemeData(searchKeyword)
         
     }
     @IBAction func touchUpBack(_ sender: Any) {
