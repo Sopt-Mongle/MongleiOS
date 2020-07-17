@@ -12,6 +12,9 @@
 
 ## 앱 아이콘
 
+<img src="./docs/asset/mongle_symbol.png" width = 300>
+
+
 ## Work-Flow
 
 ## 기능
@@ -51,4 +54,9 @@ pod 'Alamofire', '~> 4.8.2'
 pod 'Kingfisher', '~> 5.0'
 pod 'SnapKit', '~> 5.0.0'
 pod 'Then'`
+pod 'Hero'
+pod 'lottie-ios'
+pod 'Gifu'
+
+
 ```
