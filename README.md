@@ -348,3 +348,5 @@ pod 'Gifu'
 
 
 ```
+
+<div align="right" style="display:flex;"><img src="https://user-images.githubusercontent.com/41534832/87791813-df3cea80-c87d-11ea-9740-f96e155e171f.jpg" width = "30%"></div>
