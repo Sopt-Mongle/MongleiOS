@@ -12,7 +12,7 @@
 
 ## 앱 아이콘
 
-<img src="./docs/asset/mongle_symbol.png" width = 300>
+<img src="./docs/asset/mongle_symbol.png" width = 200>
 
 
 ## Work-Flow
@@ -27,7 +27,9 @@
 
 <img src="./docs/asset/yjtab.png" width = 300><img src="./docs/asset/yjtab2.png" width = 300>
 
-## 테마 만들기
+## 실행 화면 캡쳐
+
+### 1. 로그인 / 회원가입
 
 <img src="./docs/asset/yjthema.png" width = 300><img src="./docs/asset/yjthema2.png" width = 300>
 
