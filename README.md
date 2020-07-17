@@ -2,7 +2,6 @@
 
 ![](./docs/asset/monglelogo.png)
 
-<br><br>
 
 ```
 📌 책도 가볍게 즐길 수 없을까?
@@ -101,7 +100,6 @@
 
 ## 기능 소개
 
-<center>
 
 |담당자|화면|기능 설명| 우선순위| 구현 여부 | 
 |:---:|:---:|:-------:|:---:|:---:|
@@ -139,7 +137,6 @@
 || | 문장을 추가할 테마 선택 기능|0순위| O| 
 
 
-</center>
 
 
 
@@ -302,8 +299,57 @@ layout constant에 곱해주어 다른 기기에서 알맞게 작용하게 적�
 이후에 nil 값이 들어올 수 있는 데이터는 optional 처리를 해주기로 함.
 
 
+### 5. body 가 있는 get
+
+#### 어려운 점
+서버 통신 과정에서 API 문서에 get에 body가 있는 경우가 있었음. 서버와의 소통을 통해 body를 query 형식으로 
+바꿔 달라고 요청했고, 이를 통해 query를 이용해 통신할 수 있었음. 해당하는 서비스 코드는 다음과 같음. 
 
 
+```swift
+
+    static let shared = BookSearchForWritingService()
+      
+      private func makeParameter(_ title : String)-> Parameters{
+          return ["query" : title]
+      }
+      
+      func bookSearch(title : String, completion : @escaping (NetworkResult<Any>) -> Void){
+          let header : HTTPHeaders = ["Content-Type" : "application/json"]
+          
+          
+          let dataRequest = Alamofire.request(APIConstants.bookSearchForWritingURL,
+                                              method: .get,
+                                              parameters: makeParameter(title),
+                                              encoding: URLEncoding.default,
+              headers: header)
+          
+          
+          
+          dataRequest.responseData { dataResponse in
+              switch dataResponse.result {
+              case .success :
+                  
+                  guard let statusCode = dataResponse.response?.statusCode else {return}
+                  guard let data = dataResponse.value else {return}
+                  let networkResult = self.judge(by: statusCode, data)
+                  completion(networkResult)
+                  
+              case .failure(let err):
+                  print(err)
+                  completion(.networkFail)
+                  
+                  
+              }
+              
+              
+          }
+      }
+    
+```
+
+#### 배운 점 
+query string이라는 새로운 통신 방법을 배울 수 있었음. 
 
 
 
