@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sign Up EndVC-->
+        <scene sceneID="F39-Qr-kjg">
+            <objects>
+                <viewController storyboardIdentifier="SignUpEndVC" id="emW-am-rX3" customClass="SignUpEndVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2n9-5R-rvv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YEN-0f-AiQ">
+                                <rect key="frame" x="52" y="229" width="311" height="189"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="189" id="S2m-PN-KgC"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBe-vJ-3rI">
+                                <rect key="frame" x="71" y="589" width="272" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ocQ-uK-FX5"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="endButtonAction:" destination="emW-am-rX3" eventType="touchUpInside" id="rvG-4M-QYU"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="몽글즈가 되신 것을 환영해요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opD-4t-QVE">
+                                <rect key="frame" x="77" y="455" width="227" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="49k-sp-5KT">
+                                <rect key="frame" x="90" y="499" width="235" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="CA7-r5-7ky"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ce4-oq-Aco" firstAttribute="trailing" secondItem="XBe-vJ-3rI" secondAttribute="trailing" constant="71" id="0Qb-rh-q7k"/>
+                            <constraint firstItem="opD-4t-QVE" firstAttribute="top" secondItem="YEN-0f-AiQ" secondAttribute="bottom" constant="37" id="69r-gk-MjN"/>
+                            <constraint firstItem="49k-sp-5KT" firstAttribute="top" secondItem="opD-4t-QVE" secondAttribute="bottom" constant="20" id="6Kq-fW-YE2"/>
+                            <constraint firstItem="opD-4t-QVE" firstAttribute="leading" secondItem="Ce4-oq-Aco" secondAttribute="leading" constant="77" id="DAG-IP-eyu"/>
+                            <constraint firstItem="XBe-vJ-3rI" firstAttribute="leading" secondItem="Ce4-oq-Aco" secondAttribute="leading" constant="71" id="HFU-So-uen"/>
+                            <constraint firstItem="YEN-0f-AiQ" firstAttribute="top" secondItem="Ce4-oq-Aco" secondAttribute="top" constant="185" id="Ocd-K3-pyr"/>
+                            <constraint firstItem="49k-sp-5KT" firstAttribute="leading" secondItem="Ce4-oq-Aco" secondAttribute="leading" constant="90" id="T7b-dL-g1b"/>
+                            <constraint firstItem="Ce4-oq-Aco" firstAttribute="trailing" secondItem="YEN-0f-AiQ" secondAttribute="trailing" constant="51" id="ZDQ-JZ-Zet"/>
+                            <constraint firstItem="YEN-0f-AiQ" firstAttribute="leading" secondItem="Ce4-oq-Aco" secondAttribute="leading" constant="52" id="fdp-A8-0Y9"/>
+                            <constraint firstItem="XBe-vJ-3rI" firstAttribute="top" secondItem="49k-sp-5KT" secondAttribute="bottom" constant="50" id="kUo-3m-2nI"/>
+                            <constraint firstItem="Ce4-oq-Aco" firstAttribute="trailing" secondItem="49k-sp-5KT" secondAttribute="trailing" constant="89" id="m6Q-F6-oNU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ce4-oq-Aco"/>
+                    </view>
+                    <connections>
+                        <outlet property="endButton" destination="XBe-vJ-3rI" id="95V-Nq-sgk"/>
+                        <outlet property="endImageView" destination="YEN-0f-AiQ" id="5mh-dl-fud"/>
+                        <outlet property="firstLabel" destination="opD-4t-QVE" id="WrT-WF-q6e"/>
+                        <outlet property="labelImageView" destination="49k-sp-5KT" id="iGg-1Y-vFC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uVl-nl-Rcm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-55.072463768115945" y="43.526785714285715"/>
+        </scene>
+    </scenes>
+</document>
