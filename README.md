@@ -22,14 +22,18 @@
 ## 실행 화면 캡쳐
 
 ### 스플래시
+스플래시 애니메이션 이후 로그인 화면으로 넘어감
+
 <img src="./docs/asset/loginAnim.gif" width = 400>
 
 
 ### 1-1. 로그인
+키보드 나타날 때 화면이 위로 올라감. 올바르지 않은 입력 시 팝업창 나타남.
 <img src="./docs/asset/login1.png" width = 400><img src="./docs/asset/login2.png" width = 400>
 <img src="./docs/asset/login3.png" width = 400>
 
 ### 1-2. 회원가입
+모든 텍스트 필드에 올바른 형식의 입력이 들어와야 서버와 통신 가능, 그렇지 않으면 warning 보여줌.
 <img src="./docs/asset/signup1.png" width = 400><img src="./docs/asset/signup2.png" width = 400>
 <img src="./docs/asset/signup3.png" width = 400><img src="./docs/asset/signup4.png" width = 400>
 
@@ -43,13 +47,15 @@
 
 ### x. 문장 쓰기 화면
 
+문장 작성하는 플로우.  원이 불이 들어오는 애니메이션과 프로그레스 바가 진행되는 애니메이션으로 진척도를 나타냄.
 
 <img src="./docs/asset/writesentence1.png" width = 400><img src="./docs/asset/writesentence2.png" width = 400>
-<img src="./docs/asset/writesentence3.png" width = 400><img src="./docs/asset/ritesentence4.png" width = 400>
+<img src="./docs/asset/writesentence3.png" width = 400><img src="./docs/asset/writesentence4.png" width = 400>
 <img src="./docs/asset/writesentence5.png" width = 400><img src="./docs/asset/writesentence6.png" width = 400>
 <img src="./docs/asset/writesentence7.png" width = 400><img src="./docs/asset/writesentence8.png" width = 400>
 
 ### x. 테마 만들기 화면
+테마 만들기. 테마 생성 직전 팝업을 보여줌.
 <img src="./docs/asset/maketheme1.png" width = 400><img src="./docs/asset/maketheme2.png" width = 400>
 <img src="./docs/asset/maketheme3.png" width = 400><img src="./docs/asset/maketheme4.png" width = 400>
 
@@ -182,8 +188,7 @@
       }
       
 
-구현 화면
-<img src="./docs/asset/writesentenceAnim.gif" width = 400>
+<img src="./docs/asset/writesentenceAnim.gif" width = 200>
 
 
 
@@ -194,7 +199,7 @@
 
 #### 어려운 점
 SnapKit과 Then을 통해 수월하게 auto layout을 잡을 수 있었으나, 상수 값으로 layout을 잡을 떄 기기가 달라지면 비율이
-꺠지거나 위치가 너무 치우치는 상황이 발생했음. 
+깨지거나 위치가 너무 치우치는 상황이 발생했음. 
 
 #### 배운 점
 
