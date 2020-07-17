@@ -17,15 +17,7 @@
 
 ## Work-Flow
 
-## 기능
 
-### 탭바 커스텀
-
-<p align=>
-
-</p>
-
-<img src="./docs/asset/yjtab.png" width = 300><img src="./docs/asset/yjtab2.png" width = 300>
 
 ## 실행 화면 캡쳐
 
@@ -43,9 +35,22 @@
 
 
 
-### 메인 화면
+### 2. 메인 화면
 
 <img src="./docs/asset/jhmain1.png" width = 300><img src="./docs/asset/jhmain2.png" width = 300>
+
+
+
+
+### x. 문장 쓰기 화면
+<img src="./docs/asset/writesentenceflow.gif" width = 400>
+<p> <\p>
+<img src="./docs/asset/writesentence1.png" width = 400><img src="./docs/asset/writesentence2.png" width = 400>
+<img src="./docs/asset/writesentence3.png" width = 400><img src="./docs/asset/writesentence4.png" width = 400>
+<img src="./docs/asset/writesentence5.png" width = 400><img src="./docs/asset/writesentence6.png" width = 400>
+<img src="./docs/asset/writesentence7.png" width = 400><img src="./docs/asset/writesentence8.png" width = 400>
+
+
 
 ### 검색
 
