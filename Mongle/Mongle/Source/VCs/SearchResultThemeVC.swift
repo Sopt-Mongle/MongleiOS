@@ -114,6 +114,11 @@ extension SearchResultThemeVC: UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let themeVC = UIStoryboard(name:"ThemeInfo",bundle:nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else{
+            return
+        }
+        self.navigationController?.pushViewController(themeVC, animated: true)
     }
     
 }

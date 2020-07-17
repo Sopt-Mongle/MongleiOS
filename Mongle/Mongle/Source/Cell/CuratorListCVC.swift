@@ -63,8 +63,6 @@ class CuratorListCVC: UICollectionViewCell {
                     self.subscribeBTN.backgroundColor = .softGreen
                 }
                 
-                
-                
             case .requestErr(let message):
                 
                 guard let message = message as? String else { return }

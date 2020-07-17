@@ -22,6 +22,13 @@ class SearchTabResultVC: UIViewController {
     
     @IBAction func touchUpSearch(_ sender: Any) {
         
+//        guard let themeVC = self.storyboard?.instantiateViewController(withIdentifier:
+//            "SearchResultThemeVC") as? SearchResultThemeVC else {
+//                return UIViewController()
+//        }
+//        themeVC.themeTableView.reloadData()
+//        self.pageInstance.view
+        
     }
     @IBAction func touchUpBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -48,21 +55,12 @@ class SearchTabResultVC: UIViewController {
                             scrollPosition: .bottom)
         print(#function)
         print(searchKeyword)
-        // Do any additional setup after loading the view.
+        
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     override func viewWillAppear(_ animated: Bool) {
-        
+        searchKeyword = searchTextField.text!
+        pageInstance?.searchKey = searchKeyword
     }
     override func viewWillDisappear(_ animated: Bool) {
         observingList.forEach { $0.invalidate() }
@@ -104,7 +102,7 @@ class SearchTabResultVC: UIViewController {
             }
             
             observingList.append(ob!)
-            //pageInstance?.pageControlDelegate = self
+            
         }
     }
 

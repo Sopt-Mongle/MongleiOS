@@ -38,7 +38,7 @@ struct SearchMainService{
             case .success:
                 guard let statusCode = response.response?.statusCode else {return}
                 guard let value = response.result.value else {return}
-                let networkResult = self.judgeSearchKeys(by: statusCode, value)
+                let networkResult = self.judgeDeleteRecentSearch(by: statusCode, value)
                 
                 completion(networkResult)
             case .failure: completion(.networkFail)
@@ -80,7 +80,7 @@ struct SearchMainService{
     }
     private func judgeDeleteRecentSearch(by statusCode:Int, _ data:Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-            guard let decodedData = try? decoder.decode(GenericResponse<[String]>.self, from: data) else
+            guard let decodedData = try? decoder.decode(GenericResponse<String>.self, from: data) else
             {return .pathErr}
         
         switch statusCode {

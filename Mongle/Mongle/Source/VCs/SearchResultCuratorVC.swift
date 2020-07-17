@@ -79,6 +79,14 @@ extension SearchResultCuratorVC: UICollectionViewDelegate{
             = "검색된 큐레이터 \(curatorList.count)명"
         return headerview
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        guard let curatorInfoVC = UIStoryboard(name:"CuratorTabInfo",bundle:nil).instantiateViewController(identifier: "CuratorTabInfoVC") as? CuratorTabInfoVC else{
+            return
+        }
+        self.navigationController?.pushViewController(curatorInfoVC, animated: true)
+    }
 }
 extension SearchResultCuratorVC: UICollectionViewDataSource{
     
@@ -94,6 +102,7 @@ extension SearchResultCuratorVC: UICollectionViewDataSource{
         cell.curatorProfileImageView.imageFromUrl(curatorList[indexPath.item].img, defaultImgPath: "maengleCharacters")
         cell.subscribeBTN.isSelected = curatorList[indexPath.item].alreadySubscribed
         cell.curatorIdx = curatorList[indexPath.item].curatorIdx
+        cell.subscriberLabel.text = "구독자 \(curatorList[indexPath.item].subscribe)명"
         if curatorList[indexPath.item].alreadySubscribed{
             cell.subscribeBTN.backgroundColor = .veryLightPinkSeven
         }

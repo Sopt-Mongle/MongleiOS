@@ -103,6 +103,8 @@
 		B8E2E15D24C0AA9A00595752 /* SearchCuratorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2E15C24C0AA9A00595752 /* SearchCuratorData.swift */; };
 		B8E2E15F24C0C08100595752 /* SearchCuratorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2E15E24C0C08100595752 /* SearchCuratorService.swift */; };
 		B8E2E16124C0D48800595752 /* CuratorFollowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2E16024C0D48800595752 /* CuratorFollowService.swift */; };
+		B8E2E16324C17C8000595752 /* CuratorInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2E16224C17C8000595752 /* CuratorInfoService.swift */; };
+		B8E2E16524C17D1B00595752 /* CuratorInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E2E16424C17D1B00595752 /* CuratorInfoData.swift */; };
 		B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */; };
 		B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */; };
 		B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */; };
@@ -255,6 +257,8 @@
 		B8E2E15C24C0AA9A00595752 /* SearchCuratorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCuratorData.swift; sourceTree = "<group>"; };
 		B8E2E15E24C0C08100595752 /* SearchCuratorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCuratorService.swift; sourceTree = "<group>"; };
 		B8E2E16024C0D48800595752 /* CuratorFollowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorFollowService.swift; sourceTree = "<group>"; };
+		B8E2E16224C17C8000595752 /* CuratorInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorInfoService.swift; sourceTree = "<group>"; };
+		B8E2E16424C17D1B00595752 /* CuratorInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorInfoData.swift; sourceTree = "<group>"; };
 		B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchTabMain.storyboard; sourceTree = "<group>"; };
 		B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTabMainVC.swift; sourceTree = "<group>"; };
 		B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchCVC.swift; sourceTree = "<group>"; };
@@ -449,6 +453,7 @@
 				B8E2E15824C0A71E00595752 /* SearchSentenceService.swift */,
 				B8E2E15E24C0C08100595752 /* SearchCuratorService.swift */,
 				B8E2E16024C0D48800595752 /* CuratorFollowService.swift */,
+				B8E2E16224C17C8000595752 /* CuratorInfoService.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -474,6 +479,7 @@
 				EC759C5324C03C84001D2F81 /* SearchThemeData.swift */,
 				B8E2E15A24C0AA8500595752 /* SearchSentenceData.swift */,
 				B8E2E15C24C0AA9A00595752 /* SearchCuratorData.swift */,
+				B8E2E16424C17D1B00595752 /* CuratorInfoData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -841,6 +847,7 @@
 				ECA23EE024B5F5F100C100F1 /* WritingSentenceSecondVC.swift in Sources */,
 				B8E2E13F24BE15CD00595752 /* CuratorTabInfoThemeVC.swift in Sources */,
 				EC178CCE24BE2719008CF514 /* SignUpEndVC.swift in Sources */,
+				B8E2E16524C17D1B00595752 /* CuratorInfoData.swift in Sources */,
 				7F6ABEB424ADE7700040746E /* SceneDelegate.swift in Sources */,
 				7FB4203B24BCDF5E00294314 /* ProfileEditVC.swift in Sources */,
 				B8B48A5D24B6029100551F5B /* SearchResultSentenceVC.swift in Sources */,
@@ -855,6 +862,7 @@
 				7F6ABED324ADE9D60040746E /* UIViewController+Extensions.swift in Sources */,
 				7F6ABECF24ADE8F80040746E /* UIColor+Extensions.swift in Sources */,
 				B8AB122524B5C1C500B60240 /* SearchTabResultVC.swift in Sources */,
+				B8E2E16324C17C8000595752 /* CuratorInfoService.swift in Sources */,
 				B8E2E14D24BEE0B000595752 /* MyTabSentenceVC.swift in Sources */,
 				B8B48A5F24B602A600551F5B /* SearchResultCuratorVC.swift in Sources */,
 				EC759C4624BF7219001D2F81 /* BookSearchForWritingService.swift in Sources */,
