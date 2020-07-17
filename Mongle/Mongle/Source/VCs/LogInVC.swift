@@ -254,7 +254,7 @@ class LogInVC: UIViewController {
     func setItems(){
        
         quoteImageView.image = UIImage(named: "loginImgMarks")
-        textImageView.image = UIImage(named: "invalidName")
+        textImageView.image = UIImage(named: "yoongjaeJoin")
         monglesImageView.image = UIImage(named: "loginImgMongle")
         backGroundImageView.image = UIImage(named: "loginBg")
         seperateImageView1.image = UIImage(named: "loginDivMenu1")
