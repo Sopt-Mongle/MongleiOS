@@ -36,6 +36,7 @@ extension MainTabSecondTVC: UICollectionViewDelegate {
         guard let dvc = UIStoryboard.init(name: "SentenceInfo", bundle: nil).instantiateViewController(identifier: "SentenceInfoVC") as? SentenceInfoVC else {
             return
         }
+        dvc.sentenceIdx = self.sentences[indexPath.item].sentenceIdx
         dvc.isMySentence = false
         selectSentenceDelegate(dvc)
     }

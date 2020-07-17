@@ -38,6 +38,13 @@
 		7F7C097324BAF714007C7C52 /* SentenceEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F7C097224BAF714007C7C52 /* SentenceEdit.storyboard */; };
 		7F7C097524BAFAAE007C7C52 /* SentenceEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7C097424BAFAAE007C7C52 /* SentenceEditVC.swift */; };
 		7FA8C4AB24C0371C00317F43 /* MainThemeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA8C4AA24C0371C00317F43 /* MainThemeData.swift */; };
+		7FA8C4AD24C0C64F00317F43 /* ThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA8C4AC24C0C64F00317F43 /* ThemeService.swift */; };
+		7FA8C4AF24C0C74400317F43 /* ThemeInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA8C4AE24C0C74400317F43 /* ThemeInfoData.swift */; };
+		7FA8C4B124C0EFB900317F43 /* ThemeBookmarkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA8C4B024C0EFB900317F43 /* ThemeBookmarkData.swift */; };
+		7FA8C4B324C0FB5C00317F43 /* SentenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA8C4B224C0FB5C00317F43 /* SentenceService.swift */; };
+		7FA8C4B524C101E000317F43 /* SentenceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA8C4B424C101E000317F43 /* SentenceData.swift */; };
+		7FA8C4B724C1753A00317F43 /* SentenceLikeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA8C4B624C1753A00317F43 /* SentenceLikeData.swift */; };
+		7FA8C4B924C17C5100317F43 /* SentenceBookmarkData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA8C4B824C17C5100317F43 /* SentenceBookmarkData.swift */; };
 		7FB4203324BCA2FC00294314 /* MySetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FB4203224BCA2FB00294314 /* MySetting.storyboard */; };
 		7FB4203524BCA92900294314 /* MySettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB4203424BCA92900294314 /* MySettingVC.swift */; };
 		7FB4203724BCAD2200294314 /* SettingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB4203624BCAD2200294314 /* SettingTVC.swift */; };
@@ -189,6 +196,13 @@
 		7F7C097224BAF714007C7C52 /* SentenceEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SentenceEdit.storyboard; sourceTree = "<group>"; };
 		7F7C097424BAFAAE007C7C52 /* SentenceEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceEditVC.swift; sourceTree = "<group>"; };
 		7FA8C4AA24C0371C00317F43 /* MainThemeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThemeData.swift; sourceTree = "<group>"; };
+		7FA8C4AC24C0C64F00317F43 /* ThemeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeService.swift; sourceTree = "<group>"; };
+		7FA8C4AE24C0C74400317F43 /* ThemeInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeInfoData.swift; sourceTree = "<group>"; };
+		7FA8C4B024C0EFB900317F43 /* ThemeBookmarkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeBookmarkData.swift; sourceTree = "<group>"; };
+		7FA8C4B224C0FB5C00317F43 /* SentenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceService.swift; sourceTree = "<group>"; };
+		7FA8C4B424C101E000317F43 /* SentenceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceData.swift; sourceTree = "<group>"; };
+		7FA8C4B624C1753A00317F43 /* SentenceLikeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceLikeData.swift; sourceTree = "<group>"; };
+		7FA8C4B824C17C5100317F43 /* SentenceBookmarkData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceBookmarkData.swift; sourceTree = "<group>"; };
 		7FB4203224BCA2FB00294314 /* MySetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MySetting.storyboard; sourceTree = "<group>"; };
 		7FB4203424BCA92900294314 /* MySettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingVC.swift; sourceTree = "<group>"; };
 		7FB4203624BCAD2200294314 /* SettingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTVC.swift; sourceTree = "<group>"; };
@@ -444,6 +458,8 @@
 				EC759C4924C025AE001D2F81 /* PostBookService.swift */,
 				EC759C4D24C0272A001D2F81 /* ThemeSelectForWriteService.swift */,
 				EC759C5124C03C77001D2F81 /* SearchThemeService.swift */,
+				7FA8C4AC24C0C64F00317F43 /* ThemeService.swift */,
+				7FA8C4B224C0FB5C00317F43 /* SentenceService.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -465,12 +481,17 @@
 				EC759C4124BF45B2001D2F81 /* ThemeMakeData.swift */,
 				7FFEA28624BF768D003D381A /* EditorPickData.swift */,
 				7FFEA28824BF9C72003D381A /* TodaySentenceData.swift */,
+				7FA8C4B424C101E000317F43 /* SentenceData.swift */,
 				7FFEA28A24BFAC77003D381A /* MainCuratorData.swift */,
 				7FA8C4AA24C0371C00317F43 /* MainThemeData.swift */,
 				EC759C4724BF7380001D2F81 /* BookSearchForWritingData.swift */,
 				EC759C4B24C02615001D2F81 /* PostBookData.swift */,
 				EC759C4F24C02779001D2F81 /* ThemeSelectForWriteData.swift */,
 				EC759C5324C03C84001D2F81 /* SearchThemeData.swift */,
+				7FA8C4AE24C0C74400317F43 /* ThemeInfoData.swift */,
+				7FA8C4B024C0EFB900317F43 /* ThemeBookmarkData.swift */,
+				7FA8C4B624C1753A00317F43 /* SentenceLikeData.swift */,
+				7FA8C4B824C17C5100317F43 /* SentenceBookmarkData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -757,6 +778,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC759C4024BEF121001D2F81 /* ThemeImageForWriteService.swift in Sources */,
+				7FA8C4B724C1753A00317F43 /* SentenceLikeData.swift in Sources */,
 				EC86B49A24B7646600DB930A /* UITextField+Extensions.swift in Sources */,
 				7FFEA28324BF4839003D381A /* ToastView.swift in Sources */,
 				7F1E719B24B463A400D79516 /* MainTabFourthTVC.swift in Sources */,
@@ -795,6 +817,7 @@
 				7FCEE21D24B355FC00225CA3 /* MainPictureCVC.swift in Sources */,
 				B8B48AE324B9845800551F5B /* SearchResultThemeTVC.swift in Sources */,
 				EC759C5424C03C84001D2F81 /* SearchThemeData.swift in Sources */,
+				7FA8C4AF24C0C74400317F43 /* ThemeInfoData.swift in Sources */,
 				EC759C3A24BED53E001D2F81 /* SignInService.swift in Sources */,
 				B8B48B3524BC676500551F5B /* CuratorTabInfoVC.swift in Sources */,
 				7FFEA26A24BE3317003D381A /* MonglesVC.swift in Sources */,
@@ -802,6 +825,7 @@
 				7FC5B4D324BB61A4007C1725 /* WritingSentenceInThemeVC.swift in Sources */,
 				EC759C4A24C025AE001D2F81 /* PostBookService.swift in Sources */,
 				B8E2E15124C0317D00595752 /* SentenceMoreTVC.swift in Sources */,
+				7FA8C4B524C101E000317F43 /* SentenceData.swift in Sources */,
 				EC759C3624BEB646001D2F81 /* SignupData.swift in Sources */,
 				EC88960A24B86AE8008D29E2 /* ThirdViewOfWritingSentenceVC.swift in Sources */,
 				7F1E71A224B4A40B00D79516 /* MainTabDefaultHeaderView.swift in Sources */,
@@ -828,10 +852,13 @@
 				7F1E719724B4553F00D79516 /* MainTabThirdTVC.swift in Sources */,
 				7F1E71A024B476C900D79516 /* MainMongleHeaderView.swift in Sources */,
 				7F1E719524B4476E00D79516 /* MainTodaySentenceCVC.swift in Sources */,
+				7FA8C4AD24C0C64F00317F43 /* ThemeService.swift in Sources */,
 				B8E2E14324BE16B200595752 /* CuratorTabInfoPageVC.swift in Sources */,
 				EC7410BC24BA883100CBAF1C /* EndOfMakingThemeVC.swift in Sources */,
 				B8B48AE124B9832D00551F5B /* SearchResultCuratorCVC.swift in Sources */,
 				7F6ABED924ADEC9E0040746E /* APIConstants.swift in Sources */,
+				7FA8C4B924C17C5100317F43 /* SentenceBookmarkData.swift in Sources */,
+				7FA8C4B124C0EFB900317F43 /* ThemeBookmarkData.swift in Sources */,
 				EC7410B824BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift in Sources */,
 				B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */,
 				7FFEA28924BF9C72003D381A /* TodaySentenceData.swift in Sources */,
@@ -839,6 +866,7 @@
 				B8E2E13F24BE15CD00595752 /* CuratorTabInfoThemeVC.swift in Sources */,
 				EC178CCE24BE2719008CF514 /* SignUpEndVC.swift in Sources */,
 				7F6ABEB424ADE7700040746E /* SceneDelegate.swift in Sources */,
+				7FA8C4B324C0FB5C00317F43 /* SentenceService.swift in Sources */,
 				7FB4203B24BCDF5E00294314 /* ProfileEditVC.swift in Sources */,
 				B8B48A5D24B6029100551F5B /* SearchResultSentenceVC.swift in Sources */,
 				EC7C78F024B2F2DE00B7FCFB /* UnderTabBarController.swift in Sources */,

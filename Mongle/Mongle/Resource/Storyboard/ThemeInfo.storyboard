@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C1y-yQ-wMX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C1y-yQ-wMX">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -49,7 +49,7 @@
                                             <action selector="touchUpBackButtonWithSender:" destination="C1y-yQ-wMX" eventType="touchUpInside" id="5Js-Oj-6yz"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="themeImgCurator" translatesAutoresizingMaskIntoConstraints="NO" id="iWI-Mv-FuQ">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="themeImgCurator" translatesAutoresizingMaskIntoConstraints="NO" id="iWI-Mv-FuQ">
                                         <rect key="frame" x="16" y="128" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="EMr-25-627"/>
@@ -136,21 +136,21 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GJE-jW-QX4">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainIcBook1" translatesAutoresizingMaskIntoConstraints="NO" id="GJE-jW-QX4">
                                                             <rect key="frame" x="16" y="49.666666666666664" width="16" height="15.999999999999993"/>
-                                                            <color key="backgroundColor" red="0.51372549020000002" green="0.51372549020000002" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="16" id="NZp-xK-Jhh"/>
                                                                 <constraint firstAttribute="height" constant="16" id="Ztu-Rh-lW3"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="몽글이 몽글몽글" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9DZ-1C-YeD">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="몽글이 몽글몽글" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9DZ-1C-YeD">
                                                             <rect key="frame" x="36.999999999999993" y="49.666666666666664" width="82.333333333333314" height="15.999999999999993"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="13"/>
                                                             <color key="textColor" red="0.65490196078431373" green="0.65490196078431373" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hEp-D2-JAa">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hEp-D2-JAa">
                                                             <rect key="frame" x="264.33333333333331" y="51.666666666666664" width="94.666666666666686" height="12"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ysq-Tf-WJw">
@@ -206,7 +206,12 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="sentenceLabel" destination="cGJ-AL-ekh" id="Shj-c2-r7B"/>
+                                                    <outlet property="bookNameLabel" destination="9DZ-1C-YeD" id="1OX-Ab-b5h"/>
+                                                    <outlet property="bookmarkCountLabel" destination="3O2-Xz-Gyg" id="Nqh-f7-hsA"/>
+                                                    <outlet property="bookmarkImageView" destination="Egf-M7-T4w" id="HFs-fh-5AJ"/>
+                                                    <outlet property="likeCountLabel" destination="Nbm-xi-I7q" id="PrB-sY-PMl"/>
+                                                    <outlet property="likeImageView" destination="eYt-Tr-2Vo" id="cf0-8j-bFo"/>
+                                                    <outlet property="sentenceLabel" destination="cGJ-AL-ekh" id="WDn-vf-vx9"/>
                                                 </connections>
                                             </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Fkl-yd-yoI">
@@ -245,7 +250,8 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="8vZ-i9-jeT" secondAttribute="height" multiplier="55:57" id="fkS-EK-CU3"/>
                                         </constraints>
-                                        <state key="normal" image="themeBtnBookmark"/>
+                                        <state key="normal" image="themeIcBookmark"/>
+                                        <state key="selected" image="themeIcBookmarkGreen"/>
                                         <connections>
                                             <action selector="touchUpBookMarkButtonWithSender:" destination="C1y-yQ-wMX" eventType="touchUpInside" id="IMm-oG-fB4"/>
                                         </connections>
@@ -296,9 +302,11 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="mJ7-Fw-Nwu" id="bc2-cN-tKn"/>
+                        <outlet property="bookmarkCountLabel" destination="i2q-hV-pzw" id="yk6-eN-4d2"/>
                         <outlet property="bottomBackgroundView" destination="sOx-yo-vKk" id="vvX-Kd-1lh"/>
                         <outlet property="curatorNameLabel" destination="H4s-l6-9mq" id="Fb5-7W-9Gc"/>
                         <outlet property="curatorProfileImageView" destination="iWI-Mv-FuQ" id="5A0-w7-JJ1"/>
+                        <outlet property="sentenceCountLabel" destination="NGe-cT-MDt" id="Tb8-6k-jaG"/>
                         <outlet property="sentenceTableView" destination="7tc-cv-PKZ" id="zGe-LA-oQz"/>
                         <outlet property="sentencesBackGroudViewBottomConstraint" destination="g7d-zJ-Swf" id="5uQ-ml-PDI"/>
                         <outlet property="sentencesBackgroundView" destination="Hu0-vn-sXz" id="Omc-vB-Kig"/>
@@ -315,10 +323,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="mainIcBook1" width="13" height="16"/>
         <image name="mongleCharacters" width="75" height="78"/>
         <image name="searchBtnBack" width="10.333333015441895" height="18.666666030883789"/>
         <image name="themeBoxBlur" width="375" height="53"/>
-        <image name="themeBtnBookmark" width="55" height="57"/>
+        <image name="themeIcBookmark" width="19" height="21"/>
+        <image name="themeIcBookmarkGreen" width="19" height="21"/>
         <image name="themeIcSentenceBookmark" width="11" height="11"/>
         <image name="themeIcSentenceLike" width="12" height="12"/>
         <image name="themeImgCurator" width="24" height="24"/>

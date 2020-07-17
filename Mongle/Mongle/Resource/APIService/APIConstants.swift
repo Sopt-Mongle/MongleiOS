@@ -29,6 +29,10 @@ struct APIConstants {
     static let mainWaitThemesURL = baseURL + "/main/waitThemes"
     // 최근 3일 조회수 많은 테마 목록 조회
     static let mainNowThemesURL = baseURL + "/main/nowThemes"
+    // 테마 상세조회 (/detail/theme/:themeIdx)
+    static let detailThemeURL = baseURL + "/detail/theme"
+//    문장 상세조회 (/detail/sentence/:sentenceIdx)
+    static let detailSentenceURL = baseURL + "/detail/sentence"
 
     static let bookSearchForWritingURL = baseURL + "/post/bookSearch"
     static let postSentenceURL = baseURL + "/post/sentence"
