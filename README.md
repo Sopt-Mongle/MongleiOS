@@ -104,6 +104,7 @@
 ### 5. 내 서재 화면
 
 저장한/작성한 테마,문장,큐레이터를 보여줌.
+
 <img src="./docs/asset/my1.png" width = 400><img src="./docs/asset/my2.png" width = 400>
 <img src="./docs/asset/my3.png" width = 400><img src="./docs/asset/my4.png" width = 400>
 
