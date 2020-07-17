@@ -52,10 +52,11 @@
 
 
 
-### 2. 메인 화면
+### 2. 메인 화면 플로우
 오늘의 문장, 큐레이터, 추천 테마를 보여줌. 각각을 선택하면 상세 뷰로 넘어가고, 해당 테마/문장을 수정할 수 있음.
-
-
+<img src="./docs/asset/main1.png" width = 400><img src="./docs/asset/main2.png" width = 400>
+<img src="./docs/asset/main3.png" width = 400><img src="./docs/asset/main4.png" width = 400>
+<img src="./docs/asset/main5.png" width = 400><img src="./docs/asset/floating.png" width = 400>
 
 
 
@@ -84,16 +85,29 @@
 하나의 검색어로 테마, 문장, 큐레이터 검색 가능. 최근 키워드와 추천 키워드 제공
 
 
+<img src="./docs/asset/search1.png" width = 400><img src="./docs/asset/search2.png" width = 400>
+<img src="./docs/asset/search3.png" width = 400><img src="./docs/asset/search4.png" width = 400>
+
+
+
+
 
 ### 4. 큐레이터 화면
 
 큐레이터 리스트를 보여주고, 추천 큐레이터도 보여줌. 큐레이터를 누르면 큐레이터 상세 뷰를 보여줌.
 
+<img src="./docs/asset/curator1.png" width = 400><img src="./docs/asset/curator2.png" width = 400>
+<img src="./docs/asset/curator3.png" width = 400><img src="./docs/asset/curator4.png" width = 400>
+
+
 
 ### 5. 내 서재 화면
 
 저장한/작성한 테마,문장,큐레이터를 보여줌.
+<img src="./docs/asset/my1.png" width = 400><img src="./docs/asset/my2.png" width = 400>
+<img src="./docs/asset/my3.png" width = 400><img src="./docs/asset/my4.png" width = 400>
 
+<img src="./docs/asset/my5.png" width = 400>
 
 
 
