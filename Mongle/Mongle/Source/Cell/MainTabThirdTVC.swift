@@ -15,6 +15,7 @@ class MainTabThirdTVC: UITableViewCell {
     
 //    let curators = ["예슬", "주혁", "윤재", "윤재", "윤재", "윤재"]
     var curators: [MainCuratorData] = []
+    var cellSelectDelegate: ((UIViewController)->Void) = { _ in }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,7 +28,15 @@ class MainTabThirdTVC: UITableViewCell {
 }
 
 extension MainTabThirdTVC: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let curator = self.curators[indexPath.item]
+        guard let dvc = UIStoryboard(name: "CuratorTabInfo", bundle: nil).instantiateViewController(identifier: "CuratorTabInfoVC") as? CuratorTabInfoVC else {
+            return
+        }
+        dvc.curatorIdx = curator.curatorIdx
+        cellSelectDelegate(dvc)
+        
+    }
 }
 
 extension MainTabThirdTVC: UICollectionViewDataSource {

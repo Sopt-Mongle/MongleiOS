@@ -56,7 +56,7 @@
                                                         <constraint firstAttribute="height" constant="1" id="bFa-zZ-n3j"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="themeImgCurator" translatesAutoresizingMaskIntoConstraints="NO" id="uI2-W8-mJV">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="themeImgCurator" translatesAutoresizingMaskIntoConstraints="NO" id="uI2-W8-mJV">
                                                     <rect key="frame" x="28" y="238.33333333333334" width="22" height="22.000000000000028"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="MQe-BD-vQT"/>
@@ -72,17 +72,15 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dh8-31-nHh">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainIcBook1" translatesAutoresizingMaskIntoConstraints="NO" id="Dh8-31-nHh">
                                                             <rect key="frame" x="28" y="64.333333333333343" width="16" height="16"/>
-                                                            <color key="backgroundColor" red="0.51372549020000002" green="0.51372549020000002" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="16" id="X2L-gB-xkb"/>
                                                                 <constraint firstAttribute="height" constant="16" id="aqO-8k-Ujn"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VgR-e6-buW">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sentenceThemeOIcWriter" translatesAutoresizingMaskIntoConstraints="NO" id="VgR-e6-buW">
                                                             <rect key="frame" x="28" y="90.333333333333343" width="16" height="16"/>
-                                                            <color key="backgroundColor" red="0.51372549020000002" green="0.51372549020000002" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="16" id="iDj-4T-LpF"/>
                                                                 <constraint firstAttribute="height" constant="16" id="ogK-BB-DhP"/>
@@ -106,9 +104,8 @@
                                                                 <constraint firstAttribute="width" secondItem="2fn-vt-8k5" secondAttribute="height" multiplier="25:34" id="8Ix-PT-pAI"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hhf-ZZ-QWG">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sentenceThemeOIcPublisher" translatesAutoresizingMaskIntoConstraints="NO" id="hhf-ZZ-QWG">
                                                             <rect key="frame" x="28" y="116.33333333333333" width="16" height="15.999999999999986"/>
-                                                            <color key="backgroundColor" red="0.51372549020000002" green="0.51372549020000002" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="2I7-oi-h7s"/>
                                                                 <constraint firstAttribute="width" constant="16" id="YUG-Lv-jCS"/>
@@ -420,6 +417,8 @@
     <resources>
         <image name="loginImgMarks" width="31" height="24"/>
         <image name="mainIcBook1" width="13" height="16"/>
+        <image name="sentenceThemeOIcPublisher" width="16" height="16"/>
+        <image name="sentenceThemeOIcWriter" width="16" height="16"/>
         <image name="sentenceThemeXBtnMore" width="13" height="3"/>
         <image name="themeIcSentenceBookmark" width="11" height="11"/>
         <image name="themeIcSentenceLike" width="12" height="12"/>
