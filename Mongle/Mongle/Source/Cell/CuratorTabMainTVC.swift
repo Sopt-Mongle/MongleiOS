@@ -75,7 +75,7 @@ extension CuratorTabMainTVC: UICollectionViewDataSource{
             return UICollectionViewCell()
         }
         cell.curatorNameLabel.text = curatorList[indexPath.item].name
-        cell.curatorProfileImageView.imageFromUrl(curatorList[indexPath.item].img, defaultImgPath: "maengleCharacters")
+        cell.curatorProfileImageView.imageFromUrl(curatorList[indexPath.item].img, defaultImgPath: "sentenceThemeOImgCurator1010")
         cell.curatorInfoLabel.text = curatorList[indexPath.item].keyword
         cell.subscriberLabel.text = "구독자 \(curatorList[indexPath.item].subscribe)명"
         cell.curatorIdx = curatorList[indexPath.item].curatorIdx

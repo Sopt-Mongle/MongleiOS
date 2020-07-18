@@ -186,7 +186,7 @@ extension CuratorTabMainVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainPopularCuratorCVC", for: indexPath) as? MainPopularCuratorCVC else{ return UICollectionViewCell() }
         cell.profileNameLabel.text = self.popularList[indexPath.item].name
-        cell.profileImageView.imageFromUrl(self.popularList[indexPath.item].img, defaultImgPath: "mongleCharacters")
+        cell.profileImageView.imageFromUrl(self.popularList[indexPath.item].img, defaultImgPath: "sentenceThemeOImgCurator1010")
         cell.tagLabel.text = self.popularList[indexPath.item].keyword
         
         return cell

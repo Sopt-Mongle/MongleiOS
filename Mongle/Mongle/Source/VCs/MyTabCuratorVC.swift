@@ -78,10 +78,10 @@ extension MyTabCuratorVC: UICollectionViewDataSource{
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CuratorListCVC", for: indexPath) as? CuratorListCVC else{
             return UICollectionViewCell()
         }
-        cell.curatorProfileImageView.imageFromUrl(myCuratorList[indexPath.item].img, defaultImgPath: "mongleCharacters")
+        cell.curatorProfileImageView.imageFromUrl(myCuratorList[indexPath.item].img, defaultImgPath: "sentenceThemeOImgCurator1010")
         cell.curatorNameLabel.text = myCuratorList[indexPath.item].name
         cell.subscriberNum = myCuratorList[indexPath.item].subscribe
-        cell.curatorProfileImageView.imageFromUrl(myCuratorList[indexPath.item].img, defaultImgPath: "mongleCharacters")
+        cell.curatorProfileImageView.imageFromUrl(myCuratorList[indexPath.item].img, defaultImgPath: "sentenceThemeOImgCurator1010")
         cell.subscribeBTN.isSelected = myCuratorList[indexPath.item].alreadySubscribed
         cell.curatorIdx = myCuratorList[indexPath.item].curatorIdx
         cell.subscriberLabel.text = "구독자 \(myCuratorList[indexPath.item].subscribe)명"

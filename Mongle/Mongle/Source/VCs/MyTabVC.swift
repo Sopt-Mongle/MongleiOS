@@ -234,7 +234,7 @@ class MyTabVC: UIViewController {
     func setProfile(){
         myProfileImage.makeRounded(cornerRadius: myProfileImage.frame.width/2)
         myProfileImage.contentMode = .scaleAspectFill
-        myProfileImage.imageFromUrl(self.profileImg, defaultImgPath: "mongleCharacters")
+        myProfileImage.imageFromUrl(self.profileImg, defaultImgPath: "sentenceThemeOImgCurator1010")
         myNameLabel.text = self.profileName
         myKeywordLabel.text = self.profileKeyword
         myProfileMsgLabel.text = self.profileMsg
