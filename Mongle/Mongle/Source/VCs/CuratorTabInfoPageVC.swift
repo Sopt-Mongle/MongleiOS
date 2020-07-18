@@ -16,11 +16,11 @@ class CuratorTabInfoPageVC: UIPageViewController {
     let identifiers: NSArray = ["CuratorTabInfoThemeVC", "CuratorTabInfoSentenceVC"]
     var vcArr: [UIViewController]?
     var keyValue = KVOObject()
-    var searchKey : String?
+    var curatorIdx = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(searchKey)
+        //print(searchKey)
         self.delegate = self
         self.dataSource = self
         vcArr = identifiers.compactMap {
@@ -29,14 +29,14 @@ class CuratorTabInfoPageVC: UIPageViewController {
             if id == "CuratorTabInfoThemeVC" {
                 let vc = self.storyboard?.instantiateViewController(identifier: $0 as! String) as! CuratorTabInfoThemeVC
                 //vc.themeList = curatorData!.theme
-                vc.searchKey = self.searchKey ?? ""
+                vc.curatorIdx = self.curatorIdx
                 return vc
             }
             
             else{
                 let vc = self.storyboard?.instantiateViewController(identifier: $0 as! String) as! CuratorTabInfoSentenceVC
                 //vc.sentenceList = curatorData!.sentence
-                vc.searchKey = self.searchKey ?? ""
+                vc.curatorIdx = self.curatorIdx
                 return vc
             }
             

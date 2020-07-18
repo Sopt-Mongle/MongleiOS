@@ -44,6 +44,7 @@ extension CuratorTabMainTVC: UICollectionViewDelegate{
         guard let curatorInfoVC = UIStoryboard(name:"CuratorTabInfo",bundle:nil).instantiateViewController(identifier: "CuratorTabInfoVC") as? CuratorTabInfoVC else {
             return
         }
+        curatorInfoVC.curatorIdx = curatorList[indexPath.item].curatorIdx
         selectSentenceDelegate(curatorInfoVC)
     }
 }

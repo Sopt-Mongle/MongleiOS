@@ -9,8 +9,8 @@
 import Foundation
 
 struct APIConstants {
-    static let baseURL = "http://3.34.20.225:3000"
-//    static let baseURL = "http://18.189.125.26:3000"
+//    static let baseURL = "http://3.34.20.225:3000"
+    static let baseURL = "http://18.189.125.26:3000"
     
     static let signupURL = baseURL + "/users/signup"
     static let signinURL = baseURL + "/users/signin"
@@ -51,5 +51,8 @@ struct APIConstants {
     static let curatorURL = baseURL + "/curator"
     static let curatorRecommendURL =  curatorURL + "/recommend"
     static let themeInCuratorURL = curatorURL + "/themeInCurator"
-    
+    static let myProfileURL = baseURL + "/my/profile"
+    static let myThemeURL = baseURL + "/my/theme"
+    static let mySentenceURL = baseURL + "/my/sentence"
+    static let myCuratorURL = baseURL + "/my/subscribe"
 }
