@@ -60,6 +60,7 @@ class SearchTabMainVC: UIViewController{
     // MARK:- LifeCycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchTextField.delegate = self
         recentSearchCV.delegate = self
         recentSearchCV.dataSource = self
         recommendSearchCV.delegate = self
@@ -293,6 +294,19 @@ extension SearchTabMainVC: UIGestureRecognizerDelegate {
 
             return false
         }
+        return true
+    }
+}
+
+
+extension SearchTabMainVC: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+//        self.touchUpSearchBTN(self.searchBTN)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.touchUpSearchBTN(self.searchBTN)
+        
+        
         return true
     }
 }

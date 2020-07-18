@@ -364,6 +364,11 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
         containView.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.searchButtonAction(self.searchButton)
+        return true
+    }
+    
     
     
    
