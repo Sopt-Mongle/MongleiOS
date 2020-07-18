@@ -60,7 +60,7 @@ class SentenceInfoVC: UIViewController {
             case .success(let data):
                 if let _data = data as? [Sentence] {
                     self.sentence = _data[0]
-
+                    print(self.sentence)
                     self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
                     self.updateStateLayout()
                 }

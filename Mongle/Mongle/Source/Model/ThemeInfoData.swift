@@ -20,7 +20,9 @@ struct Sentence: Codable {
     var sentence: String
     var likes, saves: Int
     var writer, writerImg, title, author: String?
-    var publisher, timestamp: String
+    var publisher: String
+    var thumbnail: String?
+    var timestamp: String
     var alreadyLiked, alreadyBookmarked: Bool
 }
 

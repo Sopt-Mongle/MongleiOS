@@ -28,13 +28,12 @@ class SentenceInfoTVC: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-//        print(sentence)
         sentenceLabel.text = sentence ?? ""
-        // Initialization code
+        self.curatorProfileImageView.makeRounded(cornerRadius: self.curatorProfileImageView.frame.width / 2)
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
     }
     
     

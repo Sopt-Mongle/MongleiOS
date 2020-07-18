@@ -221,6 +221,9 @@ extension MainTabMainVC: UITableViewDataSource {
             }
             cell.curators = self.curators
             cell.popularCuratorCollectionView.reloadData()
+            cell.cellSelectDelegate = { vc in
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             return cell
         case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTabFourthTVC.idnetifier) as? MainTabFourthTVC else {

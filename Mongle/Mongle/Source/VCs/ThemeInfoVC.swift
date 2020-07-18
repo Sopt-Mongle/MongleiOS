@@ -95,21 +95,15 @@ class ThemeInfoVC: UIViewController {
     func setThemeData(){
         
         if self.hasTheme {
-            self.showToast(text: "has theme")
             ThemeService.shared.getThemeInfo(idx: self.themeIdx ?? 0) { networkResult in
                 switch networkResult {
                 case .success(let data):
-                    self.showToast(text: "연결성공")
                     if let _data = data as? ThemeInfoData {
-                        print("------------------------------")
-                        print(_data)
                         self.themeData = _data.theme[0]
                         self.sentences = _data.sentence
                         self.updateLayout()
                         self.sentenceTableView.reloadData()
-                        
                     }
-                    
                 case .requestErr(let msg):
                     self.showToast(text: msg as! String)
                 case .pathErr:
@@ -220,6 +214,7 @@ extension ThemeInfoVC: UITableViewDelegate {
             guard let dvc = UIStoryboard(name: "SentenceInfo", bundle: nil).instantiateViewController(identifier: "SentenceInfoVC") as? SentenceInfoVC else {
                 return
             }
+            dvc.themeImage = self.themeImage
             dvc.sentenceIdx = sentence.sentenceIdx
             self.navigationController?.pushViewController(dvc, animated: true)
         }
@@ -241,7 +236,6 @@ extension ThemeInfoVC: UITableViewDataSource {
         else {
             return self.noThemeSentence.count
         }
-        
     }
     
     func tableView(_ tableView: UITableView,
