@@ -12,6 +12,8 @@ import Then
 
 class UnderTabBarController: UITabBarController {
     
+    var curIndex: Int = 0
+    
     // MARK:- UIComponents
     
     let plusButton = UIButton().then {
@@ -49,7 +51,7 @@ class UnderTabBarController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        self.delegate = self
         setTabBar()
        
         
@@ -373,7 +375,23 @@ class UnderTabBarController: UITabBarController {
         self.present(vcName, animated: true, completion: nil)
         
     }
-    
-    
+}
 
+extension UnderTabBarController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if tabBarController.selectedIndex == 1{
+            if let vc = viewController as? SearchTabMainVC {
+                vc.prevIdx = self.curIndex
+            }
+        }
+            
+        else {
+            self.curIndex = tabBarController.selectedIndex
+//            self.showToast(text: "\(curIndex)")
+//            print()
+            print(curIndex)
+            print(curIndex)
+            print(curIndex)
+        }
+    }
 }

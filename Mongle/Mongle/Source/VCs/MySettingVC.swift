@@ -26,6 +26,9 @@ class MySettingVC: UIViewController {
         settingTableview.backgroundView?.backgroundColor = .blue
         
     }
+    @IBAction func touchUpSettingButton(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 //MARK:- Extension

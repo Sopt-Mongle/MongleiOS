@@ -9,7 +9,7 @@ import UIKit
 
 class SearchTabMainVC: UIViewController{
     
-    
+    var prevIdx: Int?
     var recentKeyArray : [String] = []
     var recommendKeyArray : [String] = []
     var searchKey : String?
@@ -49,7 +49,9 @@ class SearchTabMainVC: UIViewController{
         
     }
     @IBAction func touchUpBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
+//        self.showToast(text: "뒤로가기")
+        self.tabBarController?.selectedIndex = prevIdx!
     }
     @IBAction func removeSearchHistoryBTN(_ sender: Any) {
         deleteRecentSearch()

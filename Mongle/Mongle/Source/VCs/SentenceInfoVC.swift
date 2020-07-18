@@ -61,11 +61,9 @@ class SentenceInfoVC: UIViewController {
             case .success(let data):
                 if let _data = data as? [Sentence] {
                     self.sentence = _data[0]
-                    print(self.sentence)
                     self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
                     self.updateStateLayout()
                 }
-                self.showToast(text: "d연결성공")
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "")
             case .pathErr:
@@ -84,7 +82,6 @@ class SentenceInfoVC: UIViewController {
                 if let _data = data as? [Sentence] {
                     self.otherSentences = _data
                     self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 1), with: .automatic)
-                    self.showToast(text: "다른 문장 성공")
                 }
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "request err")
@@ -150,10 +147,10 @@ class SentenceInfoVC: UIViewController {
                     self.sentence?.likes = _data.likes
                     self.updateStateLayout()
                     if _data.isLike {
-                        self.showToast(text: "좋아요 성공")
+//                        self.showToast(text: "좋아요 성공")
                     }
                     else {
-                        self.showToast(text: "좋아요 해제")
+//                        self.showToast(text: "좋아요 해제")
                     }
                 }
             case .requestErr(let msg):
@@ -179,10 +176,10 @@ class SentenceInfoVC: UIViewController {
                     self.sentence?.saves = _data.saves
                     self.updateStateLayout()
                     if _data.isSave {
-                        self.showToast(text: "북마크 성공")
+                        self.showToast(text: "문장이 저장되었습니다!")
                     }
                     else {
-                        self.showToast(text: "북마크 해제")
+//                        self.showToast(text: "북마크 해제")
                     }
                 }
             case .requestErr(let msg):

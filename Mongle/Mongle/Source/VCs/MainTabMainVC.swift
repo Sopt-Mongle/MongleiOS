@@ -47,8 +47,6 @@ class MainTabMainVC: UIViewController {
             case .success(let data):
                 if let _data = data as? [MainThemeData] {
                     self.themesList[flag] = _data
-                    print(_data)
-                    self.showToast(text:"\(flag)통신성공")
                     DispatchQueue.main.async {
                         self.layoutTableView.reloadSections(IndexSet(arrayLiteral: flag + 3), with: .automatic)
                     }
