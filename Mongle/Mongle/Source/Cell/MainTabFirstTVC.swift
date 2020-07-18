@@ -17,12 +17,21 @@ class MainTabFirstTVC: UITableViewCell {
     
     
     // MARK:- Property
-//    var pictures = ["mainImgEditorpick", "mainImgEditorpick", "mainImgEditorpick", "mainImgEditorpick"]
+    var pictures = ["mainImgEditorpick1", "mainImgEditorpick2", "mainImgEditorpick3"]
+    var names = [
+        "온 세상에\n나만 깨어있는 것 같은\n새벽감성에 읽기 좋은 문장",
+        "나와 다른 너를\n이해하고 싶을 때\n나를 도와주는 한 문장",
+        "힘껏 달리기만 하다\n번아웃이 온 당신을\n다시 걷게 할 한 문장"
+    ]
+    var counts:[Int] = [10,0,4]
+    
     var pageViewWidth : Int = 0
     var displayIndex: Int = 0
     var displayCell =  UICollectionViewCell()
     
     var editorData: [EditorPickData] = []
+    
+    var selectedCellDelegate: ((UIViewController) -> Void) = { _ in }
     
     // MARK:- Override Method
     override func awakeFromNib() {
@@ -51,6 +60,8 @@ extension MainTabFirstTVC: UICollectionViewDelegate {
             guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
                 return
             }
+            dvc.themeIdx = self.editorData[indexPath.row].themeIdx
+            selectedCellDelegate(dvc)
         }
     }
 }
@@ -68,8 +79,38 @@ extension MainTabFirstTVC: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainPictureCVC.identifier, for: indexPath) as? MainPictureCVC else {
                 return UICollectionViewCell()
             }
-//            cell.displayPictureImageView.image = UIImage(named: editorData[indexPath.item].illust)
-            cell.displayPictureImageView.image = UIImage(named: "mainImgEditorpick")
+            cell.displayPictureImageView.image = UIImage(named: self.pictures[indexPath.item])
+            cell.themeNameLabel.text = self.names[indexPath.item]
+            cell.themeCountLabel.text = "문장 \(self.counts[indexPath.item])개"
+            
+            
+            if indexPath.item == 0 {
+                let attributedString = NSMutableAttributedString(string: "온 세상에\n나만 깨어있는 것 같은\n새벽감성에 읽기 좋은 문장", attributes: [
+                  .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
+                  .foregroundColor: UIColor.white,
+                  .kern: -0.5
+                ])
+                attributedString.addAttribute(.foregroundColor, value: UIColor(red: 1.0, green: 233.0 / 255.0, blue: 175.0 / 255.0, alpha: 1.0), range: NSRange(location: 19, length: 4))
+                cell.themeNameLabel.attributedText = attributedString
+            }
+            else if indexPath.item == 1 {
+                let attributedString = NSMutableAttributedString(string: "나와 다른 너를\n이해하고 싶을 때\n나를 도와주는 한 문장", attributes: [
+                  .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
+                  .foregroundColor: UIColor.white,
+                  .kern: -0.5
+                ])
+                attributedString.addAttribute(.foregroundColor, value: UIColor(red: 188.0 / 255.0, green: 227.0 / 255.0, blue: 195.0 / 255.0, alpha: 1.0), range: NSRange(location: 0, length: 7))
+                cell.themeNameLabel.attributedText = attributedString
+            }
+            else {
+                let attributedString = NSMutableAttributedString(string: "힘껏 달리기만 하다\n번아웃이 온 당신을\n다시 걷게 할 한 문장", attributes: [
+                  .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
+                  .foregroundColor: UIColor.white,
+                  .kern: -0.5
+                ])
+                attributedString.addAttribute(.foregroundColor, value: UIColor(red: 178.0 / 255.0, green: 205.0 / 255.0, blue: 1.0, alpha: 1.0), range: NSRange(location: 11, length: 3))
+                cell.themeNameLabel.attributedText = attributedString
+            }
             return cell
         }
         else if collectionView == pageCollectionView {

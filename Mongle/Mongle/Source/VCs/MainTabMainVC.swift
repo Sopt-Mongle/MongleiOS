@@ -201,6 +201,9 @@ extension MainTabMainVC: UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.editorData = self.editorsTheme
+            cell.selectedCellDelegate = {[weak self] dvc in
+                self?.navigationController?.pushViewController(dvc, animated: true)
+            }
             cell.mainDisplayPictureCollectionView.reloadData()
             cell.pageCollectionView.reloadData()
             return cell

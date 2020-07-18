@@ -56,32 +56,32 @@ class EndOfMakingThemeVC: UIViewController {
         }
        
         mongleImageView.frame.size.height *= deviceBound
-        
-        UIView.animate(withDuration: 1.0, animations: {
-            self.mongleImageView.transform = CGAffineTransform(translationX: 0, y: 600)
-            
-            
-        }, completion: { finished in
-            
-            UIView.animate(withDuration: 3.0,  delay : 0, options: [.curveEaseIn], animations: {
-                self.mongleImageView.transform = .identity
-                
-            }, completion :{ finished in
-                
-                UIView.animate(withDuration: 1.0, animations: {
-                    self.mongleImageView.transform = CGAffineTransform(translationX: 0, y: -600)
-                    
-                },completion: {finished in
-                    UIView.animate(withDuration: 3.0, delay : 0.5,  animations: {
-                     
-                        self.mongleImageView.transform = CGAffineTransform(translationX: 0, y: 0)
-                    })
-                    
-                    
-                })
-            })
-            
-        })
+//        
+//        UIView.animate(withDuration: 1.0, animations: {
+//            self.mongleImageView.transform = CGAffineTransform(translationX: 0, y: 600)
+//            
+//            
+//        }, completion: { finished in
+//            
+//            UIView.animate(withDuration: 3.0,  delay : 0, options: [.curveEaseIn], animations: {
+//                self.mongleImageView.transform = .identity
+//                
+//            }, completion :{ finished in
+//                
+//                UIView.animate(withDuration: 1.0, animations: {
+//                    self.mongleImageView.transform = CGAffineTransform(translationX: 0, y: -600)
+//                    
+//                },completion: {finished in
+//                    UIView.animate(withDuration: 3.0, delay : 0.5,  animations: {
+//                     
+//                        self.mongleImageView.transform = CGAffineTransform(translationX: 0, y: 0)
+//                    })
+//                    
+//                    
+//                })
+//            })
+//            
+//        })
         
     }
     

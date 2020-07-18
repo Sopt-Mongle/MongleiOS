@@ -103,6 +103,8 @@
                                                             <size key="customSize" width="350" height="344"/>
                                                             <connections>
                                                                 <outlet property="displayPictureImageView" destination="CsR-8p-m6N" id="nOX-rx-1C0"/>
+                                                                <outlet property="themeCountLabel" destination="mSr-nK-5fu" id="t6A-2d-ECN"/>
+                                                                <outlet property="themeNameLabel" destination="XTk-TW-Boh" id="yVD-V0-XL4"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>

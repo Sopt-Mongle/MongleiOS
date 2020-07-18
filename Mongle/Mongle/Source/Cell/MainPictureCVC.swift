@@ -12,7 +12,12 @@ class MainPictureCVC: UICollectionViewCell {
     static let identifier = "MainPictureCVC"
 
     @IBOutlet var displayPictureImageView: UIImageView!
+    @IBOutlet var themeCountLabel: UILabel!
+    @IBOutlet var themeNameLabel: UILabel!
+    
     override func awakeFromNib() {
+        
+        
 
     }
 }
