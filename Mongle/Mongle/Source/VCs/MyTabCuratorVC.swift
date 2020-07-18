@@ -9,25 +9,54 @@
 import UIKit
 
 class MyTabCuratorVC: UIViewController {
+    
+    var myCuratorList : [MyCuratorData] = []
     //MARK:- IBOutlet
     @IBOutlet weak var curatorListCollectionView: UICollectionView!
+    
+    //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         curatorListCollectionView.delegate = self
         curatorListCollectionView.dataSource = self
-        // Do any additional setup after loading the view.
+
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        setMyCurator()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: - Custom Methods
+    func setMyCurator(){
+        MySentenceService.shared.getMy(){ networkResult in
+            
+            switch networkResult {
+            case .success(let theme):
+                guard let data = theme as? [MyCuratorData] else {
+                    return
+                }
+                print("성공")
+                self.myCuratorList = data
+                print("내 프로필 테마: \(data)")
+                DispatchQueue.main.async {
+                    self.curatorListCollectionView.reloadData()
+                }
+                
+                
+            case .requestErr(let message):
+                guard let message = message as? String else { return }
+                
+                self.showToast(text: message)
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
-    */
 
 }
 extension MyTabCuratorVC: UICollectionViewDelegate{
@@ -41,12 +70,25 @@ extension MyTabCuratorVC: UICollectionViewDelegate{
 }
 extension MyTabCuratorVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return myCuratorList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CuratorListCVC", for: indexPath) as? CuratorListCVC else{
             return UICollectionViewCell()
+        }
+        cell.curatorProfileImageView.imageFromUrl(myCuratorList[indexPath.item].img, defaultImgPath: "mongleCharacters")
+        cell.curatorNameLabel.text = myCuratorList[indexPath.item].name
+        cell.subscriberNum = myCuratorList[indexPath.item].subscribe
+        cell.curatorProfileImageView.imageFromUrl(myCuratorList[indexPath.item].img, defaultImgPath: "mongleCharacters")
+        cell.subscribeBTN.isSelected = myCuratorList[indexPath.item].alreadySubscribed
+        cell.curatorIdx = myCuratorList[indexPath.item].curatorIdx
+        cell.subscriberLabel.text = "구독자 \(myCuratorList[indexPath.item].subscribe)명"
+        if myCuratorList[indexPath.item].alreadySubscribed{
+            cell.subscribeBTN.backgroundColor = .veryLightPinkSeven
+        }
+        else{
+            cell.subscribeBTN.backgroundColor = .softGreen
         }
         return cell
     }

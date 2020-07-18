@@ -19,24 +19,22 @@ class MyTabSentenceVC: UIViewController {
     """
     var doNotReload = false
     var bookmarkBtnIdx = 0
+    var mySentenceData : MySentenceData?
+    var mySentenceSave : [MySentenceSave] = []
+    var mySentenceWrite : [MySentenceSave] = []
+    
+    //MARK: - IBOutlet
     @IBOutlet weak var sentenceTableView: UITableView!
+    
+    //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         sentenceTableView.delegate = self
         sentenceTableView.dataSource = self
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    //MARK: - Custom Methods
     @objc func savedThemeDidTap(){
         self.bookmarkBtnIdx = 0
         self.doNotReload = false
@@ -50,6 +48,40 @@ class MyTabSentenceVC: UIViewController {
         
         self.sentenceTableView.reloadData()
     }
+    func setMySentence(){
+        MySentenceService.shared.getMy(){ networkResult in
+            
+            switch networkResult {
+            case .success(let theme):
+                guard let data = theme as? MySentenceData else {
+                    return
+                }
+                print("성공")
+                self.mySentenceData = data
+                self.mySentenceSave = data.save
+                self.mySentenceWrite = data.write
+                print("내 프로필 테마: \(data)")
+                DispatchQueue.main.async {
+                    self.sentenceTableView.reloadData()
+                }
+                
+                
+            case .requestErr(let message):
+                guard let message = message as? String else { return }
+                
+                self.showToast(text: message)
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+
 
 
 }
@@ -168,7 +200,12 @@ extension MyTabSentenceVC: UITableViewDelegate{
 }
 extension MyTabSentenceVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        if doNotReload{
+            return mySentenceWrite.count
+        }
+        else{
+            return mySentenceSave.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -203,12 +240,18 @@ extension MyTabSentenceVC: UITableViewDataSource{
                 sheet.addAction(cancelAction)
                 self?.present(sheet, animated: true, completion: nil)
             }
+            cell.themeLabel.text = mySentenceWrite[indexPath.row].theme
+            cell.sentenceLabel.text = mySentenceWrite[indexPath.row].sentence
+            cell.curatorLabel.text = mySentenceWrite[indexPath.row].writer
             return cell
         }
         else{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultSentenceTVC", for: indexPath) as? SearchResultSentenceTVC else{
                 return UITableViewCell()
             }
+            cell.themeLabel.text = mySentenceSave[indexPath.row].theme
+            cell.sentenceLabel.text = mySentenceSave[indexPath.row].sentence
+            cell.curatorLabel.text = mySentenceSave[indexPath.row].writer
             return cell
             
         }
