@@ -33,6 +33,9 @@ class MyTabSentenceVC: UIViewController {
         sentenceTableView.dataSource = self
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        setMySentence()
+    }
     
     //MARK: - Custom Methods
     @objc func savedThemeDidTap(){
@@ -64,6 +67,7 @@ class MyTabSentenceVC: UIViewController {
                 DispatchQueue.main.async {
                     self.sentenceTableView.reloadData()
                 }
+                
                 
                 
             case .requestErr(let message):

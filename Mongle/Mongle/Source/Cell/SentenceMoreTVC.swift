@@ -31,7 +31,7 @@ class SentenceMoreTVC: UITableViewCell {
         self.themeLabel.textColor = .veryLightPink
         self.sentenceLabel.text = "결국 봄이 언제나 찾아왔지만, 하마터면 오지 않을 뻔했던 봄을 생각하면 마음이 섬찟해진다."
         self.curatorLabel.textColor = .veryLightPink
-        self.curatorSquare.backgroundColor = .veryLightPink
+
         
         // Initialization code
     }
