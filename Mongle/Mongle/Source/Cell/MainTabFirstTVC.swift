@@ -46,7 +46,13 @@ class MainTabFirstTVC: UITableViewCell {
 //MARK:- Extension
 //MARK: UICollectionViewDelegate
 extension MainTabFirstTVC: UICollectionViewDelegate {
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == mainDisplayPictureCollectionView {
+            guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
+                return
+            }
+        }
+    }
 }
 //MARK: UICollectionViewDataSource
 extension MainTabFirstTVC: UICollectionViewDataSource {

@@ -254,6 +254,9 @@ extension SentenceInfoVC: UITableViewDelegate {
             }
             let otherSentence = self.otherSentences[indexPath.row]
             dvc.sentenceIdx = otherSentence.sentenceIdx
+            dvc.themeText = self.themeText
+            dvc.themeImage = self.themeImage
+            
             self.navigationController?.pushViewController(dvc, animated: true)
         }
     }
