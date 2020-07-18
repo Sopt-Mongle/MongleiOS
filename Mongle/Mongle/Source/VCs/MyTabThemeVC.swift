@@ -217,6 +217,12 @@ extension MyTabThemeVC: UITableViewDelegate{
         guard let themeVC = UIStoryboard(name:"ThemeInfo",bundle:nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else{
             return
         }
+        if doNotReload{
+            themeVC.themeIdx = myThemeWrite[indexPath.row].themeIdx
+        }
+        else{
+            themeVC.themeIdx = myThemeSave[indexPath.row].themeIdx
+        }
         self.navigationController?.pushViewController(themeVC, animated: true)
     }
     

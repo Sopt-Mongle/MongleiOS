@@ -194,6 +194,13 @@ extension MyTabSentenceVC: UITableViewDelegate{
             return
             
         }
+        if doNotReload{
+            sentenceVC.sentenceIdx = mySentenceWrite[indexPath.row].sentenceIdx
+        }
+        else{
+            sentenceVC.sentenceIdx = mySentenceSave[indexPath.row].sentenceIdx
+        }
+        
         self.navigationController?.pushViewController(sentenceVC, animated: true)
     }
     

@@ -64,6 +64,7 @@ extension MyTabCuratorVC: UICollectionViewDelegate{
         guard let curatorInfoVC = UIStoryboard(name:"CuratorTabInfo",bundle:nil).instantiateViewController(identifier: "CuratorTabInfoVC") as? CuratorTabInfoVC else{
             return
         }
+        curatorInfoVC.curatorIdx = myCuratorList[indexPath.item].curatorIdx
         self.navigationController?.pushViewController(curatorInfoVC, animated: true)
     }
     
