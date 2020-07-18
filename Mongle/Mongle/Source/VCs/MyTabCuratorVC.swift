@@ -27,7 +27,7 @@ class MyTabCuratorVC: UIViewController {
     
     //MARK: - Custom Methods
     func setMyCurator(){
-        MySentenceService.shared.getMy(){ networkResult in
+        MyCuratorService.shared.getMy(){ networkResult in
             
             switch networkResult {
             case .success(let theme):

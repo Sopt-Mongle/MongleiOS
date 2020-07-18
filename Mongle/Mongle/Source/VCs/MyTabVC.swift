@@ -169,6 +169,7 @@ class MyTabVC: UIViewController {
                 self.profileImg = self.myProfileData!.img
                 self.profileName = self.myProfileData!.name
                 self.profileKeywordIdx = self.myProfileData!.keywordIdx
+                self.themeNum = self.myProfileData!.
                 switch self.myProfileData!.keywordIdx{
                 
                 case 1:
