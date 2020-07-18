@@ -373,6 +373,9 @@ class UnderTabBarController: UITabBarController {
         vcName.modalPresentationStyle = .fullScreen
         
         self.present(vcName, animated: true, completion: nil)
+    }
+    
+    func backButtonInSearchTab(){
         
     }
 }
@@ -387,11 +390,6 @@ extension UnderTabBarController: UITabBarControllerDelegate {
             
         else {
             self.curIndex = tabBarController.selectedIndex
-//            self.showToast(text: "\(curIndex)")
-//            print()
-            print(curIndex)
-            print(curIndex)
-            print(curIndex)
         }
     }
 }
