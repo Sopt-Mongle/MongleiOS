@@ -214,7 +214,10 @@ extension ThemeInfoVC: UITableViewDelegate {
             guard let dvc = UIStoryboard(name: "SentenceInfo", bundle: nil).instantiateViewController(identifier: "SentenceInfoVC") as? SentenceInfoVC else {
                 return
             }
-            dvc.themeImage = self.themeImage
+            dvc.themeIdx = self.themeIdx ?? 0
+            dvc.themeText = self.themeNameLabel.text ?? ""
+            dvc.hasTheme = hasTheme
+            dvc.themeImage = self.themeImageView.image
             dvc.sentenceIdx = sentence.sentenceIdx
             self.navigationController?.pushViewController(dvc, animated: true)
         }

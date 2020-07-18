@@ -42,6 +42,7 @@ class SentenceInfoVC: UIViewController {
     var isMySentence: Bool = true
     var canDisplayOtherSentece: Bool = true
     var sentenceIdx: Int?
+    var themeIdx: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +83,6 @@ class SentenceInfoVC: UIViewController {
             case .success(let data):
                 if let _data = data as? [Sentence] {
                     self.otherSentences = _data
-//                    print(self.ot)
                     self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 1), with: .automatic)
                     self.showToast(text: "다른 문장 성공")
                 }
@@ -235,6 +235,7 @@ class SentenceInfoVC: UIViewController {
         guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
             return
         }
+        dvc.themeIdx = self.themeIdx
         
         self.navigationController?.pushViewController(dvc, animated: true)
     }
@@ -251,6 +252,8 @@ extension SentenceInfoVC: UITableViewDelegate {
             guard let dvc = UIStoryboard(name: "SentenceInfo", bundle: nil).instantiateViewController(identifier: "SentenceInfoVC") as? SentenceInfoVC else {
                 return
             }
+            let otherSentence = self.otherSentences[indexPath.row]
+            dvc.sentenceIdx = otherSentence.sentenceIdx
             self.navigationController?.pushViewController(dvc, animated: true)
         }
     }
@@ -278,8 +281,9 @@ extension SentenceInfoVC: UITableViewDelegate {
         if section == 0 {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 144))
             
-            
-            var imageView = UIImageView(image: UIImage(named: "curatorImgTheme1"))
+            var imageView = UIImageView(image: self.themeImage)
+//            imageView.contentMode = .scaleAspectFill
+//            imageView.
             
             let backButton = UIButton().then {
                 $0.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
@@ -291,6 +295,8 @@ extension SentenceInfoVC: UITableViewDelegate {
                 $0.text = themeText
                 $0.textColor = .white
                 $0.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18.0)!
+                $0.numberOfLines = 2
+                $0.lineBreakMode = .byCharWrapping
             }
             
             if !hasTheme {
@@ -316,9 +322,10 @@ extension SentenceInfoVC: UITableViewDelegate {
             
             themeLabel.snp.makeConstraints {
                 $0.leading.equalToSuperview().offset(28)
+                $0.trailing.equalToSuperview().offset(-28)
                 $0.bottom.equalToSuperview().offset(-19)
             }
-            
+            view.backgroundColor = .brown
             return view
         }
         else {
