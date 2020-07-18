@@ -22,6 +22,7 @@ class MainMongleHeaderView: UIView {
     let searchButton = UIButton().then {
         $0.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
         $0.setImage(UIImage(named: "mainBtnSearch"), for: .normal)
+        $0.addTarget(self, action: #selector(touchUpSearchButton), for: .touchUpInside)
     }
     
     var searchButtomDelegate: (()->()) = { }
@@ -56,5 +57,9 @@ class MainMongleHeaderView: UIView {
             $0.trailing.equalToSuperview().offset(2)
             $0.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(-5)
         }
+    }
+    
+    @objc func touchUpSearchButton(){
+        self.searchButtomDelegate()
     }
 }

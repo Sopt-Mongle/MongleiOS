@@ -137,6 +137,9 @@ extension MainTabMainVC: UITableViewDelegate {
         switch section {
         case 0:
             let view = MainMongleHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 58))
+            view.searchButtomDelegate = { [weak self] in
+                self?.tabBarController?.selectedIndex = 1
+            }
             return view
         case 1:
             let view = MainTabDefaultHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 48))
