@@ -34,7 +34,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="328" height="120"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mongleCharacters" translatesAutoresizingMaskIntoConstraints="NO" id="SVV-RK-E1p">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sentenceThemeOImgCurator1010" translatesAutoresizingMaskIntoConstraints="NO" id="SVV-RK-E1p">
                                                     <rect key="frame" x="18" y="28" width="65" height="65"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="BsK-RE-yFT"/>
@@ -164,6 +164,6 @@
     </scenes>
     <resources>
         <image name="curatorKeywordBtnBack" width="10.5" height="19"/>
-        <image name="mongleCharacters" width="75" height="78"/>
+        <image name="sentenceThemeOImgCurator1010" width="70" height="70"/>
     </resources>
 </document>

@@ -89,7 +89,7 @@ class CuratorTabInfoVC: UIViewController {
                 print("herere")
                 self.curatorProfileData = data.profile
                 self.curatorNameLabel.text = self.curatorProfileData[0].name
-                self.curatorImageView.imageFromUrl(self.curatorProfileData[0].img, defaultImgPath: "mongleCharacters")
+                self.curatorImageView.imageFromUrl(self.curatorProfileData[0].img, defaultImgPath: "sentenceThemeOImgCurator1010")
                 self.curatorKeywordLabel.text = self.curatorProfileData[0].keyword
                 self.curatorMsgLabel.text = self.curatorProfileData[0].introduce
                 self.subscribeBTN.isSelected = self.curatorProfileData[0].alreadySubscribed
