@@ -9,7 +9,7 @@
 import UIKit
 
 class CuratorTabInfoSentenceVC: UIViewController {
-    var searchKey:String = "봄"
+    var curatorIdx = -1
     var sentenceList:[CuratorSentence] = []
     @IBOutlet weak var sentenceTableView: UITableView!
     override func viewDidLoad() {
@@ -19,20 +19,51 @@ class CuratorTabInfoSentenceVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        sentenceTableView.reloadData()
+        getCuratorData()
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: - Custom Methods
+    func getCuratorData(){
+        print(curatorIdx)
+        CuratorInfoService.shared.getCuratorInfo(curatorIdx: self.curatorIdx){ networkResult in
+            switch networkResult {
+            case .success(let curatorInfo):
+                guard let data = curatorInfo as? CuratorInfoData else {
+                    return
+                }
+                self.sentenceList = data.sentence
+                
+                print("herere")
+                
+                print("문장 정보: \(data)개")
+                
+                DispatchQueue.main.async {
+                    self.sentenceTableView.reloadData()
+                }
+            case .requestErr(let message):
+                
+                guard let message = message as? String else { return }
+                
+                self.showToast(text: message)
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+            
+            
+        }
+        
+        
+        
+        
     }
-    */
 
+   
 }
 extension CuratorTabInfoSentenceVC: UITableViewDelegate{
 
@@ -42,6 +73,7 @@ extension CuratorTabInfoSentenceVC: UITableViewDelegate{
             return
             
         }
+        sentenceVC.sentenceIdx = self.sentenceList[indexPath.row].sentenceIdx
         self.navigationController?.pushViewController(sentenceVC, animated: true)
     }
     
@@ -55,14 +87,10 @@ extension CuratorTabInfoSentenceVC: UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchResultSentenceTVC", for: indexPath) as? SearchResultSentenceTVC else{
             return UITableViewCell()
         }
-        let text = cell.sentenceLabel.text
-        
-        
-        let attributedString = NSMutableAttributedString(string: cell.sentenceLabel.text!)
-        attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
-                                      value: UIColor.softGreen,
-                                      range: (text as! NSString).range(of: searchKey))
-        cell.sentenceLabel.attributedText = attributedString
+        cell.sentenceLabel.text = sentenceList[indexPath.item].sentence
+        cell.themeLabel.text = sentenceList[indexPath.item].theme
+        cell.curatorLabel.text = sentenceList[indexPath.item].writer
+      
         
         return cell
     }

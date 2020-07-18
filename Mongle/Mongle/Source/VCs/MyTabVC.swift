@@ -13,6 +13,16 @@ class MyTabVC: UIViewController {
     var pageInstance : MyTabPageVC?
     var observingList: [NSKeyValueObservation] = []
     var item = -1
+    var myProfileData: MyProfileData?
+    var themeNum = 0
+    var sentenceNum = 0
+    var curatorNum = 0
+    var profileImg : String = ""
+    var profileName: String = ""
+    var profileMsg : String = ""
+    var profileKeyword : String?
+    var profileKeywordIdx : Int?
+    
     //MARK:- IBOutlet
     @IBOutlet weak var myProfileImage: UIImageView!
     @IBOutlet weak var myNameLabel: UILabel!
@@ -89,11 +99,16 @@ class MyTabVC: UIViewController {
     //MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setMenu()
-        // Do any additional setup after loading the view.
+
     }
     override func viewWillDisappear(_ animated: Bool) {
         observingList.forEach { $0.invalidate() }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        setMyProfile()
+        setMyTheme()
+        setMySentence()
+        setMyCurator()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -144,30 +159,179 @@ class MyTabVC: UIViewController {
             //pageInstance?.pageControlDelegate = self
         }
     }
-
+    //MARK: - Custom Methods
+    func setMyProfile(){
+        MyProfileService.shared.getMy(){ networkResult in
+            
+            switch networkResult {
+            case .success(let theme):
+                guard let data = theme as? [MyProfileData] else {
+                    return
+                }
+                
+                self.myProfileData = data[0]
+                self.profileImg = self.myProfileData!.img
+                self.profileName = self.myProfileData!.name
+                self.profileKeywordIdx = self.myProfileData!.keywordIdx
+                
+                switch self.myProfileData!.keywordIdx{
+                
+                case 1:
+                    self.profileKeyword = "감성자극"
+                case 2:
+                    self.profileKeyword = "동기부여"
+                case 3:
+                    self.profileKeyword = "자기계발"
+                case 4:
+                    self.profileKeyword = "깊은생각"
+                case 5:
+                    self.profileKeyword = "독서기록"
+                case 6:
+                    self.profileKeyword = "일상문장"
+                default:
+                    self.profileKeyword = ""
+                
+                
+                }
+                
+                print("내 프로필: \(data)")
+                DispatchQueue.main.async {
+                    self.setMenu()
+                    self.setProfile()
+                }
+                
+                
+            case .requestErr(let message):
+                guard let message = message as? String else { return }
+                
+                self.showToast(text: message)
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
     func setMenu(){
         myKeywordLabel.textColor = .brownGreyThree
         myProfileMsgLabel.textColor = .veryLightPink
         themeMenuLabel.textColor = .softGreen
         sentenceMenuLabel.textColor = .veryLightPink
         curatorMenuLabel.textColor = .veryLightPink
-        themeMenuLabel.text = "47"
-        sentenceMenuLabel.text = "36"
-        curatorMenuLabel.text = "23"
+        themeMenuLabel.text = "\(self.themeNum)"
+        sentenceMenuLabel.text = "\(self.sentenceNum)"
+        curatorMenuLabel.text = "\(self.curatorNum)"
         themeMenuBTN.setTitleColor(.softGreen, for: .normal)
         sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
         curatorMenuBTN.setTitleColor(.veryLightPink, for: .normal)
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setProfile(){
+        myProfileImage.makeRounded(cornerRadius: myProfileImage.frame.width/2)
+        myProfileImage.contentMode = .scaleAspectFill
+        myProfileImage.imageFromUrl(self.profileImg, defaultImgPath: "mongleCharacters")
+        myNameLabel.text = self.profileName
+        myKeywordLabel.text = self.profileKeyword
+        myProfileMsgLabel.text = self.profileMsg
     }
-    */
+    
+    func setMyTheme(){
+        MyThemeService.shared.getMy(){ networkResult in
+            
+            switch networkResult {
+            case .success(let theme):
+                guard let data = theme as? MyThemeData else {
+                    return
+                }
+                print("성공")
+                self.themeNum = data.save.count + data.write.count
+                print("내 프로필 테마: \(data)")
+                DispatchQueue.main.async {
+                    self.themeMenuLabel.text = "\(self.themeNum)"
+                }
+                
+                
+            case .requestErr(let message):
+                guard let message = message as? String else { return }
+                
+                self.showToast(text: message)
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    func setMySentence(){
+        MySentenceService.shared.getMy(){ networkResult in
+            
+            switch networkResult {
+            case .success(let theme):
+                guard let data = theme as? MySentenceData else {
+                    return
+                }
+                self.sentenceNum = data.save.count + data.write.count
+                print("내 프로필 테마: \(data)")
+                DispatchQueue.main.async {
+                    self.sentenceMenuLabel.text = "\(self.sentenceNum)"
+                }
+                
+                
+            case .requestErr(let message):
+                guard let message = message as? String else { return }
+                
+                self.showToast(text: message)
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    func setMyCurator(){
+        MyCuratorService.shared.getMy(){ networkResult in
+            
+            switch networkResult {
+            case .success(let theme):
+                guard let data = theme as? [MyCuratorData] else {
+                    return
+                }
+                
+                self.curatorNum = data.count
+                
+                DispatchQueue.main.async {
+                    self.curatorMenuLabel.text = "\(self.curatorNum)"
+                }
+                
+                
+            case .requestErr(let message):
+                guard let message = message as? String else { return }
+                
+                self.showToast(text: message)
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
 
 }

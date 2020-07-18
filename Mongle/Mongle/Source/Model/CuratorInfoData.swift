@@ -24,8 +24,11 @@ struct CuratorProfile: Codable {
 
 // MARK: - Sentence
 struct CuratorSentence: Codable {
+    
     var sentenceIdx: Int
     var sentence: String
+    var themeIdx: Int
+    var theme: String
     var likes, saves: Int
     var writer, writerImg, title, author: String?
     var publisher, timestamp: String
