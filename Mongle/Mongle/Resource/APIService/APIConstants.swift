@@ -51,5 +51,8 @@ struct APIConstants {
     static let curatorURL = baseURL + "/curator"
     static let curatorRecommendURL =  curatorURL + "/recommend"
     static let themeInCuratorURL = curatorURL + "/themeInCurator"
-    
+    static let myProfileURL = baseURL + "/my/profile"
+    static let myThemeURL = baseURL + "/my/theme"
+    static let mySentenceURL = baseURL + "/my/sentence"
+    static let myCuratorURL = baseURL + "/my/subscribe"
 }

@@ -10,18 +10,26 @@ import UIKit
 
 class MyTabThemeVC: UIViewController {
     var doNotReload = false
-    var searchKey:String = "번아웃"
     var bookmarkBtnIdx = 0
     var labelList :[UILabel] = []
+    var myThemeData: MyThemeData?
+    var myThemeSave : [MyThemeSave] = []
+    var myThemeWrite : [MyThemeSave] = []
+
+  
     // MARK: - IBOutlet
     @IBOutlet weak var themeTableView: UITableView!
     
+    //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         themeTableView.delegate = self
         themeTableView.dataSource = self
         themeTableView.reloadData()
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        setMyTheme()
     }
     @objc func sentenceWithoutThemeDidTap(){
         print("didtap")
@@ -49,16 +57,40 @@ class MyTabThemeVC: UIViewController {
         
         self.themeTableView.reloadData()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setMyTheme(){
+        MyThemeService.shared.getMy(){ networkResult in
+            
+            switch networkResult {
+            case .success(let theme):
+                guard let data = theme as? MyThemeData else {
+                    return
+                }
+                print("성공")
+                self.myThemeData = data
+                self.myThemeSave = data.save
+                self.myThemeWrite = data.write
+                print("내 프로필 테마: \(data)")
+                DispatchQueue.main.async {
+                    self.themeTableView.reloadData()
+                }
+                
+                
+            case .requestErr(let message):
+                guard let message = message as? String else { return }
+                
+                self.showToast(text: message)
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
-    */
+
 
 }
 
@@ -185,19 +217,41 @@ extension MyTabThemeVC: UITableViewDelegate{
         guard let themeVC = UIStoryboard(name:"ThemeInfo",bundle:nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else{
             return
         }
+        if doNotReload{
+            themeVC.themeIdx = myThemeWrite[indexPath.row].themeIdx
+        }
+        else{
+            themeVC.themeIdx = myThemeSave[indexPath.row].themeIdx
+        }
         self.navigationController?.pushViewController(themeVC, animated: true)
     }
     
 }
 extension MyTabThemeVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        if doNotReload{
+            return myThemeWrite.count
+        }
+        else{
+            return myThemeSave.count
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print(indexPath.row)
         guard let cell = themeTableView.dequeueReusableCell(withIdentifier: "searchResultThemeTVC", for: indexPath) as? SearchResultThemeTVC else { return UITableViewCell() }
+        if doNotReload{
+            cell.themeTitleLabel.text = myThemeWrite[indexPath.row].theme
+            cell.themeInfoLabel.text = "\(myThemeWrite[indexPath.row].saves) | 문장 \(myThemeWrite[indexPath.row].sentenceNum)"
 
-        return cell
+            return cell
+        }
+        else{
+            cell.themeTitleLabel.text = myThemeSave[indexPath.row].theme
+            cell.themeInfoLabel.text = "\(myThemeSave[indexPath.row].saves) | 문장 \(myThemeSave[indexPath.row].sentenceNum)"
+
+            return cell
+        }
+        
     }
     
 }
