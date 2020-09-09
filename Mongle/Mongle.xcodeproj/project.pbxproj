@@ -139,10 +139,12 @@
 		EC148CF924BC67E7006925A0 /* 43-emoji-wink.json in Resources */ = {isa = PBXBuildFile; fileRef = EC148CF824BC67E7006925A0 /* 43-emoji-wink.json */; };
 		EC178CCC24BE26F5008CF514 /* SignUpEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC178CCB24BE26F5008CF514 /* SignUpEnd.storyboard */; };
 		EC178CCE24BE2719008CF514 /* SignUpEndVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC178CCD24BE2719008CF514 /* SignUpEndVC.swift */; };
+		EC2713EA2507C9D300E4B8C3 /* SignUpAgree.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC2713E92507C9D300E4B8C3 /* SignUpAgree.storyboard */; };
 		EC6B709524BD760B00151A3B /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC6B709424BD760B00151A3B /* SignUp.storyboard */; };
 		EC6B709724BD762A00151A3B /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6B709624BD762A00151A3B /* SignUpVC.swift */; };
 		EC6B70BD24BDD43600151A3B /* Comp 2_1.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC6B70BC24BDD43600151A3B /* Comp 2_1.gif */; };
 		EC6B70C124BDE73700151A3B /* Comp 1.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC6B70C024BDE73700151A3B /* Comp 1.gif */; };
+		EC6E99CA2508C9D900B57284 /* SignUpAgreeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99C92508C9D900B57284 /* SignUpAgreeVC.swift */; };
 		EC7410B424BA03E800CBAF1C /* EndOfWritingSentence.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7410B324BA03E800CBAF1C /* EndOfWritingSentence.storyboard */; };
 		EC7410B624BA040300CBAF1C /* EndOfWritingSentenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410B524BA040300CBAF1C /* EndOfWritingSentenceVC.swift */; };
 		EC7410B824BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410B724BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift */; };
@@ -322,10 +324,12 @@
 		EC148CF824BC67E7006925A0 /* 43-emoji-wink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "43-emoji-wink.json"; sourceTree = "<group>"; };
 		EC178CCB24BE26F5008CF514 /* SignUpEnd.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpEnd.storyboard; sourceTree = "<group>"; };
 		EC178CCD24BE2719008CF514 /* SignUpEndVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEndVC.swift; sourceTree = "<group>"; };
+		EC2713E92507C9D300E4B8C3 /* SignUpAgree.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpAgree.storyboard; sourceTree = "<group>"; };
 		EC6B709424BD760B00151A3B /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		EC6B709624BD762A00151A3B /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		EC6B70BC24BDD43600151A3B /* Comp 2_1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Comp 2_1.gif"; sourceTree = "<group>"; };
 		EC6B70C024BDE73700151A3B /* Comp 1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Comp 1.gif"; sourceTree = "<group>"; };
+		EC6E99C92508C9D900B57284 /* SignUpAgreeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreeVC.swift; sourceTree = "<group>"; };
 		EC7410B324BA03E800CBAF1C /* EndOfWritingSentence.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EndOfWritingSentence.storyboard; sourceTree = "<group>"; };
 		EC7410B524BA040300CBAF1C /* EndOfWritingSentenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndOfWritingSentenceVC.swift; sourceTree = "<group>"; };
 		EC7410B724BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeMakeImagesCVC.swift; sourceTree = "<group>"; };
@@ -488,6 +492,7 @@
 				7FFEA26324BE138F003D381A /* AppInfo.storyboard */,
 				7FFEA26724BE1E05003D381A /* Mongles.storyboard */,
 				B8E2E14424BEE03200595752 /* MyTab.storyboard */,
+				EC2713E92507C9D300E4B8C3 /* SignUpAgree.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -655,6 +660,7 @@
 				B8E2E14A24BEE0A000595752 /* MyTabThemeVC.swift */,
 				B8E2E14C24BEE0B000595752 /* MyTabSentenceVC.swift */,
 				B8E2E14E24BEE0E900595752 /* MyTabCuratorVC.swift */,
+				EC6E99C92508C9D900B57284 /* SignUpAgreeVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -785,6 +791,7 @@
 				7FFEA27D24BE441F003D381A /* AppleSDGothicNeoEB.ttf in Resources */,
 				7F1E71A424B504CF00D79516 /* MainTabMain.storyboard in Resources */,
 				B8B48B2F24BC66F400551F5B /* CuratorTabInfo.storyboard in Resources */,
+				EC2713EA2507C9D300E4B8C3 /* SignUpAgree.storyboard in Resources */,
 				7F6ABEBB24ADE7720040746E /* Assets.xcassets in Resources */,
 				EC86B49624B7169200DB930A /* SearchBookForWriting.storyboard in Resources */,
 				7FFEA27B24BE441F003D381A /* AppleSDGothicNeoUL.ttf in Resources */,
@@ -902,6 +909,7 @@
 				7FFEA26A24BE3317003D381A /* MonglesVC.swift in Sources */,
 				7F1E719D24B46E3C00D79516 /* MainPopularThemaCVC.swift in Sources */,
 				7FC5B4D324BB61A4007C1725 /* WritingSentenceInThemeVC.swift in Sources */,
+				EC6E99CA2508C9D900B57284 /* SignUpAgreeVC.swift in Sources */,
 				EC759C4A24C025AE001D2F81 /* PostBookService.swift in Sources */,
 				B8E2E15124C0317D00595752 /* SentenceMoreTVC.swift in Sources */,
 				7FA8C4B524C101E000317F43 /* SentenceData.swift in Sources */,

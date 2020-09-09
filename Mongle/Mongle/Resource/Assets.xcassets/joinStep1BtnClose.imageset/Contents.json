@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "joinStep1BtnClose.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "scale" : "2x",
+      "idiom" : "universal",
+      "filename" : "joinStep1BtnClose@2x.png"
+    },
+    {
+      "scale" : "3x",
+      "idiom" : "universal",
+      "filename" : "joinStep1BtnClose@3x.png"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
