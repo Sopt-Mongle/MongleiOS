@@ -282,10 +282,40 @@ class SignUpAgreeVC: UIViewController {
     
     
     
+    @IBAction func showAgreeButtonAction(_ sender: Any) {
+        guard let vcName = UIStoryboard(name: "SignUpRule",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "SignUpRuleVC") as? SignUpRuleVC
+            else{
+                
+                return
+        }
+        
+        vcName.modalPresentationStyle = .fullScreen
+        
+        self.present(vcName, animated: true, completion: nil)
+        
+        
+        
+    }
     
     @IBAction func nextButtonAction(_ sender: Any) {
         if(!checked){
             showWarning()
+            
+        }
+        else{
+            guard let vcName = UIStoryboard(name: "SignUp",
+                                            bundle: nil).instantiateViewController(
+                                                withIdentifier: "SignUpVC") as? SignUpVC
+                else{
+                    
+                    return
+            }
+            
+            vcName.modalPresentationStyle = .fullScreen
+            
+            self.present(vcName, animated: true, completion: nil)
             
         }
         

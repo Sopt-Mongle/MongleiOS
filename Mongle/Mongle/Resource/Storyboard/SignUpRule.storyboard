@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sign Up RuleVC-->
+        <scene sceneID="5p0-d6-k1a">
+            <objects>
+                <viewController storyboardIdentifier="SignUpRuleVC" id="5n2-cG-tLf" customClass="SignUpRuleVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uug-Fx-ofa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x7q-2o-YSb">
+                                <rect key="frame" x="0.0" y="37" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="3QN-fC-mOe"/>
+                                    <constraint firstAttribute="width" constant="48" id="BbB-Bq-gDM"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="xButtonAction:" destination="5n2-cG-tLf" eventType="touchUpInside" id="NXt-fT-c5t"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fPC-NE-Mcg">
+                                <rect key="frame" x="28" y="101.5" width="354" height="688.5"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="N86-vW-wr3">
+                                <rect key="frame" x="17" y="52" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="nT4-eo-0sB"/>
+                                    <constraint firstAttribute="width" constant="16" id="r7Z-I8-5XZ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fPC-NE-Mcg" firstAttribute="top" secondItem="x7q-2o-YSb" secondAttribute="bottom" constant="16.699999999999999" id="CmG-fk-gwB"/>
+                            <constraint firstItem="9pw-T2-xpn" firstAttribute="bottom" secondItem="fPC-NE-Mcg" secondAttribute="bottom" constant="72" id="EG6-e5-zA6"/>
+                            <constraint firstItem="x7q-2o-YSb" firstAttribute="top" secondItem="uug-Fx-ofa" secondAttribute="top" constant="37" id="Kwb-l2-pbf"/>
+                            <constraint firstItem="fPC-NE-Mcg" firstAttribute="leading" secondItem="9pw-T2-xpn" secondAttribute="leading" constant="28" id="Nt0-PT-KQl"/>
+                            <constraint firstItem="N86-vW-wr3" firstAttribute="leading" secondItem="9pw-T2-xpn" secondAttribute="leading" constant="17" id="RMC-11-etM"/>
+                            <constraint firstItem="x7q-2o-YSb" firstAttribute="leading" secondItem="9pw-T2-xpn" secondAttribute="leading" id="Vtg-ic-eR8"/>
+                            <constraint firstItem="N86-vW-wr3" firstAttribute="top" secondItem="uug-Fx-ofa" secondAttribute="top" constant="52" id="Y0j-4u-3Ib"/>
+                            <constraint firstItem="9pw-T2-xpn" firstAttribute="trailing" secondItem="fPC-NE-Mcg" secondAttribute="trailing" constant="32" id="teb-wg-s6M"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9pw-T2-xpn"/>
+                    </view>
+                    <connections>
+                        <outlet property="containImageView" destination="fPC-NE-Mcg" id="dbS-I9-F7c"/>
+                        <outlet property="xButton" destination="x7q-2o-YSb" id="lcp-sY-l0h"/>
+                        <outlet property="xImageView" destination="N86-vW-wr3" id="u0P-gT-o5E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zTi-Yq-mbc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="205.79710144927537" y="-233.03571428571428"/>
+        </scene>
+    </scenes>
+</document>

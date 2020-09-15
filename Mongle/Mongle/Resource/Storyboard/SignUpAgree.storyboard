@@ -74,6 +74,9 @@
                                     <constraint firstAttribute="height" constant="48" id="Ru3-hJ-VUl"/>
                                     <constraint firstAttribute="width" constant="48" id="ogo-ks-jbV"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="showAgreeButtonAction:" destination="ect-TA-kH3" eventType="touchUpInside" id="gRO-fn-VLu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvJ-X5-Az0">
                                 <rect key="frame" x="10" y="293" width="48" height="48"/>
