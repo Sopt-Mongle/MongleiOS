@@ -43,7 +43,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
     }
     let upperBlur = UIImageView().then {
-        $0.image = UIImage(named: "joinStep2PasswordBoxBlur")
+                $0.image = UIImage(named: "joinStep2Nickname4BoxBlur")
+        $0.contentMode = .scaleToFill
+        
         
     }
     let emailWarningImageView = UIImageView().then {
@@ -52,7 +54,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     let emailWarningLabel = UILabel().then {
-        $0.text = "이메일 주소를 입력해주세요!"
+        $0.text = "올바른 이메일 형식이 아니에요!"
         $0.font = $0.font.withSize(13)
         $0.textColor = .reddish
     }
@@ -272,7 +274,21 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         else if textField == nickNameTextField {
             nickNameQuantityLabel.alpha = 0
         }
-        
+        else if textField == emailTextField{
+            if emailTextField.text == "" || emailTextField.text?.isValidEmailAddress() == false{
+                showEmailWarning()
+                
+                if passwordIsWarning == 25 {
+                    hidePasswordWarning()
+                    showPasswordWarning()
+                    
+                    
+                }
+                
+                
+            }
+            
+        }
         
         
         
@@ -355,14 +371,14 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     func secondLevelAnimation() {
         progressBar.progress = 0
         //        progressBar.setProgress(0.5, animated: true)
-       
+        
         
         UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
             self.progressBar.layoutIfNeeded()
             
         }, completion: { finished in
             self.progressBar.progress = 0.5
-           
+            
             
             
             
@@ -522,13 +538,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         self.signUpScrollView.addSubview(emailWarningLabel)
         
         emailWarningImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(253)
+            $0.top.equalToSuperview().offset(85)
             $0.leading.equalToSuperview().offset(28)
             $0.width.height.equalTo(15)
         }
         
         emailWarningLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(253)
+            $0.top.equalToSuperview().offset(85)
             $0.leading.equalToSuperview().offset(51)
             
         }
