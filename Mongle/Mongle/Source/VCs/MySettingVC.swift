@@ -18,7 +18,11 @@ class MySettingVC: UIViewController {
         }
     }
     // MARK:- Property
-    var settingNames = ["프로필 수정", "앱정보", "몽글즈"]
+    var settingSectionNames = ["개인 정보","문의","앱 정보"]
+    var settingRowNames = [["프로필 수정", "계정 설정", "푸쉬 알림 설정"],["1:1 문의하기","문제 신고하기"],["버전 정보","개발자 정보","서비스 운영정책","개인정보 처리방침","오픈소스 라이선스"]]
+    var isPushNotificationAllowed = false
+    
+
     
     //MARK:- Lifecycle
     override func viewDidLoad() {
@@ -26,6 +30,7 @@ class MySettingVC: UIViewController {
         settingTableview.backgroundView?.backgroundColor = .blue
         
     }
+    
     @IBAction func touchUpSettingButton(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -34,69 +39,66 @@ class MySettingVC: UIViewController {
 //MARK:- Extension
 //MARK: UITableViewDelegate
 extension MySettingVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 300
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 35
     }
-    
+
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        
-        let logoutButton = UIButton().then {
-            $0.frame = CGRect(x: 0, y: 0, width: 74, height: 37)
-            $0.setTitle("로그아웃", for: .normal)
-            $0.setTitleColor(.brownGreyThree, for: .normal)
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        if section != 2{
+            let footer = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+            let separatorLine = UIView(frame:CGRect(x: 16, y: 16, width: 343, height: 1))
+            footer.addSubview(separatorLine)
+            separatorLine.backgroundColor = .veryLightPinkSix
+            return footer
         }
-        let memberExitButton = UIButton().then {
-            $0.frame = CGRect(x: 0, y: 0, width: 74, height: 37)
-            $0.setTitle("회원 탈퇴", for: .normal)
-            $0.setTitleColor(.brownGreyThree, for: .normal)
-            $0.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        else{
+            return UIView()
+            
         }
-        
-        let stackView = UIStackView().then {
-            $0.axis = .vertical
-            $0.spacing = 7
-            $0.alignment = .center
-            $0.addArrangedSubview(logoutButton)
-            $0.addArrangedSubview(memberExitButton)
-        }
-        
-        footer.addSubview(stackView)
-        
-        logoutButton.snp.makeConstraints {
-            $0.width.equalTo(74)
-            $0.height.equalTo(37)
-        }
-        memberExitButton.snp.makeConstraints {
-            $0.width.equalTo(74)
-            $0.height.equalTo(37)
-        }
-        stackView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(169)
-            $0.leading.equalToSuperview().offset(16)
-        }
-        return footer
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 35
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
+        switch indexPath.section {
         case 0:
-            guard let dvc = UIStoryboard(name: "ProfileEdit", bundle: nil).instantiateViewController(identifier: "ProfileEditVC") as? ProfileEditVC else {
-                return
+            switch indexPath.row{
+            case 0:
+                guard let nextVC = UIStoryboard(name: "ProfileEdit", bundle: nil).instantiateViewController(identifier: "ProfileEditVC") as? ProfileEditVC else {
+                    return
+                }
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            case 1:
+                guard let nextVC = UIStoryboard(name: "AccountEdit", bundle: nil).instantiateViewController(identifier: "AccountEditVC") as? AccountEditVC else {
+                    return
+                }
+                self.navigationController?.pushViewController(nextVC, animated: true)
+                
+            default:
+                break
             }
-            dvc.modalPresentationStyle = .fullScreen
-            self.present(dvc, animated: true, completion: nil)
-        case 1:
-            guard let dvc = UIStoryboard(name: "AppInfo", bundle: nil).instantiateViewController(identifier: "AppInfoVC") as? AppInfoVC else {
-                return
-            }
-            self.present(dvc, animated: true, completion: nil)
+            
+            
+//        case 1:
+            
+            
         case 2:
-            guard let dvc = UIStoryboard(name: "Mongles", bundle: nil).instantiateViewController(identifier: "MonglesVC") as? MonglesVC else {
-                return
+            switch indexPath.row{
+            case 0:
+                guard let nextVC = UIStoryboard(name: "AppInfo", bundle: nil).instantiateViewController(identifier: "AppInfoVC") as? AppInfoVC else {
+                    return
+                }
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            
+            case 1:
+                guard let nextVC = UIStoryboard(name: "Mongles", bundle: nil).instantiateViewController(identifier: "MonglesVC") as? MonglesVC else {
+                    return
+                }
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            default:
+                break
             }
-            self.present(dvc, animated: true, completion: nil)
         default:
             break
         }
@@ -105,17 +107,29 @@ extension MySettingVC: UITableViewDelegate {
 //MARK: UITableViewDataSource
 extension MySettingVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return settingSectionNames.count
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return settingSectionNames[section]
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settingNames.count
+        return settingRowNames[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTVC.identifier) as? SettingTVC else {
             return UITableViewCell()
         }
-        cell.settingNameLabel.text = self.settingNames[indexPath.row]
+        cell.settingNameLabel.text = self.settingRowNames[indexPath.section][indexPath.row]
+        cell.pushAllowBackground.alpha = 0
+        cell.pushAllowButton.alpha = 0
+        if indexPath.section == 0{
+            if indexPath.row == 2{
+                cell.cellSelectButton.alpha = 0
+                cell.pushAllowBackground.alpha = 1
+                cell.pushAllowButton.alpha = 1
+            }
+        }
         return cell
     }
 }

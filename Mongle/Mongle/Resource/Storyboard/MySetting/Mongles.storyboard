@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j1l-3Y-A0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j1l-3Y-A0r">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,6 +27,9 @@
                                             <constraint firstAttribute="width" constant="48" id="dN0-bD-1Od"/>
                                         </constraints>
                                         <state key="normal" image="searchBtnBack"/>
+                                        <connections>
+                                            <action selector="touchUpBackButton:" destination="j1l-3Y-A0r" eventType="touchUpInside" id="f5T-Ff-FdT"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="앱 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdB-AJ-fOh">
                                         <rect key="frame" x="158" y="51" width="52" height="22"/>
@@ -34,7 +39,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="MKO-xV-XGU" firstAttribute="leading" secondItem="WSU-NT-UCr" secondAttribute="leading" id="DZ0-MD-he2"/>
                                     <constraint firstAttribute="width" secondItem="WSU-NT-UCr" secondAttribute="height" multiplier="75:17" id="aYM-F4-8Hw"/>
@@ -126,7 +131,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Baek jinhee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXc-bC-jPD">
-                                                <rect key="frame" x="143.33333333333331" y="0.0" width="79" height="18"/>
+                                                <rect key="frame" x="143.66666666666669" y="0.0" width="78.666666666666686" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.51372549020000002" green="0.51372549020000002" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -215,7 +220,8 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Rk8-ML-KL6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="HeT-jT-I8R" firstAttribute="trailing" secondItem="Rk8-ML-KL6" secondAttribute="trailing" id="0sL-T6-q01"/>
                             <constraint firstItem="WSU-NT-UCr" firstAttribute="trailing" secondItem="Rk8-ML-KL6" secondAttribute="trailing" id="5e3-4l-rCL"/>
@@ -243,7 +249,6 @@
                             <constraint firstItem="Ojm-a7-Yhu" firstAttribute="centerX" secondItem="XhO-5g-r4f" secondAttribute="centerX" id="wgO-1t-CEy"/>
                             <constraint firstItem="WSU-NT-UCr" firstAttribute="width" secondItem="WSU-NT-UCr" secondAttribute="height" multiplier="75:17" id="xz4-eR-84O"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Rk8-ML-KL6"/>
                     </view>
                     <connections>
                         <outletCollection property="partLabels" destination="AEz-WR-CPm" collectionClass="NSMutableArray" id="tSw-KH-HGO"/>
@@ -261,5 +266,8 @@
         <image name="mySettingsMonglesBg" width="375" height="118"/>
         <image name="mySettingsMonglesImgMongle" width="244" height="139"/>
         <image name="searchBtnBack" width="10.333333015441895" height="18.666666030883789"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
