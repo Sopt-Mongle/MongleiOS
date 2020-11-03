@@ -39,6 +39,9 @@ class MySettingVC: UIViewController {
 //MARK:- Extension
 //MARK: UITableViewDelegate
 extension MySettingVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 35
+    }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section != 2{

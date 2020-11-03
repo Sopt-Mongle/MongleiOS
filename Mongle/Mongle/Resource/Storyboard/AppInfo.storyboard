@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wlS-ik-b3M">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wlS-ik-b3M">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -43,7 +45,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="Hy2-sO-Zza" firstAttribute="top" secondItem="CK2-fs-Deg" secondAttribute="top" constant="37" id="aqb-zB-8Nv"/>
                                     <constraint firstItem="Hy2-sO-Zza" firstAttribute="leading" secondItem="CK2-fs-Deg" secondAttribute="leading" id="vzE-oc-yvB"/>
@@ -98,7 +100,8 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="FE0-bG-xz4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dTw-dt-kI9" firstAttribute="leading" secondItem="FE0-bG-xz4" secondAttribute="leading" id="5O0-CU-mvY"/>
                             <constraint firstItem="NA8-J3-Ei0" firstAttribute="top" secondItem="y3i-41-csY" secondAttribute="bottom" constant="27" id="5VG-W6-ryH"/>
@@ -122,7 +125,6 @@
                             <constraint firstItem="FE0-bG-xz4" firstAttribute="trailing" secondItem="CK2-fs-Deg" secondAttribute="trailing" id="n0Z-Vu-Po4"/>
                             <constraint firstItem="QYn-ZS-OCH" firstAttribute="centerX" secondItem="NA8-J3-Ei0" secondAttribute="centerX" id="oel-7y-TiT"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="FE0-bG-xz4"/>
                     </view>
                     <connections>
                         <outlet property="versionStateLabel" destination="NA8-J3-Ei0" id="8jg-tL-hem"/>
@@ -130,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T7T-OH-cbr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138.40000000000001" y="127.83251231527095"/>
+            <point key="canvasLocation" x="321" y="52"/>
         </scene>
     </scenes>
     <resources>
@@ -140,5 +142,8 @@
         <image name="mySettingsAppInfoImgMongleShadow" width="104.66666412353516" height="31.333333969116211"/>
         <image name="mySettingsAppInfoImgSimbol2" width="87" height="87"/>
         <image name="searchBtnBack" width="10.333333015441895" height="18.666666030883789"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

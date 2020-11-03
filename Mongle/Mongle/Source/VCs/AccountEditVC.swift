@@ -38,7 +38,6 @@ class AccountEditVC: UIViewController {
         self.newPasswordCheckTextField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1)
 
         //Buttons
-        self.completeButton.backgroundColor = .softGreen
         self.completeButton.setTitleColor(.white, for: .normal)
         self.withdrawButton.backgroundColor = .clear
         self.withdrawButton.setTitleColor(.veryLightPink,for:.normal)
