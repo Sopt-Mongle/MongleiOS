@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppInfoVC: UIViewController {
+class VersionInfoVC: UIViewController {
 
     @IBOutlet var versionStateLabel: UILabel!
     

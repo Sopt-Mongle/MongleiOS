@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wlS-ik-b3M">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wlS-ik-b3M">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,16 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mySettingsAppInfoBg" translatesAutoresizingMaskIntoConstraints="NO" id="dTw-dt-kI9">
-                                <rect key="frame" x="0.0" y="85" width="375" height="628"/>
+                                <rect key="frame" x="0.0" y="129" width="375" height="584"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mySettingsAppInfoBg2" translatesAutoresizingMaskIntoConstraints="NO" id="qUM-R1-gEk">
                                 <rect key="frame" x="0.0" y="497" width="375" height="315"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CK2-fs-Deg">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="85"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hy2-sO-Zza">
-                                        <rect key="frame" x="0.0" y="37" width="48" height="48"/>
+                                        <rect key="frame" x="0.0" y="-4" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="OcE-mE-4gT"/>
                                             <constraint firstAttribute="height" constant="48" id="irQ-Y7-pRP"/>
@@ -35,29 +37,29 @@
                                             <action selector="touchUpBackButton:" destination="wlS-ik-b3M" eventType="touchUpInside" id="fIw-0p-wvk"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="앱 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jx-Ia-m5n">
-                                        <rect key="frame" x="158" y="51" width="52" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="앱 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jx-Ia-m5n">
+                                        <rect key="frame" x="158" y="4" width="52" height="21.666666666666668"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="Hy2-sO-Zza" firstAttribute="top" secondItem="CK2-fs-Deg" secondAttribute="top" constant="37" id="aqb-zB-8Nv"/>
+                                    <constraint firstItem="1jx-Ia-m5n" firstAttribute="top" secondItem="CK2-fs-Deg" secondAttribute="top" constant="4" id="6Ip-l8-3of"/>
+                                    <constraint firstItem="Hy2-sO-Zza" firstAttribute="top" secondItem="CK2-fs-Deg" secondAttribute="top" constant="-4" id="aqb-zB-8Nv"/>
                                     <constraint firstItem="Hy2-sO-Zza" firstAttribute="leading" secondItem="CK2-fs-Deg" secondAttribute="leading" id="vzE-oc-yvB"/>
                                     <constraint firstAttribute="width" secondItem="CK2-fs-Deg" secondAttribute="height" multiplier="75:17" id="zP2-G0-tuq"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mySettingsAppInfoImgSimbol2" translatesAutoresizingMaskIntoConstraints="NO" id="y3i-41-csY">
-                                <rect key="frame" x="144" y="282" width="87" height="87"/>
+                                <rect key="frame" x="144" y="326" width="87" height="87"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="y3i-41-csY" secondAttribute="height" multiplier="1:1" id="1vf-SL-2wm"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최신 버전" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NA8-J3-Ei0">
-                                <rect key="frame" x="150" y="396" width="75" height="28"/>
+                                <rect key="frame" x="150" y="440" width="75" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="O96-At-Rvx"/>
                                     <constraint firstAttribute="height" constant="28" id="OFL-1U-kk7"/>
@@ -67,7 +69,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="QYn-ZS-OCH">
-                                <rect key="frame" x="136.66666666666666" y="437" width="102" height="30.666666666666686"/>
+                                <rect key="frame" x="136.66666666666666" y="481" width="102" height="30.666666666666686"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 버전 1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6o-Bt-m1H">
                                         <rect key="frame" x="21.333333333333346" y="0.0" width="59.333333333333343" height="13.333333333333334"/>
@@ -98,7 +100,8 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="FE0-bG-xz4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dTw-dt-kI9" firstAttribute="leading" secondItem="FE0-bG-xz4" secondAttribute="leading" id="5O0-CU-mvY"/>
                             <constraint firstItem="NA8-J3-Ei0" firstAttribute="top" secondItem="y3i-41-csY" secondAttribute="bottom" constant="27" id="5VG-W6-ryH"/>
@@ -118,11 +121,10 @@
                             <constraint firstItem="y3i-41-csY" firstAttribute="leading" secondItem="FE0-bG-xz4" secondAttribute="leading" constant="144" id="hZa-iI-fGg"/>
                             <constraint firstItem="CK2-fs-Deg" firstAttribute="leading" secondItem="FE0-bG-xz4" secondAttribute="leading" id="jE2-EY-8nm"/>
                             <constraint firstAttribute="bottom" secondItem="RB6-17-qMC" secondAttribute="bottom" constant="83.599999999999994" id="lv9-i2-b0B"/>
-                            <constraint firstItem="CK2-fs-Deg" firstAttribute="top" secondItem="zRQ-Ei-zze" secondAttribute="top" id="mc8-rs-MjS"/>
+                            <constraint firstItem="CK2-fs-Deg" firstAttribute="top" secondItem="FE0-bG-xz4" secondAttribute="top" id="mc8-rs-MjS"/>
                             <constraint firstItem="FE0-bG-xz4" firstAttribute="trailing" secondItem="CK2-fs-Deg" secondAttribute="trailing" id="n0Z-Vu-Po4"/>
                             <constraint firstItem="QYn-ZS-OCH" firstAttribute="centerX" secondItem="NA8-J3-Ei0" secondAttribute="centerX" id="oel-7y-TiT"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="FE0-bG-xz4"/>
                     </view>
                     <connections>
                         <outlet property="versionStateLabel" destination="NA8-J3-Ei0" id="8jg-tL-hem"/>
@@ -140,5 +142,8 @@
         <image name="mySettingsAppInfoImgMongleShadow" width="104.66666412353516" height="31.333333969116211"/>
         <image name="mySettingsAppInfoImgSimbol2" width="87" height="87"/>
         <image name="searchBtnBack" width="10.333333015441895" height="18.666666030883789"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
