@@ -88,7 +88,7 @@ extension MySettingVC: UITableViewDelegate {
             dvc.modalPresentationStyle = .fullScreen
             self.present(dvc, animated: true, completion: nil)
         case 1:
-            guard let dvc = UIStoryboard(name: "AppInfo", bundle: nil).instantiateViewController(identifier: "AppInfoVC") as? AppInfoVC else {
+            guard let dvc = UIStoryboard(name: "VersionInfo", bundle: nil).instantiateViewController(identifier: "VersionInfoVC") as? VersionInfoVC else {
                 return
             }
             self.present(dvc, animated: true, completion: nil)

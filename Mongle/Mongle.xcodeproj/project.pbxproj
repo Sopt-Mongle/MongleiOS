@@ -61,8 +61,8 @@
 		7FCEE21B24B3091C00225CA3 /* MainTabFirstTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCEE21A24B3091C00225CA3 /* MainTabFirstTVC.swift */; };
 		7FCEE21D24B355FC00225CA3 /* MainPictureCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCEE21C24B355FC00225CA3 /* MainPictureCVC.swift */; };
 		7FCEE21F24B363CF00225CA3 /* MainTabSecondTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCEE21E24B363CF00225CA3 /* MainTabSecondTVC.swift */; };
-		7FFEA26424BE138F003D381A /* AppInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA26324BE138F003D381A /* AppInfo.storyboard */; };
-		7FFEA26624BE1B54003D381A /* AppInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA26524BE1B54003D381A /* AppInfoVC.swift */; };
+		7FFEA26424BE138F003D381A /* VersionInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA26324BE138F003D381A /* VersionInfo.storyboard */; };
+		7FFEA26624BE1B54003D381A /* VersionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA26524BE1B54003D381A /* VersionInfoVC.swift */; };
 		7FFEA26824BE1E05003D381A /* Mongles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA26724BE1E05003D381A /* Mongles.storyboard */; };
 		7FFEA26A24BE3317003D381A /* MonglesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA26924BE3317003D381A /* MonglesVC.swift */; };
 		7FFEA27824BE441F003D381A /* AppleSDGothicNeoL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA27024BE441E003D381A /* AppleSDGothicNeoL.ttf */; };
@@ -243,8 +243,8 @@
 		7FCEE21A24B3091C00225CA3 /* MainTabFirstTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabFirstTVC.swift; sourceTree = "<group>"; };
 		7FCEE21C24B355FC00225CA3 /* MainPictureCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPictureCVC.swift; sourceTree = "<group>"; };
 		7FCEE21E24B363CF00225CA3 /* MainTabSecondTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabSecondTVC.swift; sourceTree = "<group>"; };
-		7FFEA26324BE138F003D381A /* AppInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppInfo.storyboard; sourceTree = "<group>"; };
-		7FFEA26524BE1B54003D381A /* AppInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoVC.swift; sourceTree = "<group>"; };
+		7FFEA26324BE138F003D381A /* VersionInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VersionInfo.storyboard; sourceTree = "<group>"; };
+		7FFEA26524BE1B54003D381A /* VersionInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoVC.swift; sourceTree = "<group>"; };
 		7FFEA26724BE1E05003D381A /* Mongles.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mongles.storyboard; sourceTree = "<group>"; };
 		7FFEA26924BE3317003D381A /* MonglesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonglesVC.swift; sourceTree = "<group>"; };
 		7FFEA27024BE441E003D381A /* AppleSDGothicNeoL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoL.ttf; sourceTree = "<group>"; };
@@ -485,7 +485,7 @@
 				7FB4203224BCA2FB00294314 /* MySetting.storyboard */,
 				7FB4203824BCC18D00294314 /* ProfileEdit.storyboard */,
 				EC178CCB24BE26F5008CF514 /* SignUpEnd.storyboard */,
-				7FFEA26324BE138F003D381A /* AppInfo.storyboard */,
+				7FFEA26324BE138F003D381A /* VersionInfo.storyboard */,
 				7FFEA26724BE1E05003D381A /* Mongles.storyboard */,
 				B8E2E14424BEE03200595752 /* MyTab.storyboard */,
 			);
@@ -648,7 +648,7 @@
 				7FB4203424BCA92900294314 /* MySettingVC.swift */,
 				7FB4203A24BCDF5E00294314 /* ProfileEditVC.swift */,
 				EC178CCD24BE2719008CF514 /* SignUpEndVC.swift */,
-				7FFEA26524BE1B54003D381A /* AppInfoVC.swift */,
+				7FFEA26524BE1B54003D381A /* VersionInfoVC.swift */,
 				7FFEA26924BE3317003D381A /* MonglesVC.swift */,
 				B8E2E14624BEE07000595752 /* MyTabVC.swift */,
 				B8E2E14824BEE08100595752 /* MyTabPageVC.swift */,
@@ -795,7 +795,7 @@
 				7FB4203324BCA2FC00294314 /* MySetting.storyboard in Resources */,
 				7FB4203924BCC18D00294314 /* ProfileEdit.storyboard in Resources */,
 				EC7410E024BC534100CBAF1C /* LogIn.storyboard in Resources */,
-				7FFEA26424BE138F003D381A /* AppInfo.storyboard in Resources */,
+				7FFEA26424BE138F003D381A /* VersionInfo.storyboard in Resources */,
 				7F7C096D24B9C776007C7C52 /* SentenceInfo.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -928,7 +928,7 @@
 				7FCEE21924B3078E00225CA3 /* MainTabMainVC.swift in Sources */,
 				7F6ABED124ADE9860040746E /* UIView+Extensions.swift in Sources */,
 				B8B48AE524B9847500551F5B /* SearchResultSentenceTVC.swift in Sources */,
-				7FFEA26624BE1B54003D381A /* AppInfoVC.swift in Sources */,
+				7FFEA26624BE1B54003D381A /* VersionInfoVC.swift in Sources */,
 				7FA8C4BD24C1BFB000317F43 /* NoThemeSentenceService.swift in Sources */,
 				B8E2E16724C1B48500595752 /* CuratorRecommendService.swift in Sources */,
 				EC759C3824BEB7C3001D2F81 /* SignUpService.swift in Sources */,
