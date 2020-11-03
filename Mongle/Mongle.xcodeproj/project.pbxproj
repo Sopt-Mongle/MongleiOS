@@ -462,6 +462,7 @@
 		7F6ABEC724ADE7F30040746E /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				B8D70B2225510033004A8347 /* MySetting */,
 				7F1E71A324B504CE00D79516 /* MainTabMain.storyboard */,
 				7F6ABEBC24ADE7720040746E /* LaunchScreen.storyboard */,
 				EC8E323224AF1B1A001AB034 /* Writing_Theme.storyboard */,
@@ -486,13 +487,8 @@
 				B8B48B2E24BC66F400551F5B /* CuratorTabInfo.storyboard */,
 				EC7410DF24BC534100CBAF1C /* LogIn.storyboard */,
 				EC6B709424BD760B00151A3B /* SignUp.storyboard */,
-				7FB4203224BCA2FB00294314 /* MySetting.storyboard */,
-				7FB4203824BCC18D00294314 /* ProfileEdit.storyboard */,
 				EC178CCB24BE26F5008CF514 /* SignUpEnd.storyboard */,
-				7FFEA26324BE138F003D381A /* AppInfo.storyboard */,
-				7FFEA26724BE1E05003D381A /* Mongles.storyboard */,
 				B8E2E14424BEE03200595752 /* MyTab.storyboard */,
-				B83800F72525FFA2009286AE /* AccountEdit.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -687,6 +683,18 @@
 				7F27ED38D43F3B60FE12A5BC /* Pods-Mongle.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		B8D70B2225510033004A8347 /* MySetting */ = {
+			isa = PBXGroup;
+			children = (
+				7FB4203224BCA2FB00294314 /* MySetting.storyboard */,
+				7FB4203824BCC18D00294314 /* ProfileEdit.storyboard */,
+				7FFEA26324BE138F003D381A /* AppInfo.storyboard */,
+				7FFEA26724BE1E05003D381A /* Mongles.storyboard */,
+				B83800F72525FFA2009286AE /* AccountEdit.storyboard */,
+			);
+			path = MySetting;
 			sourceTree = "<group>";
 		};
 		EC148CF724BC67D3006925A0 /* SupportFiles */ = {
