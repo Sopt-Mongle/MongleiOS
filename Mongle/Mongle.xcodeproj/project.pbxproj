@@ -61,7 +61,6 @@
 		7FCEE21B24B3091C00225CA3 /* MainTabFirstTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCEE21A24B3091C00225CA3 /* MainTabFirstTVC.swift */; };
 		7FCEE21D24B355FC00225CA3 /* MainPictureCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCEE21C24B355FC00225CA3 /* MainPictureCVC.swift */; };
 		7FCEE21F24B363CF00225CA3 /* MainTabSecondTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCEE21E24B363CF00225CA3 /* MainTabSecondTVC.swift */; };
-		7FFEA26424BE138F003D381A /* VersionInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA26324BE138F003D381A /* VersionInfo.storyboard */; };
 		7FFEA26624BE1B54003D381A /* VersionInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA26524BE1B54003D381A /* VersionInfoVC.swift */; };
 		7FFEA26824BE1E05003D381A /* Mongles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FFEA26724BE1E05003D381A /* Mongles.storyboard */; };
 		7FFEA26A24BE3317003D381A /* MonglesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA26924BE3317003D381A /* MonglesVC.swift */; };
@@ -81,6 +80,7 @@
 		7FFEA28B24BFAC77003D381A /* MainCuratorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA28A24BFAC77003D381A /* MainCuratorData.swift */; };
 		B83800F52525FF78009286AE /* AccountEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83800F42525FF78009286AE /* AccountEditVC.swift */; };
 		B83800F82525FFA2009286AE /* AccountEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B83800F72525FFA2009286AE /* AccountEdit.storyboard */; };
+		B85400A025513C1D004700B4 /* VersionInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B854009F25513C1D004700B4 /* VersionInfo.storyboard */; };
 		B86D4C4224B2C14200C21906 /* RecommendSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86D4C4124B2C14200C21906 /* RecommendSearchCVC.swift */; };
 		B8AB121924B46C7400B60240 /* CuratorList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AB121824B46C7400B60240 /* CuratorList.storyboard */; };
 		B8AB121B24B46CC100B60240 /* CuratorListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB121A24B46CC100B60240 /* CuratorListVC.swift */; };
@@ -245,7 +245,6 @@
 		7FCEE21A24B3091C00225CA3 /* MainTabFirstTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabFirstTVC.swift; sourceTree = "<group>"; };
 		7FCEE21C24B355FC00225CA3 /* MainPictureCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPictureCVC.swift; sourceTree = "<group>"; };
 		7FCEE21E24B363CF00225CA3 /* MainTabSecondTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabSecondTVC.swift; sourceTree = "<group>"; };
-		7FFEA26324BE138F003D381A /* VersionInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VersionInfo.storyboard; sourceTree = "<group>"; };
 		7FFEA26524BE1B54003D381A /* VersionInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoVC.swift; sourceTree = "<group>"; };
 		7FFEA26724BE1E05003D381A /* Mongles.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Mongles.storyboard; sourceTree = "<group>"; };
 		7FFEA26924BE3317003D381A /* MonglesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonglesVC.swift; sourceTree = "<group>"; };
@@ -265,6 +264,7 @@
 		7FFEA28A24BFAC77003D381A /* MainCuratorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCuratorData.swift; sourceTree = "<group>"; };
 		B83800F42525FF78009286AE /* AccountEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEditVC.swift; sourceTree = "<group>"; };
 		B83800F72525FFA2009286AE /* AccountEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountEdit.storyboard; sourceTree = "<group>"; };
+		B854009F25513C1D004700B4 /* VersionInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VersionInfo.storyboard; sourceTree = "<group>"; };
 		B86D4C4124B2C14200C21906 /* RecommendSearchCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendSearchCVC.swift; sourceTree = "<group>"; };
 		B8AB121824B46C7400B60240 /* CuratorList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CuratorList.storyboard; sourceTree = "<group>"; };
 		B8AB121A24B46CC100B60240 /* CuratorListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorListVC.swift; sourceTree = "<group>"; };
@@ -688,9 +688,9 @@
 		B8D70B2225510033004A8347 /* MySetting */ = {
 			isa = PBXGroup;
 			children = (
+				B854009F25513C1D004700B4 /* VersionInfo.storyboard */,
 				7FB4203224BCA2FB00294314 /* MySetting.storyboard */,
 				7FB4203824BCC18D00294314 /* ProfileEdit.storyboard */,
-				7FFEA26324BE138F003D381A /* AppInfo.storyboard */,
 				7FFEA26724BE1E05003D381A /* Mongles.storyboard */,
 				B83800F72525FFA2009286AE /* AccountEdit.storyboard */,
 			);
@@ -781,6 +781,7 @@
 				B8B48B2B24BC66B700551F5B /* CuratorTabMain.storyboard in Resources */,
 				EC7410B424BA03E800CBAF1C /* EndOfWritingSentence.storyboard in Resources */,
 				EC148CF924BC67E7006925A0 /* 43-emoji-wink.json in Resources */,
+				B85400A025513C1D004700B4 /* VersionInfo.storyboard in Resources */,
 				EC7410BA24BA87F000CBAF1C /* EndOfMakingTheme.storyboard in Resources */,
 				7FFEA27A24BE441F003D381A /* AppleSDGothicNeoSB.ttf in Resources */,
 				ECA23EDE24B5F58D00C100F1 /* WritingSentenceSecond.storyboard in Resources */,
@@ -810,7 +811,6 @@
 				7FB4203324BCA2FC00294314 /* MySetting.storyboard in Resources */,
 				7FB4203924BCC18D00294314 /* ProfileEdit.storyboard in Resources */,
 				EC7410E024BC534100CBAF1C /* LogIn.storyboard in Resources */,
-				7FFEA26424BE138F003D381A /* VersionInfo.storyboard in Resources */,
 				7F7C096D24B9C776007C7C52 /* SentenceInfo.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -86,7 +86,7 @@ extension MySettingVC: UITableViewDelegate {
         case 2:
             switch indexPath.row{
             case 0:
-                guard let nextVC = UIStoryboard(name: "AppInfo", bundle: nil).instantiateViewController(identifier: "AppInfoVC") as? AppInfoVC else {
+                guard let nextVC = UIStoryboard(name: "VersionInfo", bundle: nil).instantiateViewController(identifier: "VersionInfoVC") as? VersionInfoVC else {
                     return
                 }
                 self.navigationController?.pushViewController(nextVC, animated: true)
