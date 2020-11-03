@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountEditVC: UIViewController {
+class PasswodChangeVC: UIViewController {
     
     //MARK: - IBOutlets
     

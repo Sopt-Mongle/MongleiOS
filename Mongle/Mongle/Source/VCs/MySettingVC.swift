@@ -70,7 +70,7 @@ extension MySettingVC: UITableViewDelegate {
                 }
                 self.navigationController?.pushViewController(nextVC, animated: true)
             case 1:
-                guard let nextVC = UIStoryboard(name: "AccountEdit", bundle: nil).instantiateViewController(identifier: "AccountEditVC") as? AccountEditVC else {
+                guard let nextVC = UIStoryboard(name: "AccountEdit", bundle: nil).instantiateViewController(identifier: "AccountEditVC") as? PasswodChangeVC else {
                     return
                 }
                 self.navigationController?.pushViewController(nextVC, animated: true)
