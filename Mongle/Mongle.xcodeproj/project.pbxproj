@@ -81,6 +81,9 @@
 		B83800F52525FF78009286AE /* PasswodChangeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83800F42525FF78009286AE /* PasswodChangeVC.swift */; };
 		B83800F82525FFA2009286AE /* PasswordChange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B83800F72525FFA2009286AE /* PasswordChange.storyboard */; };
 		B85400A025513C1D004700B4 /* VersionInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B854009F25513C1D004700B4 /* VersionInfo.storyboard */; };
+		B85400A6255143D7004700B4 /* AccountEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85400A5255143D7004700B4 /* AccountEditVC.swift */; };
+		B85400A9255143EC004700B4 /* AccountEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B85400A8255143EC004700B4 /* AccountEdit.storyboard */; };
+		B85400AC25514877004700B4 /* AccountEditTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85400AB25514877004700B4 /* AccountEditTVC.swift */; };
 		B86D4C4224B2C14200C21906 /* RecommendSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86D4C4124B2C14200C21906 /* RecommendSearchCVC.swift */; };
 		B8AB121924B46C7400B60240 /* CuratorList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8AB121824B46C7400B60240 /* CuratorList.storyboard */; };
 		B8AB121B24B46CC100B60240 /* CuratorListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AB121A24B46CC100B60240 /* CuratorListVC.swift */; };
@@ -265,6 +268,9 @@
 		B83800F42525FF78009286AE /* PasswodChangeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswodChangeVC.swift; sourceTree = "<group>"; };
 		B83800F72525FFA2009286AE /* PasswordChange.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasswordChange.storyboard; sourceTree = "<group>"; };
 		B854009F25513C1D004700B4 /* VersionInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VersionInfo.storyboard; sourceTree = "<group>"; };
+		B85400A5255143D7004700B4 /* AccountEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEditVC.swift; sourceTree = "<group>"; };
+		B85400A8255143EC004700B4 /* AccountEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountEdit.storyboard; sourceTree = "<group>"; };
+		B85400AB25514877004700B4 /* AccountEditTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEditTVC.swift; sourceTree = "<group>"; };
 		B86D4C4124B2C14200C21906 /* RecommendSearchCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendSearchCVC.swift; sourceTree = "<group>"; };
 		B8AB121824B46C7400B60240 /* CuratorList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CuratorList.storyboard; sourceTree = "<group>"; };
 		B8AB121A24B46CC100B60240 /* CuratorListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuratorListVC.swift; sourceTree = "<group>"; };
@@ -609,6 +615,7 @@
 				7FB4203624BCAD2200294314 /* SettingTVC.swift */,
 				7FB4203C24BD97C200294314 /* ProfileEditIntroduceTVC.swift */,
 				B8E2E15024C0317C00595752 /* SentenceMoreTVC.swift */,
+				B85400AB25514877004700B4 /* AccountEditTVC.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -657,6 +664,7 @@
 				B8E2E14C24BEE0B000595752 /* MyTabSentenceVC.swift */,
 				B8E2E14E24BEE0E900595752 /* MyTabCuratorVC.swift */,
 				B83800F42525FF78009286AE /* PasswodChangeVC.swift */,
+				B85400A5255143D7004700B4 /* AccountEditVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -693,6 +701,7 @@
 				7FB4203824BCC18D00294314 /* ProfileEdit.storyboard */,
 				7FFEA26724BE1E05003D381A /* Mongles.storyboard */,
 				B83800F72525FFA2009286AE /* PasswordChange.storyboard */,
+				B85400A8255143EC004700B4 /* AccountEdit.storyboard */,
 			);
 			path = MySetting;
 			sourceTree = "<group>";
@@ -795,6 +804,7 @@
 				B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */,
 				B8B48B2D24BC66DD00551F5B /* CuratorTabKeyword.storyboard in Resources */,
 				7FFEA26824BE1E05003D381A /* Mongles.storyboard in Resources */,
+				B85400A9255143EC004700B4 /* AccountEdit.storyboard in Resources */,
 				EC6B70C124BDE73700151A3B /* Comp 1.gif in Resources */,
 				7F1E71A824B7A72400D79516 /* ThemeInfo.storyboard in Resources */,
 				7F7C097324BAF714007C7C52 /* SentenceEdit.storyboard in Resources */,
@@ -868,6 +878,7 @@
 				7FA8C4B724C1753A00317F43 /* SentenceLikeData.swift in Sources */,
 				EC86B49A24B7646600DB930A /* UITextField+Extensions.swift in Sources */,
 				7FFEA28324BF4839003D381A /* ToastView.swift in Sources */,
+				B85400A6255143D7004700B4 /* AccountEditVC.swift in Sources */,
 				7F1E719B24B463A400D79516 /* MainTabFourthTVC.swift in Sources */,
 				7F6ABEDB24ADED910040746E /* GenericResponse.swift in Sources */,
 				7F6ABED724ADEB730040746E /* UserDefaultKeys.swift in Sources */,
@@ -990,6 +1001,7 @@
 				B8AB122524B5C1C500B60240 /* SearchTabResultVC.swift in Sources */,
 				B8E2E16324C17C8000595752 /* CuratorInfoService.swift in Sources */,
 				B8E2E14D24BEE0B000595752 /* MyTabSentenceVC.swift in Sources */,
+				B85400AC25514877004700B4 /* AccountEditTVC.swift in Sources */,
 				B8B48A5F24B602A600551F5B /* SearchResultCuratorVC.swift in Sources */,
 				B8E2E17724C29C9800595752 /* MyThemeService.swift in Sources */,
 				EC759C4624BF7219001D2F81 /* BookSearchForWritingService.swift in Sources */,
