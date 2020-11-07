@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +25,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HkO-FQ-aHc">
                                 <rect key="frame" x="0.0" y="98" width="375" height="680"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="3cs-Ks-9lT">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="386"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -39,7 +41,7 @@
                                         </label>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9oi-p6-YxO">
                                             <rect key="frame" x="0.0" y="36" width="375" height="133"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="135" id="U9p-dk-Iiw"/>
                                             </constraints>
@@ -104,7 +106,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="sme-bG-gkd">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="49.666666666666664"/>
                                                     <subviews>
-                                                        <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Srh-Km-dno">
+                                                        <button opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Srh-Km-dno">
                                                             <rect key="frame" x="0.0" y="0.0" width="124.33333333333333" height="49.666666666666664"/>
                                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -113,7 +115,7 @@
                                                                 <action selector="touchKeywordBTN:" destination="8gF-jx-CzC" eventType="touchUpInside" id="JCs-e1-9yC"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7L-EX-8oH">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7L-EX-8oH">
                                                             <rect key="frame" x="125.33333333333334" y="0.0" width="124.33333333333334" height="49.666666666666664"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <inset key="contentEdgeInsets" minX="-1" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -123,7 +125,7 @@
                                                                 <action selector="touchKeywordBTN:" destination="8gF-jx-CzC" eventType="touchUpInside" id="qtq-Ae-d9j"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwr-52-RC0">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwr-52-RC0">
                                                             <rect key="frame" x="250.66666666666666" y="0.0" width="124.33333333333334" height="49.666666666666664"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="자기계발"/>
@@ -137,7 +139,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="oor-By-Uuf">
                                                     <rect key="frame" x="0.0" y="50.666666666666657" width="375" height="49.333333333333343"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSr-KB-O8Q">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSr-KB-O8Q">
                                                             <rect key="frame" x="0.0" y="0.0" width="124.33333333333333" height="49.333333333333336"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -146,7 +148,7 @@
                                                                 <action selector="touchKeywordBTN:" destination="8gF-jx-CzC" eventType="touchUpInside" id="IZi-TA-aRa"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ffy-B2-4Ti">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ffy-B2-4Ti">
                                                             <rect key="frame" x="125.33333333333334" y="0.0" width="124.33333333333334" height="49.333333333333336"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -155,7 +157,7 @@
                                                                 <action selector="touchKeywordBTN:" destination="8gF-jx-CzC" eventType="touchUpInside" id="uu8-Rj-Yc2"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAs-cf-DEc">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAs-cf-DEc">
                                                             <rect key="frame" x="250.66666666666666" y="0.0" width="124.33333333333334" height="49.333333333333336"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <state key="normal" title="일상문장"/>
@@ -182,7 +184,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="r5a-v7-w5w" firstAttribute="leading" secondItem="S8G-nN-qZe" secondAttribute="leading" constant="16" id="8IG-Gs-llj"/>
                                                 <constraint firstAttribute="height" constant="85" id="DNZ-uK-Zhj"/>
@@ -191,7 +193,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="HrQ-NN-Bqw" firstAttribute="top" secondItem="3cs-Ks-9lT" secondAttribute="top" id="2tR-eL-dDu"/>
                                         <constraint firstAttribute="trailing" secondItem="9oi-p6-YxO" secondAttribute="trailing" id="9UL-K9-6kY"/>
@@ -227,7 +229,7 @@
                                                 </imageView>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uYd-AA-7x7">
                                                     <rect key="frame" x="0.0" y="137.99999999999997" width="375" height="360.33333333333326"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="360" id="GHS-xY-k0U"/>
                                                     </constraints>
@@ -373,7 +375,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="zWk-op-r2D"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="zWk-op-r2D" firstAttribute="bottom" secondItem="HkO-FQ-aHc" secondAttribute="bottom" id="AK7-Ze-tbn"/>
                             <constraint firstItem="HkO-FQ-aHc" firstAttribute="top" secondItem="zWk-op-r2D" secondAttribute="top" constant="54" id="Gkm-O3-toT"/>
@@ -382,7 +385,6 @@
                             <constraint firstItem="xhn-6r-wRq" firstAttribute="centerX" secondItem="zWk-op-r2D" secondAttribute="centerX" id="Vpa-Ib-trn"/>
                             <constraint firstItem="xhn-6r-wRq" firstAttribute="top" secondItem="zWk-op-r2D" secondAttribute="top" constant="4" id="yLM-di-8aZ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="zWk-op-r2D"/>
                     </view>
                     <connections>
                         <outlet property="curatorTabTableView" destination="HkO-FQ-aHc" id="24L-LD-Hbq"/>
@@ -403,5 +405,8 @@
     <resources>
         <image name="curatorImgTheme1" width="375" height="138"/>
         <image name="sentenceThemeOImgCurator1010" width="69.666664123535156" height="69.666664123535156"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -30,6 +30,7 @@ class ProfileEditVC: UIViewController {
     @IBOutlet var completeButton: UIButton!
     @IBOutlet var bottomBlurImageBottomConstraint: NSLayoutConstraint!
     @IBOutlet var keywordLabelTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topBlurView: UIImageView!
     
     
     // MARK:- UIComponent
@@ -93,6 +94,8 @@ class ProfileEditVC: UIViewController {
             })
             
         }
+        self.topBlurView.alpha = 1
+        //self.view.layoutIfNeeded()
     }
     
     @objc func keyboardWillHide(_ notification: NSNotification) {
@@ -107,15 +110,17 @@ class ProfileEditVC: UIViewController {
                        animations: {
                         self.view.layoutIfNeeded()
         })
+        self.topBlurView.alpha = 0
+        //self.view.layoutIfNeeded()
     }
-    @objc func touchUpProfoleImageView(){
+    @objc func touchUpProfileImageView(){
         self.present(self.imagePickerController, animated: true, completion: nil)
     }
     
     
     // MARK: Custom Method
     func setLayout(){
-        keywordBackgroundView.backgroundColor = UIColor(red: 232 / 255, green: 232 / 255, blue: 232 / 255, alpha: 1.0)
+        keywordBackgroundView.backgroundColor = UIColor.veryLightPinkEight
         profileImageView.makeRounded(cornerRadius: profileImageView.frame.width / 2)
         cameraButton.makeRounded(cornerRadius: cameraButton.frame.width / 2)
         
@@ -190,7 +195,7 @@ class ProfileEditVC: UIViewController {
     
     func setGesture(){
         profileImageView.isUserInteractionEnabled = true
-        let tabGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpProfoleImageView))
+        let tabGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpProfileImageView))
         profileImageView.addGestureRecognizer(tabGesture)
     }
 
@@ -242,8 +247,8 @@ class ProfileEditVC: UIViewController {
         updateSelectedKeywordButton()
     }
     
-    @IBAction func touchUpDismissButton(sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func touchUpBackButton(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func touchUpCompleteButton(){
@@ -269,6 +274,7 @@ extension ProfileEditVC: UITableViewDelegate {
 }
 // MARK: UITableViewDataSource
 extension ProfileEditVC: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isScrollSpended {
             return 5
@@ -314,3 +320,13 @@ extension ProfileEditVC: UIImagePickerControllerDelegate, UINavigationController
         self.dismiss(animated: true, completion: nil)
     }
 }
+
+//extension ProfileEditVC: UIGestureRecognizerDelegate {
+//    func gestureRecognizer(_ gestrueRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+//        if (touch.view?.isDescendant(of: nickNameTextField))! || (touch.view?.isDescendant(of: self.textfield))! {
+//
+//            return false
+//        }
+//        return true
+//    }
+//}
