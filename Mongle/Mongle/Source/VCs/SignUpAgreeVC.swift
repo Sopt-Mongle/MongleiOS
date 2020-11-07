@@ -26,6 +26,23 @@ class SignUpAgreeVC: UIViewController {
     @IBOutlet weak var noticeLabel: UILabel!
     @IBOutlet weak var explainTextView: UITextView!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var checkButtonInner2: UIImageView!
+    
+    
+    
+    @IBOutlet weak var checkButtonOuter2: UIImageView!
+    @IBOutlet weak var checkButton2: UIButton!
+    @IBOutlet weak var showServiceAgreeButton: UIButton!
+    
+    @IBOutlet weak var outerCircle2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var innerCircle2Constraint: NSLayoutConstraint!
+    
+    
+    
+    @IBOutlet weak var smallNextImageView2: UIImageView!
+    @IBOutlet weak var noticeLabel2: UILabel!
+    
+    
     let innerCircle = UIView().then{
         $0.backgroundColor = .brownGreyThree
         
@@ -73,6 +90,9 @@ class SignUpAgreeVC: UIViewController {
         $0.image = UIImage(named: "joinStep1ErrorIcWarning")
         
     }
+    
+    
+    
     let warningLabel = UILabel().then{
         $0.text = "필수 항목을 동의해야 가입할 수 있어요!"
         $0.font = UIFont.systemFont(ofSize: 13)
@@ -81,7 +101,17 @@ class SignUpAgreeVC: UIViewController {
     
     
     var checked = false
+    var checked2 = false
     var showingWarning = false
+    var showingWarning2 = false
+    
+    //MARK:: constraints
+    
+    @IBOutlet weak var checkButton2Constraints: NSLayoutConstraint!
+    
+    @IBOutlet weak var serViceButtonConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var smallNext2Constraint: NSLayoutConstraint!
     
     
     override func viewDidLoad() {
@@ -98,14 +128,21 @@ class SignUpAgreeVC: UIViewController {
         headerImageView.image = UIImage(named: "yoonjaeFighting")
         
         checkButtonOuter.image = UIImage(named: "joinStep1ErrorBtnAgree")
+        checkButtonOuter2.image = UIImage(named: "joinStep1ErrorBtnAgree")
         checkButtonInner.image = UIImage(named: "joinStep1AgreeIcAgree")
+        
+        checkButtonInner2.image = UIImage(named: "joinStep1AgreeIcAgree")
         checkButtonInner.makeRounded(cornerRadius: 7)
+        checkButtonInner2.makeRounded(cornerRadius: 7)
         checkButtonInner.alpha = 0
+        checkButtonInner2.alpha = 0
         
         
         noticeLabel.text = "[필수] 개인정보 수집이용 동의"
+        noticeLabel2.text = "[필수] 서비스 이용약관 동의"
         
         smallNextImageView.image = UIImage(named: "joinStep1AgreeBtnPolicy")
+        smallNextImageView2.image = UIImage(named: "joinStep1AgreeBtnPolicy")
         
         explainTextView.text = "약관에는 '개인정보 수집 목적 및 이용’에 관한 중요한\n내용이 담겨 있습니다. 약관 동의 체크는 해당 약관을\n모두 숙지하였으며, 이에 동의함을 의미합니다."
         explainTextView.textColor = .brownGreyThree
@@ -225,7 +262,18 @@ class SignUpAgreeVC: UIViewController {
         
         self.view.addSubview(warnView)
         
-        textViewTopConstraint.constant = 33
+        textViewTopConstraint.constant = 76
+        
+        outerCircle2Constraint.constant = 28
+        innerCircle2Constraint.constant = 39
+        serViceButtonConstraint.constant = 18
+        checkButton2Constraints.constant = 18
+        smallNext2Constraint.constant = 33
+        
+        
+        
+        
+        
         warnView.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(58)
             $0.top.equalToSuperview().offset(349)
@@ -244,8 +292,38 @@ class SignUpAgreeVC: UIViewController {
             
         }
         
+        
         showingWarning = true
         
+        
+        
+    }
+    func showWarning2(){
+        warnView.addSubview(warningLabel)
+        warnView.addSubview(warningImageView)
+        
+        self.view.addSubview(warnView)
+        
+        textViewTopConstraint.constant = 76
+        warnView.snp.makeConstraints{
+            $0.leading.equalToSuperview().offset(58)
+            $0.top.equalToSuperview().offset(392)
+            $0.height.equalTo(15)
+            $0.width.equalTo(200)
+        }
+        
+        
+        warningImageView.snp.makeConstraints{
+            $0.leading.equalToSuperview()
+            $0.width.height.equalTo(15)
+        }
+        
+        warningLabel.snp.makeConstraints{
+            $0.leading.equalToSuperview().offset(23)
+            
+        }
+        
+        showingWarning2 = true
         
         
     }
@@ -253,9 +331,20 @@ class SignUpAgreeVC: UIViewController {
     func hideWarning(){
         
         warnView.removeFromSuperview()
-        textViewTopConstraint.constant = 10
+        textViewTopConstraint.constant = 53
+        outerCircle2Constraint.constant = 10
+        innerCircle2Constraint.constant = 21
+        serViceButtonConstraint.constant = 0
+        checkButton2Constraints.constant = 0
+        smallNext2Constraint.constant = 15
         
         
+    }
+    
+    func hideWarning2(){
+        
+        warnView.removeFromSuperview()
+        textViewTopConstraint.constant = 53
     }
     
     
@@ -264,7 +353,9 @@ class SignUpAgreeVC: UIViewController {
         
         if(checked){
             checkButtonInner.alpha = 1
-            ballAppearAnimation()
+            if(checked && checked2){
+                ballAppearAnimation()
+            }
             
             if(showingWarning){
                 hideWarning()
@@ -280,6 +371,28 @@ class SignUpAgreeVC: UIViewController {
         
     }
     
+    @IBAction func checkButton2Action(_ sender: Any) {
+        checked2 = !checked2
+        
+        if(checked2){
+            checkButtonInner2.alpha = 1
+            
+            if(checked && checked2){
+                ballAppearAnimation()
+            }
+            if(showingWarning2){
+                hideWarning()
+            }
+        }
+        else{
+            checkButtonInner2.alpha = 0
+            ballHideAnimation()
+            
+            
+        }
+        
+        
+    }
     
     
     @IBAction func showAgreeButtonAction(_ sender: Any) {
@@ -299,10 +412,33 @@ class SignUpAgreeVC: UIViewController {
         
     }
     
+    @IBAction func showServiceButtonAction(_ sender: Any) {
+        
+        guard let vcName = UIStoryboard(name: "ServiceAgreeForSignUp",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "ServiceAgreeForSignUpVC") as? ServiceAgreeForSignUpVC
+            else{
+                
+                return
+        }
+        
+        vcName.modalPresentationStyle = .fullScreen
+        
+        self.present(vcName, animated: true, completion: nil)
+        
+        
+    }
+    
+    
+    
     @IBAction func nextButtonAction(_ sender: Any) {
         if(!checked){
             showWarning()
             
+        }
+        
+        else if (!checked2){
+            showWarning2()
         }
         else{
             guard let vcName = UIStoryboard(name: "SignUp",
@@ -323,6 +459,11 @@ class SignUpAgreeVC: UIViewController {
     }
     
     
+    
+    
+    @IBAction func closeButtonAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     
     

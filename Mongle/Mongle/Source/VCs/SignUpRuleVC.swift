@@ -12,18 +12,29 @@ class SignUpRuleVC: UIViewController {
 
     @IBOutlet weak var xButton: UIButton!
     @IBOutlet weak var xImageView: UIImageView!
-    @IBOutlet weak var containImageView: UIImageView!
+    @IBOutlet weak var wholeImageView: UIImageView!
+    @IBOutlet weak var upperBlur: UIImageView!
+    @IBOutlet weak var underBlur: UIImageView!
+    
+    @IBOutlet weak var whoeScrollView: UIScrollView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setItems()
+        whoeScrollView.delegate = self
         // Do any additional setup after loading the view.
     }
     
     func setItems(){
 //        xButton.alpha = 0
         xImageView.image = UIImage(named: "joinStep1PolicyBtnClose")
-        containImageView.image = UIImage(named: "joinStep1PolicyYangachiYoonjae")
+        wholeImageView.image = UIImage(named: "joinStep1PolicyYangachiYoonjae")
+        upperBlur.image = UIImage(named: "joinStep1ServiceBoxBlur2")
+        underBlur.image = UIImage(named: "mySettingsServiceBoxBlur")
+        
+        upperBlur.alpha = 0
+        underBlur.alpha = 0
         
     }
 
@@ -32,5 +43,17 @@ class SignUpRuleVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    
+    
 
+}
+
+extension SignUpRuleVC : UIScrollViewDelegate {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        upperBlur.alpha = 1
+        underBlur.alpha = 1
+    }
+    
+    
 }

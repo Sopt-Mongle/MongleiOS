@@ -22,18 +22,34 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nickNameWarningLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var emailStar: UIImageView!
+    @IBOutlet weak var passwordStar: UIImageView!
+    
+    @IBOutlet weak var nickNameStar: UIImageView!
+    
+    @IBOutlet weak var emailNoticeLabel: UILabel!
+    
+    @IBOutlet weak var passwordNoticeLabel: UILabel!
+    @IBOutlet weak var nickNameNoticeLabel: UILabel!
+    @IBOutlet weak var mustLabel: UILabel!
+    
+    @IBOutlet weak var mustStar: UIImageView!
+    
     
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var signUpScrollView: UIScrollView!
     @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var progressBar: UIProgressView!
-    
+    @IBOutlet weak var upperBlurImageView: UIImageView!
     
     //MARK:- Constraints For Warning
     
     @IBOutlet weak var emailToPassWordConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var passWordToNIckNameConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var nickNameStarConstraint: NSLayoutConstraint!
+    @IBOutlet weak var nickNameNoticeConstraint: NSLayoutConstraint!
     
     
     //MARK:- User Define Variables
@@ -43,7 +59,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
     }
     let upperBlur = UIImageView().then {
-                $0.image = UIImage(named: "joinStep2Nickname4BoxBlur")
+                $0.image = UIImage(named: "joinStep2PasswordBoxBlur")
         $0.contentMode = .scaleToFill
         
         
@@ -156,10 +172,10 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         backButton.setImage(UIImage(named: "joinEmailErrorBtnClose")?.withRenderingMode(.alwaysOriginal), for: .normal)
         
         
-        emailTextField.placeholder = "이메일 주소를 입력해주세요."
-        passWordTextField.placeholder = "비밀번호를 입력해주세요."
-        passWordTextField2.placeholder = "비밀번호를 한 번 더 확인해주세요."
-        nickNameTextField.placeholder = "닉네임을 6자 이내로 입력해주세요. "
+        emailTextField.placeholder = "이메일 주소"
+        passWordTextField.placeholder = "비밀번호"
+        passWordTextField2.placeholder = "비밀번호 확인"
+        nickNameTextField.placeholder = "닉네임"
         
         emailTextField.makeRounded(cornerRadius: 10)
         passWordTextField.makeRounded(cornerRadius: 10)
@@ -203,6 +219,21 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         }
         
         emailTextField.keyboardType = .emailAddress
+        
+        upperBlurImageView.image = UIImage(named: "joinStep2Nickname4BoxBlur")
+        upperBlurImageView.contentMode = .scaleToFill
+        upperBlurImageView.alpha = 0
+        emailStar.image = UIImage(named: "starInMyEyes")
+        emailNoticeLabel.textColor = .brownGreyThree
+        passwordStar.image = UIImage(named: "starInMyEyes")
+        nickNameStar.image = UIImage(named : "starInMyEyes")
+        mustStar.image = UIImage(named : "starInMyEyes")
+        
+        passwordNoticeLabel.textColor = .brownGreyThree
+        nickNameNoticeLabel.textColor = .brownGreyThree
+        mustLabel.textColor = .brownGreyThree
+        
+        
         
     }
     
@@ -344,8 +375,12 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             self.view.layoutIfNeeded()
             
             self.view.addSubview(underBlur)
-            self.view.addSubview(upperBlur)
+//            self.view.addSubview(upperBlur)
+            upperBlurImageView.alpha = 1
+            
+            
             self.view.bringSubviewToFront(registerButton)
+            
             underBlur.snp.makeConstraints {
                 $0.bottom.equalToSuperview().offset(-keyboardSize.height)
                 $0.height.equalTo(123)
@@ -353,12 +388,17 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                 
             }
             
-            upperBlur.snp.makeConstraints {
-                $0.top.equalToSuperview().offset(109)
-                $0.leading.trailing.equalToSuperview()
-                $0.height.equalTo(91)
-                
-            }
+            
+            mustStar.alpha = 0
+            mustLabel.alpha = 0
+            
+            
+//            upperBlur.snp.makeConstraints {
+//                $0.top.equalToSuperview().offset(109)
+//                $0.leading.trailing.equalToSuperview()
+//                $0.height.equalTo(91)
+//
+//            }
             
             
             
@@ -473,7 +513,11 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     @objc func keyboardWillHide(_ notification: NSNotification) {
         self.underBlur.removeFromSuperview()
-        self.upperBlur.removeFromSuperview()
+//        self.upperBlur.removeFromSuperview()
+        upperBlurImageView.alpha = 0
+        
+        mustStar.alpha = 1
+        mustLabel.alpha = 1
         
         guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]
             as? Double else {return}
@@ -538,13 +582,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         self.signUpScrollView.addSubview(emailWarningLabel)
         
         emailWarningImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(85)
+            $0.top.equalToSuperview().offset(119)
             $0.leading.equalToSuperview().offset(28)
             $0.width.height.equalTo(15)
         }
         
         emailWarningLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(85)
+            $0.top.equalToSuperview().offset(119)
             $0.leading.equalToSuperview().offset(51)
             
         }
@@ -566,8 +610,11 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     func showPasswordWarning(){
         passwordIsWarning = 25
-        
+        print(1)
         passWordToNIckNameConstraint.constant = 59
+        nickNameStarConstraint.constant = 56
+        nickNameNoticeConstraint.constant = 62
+        
         self.signUpScrollView.addSubview(passwordWarningImageView)
         self.signUpScrollView.addSubview(passwordWarningLabel)
         
@@ -598,9 +645,12 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     func hidePasswordWarning(){
-        
+        print(2)
         passwordIsWarning = 0
         passWordToNIckNameConstraint.constant = 34
+        nickNameNoticeConstraint.constant = 37
+        nickNameStarConstraint.constant = 31
+        
         passwordWarningLabel.removeFromSuperview()
         passwordWarningImageView.removeFromSuperview()
         
@@ -610,7 +660,11 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
     }
     func secondPasswordBegin(){
+        print(3)
         passWordToNIckNameConstraint.constant = 59
+        nickNameStarConstraint.constant = 56
+        nickNameNoticeConstraint.constant = 62
+        
         self.signUpScrollView.addSubview(passwordWarningImageView)
         self.signUpScrollView.addSubview(passwordWarningLabel)
         
@@ -679,8 +733,11 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     
     func secondPasswordEnd(){
-        
+        print(4)
         passWordToNIckNameConstraint.constant = 34
+        nickNameStarConstraint.constant = 37
+        nickNameNoticeConstraint.constant = 31
+        
         passwordWarningLabel.removeFromSuperview()
         passwordWarningImageView.removeFromSuperview()
         

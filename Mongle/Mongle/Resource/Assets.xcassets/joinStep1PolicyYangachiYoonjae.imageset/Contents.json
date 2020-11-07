@@ -1,9 +1,9 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
       "filename" : "joinStep1PolicyYangachiYoonjae.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "idiom" : "universal"
     },
     {
       "idiom" : "universal",
@@ -11,9 +11,9 @@
       "scale" : "2x"
     },
     {
+      "scale" : "3x",
       "idiom" : "universal",
-      "filename" : "joinStep1PolicyYangachiYoonjae@3x.png",
-      "scale" : "3x"
+      "filename" : "joinStep1PolicyYangachiYoonjae@3x.png"
     }
   ],
   "info" : {
