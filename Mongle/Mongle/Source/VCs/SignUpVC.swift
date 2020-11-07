@@ -619,13 +619,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         self.signUpScrollView.addSubview(passwordWarningLabel)
         
         passwordWarningImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(416 + emailIsWarning)
+            $0.top.equalToSuperview().offset(282 + emailIsWarning)
             $0.leading.equalToSuperview().offset(28)
             $0.width.height.equalTo(15)
         }
         
         passwordWarningLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(416 + emailIsWarning)
+            $0.top.equalToSuperview().offset(282 + emailIsWarning)
             $0.leading.equalToSuperview().offset(51)
             
         }
@@ -670,13 +670,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
         
         passwordWarningImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(416+emailIsWarning)
+            $0.top.equalToSuperview().offset(282+emailIsWarning)
             $0.leading.equalToSuperview().offset(28)
             $0.width.height.equalTo(15)
         }
         
         passwordWarningLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(416+emailIsWarning)
+            $0.top.equalToSuperview().offset(282+emailIsWarning)
             $0.leading.equalToSuperview().offset(51)
             
         }
