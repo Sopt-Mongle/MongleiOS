@@ -506,9 +506,9 @@ class LogInVC: UIViewController {
     }
     
     @IBAction func signUpButton(_ sender: Any) {
-        guard let vcName = UIStoryboard(name: "SignUp",
+        guard let vcName = UIStoryboard(name: "SignUpAgree",
                                         bundle: nil).instantiateViewController(
-                                            withIdentifier: "SignUpVC") as? SignUpVC
+                                            withIdentifier: "SignUpAgreeVC") as? SignUpAgreeVC
             else{
                 return
         }
