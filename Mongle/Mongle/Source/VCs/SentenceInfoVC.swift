@@ -24,6 +24,9 @@ class SentenceInfoVC: UIViewController {
     @IBOutlet var likeView: UIView!
     @IBOutlet var bookmarkView: UIView!
     
+    @IBOutlet var themeImageView: UIImageView!
+    @IBOutlet var themeNameLabel: UILabel!
+    
     //MARK:- UI Component
     lazy var popup = MonglePopupView(frame: CGRect(x: 0, y: 0, width: 304, height: 193))
     lazy var blur = UIView().then {
@@ -47,6 +50,7 @@ class SentenceInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGesture()
+        bindThemeInfo()
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
     }
@@ -75,6 +79,12 @@ class SentenceInfoVC: UIViewController {
             }
         }
     }
+    
+    func bindThemeInfo() {
+        themeImageView.image = themeImage
+        themeNameLabel.text = themeText
+    }
+    
     func getOtherSentece(){
         SentenceService.shared.getSentence(idx: self.sentenceIdx ?? 0) { networkResult in
             switch networkResult {
@@ -197,18 +207,15 @@ class SentenceInfoVC: UIViewController {
     
     func showPopUp(){
         
-        popup.setPopUp(state: .delete,
-                yesHandler: { [weak self] in
-                    print(#function)
-                    self?.navigationController?.popViewController(animated: true)
-                    
-        },
-                noHandler: {[weak self] in
-                    self?.blur.removeFromSuperview()
-                    self?.popup.removeFromSuperview()
-                    
-        },
-                confirmHandler: nil)
+        popup.setPopUp(state: .delete, yesHandler: { [weak self] in
+            print(#function)
+            self?.navigationController?.popViewController(animated: true)
+            
+        }, noHandler: {[weak self] in
+            self?.blur.removeFromSuperview()
+            self?.popup.removeFromSuperview()
+            
+        },confirmHandler: nil)
     
         
         self.view.addSubview(blur)
@@ -224,7 +231,7 @@ class SentenceInfoVC: UIViewController {
         }
     }
     
-    @objc func touchUpBackButton(){
+    @IBAction func touchUpBackButton(){
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -236,8 +243,6 @@ class SentenceInfoVC: UIViewController {
         
         self.navigationController?.pushViewController(dvc, animated: true)
     }
-    
-    
 }
 
 //MARK:- Extension
@@ -259,12 +264,10 @@ extension SentenceInfoVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 144
-        }
-        else {
+        if section == 1 {
             return 95
         }
+        return 43
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -279,54 +282,7 @@ extension SentenceInfoVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 144))
-            
-            var imageView = UIImageView(image: self.themeImage)
-//            imageView.contentMode = .scaleAspectFill
-//            imageView.
-            
-            let backButton = UIButton().then {
-                $0.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
-                $0.setImage(UIImage(named: "sentenceThemeOBtnBack"), for: .normal)
-                $0.addTarget(self, action: #selector(touchUpBackButton), for: .touchUpInside)
-            }
-            
-            let themeLabel = UILabel().then {
-                $0.text = themeText
-                $0.textColor = .white
-                $0.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18.0)!
-                $0.numberOfLines = 2
-                $0.lineBreakMode = .byCharWrapping
-            }
-            
-            if !hasTheme {
-                self.tableViewBottomConstraint.constant = -likeAndBookmarkView.frame.height
-                themeLabel.text = "테마 없는 문장"
-                imageView = UIImageView(image: UIImage(named: "sentenceThemeXBgThemeX"))
-                backButton.setImage(UIImage(named: "sentenceThemeXBtnBack"), for: .normal)
-                likeAndBookmarkView.isHidden = true
-            }
-            
-            view.addSubview(imageView)
-            view.addSubview(backButton)
-            view.addSubview(themeLabel)
-            
-            imageView.snp.makeConstraints {
-                $0.top.leading.trailing.bottom.equalToSuperview()
-            }
-            backButton.snp.makeConstraints {
-                $0.top.equalToSuperview().offset(37)
-                $0.leading.equalToSuperview()
-                $0.height.width.equalTo(48)
-            }
-            
-            themeLabel.snp.makeConstraints {
-                $0.leading.equalToSuperview().offset(28)
-                $0.trailing.equalToSuperview().offset(-28)
-                $0.bottom.equalToSuperview().offset(-19)
-            }
-            view.backgroundColor = .brown
-            return view
+            return UIView()
         }
         else {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 95))
@@ -339,8 +295,6 @@ extension SentenceInfoVC: UITableViewDelegate {
                 $0.leading.equalToSuperview().offset(16)
                 $0.bottom.equalToSuperview().offset(-22)
             }
-            
-            
             return view
         }
     }
