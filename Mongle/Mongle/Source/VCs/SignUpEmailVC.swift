@@ -128,6 +128,7 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
         
         progressBar.progressTintColor = .softGreen
         
+        
         innerCircle.snp.makeConstraints{
             $0.width.height.equalTo(12)
             $0.leading.equalToSuperview().offset(35)
@@ -416,6 +417,29 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
                 self.stackToButton.constant = 7
                 self.statckToButtonImage.constant = 16
                 self.buttonToButton.constant = 7
+            },completion: { finished in
+//                UIView.animate(withDuration: 0.12, animations: {
+//                    self.emailMongleImage.transform = CGAffineTransform(rotationAngle: 360/180)
+//
+//
+//                }, completion: { finish in
+//                    UIView.animate(withDuration: 0.12, animations: {
+//                        self.emailMongleImage.transform = CGAffineTransform(rotationAngle: -360/180)
+//
+//
+//                    },completion: { finish in
+//
+//                        UIView.animate(withDuration: 0.34, animations: {
+//                            self.emailMongleImage.transform = CGAffineTransform(rotationAngle: 0/180)
+//                        })
+//
+//                    })
+//
+//
+//
+//                })
+                
+                
             })
             self.view.layoutIfNeeded()
             
