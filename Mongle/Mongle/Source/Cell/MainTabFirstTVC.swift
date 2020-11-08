@@ -32,12 +32,15 @@ class MainTabFirstTVC: UITableViewCell {
     var editorData: [EditorPickData] = []
     
     var selectedCellDelegate: ((UIViewController) -> Void) = { _ in }
+
     
     // MARK:- Override Method
     override func awakeFromNib() {
         super.awakeFromNib()
         
         pageViewWidth = (editorData.count - 1) * 7 + 19 + (editorData.count - 1) * 7
+        
+
         
         mainDisplayPictureCollectionView.delegate = self
         mainDisplayPictureCollectionView.dataSource = self
@@ -56,20 +59,21 @@ class MainTabFirstTVC: UITableViewCell {
 //MARK: UICollectionViewDelegate
 extension MainTabFirstTVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == mainDisplayPictureCollectionView {
-            guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
-                return
-            }
-            dvc.themeIdx = self.editorData[indexPath.row].themeIdx
-            selectedCellDelegate(dvc)
-        }
+        
+//        if collectionView == mainDisplayPictureCollectionView {
+//            guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
+//                return
+//            }
+//            dvc.themeIdx = self.editorData[indexPath.row].themeIdx
+//            selectedCellDelegate(dvc)
+//        }
     }
 }
 //MARK: UICollectionViewDataSource
 extension MainTabFirstTVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return editorData.count
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView,

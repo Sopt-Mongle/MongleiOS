@@ -11,9 +11,12 @@ import UIKit
 class MainTabMainVC: UIViewController {
     
     //MARK:- IBOutlet
-    @IBOutlet var layoutTableView: UITableView!
-    
-    //
+    @IBOutlet var layoutTableView: UITableView! {
+        didSet {
+            layoutTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.1))
+        }
+    }
+
     var editorsTheme: [EditorPickData] = []
     var sentences: [TodaySentenceData] = []
     var curators: [MainCuratorData] = []
@@ -35,7 +38,6 @@ class MainTabMainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#function)
         
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
@@ -136,15 +138,8 @@ extension MainTabMainVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case 0:
-            let view = MainMongleHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 58))
-            view.searchButtomDelegate = { [weak self] in
-                if let tab = self?.tabBarController as? UnderTabBarController {
-//                    tab.tabBarController(tab, didSelect: self!)
-//                    tab.selectedIndex = 1
-//                    tab.curIndex = 0
-                }
-//                self?.tabBarController?.selectedIndex = 1
-            }
+            let view = UIView()
+            view.backgroundColor = .brown
             return view
         case 1:
             let view = MainTabDefaultHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 48))
@@ -175,10 +170,8 @@ extension MainTabMainVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
-        case 0:
-            return 58
         case 1, 2, 3, 4, 5:
-            return 48
+            return 22
         default:
             break
         }
@@ -189,7 +182,6 @@ extension MainTabMainVC: UITableViewDelegate {
         return 0
     }
 }
-
 
 // MARK: UITableViewDataSource
 extension MainTabMainVC: UITableViewDataSource {
@@ -269,6 +261,7 @@ extension MainTabMainVC: UITableViewDataSource {
             cell.popularThemaCollectionview.reloadData()
             return cell
         default:
+            
             return UITableViewCell()
         }
     }

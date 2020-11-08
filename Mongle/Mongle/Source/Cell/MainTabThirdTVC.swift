@@ -16,6 +16,11 @@ class MainTabThirdTVC: UITableViewCell {
 //    let curators = ["예슬", "주혁", "윤재", "윤재", "윤재", "윤재"]
     var curators: [MainCuratorData] = []
     var cellSelectDelegate: ((UIViewController)->Void) = { _ in }
+    
+    let topInset: CGFloat = 10
+    let horizonInset: CGFloat = 16
+    let bottomInset: CGFloat = 25
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,27 +34,28 @@ class MainTabThirdTVC: UITableViewCell {
 
 extension MainTabThirdTVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let curator = self.curators[indexPath.item]
-        guard let dvc = UIStoryboard(name: "CuratorTabInfo", bundle: nil).instantiateViewController(identifier: "CuratorTabInfoVC") as? CuratorTabInfoVC else {
-            return
-        }
-        dvc.curatorIdx = curator.curatorIdx
-        cellSelectDelegate(dvc)
+//        let curator = self.curators[indexPath.item]
+//        guard let dvc = UIStoryboard(name: "CuratorTabInfo", bundle: nil).instantiateViewController(identifier: "CuratorTabInfoVC") as? CuratorTabInfoVC else {
+//            return
+//        }
+//        dvc.curatorIdx = curator.curatorIdx
+//        cellSelectDelegate(dvc)
         
     }
 }
 
 extension MainTabThirdTVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return curators.count
+//        return curators.count
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainPopularCuratorCVC.identifier, for: indexPath) as? MainPopularCuratorCVC else {
             return UICollectionViewCell()
         }
-        let curator = self.curators[indexPath.item]
-        cell.setData(imgUrl: curator.img ?? "themeImgCurator", name: curator.name, tag: curator.keyword ?? " ")
+//        let curator = self.curators[indexPath.item]
+//        cell.setData(imgUrl: curator.img ?? "themeImgCurator", name: curator.name, tag: curator.keyword ?? " ")
         return cell
     }
 
@@ -58,11 +64,19 @@ extension MainTabThirdTVC: UICollectionViewDataSource {
 extension MainTabThirdTVC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 96, height: 135)
+        let width = (collectionView.bounds.width - horizonInset) / 4
+        let height = collectionView.bounds.height - topInset - bottomInset
+        
+        return CGSize(width:  width,
+                      height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
+        
+        return UIEdgeInsets(top: topInset,
+                            left: horizonInset,
+                            bottom: bottomInset,
+                            right: horizonInset)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
