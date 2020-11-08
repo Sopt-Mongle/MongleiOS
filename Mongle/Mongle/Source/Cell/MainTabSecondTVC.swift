@@ -33,27 +33,27 @@ class MainTabSecondTVC: UITableViewCell {
 
 extension MainTabSecondTVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        
-//        guard let dvc = UIStoryboard.init(name: "SentenceInfo", bundle: nil).instantiateViewController(identifier: "SentenceInfoVC") as? SentenceInfoVC else {
-//            return
-//        }
-//        dvc.sentenceIdx = self.sentences[indexPath.item].sentenceIdx
-//        dvc.isMySentence = false
-//        selectSentenceDelegate(dvc)
+        
+        guard let dvc = UIStoryboard.init(name: "SentenceInfo", bundle: nil).instantiateViewController(identifier: "SentenceInfoVC") as? SentenceInfoVC else {
+            return
+        }
+        dvc.sentenceIdx = self.sentences[indexPath.item].sentenceIdx
+        dvc.isMySentence = false
+        selectSentenceDelegate(dvc)
     }
 }
 extension MainTabSecondTVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return sentences.count
-        return 5
+        return sentences.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainTodaySentenceCVC.identifier, for: indexPath) as? MainTodaySentenceCVC else {
             return UICollectionViewCell()
         }
-//        let sentence = sentences[indexPath.item]
-//        cell.setData(sentence: sentence.sentence, bookName: sentence.title)
+        let sentence = sentences[indexPath.item]
+        cell.setData(sentence: sentence.sentence, bookName: sentence.title)
         cell.setData(sentence: "sad", bookName: "asd")
         return cell
     }

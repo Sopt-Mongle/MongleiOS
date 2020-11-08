@@ -38,11 +38,9 @@ struct MainService {
     }
     
     func getTodaySentence(completion: @escaping ((NetworkResult<Any>)->Void)) {
-        let token = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue)!
         
         let header: HTTPHeaders = [
-            "Content-Type":"application/json",
-            "token":token
+            "Content-Type":"application/json"
         ]
         
         Alamofire.request(APIConstants.mainSentencesURL,
@@ -88,6 +86,7 @@ struct MainService {
                                 }
                                 completion(self.judgePopularCurator(status: statusCode, data: data))
                             case .failure(let err):
+//                                print("Error#######################################")
                                 print(err)
                                 completion(.networkFail)
                             }
@@ -95,11 +94,9 @@ struct MainService {
     }
     
     func getThemeList(flag: Int, completion: @escaping ((NetworkResult<Any>)->Void)){
-        let token = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue)!
         
         let header: HTTPHeaders = [
-            "Content-Type" : "application/json",
-            "token":token
+            "Content-Type" : "application/json"
         ]
         
         var url = ""

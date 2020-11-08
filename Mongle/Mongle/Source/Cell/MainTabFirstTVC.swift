@@ -60,13 +60,14 @@ class MainTabFirstTVC: UITableViewCell {
 extension MainTabFirstTVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-//        if collectionView == mainDisplayPictureCollectionView {
-//            guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
-//                return
-//            }
+        if collectionView == mainDisplayPictureCollectionView {
+            guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
+                return
+            }
 //            dvc.themeIdx = self.editorData[indexPath.row].themeIdx
-//            selectedCellDelegate(dvc)
-//        }
+            
+            selectedCellDelegate(dvc)
+        }
     }
 }
 //MARK: UICollectionViewDataSource
