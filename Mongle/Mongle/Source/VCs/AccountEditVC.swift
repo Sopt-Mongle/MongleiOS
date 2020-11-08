@@ -174,9 +174,11 @@ extension AccountEditVC: UITableViewDelegate{
         switch indexPath.row{
         //비번변경
         case 0:
-            guard let nextVC = UIStoryboard(name: "PasswordChange",bundle: nil).instantiateViewController(identifier: "PasswordChangeVC") as? PasswodChangeVC else{
+            guard let nextVC = UIStoryboard(name: "PasswordChange",bundle: nil).instantiateViewController(identifier: "PasswordChangeVC") as? PasswordChangeVC else{
                 return
             }
+            print(1)
+            self.navigationController?.pushViewController(nextVC, animated: true)
         //로그아웃
         case 1:
             yesState = .logout
