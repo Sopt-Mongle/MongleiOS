@@ -39,7 +39,7 @@ class SentenceInfoVC: UIViewController {
 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의인상,사소한 것으로 인해 생기는 호감,
 """
     var sentence: Sentence?
-    var themeImage: UIImage?
+    var themeImage: UIImage? = UIImage(named: "curatorImgTheme1")
     var otherSentences: [Sentence] = []
     var hasTheme: Bool = true
     var isMySentence: Bool = true
@@ -51,12 +51,19 @@ class SentenceInfoVC: UIViewController {
         super.viewDidLoad()
         addGesture()
         bindThemeInfo()
+        makeRoundTableView()
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
-        getSentenceInfo()
-        getOtherSentece()
+//        getSentenceInfo()
+//        getOtherSentece()
+    }
+    
+    func makeRoundTableView() {
+        layoutTableView.layer.cornerRadius = 25
+        layoutTableView.clipsToBounds = true
+        layoutTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     func getSentenceInfo(){
@@ -82,7 +89,10 @@ class SentenceInfoVC: UIViewController {
     
     func bindThemeInfo() {
         themeImageView.image = themeImage
-        themeNameLabel.text = themeText
+//        themeNameLabel.text = themeText
+        themeNameLabel.text = """
+            난 여름에 첫사랑이랑 데이트한 적 없는데…
+            """
     }
     
     func getOtherSentece(){
@@ -382,7 +392,7 @@ extension SentenceInfoVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceInfoTVC.identifier) as? SentenceInfoTVC else {
                 return UITableViewCell()
             }
-            cell.setSentenceData(sentence: self.sentence?.sentence ?? "",
+            cell.setSentenceData(sentence: self.sentence?.sentence ?? self.sentenceText,
                                  profileImg: self.sentence?.writerImg ?? "",
                                  curatorName: self.sentence?.writer ?? "",
                                  isLiked: true,
