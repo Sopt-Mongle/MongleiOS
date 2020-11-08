@@ -144,10 +144,16 @@
 		EC148CF924BC67E7006925A0 /* 43-emoji-wink.json in Resources */ = {isa = PBXBuildFile; fileRef = EC148CF824BC67E7006925A0 /* 43-emoji-wink.json */; };
 		EC178CCC24BE26F5008CF514 /* SignUpEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC178CCB24BE26F5008CF514 /* SignUpEnd.storyboard */; };
 		EC178CCE24BE2719008CF514 /* SignUpEndVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC178CCD24BE2719008CF514 /* SignUpEndVC.swift */; };
+		EC2713EA2507C9D300E4B8C3 /* SignUpAgree.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC2713E92507C9D300E4B8C3 /* SignUpAgree.storyboard */; };
+		EC304629254ED08800DB6E4A /* ServiceAgreeForSignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC304628254ED08800DB6E4A /* ServiceAgreeForSignUp.storyboard */; };
+		EC30462C254ED0AA00DB6E4A /* ServiceAgreeForSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC30462B254ED0AA00DB6E4A /* ServiceAgreeForSignUpVC.swift */; };
+		EC523908250DF4D30080BAF0 /* SignUpRule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC523907250DF4D30080BAF0 /* SignUpRule.storyboard */; };
+		EC52390A250DF4ED0080BAF0 /* SignUpRuleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC523909250DF4ED0080BAF0 /* SignUpRuleVC.swift */; };
 		EC6B709524BD760B00151A3B /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC6B709424BD760B00151A3B /* SignUp.storyboard */; };
 		EC6B709724BD762A00151A3B /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6B709624BD762A00151A3B /* SignUpVC.swift */; };
 		EC6B70BD24BDD43600151A3B /* Comp 2_1.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC6B70BC24BDD43600151A3B /* Comp 2_1.gif */; };
 		EC6B70C124BDE73700151A3B /* Comp 1.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC6B70C024BDE73700151A3B /* Comp 1.gif */; };
+		EC6E99CA2508C9D900B57284 /* SignUpAgreeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6E99C92508C9D900B57284 /* SignUpAgreeVC.swift */; };
 		EC7410B424BA03E800CBAF1C /* EndOfWritingSentence.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7410B324BA03E800CBAF1C /* EndOfWritingSentence.storyboard */; };
 		EC7410B624BA040300CBAF1C /* EndOfWritingSentenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410B524BA040300CBAF1C /* EndOfWritingSentenceVC.swift */; };
 		EC7410B824BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7410B724BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift */; };
@@ -172,6 +178,10 @@
 		EC759C5024C02779001D2F81 /* ThemeSelectForWriteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC759C4F24C02779001D2F81 /* ThemeSelectForWriteData.swift */; };
 		EC759C5224C03C77001D2F81 /* SearchThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC759C5124C03C77001D2F81 /* SearchThemeService.swift */; };
 		EC759C5424C03C84001D2F81 /* SearchThemeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC759C5324C03C84001D2F81 /* SearchThemeData.swift */; };
+		EC76E10325109C29009DDEF1 /* SignUpMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC76E10225109C29009DDEF1 /* SignUpMain.storyboard */; };
+		EC76E10525109D56009DDEF1 /* SignUpMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC76E10425109D56009DDEF1 /* SignUpMainVC.swift */; };
+		EC771BB1254D4DD10041603E /* SignUpServiceAgree.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC771BB0254D4DD10041603E /* SignUpServiceAgree.storyboard */; };
+		EC771BB4254D4E210041603E /* SignUpServiceAgreeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC771BB3254D4E210041603E /* SignUpServiceAgreeVC.swift */; };
 		EC7C78EE24B2F2A800B7FCFB /* UnderTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */; };
 		EC7C78F024B2F2DE00B7FCFB /* UnderTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */; };
 		EC86B49624B7169200DB930A /* SearchBookForWriting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC86B49524B7169200DB930A /* SearchBookForWriting.storyboard */; };
@@ -332,10 +342,16 @@
 		EC148CF824BC67E7006925A0 /* 43-emoji-wink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "43-emoji-wink.json"; sourceTree = "<group>"; };
 		EC178CCB24BE26F5008CF514 /* SignUpEnd.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpEnd.storyboard; sourceTree = "<group>"; };
 		EC178CCD24BE2719008CF514 /* SignUpEndVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEndVC.swift; sourceTree = "<group>"; };
+		EC2713E92507C9D300E4B8C3 /* SignUpAgree.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpAgree.storyboard; sourceTree = "<group>"; };
+		EC304628254ED08800DB6E4A /* ServiceAgreeForSignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServiceAgreeForSignUp.storyboard; sourceTree = "<group>"; };
+		EC30462B254ED0AA00DB6E4A /* ServiceAgreeForSignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAgreeForSignUpVC.swift; sourceTree = "<group>"; };
+		EC523907250DF4D30080BAF0 /* SignUpRule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpRule.storyboard; sourceTree = "<group>"; };
+		EC523909250DF4ED0080BAF0 /* SignUpRuleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRuleVC.swift; sourceTree = "<group>"; };
 		EC6B709424BD760B00151A3B /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		EC6B709624BD762A00151A3B /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		EC6B70BC24BDD43600151A3B /* Comp 2_1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Comp 2_1.gif"; sourceTree = "<group>"; };
 		EC6B70C024BDE73700151A3B /* Comp 1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Comp 1.gif"; sourceTree = "<group>"; };
+		EC6E99C92508C9D900B57284 /* SignUpAgreeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreeVC.swift; sourceTree = "<group>"; };
 		EC7410B324BA03E800CBAF1C /* EndOfWritingSentence.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EndOfWritingSentence.storyboard; sourceTree = "<group>"; };
 		EC7410B524BA040300CBAF1C /* EndOfWritingSentenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndOfWritingSentenceVC.swift; sourceTree = "<group>"; };
 		EC7410B724BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeMakeImagesCVC.swift; sourceTree = "<group>"; };
@@ -360,6 +376,10 @@
 		EC759C4F24C02779001D2F81 /* ThemeSelectForWriteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSelectForWriteData.swift; sourceTree = "<group>"; };
 		EC759C5124C03C77001D2F81 /* SearchThemeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchThemeService.swift; sourceTree = "<group>"; };
 		EC759C5324C03C84001D2F81 /* SearchThemeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchThemeData.swift; sourceTree = "<group>"; };
+		EC76E10225109C29009DDEF1 /* SignUpMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpMain.storyboard; sourceTree = "<group>"; };
+		EC76E10425109D56009DDEF1 /* SignUpMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpMainVC.swift; sourceTree = "<group>"; };
+		EC771BB0254D4DD10041603E /* SignUpServiceAgree.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpServiceAgree.storyboard; sourceTree = "<group>"; };
+		EC771BB3254D4E210041603E /* SignUpServiceAgreeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpServiceAgreeVC.swift; sourceTree = "<group>"; };
 		EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnderTab.storyboard; sourceTree = "<group>"; };
 		EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderTabBarController.swift; sourceTree = "<group>"; };
 		EC86B49524B7169200DB930A /* SearchBookForWriting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchBookForWriting.storyboard; sourceTree = "<group>"; };
@@ -495,6 +515,11 @@
 				EC6B709424BD760B00151A3B /* SignUp.storyboard */,
 				EC178CCB24BE26F5008CF514 /* SignUpEnd.storyboard */,
 				B8E2E14424BEE03200595752 /* MyTab.storyboard */,
+				EC2713E92507C9D300E4B8C3 /* SignUpAgree.storyboard */,
+				EC523907250DF4D30080BAF0 /* SignUpRule.storyboard */,
+				EC76E10225109C29009DDEF1 /* SignUpMain.storyboard */,
+				EC771BB0254D4DD10041603E /* SignUpServiceAgree.storyboard */,
+				EC304628254ED08800DB6E4A /* ServiceAgreeForSignUp.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -665,6 +690,11 @@
 				B8E2E14E24BEE0E900595752 /* MyTabCuratorVC.swift */,
 				B83800F42525FF78009286AE /* PasswodChangeVC.swift */,
 				B85400A5255143D7004700B4 /* AccountEditVC.swift */,
+				EC6E99C92508C9D900B57284 /* SignUpAgreeVC.swift */,
+				EC523909250DF4ED0080BAF0 /* SignUpRuleVC.swift */,
+				EC76E10425109D56009DDEF1 /* SignUpMainVC.swift */,
+				EC771BB3254D4E210041603E /* SignUpServiceAgreeVC.swift */,
+				EC30462B254ED0AA00DB6E4A /* ServiceAgreeForSignUpVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -797,6 +827,7 @@
 				B83800F82525FFA2009286AE /* PasswordChange.storyboard in Resources */,
 				EC8E323324AF1B1A001AB034 /* Writing_Theme.storyboard in Resources */,
 				EC6B70BD24BDD43600151A3B /* Comp 2_1.gif in Resources */,
+				EC304629254ED08800DB6E4A /* ServiceAgreeForSignUp.storyboard in Resources */,
 				7FFEA27824BE441F003D381A /* AppleSDGothicNeoL.ttf in Resources */,
 				B8AB122324B5C10B00B60240 /* SearchTabResult.storyboard in Resources */,
 				EC88960C24B87F3D008D29E2 /* ThemeSelectForWriteSentence.storyboard in Resources */,
@@ -806,17 +837,21 @@
 				7FFEA26824BE1E05003D381A /* Mongles.storyboard in Resources */,
 				B85400A9255143EC004700B4 /* AccountEdit.storyboard in Resources */,
 				EC6B70C124BDE73700151A3B /* Comp 1.gif in Resources */,
+				EC523908250DF4D30080BAF0 /* SignUpRule.storyboard in Resources */,
 				7F1E71A824B7A72400D79516 /* ThemeInfo.storyboard in Resources */,
 				7F7C097324BAF714007C7C52 /* SentenceEdit.storyboard in Resources */,
 				7FFEA27D24BE441F003D381A /* AppleSDGothicNeoEB.ttf in Resources */,
 				7F1E71A424B504CF00D79516 /* MainTabMain.storyboard in Resources */,
 				B8B48B2F24BC66F400551F5B /* CuratorTabInfo.storyboard in Resources */,
+				EC2713EA2507C9D300E4B8C3 /* SignUpAgree.storyboard in Resources */,
+				EC76E10325109C29009DDEF1 /* SignUpMain.storyboard in Resources */,
 				7F6ABEBB24ADE7720040746E /* Assets.xcassets in Resources */,
 				EC86B49624B7169200DB930A /* SearchBookForWriting.storyboard in Resources */,
 				7FFEA27B24BE441F003D381A /* AppleSDGothicNeoUL.ttf in Resources */,
 				EC88960624B869E9008D29E2 /* WritingSentenceThird.storyboard in Resources */,
 				EC6B709524BD760B00151A3B /* SignUp.storyboard in Resources */,
 				7FC5B4D524BC6C78007C1725 /* AddBookToSentence.storyboard in Resources */,
+				EC771BB1254D4DD10041603E /* SignUpServiceAgree.storyboard in Resources */,
 				ECEF22BA24B4A3B200933534 /* WritingSentence.storyboard in Resources */,
 				7FB4203324BCA2FC00294314 /* MySetting.storyboard in Resources */,
 				7FB4203924BCC18D00294314 /* ProfileEdit.storyboard in Resources */,
@@ -888,6 +923,7 @@
 				EC6B709724BD762A00151A3B /* SignUpVC.swift in Sources */,
 				7F1E719924B45AB600D79516 /* MainPopularCuratorCVC.swift in Sources */,
 				B8B48B3124BC673C00551F5B /* CuratorTabMainVC.swift in Sources */,
+				EC52390A250DF4ED0080BAF0 /* SignUpRuleVC.swift in Sources */,
 				B8E2E16124C0D48800595752 /* CuratorFollowService.swift in Sources */,
 				7FB4203724BCAD2200294314 /* SettingTVC.swift in Sources */,
 				B8E2E14724BEE07000595752 /* MyTabVC.swift in Sources */,
@@ -902,6 +938,7 @@
 				7F7C097524BAFAAE007C7C52 /* SentenceEditVC.swift in Sources */,
 				EC7410E224BC539500CBAF1C /* LogInVC.swift in Sources */,
 				B8E2E15F24C0C08100595752 /* SearchCuratorService.swift in Sources */,
+				EC771BB4254D4E210041603E /* SignUpServiceAgreeVC.swift in Sources */,
 				7F6ABEDD24ADF3B20040746E /* NetworkResult.swift in Sources */,
 				EC759C4C24C02615001D2F81 /* PostBookData.swift in Sources */,
 				EC7410B624BA040300CBAF1C /* EndOfWritingSentenceVC.swift in Sources */,
@@ -928,6 +965,7 @@
 				7FFEA26A24BE3317003D381A /* MonglesVC.swift in Sources */,
 				7F1E719D24B46E3C00D79516 /* MainPopularThemaCVC.swift in Sources */,
 				7FC5B4D324BB61A4007C1725 /* WritingSentenceInThemeVC.swift in Sources */,
+				EC6E99CA2508C9D900B57284 /* SignUpAgreeVC.swift in Sources */,
 				EC759C4A24C025AE001D2F81 /* PostBookService.swift in Sources */,
 				B8E2E15124C0317D00595752 /* SentenceMoreTVC.swift in Sources */,
 				7FA8C4B524C101E000317F43 /* SentenceData.swift in Sources */,
@@ -943,6 +981,7 @@
 				B8E2E17324C28B5C00595752 /* MyProfileService.swift in Sources */,
 				7F7C096F24BA2910007C7C52 /* SentenceInfoVC.swift in Sources */,
 				B8E2E17D24C2AE3C00595752 /* MySentenceData.swift in Sources */,
+				EC30462C254ED0AA00DB6E4A /* ServiceAgreeForSignUpVC.swift in Sources */,
 				B8E2E17B24C2A33600595752 /* MySentenceService.swift in Sources */,
 				EC759C3C24BED5CD001D2F81 /* SigninData.swift in Sources */,
 				EC88960E24B87F66008D29E2 /* ThemeSelectForWritingSentenceVC.swift in Sources */,
@@ -978,6 +1017,7 @@
 				B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */,
 				7FFEA28924BF9C72003D381A /* TodaySentenceData.swift in Sources */,
 				ECA23EE024B5F5F100C100F1 /* WritingSentenceSecondVC.swift in Sources */,
+				EC76E10525109D56009DDEF1 /* SignUpMainVC.swift in Sources */,
 				B8E2E17124C1D1B300595752 /* CuratorKeywordData.swift in Sources */,
 				B8E2E13F24BE15CD00595752 /* CuratorTabInfoThemeVC.swift in Sources */,
 				EC178CCE24BE2719008CF514 /* SignUpEndVC.swift in Sources */,

@@ -14,9 +14,6 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     //MARK:- IBOutlets
     
-    @IBOutlet weak var headerContainerView: UIView!
-    @IBOutlet weak var mongleCharacterImageView: UIImageView!
-    @IBOutlet weak var HeaderLabel: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
     @IBOutlet weak var passWordTextField2: UITextField!
@@ -25,11 +22,25 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nickNameWarningLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var emailStar: UIImageView!
+    @IBOutlet weak var passwordStar: UIImageView!
+    
+    @IBOutlet weak var nickNameStar: UIImageView!
+    
+    @IBOutlet weak var emailNoticeLabel: UILabel!
+    
+    @IBOutlet weak var passwordNoticeLabel: UILabel!
+    @IBOutlet weak var nickNameNoticeLabel: UILabel!
+    @IBOutlet weak var mustLabel: UILabel!
+    
+    @IBOutlet weak var mustStar: UIImageView!
+    
     
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var signUpScrollView: UIScrollView!
     @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var upperBlurImageView: UIImageView!
     
     //MARK:- Constraints For Warning
     
@@ -37,15 +48,20 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var passWordToNIckNameConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var nickNameStarConstraint: NSLayoutConstraint!
+    @IBOutlet weak var nickNameNoticeConstraint: NSLayoutConstraint!
+    
     
     //MARK:- User Define Variables
     
     let underBlur = UIImageView().then {
         $0.image = UIImage(named: "joinEmailBoxBlur")
-    
+        
     }
     let upperBlur = UIImageView().then {
-        $0.image = UIImage(named: "joinPasswordBoxBlur")
+                $0.image = UIImage(named: "joinStep2PasswordBoxBlur")
+        $0.contentMode = .scaleToFill
+        
         
     }
     let emailWarningImageView = UIImageView().then {
@@ -54,14 +70,14 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     let emailWarningLabel = UILabel().then {
-        $0.text = "이메일 주소를 입력해주세요!"
+        $0.text = "올바른 이메일 형식이 아니에요!"
         $0.font = $0.font.withSize(13)
         $0.textColor = .reddish
     }
     
     let passwordWarningImageView = UIImageView().then {
         $0.image = UIImage(named: "joinEmailErrorIcWarning")
-    
+        
     }
     
     let passwordWarningLabel = UILabel().then {
@@ -75,6 +91,46 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         $0.text = ""
         $0.font = $0.font.withSize(13)
         $0.textColor = .veryLightPink
+        
+    }
+    let innerCircle = UIView().then{
+        $0.backgroundColor = .softGreen
+        
+        
+    }
+    let outerCircle = UIView().then{
+        $0.backgroundColor = .softGreen
+        $0.alpha = 0.34
+        
+    }
+    
+    let innerCircle2 = UIView().then{
+        $0.backgroundColor = .brownGreyThree
+        
+        
+    }
+    let outerCircle2 = UIView().then{
+        $0.backgroundColor = .brownGreyThree
+        $0.alpha = 0.34
+        
+        
+    }
+    
+    let smallCircle = UIView().then{
+        $0.backgroundColor = .veryLightPinkSeven
+        
+        
+    }
+    
+    let smallCircle2 = UIView().then{
+        $0.backgroundColor = .veryLightPinkSeven
+        
+        
+    }
+    
+    let smallCircle3 = UIView().then{
+        $0.backgroundColor = .veryLightPinkSeven
+        
         
     }
     
@@ -91,11 +147,15 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         setItems()
+        setSmallBalls()
+        setProgressBar()
+        
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         registerForKeyboardNotifications()
+        secondLevelAnimation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -110,13 +170,12 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     //MARK:- User Define Functions
     func setItems(){
         backButton.setImage(UIImage(named: "joinEmailErrorBtnClose")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        headerContainerView.backgroundColor = .clear
-        mongleCharacterImageView.image = UIImage(named: "joinEmail2ImgMongle")
-        HeaderLabel.image = UIImage(named: "yoonjaeFighting")
-        emailTextField.placeholder = "이메일 주소를 입력해주세요."
-        passWordTextField.placeholder = "비밀번호를 입력해주세요."
-        passWordTextField2.placeholder = "비밀번호를 한 번 더 확인해주세요."
-        nickNameTextField.placeholder = "닉네임을 6자 이내로 입력해주세요. "
+        
+        
+        emailTextField.placeholder = "이메일 주소"
+        passWordTextField.placeholder = "비밀번호"
+        passWordTextField2.placeholder = "비밀번호 확인"
+        nickNameTextField.placeholder = "닉네임"
         
         emailTextField.makeRounded(cornerRadius: 10)
         passWordTextField.makeRounded(cornerRadius: 10)
@@ -161,10 +220,25 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
         emailTextField.keyboardType = .emailAddress
         
+        upperBlurImageView.image = UIImage(named: "joinStep2Nickname4BoxBlur")
+        upperBlurImageView.contentMode = .scaleToFill
+        upperBlurImageView.alpha = 0
+        emailStar.image = UIImage(named: "starInMyEyes")
+        emailNoticeLabel.textColor = .brownGreyThree
+        passwordStar.image = UIImage(named: "starInMyEyes")
+        nickNameStar.image = UIImage(named : "starInMyEyes")
+        mustStar.image = UIImage(named : "starInMyEyes")
+        
+        passwordNoticeLabel.textColor = .brownGreyThree
+        nickNameNoticeLabel.textColor = .brownGreyThree
+        mustLabel.textColor = .brownGreyThree
+        
+        
+        
     }
     
     
-
+    
     func partialGreenColor(){
         
         
@@ -199,15 +273,15 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
-       
+        
         if textField == passWordTextField || textField == passWordTextField2 {
             let move = CGPoint(x: 0, y: 162)
             signUpScrollView.setContentOffset(move, animated: false)
             hidePasswordWarning()
             
-        
+            
         }
-        
+            
         else if textField == nickNameTextField {
             let move = CGPoint(x: 0, y: 280)
             signUpScrollView.setContentOffset(move, animated: false)
@@ -231,7 +305,21 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         else if textField == nickNameTextField {
             nickNameQuantityLabel.alpha = 0
         }
-        
+        else if textField == emailTextField{
+            if emailTextField.text == "" || emailTextField.text?.isValidEmailAddress() == false{
+                showEmailWarning()
+                
+                if passwordIsWarning == 25 {
+                    hidePasswordWarning()
+                    showPasswordWarning()
+                    
+                    
+                }
+                
+                
+            }
+            
+        }
         
         
         
@@ -243,13 +331,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             hideEmailWarning()
             emailTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         case passWordTextField:
-           
+            
             hidePasswordWarning()
             comparePasswords()
-             passWordTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+            passWordTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         case passWordTextField2 :
             
-             passWordTextField2.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+            passWordTextField2.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         case nickNameTextField :
             hideNickNameWarning()
             nickNameTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
@@ -264,17 +352,17 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
         
         return true
-
+        
     }
-   
+    
     
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
         
         
         
-       
-      
+        
+        
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
             as? NSValue)?.cgRectValue {
             scrollViewBottomConstraint.constant = keyboardSize.height + 82
@@ -287,8 +375,12 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             self.view.layoutIfNeeded()
             
             self.view.addSubview(underBlur)
-            self.view.addSubview(upperBlur)
+//            self.view.addSubview(upperBlur)
+            upperBlurImageView.alpha = 1
+            
+            
             self.view.bringSubviewToFront(registerButton)
+            
             underBlur.snp.makeConstraints {
                 $0.bottom.equalToSuperview().offset(-keyboardSize.height)
                 $0.height.equalTo(123)
@@ -296,12 +388,17 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                 
             }
             
-            upperBlur.snp.makeConstraints {
-                $0.top.equalToSuperview().offset(76)
-                $0.leading.trailing.equalToSuperview()
-                $0.height.equalTo(53)
-                
-            }
+            
+            mustStar.alpha = 0
+            mustLabel.alpha = 0
+            
+            
+//            upperBlur.snp.makeConstraints {
+//                $0.top.equalToSuperview().offset(109)
+//                $0.leading.trailing.equalToSuperview()
+//                $0.height.equalTo(91)
+//
+//            }
             
             
             
@@ -311,12 +408,117 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
     }
     
+    func secondLevelAnimation() {
+        progressBar.progress = 0
+        //        progressBar.setProgress(0.5, animated: true)
+        
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
+            self.progressBar.layoutIfNeeded()
+            
+        }, completion: { finished in
+            self.progressBar.progress = 0.5
+            
+            
+            
+            
+            UIView.animate(withDuration: 0.75 , delay: 0.0, options: [.curveEaseIn], animations: {
+                self.progressBar.layoutIfNeeded()
+            }, completion:nil)
+        })
+        
+        
+        
+    }
+    
+    func setSmallBalls(){
+        self.view.addSubview(smallCircle2)
+        self.view.addSubview(smallCircle3)
+        
+        smallCircle.makeRounded(cornerRadius: 4.5)
+        
+        smallCircle2.snp.makeConstraints{
+            $0.width.height.equalTo(9)
+            $0.center.equalTo(progressBar)
+        }
+        smallCircle2.makeRounded(cornerRadius: 4.5)
+        
+        smallCircle3.snp.makeConstraints{
+            $0.width.height.equalTo(9)
+            $0.trailing.equalToSuperview().offset(-36)
+            $0.centerY.equalTo(progressBar)
+            
+        }
+        smallCircle3.makeRounded(cornerRadius: 4.5)
+        
+        
+        
+        
+    }
+    
+    func setProgressBar(){
+        
+        self.view.addSubview(outerCircle)
+        self.view.addSubview(innerCircle)
+        self.view.addSubview(outerCircle2)
+        self.view.addSubview(innerCircle2)
+        
+        
+        self.innerCircle2.snp.makeConstraints{
+            $0.width.height.equalTo(12)
+            $0.centerX.equalTo(self.progressBar.snp_centerXWithinMargins)
+            $0.centerY.equalTo(self.progressBar.snp_centerYWithinMargins)
+            
+            
+        }
+        innerCircle2.makeRounded(cornerRadius: 6)
+        innerCircle2.alpha = 1
+        
+        
+        self.outerCircle2.snp.makeConstraints{
+            $0.width.height.equalTo(26)
+            $0.centerX.equalTo(self.progressBar.snp_centerXWithinMargins)
+            $0.centerY.equalTo(self.progressBar.snp_centerYWithinMargins)
+            
+        }
+        outerCircle2.makeRounded(cornerRadius: 13)
+        outerCircle2.alpha = 0.34
+        
+        
+        progressBar.progressTintColor = .softGreen
+        
+        innerCircle.snp.makeConstraints{
+            $0.width.height.equalTo(12)
+            $0.leading.equalToSuperview().offset(35)
+            $0.centerY.equalTo(progressBar.snp_centerYWithinMargins)
+            
+        }
+        innerCircle.makeRounded(cornerRadius: 6)
+        
+        outerCircle.snp.makeConstraints{
+            $0.width.height.equalTo(26)
+            $0.leading.equalToSuperview().offset(28)
+            $0.centerY.equalTo(progressBar.snp_centerYWithinMargins)
+            
+        }
+        outerCircle.makeRounded(cornerRadius: 13)
+        innerCircle.alpha = 1
+        outerCircle.alpha = 0.34
+        progressBar.progress = 0
+        
+        
+    }
+    
     
     
     @objc func keyboardWillHide(_ notification: NSNotification) {
         self.underBlur.removeFromSuperview()
-        self.upperBlur.removeFromSuperview()
-       
+//        self.upperBlur.removeFromSuperview()
+        upperBlurImageView.alpha = 0
+        
+        mustStar.alpha = 1
+        mustLabel.alpha = 1
+        
         guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]
             as? Double else {return}
         guard let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey]
@@ -330,7 +532,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         })
         
         
-    
+        
         
         
     }
@@ -380,13 +582,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         self.signUpScrollView.addSubview(emailWarningLabel)
         
         emailWarningImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(253)
+            $0.top.equalToSuperview().offset(119)
             $0.leading.equalToSuperview().offset(28)
             $0.width.height.equalTo(15)
         }
         
         emailWarningLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(253)
+            $0.top.equalToSuperview().offset(119)
             $0.leading.equalToSuperview().offset(51)
             
         }
@@ -408,8 +610,11 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     func showPasswordWarning(){
         passwordIsWarning = 25
-        
+        print(1)
         passWordToNIckNameConstraint.constant = 59
+        nickNameStarConstraint.constant = 56
+        nickNameNoticeConstraint.constant = 62
+        
         self.signUpScrollView.addSubview(passwordWarningImageView)
         self.signUpScrollView.addSubview(passwordWarningLabel)
         
@@ -427,7 +632,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
         if(passWordTextField.text == ""){
             self.passWordTextField.setBorder(borderColor: .reddish, borderWidth: 1.0)
-             self.passWordTextField2.setBorder(borderColor: .reddish, borderWidth: 1.0)
+            self.passWordTextField2.setBorder(borderColor: .reddish, borderWidth: 1.0)
         }
         else {
             self.passWordTextField2.setBorder(borderColor: .reddish, borderWidth: 1.0)
@@ -440,9 +645,12 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     func hidePasswordWarning(){
-        
+        print(2)
         passwordIsWarning = 0
         passWordToNIckNameConstraint.constant = 34
+        nickNameNoticeConstraint.constant = 37
+        nickNameStarConstraint.constant = 31
+        
         passwordWarningLabel.removeFromSuperview()
         passwordWarningImageView.removeFromSuperview()
         
@@ -452,10 +660,14 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
     }
     func secondPasswordBegin(){
+        print(3)
         passWordToNIckNameConstraint.constant = 59
+        nickNameStarConstraint.constant = 56
+        nickNameNoticeConstraint.constant = 62
+        
         self.signUpScrollView.addSubview(passwordWarningImageView)
         self.signUpScrollView.addSubview(passwordWarningLabel)
-       
+        
         
         passwordWarningImageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(416+emailIsWarning)
@@ -474,7 +686,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         passwordWarningLabel.textColor = .reddish
         passwordWarningImageView.image = UIImage(named: "joinEmailErrorIcWarning")
         
-       
+        
         
         if passWordTextField.text!.count == passWordTextField2.text!.count {
             passWarningMoveAnimation()
@@ -482,7 +694,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             
         }
         
-       
+        
         
         
         
@@ -511,18 +723,21 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                     self.passwordWarningLabel.transform = .identity
                     
                 })
-        })
-        
-        
-        
+            })
+            
+            
+            
         })
         
     }
     
     
     func secondPasswordEnd(){
-        
+        print(4)
         passWordToNIckNameConstraint.constant = 34
+        nickNameStarConstraint.constant = 37
+        nickNameNoticeConstraint.constant = 31
+        
         passwordWarningLabel.removeFromSuperview()
         passwordWarningImageView.removeFromSuperview()
         
@@ -540,10 +755,10 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     func showNickNameDuplicate(){
-//        nickNameWarningLabel.text = "이미 사용 중인 닉네임이에요!"
-//        nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1.0)
-//        nickNameWarningLabel.alpha = 1
-//        nickNameWarningImageView.alpha = 1
+        //        nickNameWarningLabel.text = "이미 사용 중인 닉네임이에요!"
+        //        nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1.0)
+        //        nickNameWarningLabel.alpha = 1
+        //        nickNameWarningImageView.alpha = 1
         
         self.showToast(text: "이미 사용 중인 닉네임이에요!")
         
@@ -569,7 +784,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                 
             }
             
-
+            
         }
         else if passWordTextField.text == "" || passWordTextField2.text == ""{
             
@@ -625,7 +840,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                                             }
                                             
                                             vcName.modalPresentationStyle = .fullScreen
-                                           
+                                            
                                             self.present(vcName, animated: true, completion: nil)
                                             
                                         case .requestErr(let message):
@@ -644,7 +859,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                                         case .pathErr: self.showNickNameDuplicate()
                                         case .serverErr: print("serverErr")
                                         case .networkFail: print("networkFails2")
-                                  
+                                            
                                             
                                         }
                                         
@@ -660,7 +875,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     
     
-        
+    
     
 }
 
@@ -678,9 +893,9 @@ extension StringProtocol {
     }
 }
 extension String {
-   func isValidEmailAddress() -> Bool {
-       let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-     let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-     return emailTest.evaluate(with: self)
-  }
+    func isValidEmailAddress() -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: self)
+    }
 }
