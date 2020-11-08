@@ -25,10 +25,12 @@ class OnboardingPVC: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(self.transitionStyle.rawValue)
         
         self.dataSource = self
         self.delegate = self
         
+     
         if let firstVC = VCArray.first{
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
@@ -73,10 +75,12 @@ extension OnboardingPVC : UIPageViewControllerDelegate, UIPageViewControllerData
         }
         
         
-    
+        
         
         
     }
+    
+
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let vcIdx = VCArray.firstIndex(of: viewController) else {return nil}

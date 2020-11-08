@@ -12,7 +12,7 @@
         <!--Onboarding MainVC-->
         <scene sceneID="X36-wA-1uy">
             <objects>
-                <viewController storyboardIdentifier="OnboardingMainVC" id="HCh-c8-C0L" customClass="OnboardingMainVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingMainVC" modalTransitionStyle="flipHorizontal" id="HCh-c8-C0L" customClass="OnboardingMainVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XE6-SK-u8v">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,7 +20,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WNR-4C-11y">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <connections>
-                                    <segue destination="OyY-XJ-3yx" kind="embed" id="olv-uK-uUt"/>
+                                    <segue destination="BaI-nr-fLp" kind="embed" id="4Ok-TH-RHC"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -38,10 +38,10 @@
             </objects>
             <point key="canvasLocation" x="45" y="93"/>
         </scene>
-        <!--OnboardingPVC-->
+        <!--View Controller-->
         <scene sceneID="2rq-Em-cdI">
             <objects>
-                <viewController storyboardIdentifier="OnboardingPVC" id="OyY-XJ-3yx" customClass="OnboardingPVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" id="OyY-XJ-3yx" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LG9-Wn-gpu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4q-GH-ZMw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="958" y="92"/>
+            <point key="canvasLocation" x="1384" y="-192"/>
+        </scene>
+        <!--OnboardingPVC-->
+        <scene sceneID="rew-eX-IWZ">
+            <objects>
+                <pageViewController storyboardIdentifier="OnboardingPVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="BaI-nr-fLp" customClass="OnboardingPVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W4e-27-yzC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="786" y="546"/>
         </scene>
     </scenes>
     <resources>
