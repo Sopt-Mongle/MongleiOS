@@ -17,7 +17,9 @@ class MainPictureCVC: UICollectionViewCell {
     
     override func awakeFromNib() {
         
+    }
+    
+    func setCell() {
         
-
     }
 }

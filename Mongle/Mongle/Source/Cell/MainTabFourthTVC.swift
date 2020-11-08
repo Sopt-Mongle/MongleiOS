@@ -23,6 +23,9 @@ class MainTabFourthTVC: UITableViewCell {
     
     var themas: [MainThemeData] = []
 //    var themas = ["브랜딩이 어려울 때영감을 주는 문장", "번아웃을 극복하고 싶을 때 봐야하는 문장문장", "가나다라마바사아자차"]
+    let topInset: CGFloat = 21
+    let horizonInset: CGFloat = 16
+    let bottomInset: CGFloat = 38
     var selectedCell: ((_ viewController: UIViewController) -> Void)?
     
     override func awakeFromNib() {
@@ -36,21 +39,24 @@ class MainTabFourthTVC: UITableViewCell {
 
 extension MainTabFourthTVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let theme = self.themas[indexPath.item]
-        guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
-            return
-        }
-        dvc.themeIdx = theme.themeIdx
-        
-        if let delegate = selectedCell {
-            delegate(dvc)
-        }
+//        let theme = self.themas[indexPath.item]
+//        
+//        
+//        
+//        guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
+//            return
+//        }
+//        dvc.themeIdx = theme.themeIdx
+//        
+//        if let delegate = selectedCell {
+//            delegate(dvc)
+//        }
     }
 }
 
 extension MainTabFourthTVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        themas.count
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -58,8 +64,8 @@ extension MainTabFourthTVC: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        let theme = self.themas[indexPath.item]
-        cell.setData(name: theme.theme, count: theme.sentenceNum, imageUrl: theme.themeImg, isBookMark: theme.alreadyBookmarked)
+//        let theme = self.themas[indexPath.item]
+//        cell.setData(name: theme.theme, count: theme.sentenceNum, imageUrl: theme.themeImg, isBookMark: theme.alreadyBookmarked)
         
         return cell
     }
@@ -67,10 +73,13 @@ extension MainTabFourthTVC: UICollectionViewDataSource {
 
 extension MainTabFourthTVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 159, height: 159)
+        let width = (collectionView.bounds.width - horizonInset - 33) / 2
+        let height = collectionView.bounds.height - topInset - bottomInset
+        
+        return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 5, left: 16, bottom: 43, right: 16)
+        return UIEdgeInsets(top: topInset, left: horizonInset, bottom: bottomInset, right: horizonInset)
     }
 }
