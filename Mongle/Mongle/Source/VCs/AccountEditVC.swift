@@ -13,6 +13,7 @@ class AccountEditVC: UIViewController {
     // MARK:- IBOutlet
     
     @IBOutlet weak var accountEditTableView: UITableView!
+    @IBOutlet weak var backButton: UIButton!
     
     //MARK: - Custom Properties
     let heightRatio: CGFloat = UIScreen.main.bounds.height/812
@@ -59,6 +60,8 @@ class AccountEditVC: UIViewController {
         $0.addTarget(self, action: #selector(noButtonAction), for: .touchUpInside)
         $0.titleLabel?.font = $0.titleLabel?.font.withSize(13)
     }
+    var yesState: YesFunction = .logout
+
     // MARK:- LifeCycle Methods
     
     override func viewDidLoad() {
@@ -71,6 +74,7 @@ class AccountEditVC: UIViewController {
     
     // MARK:- Custom Methods
     func showPopupView(_ popupTitle: String, _ popupText: String){
+        
         self.view.addSubview(blurImageView)
         self.view.addSubview(popupView)
         self.popupView.addSubview(popupImageView)
@@ -115,12 +119,43 @@ class AccountEditVC: UIViewController {
             $0.leading.equalToSuperview().offset(161*widthRatio)
             $0.trailing.equalToSuperview().offset(-16*widthRatio)
         }
+        accountEditTableView.isUserInteractionEnabled = false
+        backButton.isUserInteractionEnabled = false
         
     }
+    
+    func callLogout(){
+        print("logout")
+    }
+    
+    func callWithdraw(){
+        print("withdraw")
+    }
     @objc func yesButtonAction(){
-        //로그아웃 API
+        guard let loginVC = UIStoryboard(name:"LogIn",bundle: nil).instantiateViewController (identifier: "LogInVC") as? LogInVC else{
+            return }
+        
+        switch yesState{
+        
+        case .logout:
+            callLogout()
+            //로그아웃 API
+        
+        case .withdraw:
+            callWithdraw()
+            //탈퇴 API
+        }
+        let root = self.navigationController?.viewControllers.first
+        let pvc = root!.presentingViewController as? LogInVC
+
+        pvc?.idTextField.text = ""
+        pvc?.passwordTextField.text = ""
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        
     }
     @objc func noButtonAction(){
+        accountEditTableView.isUserInteractionEnabled = true
+        backButton.isUserInteractionEnabled = true
         blurImageView.removeFromSuperview()
         popupView.removeFromSuperview()
     }
@@ -142,19 +177,21 @@ extension AccountEditVC: UITableViewDelegate{
             guard let nextVC = UIStoryboard(name: "PasswordChange",bundle: nil).instantiateViewController(identifier: "PasswordChangeVC") as? PasswodChangeVC else{
                 return
             }
-            self.navigationController?.pushViewController(nextVC, animated: true)
         //로그아웃
         case 1:
+            yesState = .logout
             popupImageView.image = UIImage(named:"logoutPopupBox")
             showPopupView("계정을 로그아웃 하시겠어요?", "로그아웃 후 몽글을 이용하려면\n다시 로그인을 해주세요!")
         //회원탈퇴
         case 2:
+            yesState = .withdraw
             popupImageView.image = UIImage(named:"outPopupBox")
             showPopupView("몽글을 탈퇴하시겠어요?","탈퇴 후에는 몽글을 이용할 수 없어요!")
             
         default:
             break
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
@@ -176,4 +213,7 @@ extension AccountEditVC: UITableViewDataSource{
     
     
 }
-
+enum YesFunction{
+    case logout
+    case withdraw
+}

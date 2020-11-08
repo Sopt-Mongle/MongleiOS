@@ -80,11 +80,20 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mySettingsIcArrow1" translatesAutoresizingMaskIntoConstraints="NO" id="49i-fD-zHn">
+                                                    <rect key="frame" x="391" y="16" width="6" height="10"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="6" id="FFa-Fx-hxv"/>
+                                                        <constraint firstAttribute="height" constant="10" id="W6T-gH-V99"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="49i-fD-zHn" secondAttribute="trailing" constant="17" id="4Cz-q3-NnM"/>
                                                 <constraint firstItem="sIP-H6-NvQ" firstAttribute="top" secondItem="1cU-3B-EJV" secondAttribute="top" constant="11" id="Km7-LE-Zzt"/>
                                                 <constraint firstAttribute="bottom" secondItem="sIP-H6-NvQ" secondAttribute="bottom" constant="13" id="R87-4G-GNg"/>
                                                 <constraint firstItem="sIP-H6-NvQ" firstAttribute="leading" secondItem="1cU-3B-EJV" secondAttribute="leading" constant="16" id="RpP-Rd-H64"/>
+                                                <constraint firstItem="49i-fD-zHn" firstAttribute="centerY" secondItem="sIP-H6-NvQ" secondAttribute="centerY" id="dTi-ku-aoF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -108,6 +117,7 @@
                     </view>
                     <connections>
                         <outlet property="accountEditTableView" destination="nKf-Wz-97z" id="CnG-IT-McX"/>
+                        <outlet property="backButton" destination="Zy1-Uh-atb" id="fWy-Ec-nB9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lPX-fW-WPe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -117,6 +127,7 @@
     </scenes>
     <resources>
         <image name="curatorInfoThemeSubscribeBtnBack" width="10.5" height="19"/>
+        <image name="mySettingsIcArrow1" width="7" height="12.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

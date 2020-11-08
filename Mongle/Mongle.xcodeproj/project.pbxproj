@@ -1147,13 +1147,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HAWSBW2KW5;
+				DEVELOPMENT_TEAM = 4YXV56BSN6;
 				INFOPLIST_FILE = Mongle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.juhyeoklee.Mongle;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.juhyeoklee.Mongle1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1166,13 +1166,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HAWSBW2KW5;
+				DEVELOPMENT_TEAM = 4YXV56BSN6;
 				INFOPLIST_FILE = Mongle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.juhyeoklee.Mongle;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.juhyeoklee.Mongle1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
