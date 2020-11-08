@@ -198,6 +198,8 @@
 		ECA23EE024B5F5F100C100F1 /* WritingSentenceSecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA23EDF24B5F5F100C100F1 /* WritingSentenceSecondVC.swift */; };
 		ECEF22BA24B4A3B200933534 /* WritingSentence.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECEF22B924B4A3B200933534 /* WritingSentence.storyboard */; };
 		ECEF22BC24B4A3DF00933534 /* WritingSentenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEF22BB24B4A3DF00933534 /* WritingSentenceVC.swift */; };
+		ECF97E862556720C00BF85AA /* SignUpEmail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECF97E852556720C00BF85AA /* SignUpEmail.storyboard */; };
+		ECF97E892556722000BF85AA /* SignUpEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF97E882556722000BF85AA /* SignUpEmailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -396,6 +398,8 @@
 		ECA23EDF24B5F5F100C100F1 /* WritingSentenceSecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingSentenceSecondVC.swift; sourceTree = "<group>"; };
 		ECEF22B924B4A3B200933534 /* WritingSentence.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WritingSentence.storyboard; sourceTree = "<group>"; };
 		ECEF22BB24B4A3DF00933534 /* WritingSentenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingSentenceVC.swift; sourceTree = "<group>"; };
+		ECF97E852556720C00BF85AA /* SignUpEmail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpEmail.storyboard; sourceTree = "<group>"; };
+		ECF97E882556722000BF85AA /* SignUpEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -520,6 +524,7 @@
 				EC76E10225109C29009DDEF1 /* SignUpMain.storyboard */,
 				EC771BB0254D4DD10041603E /* SignUpServiceAgree.storyboard */,
 				EC304628254ED08800DB6E4A /* ServiceAgreeForSignUp.storyboard */,
+				ECF97E852556720C00BF85AA /* SignUpEmail.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -695,6 +700,8 @@
 				EC76E10425109D56009DDEF1 /* SignUpMainVC.swift */,
 				EC771BB3254D4E210041603E /* SignUpServiceAgreeVC.swift */,
 				EC30462B254ED0AA00DB6E4A /* ServiceAgreeForSignUpVC.swift */,
+				B83800F42525FF78009286AE /* AccountEditVC.swift */,
+				ECF97E882556722000BF85AA /* SignUpEmailVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -816,6 +823,7 @@
 				7F6ABEBE24ADE7720040746E /* LaunchScreen.storyboard in Resources */,
 				EC7C78EE24B2F2A800B7FCFB /* UnderTab.storyboard in Resources */,
 				7FFEA27E24BE441F003D381A /* AppleSDGothicNeoR.ttf in Resources */,
+				ECF97E862556720C00BF85AA /* SignUpEmail.storyboard in Resources */,
 				7FFEA27C24BE441F003D381A /* AppleSDGothicNeoB.ttf in Resources */,
 				B8B48B2B24BC66B700551F5B /* CuratorTabMain.storyboard in Resources */,
 				EC7410B424BA03E800CBAF1C /* EndOfWritingSentence.storyboard in Resources */,
@@ -927,6 +935,7 @@
 				B8E2E16124C0D48800595752 /* CuratorFollowService.swift in Sources */,
 				7FB4203724BCAD2200294314 /* SettingTVC.swift in Sources */,
 				B8E2E14724BEE07000595752 /* MyTabVC.swift in Sources */,
+				ECF97E892556722000BF85AA /* SignUpEmailVC.swift in Sources */,
 				B8B48B2924BB3DEE00551F5B /* SearchResultCuratorHeaderView.swift in Sources */,
 				7F6ABEDD24ADF3B20040746E /* NetworkResult.swift in Sources */,
 				B8E2E17524C28BBC00595752 /* MyProfileData.swift in Sources */,
