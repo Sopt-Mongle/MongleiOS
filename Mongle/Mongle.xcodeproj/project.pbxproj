@@ -198,6 +198,14 @@
 		ECA23EE024B5F5F100C100F1 /* WritingSentenceSecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA23EDF24B5F5F100C100F1 /* WritingSentenceSecondVC.swift */; };
 		ECEF22BA24B4A3B200933534 /* WritingSentence.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECEF22B924B4A3B200933534 /* WritingSentence.storyboard */; };
 		ECEF22BC24B4A3DF00933534 /* WritingSentenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEF22BB24B4A3DF00933534 /* WritingSentenceVC.swift */; };
+		ECF391CD2558268E009337D3 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECF391CC2558268E009337D3 /* Onboarding.storyboard */; };
+		ECF391D0255826C5009337D3 /* OnboardingPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF391CF255826C5009337D3 /* OnboardingPVC.swift */; };
+		ECF391D725582987009337D3 /* OnboardingMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF391D625582987009337D3 /* OnboardingMainVC.swift */; };
+		ECF391DA25582A32009337D3 /* OnboardingFirst.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECF391D925582A32009337D3 /* OnboardingFirst.storyboard */; };
+		ECF391DD25582A4A009337D3 /* OnboardingFirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF391DC25582A4A009337D3 /* OnboardingFirstVC.swift */; };
+		ECF391E025582C8B009337D3 /* OnboardingSecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF391DF25582C8B009337D3 /* OnboardingSecondVC.swift */; };
+		ECF391E325582C9C009337D3 /* OnboardingThirdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF391E225582C9C009337D3 /* OnboardingThirdVC.swift */; };
+		ECF391E625582CB3009337D3 /* OnboardingFourthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF391E525582CB3009337D3 /* OnboardingFourthVC.swift */; };
 		ECF97E862556720C00BF85AA /* SignUpEmail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECF97E852556720C00BF85AA /* SignUpEmail.storyboard */; };
 		ECF97E892556722000BF85AA /* SignUpEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF97E882556722000BF85AA /* SignUpEmailVC.swift */; };
 /* End PBXBuildFile section */
@@ -398,6 +406,14 @@
 		ECA23EDF24B5F5F100C100F1 /* WritingSentenceSecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingSentenceSecondVC.swift; sourceTree = "<group>"; };
 		ECEF22B924B4A3B200933534 /* WritingSentence.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WritingSentence.storyboard; sourceTree = "<group>"; };
 		ECEF22BB24B4A3DF00933534 /* WritingSentenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingSentenceVC.swift; sourceTree = "<group>"; };
+		ECF391CC2558268E009337D3 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		ECF391CF255826C5009337D3 /* OnboardingPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPVC.swift; sourceTree = "<group>"; };
+		ECF391D625582987009337D3 /* OnboardingMainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMainVC.swift; sourceTree = "<group>"; };
+		ECF391D925582A32009337D3 /* OnboardingFirst.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingFirst.storyboard; sourceTree = "<group>"; };
+		ECF391DC25582A4A009337D3 /* OnboardingFirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirstVC.swift; sourceTree = "<group>"; };
+		ECF391DF25582C8B009337D3 /* OnboardingSecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondVC.swift; sourceTree = "<group>"; };
+		ECF391E225582C9C009337D3 /* OnboardingThirdVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThirdVC.swift; sourceTree = "<group>"; };
+		ECF391E525582CB3009337D3 /* OnboardingFourthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFourthVC.swift; sourceTree = "<group>"; };
 		ECF97E852556720C00BF85AA /* SignUpEmail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpEmail.storyboard; sourceTree = "<group>"; };
 		ECF97E882556722000BF85AA /* SignUpEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -525,6 +541,8 @@
 				EC771BB0254D4DD10041603E /* SignUpServiceAgree.storyboard */,
 				EC304628254ED08800DB6E4A /* ServiceAgreeForSignUp.storyboard */,
 				ECF97E852556720C00BF85AA /* SignUpEmail.storyboard */,
+				ECF391CC2558268E009337D3 /* Onboarding.storyboard */,
+				ECF391D925582A32009337D3 /* OnboardingFirst.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -693,15 +711,20 @@
 				B8E2E14A24BEE0A000595752 /* MyTabThemeVC.swift */,
 				B8E2E14C24BEE0B000595752 /* MyTabSentenceVC.swift */,
 				B8E2E14E24BEE0E900595752 /* MyTabCuratorVC.swift */,
-				B83800F42525FF78009286AE /* PasswodChangeVC.swift */,
 				B85400A5255143D7004700B4 /* AccountEditVC.swift */,
 				EC6E99C92508C9D900B57284 /* SignUpAgreeVC.swift */,
 				EC523909250DF4ED0080BAF0 /* SignUpRuleVC.swift */,
 				EC76E10425109D56009DDEF1 /* SignUpMainVC.swift */,
 				EC771BB3254D4E210041603E /* SignUpServiceAgreeVC.swift */,
 				EC30462B254ED0AA00DB6E4A /* ServiceAgreeForSignUpVC.swift */,
-				B83800F42525FF78009286AE /* AccountEditVC.swift */,
+				B83800F42525FF78009286AE /* PasswodChangeVC.swift */,
 				ECF97E882556722000BF85AA /* SignUpEmailVC.swift */,
+				ECF391CF255826C5009337D3 /* OnboardingPVC.swift */,
+				ECF391D625582987009337D3 /* OnboardingMainVC.swift */,
+				ECF391DC25582A4A009337D3 /* OnboardingFirstVC.swift */,
+				ECF391DF25582C8B009337D3 /* OnboardingSecondVC.swift */,
+				ECF391E225582C9C009337D3 /* OnboardingThirdVC.swift */,
+				ECF391E525582CB3009337D3 /* OnboardingFourthVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -817,6 +840,7 @@
 				EC759C3424BEA6E5001D2F81 /* Comp 3.gif in Resources */,
 				EC178CCC24BE26F5008CF514 /* SignUpEnd.storyboard in Resources */,
 				B8AB121924B46C7400B60240 /* CuratorList.storyboard in Resources */,
+				ECF391CD2558268E009337D3 /* Onboarding.storyboard in Resources */,
 				7FFEA27924BE441F003D381A /* AppleSDGothicNeoH.ttf in Resources */,
 				7FFEA27F24BE441F003D381A /* AppleSDGothicNeoM.ttf in Resources */,
 				7FC5B4D124BB58E3007C1725 /* WritingSentenceInTheme.storyboard in Resources */,
@@ -839,6 +863,7 @@
 				7FFEA27824BE441F003D381A /* AppleSDGothicNeoL.ttf in Resources */,
 				B8AB122324B5C10B00B60240 /* SearchTabResult.storyboard in Resources */,
 				EC88960C24B87F3D008D29E2 /* ThemeSelectForWriteSentence.storyboard in Resources */,
+				ECF391DA25582A32009337D3 /* OnboardingFirst.storyboard in Resources */,
 				B8E2E14524BEE03200595752 /* MyTab.storyboard in Resources */,
 				B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */,
 				B8B48B2D24BC66DD00551F5B /* CuratorTabKeyword.storyboard in Resources */,
@@ -919,6 +944,7 @@
 			files = (
 				EC759C4024BEF121001D2F81 /* ThemeImageForWriteService.swift in Sources */,
 				7FA8C4B724C1753A00317F43 /* SentenceLikeData.swift in Sources */,
+				ECF391D725582987009337D3 /* OnboardingMainVC.swift in Sources */,
 				EC86B49A24B7646600DB930A /* UITextField+Extensions.swift in Sources */,
 				7FFEA28324BF4839003D381A /* ToastView.swift in Sources */,
 				B85400A6255143D7004700B4 /* AccountEditVC.swift in Sources */,
@@ -943,6 +969,7 @@
 				B8B48A5B24B6027C00551F5B /* SearchResultThemeVC.swift in Sources */,
 				7FA8C4AB24C0371C00317F43 /* MainThemeData.swift in Sources */,
 				EC88961224B88AE4008D29E2 /* ThemeSelectForSentenceCVC.swift in Sources */,
+				ECF391E625582CB3009337D3 /* OnboardingFourthVC.swift in Sources */,
 				7FB4203D24BD97C200294314 /* ProfileEditIntroduceTVC.swift in Sources */,
 				7F7C097524BAFAAE007C7C52 /* SentenceEditVC.swift in Sources */,
 				EC7410E224BC539500CBAF1C /* LogInVC.swift in Sources */,
@@ -951,7 +978,9 @@
 				7F6ABEDD24ADF3B20040746E /* NetworkResult.swift in Sources */,
 				EC759C4C24C02615001D2F81 /* PostBookData.swift in Sources */,
 				EC7410B624BA040300CBAF1C /* EndOfWritingSentenceVC.swift in Sources */,
+				ECF391DD25582A4A009337D3 /* OnboardingFirstVC.swift in Sources */,
 				B8AB121B24B46CC100B60240 /* CuratorListVC.swift in Sources */,
+				ECF391E025582C8B009337D3 /* OnboardingSecondVC.swift in Sources */,
 				EC88960424B83D4D008D29E2 /* SearchedBookTVC.swift in Sources */,
 				7F6ABED524ADE9FC0040746E /* UIImageView+Extensions.swift in Sources */,
 				7FFEA28B24BFAC77003D381A /* MainCuratorData.swift in Sources */,
@@ -981,6 +1010,7 @@
 				EC759C3624BEB646001D2F81 /* SignupData.swift in Sources */,
 				EC88960A24B86AE8008D29E2 /* ThirdViewOfWritingSentenceVC.swift in Sources */,
 				B8E2E18124C2B6F200595752 /* MyCuratorData.swift in Sources */,
+				ECF391E325582C9C009337D3 /* OnboardingThirdVC.swift in Sources */,
 				7F1E71A224B4A40B00D79516 /* MainTabDefaultHeaderView.swift in Sources */,
 				B8B48B3324BC675000551F5B /* CuratorTabKeywordVC.swift in Sources */,
 				7FCEE21F24B363CF00225CA3 /* MainTabSecondTVC.swift in Sources */,
@@ -1022,6 +1052,7 @@
 				7F6ABED924ADEC9E0040746E /* APIConstants.swift in Sources */,
 				7FA8C4B924C17C5100317F43 /* SentenceBookmarkData.swift in Sources */,
 				7FA8C4B124C0EFB900317F43 /* ThemeBookmarkData.swift in Sources */,
+				ECF391D0255826C5009337D3 /* OnboardingPVC.swift in Sources */,
 				EC7410B824BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift in Sources */,
 				B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */,
 				7FFEA28924BF9C72003D381A /* TodaySentenceData.swift in Sources */,
