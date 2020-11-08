@@ -65,8 +65,9 @@ extension MainTabFirstTVC: UICollectionViewDelegate {
                 return
             }
 //            dvc.themeIdx = self.editorData[indexPath.row].themeIdx
-            
+
             selectedCellDelegate(dvc)
+            
         }
     }
 }

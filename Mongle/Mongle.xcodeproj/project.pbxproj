@@ -53,6 +53,7 @@
 		7FB4203924BCC18D00294314 /* ProfileEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FB4203824BCC18D00294314 /* ProfileEdit.storyboard */; };
 		7FB4203B24BCDF5E00294314 /* ProfileEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB4203A24BCDF5E00294314 /* ProfileEditVC.swift */; };
 		7FB4203D24BD97C200294314 /* ProfileEditIntroduceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB4203C24BD97C200294314 /* ProfileEditIntroduceTVC.swift */; };
+		7FBFAB76255850CA0079FAC5 /* LoginRequestPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBFAB75255850CA0079FAC5 /* LoginRequestPopupView.swift */; };
 		7FC5B4D124BB58E3007C1725 /* WritingSentenceInTheme.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC5B4D024BB58E3007C1725 /* WritingSentenceInTheme.storyboard */; };
 		7FC5B4D324BB61A4007C1725 /* WritingSentenceInThemeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5B4D224BB61A4007C1725 /* WritingSentenceInThemeVC.swift */; };
 		7FC5B4D524BC6C78007C1725 /* AddBookToSentence.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC5B4D424BC6C78007C1725 /* AddBookToSentence.storyboard */; };
@@ -252,6 +253,7 @@
 		7FB4203824BCC18D00294314 /* ProfileEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileEdit.storyboard; sourceTree = "<group>"; };
 		7FB4203A24BCDF5E00294314 /* ProfileEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditVC.swift; sourceTree = "<group>"; };
 		7FB4203C24BD97C200294314 /* ProfileEditIntroduceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditIntroduceTVC.swift; sourceTree = "<group>"; };
+		7FBFAB75255850CA0079FAC5 /* LoginRequestPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestPopupView.swift; sourceTree = "<group>"; };
 		7FC5B4D024BB58E3007C1725 /* WritingSentenceInTheme.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WritingSentenceInTheme.storyboard; sourceTree = "<group>"; };
 		7FC5B4D224BB61A4007C1725 /* WritingSentenceInThemeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingSentenceInThemeVC.swift; sourceTree = "<group>"; };
 		7FC5B4D424BC6C78007C1725 /* AddBookToSentence.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddBookToSentence.storyboard; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				7F1E719F24B476C900D79516 /* MainMongleHeaderView.swift */,
 				7F1E71A124B4A40B00D79516 /* MainTabDefaultHeaderView.swift */,
 				7FFEA28024BECD70003D381A /* MonglePopupView.swift */,
+				7FBFAB75255850CA0079FAC5 /* LoginRequestPopupView.swift */,
 				7FFEA28224BF4839003D381A /* ToastView.swift */,
 			);
 			path = Views;
@@ -693,14 +696,13 @@
 				B8E2E14A24BEE0A000595752 /* MyTabThemeVC.swift */,
 				B8E2E14C24BEE0B000595752 /* MyTabSentenceVC.swift */,
 				B8E2E14E24BEE0E900595752 /* MyTabCuratorVC.swift */,
-				B83800F42525FF78009286AE /* PasswodChangeVC.swift */,
 				B85400A5255143D7004700B4 /* AccountEditVC.swift */,
 				EC6E99C92508C9D900B57284 /* SignUpAgreeVC.swift */,
 				EC523909250DF4ED0080BAF0 /* SignUpRuleVC.swift */,
 				EC76E10425109D56009DDEF1 /* SignUpMainVC.swift */,
 				EC771BB3254D4E210041603E /* SignUpServiceAgreeVC.swift */,
 				EC30462B254ED0AA00DB6E4A /* ServiceAgreeForSignUpVC.swift */,
-				B83800F42525FF78009286AE /* AccountEditVC.swift */,
+				B83800F42525FF78009286AE /* PasswodChangeVC.swift */,
 				ECF97E882556722000BF85AA /* SignUpEmailVC.swift */,
 			);
 			path = VCs;
@@ -1056,6 +1058,7 @@
 				EC759C4624BF7219001D2F81 /* BookSearchForWritingService.swift in Sources */,
 				B8E2E15324C0586800595752 /* SearchMainService.swift in Sources */,
 				B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */,
+				7FBFAB76255850CA0079FAC5 /* LoginRequestPopupView.swift in Sources */,
 				7FFEA28724BF768D003D381A /* EditorPickData.swift in Sources */,
 				B8AB121F24B475A100B60240 /* CuratorListCVC.swift in Sources */,
 				7F1E71AC24B7BC6900D79516 /* SentenceInThemeTVC.swift in Sources */,
