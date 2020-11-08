@@ -24,6 +24,7 @@ class MainTabDefaultHeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .clear
         addView()
         setAutoLayout()
     }
@@ -38,7 +39,7 @@ class MainTabDefaultHeaderView: UIView {
     
     func setAutoLayout(){
         self.sectionLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.top.equalToSuperview()
             $0.leading.equalToSuperview().offset(16)
         }
     }
