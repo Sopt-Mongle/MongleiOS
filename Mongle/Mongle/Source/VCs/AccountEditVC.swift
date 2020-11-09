@@ -18,7 +18,6 @@ class AccountEditVC: UIViewController {
     //MARK: - Custom Properties
     let heightRatio: CGFloat = UIScreen.main.bounds.height/812
     let widthRatio: CGFloat = UIScreen.main.bounds.width/375
-
     var accountEditMenu: [String] = ["비밀번호 변경", "로그아웃", "서비스 탈퇴"]
     //팝업뷰
     let blurImageView = UIImageView().then{
@@ -132,8 +131,6 @@ class AccountEditVC: UIViewController {
         print("withdraw")
     }
     @objc func yesButtonAction(){
-        guard let loginVC = UIStoryboard(name:"LogIn",bundle: nil).instantiateViewController (identifier: "LogInVC") as? LogInVC else{
-            return }
         
         switch yesState{
         
