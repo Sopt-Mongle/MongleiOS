@@ -142,12 +142,13 @@ class AccountEditVC: UIViewController {
             callWithdraw()
             //탈퇴 API
         }
-        let root = self.navigationController?.viewControllers.first
-        let pvc = root!.presentingViewController as? LogInVC
-
-        pvc?.idTextField.text = ""
-        pvc?.passwordTextField.text = ""
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        guard let loginVC = UIStoryboard(name:"LogIn", bundle:nil).instantiateViewController(identifier: "LogInVC") as? LogInVC else{
+                            return
+                        }
+        loginVC.modalPresentationStyle = .fullScreen
+        self.present(loginVC,animated: true){
+            self.navigationController?.popToRootViewController(animated: false)
+        }
         
     }
     @objc func noButtonAction(){

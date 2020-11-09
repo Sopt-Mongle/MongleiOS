@@ -190,16 +190,16 @@ class PasswordChangeVC: UIViewController {
     func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(_:)), name:
-            UIResponder.keyboardWillShowNotification, object: nil)
+                                                UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name:
-            UIResponder.keyboardWillHideNotification, object: nil)
+                                                UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func unregisterForKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name:
-            UIResponder.keyboardWillShowNotification, object: nil)
+                                                    UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name:
-            UIResponder.keyboardWillHideNotification, object: nil)
+                                                    UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func showPopupView(_ popupTitle: String, _ popupText: String){
@@ -253,7 +253,7 @@ class PasswordChangeVC: UIViewController {
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
-            as? NSValue)?.cgRectValue {
+                                as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.3, animations: {
                 self.completeButtonBottomConstraint.constant =  keyboardSize.height+16
             })
@@ -262,25 +262,30 @@ class PasswordChangeVC: UIViewController {
     
     @objc func keyboardWillHide(_ notification: NSNotification) {
         guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]
-            as? Double else {return}
+                as? Double else {return}
         guard let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey]
-            as? UInt else {return}
-    
+                as? UInt else {return}
+        
         UIView.animate(withDuration: duration, delay: 0.0, options: .init(rawValue: curve),
                        animations: {
                         self.completeButtonBottomConstraint.constant = 50
                         self.view.layoutIfNeeded()
-        })
+                       })
     }
     @objc func yesButtonAction(){
-        self.popupImageView.removeFromSuperview()
-        self.blurImageView.removeFromSuperview()
-        let root = self.navigationController?.viewControllers.first
-        let pvc = root!.presentingViewController as? LogInVC
-
-        pvc?.idTextField.text = ""
-        pvc?.passwordTextField.text = ""
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        guard let loginVC = UIStoryboard(name:"LogIn", bundle:nil).instantiateViewController(identifier: "LogInVC") as? LogInVC else{
+                            return
+                        }
+        loginVC.modalPresentationStyle = .fullScreen
+        self.present(loginVC,animated: true){
+            self.navigationController?.popToRootViewController(animated: false)
+        }
+//        self.navigationController?.popToRootViewController(animated: false){
+//            guard let loginVC = UIStoryboard(name:"LogIn", bundle:nil).instantiateViewController(identifier: "LogInVC") as? LogInVC else{
+//                return
+//            }
+//            self.view.window?.rootViewController?.present(loginVC,animated:true,completion:nil)
+//        }
     }
     
     // MARK: - IBActions
@@ -420,3 +425,13 @@ extension PasswordChangeVC: UITextFieldDelegate{
 enum WarningState{
     case rule, match,empty
 }
+
+extension UINavigationController{
+    func popToRootViewController(animated: Bool = true, completion: @escaping () -> Void) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        popToRootViewController(animated: animated)
+        CATransaction.commit()
+    }
+}
+

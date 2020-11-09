@@ -99,7 +99,7 @@ class MyTabVC: UIViewController {
     //MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setMenu()
     }
     override func viewWillDisappear(_ animated: Bool) {
         observingList.forEach { $0.invalidate() }
@@ -253,6 +253,8 @@ class MyTabVC: UIViewController {
                 print("내 프로필 테마: \(data)")
                 DispatchQueue.main.async {
                     self.themeMenuLabel.text = "\(self.themeNum)"
+                    print("왜안바뀜")
+                    self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![0])!], direction: .forward, animated: false, completion: nil)
                 }
                 
                 
