@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleSDGothicNeoM.ttf">
+            <string>AppleSDGothicNeoM00</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Account EditVC-->
         <scene sceneID="CQ8-uJ-PsK">
@@ -66,20 +71,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIP-H6-NvQ">
-                                                    <rect key="frame" x="16" y="11" width="116" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="fvi-zE-BOI"/>
-                                                    </constraints>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="accountEditMenu">
-                                                            <attributes>
-                                                                <font key="NSFont" size="16" name="AppleSDGothicNeo-Medium"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mySettingsIcArrow1" translatesAutoresizingMaskIntoConstraints="NO" id="49i-fD-zHn">
                                                     <rect key="frame" x="391" y="16" width="6" height="10"/>
                                                     <constraints>
@@ -87,6 +78,15 @@
                                                         <constraint firstAttribute="height" constant="10" id="W6T-gH-V99"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="accountEditMenu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIP-H6-NvQ">
+                                                    <rect key="frame" x="20" y="11" width="116" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="fvi-zE-BOI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeoM00" family="AppleSDGothicNeoM00" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="49i-fD-zHn" secondAttribute="trailing" constant="17" id="4Cz-q3-NnM"/>

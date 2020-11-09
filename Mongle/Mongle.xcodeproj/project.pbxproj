@@ -79,8 +79,9 @@
 		7FFEA28724BF768D003D381A /* EditorPickData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA28624BF768D003D381A /* EditorPickData.swift */; };
 		7FFEA28924BF9C72003D381A /* TodaySentenceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA28824BF9C72003D381A /* TodaySentenceData.swift */; };
 		7FFEA28B24BFAC77003D381A /* MainCuratorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA28A24BFAC77003D381A /* MainCuratorData.swift */; };
-		B83800F52525FF78009286AE /* PasswodChangeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83800F42525FF78009286AE /* PasswodChangeVC.swift */; };
+		B83800F52525FF78009286AE /* PasswordChangeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83800F42525FF78009286AE /* PasswordChangeVC.swift */; };
 		B83800F82525FFA2009286AE /* PasswordChange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B83800F72525FFA2009286AE /* PasswordChange.storyboard */; };
+		B842A4462557E3B100253275 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842A4452557E3B100253275 /* String+Extensions.swift */; };
 		B85400A025513C1D004700B4 /* VersionInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B854009F25513C1D004700B4 /* VersionInfo.storyboard */; };
 		B85400A6255143D7004700B4 /* AccountEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85400A5255143D7004700B4 /* AccountEditVC.swift */; };
 		B85400A9255143EC004700B4 /* AccountEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B85400A8255143EC004700B4 /* AccountEdit.storyboard */; };
@@ -279,8 +280,9 @@
 		7FFEA28624BF768D003D381A /* EditorPickData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorPickData.swift; sourceTree = "<group>"; };
 		7FFEA28824BF9C72003D381A /* TodaySentenceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySentenceData.swift; sourceTree = "<group>"; };
 		7FFEA28A24BFAC77003D381A /* MainCuratorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCuratorData.swift; sourceTree = "<group>"; };
-		B83800F42525FF78009286AE /* PasswodChangeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswodChangeVC.swift; sourceTree = "<group>"; };
+		B83800F42525FF78009286AE /* PasswordChangeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeVC.swift; sourceTree = "<group>"; };
 		B83800F72525FFA2009286AE /* PasswordChange.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasswordChange.storyboard; sourceTree = "<group>"; };
+		B842A4452557E3B100253275 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		B854009F25513C1D004700B4 /* VersionInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VersionInfo.storyboard; sourceTree = "<group>"; };
 		B85400A5255143D7004700B4 /* AccountEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEditVC.swift; sourceTree = "<group>"; };
 		B85400A8255143EC004700B4 /* AccountEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountEdit.storyboard; sourceTree = "<group>"; };
@@ -616,6 +618,7 @@
 				7F6ABED224ADE9D60040746E /* UIViewController+Extensions.swift */,
 				7F6ABED424ADE9FC0040746E /* UIImageView+Extensions.swift */,
 				EC86B49924B7646600DB930A /* UITextField+Extensions.swift */,
+				B842A4452557E3B100253275 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -696,6 +699,7 @@
 				B8E2E14A24BEE0A000595752 /* MyTabThemeVC.swift */,
 				B8E2E14C24BEE0B000595752 /* MyTabSentenceVC.swift */,
 				B8E2E14E24BEE0E900595752 /* MyTabCuratorVC.swift */,
+				B83800F42525FF78009286AE /* PasswordChangeVC.swift */,
 				B85400A5255143D7004700B4 /* AccountEditVC.swift */,
 				EC6E99C92508C9D900B57284 /* SignUpAgreeVC.swift */,
 				EC523909250DF4ED0080BAF0 /* SignUpRuleVC.swift */,
@@ -1036,7 +1040,7 @@
 				7F6ABEB424ADE7700040746E /* SceneDelegate.swift in Sources */,
 				7FA8C4B324C0FB5C00317F43 /* SentenceService.swift in Sources */,
 				7FB4203B24BCDF5E00294314 /* ProfileEditVC.swift in Sources */,
-				B83800F52525FF78009286AE /* PasswodChangeVC.swift in Sources */,
+				B83800F52525FF78009286AE /* PasswordChangeVC.swift in Sources */,
 				B8B48A5D24B6029100551F5B /* SearchResultSentenceVC.swift in Sources */,
 				EC7C78F024B2F2DE00B7FCFB /* UnderTabBarController.swift in Sources */,
 				B8E2E15D24C0AA9A00595752 /* SearchCuratorData.swift in Sources */,
@@ -1044,6 +1048,7 @@
 				B8B48B3724BC878C00551F5B /* CuratorTabMainTVC.swift in Sources */,
 				B8E2E14B24BEE0A000595752 /* MyTabThemeVC.swift in Sources */,
 				7FB4203524BCA92900294314 /* MySettingVC.swift in Sources */,
+				B842A4462557E3B100253275 /* String+Extensions.swift in Sources */,
 				EC759C5224C03C77001D2F81 /* SearchThemeService.swift in Sources */,
 				EC759C4424BF45C3001D2F81 /* ThemeMakeService.swift in Sources */,
 				B8B48A5924B6025400551F5B /* SearchResultPageVC.swift in Sources */,
