@@ -280,12 +280,7 @@ class PasswordChangeVC: UIViewController {
         self.present(loginVC,animated: true){
             self.navigationController?.popToRootViewController(animated: false)
         }
-//        self.navigationController?.popToRootViewController(animated: false){
-//            guard let loginVC = UIStoryboard(name:"LogIn", bundle:nil).instantiateViewController(identifier: "LogInVC") as? LogInVC else{
-//                return
-//            }
-//            self.view.window?.rootViewController?.present(loginVC,animated:true,completion:nil)
-//        }
+
     }
     
     // MARK: - IBActions

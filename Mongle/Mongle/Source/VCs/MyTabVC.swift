@@ -170,7 +170,7 @@ class MyTabVC: UIViewController {
                 }
                 
                 self.myProfileData = data[0]
-                self.profileImg = self.myProfileData!.img
+                self.profileImg = self.myProfileData!.img ?? "mongles"
                 self.profileName = self.myProfileData!.name
                 self.profileKeywordIdx = self.myProfileData!.keywordIdx
                 
@@ -194,7 +194,12 @@ class MyTabVC: UIViewController {
                 
                 }
                 
-                print("내 프로필: \(data)")
+                MyProfileClass.shared.curatorIdx = self.myProfileData!.curatorIdx
+                MyProfileClass.shared.image = self.myProfileData?.img
+                MyProfileClass.shared.introduce = self.myProfileData?.introduce
+                MyProfileClass.shared.keywordIdx = self.myProfileData?.keywordIdx
+                MyProfileClass.shared.name = self.myProfileData!.name
+                MyProfileClass.shared.subscribe = self.myProfileData!.subscribe
                 DispatchQueue.main.async {
                     self.setMenu()
                     self.setProfile()
@@ -248,12 +253,9 @@ class MyTabVC: UIViewController {
                 guard let data = theme as? MyThemeData else {
                     return
                 }
-                print("성공")
                 self.themeNum = data.save.count + data.write.count
-                print("내 프로필 테마: \(data)")
                 DispatchQueue.main.async {
                     self.themeMenuLabel.text = "\(self.themeNum)"
-                    print("왜안바뀜")
                     self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![0])!], direction: .forward, animated: false, completion: nil)
                 }
                 
@@ -282,7 +284,6 @@ class MyTabVC: UIViewController {
                     return
                 }
                 self.sentenceNum = data.save.count + data.write.count
-                print("내 프로필 테마: \(data)")
                 DispatchQueue.main.async {
                     self.sentenceMenuLabel.text = "\(self.sentenceNum)"
                 }
@@ -336,4 +337,17 @@ class MyTabVC: UIViewController {
     }
     
 
+}
+
+class MyProfileClass{
+    static let shared = MyProfileClass()
+    
+    private init(){}
+    
+    var curatorIdx: Int = 0
+    var name: String = ""
+    var image: String?
+    var introduce: String?
+    var keywordIdx: Int?
+    var subscribe: Int = 0
 }

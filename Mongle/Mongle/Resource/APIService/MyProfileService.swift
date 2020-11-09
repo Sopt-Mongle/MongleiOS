@@ -68,7 +68,7 @@ struct MyProfileService {
         
         
         guard let data = decodedData.data else{
-            return .requestErr(decodedData.message)
+            return .requestErr("디코딩실패")
         }
         
         return .success(data)

@@ -52,10 +52,10 @@ class ProfileEditVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
-        
         setKeywordButton()
         updateSelectedKeywordButton()
         setGesture()
+        setData()
         // Do any additional setup after loading the view.
     }
     
@@ -161,6 +161,12 @@ class ProfileEditVC: UIViewController {
                 $0.backgroundColor = .white
             }
         }
+    }
+    func setData(){
+        self.nickNameTextField.text = MyProfileClass.shared.name
+        self.profileImageView.image = UIImage(named:MyProfileClass.shared.image ?? "mySettingsProfile4ImgProfile")
+        self.keywordButton[MyProfileClass.shared.keywordIdx ?? 0].tag = MyProfileClass.shared.keywordIdx ?? 0
+        updateSelectedKeywordButton()
     }
     func testValidInput(){
         keywordLabelTopConstraint.constant = 59

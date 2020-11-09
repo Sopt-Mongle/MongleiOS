@@ -23,6 +23,7 @@ class ProfileEditIntroduceTVC: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         introduceTextField.delegate = self
+        introduceTextField.text = MyProfileClass.shared.introduce ?? ""
         introduceTextField.addLeftPadding(left: 15)
         introduceTextField.makeRounded(cornerRadius: 10)
         introduceTextField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1)
