@@ -9,9 +9,15 @@
 import UIKit
 
 class OnboardingPVC: UIPageViewController {
-
+    
     
     let identifiers = ["OnboardingFirstVC","OnboardingSecondVC","OnboardingThirdVC","OnboardingFourthVC"]
+    var previousPage: UIViewController?
+    var nextPage: UIViewController?
+    var realNextPage: UIViewController?
+    var keyValue = KVOObject()
+    
+    var onboardingDelegate: OnboardingDelegate?
     
     lazy var VCArray : [UIViewController] = {
         return [self.VCInstane(storyboardName: "OnboardingFirst", vcName: "OnboardingFirstVC"),
@@ -25,28 +31,29 @@ class OnboardingPVC: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.transitionStyle.rawValue)
         
         self.dataSource = self
         self.delegate = self
         
-     
+        
+        
         if let firstVC = VCArray.first{
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
-
+        
         // Do any additional setup after loading the view.
     }
     
     private func VCInstane(storyboardName : String, vcName : String) ->UIViewController{
+        
         return UIStoryboard(name : storyboardName, bundle : nil).instantiateViewController(withIdentifier: vcName)
         
     }
-
     
-
-   
-
+    
+    
+    
+    
 }
 
 extension OnboardingPVC : UIPageViewControllerDelegate, UIPageViewControllerDataSource {
@@ -55,8 +62,8 @@ extension OnboardingPVC : UIPageViewControllerDelegate, UIPageViewControllerData
         
         let prevIdx = vcIdx - 1
         
-    
-        print("aa")
+        
+        print("bb")
         
         
         if(prevIdx < 0){
@@ -64,13 +71,13 @@ extension OnboardingPVC : UIPageViewControllerDelegate, UIPageViewControllerData
             
         }
         else{
+            
+            //            vcName.upperTabCV.selectItem(at: cIdx, animated: true, scrollPosition: .right)
+            //            vcName.something()
+            //            vcName.upperTabCV.selectItem(at: cIdx, animated: true, scrollPosition: .left)
+            
+            //            vcName.something()
            
-//            vcName.upperTabCV.selectItem(at: cIdx, animated: true, scrollPosition: .right)
-//            vcName.something()
-//            vcName.upperTabCV.selectItem(at: cIdx, animated: true, scrollPosition: .left)
-            
-//            vcName.something()
-            
             return VCArray[prevIdx]
         }
         
@@ -80,33 +87,64 @@ extension OnboardingPVC : UIPageViewControllerDelegate, UIPageViewControllerData
         
     }
     
-
+    
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let vcIdx = VCArray.firstIndex(of: viewController) else {return nil}
         
         let nextIdx = vcIdx + 1
         print("aa")
-      
+        
         if(nextIdx >= VCArray.count){
             return nil
         }
         else{
-         
+       
+            
             return VCArray[nextIdx]
         }
         
-     
         
         
+        
+        
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        
+        if completed {
+            previousPage = previousViewControllers[0]
+            realNextPage = nextPage
+            print(realNextPage)
+            if realNextPage is Mongle.OnboardingFirstVC {
+                self.keyValue.curPresentViewIndex = 0
+                onboardingDelegate?.toNextPage(next: 0)
+            }
+            else if realNextPage is Mongle.OnboardingSecondVC{
+                self.keyValue.curPresentViewIndex = 1
+                onboardingDelegate?.toNextPage(next: 1)
+            }
+            else if realNextPage is Mongle.OnboardingThirdVC{
+                self.keyValue.curPresentViewIndex = 2
+                onboardingDelegate?.toNextPage(next: 2)
+            }
+            else{
+                self.keyValue.curPresentViewIndex = 3
+                onboardingDelegate?.toNextPage(next: 3)
+            }
+        }
         
     }
     
     
     
     
-    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        nextPage = pendingViewControllers[0]
+    }
     
     
     
 }
+
+

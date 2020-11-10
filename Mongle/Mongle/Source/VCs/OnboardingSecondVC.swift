@@ -18,9 +18,8 @@ class OnboardingSecondVC: UIViewController {
     
     @IBOutlet weak var jumpButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    
-    
-    
+
+    static var onboardingBDelegate: OnboardingButtonDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         setItems()
@@ -32,8 +31,13 @@ class OnboardingSecondVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         startAnimation()
         
-        
-        
+        mongleImage.image = UIImage(named: "onboarding2ImgMongle")
+        mongleImage.transform = .identity
+        mongleImage.alpha = 1
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        endAnimation()
     }
     
     func setItems(){
@@ -54,11 +58,35 @@ class OnboardingSecondVC: UIViewController {
     
     func startAnimation(){
         curatorImage.alpha = 0
+        curatorImage.transform = CGAffineTransform(translationX: 0, y: 150)
         UIView.animate(withDuration: 1.0, delay: 0.2, animations: {
             self.curatorImage.alpha = 1
+            self.curatorImage.transform = .identity
             
         }, completion: nil)
         
     }
+    
+    func endAnimation(){
+        
+        UIView.animate(withDuration: 1.0, delay: 0, animations: {
+            self.mongleImage.image = UIImage(named: "onboarding3ImgMongle")
+            
+        }, completion: { finished in
+            
+            self.mongleImage.alpha = 0
+            
+        })
+        
+    }
+    
+    
+    @IBAction func nextButtonAction(_ sender: Any) {
+        OnboardingSecondVC.onboardingBDelegate?.buttonNextPage(next: 2)
+        
+        
+    }
+    
+    
 
 }

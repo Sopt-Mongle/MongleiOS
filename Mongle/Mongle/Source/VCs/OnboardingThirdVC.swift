@@ -18,7 +18,7 @@ class OnboardingThirdVC: UIViewController {
     @IBOutlet weak var mongleImage: UIImageView!
     @IBOutlet weak var jumpButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    
+    static var onboardingBDelegate: OnboardingButtonDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +48,8 @@ class OnboardingThirdVC: UIViewController {
     }
     
     func startAnimation(){
-        self.mongleImage.transform = CGAffineTransform(translationX: -200, y: 0)
-        UIView.animate(withDuration: 1.0, delay: 0.2, animations: {
+        self.mongleImage.transform = CGAffineTransform(translationX: -341, y: 0)
+        UIView.animate(withDuration: 1.0, delay: 0, animations: {
             self.mongleImage.transform = .identity
             
             
@@ -74,6 +74,12 @@ class OnboardingThirdVC: UIViewController {
         })
         
     }
-
+    
+    
+    @IBAction func nextButtonAction(_ sender: Any) {
+        OnboardingThirdVC.onboardingBDelegate?.buttonNextPage(next: 3)
+        
+    }
+    
    
 }

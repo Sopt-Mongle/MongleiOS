@@ -21,6 +21,8 @@ class OnboardingFirstVC: UIViewController {
     
     @IBOutlet weak var nextButton: UIButton!
     
+    static var onboardingBDelegate: OnboardingButtonDelegate?
+    
     
     //MARK: - LifeCycle Methods
     
@@ -81,5 +83,9 @@ class OnboardingFirstVC: UIViewController {
         
     }
     
-
+    @IBAction func nextButtonAction(_ sender: Any) {
+        OnboardingFirstVC.onboardingBDelegate?.buttonNextPage(next: 1)
+        print("called")
+    }
+    
 }
