@@ -8,6 +8,7 @@
 
 import UIKit
 
+let DidReceiveProfileNotification: Notification.Name = Notification.Name("DidReceiveProfile")
 class MyTabVC: UIViewController {
     
     var pageInstance : MyTabPageVC?
@@ -22,6 +23,7 @@ class MyTabVC: UIViewController {
     var profileMsg : String = ""
     var profileKeyword : String?
     var profileKeywordIdx : Int?
+    var profileIntroduce = ""
     
     //MARK:- IBOutlet
     @IBOutlet weak var myProfileImage: UIImageView!
@@ -170,9 +172,13 @@ class MyTabVC: UIViewController {
                 }
                 
                 self.myProfileData = data[0]
-                self.profileImg = self.myProfileData!.img ?? "mongles"
+                self.profileImg = self.myProfileData!.img ?? ""
                 self.profileName = self.myProfileData!.name
                 self.profileKeywordIdx = self.myProfileData!.keywordIdx
+                self.profileIntroduce = self.myProfileData?.introduce ?? ""
+                print("여긴되잖아ㅅ.ㅂ.")
+//                let userInfo: [AnyHashable: Any] = ["name":self.profileName,"introduce":self.profileIntroduce,"profileImage":self.profileImg]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DidReceiveProfile"), object: nil)
                 
                 switch self.myProfileData!.keywordIdx{
                 
@@ -193,13 +199,7 @@ class MyTabVC: UIViewController {
                 
                 
                 }
-                
-                MyProfileClass.shared.curatorIdx = self.myProfileData!.curatorIdx
-                MyProfileClass.shared.image = self.myProfileData?.img
-                MyProfileClass.shared.introduce = self.myProfileData?.introduce
-                MyProfileClass.shared.keywordIdx = self.myProfileData?.keywordIdx
-                MyProfileClass.shared.name = self.myProfileData!.name
-                MyProfileClass.shared.subscribe = self.myProfileData!.subscribe
+
                 DispatchQueue.main.async {
                     self.setMenu()
                     self.setProfile()
@@ -339,15 +339,12 @@ class MyTabVC: UIViewController {
 
 }
 
-class MyProfileClass{
-    static let shared = MyProfileClass()
-    
-    private init(){}
-    
+struct MyProfileStruct{
     var curatorIdx: Int = 0
     var name: String = ""
-    var image: String?
+    var image: UIImage?
     var introduce: String?
     var keywordIdx: Int?
     var subscribe: Int = 0
 }
+

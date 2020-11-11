@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileEditVC: UIViewController {
+class ProfileEditVC: UIViewController{
     
     // MARK:- IBOutlet
     @IBOutlet var profileImageView: UIImageView!
@@ -47,24 +47,44 @@ class ProfileEditVC: UIViewController {
     var keywords: [String] = ["감성자극", "동기부여", "자기계발", "깊은생각", "독서기록", "일상문장"]
     var selectedKeywordIdx: Int = 0
     var isScrollSpended: Bool = false
+    var name: String = ""
+    var profileImage: String?
+    var introduce: String = ""
+    var userProfileData: MyProfileData?
     
     // MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setLayout()
         setKeywordButton()
         updateSelectedKeywordButton()
         setGesture()
-        setData()
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        updateSelectedKeywordButton()
         registerForKeyboardNotifications()
+        NotificationCenter.default.addObserver(self, selector: #selector(setUserProfileData(_:)), name: NSNotification.Name(rawValue: "DidReceiveProfile"), object: nil)
+        setData()
+    }
+    @objc func setUserProfileData(_ notification: Notification){
+        print("ㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗ")
+//        self.name = notification.userInfo?["name"] as? String ?? ""
+//        self.introduce = notification.userInfo?["introduce"] as? String ?? ""
+//        self.selectedKeywordIdx = notification.userInfo?["keywordIdx"] as? Int ?? 0
+//        self.profileImage = notification.userInfo?["profileImage"] as? String ?? ""
+//        let data = notification.object as! MyProfileData
+//        self.introduce = data.introduce ?? ""
+//        self.selectedKeywordIdx = data.keywordIdx ?? 0
+//        self.profileImage = data.img
+        print("들어오나\(self.name),\(self.introduce)")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         unregisterForKeyboardNotifications()
+        NotificationCenter.default.removeObserver(self,name: NSNotification.Name(rawValue: "DidReceiveProfile"),object:nil)
     }
     
     func registerForKeyboardNotifications() {
@@ -163,9 +183,9 @@ class ProfileEditVC: UIViewController {
         }
     }
     func setData(){
-        self.nickNameTextField.text = MyProfileClass.shared.name
-        self.profileImageView.image = UIImage(named:MyProfileClass.shared.image ?? "mySettingsProfile4ImgProfile")
-        self.keywordButton[MyProfileClass.shared.keywordIdx ?? 0].tag = MyProfileClass.shared.keywordIdx ?? 0
+        self.nickNameTextField.text = self.name
+        self.profileImageView.imageFromUrl(profileImage, defaultImgPath: "mySettingsProfile4BtnProfileChange")
+        self.layoutTableView.reloadData()
         updateSelectedKeywordButton()
     }
     func testValidInput(){
@@ -247,7 +267,7 @@ class ProfileEditVC: UIViewController {
         return stackView
     }
     
-    
+    //MARK: - IBAction
     @IBAction func touchKeywordButton(sender: UIButton) {
         selectedKeywordIdx = sender.tag
         updateSelectedKeywordButton()
@@ -260,6 +280,33 @@ class ProfileEditVC: UIViewController {
     @IBAction func touchUpCompleteButton(){
         testValidInput()
         layoutTableView.reloadData()
+        MyProfileService.shared.uploadMy(img: profileImageView.image ?? UIImage(named:"warning")!, name: nickNameTextField.text!, introduce: self.introduce , keywordIdx: selectedKeywordIdx, completion: { networkResult in
+            switch networkResult{
+                case .success(let data):
+                    print("<<<<<성공>>>>>")
+                    guard let profileData = data as? MyProfileUploadData else{
+                        return 
+                    }
+                    self.name = profileData.name
+                    self.profileImage = profileData.img
+                    self.introduce = profileData.introduce ?? ""
+                    self.selectedKeywordIdx = profileData.keywordIdx ?? 0
+                    let userInfo: [AnyHashable: Any] = ["name":self.name,"introduce":self.introduce,"profileImage":self.profileImage!]
+//                    NotificationCenter.default.post(name: NSNotification.Name("ProfileData"), object: nil, userInfo: userInfo)
+                    
+                case .requestErr(let message):
+                    guard let message = message as? String else { return }
+                    self.showToast(text: message)
+                    print(message)
+                case .pathErr:
+                    print("pathErr")
+                case .serverErr:
+                    print("serverErr")
+                case .networkFail:
+                    print("networkFail")
+                }
+            }
+        )
     }
 }
 
@@ -302,6 +349,10 @@ extension ProfileEditVC: UITableViewDataSource {
             cell.unSelectedTextfieldDelegate = { [weak self] in
                 self?.isScrollSpended = false
             }
+            cell.introduceDelegate = { text in
+                self.introduce = text
+            }
+            cell.introduceTextField.text = introduce
             return cell
         }
         else {
