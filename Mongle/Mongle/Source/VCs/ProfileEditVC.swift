@@ -11,6 +11,7 @@ import UIKit
 class ProfileEditVC: UIViewController{
     
     // MARK:- IBOutlet
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet var profileImageView: UIImageView!
     @IBOutlet var nickNameTextField: UITextField! {
         didSet {
@@ -43,6 +44,30 @@ class ProfileEditVC: UIViewController{
     lazy var nickNameWarningStackView = UIStackView()
     lazy var introduceWarningStackView = UIStackView()
     
+    let blurImageView = UIImageView().then{
+        $0.image = UIImage(named: "passwordChangePopupBg")
+    }
+    let popupView = UIView().then{
+        $0.backgroundColor = .clear
+    }
+    var popupImageView = UIImageView().then{
+        $0.image = UIImage(named: "mySettingsProfilePopupBox")
+    }
+    var popupTitleLabel = UILabel().then{
+        $0.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        $0.textColor = .black
+        $0.adjustsFontSizeToFitWidth = true
+    }
+
+    var yesButton = UIButton().then{
+        $0.setTitle("확인", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.backgroundColor = .softGreen
+        $0.makeRounded(cornerRadius: 19)
+        $0.addTarget(self, action: #selector(yesButtonAction), for: .touchUpInside)
+        $0.titleLabel?.font = $0.titleLabel?.font.withSize(13)
+    }
+    
     // MARK: Property
     var keywords: [String] = ["감성자극", "동기부여", "자기계발", "깊은생각", "독서기록", "일상문장"]
     var selectedKeywordIdx: Int = 0
@@ -50,6 +75,8 @@ class ProfileEditVC: UIViewController{
     var name: String = ""
     var profileImage: String?
     var introduce: String = ""
+    let heightRatio: CGFloat = UIScreen.main.bounds.height/812
+    let widthRatio: CGFloat = UIScreen.main.bounds.width/375
     
     // MARK:- Lifecycle
     override func viewDidLoad() {
@@ -71,7 +98,6 @@ class ProfileEditVC: UIViewController{
     
     override func viewWillDisappear(_ animated: Bool) {
         unregisterForKeyboardNotifications()
-        NotificationCenter.default.removeObserver(self,name: NSNotification.Name(rawValue: "DidReceiveProfile"),object:nil)
     }
     
     func registerForKeyboardNotifications() {
@@ -123,7 +149,9 @@ class ProfileEditVC: UIViewController{
     @objc func touchUpProfileImageView(){
         self.present(self.imagePickerController, animated: true, completion: nil)
     }
-    
+    @objc func yesButtonAction(){
+        self.navigationController?.popViewController(animated: true)
+    }
     // MARK: Custom Method
     func setLayout(){
         keywordBackgroundView.backgroundColor = UIColor.veryLightPinkEight
@@ -251,6 +279,52 @@ class ProfileEditVC: UIViewController{
         
         return stackView
     }
+    func showPopupView(_ popupTitle: String, _ popupText: String){
+        
+        self.view.addSubview(blurImageView)
+        self.view.addSubview(popupView)
+        self.popupView.addSubview(popupImageView)
+        self.popupView.addSubview(popupTitleLabel)
+        self.popupView.addSubview(yesButton)
+        //constraints
+        self.popupTitleLabel.text = popupTitle
+        self.blurImageView.snp.makeConstraints{
+            $0.top.bottom.leading.trailing.equalToSuperview()
+        }
+        self.popupView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(310*heightRatio)
+            $0.leading.equalToSuperview().offset(35*widthRatio)
+            $0.bottom.equalToSuperview().offset(-309*heightRatio)
+            $0.trailing.equalToSuperview().offset(-35*widthRatio)
+        }
+        self.popupImageView.snp.makeConstraints{
+            $0.top.bottom.leading.trailing.equalToSuperview()
+        }
+        self.popupTitleLabel.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(81*heightRatio)
+            $0.bottom.equalToSuperview().offset(-94*heightRatio)
+            $0.centerX.equalToSuperview()
+        }
+
+        self.yesButton.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(131*heightRatio)
+            $0.bottom.equalToSuperview().offset(-25*heightRatio)
+            $0.leading.equalToSuperview().offset(88*widthRatio)
+            $0.trailing.equalToSuperview().offset(-88*widthRatio)
+        }
+        //뒤에 있는 컴포넌트 안눌리게
+        nickNameTextField.isUserInteractionEnabled = false
+        keywordButton.forEach {
+            $0.isUserInteractionEnabled = false
+        }
+        backButton.isUserInteractionEnabled = false
+        completeButton.isUserInteractionEnabled = false
+//        nowPasswordTextField.isUserInteractionEnabled = false
+//        newPasswordTextField.isUserInteractionEnabled = false
+//        newPasswordCheckTextField.isUserInteractionEnabled = false
+//        completeButton.isUserInteractionEnabled = false
+        
+    }
     
     //MARK: - IBAction
     @IBAction func touchKeywordButton(sender: UIButton) {
@@ -265,12 +339,13 @@ class ProfileEditVC: UIViewController{
     @IBAction func touchUpCompleteButton(){
         testValidInput()
         layoutTableView.reloadData()
-        MyProfileService.shared.uploadMy(img: profileImageView.image ?? UIImage(named:"warning")!, name: nickNameTextField.text!, introduce: UserDefaults.standard.string(forKey: "UserProfileIntroduce") ?? "" , keywordIdx: selectedKeywordIdx, completion: { networkResult in
+        showPopupView("프로필이 수정되었어요!", "")
+        MyProfileService.shared.uploadMy(img: profileImageView.image ?? UIImage(named:"warning")!, name: nickNameTextField.text!, introduce: self.introduce ?? "" , keywordIdx: selectedKeywordIdx, completion: { networkResult in
             switch networkResult{
                 case .success(let data):
                     print("<<<<<성공>>>>>")
                     guard let profileData = data as? MyProfileUploadData else{
-                        return 
+                        return
                     }
                     UserDefaults.standard.setValue(profileData.name, forKey: "UserProfileName")
                     UserDefaults.standard.setValue(profileData.img, forKey: "UserProfileImgLink")
@@ -333,7 +408,7 @@ extension ProfileEditVC: UITableViewDataSource {
                 self?.isScrollSpended = false
             }
             cell.introduceDelegate = { text in
-                UserDefaults.standard.setValue(text, forKey: "UserProfileIntroduce")
+                self.introduce = text
             }
             cell.introduceTextField.text = UserDefaults.standard.string(forKey: "UserProfileIntroduce")
             return cell
@@ -360,13 +435,3 @@ extension ProfileEditVC: UIImagePickerControllerDelegate, UINavigationController
         self.dismiss(animated: true, completion: nil)
     }
 }
-
-//extension ProfileEditVC: UIGestureRecognizerDelegate {
-//    func gestureRecognizer(_ gestrueRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-//        if (touch.view?.isDescendant(of: nickNameTextField))! || (touch.view?.isDescendant(of: self.textfield))! {
-//
-//            return false
-//        }
-//        return true
-//    }
-//}

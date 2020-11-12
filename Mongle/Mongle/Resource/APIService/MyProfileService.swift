@@ -38,9 +38,7 @@ struct MyProfileService {
             
             
         }
-        
-        
-        
+
         
     }
     func uploadMy(img: UIImage,name: String, introduce: String, keywordIdx: Int, completion : @escaping(NetworkResult<Any>) -> Void) {
@@ -48,13 +46,14 @@ struct MyProfileService {
             "Content-Type": "multipart/form-data",
             "token":UserDefaults.standard.string(forKey:"token")!]
         let body: Parameters = [
-            "img": img,
             "name": name,
             "introduce": introduce,
             "keywordIdx": keywordIdx
         ]
         Alamofire.upload(multipartFormData: {multiPartFormData in
-            
+            let imageData = img.jpegData(compressionQuality: 1.0)!
+            multiPartFormData.append(imageData,withName:"img",mimeType:"image/jpeg")
+            print("img")
             for (key,value) in body{
                 if value is String{
                     let val = value as! String
@@ -65,16 +64,17 @@ struct MyProfileService {
                     let val = value as! Int
                     let convertedValueNumber: NSNumber = NSNumber(value: val)
                     let data = NSKeyedArchiver.archivedData(withRootObject: convertedValueNumber)
-                    multiPartFormData.append(data, withName: key)
+                    multiPartFormData.append("\(val)".data(using:String.Encoding.utf8)!, withName: key)
                     print(key)
                 }
-                else if value is UIImage{
-                    let image = value as! UIImage
-                    let imageData = image.jpegData(compressionQuality: 1.0)!
-                    multiPartFormData.append(imageData,withName:key,mimeType:"image/jpeg")
-                    print(key)
-                }
+//                else if value is UIImage{
+//                    let image = value as! UIImage
+//                    let imageData = image.jpegData(compressionQuality: 1.0)!
+//                    multiPartFormData.append(imageData,withName:key,mimeType:"image/jpeg")
+//                    print(key)
+//                }
             }
+
         },usingThreshold:UInt64.init(), to: APIConstants.myProfileURL,method:.post, headers:header, encodingCompletion: { result in
             switch result {
                 case .success(let upload,_,_):
