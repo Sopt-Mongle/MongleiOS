@@ -112,13 +112,13 @@ class LogInVC: UIViewController {
         }
         
         
-        splashPlay()
+//        splashPlay()
         
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
             self.runCount += 1
             
 
-            if self.runCount == 29 {
+            if self.runCount == 3 {
                 timer.invalidate()
                 self.animate1()
                     
@@ -162,9 +162,9 @@ class LogInVC: UIViewController {
         
     }
     @objc func signUpButtonInPopUp(){
-        guard let vcName = UIStoryboard(name: "SignUp",
+        guard let vcName = UIStoryboard(name: "SignUpAgree",
                                         bundle: nil).instantiateViewController(
-                                            withIdentifier: "SignUpVC") as? SignUpVC
+                                            withIdentifier: "SignUpAgreeVC") as? SignUpAgreeVC
             else{
                 return
         }

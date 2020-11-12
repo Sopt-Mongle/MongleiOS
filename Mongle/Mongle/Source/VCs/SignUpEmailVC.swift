@@ -27,6 +27,11 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var askButtonImage: UIImageView!
     @IBOutlet weak var askButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
+    var emailCode = ""
+    var email = ""
+    var password = ""
+    var nickName = ""
+    
     
     let innerCircle = UIView().then{
         $0.backgroundColor = .softGreen
@@ -73,6 +78,7 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
         setItems()
         setTextFields()
+        SignUpVC.emailCodeDelegate = self
         
         // Do any additional setup after loading the view.
     }
@@ -418,26 +424,26 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
                 self.statckToButtonImage.constant = 16
                 self.buttonToButton.constant = 7
             },completion: { finished in
-//                UIView.animate(withDuration: 0.12, animations: {
-//                    self.emailMongleImage.transform = CGAffineTransform(rotationAngle: 360/180)
-//
-//
-//                }, completion: { finish in
-//                    UIView.animate(withDuration: 0.12, animations: {
-//                        self.emailMongleImage.transform = CGAffineTransform(rotationAngle: -360/180)
-//
-//
-//                    },completion: { finish in
-//
-//                        UIView.animate(withDuration: 0.34, animations: {
-//                            self.emailMongleImage.transform = CGAffineTransform(rotationAngle: 0/180)
-//                        })
-//
-//                    })
-//
-//
-//
-//                })
+                //                UIView.animate(withDuration: 0.12, animations: {
+                //                    self.emailMongleImage.transform = CGAffineTransform(rotationAngle: 360/180)
+                //
+                //
+                //                }, completion: { finish in
+                //                    UIView.animate(withDuration: 0.12, animations: {
+                //                        self.emailMongleImage.transform = CGAffineTransform(rotationAngle: -360/180)
+                //
+                //
+                //                    },completion: { finish in
+                //
+                //                        UIView.animate(withDuration: 0.34, animations: {
+                //                            self.emailMongleImage.transform = CGAffineTransform(rotationAngle: 0/180)
+                //                        })
+                //
+                //                    })
+                //
+                //
+                //
+                //                })
                 
                 
             })
@@ -504,4 +510,127 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
         
     }
     
+    @IBAction func submitButtonAction(_ sender: Any) {
+        
+        guard let vcName = UIStoryboard(name: "SignUpEnd",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "SignUpEndVC") as? SignUpEndVC
+        else{
+            
+            return
+        }
+        var myString = ""
+        
+        for wt in wordTexts {
+            myString += wt.text!
+        }
+        
+        if myString == self.emailCode {
+            SignUpService.shared.signup(email: email,
+                                        password: password,
+                                        name: nickName)  { networkResult in
+                switch networkResult {
+                case .success(let token) :
+                    print("success")
+                    guard let token = token as? String else { return }
+                    print(token)
+                    UserDefaults.standard.set(token, forKey: "token")
+                    
+                    vcName.modalPresentationStyle = .fullScreen
+                    
+                    self.present(vcName, animated: true, completion: nil)
+                    
+                case .requestErr(let message):
+                    print("request")
+                    guard let message = message as? String else {return}
+                    let alertViewController = UIAlertController(
+                        title: "회원가입 실패",
+                        message: message,
+                        preferredStyle: .alert)
+                    let action = UIAlertAction(title: "확인",
+                                               style: .cancel,
+                                               handler: nil)
+                    alertViewController.addAction(action)
+                    self.present(alertViewController, animated: true,
+                                 completion: nil)
+                case .pathErr: print("pathERR")
+                case .serverErr: print("serverErr")
+                case .networkFail: print("networkFails2")
+                    
+                    
+                }
+                
+                
+            }
+            
+            
+        }
+        else{
+            print(myString)
+            print(emailCode)
+            print("FFFFFAAAALLLLSSSEEEE")
+            
+        }
+        
+        
+    }
+    
+    
+    @IBAction func resendButtonAction(_ sender: Any) {
+        SignUpEmailService.shared.signup(email: email) { networkResult in
+            switch networkResult{
+            case .success(let code) :
+                print("success Code")
+                var scode : String?
+                scode = code as?  String
+                self.emailCode = scode!
+            case .requestErr(let message):
+                print("request by email")
+                guard let message = message as? String else {return}
+                let alertViewController = UIAlertController(
+                    title: "회원가입 실패",
+                    message: message,
+                    preferredStyle: .alert)
+                let action = UIAlertAction(title: "확인",
+                                           style: .cancel,
+                                           handler: nil)
+                alertViewController.addAction(action)
+                self.present(alertViewController, animated: true,
+                             completion: nil)
+            case .pathErr: print("patherr")
+            case .serverErr: print("serverErr")
+            case .networkFail: print("networkFails2")
+                
+            }
+            
+            
+            
+            
+        }
+        leftTime = 300
+        
+        
+    }
+    
+    
+    
+    
+}
+
+
+extension SignUpEmailVC : EmailCodeDelegate {
+    func emailCodeTransfer(s : String,e : String,p : String, n : String) {
+        print("EmailTransferred")
+        print(s)
+        self.emailCode = s
+        self.email = e
+        self.password = p
+        self.nickName = n
+        
+    }
+    
+}
+
+protocol EmailCodeDelegate{
+    func emailCodeTransfer(s : String,e : String,p : String, n : String)
 }
