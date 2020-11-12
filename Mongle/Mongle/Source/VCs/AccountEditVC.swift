@@ -67,7 +67,6 @@ class AccountEditVC: UIViewController {
         super.viewDidLoad()
         accountEditTableView.delegate = self
         accountEditTableView.dataSource = self
-        print(UIScreen.main.bounds.height)
     
     }
     
@@ -142,12 +141,14 @@ class AccountEditVC: UIViewController {
             callWithdraw()
             //탈퇴 API
         }
-        let root = self.navigationController?.viewControllers.first
-        let pvc = root!.presentingViewController as? LogInVC
-
-        pvc?.idTextField.text = ""
-        pvc?.passwordTextField.text = ""
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        UserDefaults.standard.removeObject(forKey: "token")
+        guard let loginVC = UIStoryboard(name:"LogIn", bundle:nil).instantiateViewController(identifier: "LogInVC") as? LogInVC else{
+                            return
+                        }
+        loginVC.modalPresentationStyle = .fullScreen
+        self.present(loginVC,animated: true){
+            self.navigationController?.popToRootViewController(animated: false)
+        }
         
     }
     @objc func noButtonAction(){
@@ -174,7 +175,7 @@ extension AccountEditVC: UITableViewDelegate{
             guard let nextVC = UIStoryboard(name: "PasswordChange",bundle: nil).instantiateViewController(identifier: "PasswordChangeVC") as? PasswordChangeVC else{
                 return
             }
-            print(1)
+    
             self.navigationController?.pushViewController(nextVC, animated: true)
         //로그아웃
         case 1:
@@ -204,7 +205,6 @@ extension AccountEditVC: UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AccountEditTVC.identifier) as? AccountEditTVC else{
             return UITableViewCell()
         }
-        print(1)
         cell.accountEditMenuLabel.text = accountEditMenu[indexPath.row]
         
         return cell

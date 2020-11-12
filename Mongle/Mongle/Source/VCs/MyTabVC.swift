@@ -22,6 +22,7 @@ class MyTabVC: UIViewController {
     var profileMsg : String = ""
     var profileKeyword : String?
     var profileKeywordIdx : Int?
+    var profileIntroduce = ""
     
     //MARK:- IBOutlet
     @IBOutlet weak var myProfileImage: UIImageView!
@@ -99,7 +100,7 @@ class MyTabVC: UIViewController {
     //MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setMenu()
     }
     override func viewWillDisappear(_ animated: Bool) {
         observingList.forEach { $0.invalidate() }
@@ -170,9 +171,14 @@ class MyTabVC: UIViewController {
                 }
                 
                 self.myProfileData = data[0]
-                self.profileImg = self.myProfileData!.img
+                self.profileImg = self.myProfileData!.img ?? ""
                 self.profileName = self.myProfileData!.name
                 self.profileKeywordIdx = self.myProfileData!.keywordIdx
+                self.profileIntroduce = self.myProfileData?.introduce ?? ""
+                UserDefaults.standard.setValue(self.profileName, forKey: "UserProfileName")
+                UserDefaults.standard.setValue(self.profileImg, forKey: "UserProfileImgLink")
+                UserDefaults.standard.setValue(self.profileKeywordIdx, forKey: "UserProfileKeyIdx")
+                UserDefaults.standard.setValue(self.profileIntroduce, forKey: "UserProfileIntroduce")
                 
                 switch self.myProfileData!.keywordIdx{
                 
@@ -193,8 +199,7 @@ class MyTabVC: UIViewController {
                 
                 
                 }
-                
-                print("내 프로필: \(data)")
+
                 DispatchQueue.main.async {
                     self.setMenu()
                     self.setProfile()
@@ -248,11 +253,10 @@ class MyTabVC: UIViewController {
                 guard let data = theme as? MyThemeData else {
                     return
                 }
-                print("성공")
                 self.themeNum = data.save.count + data.write.count
-                print("내 프로필 테마: \(data)")
                 DispatchQueue.main.async {
                     self.themeMenuLabel.text = "\(self.themeNum)"
+                    self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![0])!], direction: .forward, animated: false, completion: nil)
                 }
                 
                 
@@ -280,7 +284,6 @@ class MyTabVC: UIViewController {
                     return
                 }
                 self.sentenceNum = data.save.count + data.write.count
-                print("내 프로필 테마: \(data)")
                 DispatchQueue.main.async {
                     self.sentenceMenuLabel.text = "\(self.sentenceNum)"
                 }
@@ -335,3 +338,13 @@ class MyTabVC: UIViewController {
     
 
 }
+
+struct MyProfileStruct{
+    var curatorIdx: Int = 0
+    var name: String = ""
+    var image: UIImage?
+    var introduce: String?
+    var keywordIdx: Int?
+    var subscribe: Int = 0
+}
+

@@ -39,15 +39,9 @@ struct SignInService {
             case .failure :
                 completion(.networkFail)
                 
-                
             }
             
-            
         }
-        
-        
-        
-        
         
     }
     
