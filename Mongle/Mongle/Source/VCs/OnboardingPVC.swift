@@ -46,6 +46,7 @@ class OnboardingPVC: UIPageViewController {
     
     private func VCInstane(storyboardName : String, vcName : String) ->UIViewController{
         
+
         return UIStoryboard(name : storyboardName, bundle : nil).instantiateViewController(withIdentifier: vcName)
         
     }

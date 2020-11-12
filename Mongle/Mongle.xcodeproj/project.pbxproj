@@ -184,6 +184,10 @@
 		EC771BB4254D4E210041603E /* SignUpServiceAgreeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC771BB3254D4E210041603E /* SignUpServiceAgreeVC.swift */; };
 		EC7C78EE24B2F2A800B7FCFB /* UnderTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */; };
 		EC7C78F024B2F2DE00B7FCFB /* UnderTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */; };
+		EC849311255BD99B003B4149 /* SignUpEmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC849310255BD99B003B4149 /* SignUpEmailService.swift */; };
+		EC849315255BDBD5003B4149 /* SignUpEmailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC849314255BDBD5003B4149 /* SignUpEmailData.swift */; };
+		EC849319255D1816003B4149 /* SignUpDuplicateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC849318255D1816003B4149 /* SignUpDuplicateData.swift */; };
+		EC84931D255D1892003B4149 /* SignUpDuplicateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC84931C255D1892003B4149 /* SignUpDuplicateService.swift */; };
 		EC86B49624B7169200DB930A /* SearchBookForWriting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC86B49524B7169200DB930A /* SearchBookForWriting.storyboard */; };
 		EC86B49824B716BB00DB930A /* SearchBookForWritingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86B49724B716BB00DB930A /* SearchBookForWritingVC.swift */; };
 		EC86B49A24B7646600DB930A /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC86B49924B7646600DB930A /* UITextField+Extensions.swift */; };
@@ -392,6 +396,10 @@
 		EC771BB3254D4E210041603E /* SignUpServiceAgreeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpServiceAgreeVC.swift; sourceTree = "<group>"; };
 		EC7C78ED24B2F2A800B7FCFB /* UnderTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UnderTab.storyboard; sourceTree = "<group>"; };
 		EC7C78EF24B2F2DE00B7FCFB /* UnderTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderTabBarController.swift; sourceTree = "<group>"; };
+		EC849310255BD99B003B4149 /* SignUpEmailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailService.swift; sourceTree = "<group>"; };
+		EC849314255BDBD5003B4149 /* SignUpEmailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailData.swift; sourceTree = "<group>"; };
+		EC849318255D1816003B4149 /* SignUpDuplicateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDuplicateData.swift; sourceTree = "<group>"; };
+		EC84931C255D1892003B4149 /* SignUpDuplicateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDuplicateService.swift; sourceTree = "<group>"; };
 		EC86B49524B7169200DB930A /* SearchBookForWriting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchBookForWriting.storyboard; sourceTree = "<group>"; };
 		EC86B49724B716BB00DB930A /* SearchBookForWritingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookForWritingVC.swift; sourceTree = "<group>"; };
 		EC86B49924B7646600DB930A /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
@@ -576,6 +584,8 @@
 				B8E2E17624C29C9800595752 /* MyThemeService.swift */,
 				B8E2E17A24C2A33600595752 /* MySentenceService.swift */,
 				B8E2E17E24C2B67300595752 /* MyCuratorService.swift */,
+				EC849310255BD99B003B4149 /* SignUpEmailService.swift */,
+				EC84931C255D1892003B4149 /* SignUpDuplicateService.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -619,6 +629,8 @@
 				B8E2E17824C29CD300595752 /* MyThemeData.swift */,
 				B8E2E17C24C2AE3C00595752 /* MySentenceData.swift */,
 				B8E2E18024C2B6F200595752 /* MyCuratorData.swift */,
+				EC849314255BDBD5003B4149 /* SignUpEmailData.swift */,
+				EC849318255D1816003B4149 /* SignUpDuplicateData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -988,6 +1000,7 @@
 				B8E2E16924C1B58E00595752 /* CuratorRecommendData.swift in Sources */,
 				7F1E71AA24B7BADB00D79516 /* ThemeInfoVC.swift in Sources */,
 				EC759C5024C02779001D2F81 /* ThemeSelectForWriteData.swift in Sources */,
+				EC849315255BDBD5003B4149 /* SignUpEmailData.swift in Sources */,
 				ECEF22BC24B4A3DF00933534 /* WritingSentenceVC.swift in Sources */,
 				EC759C4224BF45B2001D2F81 /* ThemeMakeData.swift in Sources */,
 				7F767D7724B211D100ADF46D /* WritingThemeVC.swift in Sources */,
@@ -1006,6 +1019,7 @@
 				EC6E99CA2508C9D900B57284 /* SignUpAgreeVC.swift in Sources */,
 				EC759C4A24C025AE001D2F81 /* PostBookService.swift in Sources */,
 				B8E2E15124C0317D00595752 /* SentenceMoreTVC.swift in Sources */,
+				EC84931D255D1892003B4149 /* SignUpDuplicateService.swift in Sources */,
 				7FA8C4B524C101E000317F43 /* SentenceData.swift in Sources */,
 				EC759C3624BEB646001D2F81 /* SignupData.swift in Sources */,
 				EC88960A24B86AE8008D29E2 /* ThirdViewOfWritingSentenceVC.swift in Sources */,
@@ -1029,6 +1043,7 @@
 				EC759C3E24BEF01A001D2F81 /* ThemeImageDataForWrite.swift in Sources */,
 				B8E2E16D24C1BC7900595752 /* ThemeInCuratorData.swift in Sources */,
 				EC86B49824B716BB00DB930A /* SearchBookForWritingVC.swift in Sources */,
+				EC849311255BD99B003B4149 /* SignUpEmailService.swift in Sources */,
 				7FCEE21924B3078E00225CA3 /* MainTabMainVC.swift in Sources */,
 				7F6ABED124ADE9860040746E /* UIView+Extensions.swift in Sources */,
 				B8B48AE524B9847500551F5B /* SearchResultSentenceTVC.swift in Sources */,
@@ -1080,6 +1095,7 @@
 				7F6ABECF24ADE8F80040746E /* UIColor+Extensions.swift in Sources */,
 				B8AB122524B5C1C500B60240 /* SearchTabResultVC.swift in Sources */,
 				B8E2E16324C17C8000595752 /* CuratorInfoService.swift in Sources */,
+				EC849319255D1816003B4149 /* SignUpDuplicateData.swift in Sources */,
 				B8E2E14D24BEE0B000595752 /* MyTabSentenceVC.swift in Sources */,
 				B85400AC25514877004700B4 /* AccountEditTVC.swift in Sources */,
 				B8B48A5F24B602A600551F5B /* SearchResultCuratorVC.swift in Sources */,
@@ -1227,7 +1243,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4YXV56BSN6;
+				DEVELOPMENT_TEAM = 6ZTQ76LJPZ;
 				INFOPLIST_FILE = Mongle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1246,7 +1262,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4YXV56BSN6;
+				DEVELOPMENT_TEAM = 6ZTQ76LJPZ;
 				INFOPLIST_FILE = Mongle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

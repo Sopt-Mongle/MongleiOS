@@ -12,11 +12,14 @@ class OnboardingMainVC: UIViewController {
     
 
     @IBOutlet var circles: [UIView]!
-    
-    
+
     @IBOutlet var widths: [NSLayoutConstraint]!
     var pageInstance : OnboardingPVC?
-    static var nowIdx = 0
+    var nowIdx = 0
+    
+    @IBOutlet weak var jumpButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +36,16 @@ class OnboardingMainVC: UIViewController {
         OnboardingFirstVC.onboardingBDelegate = self
         OnboardingSecondVC.onboardingBDelegate = self
         OnboardingThirdVC.onboardingBDelegate = self
+        OnboardingThirdVC.onboardingTFDelegate = self
+        
         OnboardingFourthVC.onboardingBDelegate = self
+        
+        
+        
+        nextButton.makeRounded(cornerRadius: 27)
+        nextButton.backgroundColor = .softGreen
+        
+        jumpButton.setTitleColor(.veryLightPink, for: .normal)
         
         
     }
@@ -48,16 +60,31 @@ class OnboardingMainVC: UIViewController {
             circles[i].makeRounded(cornerRadius: 3.5)
         }
         
+
         
     }
     
     func toPage(next : Int){
  
+       
+        if next == 3 {
+//            UIView.animate(withDuration: 0.5, animations: {
+                self.nextButton.alpha = 0
+                self.jumpButton.alpha = 0
+                
+//            }, completion: nil)
+            
+        }
+        else{
+            self.nextButton.alpha = 1
+            self.jumpButton.alpha = 1
+        }
         
         for i in 0...3 {
             if i == next {
                 continue
             }
+           
             widths[i].constant = 7
             circles[i].backgroundColor = .veryLightPinkNine
             circles[i].makeRounded(cornerRadius: 3.5)
@@ -77,6 +104,20 @@ class OnboardingMainVC: UIViewController {
     }
     
     
+    @IBAction func nextButtonAction(_ sender: Any) {
+        if nowIdx < 3{
+            pageInstance?.setViewControllers([(pageInstance?.VCArray[nowIdx+1])!], direction: .forward,
+            animated: true, completion: nil)
+            
+            toNextPage(next: nowIdx+1)
+            
+        }
+       
+        
+        
+    }
+    
+    
     
     
 }
@@ -85,6 +126,7 @@ class OnboardingMainVC: UIViewController {
 extension OnboardingMainVC : OnboardingDelegate {
     func toNextPage(next: Int) {
         self.toPage(next: next)
+        nowIdx = next
     }
     
     
@@ -95,10 +137,24 @@ extension OnboardingMainVC : OnboardingButtonDelegate {
     func buttonNextPage(next: Int) {
         pageInstance?.setViewControllers([(pageInstance?.VCArray[next])!], direction: .forward,
         animated: true, completion: nil)
-        
+        nowIdx = next
         toNextPage(next: next)
         
     }
+}
+
+extension OnboardingMainVC : OnboardingThreeToFourDelegate{
+    
+    func hideButtons() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.nextButton.alpha = 0
+            self.jumpButton.alpha = 0
+            
+        })
+        
+        
+    }
+    
 }
 
 protocol OnboardingDelegate {
@@ -112,5 +168,11 @@ protocol OnboardingDelegate {
 protocol OnboardingButtonDelegate{
     
     func buttonNextPage(next : Int)
+    
+}
+
+protocol OnboardingThreeToFourDelegate {
+    
+    func hideButtons()
     
 }

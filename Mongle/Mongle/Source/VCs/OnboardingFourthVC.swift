@@ -25,8 +25,8 @@ class OnboardingFourthVC: UIViewController {
     var gravityBehavior   : UIGravityBehavior!
     var collisionBehavior : UICollisionBehavior!
     var bouncingBehavior  : UIDynamicItemBehavior!
-
-   
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class OnboardingFourthVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        startAnimation4()
+        startAnimation3()
     }
     
     
@@ -48,12 +48,12 @@ class OnboardingFourthVC: UIViewController {
         lookAroundButton.setTitleColor(.veryLightPink, for: .normal)
         startButton.makeRounded(cornerRadius: 27)
         mongleContainView.backgroundColor = UIColor.black.withAlphaComponent(0)
-       
+        
     }
     
     func startAnimation(){
         mongleImage.alpha = 0
-       
+        
         UIView.animate(withDuration: 0.3, delay: 0.3, animations: {
             self.mongleImage.transform = CGAffineTransform(rotationAngle: -30/180)
             self.mongleImage.alpha = 0.3
@@ -61,7 +61,7 @@ class OnboardingFourthVC: UIViewController {
             
             UIView.animate(withDuration: 0.6, delay: 0, animations: {
                 self.mongleImage.transform = CGAffineTransform(rotationAngle: 30/180)
-            
+                
             }, completion: {finish in
                 UIView.animate(withDuration: 0.3, delay: 0, animations: {
                     self.mongleImage.transform = .identity
@@ -111,26 +111,36 @@ class OnboardingFourthVC: UIViewController {
     
     func startAnimation3(){
         mongleImage.alpha = 0
-
+        lookAroundButton.alpha = 0
+        startButton.alpha = 0
+        UIView.animate(withDuration: 1.0, delay : 0.25, animations: {
+            
+            self.lookAroundButton.alpha = 1
+            self.startButton.alpha = 1
+        })
+    
+        
         UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
             self.mongleImage.alpha = 1.0
         }, completion: nil)
+        
+        
         
         
     }
     
     func startAnimation4(){
         
-
+        
         dynamicAnimator = UIDynamicAnimator(referenceView: self.view) //1
-
+        
         gravityBehavior = UIGravityBehavior(items: [mongleImage]) //2
         dynamicAnimator.addBehavior(gravityBehavior) //3
-
+        
         collisionBehavior = UICollisionBehavior(items: [mongleImage]) //4
         collisionBehavior.translatesReferenceBoundsIntoBoundary = true //5
         dynamicAnimator.addBehavior(collisionBehavior) //6
-
+        
         //Adding the bounce effect
         bouncingBehavior = UIDynamicItemBehavior(items: [mongleImage]) //7
         bouncingBehavior.elasticity = 0.5 //8
@@ -140,7 +150,19 @@ class OnboardingFourthVC: UIViewController {
     }
     
     @IBAction func startButtonAction(_ sender: Any) {
-        
+        dismiss(animated: true, completion: {
+            
+            guard let vcName = UIStoryboard(name: "LogIn",
+                                            bundle: nil).instantiateViewController(
+                                                withIdentifier: "LogInVC") as? LogInVC
+            else{
+                return
+            }
+            
+            vcName.modalPresentationStyle = .fullScreen
+            self.present(vcName, animated: true, completion: nil)
+            
+        })
         
         
     }

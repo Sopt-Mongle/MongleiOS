@@ -17,9 +17,6 @@ class OnboardingFirstVC: UIViewController {
     @IBOutlet weak var mongleImage: UIImageView!
     @IBOutlet weak var mentImage: UIImageView!
     
-    @IBOutlet weak var jumpButton: UIButton!
-    
-    @IBOutlet weak var nextButton: UIButton!
     
     static var onboardingBDelegate: OnboardingButtonDelegate?
     
@@ -47,11 +44,8 @@ class OnboardingFirstVC: UIViewController {
         mongleImage.image = UIImage(named: "onboarding1ImgMongle")
         
         mentImage.image = UIImage(named: "onboarding1Text")
-        nextButton.backgroundColor = .softGreen
-        nextButton.makeRounded(cornerRadius: 28)
-        
-        jumpButton.setTitleColor(.veryLightPink, for: .normal)
-        
+    
+
         
     }
     
@@ -82,10 +76,6 @@ class OnboardingFirstVC: UIViewController {
         })
         
     }
-    
-    @IBAction func nextButtonAction(_ sender: Any) {
-        OnboardingFirstVC.onboardingBDelegate?.buttonNextPage(next: 1)
-        print("called")
-    }
+  
     
 }

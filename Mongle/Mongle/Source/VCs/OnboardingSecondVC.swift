@@ -15,21 +15,21 @@ class OnboardingSecondVC: UIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var curatorImage: UIImageView!
     @IBOutlet weak var mongleImage: UIImageView!
-    
-    @IBOutlet weak var jumpButton: UIButton!
-    @IBOutlet weak var nextButton: UIButton!
 
+    
+    
     static var onboardingBDelegate: OnboardingButtonDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         setItems()
-
+        
         // Do any additional setup after loading the view.
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         startAnimation()
+        
         
         mongleImage.image = UIImage(named: "onboarding2ImgMongle")
         mongleImage.transform = .identity
@@ -46,12 +46,7 @@ class OnboardingSecondVC: UIViewController {
         curatorImage.image = UIImage(named: "onboarding2ImgList")
         mongleImage.image = UIImage(named: "onboarding2ImgMongle")
         mentImage.image = UIImage(named: "onboarding2Text")
-        
-        nextButton.backgroundColor = .softGreen
-        nextButton.makeRounded(cornerRadius: 28)
-        
-        
-        jumpButton.setTitleColor(.veryLightPink, for: .normal)
+
         
     }
     
@@ -59,7 +54,7 @@ class OnboardingSecondVC: UIViewController {
     func startAnimation(){
         curatorImage.alpha = 0
         curatorImage.transform = CGAffineTransform(translationX: 0, y: 150)
-        UIView.animate(withDuration: 1.0, delay: 0.2, animations: {
+        UIView.animate(withDuration: 1.5, delay: 0.2, animations: {
             self.curatorImage.alpha = 1
             self.curatorImage.transform = .identity
             
@@ -78,15 +73,14 @@ class OnboardingSecondVC: UIViewController {
             
         })
         
-    }
-    
-    
-    @IBAction func nextButtonAction(_ sender: Any) {
-        OnboardingSecondVC.onboardingBDelegate?.buttonNextPage(next: 2)
+        
         
         
     }
     
     
 
+    
+    
+    
 }
