@@ -52,7 +52,7 @@ struct MyProfileService {
         ]
         Alamofire.upload(multipartFormData: {multiPartFormData in
             let imageData = img.jpegData(compressionQuality: 1.0)!
-            multiPartFormData.append(imageData,withName:"img",mimeType:"image/jpeg")
+            multiPartFormData.append(imageData,withName:"img",fileName:"file.jpeg",mimeType:"image/jpeg")
             print("img")
             for (key,value) in body{
                 if value is String{
@@ -62,15 +62,13 @@ struct MyProfileService {
                 }
                 else if value is Int{
                     let val = value as! Int
-                    let convertedValueNumber: NSNumber = NSNumber(value: val)
-                    let data = NSKeyedArchiver.archivedData(withRootObject: convertedValueNumber)
                     multiPartFormData.append("\(val)".data(using:String.Encoding.utf8)!, withName: key)
                     print(key)
                 }
 //                else if value is UIImage{
 //                    let image = value as! UIImage
 //                    let imageData = image.jpegData(compressionQuality: 1.0)!
-//                    multiPartFormData.append(imageData,withName:key,mimeType:"image/jpeg")
+//                    multiPartFormData.append(imageData,withName:key,fileName:"file.jpeg",mimeType:"image/jpeg")
 //                    print(key)
 //                }
             }

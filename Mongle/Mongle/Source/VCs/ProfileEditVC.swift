@@ -340,6 +340,7 @@ class ProfileEditVC: UIViewController{
         testValidInput()
         layoutTableView.reloadData()
         showPopupView("프로필이 수정되었어요!", "")
+        print("---------\(self.introduce)------===-=-====")
         MyProfileService.shared.uploadMy(img: profileImageView.image ?? UIImage(named:"warning")!, name: nickNameTextField.text!, introduce: self.introduce ?? "" , keywordIdx: selectedKeywordIdx, completion: { networkResult in
             switch networkResult{
                 case .success(let data):
@@ -411,6 +412,7 @@ extension ProfileEditVC: UITableViewDataSource {
                 self.introduce = text
             }
             cell.introduceTextField.text = UserDefaults.standard.string(forKey: "UserProfileIntroduce")
+            self.introduce = cell.introduceTextField.text ?? ""
             return cell
         }
         else {
