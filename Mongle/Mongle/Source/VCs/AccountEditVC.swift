@@ -18,7 +18,6 @@ class AccountEditVC: UIViewController {
     //MARK: - Custom Properties
     let heightRatio: CGFloat = UIScreen.main.bounds.height/812
     let widthRatio: CGFloat = UIScreen.main.bounds.width/375
-
     var accountEditMenu: [String] = ["비밀번호 변경", "로그아웃", "서비스 탈퇴"]
     //팝업뷰
     let blurImageView = UIImageView().then{
@@ -68,7 +67,6 @@ class AccountEditVC: UIViewController {
         super.viewDidLoad()
         accountEditTableView.delegate = self
         accountEditTableView.dataSource = self
-        print(UIScreen.main.bounds.height)
     
     }
     
@@ -132,8 +130,6 @@ class AccountEditVC: UIViewController {
         print("withdraw")
     }
     @objc func yesButtonAction(){
-        guard let loginVC = UIStoryboard(name:"LogIn",bundle: nil).instantiateViewController (identifier: "LogInVC") as? LogInVC else{
-            return }
         
         switch yesState{
         
@@ -145,12 +141,14 @@ class AccountEditVC: UIViewController {
             callWithdraw()
             //탈퇴 API
         }
-        let root = self.navigationController?.viewControllers.first
-        let pvc = root!.presentingViewController as? LogInVC
-
-        pvc?.idTextField.text = ""
-        pvc?.passwordTextField.text = ""
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        UserDefaults.standard.removeObject(forKey: "token")
+        guard let loginVC = UIStoryboard(name:"LogIn", bundle:nil).instantiateViewController(identifier: "LogInVC") as? LogInVC else{
+                            return
+                        }
+        loginVC.modalPresentationStyle = .fullScreen
+        self.present(loginVC,animated: true){
+            self.navigationController?.popToRootViewController(animated: false)
+        }
         
     }
     @objc func noButtonAction(){
@@ -174,9 +172,11 @@ extension AccountEditVC: UITableViewDelegate{
         switch indexPath.row{
         //비번변경
         case 0:
-            guard let nextVC = UIStoryboard(name: "PasswordChange",bundle: nil).instantiateViewController(identifier: "PasswordChangeVC") as? PasswodChangeVC else{
+            guard let nextVC = UIStoryboard(name: "PasswordChange",bundle: nil).instantiateViewController(identifier: "PasswordChangeVC") as? PasswordChangeVC else{
                 return
             }
+    
+            self.navigationController?.pushViewController(nextVC, animated: true)
         //로그아웃
         case 1:
             yesState = .logout
@@ -205,7 +205,6 @@ extension AccountEditVC: UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AccountEditTVC.identifier) as? AccountEditTVC else{
             return UITableViewCell()
         }
-        print(1)
         cell.accountEditMenuLabel.text = accountEditMenu[indexPath.row]
         
         return cell

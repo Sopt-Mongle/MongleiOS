@@ -19,6 +19,7 @@ class ProfileEditIntroduceTVC: UITableViewCell {
     lazy var warningStackView: UIStackView = UIStackView()
     var selectedTextFieldDelegate: (() -> ()) = { }
     var unSelectedTextfieldDelegate: (() -> ()) = { }
+    var introduceDelegate: ((String) -> ()) = { _ in }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,7 +33,9 @@ class ProfileEditIntroduceTVC: UITableViewCell {
         warningStackView = makeWarningStackView(message: "소개를 입력해주세요!", isCorrect: false)
         
     }
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.contentView.endEditing(true)
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
     }
     @objc func textFieldChanged(sender: UITextField){
@@ -107,6 +110,8 @@ extension ProfileEditIntroduceTVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.setBorder(borderColor: .veryLightPink, borderWidth: 1.0)
         unSelectedTextfieldDelegate()
+        introduceDelegate(textField.text!)
+        
     }
     
     

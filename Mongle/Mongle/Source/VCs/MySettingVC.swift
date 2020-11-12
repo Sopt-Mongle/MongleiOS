@@ -19,9 +19,12 @@ class MySettingVC: UIViewController {
     }
     // MARK:- Property
     var settingSectionNames = ["개인 정보","문의","앱 정보"]
-    var settingRowNames = [["프로필 수정", "계정 설정", "푸쉬 알림 설정"],["1:1 문의하기","문제 신고하기"],["버전 정보","개발자 정보","서비스 운영정책","개인정보 처리방침","오픈소스 라이선스"]]
+    var settingRowNames = [["프로필 수정", "계정 설정", "푸쉬 알림 설정"],["1:1 문의하기"],["버전 정보","개발자 정보","서비스 운영정책","개인정보 이용약관","서비스 이용약관","오픈소스 라이선스"]]
     var isPushNotificationAllowed = false
-    
+    var name = ""
+    var introduce = ""
+    var profileImage = ""
+    var keywordIdx = 0
 
     
     //MARK:- Lifecycle

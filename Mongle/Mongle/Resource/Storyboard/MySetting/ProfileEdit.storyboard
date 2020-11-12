@@ -279,6 +279,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="aRX-DT-6sS" id="8YB-O7-It9"/>
                         <outlet property="bottomBlurImageBottomConstraint" destination="ZSk-zv-Lld" id="Rbk-rw-9mL"/>
                         <outlet property="cameraButton" destination="5SS-23-U9m" id="EH7-Zc-xGH"/>
                         <outlet property="completeButton" destination="41n-Er-Zfz" id="CJn-9w-9f0"/>
@@ -299,21 +300,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jbl-XI-zhB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="264.80000000000001" y="-241.62561576354682"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="dPG-3T-gPk">
-            <objects>
-                <viewController id="k1l-cV-MRv" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wib-uN-ikY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="S6J-Ft-Vlb"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oV0-Eh-b0p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1015" y="-242"/>
         </scene>
     </scenes>
     <resources>

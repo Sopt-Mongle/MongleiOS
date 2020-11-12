@@ -34,28 +34,26 @@ class MainTabThirdTVC: UITableViewCell {
 
 extension MainTabThirdTVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let curator = self.curators[indexPath.item]
-//        guard let dvc = UIStoryboard(name: "CuratorTabInfo", bundle: nil).instantiateViewController(identifier: "CuratorTabInfoVC") as? CuratorTabInfoVC else {
-//            return
-//        }
-//        dvc.curatorIdx = curator.curatorIdx
-//        cellSelectDelegate(dvc)
-        
+        let curator = self.curators[indexPath.item]
+        guard let dvc = UIStoryboard(name: "CuratorTabInfo", bundle: nil).instantiateViewController(identifier: "CuratorTabInfoVC") as? CuratorTabInfoVC else {
+            return
+        }
+        dvc.curatorIdx = curator.curatorIdx
+        cellSelectDelegate(dvc)
     }
 }
 
 extension MainTabThirdTVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return curators.count
-        return 5
+        return curators.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainPopularCuratorCVC.identifier, for: indexPath) as? MainPopularCuratorCVC else {
             return UICollectionViewCell()
         }
-//        let curator = self.curators[indexPath.item]
-//        cell.setData(imgUrl: curator.img ?? "themeImgCurator", name: curator.name, tag: curator.keyword ?? " ")
+        let curator = self.curators[indexPath.item]
+        cell.setData(imgUrl: curator.img ?? "themeImgCurator", name: curator.name, tag: curator.keyword ?? " ")
         return cell
     }
 
