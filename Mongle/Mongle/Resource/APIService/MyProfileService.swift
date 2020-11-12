@@ -69,7 +69,8 @@ struct MyProfileService {
                     print(key)
                 }
                 else if value is UIImage{
-                    let imageData = img.jpegData(compressionQuality: 1.0)!
+                    let image = value as! UIImage
+                    let imageData = image.jpegData(compressionQuality: 1.0)!
                     multiPartFormData.append(imageData,withName:key,mimeType:"image/jpeg")
                     print(key)
                 }

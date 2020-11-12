@@ -8,7 +8,6 @@
 
 import UIKit
 
-let DidReceiveProfileNotification: Notification.Name = Notification.Name("DidReceiveProfile")
 class MyTabVC: UIViewController {
     
     var pageInstance : MyTabPageVC?
@@ -176,9 +175,10 @@ class MyTabVC: UIViewController {
                 self.profileName = self.myProfileData!.name
                 self.profileKeywordIdx = self.myProfileData!.keywordIdx
                 self.profileIntroduce = self.myProfileData?.introduce ?? ""
-                print("여긴되잖아ㅅ.ㅂ.")
-//                let userInfo: [AnyHashable: Any] = ["name":self.profileName,"introduce":self.profileIntroduce,"profileImage":self.profileImg]
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DidReceiveProfile"), object: nil)
+                UserDefaults.standard.setValue(self.profileName, forKey: "UserProfileName")
+                UserDefaults.standard.setValue(self.profileImg, forKey: "UserProfileImgLink")
+                UserDefaults.standard.setValue(self.profileKeywordIdx, forKey: "UserProfileKeyIdx")
+                UserDefaults.standard.setValue(self.profileIntroduce, forKey: "UserProfileIntroduce")
                 
                 switch self.myProfileData!.keywordIdx{
                 

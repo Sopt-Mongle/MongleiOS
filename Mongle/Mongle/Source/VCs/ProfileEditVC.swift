@@ -50,7 +50,6 @@ class ProfileEditVC: UIViewController{
     var name: String = ""
     var profileImage: String?
     var introduce: String = ""
-    var userProfileData: MyProfileData?
     
     // MARK:- Lifecycle
     override func viewDidLoad() {
@@ -60,27 +59,15 @@ class ProfileEditVC: UIViewController{
         setKeywordButton()
         updateSelectedKeywordButton()
         setGesture()
-        // Do any additional setup after loading the view.
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         updateSelectedKeywordButton()
         registerForKeyboardNotifications()
-        NotificationCenter.default.addObserver(self, selector: #selector(setUserProfileData(_:)), name: NSNotification.Name(rawValue: "DidReceiveProfile"), object: nil)
         setData()
     }
-    @objc func setUserProfileData(_ notification: Notification){
-        print("ㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗ")
-//        self.name = notification.userInfo?["name"] as? String ?? ""
-//        self.introduce = notification.userInfo?["introduce"] as? String ?? ""
-//        self.selectedKeywordIdx = notification.userInfo?["keywordIdx"] as? Int ?? 0
-//        self.profileImage = notification.userInfo?["profileImage"] as? String ?? ""
-//        let data = notification.object as! MyProfileData
-//        self.introduce = data.introduce ?? ""
-//        self.selectedKeywordIdx = data.keywordIdx ?? 0
-//        self.profileImage = data.img
-        print("들어오나\(self.name),\(self.introduce)")
-    }
+
     
     override func viewWillDisappear(_ animated: Bool) {
         unregisterForKeyboardNotifications()
@@ -137,7 +124,6 @@ class ProfileEditVC: UIViewController{
         self.present(self.imagePickerController, animated: true, completion: nil)
     }
     
-    
     // MARK: Custom Method
     func setLayout(){
         keywordBackgroundView.backgroundColor = UIColor.veryLightPinkEight
@@ -147,21 +133,18 @@ class ProfileEditVC: UIViewController{
         nickNameTextField.makeRounded(cornerRadius: 10)
         nickNameTextField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1)
         
-        
         nickNameTextField.addLeftPadding(left: 15)
-//        introduceTextField.addLeftPadding(left: 15)
         
         completeButton.makeRounded(cornerRadius: 28)
-//        nickNameTextField.textRect(forBounds: CGRect(x: 0, y: 0, width: 20, height: 10))
+
     }
     
     func setKeywordButton(){
-        var idx: Int = 0
+        var idx: Int = 1
         keywordButton.forEach {
-            $0.setTitle(keywords[idx], for: .normal)
+            $0.setTitle(keywords[idx-1], for: .normal)
             $0.titleLabel?.font = UIFont.systemFont(ofSize: 13)
             $0.setTitleColor(UIColor(red: 124 / 255, green: 124 / 255, blue: 124 / 255, alpha: 1.0), for: .normal)
-            
             
             $0.setTitleColor(.white, for: .selected)
             $0.backgroundColor = .white
@@ -183,9 +166,11 @@ class ProfileEditVC: UIViewController{
         }
     }
     func setData(){
-        self.nickNameTextField.text = self.name
-        self.profileImageView.imageFromUrl(profileImage, defaultImgPath: "mySettingsProfile4BtnProfileChange")
+//        userProfileData = UserDefaults.standard.object(forKey: "UserProfile") as! MyProfileData
+        self.nickNameTextField.text = UserDefaults.standard.string(forKey: "UserProfileName")
+        self.profileImageView.imageFromUrl(UserDefaults.standard.string(forKey: "UserProfileImgLink"), defaultImgPath: "mySettingsProfile4BtnProfileChange")
         self.layoutTableView.reloadData()
+        selectedKeywordIdx = UserDefaults.standard.integer(forKey: "UserProfileKeyIdx") ?? 0
         updateSelectedKeywordButton()
     }
     func testValidInput(){
@@ -280,19 +265,17 @@ class ProfileEditVC: UIViewController{
     @IBAction func touchUpCompleteButton(){
         testValidInput()
         layoutTableView.reloadData()
-        MyProfileService.shared.uploadMy(img: profileImageView.image ?? UIImage(named:"warning")!, name: nickNameTextField.text!, introduce: self.introduce , keywordIdx: selectedKeywordIdx, completion: { networkResult in
+        MyProfileService.shared.uploadMy(img: profileImageView.image ?? UIImage(named:"warning")!, name: nickNameTextField.text!, introduce: UserDefaults.standard.string(forKey: "UserProfileIntroduce") ?? "" , keywordIdx: selectedKeywordIdx, completion: { networkResult in
             switch networkResult{
                 case .success(let data):
                     print("<<<<<성공>>>>>")
                     guard let profileData = data as? MyProfileUploadData else{
                         return 
                     }
-                    self.name = profileData.name
-                    self.profileImage = profileData.img
-                    self.introduce = profileData.introduce ?? ""
-                    self.selectedKeywordIdx = profileData.keywordIdx ?? 0
-                    let userInfo: [AnyHashable: Any] = ["name":self.name,"introduce":self.introduce,"profileImage":self.profileImage!]
-//                    NotificationCenter.default.post(name: NSNotification.Name("ProfileData"), object: nil, userInfo: userInfo)
+                    UserDefaults.standard.setValue(profileData.name, forKey: "UserProfileName")
+                    UserDefaults.standard.setValue(profileData.img, forKey: "UserProfileImgLink")
+                    UserDefaults.standard.setValue(profileData.introduce, forKey: "UserProfileIntroduce")
+                    UserDefaults.standard.setValue(profileData.keywordIdx, forKey: "UserProfileKeyIdx")
                     
                 case .requestErr(let message):
                     guard let message = message as? String else { return }
@@ -350,9 +333,9 @@ extension ProfileEditVC: UITableViewDataSource {
                 self?.isScrollSpended = false
             }
             cell.introduceDelegate = { text in
-                self.introduce = text
+                UserDefaults.standard.setValue(text, forKey: "UserProfileIntroduce")
             }
-            cell.introduceTextField.text = introduce
+            cell.introduceTextField.text = UserDefaults.standard.string(forKey: "UserProfileIntroduce")
             return cell
         }
         else {
