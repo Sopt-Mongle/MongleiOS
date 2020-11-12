@@ -16,15 +16,17 @@ class MainPopularCuratorCVC: UICollectionViewCell {
     @IBOutlet var tagLabel: UILabel!
     
     override func awakeFromNib() {
-    
-        profileImageView.makeRounded(cornerRadius: profileImageView.frame.width / 2)
         profileImageView.contentMode = .scaleAspectFill
     }
     
+    
     func setData(imgUrl: String, name: String, tag: String){
         self.profileImageView.imageFromUrl(imgUrl, defaultImgPath: "themeImgCurator")
+        
         self.profileNameLabel.text = name
         self.tagLabel.text = tag
+        self.profileImageView.makeRounded(cornerRadius: profileImageView.frame.width / 2)
+        
     }
     
 }

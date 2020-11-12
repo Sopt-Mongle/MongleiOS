@@ -55,4 +55,6 @@ struct APIConstants {
     static let myThemeURL = baseURL + "/my/theme"
     static let mySentenceURL = baseURL + "/my/sentence"
     static let myCuratorURL = baseURL + "/my/subscribe"
+    static let signupEmailURL = baseURL + "/users/auth"
+    static let signupDuplicateURL = baseURL + "/users/duplicate"
 }

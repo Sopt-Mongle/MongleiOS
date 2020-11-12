@@ -58,6 +58,7 @@ class ThemeInfoVC: UIViewController {
     
     func setInitLayout(){
         themeBackgroundView.backgroundColor = .clear
+        
         if hasTheme {
             
             self.themeNameLabel.text = themeText ?? ""
@@ -80,7 +81,7 @@ class ThemeInfoVC: UIViewController {
                 $0.leading.equalToSuperview().offset(16)
             }
         }
-        
+        writeInThemeButton.makeRounded(cornerRadius: self.writeInThemeButton.bounds.height * 33 / 253)
         curatorProfileImageView.makeRounded(cornerRadius: curatorProfileImageView.frame.width / 2)
         sentencesBackgroundView.layer.cornerRadius = 25
         sentencesBackgroundView.clipsToBounds = true

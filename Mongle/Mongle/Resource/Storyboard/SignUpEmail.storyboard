@@ -12,7 +12,7 @@
         <!--Sign Up EmailVC-->
         <scene sceneID="LrP-YK-Snu">
             <objects>
-                <viewController storyboardIdentifier="SignUpEmailVC." id="Tzz-Wy-rhX" customClass="SignUpEmailVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpEmailVC" id="Tzz-Wy-rhX" customClass="SignUpEmailVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="40d-g4-DCS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,6 +37,9 @@
                                 <state key="normal" title="재전송">
                                     <color key="titleColor" red="0.3960883617" green="0.39602795239999999" blue="0.3999972343" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="resendButtonAction:" destination="Tzz-Wy-rhX" eventType="touchUpInside" id="8i8-TY-dyQ"/>
+                                </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2Ea-ca-kVf">
                                 <rect key="frame" x="41.5" y="115.5" width="331.5" height="2"/>
@@ -202,6 +205,9 @@
                                 <state key="normal" title="가입하기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitButtonAction:" destination="Tzz-Wy-rhX" eventType="touchUpInside" id="PAG-Q8-rew"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tMD-oP-Y1l"/>
