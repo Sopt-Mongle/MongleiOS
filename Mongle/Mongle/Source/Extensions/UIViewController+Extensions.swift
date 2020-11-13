@@ -10,6 +10,8 @@ import UIKit
 
 extension UIViewController {
     
+    
+    
     // UIAlertController without handler
     func simpleAlert(title: String, message: String) {
         
