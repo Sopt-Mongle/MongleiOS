@@ -42,6 +42,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var upperBlurImageView: UIImageView!
     
+    
+    
     //MARK:- Constraints For Warning
     
     @IBOutlet weak var emailToPassWordConstraint: NSLayoutConstraint!
@@ -135,15 +137,17 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     var emailIsWarning : Int = 0
     var passwordIsWarning : Int = 0
-    let deviceBound = UIScreen.main.bounds.height/812.0
+    let deviceBound = (UIScreen.main.bounds.height-317.0)/495.0
     
+    
+    @IBOutlet weak var upperBlurHeight: NSLayoutConstraint!
     
     
     //MARK:- LifeCycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("devicebound : \(deviceBound)")
         setItems()
         setSmallBalls()
         setProgressBar()
@@ -169,7 +173,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     //MARK:- User Define Functions
     func setItems(){
         backButton.setImage(UIImage(named: "joinEmailErrorBtnClose")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        
+        upperBlurHeight.constant = 91*deviceBound
         
         emailTextField.placeholder = "이메일 주소"
         passWordTextField.placeholder = "비밀번호"
@@ -274,8 +278,12 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
         
         if textField == passWordTextField || textField == passWordTextField2 {
-            let move = CGPoint(x: 0, y: 162)
-            signUpScrollView.setContentOffset(move, animated: false)
+//            let move = CGPoint(x: 0, y: (105+emailIsWarning)*Int(deviceBound))
+            let move = CGPoint(x: 0, y: (105+emailIsWarning))
+            UIView.animate(withDuration: 0.5, animations: {
+                
+                self.signUpScrollView.setContentOffset(move, animated: false)
+            })
             hidePasswordWarning()
             
             
@@ -283,13 +291,23 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         }
         
         else if textField == nickNameTextField {
-            let move = CGPoint(x: 0, y: 280)
-            signUpScrollView.setContentOffset(move, animated: false)
+//            let move = CGPoint(x: 0, y: (280+emailIsWarning+passwordIsWarning)*Int(deviceBound))
+            let move = CGPoint(x: 0, y: (280+emailIsWarning+passwordIsWarning))
+            UIView.animate(withDuration: 0.5, animations: {
+                
+                self.signUpScrollView.setContentOffset(move, animated: false)
+            })
+            
             secondPasswordEnd()
             hideNickNameWarning()
             updateNicknameQuantity()
         }
         else if textField == emailTextField{
+            let move = CGPoint(x: 0, y: 0)
+            UIView.animate(withDuration: 0.5, animations: {
+                
+                self.signUpScrollView.setContentOffset(move, animated: false)
+            })
             secondPasswordEnd()
             hideEmailWarning()
         }
@@ -384,7 +402,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             
             underBlur.snp.makeConstraints {
                 $0.bottom.equalToSuperview().offset(-keyboardSize.height)
-                $0.height.equalTo(123)
+                $0.height.equalTo(123*deviceBound)
                 $0.leading.trailing.equalToSuperview()
                 
             }

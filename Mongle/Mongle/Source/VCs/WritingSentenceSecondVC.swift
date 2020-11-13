@@ -81,6 +81,8 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         backButton.tintColor = .veryLightPink
         setNextButton()
         searchTextButton.setImage(UIImage(named: "themeWritingSentenceBookBtnBookSearch")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        searchTextButton.imageView?.contentMode = .scaleToFill
+        searchTextButton.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
         bookTitleLabel.text = ""
         setWarning()
         searchTextButton.makeRounded(cornerRadius: 10)

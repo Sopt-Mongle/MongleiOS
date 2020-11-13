@@ -17,9 +17,16 @@ class OnboardingFirstVC: UIViewController {
     @IBOutlet weak var mongleImage: UIImageView!
     @IBOutlet weak var mentImage: UIImageView!
     
+    @IBOutlet weak var mentTopConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var backgroundBottom: NSLayoutConstraint!
+    @IBOutlet weak var bookBottom: NSLayoutConstraint!
+    
+    @IBOutlet weak var mongleBottom: NSLayoutConstraint!
     
     static var onboardingBDelegate: OnboardingButtonDelegate?
-    
+    let deviceBound = UIScreen.main.bounds.height/812.0
+
     
     //MARK: - LifeCycle Methods
     
@@ -44,6 +51,11 @@ class OnboardingFirstVC: UIViewController {
         mongleImage.image = UIImage(named: "onboarding1ImgMongle")
         
         mentImage.image = UIImage(named: "onboarding1Text")
+        
+        backgroundBottom.constant = 293*deviceBound
+        mentTopConstraint.constant = 116*deviceBound
+        bookBottom.constant = 293*deviceBound
+        mongleBottom.constant = 237*deviceBound
     
 
         

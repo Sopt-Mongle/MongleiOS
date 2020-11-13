@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LWw-TQ-Bkp">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="569"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LWw-TQ-Bkp">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="603"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oTp-EI-NGY">
                                 <rect key="frame" x="82" y="371" width="274" height="218"/>
@@ -53,14 +53,18 @@
                             <constraint firstItem="Q9O-9B-Fzm" firstAttribute="top" secondItem="l9o-7Q-5je" secondAttribute="top" constant="116" id="kkG-d4-0cW"/>
                             <constraint firstItem="LWw-TQ-Bkp" firstAttribute="top" secondItem="l9o-7Q-5je" secondAttribute="top" id="rRI-U8-84C"/>
                             <constraint firstItem="Q9O-9B-Fzm" firstAttribute="leading" secondItem="OUy-pZ-T6k" secondAttribute="leading" constant="70" id="wvI-2N-WeA"/>
-                            <constraint firstItem="OUy-pZ-T6k" firstAttribute="bottom" secondItem="LWw-TQ-Bkp" secondAttribute="bottom" constant="293" id="xEU-Os-qWf"/>
+                            <constraint firstAttribute="bottom" secondItem="LWw-TQ-Bkp" secondAttribute="bottom" constant="293" id="xEU-Os-qWf"/>
                             <constraint firstItem="OUy-pZ-T6k" firstAttribute="trailing" secondItem="Q9O-9B-Fzm" secondAttribute="trailing" constant="69" id="zo5-Os-WqA"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundBottom" destination="xEU-Os-qWf" id="s53-53-ctC"/>
                         <outlet property="backgroundImage" destination="LWw-TQ-Bkp" id="Adk-3Q-qqR"/>
+                        <outlet property="bookBottom" destination="GGy-cf-hEb" id="Yg8-GB-moh"/>
                         <outlet property="bookImage" destination="oTp-EI-NGY" id="fvb-rR-NdD"/>
                         <outlet property="mentImage" destination="Q9O-9B-Fzm" id="tOf-yg-0iC"/>
+                        <outlet property="mentTopConstraint" destination="kkG-d4-0cW" id="6kT-P6-2cZ"/>
+                        <outlet property="mongleBottom" destination="578-1d-224" id="3c6-2k-rB3"/>
                         <outlet property="mongleImage" destination="XqO-hf-2yY" id="XJd-Bs-ssD"/>
                     </connections>
                 </viewController>
@@ -118,8 +122,11 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImage" destination="QHG-yZ-MCP" id="79A-f3-ui9"/>
+                        <outlet property="curatorBottom" destination="9ul-1F-B9E" id="iPS-6y-qJn"/>
                         <outlet property="curatorImage" destination="1ZD-ap-imW" id="S4n-8f-2zR"/>
                         <outlet property="mentImage" destination="cHK-pn-T4m" id="AC5-4f-964"/>
+                        <outlet property="mentTop" destination="i3M-xJ-XYD" id="rgl-bz-SiM"/>
+                        <outlet property="mongleBottom" destination="RXn-94-6M8" id="OPb-F4-3O7"/>
                         <outlet property="mongleImage" destination="RQB-7c-1M8" id="apV-Y4-IrZ"/>
                     </connections>
                 </viewController>
@@ -177,8 +184,11 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImage" destination="XPZ-9u-BCe" id="zsc-z8-axZ"/>
+                        <outlet property="bookBottom" destination="zVR-uH-LGd" id="CFD-2z-l65"/>
                         <outlet property="booksImage" destination="F6j-C0-gsc" id="fFL-Aw-yLo"/>
                         <outlet property="mentImage" destination="pM0-p5-bPf" id="iBR-ed-Odm"/>
+                        <outlet property="mentTop" destination="cDR-Zf-Ypt" id="IgP-24-JQV"/>
+                        <outlet property="mongleBottom" destination="hUI-yS-fea" id="eVJ-iY-6eT"/>
                         <outlet property="mongleImage" destination="eFa-Jb-KFU" id="CnR-MP-2hZ"/>
                     </connections>
                 </viewController>
@@ -194,7 +204,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rlC-Ej-x5V">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rlC-Ej-x5V">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="705"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ljo-Yy-sxP">
@@ -266,6 +276,8 @@
                         <outlet property="backgroundImage" destination="rlC-Ej-x5V" id="mF8-c4-KB4"/>
                         <outlet property="lookAroundButton" destination="AWN-Pm-3A4" id="hLk-Vd-yTI"/>
                         <outlet property="mentImage" destination="ljo-Yy-sxP" id="Iya-es-hU0"/>
+                        <outlet property="mentTop" destination="pEx-ey-yC9" id="CNh-qy-0N4"/>
+                        <outlet property="mongleBottomConstraint" destination="3kg-aH-7yH" id="zoh-5W-ZX3"/>
                         <outlet property="mongleContainView" destination="yVF-Rk-6pD" id="wr2-do-BBQ"/>
                         <outlet property="mongleImage" destination="aJO-UE-f0w" id="4u1-xT-ONJ"/>
                         <outlet property="mongleTopConstraint" destination="qr7-jl-gVu" id="Tj5-xB-Kjd"/>

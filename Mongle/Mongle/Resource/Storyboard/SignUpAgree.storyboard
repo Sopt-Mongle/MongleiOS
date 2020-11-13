@@ -43,7 +43,10 @@
                                 </constraints>
                             </imageView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ppY-fj-FLw">
-                                <rect key="frame" x="41.666666666666657" y="237.33333333333334" width="290" height="4"/>
+                                <rect key="frame" x="41.666666666666657" y="237.33333333333334" width="290" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="t1K-bz-uNR"/>
+                                </constraints>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bzk-dP-UYm">
                                 <rect key="frame" x="58" y="307.33333333333331" width="37.333333333333343" height="18"/>
@@ -75,7 +78,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fgs-FZ-wgx">
-                                <rect key="frame" x="308" y="297" width="48" height="48"/>
+                                <rect key="frame" x="308" y="295" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Ru3-hJ-VUl"/>
                                     <constraint firstAttribute="width" constant="48" id="ogo-ks-jbV"/>
@@ -109,7 +112,7 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L9B-bV-bXr">
-                                <rect key="frame" x="340" y="314.33333333333331" width="6" height="10.333333333333314"/>
+                                <rect key="frame" x="340" y="312.33333333333331" width="6" height="10.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="6" id="Ljl-e2-ee8"/>
                                     <constraint firstAttribute="height" constant="10.199999999999999" id="gEH-GV-nz1"/>
@@ -146,7 +149,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izQ-xH-jK1">
-                                <rect key="frame" x="308" y="345" width="48" height="48"/>
+                                <rect key="frame" x="308" y="343" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="FMm-th-iQ4"/>
                                     <constraint firstAttribute="height" constant="48" id="alm-hE-DxG"/>
@@ -156,7 +159,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U0s-8B-gjt">
-                                <rect key="frame" x="340" y="360" width="6" height="10"/>
+                                <rect key="frame" x="340" y="358" width="6" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="6" id="D2z-Ac-eDq"/>
                                     <constraint firstAttribute="height" constant="10.199999999999999" id="gHs-tU-tge"/>

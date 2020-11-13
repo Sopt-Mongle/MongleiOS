@@ -26,7 +26,10 @@ class OnboardingFourthVC: UIViewController {
     var collisionBehavior : UICollisionBehavior!
     var bouncingBehavior  : UIDynamicItemBehavior!
     
+    @IBOutlet weak var mongleBottomConstraint: NSLayoutConstraint!
+    let deviceBound = UIScreen.main.bounds.height/812.0
     
+    @IBOutlet weak var mentTop: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +51,9 @@ class OnboardingFourthVC: UIViewController {
         lookAroundButton.setTitleColor(.veryLightPink, for: .normal)
         startButton.makeRounded(cornerRadius: 27)
         mongleContainView.backgroundColor = UIColor.black.withAlphaComponent(0)
+        mongleBottomConstraint.constant = 286*deviceBound
+        mentTop.constant = 116*deviceBound
+       
         
     }
     

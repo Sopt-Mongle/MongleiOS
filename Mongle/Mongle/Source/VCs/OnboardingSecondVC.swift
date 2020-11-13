@@ -15,8 +15,12 @@ class OnboardingSecondVC: UIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var curatorImage: UIImageView!
     @IBOutlet weak var mongleImage: UIImageView!
+    let deviceBound = UIScreen.main.bounds.height/812.0
 
-    
+    @IBOutlet weak var mentTop: NSLayoutConstraint!
+
+    @IBOutlet weak var curatorBottom: NSLayoutConstraint!
+    @IBOutlet weak var mongleBottom: NSLayoutConstraint!
     
     static var onboardingBDelegate: OnboardingButtonDelegate?
     override func viewDidLoad() {
@@ -47,6 +51,9 @@ class OnboardingSecondVC: UIViewController {
         mongleImage.image = UIImage(named: "onboarding2ImgMongle")
         mentImage.image = UIImage(named: "onboarding2Text")
 
+        mentTop.constant = 116*deviceBound
+        curatorBottom.constant = 245*deviceBound
+        mongleBottom.constant = 202*deviceBound
         
     }
     

@@ -20,9 +20,18 @@ class OnboardingMainVC: UIViewController {
     @IBOutlet weak var jumpButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     
+    @IBOutlet weak var stackTopCons: NSLayoutConstraint!
+    var runCount = 0
     
+    static var shouldShowSplash = false
+    
+    let deviceBound = UIScreen.main.bounds.height/812.0
     override func viewDidLoad() {
         super.viewDidLoad()
+        if(OnboardingMainVC.shouldShowSplash){
+            showSplash()
+        }
+        OnboardingMainVC.shouldShowSplash = false
         setItems()
         // Do any additional setup after loading the view.
     }
@@ -41,7 +50,7 @@ class OnboardingMainVC: UIViewController {
         OnboardingFourthVC.onboardingBDelegate = self
         
         
-        
+        stackTopCons.constant = 219*deviceBound
         nextButton.makeRounded(cornerRadius: 27)
         nextButton.backgroundColor = .softGreen
         
@@ -60,7 +69,56 @@ class OnboardingMainVC: UIViewController {
             circles[i].makeRounded(cornerRadius: 3.5)
         }
         
+        
+        
+      
+        
+    }
+    
+    func showSplash(){
+        let containView = UIView()
+        containView.backgroundColor = UIColor(red: 251 / 255.0, green: 251 / 255.0, blue: 251 / 255.0, alpha: 1.0)
+        self.view.addSubview(containView)
+        containView.frame = self.view.bounds
+        
+        var imageView = UIImageView()
+        do{
+            let gif = try UIImage(gifName: "Comp 3")
+            imageView = UIImageView(gifImage: gif,loopCount: 1)
+        
+            self.view.addSubview(imageView)
+            imageView.snp.makeConstraints{
+                $0.width.equalTo(350)
+                $0.height.equalTo(200)
+                $0.center.equalToSuperview()
+                
+            }
+            
+            
+        } catch{
+            print(error)
+        }
+        
+       
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            self.runCount += 1
+            
 
+            if self.runCount == 30 {
+                timer.invalidate()
+                
+                UIView.animate(withDuration: 1.0, animations: {
+                    imageView.removeFromSuperview()
+                    containView.alpha = 0
+                    
+                    
+                })
+                
+                
+                    
+            }
+        }
+        
         
     }
     
@@ -116,6 +174,23 @@ class OnboardingMainVC: UIViewController {
         
         
     }
+    
+    @IBAction func jumpButtonAction(_ sender: Any) {
+        guard let vcName = UIStoryboard(name: "LogIn",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "LogInVC") as? LogInVC
+        else{
+            return
+        }
+        
+        vcName.modalPresentationStyle = .fullScreen
+        self.dismiss(animated: true, completion: nil)
+        
+        self.present(vcName, animated: true, completion: nil)
+        
+        
+    }
+    
     
     
     
