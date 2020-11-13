@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleSDGothicNeoR.ttf">
+            <string>AppleSDGothicNeoR00</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Profile EditVC-->
         <scene sceneID="fBh-1e-49s">
@@ -168,6 +173,19 @@
                                                 <constraint firstItem="icX-0Y-ni0" firstAttribute="top" secondItem="uLC-qL-jd7" secondAttribute="top" constant="1" id="rI0-yB-xKf"/>
                                             </constraints>
                                         </view>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ARd-7L-SsW">
+                                            <rect key="frame" x="16" y="225" width="15" height="15"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="15" id="BOI-gS-t75"/>
+                                                <constraint firstAttribute="width" constant="15" id="p3Q-cK-ixQ"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjh-Ur-EAV">
+                                            <rect key="frame" x="39" y="232.66666666666666" width="0.0" height="0.0"/>
+                                            <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="닉네임을 6자 이내로 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T8N-eO-5wn">
                                             <rect key="frame" x="16" y="170" width="343" height="45"/>
                                             <constraints>
@@ -176,22 +194,34 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSn-fw-blE">
+                                            <rect key="frame" x="339" y="226" width="20" height="16"/>
+                                            <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="13"/>
+                                            <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="uLC-qL-jd7" firstAttribute="leading" secondItem="vAz-9M-1q7" secondAttribute="leading" id="2PR-wB-tAG"/>
+                                        <constraint firstItem="FSn-fw-blE" firstAttribute="trailing" secondItem="T8N-eO-5wn" secondAttribute="trailing" id="4Cw-Nv-D5Y"/>
                                         <constraint firstItem="FRG-JF-mw6" firstAttribute="leading" secondItem="vAz-9M-1q7" secondAttribute="leading" constant="16" id="6Gl-9Y-Wwv"/>
+                                        <constraint firstItem="Gjh-Ur-EAV" firstAttribute="leading" secondItem="ARd-7L-SsW" secondAttribute="trailing" constant="8" id="8vc-3c-7Nk"/>
                                         <constraint firstItem="uLC-qL-jd7" firstAttribute="top" secondItem="BJg-3R-fDR" secondAttribute="bottom" constant="12" id="9VZ-1x-aIr"/>
                                         <constraint firstItem="FRG-JF-mw6" firstAttribute="top" secondItem="A4w-hY-ude" secondAttribute="bottom" constant="48" id="CAC-FT-ecU"/>
                                         <constraint firstItem="T8N-eO-5wn" firstAttribute="leading" secondItem="vAz-9M-1q7" secondAttribute="leading" constant="16" id="EAj-Ox-aCa"/>
                                         <constraint firstAttribute="trailing" secondItem="T8N-eO-5wn" secondAttribute="trailing" constant="16" id="ExJ-UG-sXS"/>
                                         <constraint firstAttribute="trailing" secondItem="uLC-qL-jd7" secondAttribute="trailing" id="G6F-6q-dgb"/>
                                         <constraint firstItem="BJg-3R-fDR" firstAttribute="top" secondItem="T8N-eO-5wn" secondAttribute="bottom" constant="34" id="MVY-zK-WAV"/>
+                                        <constraint firstItem="FSn-fw-blE" firstAttribute="top" secondItem="T8N-eO-5wn" secondAttribute="bottom" constant="11" id="WcE-1a-IGj"/>
                                         <constraint firstItem="A4w-hY-ude" firstAttribute="centerX" secondItem="vAz-9M-1q7" secondAttribute="centerX" id="Xwz-8Z-pH4"/>
+                                        <constraint firstItem="Gjh-Ur-EAV" firstAttribute="centerY" secondItem="ARd-7L-SsW" secondAttribute="centerY" id="dRi-wy-8j9"/>
                                         <constraint firstItem="T8N-eO-5wn" firstAttribute="top" secondItem="FRG-JF-mw6" secondAttribute="bottom" constant="12" id="dYR-1L-WYp"/>
                                         <constraint firstItem="BJg-3R-fDR" firstAttribute="leading" secondItem="vAz-9M-1q7" secondAttribute="leading" constant="16" id="g4G-xT-7Pm"/>
                                         <constraint firstItem="5SS-23-U9m" firstAttribute="top" secondItem="A4w-hY-ude" secondAttribute="bottom" constant="-23" id="gVY-SU-Iaa"/>
                                         <constraint firstItem="A4w-hY-ude" firstAttribute="top" secondItem="vAz-9M-1q7" secondAttribute="top" constant="17" id="iG1-UG-h9c"/>
+                                        <constraint firstItem="ARd-7L-SsW" firstAttribute="top" secondItem="T8N-eO-5wn" secondAttribute="bottom" constant="10" id="mom-Nm-BjG"/>
                                         <constraint firstItem="5SS-23-U9m" firstAttribute="leading" secondItem="A4w-hY-ude" secondAttribute="trailing" constant="-21" id="uND-te-KTc"/>
+                                        <constraint firstItem="ARd-7L-SsW" firstAttribute="leading" secondItem="T8N-eO-5wn" secondAttribute="leading" id="vaF-zy-H7j"/>
                                         <constraint firstAttribute="bottom" secondItem="uLC-qL-jd7" secondAttribute="bottom" priority="250" id="xWN-Ma-dOb"/>
                                     </constraints>
                                 </view>
@@ -217,11 +247,28 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mySettingsProfileError3IcWarning" translatesAutoresizingMaskIntoConstraints="NO" id="KWP-Av-LXN">
+                                                    <rect key="frame" x="16" y="119" width="15" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="15" id="SLW-tl-Lrn"/>
+                                                        <constraint firstAttribute="height" constant="15" id="XPI-W5-5Q4"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="소개를 입력해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Yz-7B-YYe">
+                                                    <rect key="frame" x="39" y="118.66666666666667" width="108" height="16.000000000000014"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="13"/>
+                                                    <color key="textColor" red="0.81176470590000005" green="0.1960784314" blue="0.1960784314" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="KWP-Av-LXN" firstAttribute="top" secondItem="exK-iG-EqL" secondAttribute="bottom" constant="10" id="0W5-AT-eM1"/>
                                                 <constraint firstItem="sdr-Ys-s5q" firstAttribute="leading" secondItem="Uzd-jF-I41" secondAttribute="leading" constant="16" id="D3r-f9-0g9"/>
                                                 <constraint firstAttribute="bottom" secondItem="exK-iG-EqL" secondAttribute="bottom" constant="237" id="GIZ-LV-9DW"/>
+                                                <constraint firstItem="9Yz-7B-YYe" firstAttribute="centerY" secondItem="KWP-Av-LXN" secondAttribute="centerY" id="HzX-Jh-9sT"/>
                                                 <constraint firstItem="sdr-Ys-s5q" firstAttribute="top" secondItem="Uzd-jF-I41" secondAttribute="top" constant="34" id="MBB-7i-MfY"/>
+                                                <constraint firstItem="9Yz-7B-YYe" firstAttribute="leading" secondItem="KWP-Av-LXN" secondAttribute="trailing" constant="8" id="Smi-DZ-X5c"/>
+                                                <constraint firstItem="KWP-Av-LXN" firstAttribute="leading" secondItem="exK-iG-EqL" secondAttribute="leading" id="eQ6-lJ-fOX"/>
                                                 <constraint firstItem="exK-iG-EqL" firstAttribute="trailing" secondItem="Uzd-jF-I41" secondAttribute="trailing" constant="-16" id="mNl-PU-M5c"/>
                                                 <constraint firstItem="exK-iG-EqL" firstAttribute="leading" secondItem="Uzd-jF-I41" secondAttribute="leading" constant="16" id="q9e-Y1-usM"/>
                                                 <constraint firstItem="exK-iG-EqL" firstAttribute="top" secondItem="sdr-Ys-s5q" secondAttribute="bottom" constant="12" id="s5m-eG-kGV"/>
@@ -229,6 +276,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="introduceTextField" destination="exK-iG-EqL" id="FRS-Tw-kgC"/>
+                                            <outlet property="introduceWarningImageview" destination="KWP-Av-LXN" id="akg-Gn-lk5"/>
+                                            <outlet property="introduceWarningLabel" destination="9Yz-7B-YYe" id="FcL-Nv-uAY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -286,7 +335,10 @@
                         <outlet property="keywordBackgroundView" destination="uLC-qL-jd7" id="ekm-bV-gs6"/>
                         <outlet property="keywordLabelTopConstraint" destination="MVY-zK-WAV" id="L4t-HS-lSS"/>
                         <outlet property="layoutTableView" destination="dDX-vb-oXr" id="xMW-pZ-S5t"/>
+                        <outlet property="nickNameCountLabel" destination="FSn-fw-blE" id="glB-x6-oPl"/>
                         <outlet property="nickNameTextField" destination="T8N-eO-5wn" id="MI4-wS-6Un"/>
+                        <outlet property="nickNameWarningImageView" destination="ARd-7L-SsW" id="LGh-Ui-hTV"/>
+                        <outlet property="nickNameWarningLabel" destination="Gjh-Ur-EAV" id="Jjx-b6-3Vl"/>
                         <outlet property="profileImageView" destination="A4w-hY-ude" id="G2N-pq-FNQ"/>
                         <outlet property="topBlurView" destination="g3M-EE-ybc" id="HMb-Js-e4W"/>
                         <outletCollection property="keywordButton" destination="DQw-um-sm5" collectionClass="NSMutableArray" id="dmO-PU-KTL"/>
@@ -306,6 +358,7 @@
         <image name="mySettingsProfile4IcCamera" width="23" height="23"/>
         <image name="mySettingsProfile4ImgProfile" width="75" height="75"/>
         <image name="mySettingsProfile5BoxBlur" width="375" height="53"/>
+        <image name="mySettingsProfileError3IcWarning" width="15" height="15"/>
         <image name="searchBtnBack" width="10.333333015441895" height="18.666666030883789"/>
         <image name="writingSentenceTheme2BoxBlur" width="375" height="184"/>
         <systemColor name="systemBackgroundColor">
