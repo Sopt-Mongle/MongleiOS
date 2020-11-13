@@ -236,31 +236,9 @@ class ProfileEditVC: UIViewController{
         nickNameWarningLabel.alpha = 0
         nickNameWarningImageView.alpha = 0
     }
-//    func testValidInput() -> Bool{
-//        var isValid = true
-//        keywordLabelTopConstraint.constant = 59
-//        if isValidNickNameInput() {
-//            if nickNameTextField.text! != UserDefaults.standard.string(forKey: "UserProfileName"){
-//
-//            }
-//            else{
-//                nickNameTextField.setBorder(borderColor: .veryLightPink, borderWidth: 1)
-//                hideWarning()
-//            }
-//
-//        }
-//        else {
-//            self.nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1)
-//            showWarning(color: .red,title:"닉네임을 입력해주세요!")
-//            isValid = false
-//
-//        }
-//        return isValid
-//    }
         
     func callNickNameDuplicate(){
 
-//        keywordLabelTopConstraint.constant = 59
         if isValidNickNameInput() {
             if nickNameTextField.text! != UserDefaults.standard.string(forKey: "UserProfileName"){
                 SignUpDuplicateService.shared.checkDuplicate(email: "-", name: nickNameTextField.text!, completion: {networkResult in
@@ -276,7 +254,6 @@ class ProfileEditVC: UIViewController{
                            
                                 self.nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1)
                                 self.showWarning(color: .red, title: "이미 사용 중인 닉네임이에요!")
-                    
                            
                             }
                             else if duplicateData == "available"{
@@ -295,10 +272,6 @@ class ProfileEditVC: UIViewController{
                                 }
                                 
                             }
-                            print("####2")
-                            
-                            
-                            
                             
                         case .requestErr(let message):
                             guard let message = message as? String else { return }
@@ -317,6 +290,12 @@ class ProfileEditVC: UIViewController{
             else{
                 nickNameTextField.setBorder(borderColor: .veryLightPink, borderWidth: 1)
                 hideWarning()
+                self.layoutTableView.reloadData()
+                if (ProfileEditIntroduceTVC.isIntroduceValid! &&  (self.introduce != UserDefaults.standard.string(forKey: "UserProfileIntroduce") || self.selectedKeywordIdx != UserDefaults.standard.integer(forKey:"UserProfileKeyIdx"))){
+                    DispatchQueue.main.async{
+                        self.callProfileEdit()
+                    }
+                }
             }
             
         }

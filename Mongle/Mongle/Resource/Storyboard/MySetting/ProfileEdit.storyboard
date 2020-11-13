@@ -254,6 +254,12 @@
                                                         <constraint firstAttribute="height" constant="15" id="XPI-W5-5Q4"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A51-dC-FLl">
+                                                    <rect key="frame" x="330.66666666666669" y="120" width="28.333333333333314" height="15.666666666666657"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="소개를 입력해주세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Yz-7B-YYe">
                                                     <rect key="frame" x="39" y="118.66666666666667" width="108" height="16.000000000000014"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="13"/>
@@ -268,13 +274,16 @@
                                                 <constraint firstItem="9Yz-7B-YYe" firstAttribute="centerY" secondItem="KWP-Av-LXN" secondAttribute="centerY" id="HzX-Jh-9sT"/>
                                                 <constraint firstItem="sdr-Ys-s5q" firstAttribute="top" secondItem="Uzd-jF-I41" secondAttribute="top" constant="34" id="MBB-7i-MfY"/>
                                                 <constraint firstItem="9Yz-7B-YYe" firstAttribute="leading" secondItem="KWP-Av-LXN" secondAttribute="trailing" constant="8" id="Smi-DZ-X5c"/>
+                                                <constraint firstItem="A51-dC-FLl" firstAttribute="top" secondItem="exK-iG-EqL" secondAttribute="bottom" constant="11" id="aPW-Dt-Duc"/>
                                                 <constraint firstItem="KWP-Av-LXN" firstAttribute="leading" secondItem="exK-iG-EqL" secondAttribute="leading" id="eQ6-lJ-fOX"/>
                                                 <constraint firstItem="exK-iG-EqL" firstAttribute="trailing" secondItem="Uzd-jF-I41" secondAttribute="trailing" constant="-16" id="mNl-PU-M5c"/>
                                                 <constraint firstItem="exK-iG-EqL" firstAttribute="leading" secondItem="Uzd-jF-I41" secondAttribute="leading" constant="16" id="q9e-Y1-usM"/>
                                                 <constraint firstItem="exK-iG-EqL" firstAttribute="top" secondItem="sdr-Ys-s5q" secondAttribute="bottom" constant="12" id="s5m-eG-kGV"/>
+                                                <constraint firstAttribute="trailing" secondItem="A51-dC-FLl" secondAttribute="trailing" constant="16" id="zC3-yt-GP5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="introduceCountLabel" destination="A51-dC-FLl" id="Wmq-tb-UDR"/>
                                             <outlet property="introduceTextField" destination="exK-iG-EqL" id="FRS-Tw-kgC"/>
                                             <outlet property="introduceWarningImageview" destination="KWP-Av-LXN" id="akg-Gn-lk5"/>
                                             <outlet property="introduceWarningLabel" destination="9Yz-7B-YYe" id="FcL-Nv-uAY"/>
