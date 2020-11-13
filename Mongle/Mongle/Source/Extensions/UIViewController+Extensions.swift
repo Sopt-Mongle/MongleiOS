@@ -120,15 +120,9 @@ extension UIViewController {
             })
         }
         
-        popUpView.signUpButtonCliecked = { [weak self] in
-            let signUpStoryboard = UIStoryboard(name: "SignUp", bundle: nil)
-            guard let signUpVC = signUpStoryboard.instantiateViewController(identifier: "SignUpVC") as? SignUpVC else {
-                return
-            }
-            self?.present(signUpVC, animated: true, completion: {
-                blurView.removeFromSuperview()
-                popUpView.removeFromSuperview()
-            })
+        popUpView.cancelButtonCliecked = { [weak self] in
+            blurView.removeFromSuperview()
+            popUpView.removeFromSuperview()
         }
         
     }
