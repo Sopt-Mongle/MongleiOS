@@ -23,6 +23,7 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
     @IBOutlet var wordTexts: [UITextField]!
     
     @IBOutlet var textCircles: [UIImageView]!
+    @IBOutlet weak var emailNoticeLabel: UILabel!
     
     @IBOutlet weak var askButtonImage: UIImageView!
     @IBOutlet weak var askButton: UIButton!
@@ -31,7 +32,7 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
     var email = ""
     var password = ""
     var nickName = ""
-    
+    var isTimeOut = false
     
     let innerCircle = UIView().then{
         $0.backgroundColor = .softGreen
@@ -63,12 +64,59 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
         
     }
     
+    let blurView = UIView(frame: .zero).then {
+        $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+    }
+    let backgroundImageView: UIImageView = UIImageView().then {
+        $0.contentMode = .scaleAspectFill
+        $0.image = UIImage(named: "joinStep3TimePopupBox")
+    }
+    
+    let messageLabel: UILabel = UILabel().then {
+        $0.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        $0.textColor = .black
+        $0.text = "입력 시간이 초과되었어요!"
+        $0.sizeToFit()
+        $0.numberOfLines = 0
+    }
+    let popUpView : UIView = UIView()
+    
+    let subMessageLabel: UILabel = UILabel().then {
+        $0.textColor = .brownGreyThree
+        $0.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 13)
+        $0.numberOfLines = 0
+        $0.text = "재전송을 통해\n새 인증 코드를 발급 받아주세요!"
+        $0.sizeToFit()
+        $0.textAlignment = .center
+    }
+    
+    let resendButton2: UIButton = UIButton().then {
+        $0.setTitle("재전송", for: .normal)
+        $0.backgroundColor = .softGreen
+        $0.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 13)!
+        $0.setTitleColor(.white, for: .normal)
+        $0.makeRounded(cornerRadius: 19)
+        $0.setBorder(borderColor: .softGreen, borderWidth: 1)
+        $0.addTarget(self, action: #selector(touchUpResendButton2), for: .touchUpInside)
+    }
+    
+    let yesButton: UIButton = UIButton().then {
+        $0.setTitle("네", for: .normal)
+        $0.backgroundColor = .white
+        $0.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 13)!
+        $0.setTitleColor(.softGreen, for: .normal)
+        $0.makeRounded(cornerRadius: 19)
+        $0.setBorder(borderColor: .softGreen, borderWidth: 1)
+        $0.addTarget(self, action: #selector(touchUpYesButton), for: .touchUpInside)
+    }
+    
     var wordIndex = 0
     var isEdited : [Bool] = [false,false,false,false,false,false]
     var timer = Timer()
     var leftTime = 300
     var startTimer = false
     var ballIsGreen = false
+    var presentingPopUp = false
     
     
     //MARK: - Functions
@@ -117,11 +165,76 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 0.0, delay: 0.5, animations: {
+            
+            
+        }, completion: {finished in
+            UIView.animate(withDuration: 0.5,delay : 0, animations: {
+                self.wordTexts[0].becomeFirstResponder()
+                
+            })
+        })
+    }
+    
     
     
     //MARK:- User Define Functions
     
+    @objc func touchUpYesButton(){
+        
+        self.popUpView.removeFromSuperview()
+        self.blurView.removeFromSuperview()
+        UIView.animate(withDuration: 0.5, animations: {
+            self.wordTexts[0].becomeFirstResponder()
+            
+        })
+        
+    }
     
+    @objc func touchUpResendButton2() {
+        SignUpEmailService.shared.signup(email: UserDefaults.standard.string(forKey: "email")!) { networkResult in
+            switch networkResult{
+            case .success(let code) :
+                print("success Code")
+                self.view.endEditing(true)
+                self.showToast(text: "메일이 재전송되었어요!")
+                var scode : String?
+                scode = code as?  String
+                print(scode!)
+                self.leftTime = 300
+                self.popUpView.removeFromSuperview()
+                self.blurView.removeFromSuperview()
+//                UIView.animate(withDuration: 0.5, animations: {
+//                    self.wordTexts[0].becomeFirstResponder()
+//
+//                })
+                
+                
+            case .requestErr(let message):
+                print("request by email")
+                print(message)
+                guard let message = message as? String else {return}
+                let alertViewController = UIAlertController(
+                    title: "회원가입 실패",
+                    message: message,
+                    preferredStyle: .alert)
+                let action = UIAlertAction(title: "확인",
+                                           style: .cancel,
+                                           handler: nil)
+                alertViewController.addAction(action)
+                
+            case .pathErr: print("pathErr")
+            case .serverErr: print("serverErr")
+            case .networkFail: print("networkFails2")
+                
+            }
+            
+            
+            
+        }
+        presentingPopUp = false
+    }
     
     func setProgressBar(){
         
@@ -192,7 +305,7 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
         timeLabel.text = "5:00"
         backButtonIMage.image = UIImage(named: "joinStep32BtnBack")
         emailMongleImage.image = UIImage(named: "joinStep32ImgMail")
-        noticeImage.image = UIImage(named: "mongleMongleCom")
+//        noticeImage.image = UIImage(named: "mongleMongleCom")
         askButtonImage.image = UIImage(named: "joinStep32BtnHelp")
         
         submitButton.backgroundColor = .softGreen
@@ -204,16 +317,12 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
         resendButton.makeRounded(cornerRadius: 15)
         resendButton.setTitleColor(.brownishGrey, for: .normal)
         setConstraints()
-        UIView.animate(withDuration: 0.0, delay: 0.0, animations: {
-            
-            
-        }, completion: {finished in
-            UIView.animate(withDuration: 0.5, animations: {
-                self.wordTexts[0].becomeFirstResponder()
-                
-            })
-        })
         
+        
+        emailNoticeLabel.textColor = .brownGreyTwo
+        emailNoticeLabel.text = "입력한 \(UserDefaults.standard.string(forKey: "email")!)으로 전송된 메일 속 본인 확인 인증 코드를 입력해주세요."
+        emailNoticeLabel.numberOfLines = 0
+        emailNoticeLabel.textAlignment = .center
         
     }
     
@@ -234,6 +343,11 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
     
     @objc func timeLimit(){
         if leftTime > 0 {
+            isTimeOut = false
+            if(!presentingPopUp){
+                blurView.removeFromSuperview()
+            }
+           
             leftTime -= 1
             if leftTime%60 < 10 {
                 timeLabel.text = "\(leftTime/60):0\(leftTime%60)"
@@ -244,6 +358,19 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
             
             
         }
+        
+        else{
+            
+            if !isTimeOut{
+                presentEmailTimePopUp()
+                
+            }
+            
+            isTimeOut = true
+            
+            
+        }
+       
         
         
     }
@@ -407,6 +534,121 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
                                                     UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    func presentEmailTimePopUp() {
+        self.view.endEditing(true)
+        
+        self.view.addSubview(blurView)
+        self.view.addSubview(popUpView)
+        messageLabel.text = "입력 시간이 초과되었어요!"
+        subMessageLabel.text = "재전송을 통해\n새 인증 코드를 발급 받아주세요!"
+        
+        
+        popUpView.addSubview(backgroundImageView)
+        popUpView.addSubview(messageLabel)
+        popUpView.addSubview(subMessageLabel)
+        popUpView.addSubview(resendButton2)
+        
+        blurView.snp.makeConstraints {
+            $0.top.leading.trailing.bottom.equalToSuperview()
+        }
+        popUpView.snp.makeConstraints{
+            $0.width.equalTo(304)
+            $0.height.equalTo(233)
+            $0.center.equalToSuperview()
+            
+            
+        }
+        
+        backgroundImageView.snp.makeConstraints {
+            $0.leading.trailing.top.bottom.equalToSuperview()
+        }
+        // MessageLabel
+        messageLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(84)
+            $0.centerX.equalToSuperview()
+        }
+        // SubMessageLabel
+        subMessageLabel.snp.makeConstraints {
+            $0.top.equalTo(messageLabel.snp.bottom).offset(10)
+            $0.centerX.equalToSuperview()
+        }
+        
+        // Buttons
+        resendButton2.snp.makeConstraints{
+            $0.top.equalTo(subMessageLabel.snp.bottom).offset(26)
+            $0.leading.equalToSuperview().offset(89)
+            $0.trailing.equalToSuperview().offset(-88)
+            $0.height.equalTo(37)
+            
+        }
+        
+      
+        
+        
+       
+    }
+    func presentEmailSpamPopUp() {
+        self.view.endEditing(true)
+        
+        self.view.addSubview(blurView)
+        self.view.addSubview(popUpView)
+        presentingPopUp = true
+        messageLabel.textAlignment = .center
+        messageLabel.text = "메일이 스팸 메일로 분류된 것은 아닌지\n확인해주세요!"
+        subMessageLabel.text = "스팸 메일함에도 메일이 없다면,\n재전송을 시도해주세요."
+        popUpView.addSubview(backgroundImageView)
+        popUpView.addSubview(messageLabel)
+        popUpView.addSubview(subMessageLabel)
+        popUpView.addSubview(resendButton2)
+        popUpView.addSubview(yesButton)
+        
+        blurView.snp.makeConstraints {
+            $0.top.leading.trailing.bottom.equalToSuperview()
+        }
+        popUpView.snp.makeConstraints{
+            $0.width.equalTo(304)
+            $0.height.equalTo(233)
+            $0.center.equalToSuperview()
+            
+            
+        }
+        
+        backgroundImageView.snp.makeConstraints {
+            $0.leading.trailing.top.bottom.equalToSuperview()
+        }
+        // MessageLabel
+        messageLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(74)
+            $0.centerX.equalToSuperview()
+        }
+        // SubMessageLabel
+        subMessageLabel.snp.makeConstraints {
+            $0.top.equalTo(messageLabel.snp.bottom).offset(10)
+            $0.centerX.equalToSuperview()
+        }
+        
+        // Buttons
+        resendButton2.snp.makeConstraints{
+            $0.top.equalTo(subMessageLabel.snp.bottom).offset(15)
+            $0.leading.equalToSuperview().offset(161)
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.height.equalTo(37)
+            
+        }
+        yesButton.snp.makeConstraints{
+            $0.top.equalTo(subMessageLabel.snp.bottom).offset(15)
+            $0.leading.equalToSuperview().offset(20)
+            $0.trailing.equalToSuperview().offset(-157)
+            $0.height.equalTo(37)
+            
+        }
+        
+      
+        
+        
+       
+    }
+    
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
         
@@ -504,7 +746,8 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
     
     
     @IBAction func backButtonAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+       
+        self.navigationController?.popViewController(animated: true)
         
         
         
@@ -535,13 +778,25 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
                     guard let token = token as? String else { return }
                     print(token)
                     UserDefaults.standard.set(token, forKey: "token")
+//
+//                    self.view.window?.rootViewController?.dismiss(animated: false, completion: {
+//                        let sceneDelegate = UIApplication.shared.delegate as! SceneDelegate
+//
+//                        sceneDelegate.window?.rootViewController?.present(vcName,animated : true, completion : nil)
+//
+//                    })
+//
                     
+                   
                     vcName.modalPresentationStyle = .fullScreen
+                    self.navigationController?.pushViewController(vcName, animated: true)
                     
-                    self.present(vcName, animated: true, completion: nil)
+                    
+                    
                     
                 case .requestErr(let message):
                     print("request")
+                    print(message)
                     guard let message = message as? String else {return}
                     let alertViewController = UIAlertController(
                         title: "회원가입 실패",
@@ -566,6 +821,9 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
             
         }
         else{
+            
+            
+            
             print(myString)
             print(emailCode)
             print("FFFFFAAAALLLLSSSEEEE")
@@ -576,6 +834,8 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
     }
     
     
+    
+    
     @IBAction func resendButtonAction(_ sender: Any) {
         SignUpEmailService.shared.signup(email: email) { networkResult in
             switch networkResult{
@@ -584,6 +844,8 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
                 var scode : String?
                 scode = code as?  String
                 self.emailCode = scode!
+                self.showToast(text: "메일이 재전송되었어요!")
+                self.view.endEditing(true)
             case .requestErr(let message):
                 print("request by email")
                 guard let message = message as? String else {return}
@@ -608,6 +870,15 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
             
         }
         leftTime = 300
+        
+        
+    }
+    
+    
+    @IBAction func askButtonAction(_ sender: Any) {
+        presentEmailSpamPopUp()
+        
+        
         
         
     }

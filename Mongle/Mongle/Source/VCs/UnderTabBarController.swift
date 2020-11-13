@@ -269,8 +269,8 @@ class UnderTabBarController: UITabBarController {
         myTabBarItem4.image = UIImage(named : "navigationBar3IcCurator")?.withRenderingMode(.alwaysOriginal)
         myTabBarItem4.selectedImage = UIImage(named : "navigationBar2IcCurator")?.withRenderingMode(.alwaysOriginal)
         
-        myTabBarItem5.image = UIImage(named : "navigationBar3IcMy")?.withRenderingMode(.alwaysOriginal)
-        myTabBarItem5.selectedImage = UIImage(named : "navigationBar2IcMy")?.withRenderingMode(.alwaysOriginal)
+        myTabBarItem5.image = UIImage(named : "navigationBar1IcMy_un")?.withRenderingMode(.alwaysOriginal)
+        myTabBarItem5.selectedImage = UIImage(named : "navigationBar1IcMy")?.withRenderingMode(.alwaysOriginal)
         
         
         //        Disabling tmpVC

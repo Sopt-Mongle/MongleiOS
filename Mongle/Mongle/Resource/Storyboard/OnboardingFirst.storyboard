@@ -249,6 +249,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="한 번 둘러보기"/>
+                                <connections>
+                                    <action selector="lookAroundButtonAction:" destination="Lsf-Sz-ZQr" eventType="touchUpInside" id="EFg-ol-Hie"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0bW-QI-et2"/>

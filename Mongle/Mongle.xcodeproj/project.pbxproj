@@ -144,6 +144,7 @@
 		B8F4DDEA24AF22190075FDC1 /* SearchTabMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F4DDE924AF22190075FDC1 /* SearchTabMain.storyboard */; };
 		B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */; };
 		B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */; };
+		EC0016B6255E2E9F009F4F90 /* EmailTimeEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0016B5255E2E9F009F4F90 /* EmailTimeEndView.swift */; };
 		EC148CF924BC67E7006925A0 /* 43-emoji-wink.json in Resources */ = {isa = PBXBuildFile; fileRef = EC148CF824BC67E7006925A0 /* 43-emoji-wink.json */; };
 		EC178CCC24BE26F5008CF514 /* SignUpEnd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC178CCB24BE26F5008CF514 /* SignUpEnd.storyboard */; };
 		EC178CCE24BE2719008CF514 /* SignUpEndVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC178CCD24BE2719008CF514 /* SignUpEndVC.swift */; };
@@ -360,6 +361,7 @@
 		B8F4DDF524B20FD00075FDC1 /* SearchTabMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTabMainVC.swift; sourceTree = "<group>"; };
 		B8F4DDF724B210000075FDC1 /* RecentSearchCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSearchCVC.swift; sourceTree = "<group>"; };
 		D8DC844C59312BAF341597F1 /* Pods-Mongle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mongle.debug.xcconfig"; path = "Target Support Files/Pods-Mongle/Pods-Mongle.debug.xcconfig"; sourceTree = "<group>"; };
+		EC0016B5255E2E9F009F4F90 /* EmailTimeEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTimeEndView.swift; sourceTree = "<group>"; };
 		EC148CF824BC67E7006925A0 /* 43-emoji-wink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "43-emoji-wink.json"; sourceTree = "<group>"; };
 		EC178CCB24BE26F5008CF514 /* SignUpEnd.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpEnd.storyboard; sourceTree = "<group>"; };
 		EC178CCD24BE2719008CF514 /* SignUpEndVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEndVC.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 				7FBFAB75255850CA0079FAC5 /* LoginRequestPopupView.swift */,
 				7FFEA28224BF4839003D381A /* ToastView.swift */,
 				EC265294255D91590043C629 /* SplashView.swift */,
+				EC0016B5255E2E9F009F4F90 /* EmailTimeEndView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -731,10 +734,10 @@
 				7FFEA26524BE1B54003D381A /* VersionInfoVC.swift */,
 				7FFEA26924BE3317003D381A /* MonglesVC.swift */,
 				B8E2E14624BEE07000595752 /* MyTabVC.swift */,
+				B8E2E14E24BEE0E900595752 /* MyTabCuratorVC.swift */,
 				B8E2E14824BEE08100595752 /* MyTabPageVC.swift */,
 				B8E2E14A24BEE0A000595752 /* MyTabThemeVC.swift */,
 				B8E2E14C24BEE0B000595752 /* MyTabSentenceVC.swift */,
-				B8E2E14E24BEE0E900595752 /* MyTabCuratorVC.swift */,
 				B85400A5255143D7004700B4 /* AccountEditVC.swift */,
 				EC6E99C92508C9D900B57284 /* SignUpAgreeVC.swift */,
 				EC523909250DF4ED0080BAF0 /* SignUpRuleVC.swift */,
@@ -1116,6 +1119,7 @@
 				B8E2E17724C29C9800595752 /* MyThemeService.swift in Sources */,
 				EC759C4624BF7219001D2F81 /* BookSearchForWritingService.swift in Sources */,
 				B8E2E15324C0586800595752 /* SearchMainService.swift in Sources */,
+				EC0016B6255E2E9F009F4F90 /* EmailTimeEndView.swift in Sources */,
 				B842A455255BBD4B00253275 /* MyProfileUploadData.swift in Sources */,
 				B8F4DDF824B210000075FDC1 /* RecentSearchCVC.swift in Sources */,
 				7FBFAB76255850CA0079FAC5 /* LoginRequestPopupView.swift in Sources */,

@@ -288,6 +288,7 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
                 guard let vcName = UIStoryboard(name: "EndOfWritingSentence",
                                                 bundle: nil).instantiateViewController(
                                                     withIdentifier: "EndOfWritingSentenceVC")
+                        
                     as? EndOfWritingSentenceVC
                     else{
                         return

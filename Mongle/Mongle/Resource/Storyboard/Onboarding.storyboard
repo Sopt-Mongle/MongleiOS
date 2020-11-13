@@ -69,7 +69,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="건너뛰기"/>
                                 <connections>
-                                    <action selector="jumpButtonAction:" destination="HCh-c8-C0L" eventType="touchUpInside" id="e28-fe-hft"/>
+                                    <action selector="jumpButtonAction:" destination="HCh-c8-C0L" eventType="touchUpInside" id="nhi-Y1-4SR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWU-xI-lrY">

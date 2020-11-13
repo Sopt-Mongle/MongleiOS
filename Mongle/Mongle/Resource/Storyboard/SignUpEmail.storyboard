@@ -188,6 +188,9 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpU-NG-jHq">
                                 <rect key="frame" x="87" y="401" width="225" height="30"/>
+                                <connections>
+                                    <action selector="askButtonAction:" destination="Tzz-Wy-rhX" eventType="touchUpInside" id="Ojm-bD-a53"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WKG-m0-rIr">
                                 <rect key="frame" x="111" y="410" width="142.5" height="16"/>
@@ -209,13 +212,24 @@
                                     <action selector="submitButtonAction:" destination="Tzz-Wy-rhX" eventType="touchUpInside" id="PAG-Q8-rew"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVu-tB-CcD">
+                                <rect key="frame" x="57" y="288" width="300" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Bu3-60-0f9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tMD-oP-Y1l"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="oiU-Ox-pAQ" firstAttribute="centerX" secondItem="tMD-oP-Y1l" secondAttribute="centerX" id="6vJ-sc-LKX"/>
+                            <constraint firstItem="nVu-tB-CcD" firstAttribute="top" secondItem="qLb-5p-1T8" secondAttribute="top" id="9QK-6b-rEo"/>
                             <constraint firstItem="427-ln-FdQ" firstAttribute="centerX" secondItem="tMD-oP-Y1l" secondAttribute="centerX" id="Gph-bG-uF1"/>
                             <constraint firstItem="TP3-qp-5WH" firstAttribute="centerX" secondItem="tMD-oP-Y1l" secondAttribute="centerX" id="ITP-ww-389"/>
+                            <constraint firstItem="nVu-tB-CcD" firstAttribute="centerX" secondItem="tMD-oP-Y1l" secondAttribute="centerX" id="JAY-YK-q5V"/>
                             <constraint firstItem="2Ea-ca-kVf" firstAttribute="top" secondItem="40d-g4-DCS" secondAttribute="top" constant="115.5" id="Jd6-s0-DB7"/>
                             <constraint firstItem="tMD-oP-Y1l" firstAttribute="trailing" secondItem="a4z-gW-xeR" secondAttribute="trailing" constant="28" id="JeP-hT-5cW"/>
                             <constraint firstItem="tMD-oP-Y1l" firstAttribute="trailing" secondItem="9Vu-WK-gO0" secondAttribute="trailing" constant="16" id="KIl-rI-XKV"/>
@@ -252,6 +266,7 @@
                         <outlet property="batToMongle" destination="NKb-GO-4iL" id="nFW-HX-CW4"/>
                         <outlet property="buttonToButton" destination="stY-eJ-6jS" id="HHt-Or-axX"/>
                         <outlet property="emailMongleImage" destination="cV6-6H-UkO" id="C1s-U5-T89"/>
+                        <outlet property="emailNoticeLabel" destination="nVu-tB-CcD" id="amX-E7-CJe"/>
                         <outlet property="labelToNotice" destination="w4W-vz-19l" id="yXu-W0-Vqj"/>
                         <outlet property="mongleToLabel" destination="Woa-K3-CQC" id="K9F-eK-Yqh"/>
                         <outlet property="noticeImage" destination="qLb-5p-1T8" id="xhu-oc-foP"/>

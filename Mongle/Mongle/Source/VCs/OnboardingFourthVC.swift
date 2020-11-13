@@ -166,6 +166,7 @@ class OnboardingFourthVC: UIViewController {
             }
             
             vcName.modalPresentationStyle = .fullScreen
+            self.dismiss(animated: true, completion: nil)
             self.present(vcName, animated: true, completion: nil)
             
         })
@@ -174,6 +175,22 @@ class OnboardingFourthVC: UIViewController {
     }
     
     
+    @IBAction func lookAroundButtonAction(_ sender: Any) {
+        
+        UserDefaults.standard.set("guest", forKey: "token")
+        guard let vcName = UIStoryboard(name: "LogIn",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "LogInVC") as? LogInVC
+        else{
+            return
+        }
+        
+        vcName.modalPresentationStyle = .fullScreen
+        self.dismiss(animated: true, completion: nil)
+        self.present(vcName, animated: true, completion: nil)
+        
+        
+    }
     
     
 }

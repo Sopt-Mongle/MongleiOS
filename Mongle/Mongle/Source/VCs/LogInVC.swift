@@ -551,7 +551,7 @@ class LogInVC: UIViewController {
     @IBAction func signUpButton(_ sender: Any) {
         guard let vcName = UIStoryboard(name: "SignUpAgree",
                                         bundle: nil).instantiateViewController(
-                                            withIdentifier: "SignUpAgreeVC") as? SignUpAgreeVC
+                                            withIdentifier: "SignUpAgreeVC") as? UINavigationController
             else{
                 return
         }
@@ -559,6 +559,8 @@ class LogInVC: UIViewController {
         vcName.modalPresentationStyle = .fullScreen
         
         self.present(vcName, animated: true, completion: nil)
+        
+        
         
         
         

@@ -85,8 +85,12 @@ class SignUpEndVC: UIViewController {
         
         vcName.modalPresentationStyle = .fullScreen
         
-        self.present(vcName, animated: true, completion: nil)
+        self.present(vcName, animated: false, completion: {
+            self.navigationController?.viewControllers.removeAll()
+        })
         
+        
+      
         
     }
     
