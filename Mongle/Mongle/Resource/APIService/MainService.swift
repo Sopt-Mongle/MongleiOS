@@ -13,8 +13,11 @@ struct MainService {
     static let shared = MainService()
     
     func getEditorsPick(completion: @escaping ((NetworkResult<Any>)->Void)) {
+        let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
+        
         let header: HTTPHeaders = [
-            "Content-Type":"application/json"
+            "Content-Type":"application/json",
+            "token":token
         ]
         
         Alamofire.request(APIConstants.mainEditorPick,
@@ -38,9 +41,11 @@ struct MainService {
     }
     
     func getTodaySentence(completion: @escaping ((NetworkResult<Any>)->Void)) {
+        let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
         
         let header: HTTPHeaders = [
-            "Content-Type":"application/json"
+            "Content-Type":"application/json",
+            "token":token
         ]
         
         Alamofire.request(APIConstants.mainSentencesURL,
@@ -66,9 +71,11 @@ struct MainService {
     }
     
     func getPopularCurator(completion: @escaping ((NetworkResult<Any>)->Void)) {
+        let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
         
         let header: HTTPHeaders = [
-            "Content-Type" : "application/json"
+            "Content-Type":"application/json",
+            "token":token
         ]
         
         Alamofire.request(APIConstants.mainCuratorURL,
@@ -95,8 +102,11 @@ struct MainService {
     
     func getThemeList(flag: Int, completion: @escaping ((NetworkResult<Any>)->Void)){
         
+        let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
+        
         let header: HTTPHeaders = [
-            "Content-Type" : "application/json"
+            "Content-Type":"application/json",
+            "token":token
         ]
         
         var url = ""

@@ -33,15 +33,15 @@ class LoginRequestPopupView: UIView {
         $0.sizeToFit()
     }
     let signInButton: UIButton = UIButton().then {
-        $0.setTitle("로그인", for: .normal)
+        $0.setTitle("네", for: .normal)
         $0.backgroundColor = .softGreen
         $0.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 13)!
         $0.setTitleColor(.white, for: .normal)
         $0.makeRounded(cornerRadius: 19)
         $0.addTarget(self, action: #selector(touchUpSignInButton), for: .touchUpInside)
     }
-    let signUpButton: UIButton = UIButton().then {
-        $0.setTitle("회원가입", for: .normal)
+    let cancelButton: UIButton = UIButton().then {
+        $0.setTitle("아니요", for: .normal)
         $0.backgroundColor = .white
         $0.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 13)!
         $0.setTitleColor(.softGreen, for: .normal)
@@ -57,7 +57,7 @@ class LoginRequestPopupView: UIView {
     }
     
     var signInButtonClicked: (()->())?
-    var signUpButtonCliecked: (()->())?
+    var cancelButtonCliecked: (()->())?
     
     
     override init(frame: CGRect) {
@@ -76,7 +76,7 @@ class LoginRequestPopupView: UIView {
         self.addSubview(subMessageLabel)
         self.addSubview(buttonStackView)
         buttonStackView.addArrangedSubview(signInButton)
-        buttonStackView.addArrangedSubview(signUpButton)
+        buttonStackView.addArrangedSubview(cancelButton)
     }
     
     func addConstraint() {
@@ -111,7 +111,7 @@ class LoginRequestPopupView: UIView {
     }
     
     @objc func touchUpSignUpButton() {
-        if let handler = signUpButtonCliecked {
+        if let handler = cancelButtonCliecked {
             handler()
         }
     }
