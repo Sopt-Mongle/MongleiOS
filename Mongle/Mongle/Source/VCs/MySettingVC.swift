@@ -37,6 +37,9 @@ class MySettingVC: UIViewController {
     @IBAction func touchUpSettingButton(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    public func toggleToast(){
+        self.showToast(text: "준비 중인 기능이에요!")
+    }
 }
 
 //MARK:- Extension
@@ -83,8 +86,16 @@ extension MySettingVC: UITableViewDelegate {
             }
             
             
-//        case 1:
-            
+        case 1:
+            let email = "mongle.official@gmail.com"
+            if let url = URL(string: "mailto:\(email)"){
+                if #available(iOS 10.0, *){
+                    UIApplication.shared.open(url)
+                }
+                else{
+                    UIApplication.shared.openURL(url)
+                }
+            }
             
         case 2:
             switch indexPath.row{
@@ -99,6 +110,24 @@ extension MySettingVC: UITableViewDelegate {
                     return
                 }
                 self.navigationController?.pushViewController(nextVC, animated: true)
+            case 2:
+                //서비스 운영정책
+                print("SignUpServiceAgree")
+            case 3:
+                //개인정보 이용약관
+                guard let nextVC = UIStoryboard(name: "SignUpRule", bundle: nil).instantiateViewController(identifier: "SignUpRuleVC") as? SignUpRuleVC else {
+                    return
+                }
+                self.navigationController?.pushViewController(nextVC, animated: true)
+                case 4:
+                    //서비스 이용약관
+                    guard let nextVC = UIStoryboard(name: "ServiceAgreeForSignUp", bundle: nil).instantiateViewController(identifier: "ServiceAgreeForSignUpVC") as? ServiceAgreeForSignUpVC else {
+                        return
+                    }
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                case 5:
+                    //오픈소스 라이선스
+                    print("opensource")
             default:
                 break
             }
@@ -131,6 +160,7 @@ extension MySettingVC: UITableViewDataSource {
                 cell.cellSelectButton.alpha = 0
                 cell.pushAllowBackground.alpha = 1
                 cell.pushAllowButton.alpha = 1
+                cell.myVC = self
             }
         }
         return cell

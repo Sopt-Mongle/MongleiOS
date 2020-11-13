@@ -38,7 +38,7 @@ class ProfileEditIntroduceTVC: UITableViewCell {
         partialGreenColor()
         introduceCountLabel.text = "\((introduceTextField.text?.count)!)/30"
         introduceCountLabel.adjustsFontSizeToFitWidth = true
-        
+        introduceCountLabel.alpha = 0
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.contentView.endEditing(true)
@@ -109,12 +109,13 @@ extension ProfileEditIntroduceTVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         selectedTextFieldDelegate()
+        introduceCountLabel.alpha = 1
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.setBorder(borderColor: .veryLightPink, borderWidth: 1)
         unSelectedTextfieldDelegate()
         introduceDelegate(textField.text!)
-        
+        introduceCountLabel.alpha = 0
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else {return false}

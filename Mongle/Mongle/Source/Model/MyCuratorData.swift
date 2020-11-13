@@ -11,7 +11,7 @@ import Foundation
 struct MyCuratorData: Codable {
     var curatorIdx: Int
     var name: String
-    var img: String
+    var img: String?
     var introduce: String?
     var keyword: String?
     var keywordIdx: Int?
