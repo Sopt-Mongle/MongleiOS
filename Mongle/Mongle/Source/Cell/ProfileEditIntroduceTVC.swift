@@ -16,10 +16,13 @@ class ProfileEditIntroduceTVC: UITableViewCell {
             introduceTextField.autocorrectionType = .no
         }
     }
-    lazy var warningStackView: UIStackView = UIStackView()
+    @IBOutlet weak var introduceCountLabel: UILabel!
+    @IBOutlet weak var introduceWarningImageview: UIImageView!
+    @IBOutlet weak var introduceWarningLabel: UILabel!
     var selectedTextFieldDelegate: (() -> ()) = { }
     var unSelectedTextfieldDelegate: (() -> ()) = { }
     var introduceDelegate: ((String) -> ()) = { _ in }
+    static var isIntroduceValid:Bool?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,8 +32,12 @@ class ProfileEditIntroduceTVC: UITableViewCell {
         introduceTextField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1)
         introduceTextField.addTarget(self, action: #selector(textFieldChanged(sender:)), for: .editingChanged)
         // Initialization code
-        
-        warningStackView = makeWarningStackView(message: "소개를 입력해주세요!", isCorrect: false)
+        introduceTextField.text =
+            UserDefaults.standard.string(forKey: "UserProfileIntroduce")
+        ProfileEditIntroduceTVC.isIntroduceValid = isValidIntroductionInput()
+        partialGreenColor()
+        introduceCountLabel.text = "\((introduceTextField.text?.count)!)/30"
+        introduceCountLabel.adjustsFontSizeToFitWidth = true
         
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -39,66 +46,62 @@ class ProfileEditIntroduceTVC: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
     }
     @objc func textFieldChanged(sender: UITextField){
-        if isValidIntroductionInput() {
-            warningStackView.removeFromSuperview()
-            sender.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+        if let text = sender.text {
+            // 초과되는 텍스트 제거
+            if text.count > 30 {
+                let index = text.index(text.startIndex, offsetBy: 29)
+                let newString = text[text.startIndex...index]
+                sender.text = String(newString)
+            }
+            introduceCountLabel.text = "\((sender.text?.count)!)/30"
+        }
+        ProfileEditIntroduceTVC.isIntroduceValid = isValidIntroductionInput()
+        if ProfileEditIntroduceTVC.isIntroduceValid! {
+            hideWarning()
+            introduceTextField.setBorder(borderColor: .softGreen, borderWidth: 1)
+            
         }
         else {
-            sender.setBorder(borderColor: .reddish, borderWidth: 1.0)
-            self.addSubview(warningStackView)
+            showWarning()
+            
         }
     }
     
-    func makeWarningStackView(message: String, isCorrect: Bool) -> UIStackView{
-
-        var imageStr: String = ""
-        var stateColor: UIColor?
-        
-        if isCorrect {
-            imageStr = "mySettingsProfileNamePossibleIcPossible"
-            stateColor = .softGreen
-        }
-        else {
-            imageStr = "warning"
-            stateColor = .reddish
-        }
-        
-        let label = UILabel().then {
-            $0.text = message
-            $0.textColor = stateColor
-            $0.font = UIFont.systemFont(ofSize: 13)
-            $0.sizeToFit()
-        }
-        
-        let imageView = UIImageView().then {
-            $0.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
-            $0.image = UIImage(named: imageStr)
-        }
-        
-        imageView.snp.makeConstraints {
-            $0.width.height.equalTo(15)
-        }
-        
-        
-        let stackView = UIStackView().then {
-            $0.spacing = 8
-            $0.distribution = .fill
-            $0.axis = .horizontal
-            $0.addArrangedSubview(imageView)
-            $0.addArrangedSubview(label)
-        }
-        
-        return stackView
+    
+    func showWarning(){
+        introduceWarningLabel.alpha = 1
+        introduceWarningImageview.alpha = 1
+        introduceTextField.setBorder(borderColor: .reddish, borderWidth: 1.0)
+    }
+    func hideWarning(){
+        introduceWarningLabel.alpha = 0
+        introduceWarningImageview.alpha = 0
     }
     func isValidIntroductionInput() -> Bool {
         guard let text = introduceTextField.text else {
             return false
         }
-        if text.count > 0 && text.count < 30 {
+        if text.count > 0 && text.count <= 30 {
            return true
         }
         return false
         
+    }
+    func partialGreenColor(){
+        
+        guard let text = self.introduceCountLabel.text else {
+            return
+        }
+        introduceCountLabel.text = "\(text.count)/30"
+        introduceCountLabel.textColor = .softGreen
+        let attributedString = NSMutableAttributedString(string: introduceCountLabel.text!)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                      value: UIColor.veryLightPink,
+                                      range: (text as NSString).range(of: "/30"))
+        if introduceCountLabel.text == "" {
+            introduceCountLabel.textColor = .veryLightPink
+        }
+        introduceCountLabel.attributedText = attributedString
     }
 }
 
@@ -108,10 +111,20 @@ extension ProfileEditIntroduceTVC: UITextFieldDelegate {
         selectedTextFieldDelegate()
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.setBorder(borderColor: .veryLightPink, borderWidth: 1.0)
+        textField.setBorder(borderColor: .veryLightPink, borderWidth: 1)
         unSelectedTextfieldDelegate()
         introduceDelegate(textField.text!)
         
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else {return false}
+            
+            // 중간에 추가되는 텍스트 막기
+            if text.count >= 30 && range.length == 0 && range.location < 30 {
+                return false
+            }
+            
+            return true
     }
     
     
