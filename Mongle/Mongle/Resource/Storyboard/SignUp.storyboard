@@ -202,7 +202,10 @@
                                 </constraints>
                             </imageView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nut-NH-Djr">
-                                <rect key="frame" x="41.666666666666657" y="115.66666666666667" width="290" height="4"/>
+                                <rect key="frame" x="41.666666666666657" y="115.66666666666667" width="290" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="25J-pU-7Lt"/>
+                                </constraints>
                             </progressView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="PHE-eL-YDu">
                                 <rect key="frame" x="121.66666666666669" y="663" width="132" height="19"/>
@@ -274,6 +277,7 @@
                         <outlet property="registerButton" destination="75b-aA-Vtg" id="DmH-hN-6e1"/>
                         <outlet property="scrollViewBottomConstraint" destination="iJB-KE-Azv" id="x82-dD-fxm"/>
                         <outlet property="signUpScrollView" destination="ych-rx-w6B" id="diJ-4J-emp"/>
+                        <outlet property="upperBlurHeight" destination="Vhl-Og-kec" id="90g-Vz-9BF"/>
                         <outlet property="upperBlurImageView" destination="bXD-b3-Y7y" id="qmc-ZB-cV0"/>
                     </connections>
                 </viewController>
