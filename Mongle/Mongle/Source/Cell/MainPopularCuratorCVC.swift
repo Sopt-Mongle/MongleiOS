@@ -21,7 +21,7 @@ class MainPopularCuratorCVC: UICollectionViewCell {
     
     
     func setData(imgUrl: String, name: String, tag: String){
-        self.profileImageView.imageFromUrl(imgUrl, defaultImgPath: "themeImgCurator")
+        self.profileImageView.imageFromUrl(imgUrl, defaultImgPath: "sentenceThemeOImgCurator1010")
         
         self.profileNameLabel.text = name
         self.tagLabel.text = tag

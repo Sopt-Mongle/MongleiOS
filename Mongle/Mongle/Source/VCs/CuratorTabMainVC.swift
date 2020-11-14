@@ -15,6 +15,7 @@ class CuratorTabMainVC: UIViewController {
     var themeList:[CuratorTabTheme] = []
     
     //MARK:- IBOutlet
+    @IBOutlet weak var naviView: UIView!
     @IBOutlet weak var curatorTabTableView: UITableView!
     @IBOutlet weak var popularCollectionView: UICollectionView!
     @IBOutlet var keywordBTN: [UIButton]!
@@ -35,7 +36,7 @@ class CuratorTabMainVC: UIViewController {
     //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        naviView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.04, radius: 6)
         curatorTabTableView.delegate = self
         curatorTabTableView.dataSource = self
         popularCollectionView.delegate = self
