@@ -42,7 +42,7 @@ class SentenceInfoVC: UIViewController {
     var themeImage: UIImage? = UIImage(named: "curatorImgTheme1")
     var otherSentences: [Sentence] = []
     var hasTheme: Bool = true
-    var isMySentence: Bool = false
+    var isMySentence: Bool = true
     var canDisplayOtherSentece: Bool = true
     var sentenceIdx: Int?
     var themeIdx: Int?
@@ -92,6 +92,7 @@ class SentenceInfoVC: UIViewController {
     func bindThemeInfo() {
         themeImageView.image = themeImage
         themeNameLabel.text = themeText
+        themeNameLabel.sizeToFit()
     }
     
     func getOtherSentece(){
@@ -133,12 +134,13 @@ class SentenceInfoVC: UIViewController {
         
         if _sentence.alreadyLiked {
             self.likeCountLabel.textColor = .softGreen
+            
         }
         else {
             self.likeCountLabel.textColor = .veryLightPink
-            
         }
         
+        self.bookmarkImageView.isHighlighted = _sentence.alreadyBookmarked
         if _sentence.alreadyBookmarked {
             self.bookCountLabel.textColor = .softGreen
         }
@@ -171,14 +173,8 @@ class SentenceInfoVC: UIViewController {
                 if let _data = data as? SentenceLikeData {
                     self.sentence?.alreadyLiked = _data.isLike
                     self.sentence?.likes = _data.likes
-                    self.updateStateLayout()
                     
-                    if _data.isLike {
-//                        self.showToast(text: "좋아요 성공")
-                    }
-                    else {
-//                        self.showToast(text: "좋아요 해제")
-                    }
+                    self.updateStateLayout()
                 }
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "")
@@ -199,6 +195,7 @@ class SentenceInfoVC: UIViewController {
             self.presentLoginRequestPopUp()
             return
         }
+        
         SentenceService.shared.putBookmark(idx: self.sentenceIdx ?? 0) { networkResult in
             switch networkResult {
                 
@@ -209,12 +206,30 @@ class SentenceInfoVC: UIViewController {
                     self.sentence?.saves = _data.saves
                     self.updateStateLayout()
                     if _data.isSave {
-                        self.showToast(text: "문장이 저장되었습니다!")
-                    }
-                    else {
-//                        self.showToast(text: "북마크 해제")
+                        self.showToast(text: "문장이 저장되었어요!")
                     }
                 }
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "requestErr")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
+        }
+    }
+    
+    func requestDelete() {
+        SentenceEditService.shared.deleteSentece(idx: sentenceIdx ?? 0) { (networkResult) in
+            switch networkResult {
+            case .success(_):
+                print("########################")
+                print("success")
+                let prevIndex = self.navigationController?.viewControllers.count
+                self.navigationController?.viewControllers[prevIndex! - 2].showToast(text: "문장이 삭제되었어요!")
+                self.navigationController?.popViewController(animated: true)
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "requestErr")
             case .pathErr:
@@ -231,8 +246,7 @@ class SentenceInfoVC: UIViewController {
     func showPopUp(){
         
         popup.setPopUp(state: .delete, yesHandler: { [weak self] in
-            print(#function)
-            self?.navigationController?.popViewController(animated: true)
+            self?.requestDelete()
             
         }, noHandler: {[weak self] in
             self?.blur.removeFromSuperview()
@@ -251,6 +265,29 @@ class SentenceInfoVC: UIViewController {
             $0.width.equalTo(304)
             $0.height.equalTo(193)
             $0.centerX.centerY.equalToSuperview()
+        }
+    }
+    
+    func report(content: String){
+        ReportService.shared.report(type: "sentence", idx: sentenceIdx ?? 0, content: content) { (networkResult) in
+            switch networkResult {
+            case .success(_):
+                if content == "falseAd" {
+                    self.showToast(text: "허위 내용 신고가 접수되었어요!")
+                }
+                else {
+                    self.showToast(text: "부적절한 내용 신고가 접수되었어요!")
+                }
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
+            
         }
     }
     
@@ -445,8 +482,8 @@ extension SentenceInfoVC: UITableViewDataSource {
                                             guard let dvc = sb.instantiateViewController(identifier: "SentenceEditVC") as? SentenceEditVC else {
                                                 return
                                             }
-                                            
-                                            dvc.text = self?.sentenceText
+                                            dvc.sentenceIdx = self?.sentenceIdx
+                                            dvc.text = self?.sentence?.sentence
                                             self?.navigationController?.pushViewController(dvc, animated: true)
                                         })
                             .then { $0.titleTextColor = .black },
@@ -469,13 +506,14 @@ extension SentenceInfoVC: UITableViewDataSource {
                         UIAlertAction(title: "허위 내용 신고",
                                       style: .default,
                                       handler: { [weak self] action in
-                                        self?.showToast(text: "허위 내용 신고가 접수되었어요!")
+                                        
+                                        self?.report(content: "falseAd")
                                       })
                             .then { $0.titleTextColor = .black },
                         UIAlertAction(title: "부적절한 내용 신고",
                                       style: .default,
                                       handler: { [weak self] action in
-                                        self?.showToast(text: "부적절한 내용 신고가 접수되었어요!")
+                                        self?.report(content: "inappropriate")
                                       })
                             .then{ $0.titleTextColor = .black },
                         UIAlertAction(title: "취소",
@@ -484,11 +522,12 @@ extension SentenceInfoVC: UITableViewDataSource {
                             .then { $0.titleTextColor = .black}
                     ]
                     .forEach { sheet.addAction($0)}
+                    self.present(sheet, animated: true, completion: nil)
                 }
 
             }
         
-            cell.editButton.isHidden = !isMySentence
+//            cell.editButton.isHidden = !isMySentence
             
             return cell
         }

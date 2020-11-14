@@ -13,4 +13,5 @@ struct EditorPickData: Codable {
     var illust: String
     var themeIdx: Int
     var sentenceNum: Int
+    var theme: String
 }
