@@ -42,7 +42,7 @@ class SentenceInfoVC: UIViewController {
     var themeImage: UIImage? = UIImage(named: "curatorImgTheme1")
     var otherSentences: [Sentence] = []
     var hasTheme: Bool = true
-    var isMySentence: Bool = true
+    var isMySentence: Bool = false
     var canDisplayOtherSentece: Bool = true
     var sentenceIdx: Int?
     var themeIdx: Int?
@@ -56,8 +56,8 @@ class SentenceInfoVC: UIViewController {
         layoutTableView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
-//        getSentenceInfo()
-//        getOtherSentece()
+        getSentenceInfo()
+        getOtherSentece()
     }
     
     func makeRoundTableView() {
@@ -72,8 +72,10 @@ class SentenceInfoVC: UIViewController {
             case .success(let data):
                 if let _data = data as? [Sentence] {
                     self.sentence = _data[0]
-                    self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
-                    self.updateStateLayout()
+                    DispatchQueue.main.async {
+                        self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
+                        self.updateStateLayout()
+                    }
                 }
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "")
@@ -89,10 +91,7 @@ class SentenceInfoVC: UIViewController {
     
     func bindThemeInfo() {
         themeImageView.image = themeImage
-//        themeNameLabel.text = themeText
-        themeNameLabel.text = """
-            난 여름에 첫사랑이랑 데이트한 적 없는데…
-            """
+        themeNameLabel.text = themeText
     }
     
     func getOtherSentece(){
@@ -159,6 +158,13 @@ class SentenceInfoVC: UIViewController {
     }
     
     @objc func touchUpLike(){
+        let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
+        
+        if token == "guest" {
+            self.presentLoginRequestPopUp()
+            return
+        }
+        
         SentenceService.shared.putSentenceLike(idx: self.sentenceIdx ?? 0) { networkResult in
             switch networkResult {
             case .success(let data):
@@ -166,6 +172,7 @@ class SentenceInfoVC: UIViewController {
                     self.sentence?.alreadyLiked = _data.isLike
                     self.sentence?.likes = _data.likes
                     self.updateStateLayout()
+                    
                     if _data.isLike {
 //                        self.showToast(text: "좋아요 성공")
                     }
@@ -186,6 +193,12 @@ class SentenceInfoVC: UIViewController {
     }
     
     @objc func touchUpBookmark(){
+        let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
+        
+        if token == "guest" {
+            self.presentLoginRequestPopUp()
+            return
+        }
         SentenceService.shared.putBookmark(idx: self.sentenceIdx ?? 0) { networkResult in
             switch networkResult {
                 
@@ -242,10 +255,14 @@ class SentenceInfoVC: UIViewController {
     }
     
     @IBAction func touchUpBackButton(){
-        self.navigationController?.popViewController(animated: true)
+        if let navi = self.navigationController {
+            navi.popViewController(animated: true)
+        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func touchUpOtherThemeButton(){
+        
         guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
             return
         }
@@ -321,6 +338,7 @@ extension SentenceInfoVC: UITableViewDelegate {
             let image = UIImageView().then {
                 $0.image = UIImage(named: "mySettingsIcArrow1")
                 $0.frame = CGRect(x: 0, y: 0, width: 4, height: 8)
+                $0.contentMode = .scaleAspectFit
             }
             
             let stackView = UIStackView().then {
@@ -342,6 +360,8 @@ extension SentenceInfoVC: UITableViewDelegate {
             
             stackView.snp.makeConstraints {
                 $0.centerX.centerY.equalToSuperview()
+                $0.top.equalToSuperview()
+                $0.bottom.equalToSuperview()
             }
             
             image.snp.makeConstraints {
@@ -402,8 +422,13 @@ extension SentenceInfoVC: UITableViewDataSource {
                              publisherName: self.sentence?.publisher ?? "",
                              bookImageUrl: self.sentence?.writerImg ?? "")
             
-//            cell.sentenceLabel.text = self.sentenceText
             cell.editButtonDelegate = { [weak self] sheet in
+                let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
+                
+                if token == "guest" {
+                    self?.presentLoginRequestPopUp()
+                    return
+                }
                 let editAction = UIAlertAction(title: "수정", style: .default) { action in
                     guard let dvc = UIStoryboard.init(name: "SentenceEdit", bundle: nil).instantiateViewController(identifier: "SentenceEditVC") as? SentenceEditVC else {
                         return
@@ -440,7 +465,7 @@ extension SentenceInfoVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceInThemeTVC.identifier, for: indexPath) as? SentenceInThemeTVC else {
                 return UITableViewCell()
             }
-            print(indexPath.row)
+
             let otherSentnece = self.otherSentences[indexPath.row]
 
             cell.setData(sentence: otherSentnece.sentence,
