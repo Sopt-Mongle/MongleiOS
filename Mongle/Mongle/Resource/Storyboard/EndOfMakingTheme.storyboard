@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,15 +23,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Goz-xr-RVR">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Goz-xr-RVR">
                                 <rect key="frame" x="71" y="523" width="272" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Goz-xr-RVR" secondAttribute="height" multiplier="68:11" id="NV0-41-Wpe"/>
                                     <constraint firstAttribute="height" constant="44" id="tJ6-mc-0dG"/>
                                 </constraints>
                                 <state key="normal" title="이 테마에 문장 쓰러가기"/>
+                                <connections>
+                                    <action selector="seeThemeButtonAction:" destination="KLg-v9-0Ww" eventType="touchUpInside" id="rfd-uU-Wtv"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Shk-zb-1B3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Shk-zb-1B3">
                                 <rect key="frame" x="71" y="583" width="272" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="HqX-yw-wXY"/>
@@ -53,7 +58,8 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="bvJ-aQ-dZo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="skO-kW-AOP" firstAttribute="top" secondItem="k1o-Hh-wiA" secondAttribute="bottom" constant="29" id="19l-Sm-bDu"/>
                             <constraint firstItem="bvJ-aQ-dZo" firstAttribute="trailing" secondItem="Goz-xr-RVR" secondAttribute="trailing" constant="71" id="Cnk-Vt-f5X"/>
@@ -69,7 +75,6 @@
                             <constraint firstItem="k1o-Hh-wiA" firstAttribute="top" secondItem="GKX-dk-g9G" secondAttribute="top" constant="160" id="oNe-MT-YgD"/>
                             <constraint firstItem="bvJ-aQ-dZo" firstAttribute="trailing" secondItem="Shk-zb-1B3" secondAttribute="trailing" constant="71" id="vhJ-4y-KKF"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="bvJ-aQ-dZo"/>
                     </view>
                     <connections>
                         <outlet property="backToMainButton" destination="Shk-zb-1B3" id="0Um-Ip-XCi"/>
@@ -86,4 +91,9 @@
             <point key="canvasLocation" x="76.811594202898561" y="10.714285714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

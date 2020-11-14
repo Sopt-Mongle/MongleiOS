@@ -92,6 +92,7 @@ class LogInVC: UIViewController {
     }
     var runCount = 0
     var runCountForSplash = 0
+    var shouldBeDismissed = false
     
     //MARK:- LifeCycle Methods
 
@@ -99,7 +100,7 @@ class LogInVC: UIViewController {
     override func viewDidLoad() {
          super.viewDidLoad()
       
-       
+        
 
         
         hideAllItems()
@@ -140,8 +141,18 @@ class LogInVC: UIViewController {
     }
     
     
+    
     override func viewWillAppear(_ animated: Bool) {
         registerForKeyboardNotifications()
+        guard let token = UserDefaults.standard.string(forKey: "token") else{
+            
+            return
+        }
+        
+        if token == "1" || token == "guest" {
+            shouldBeDismissed = true
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -523,9 +534,15 @@ class LogInVC: UIViewController {
                                                     return
                                             }
                                             
-                                            vcName.modalPresentationStyle = .fullScreen
                                             
-                                            self.present(vcName, animated: true, completion: nil)
+                                            vcName.modalPresentationStyle = .fullScreen
+                                            if self.shouldBeDismissed {
+                                                self.dismiss(animated: true, completion: nil)
+                                            }
+                                            else{
+                                                self.present(vcName, animated: true, completion: nil)
+                                            }
+                                            
                                             
                                         case .requestErr(let message):
                                             self.showAlert()

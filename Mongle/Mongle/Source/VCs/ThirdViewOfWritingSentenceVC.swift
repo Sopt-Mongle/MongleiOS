@@ -282,7 +282,7 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
     func postSentence(){
         PostBookService.shared.postBook(sentence: sentenceForPost  , title: bookForPost, author: authorForPost, publisher: publisherForPost, themeIdx: themeIdxForPost) { networkResult in
             switch networkResult{
-            case .success(_) :
+            case .success(let data) :
                 
                 
                 guard let vcName = UIStoryboard(name: "EndOfWritingSentence",
@@ -293,6 +293,9 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
                     else{
                         return
                 }
+                vcName.sendingSentenceIdx = data as? Int
+                print("sentence Idx : \(data)")
+                
                 vcName.modalPresentationStyle = .currentContext
                 self.navigationController?.pushViewController(vcName, animated: true)
             case .requestErr(let message):

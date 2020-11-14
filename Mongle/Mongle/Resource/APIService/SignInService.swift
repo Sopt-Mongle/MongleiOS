@@ -31,6 +31,12 @@ struct SignInService {
         dataRequest.responseData { dataResponse in
             switch dataResponse.result {
             case .success :
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                let date = Date()
+                let dateString = dateFormatter.string(from: date)
+                UserDefaults.standard.setValue(dateString, forKey: "tokenTime")
+                
                 guard let statusCode = dataResponse.response?.statusCode else {return}
                 guard let data = dataResponse.value else {return}
                 let networkResult = self.judge(by: statusCode, data)

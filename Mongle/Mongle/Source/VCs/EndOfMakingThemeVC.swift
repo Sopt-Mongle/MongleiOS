@@ -21,7 +21,7 @@ class EndOfMakingThemeVC: UIViewController {
     @IBOutlet weak var topConstraint2: NSLayoutConstraint!
     
     let deviceBound = UIScreen.main.bounds.height/812.0
-    
+    var sendThemeIdx : Int?
     var nickName = "몽글이"
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,6 +120,24 @@ class EndOfMakingThemeVC: UIViewController {
     }
     
     
+    @IBAction func seeThemeButtonAction(_ sender: Any) {
+        guard let vcName = UIStoryboard(name: "ThemeInfo",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "ThemeInfoVC")
+            as? ThemeInfoVC
+            else{
+                return
+        }
+        guard let nowvc = self.presentingViewController?.presentingViewController else {return}
+        print("sendThemeIdx : \(sendThemeIdx)")
+        vcName.themeIdx = sendThemeIdx
+        self.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: {
+            vcName.modalPresentationStyle = .fullScreen
+            nowvc.present(vcName, animated: true, completion: nil)
+        })
+        
+        
+    }
     
     
     

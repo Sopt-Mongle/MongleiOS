@@ -68,17 +68,19 @@ struct PostBookService {
     
     private func send(by data : Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<PostBookData>.self, from: data)
+        guard let decodedData = try? decoder.decode(GenericResponse<Int>.self, from: data)
             else { return .serverErr }
+//        guard let sentenceIdxData = decodedData.data else { return .requestErr(decodedData.message) }
         
-        return .success(decodedData)
+        
+        return .success(decodedData.data)
         
         
     }
     
     private func showErrorMessage(by data : Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<[SearchThemeData]>.self, from: data)
+        guard let decodedData = try? decoder.decode(GenericResponse<PostBookData>.self, from: data)
             else { return .pathErr }
         
         print(decodedData.message)

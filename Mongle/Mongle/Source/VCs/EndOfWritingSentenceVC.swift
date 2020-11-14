@@ -25,6 +25,7 @@ class EndOfWritingSentenceVC: UIViewController {
     
     let deviceBound = UIScreen.main.bounds.height/812.0
     var nickName = "몽글이"
+    var sendingSentenceIdx : Int?
     
     //MARK:- LifeCycle Methods
     override func viewDidLoad() {
@@ -130,25 +131,32 @@ class EndOfWritingSentenceVC: UIViewController {
     
     
     @IBAction func sentenceCheckButtonAction(_ sender: Any) {
-//        dismiss(animated: true, completion: nil)
-//        guard let vcName = UIStoryboard(name: "SentenceInfo",
-//                                        bundle: nil).instantiateViewController(
-//                                            withIdentifier: "SentenceInfoVC")
-//            as? SentenceInfoVC
-//            else{
-//                return
-//        }
-//
-//
-//        vcName.modalPresentationStyle = .fullScreen
-//        self.present(vcName, animated: true, completion: nil)
+        guard let vcName = UIStoryboard(name: "SentenceInfo",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "SentenceInfoVC")
+            as? SentenceInfoVC
+            else{
+                return
+        }
+        guard let nowvc = self.presentingViewController else {return}
+        print("sendSentenceIdx : \(sendingSentenceIdx)")
+        vcName.sentenceIdx = sendingSentenceIdx
+        self.dismiss(animated: true, completion: {
+            vcName.modalPresentationStyle = .fullScreen
+            nowvc.present(vcName, animated: true, completion: nil)
+        })
         
+        
+    
+        
+      
         
     }
     
     
     @IBAction func backToMainButtonAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+        
         
         
     }

@@ -839,7 +839,13 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
             self.view.endEditing(true)
             codeWarningImage.alpha = 1
             codeWarningLabel.alpha = 1
-            
+            for circle in textCircles{
+                
+                circle.image = UIImage(named: "joinStep35IcNumber1")
+                circle.dropShadow(color: .reddish, offSet: CGSize(width: 0, height: 0), opacity: 0.33, radius: 6)
+                
+                
+            }
             
             
             

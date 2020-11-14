@@ -33,7 +33,6 @@ struct ThemeMakeService {
         dataRequest.responseData { dataResponse in
             switch dataResponse.result {
             case .success :
-                print("auto login")
                 guard let statusCode = dataResponse.response?.statusCode else {return}
                 guard let data = dataResponse.value else {return}
                 let networkResult = self.judge(by: statusCode, data)
@@ -72,11 +71,11 @@ struct ThemeMakeService {
     
     private func isMakingTheme(by data : Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<ThemeMakeData>.self, from: data)
+        guard let decodedData = try? decoder.decode(GenericResponse<Int>.self, from: data)
             else { return .serverErr }
 
         
-        return .success(decodedData)
+        return .success(decodedData.data)
         
         
     }

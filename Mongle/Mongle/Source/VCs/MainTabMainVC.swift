@@ -16,7 +16,7 @@ class MainTabMainVC: UIViewController {
             layoutTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.1))
         }
     }
-
+    
     var editorsTheme: [EditorPickData] = []
     var sentences: [TodaySentenceData] = []
     var curators: [MainCuratorData] = []
@@ -34,7 +34,55 @@ class MainTabMainVC: UIViewController {
         getThemeList(flag: 0)
         getThemeList(flag: 1)
         getThemeList(flag: 2)
+        
+        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if  UserDefaults.standard.string(forKey: "token") != "guest"{
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let originDate = UserDefaults.standard.string(forKey: "tokenTime")!
+            let ogD = formatter.date(from: originDate)
+            let calendar = Calendar.current
+            let diff = calendar.dateComponents([.minute], from: ogD!, to: date)
+            
+            if diff.minute! > 210  {
+               
+                
+                
+                guard let email = UserDefaults.standard.string(forKey: "email") else { return }
+                guard let password = UserDefaults.standard.string(forKey: "password") else {return}
+                SignInService.shared.signin(email: email,
+                                            password: password)  { networkResult in
+                    switch networkResult {
+                    case .success(let token) :
+                        guard let token = token as? String else { return }
+                        print(token)
+                        UserDefaults.standard.set(token, forKey: "token")
+                        print("autoLogin")
+                    case .requestErr(let message):
+                        print("reqERR")
+                    case .pathErr:
+                        print("pathERR")
+                    case .serverErr:
+                        print("serverERR")
+                    case .networkFail:
+                        print("network")
+                        
+                    }
+                    
+                    
+                }
+            }
+            
+            
+        }
+
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
