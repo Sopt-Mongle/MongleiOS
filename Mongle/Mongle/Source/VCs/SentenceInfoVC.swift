@@ -231,7 +231,6 @@ class SentenceInfoVC: UIViewController {
     func showPopUp(){
         
         popup.setPopUp(state: .delete, yesHandler: { [weak self] in
-            print(#function)
             self?.navigationController?.popViewController(animated: true)
             
         }, noHandler: {[weak self] in
@@ -251,6 +250,29 @@ class SentenceInfoVC: UIViewController {
             $0.width.equalTo(304)
             $0.height.equalTo(193)
             $0.centerX.centerY.equalToSuperview()
+        }
+    }
+    
+    func report(content: String){
+        ReportService.shared.report(type: "sentence", idx: sentenceIdx ?? 0, content: content) { (networkResult) in
+            switch networkResult {
+            case .success(_):
+                if content == "falseAd" {
+                    self.showToast(text: "허위 내용 신고가 접수되었어요!")
+                }
+                else {
+                    self.showToast(text: "부적절한 내용 신고가 접수되었어요!")
+                }
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
+            
         }
     }
     
@@ -469,13 +491,14 @@ extension SentenceInfoVC: UITableViewDataSource {
                         UIAlertAction(title: "허위 내용 신고",
                                       style: .default,
                                       handler: { [weak self] action in
-                                        self?.showToast(text: "허위 내용 신고가 접수되었어요!")
+                                        
+                                        self?.report(content: "falseAd")
                                       })
                             .then { $0.titleTextColor = .black },
                         UIAlertAction(title: "부적절한 내용 신고",
                                       style: .default,
                                       handler: { [weak self] action in
-                                        self?.showToast(text: "부적절한 내용 신고가 접수되었어요!")
+                                        self?.report(content: "inappropriate")
                                       })
                             .then{ $0.titleTextColor = .black },
                         UIAlertAction(title: "취소",
@@ -484,11 +507,12 @@ extension SentenceInfoVC: UITableViewDataSource {
                             .then { $0.titleTextColor = .black}
                     ]
                     .forEach { sheet.addAction($0)}
+                    self.present(sheet, animated: true, completion: nil)
                 }
 
             }
         
-            cell.editButton.isHidden = !isMySentence
+//            cell.editButton.isHidden = !isMySentence
             
             return cell
         }

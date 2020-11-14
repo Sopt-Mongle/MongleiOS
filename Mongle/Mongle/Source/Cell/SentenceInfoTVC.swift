@@ -33,15 +33,12 @@ class SentenceInfoTVC: UITableViewCell {
         self.curatorProfileImageView.makeRounded(cornerRadius: self.curatorProfileImageView.frame.width / 2)
         
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-    }
-    
     
     @IBAction func touchUpEditButton(sender: UIButton) {
         
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         self.editButtonDelegate(actionSheet)
+        
     }
     
     func setSentenceData(sentence: String,
