@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleSDGothicNeoM.ttf">
+            <string>AppleSDGothicNeoM00</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--My SettingVC-->
         <scene sceneID="xdI-gq-kEG">
@@ -52,26 +57,26 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingTVC" editingAccessoryType="checkmark" id="WtP-5t-L4F" customClass="SettingTVC" customModule="Mongle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.333332061767578" width="375" height="44.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="55.333332061767578" width="375" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WtP-5t-L4F" id="UrZ-OS-vgd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yn6-b7-w3g">
-                                                    <rect key="frame" x="15.999999999999996" y="10.999999999999998" width="39.666666666666657" height="20.333333333333329"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <rect key="frame" x="15.999999999999996" y="11.000000000000002" width="35.666666666666657" height="19.666666666666671"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeoM00" family="AppleSDGothicNeoM00" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mySettingsIcArrow1" translatesAutoresizingMaskIntoConstraints="NO" id="usS-CJ-i82">
-                                                    <rect key="frame" x="351" y="16" width="7" height="12.333333333333336"/>
+                                                    <rect key="frame" x="351" y="15.666666666666664" width="7" height="12.333333333333336"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="7" id="qfe-CE-9tb"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BX6-zV-9dH">
-                                                    <rect key="frame" x="326" y="12.333333333333336" width="33" height="20"/>
+                                                    <rect key="frame" x="326" y="12" width="33" height="20"/>
                                                     <color key="backgroundColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="6Sv-4H-ORE"/>
@@ -79,7 +84,7 @@
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oR9-zJ-6B4">
-                                                    <rect key="frame" x="322" y="4.6666666666666679" width="37" height="35"/>
+                                                    <rect key="frame" x="322" y="4.3333333333333321" width="37" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="aL0-Jr-KKb"/>
                                                         <constraint firstAttribute="width" constant="37" id="lIb-4R-9yW"/>

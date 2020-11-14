@@ -12,6 +12,9 @@
         <array key="AppleSDGothicNeoR.ttf">
             <string>AppleSDGothicNeoR00</string>
         </array>
+        <array key="AppleSDGothicNeoSB.ttf">
+            <string>AppleSDGothicNeoSB00</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Profile EditVC-->
@@ -23,10 +26,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="01Q-r9-PBJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRX-DT-6sS">
-                                        <rect key="frame" x="0.0" y="37" width="48" height="48"/>
+                                        <rect key="frame" x="0.0" y="-7" width="48" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="2f6-Jn-MYW"/>
                                             <constraint firstAttribute="width" constant="48" id="AB6-aI-N8Y"/>
@@ -37,23 +40,23 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로필 수정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rlo-Ii-X0A">
-                                        <rect key="frame" x="148.66666666666666" y="48" width="78" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="146.33333333333334" y="4" width="82.666666666666657" height="23.666666666666668"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeoSB00" family="AppleSDGothicNeoSB00" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="01Q-r9-PBJ" secondAttribute="height" multiplier="125:31" id="46E-WC-bjz"/>
+                                    <constraint firstAttribute="width" secondItem="01Q-r9-PBJ" secondAttribute="height" multiplier="375:44" id="46E-WC-bjz"/>
                                     <constraint firstItem="aRX-DT-6sS" firstAttribute="leading" secondItem="01Q-r9-PBJ" secondAttribute="leading" id="BIp-oR-naS"/>
-                                    <constraint firstItem="Rlo-Ii-X0A" firstAttribute="top" secondItem="01Q-r9-PBJ" secondAttribute="top" constant="48" id="Mbq-Ii-8QI"/>
-                                    <constraint firstItem="aRX-DT-6sS" firstAttribute="top" secondItem="01Q-r9-PBJ" secondAttribute="top" constant="37" id="ds7-pl-Ehi"/>
+                                    <constraint firstItem="Rlo-Ii-X0A" firstAttribute="top" secondItem="01Q-r9-PBJ" secondAttribute="top" constant="4" id="Mbq-Ii-8QI"/>
+                                    <constraint firstItem="aRX-DT-6sS" firstAttribute="top" secondItem="01Q-r9-PBJ" secondAttribute="top" constant="-7" id="ds7-pl-Ehi"/>
                                     <constraint firstItem="Rlo-Ii-X0A" firstAttribute="centerX" secondItem="01Q-r9-PBJ" secondAttribute="centerX" id="mod-B0-a0r"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dDX-vb-oXr">
-                                <rect key="frame" x="0.0" y="93" width="375" height="685"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="vAz-9M-1q7">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="379"/>
@@ -226,7 +229,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileEditIntroduceTVC" id="Xu2-5G-cGG" customClass="ProfileEditIntroduceTVC" customModule="Mongle" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProfileEditIntroduceTVC" id="Xu2-5G-cGG" customClass="ProfileEditIntroduceTVC" customModule="Mongle" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="407" width="375" height="346"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xu2-5G-cGG" id="Uzd-jF-I41">
@@ -292,7 +295,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mySettingsProfile5BoxBlur" translatesAutoresizingMaskIntoConstraints="NO" id="g3M-EE-ybc">
-                                <rect key="frame" x="0.0" y="93" width="375" height="53"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="0uT-lH-yR6"/>
                                 </constraints>
@@ -323,7 +326,7 @@
                             <constraint firstItem="Roc-ja-E4R" firstAttribute="trailing" secondItem="3QC-dm-ezm" secondAttribute="trailing" id="FQh-3s-k1q"/>
                             <constraint firstItem="dDX-vb-oXr" firstAttribute="top" secondItem="01Q-r9-PBJ" secondAttribute="bottom" id="JDZ-rA-OR0"/>
                             <constraint firstItem="dDX-vb-oXr" firstAttribute="leading" secondItem="3QC-dm-ezm" secondAttribute="leading" id="L2K-hA-FLx"/>
-                            <constraint firstItem="01Q-r9-PBJ" firstAttribute="top" secondItem="x5d-wC-jBL" secondAttribute="top" id="Q1H-ke-rLo"/>
+                            <constraint firstItem="01Q-r9-PBJ" firstAttribute="top" secondItem="3QC-dm-ezm" secondAttribute="top" id="Q1H-ke-rLo"/>
                             <constraint firstItem="g3M-EE-ybc" firstAttribute="top" secondItem="01Q-r9-PBJ" secondAttribute="bottom" id="Sgz-r3-CYi"/>
                             <constraint firstItem="Roc-ja-E4R" firstAttribute="bottom" secondItem="x5d-wC-jBL" secondAttribute="bottom" id="ZSk-zv-Lld"/>
                             <constraint firstItem="dDX-vb-oXr" firstAttribute="trailing" secondItem="3QC-dm-ezm" secondAttribute="trailing" id="aJR-Bw-o6W"/>

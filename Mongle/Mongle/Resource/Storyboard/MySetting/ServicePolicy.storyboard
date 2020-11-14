@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Service PolicyVC-->
+        <scene sceneID="hdo-eA-ZO4">
+            <objects>
+                <viewController storyboardIdentifier="ServicePolicyVC" id="aNV-SP-hG4" customClass="ServicePolicyVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NRa-hI-Vxn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8UQ-I1-RS1">
+                                <rect key="frame" x="0.0" y="73" width="375" height="705"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mySettingsPolicyGroup" translatesAutoresizingMaskIntoConstraints="NO" id="RY8-if-78u">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="2659"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="RY8-if-78u" secondAttribute="height" multiplier="375:2659" id="sX9-YL-Rib"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="RY8-if-78u" firstAttribute="centerX" secondItem="8UQ-I1-RS1" secondAttribute="centerX" id="A5R-nu-3ms"/>
+                                    <constraint firstItem="RY8-if-78u" firstAttribute="top" secondItem="8UQ-I1-RS1" secondAttribute="top" constant="28" id="eHx-F2-uLH"/>
+                                    <constraint firstAttribute="trailing" secondItem="RY8-if-78u" secondAttribute="trailing" id="rIN-kl-PTA"/>
+                                    <constraint firstAttribute="bottom" secondItem="RY8-if-78u" secondAttribute="bottom" id="xjU-Sa-zGP"/>
+                                    <constraint firstItem="RY8-if-78u" firstAttribute="leading" secondItem="8UQ-I1-RS1" secondAttribute="leading" id="yb1-lT-bbc"/>
+                                </constraints>
+                            </scrollView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mySettingsPolicyBoxBlur2" translatesAutoresizingMaskIntoConstraints="NO" id="M0u-CR-YC3">
+                                <rect key="frame" x="0.0" y="73" width="375" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="M0u-CR-YC3" secondAttribute="height" multiplier="375:35" id="DIw-PY-sHC"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xa5-dk-k9A">
+                                <rect key="frame" x="0.0" y="37" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="r68-QY-HYo"/>
+                                    <constraint firstAttribute="width" constant="48" id="wfK-zk-e4F"/>
+                                </constraints>
+                                <state key="normal" image="mySettingsServiceBtnClose"/>
+                                <connections>
+                                    <action selector="touchUpClose:" destination="aNV-SP-hG4" eventType="touchUpInside" id="OJZ-Yo-glj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HF7-Hl-8lU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8UQ-I1-RS1" firstAttribute="top" secondItem="HF7-Hl-8lU" secondAttribute="top" constant="29" id="8IK-gQ-6n4"/>
+                            <constraint firstItem="HF7-Hl-8lU" firstAttribute="trailing" secondItem="M0u-CR-YC3" secondAttribute="trailing" id="DxA-Ke-FqK"/>
+                            <constraint firstItem="HF7-Hl-8lU" firstAttribute="bottom" secondItem="8UQ-I1-RS1" secondAttribute="bottom" id="HAT-8i-28X"/>
+                            <constraint firstItem="HF7-Hl-8lU" firstAttribute="trailing" secondItem="8UQ-I1-RS1" secondAttribute="trailing" id="Idf-fx-O11"/>
+                            <constraint firstItem="M0u-CR-YC3" firstAttribute="leading" secondItem="HF7-Hl-8lU" secondAttribute="leading" id="OHC-yB-8Cs"/>
+                            <constraint firstItem="xa5-dk-k9A" firstAttribute="leading" secondItem="HF7-Hl-8lU" secondAttribute="leading" id="Qha-jj-bbm"/>
+                            <constraint firstItem="8UQ-I1-RS1" firstAttribute="leading" secondItem="HF7-Hl-8lU" secondAttribute="leading" id="Qwh-dL-nLd"/>
+                            <constraint firstItem="xa5-dk-k9A" firstAttribute="top" secondItem="HF7-Hl-8lU" secondAttribute="top" constant="-7" id="pSX-ly-7HP"/>
+                            <constraint firstItem="M0u-CR-YC3" firstAttribute="top" secondItem="HF7-Hl-8lU" secondAttribute="top" constant="29" id="r3l-cI-fZO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="blurImageView" destination="M0u-CR-YC3" id="sxd-Rm-WTu"/>
+                        <outlet property="scrollView" destination="8UQ-I1-RS1" id="WJl-9a-bQM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DFa-FN-RNc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="279.19999999999999" y="89.408866995073893"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="mySettingsPolicyBoxBlur2" width="375" height="35"/>
+        <image name="mySettingsPolicyGroup" width="375" height="2659.333251953125"/>
+        <image name="mySettingsServiceBtnClose" width="19" height="19"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

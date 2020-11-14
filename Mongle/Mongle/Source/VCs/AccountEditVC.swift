@@ -122,10 +122,6 @@ class AccountEditVC: UIViewController {
         
     }
     
-    func callLogout(){
-        print("logout")
-    }
-    
     func callWithdraw(){
         print("withdraw")
     }
@@ -134,14 +130,15 @@ class AccountEditVC: UIViewController {
         switch yesState{
         
         case .logout:
-            callLogout()
-            //로그아웃 API
+            UserDefaults.standard.setValue("1", forKey: "token")
         
         case .withdraw:
             callWithdraw()
             //탈퇴 API
         }
-        UserDefaults.standard.removeObject(forKey: "token")
+        
+        UserDefaults.standard.removeObject(forKey: "email")
+        UserDefaults.standard.removeObject(forKey: "password")
         guard let loginVC = UIStoryboard(name:"LogIn", bundle:nil).instantiateViewController(identifier: "LogInVC") as? LogInVC else{
                             return
                         }
