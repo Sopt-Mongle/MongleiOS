@@ -79,6 +79,13 @@
 		7FFEA28724BF768D003D381A /* EditorPickData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA28624BF768D003D381A /* EditorPickData.swift */; };
 		7FFEA28924BF9C72003D381A /* TodaySentenceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA28824BF9C72003D381A /* TodaySentenceData.swift */; };
 		7FFEA28B24BFAC77003D381A /* MainCuratorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA28A24BFAC77003D381A /* MainCuratorData.swift */; };
+		B8218AC9255F8289003AA1AA /* ServicePolicy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8218AC8255F8289003AA1AA /* ServicePolicy.storyboard */; };
+		B8218ACC255F82BD003AA1AA /* ServicePolicyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8218ACB255F82BD003AA1AA /* ServicePolicyVC.swift */; };
+		B8218B1A256000E3003AA1AA /* OpenSource.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8218B19256000E2003AA1AA /* OpenSource.storyboard */; };
+		B8218B1D25600107003AA1AA /* OpenSourceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8218B1C25600107003AA1AA /* OpenSourceVC.swift */; };
+		B8218B202560021E003AA1AA /* OpenSourceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8218B1F2560021E003AA1AA /* OpenSourceTVC.swift */; };
+		B8218B232560106B003AA1AA /* OpenSourceDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8218B222560106B003AA1AA /* OpenSourceDetail.storyboard */; };
+		B8218B2625601094003AA1AA /* OpenSourceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8218B2525601094003AA1AA /* OpenSourceDetailVC.swift */; };
 		B83800F52525FF78009286AE /* PasswordChangeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83800F42525FF78009286AE /* PasswordChangeVC.swift */; };
 		B83800F82525FFA2009286AE /* PasswordChange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B83800F72525FFA2009286AE /* PasswordChange.storyboard */; };
 		B842A4462557E3B100253275 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842A4452557E3B100253275 /* String+Extensions.swift */; };
@@ -294,6 +301,13 @@
 		7FFEA28624BF768D003D381A /* EditorPickData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorPickData.swift; sourceTree = "<group>"; };
 		7FFEA28824BF9C72003D381A /* TodaySentenceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySentenceData.swift; sourceTree = "<group>"; };
 		7FFEA28A24BFAC77003D381A /* MainCuratorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCuratorData.swift; sourceTree = "<group>"; };
+		B8218AC8255F8289003AA1AA /* ServicePolicy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicePolicy.storyboard; sourceTree = "<group>"; };
+		B8218ACB255F82BD003AA1AA /* ServicePolicyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicePolicyVC.swift; sourceTree = "<group>"; };
+		B8218B19256000E2003AA1AA /* OpenSource.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenSource.storyboard; sourceTree = "<group>"; };
+		B8218B1C25600107003AA1AA /* OpenSourceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceVC.swift; sourceTree = "<group>"; };
+		B8218B1F2560021E003AA1AA /* OpenSourceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceTVC.swift; sourceTree = "<group>"; };
+		B8218B222560106B003AA1AA /* OpenSourceDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenSourceDetail.storyboard; sourceTree = "<group>"; };
+		B8218B2525601094003AA1AA /* OpenSourceDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceDetailVC.swift; sourceTree = "<group>"; };
 		B83800F42525FF78009286AE /* PasswordChangeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeVC.swift; sourceTree = "<group>"; };
 		B83800F72525FFA2009286AE /* PasswordChange.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasswordChange.storyboard; sourceTree = "<group>"; };
 		B842A4452557E3B100253275 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -688,6 +702,7 @@
 				7FB4203C24BD97C200294314 /* ProfileEditIntroduceTVC.swift */,
 				B8E2E15024C0317C00595752 /* SentenceMoreTVC.swift */,
 				B85400AB25514877004700B4 /* AccountEditTVC.swift */,
+				B8218B1F2560021E003AA1AA /* OpenSourceTVC.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -749,6 +764,9 @@
 				ECF391DF25582C8B009337D3 /* OnboardingSecondVC.swift */,
 				ECF391E225582C9C009337D3 /* OnboardingThirdVC.swift */,
 				ECF391E525582CB3009337D3 /* OnboardingFourthVC.swift */,
+				B8218ACB255F82BD003AA1AA /* ServicePolicyVC.swift */,
+				B8218B1C25600107003AA1AA /* OpenSourceVC.swift */,
+				B8218B2525601094003AA1AA /* OpenSourceDetailVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -786,6 +804,9 @@
 				7FFEA26724BE1E05003D381A /* Mongles.storyboard */,
 				B83800F72525FFA2009286AE /* PasswordChange.storyboard */,
 				B85400A8255143EC004700B4 /* AccountEdit.storyboard */,
+				B8218AC8255F8289003AA1AA /* ServicePolicy.storyboard */,
+				B8218B19256000E2003AA1AA /* OpenSource.storyboard */,
+				B8218B222560106B003AA1AA /* OpenSourceDetail.storyboard */,
 			);
 			path = MySetting;
 			sourceTree = "<group>";
@@ -885,6 +906,8 @@
 				EC6B70BD24BDD43600151A3B /* Comp 2_1.gif in Resources */,
 				EC304629254ED08800DB6E4A /* ServiceAgreeForSignUp.storyboard in Resources */,
 				7FFEA27824BE441F003D381A /* AppleSDGothicNeoL.ttf in Resources */,
+				B8218B232560106B003AA1AA /* OpenSourceDetail.storyboard in Resources */,
+				B8218AC9255F8289003AA1AA /* ServicePolicy.storyboard in Resources */,
 				B8AB122324B5C10B00B60240 /* SearchTabResult.storyboard in Resources */,
 				EC88960C24B87F3D008D29E2 /* ThemeSelectForWriteSentence.storyboard in Resources */,
 				ECF391DA25582A32009337D3 /* OnboardingFirst.storyboard in Resources */,
@@ -900,6 +923,7 @@
 				7FFEA27D24BE441F003D381A /* AppleSDGothicNeoEB.ttf in Resources */,
 				7F1E71A424B504CF00D79516 /* MainTabMain.storyboard in Resources */,
 				B8B48B2F24BC66F400551F5B /* CuratorTabInfo.storyboard in Resources */,
+				B8218B1A256000E3003AA1AA /* OpenSource.storyboard in Resources */,
 				EC2713EA2507C9D300E4B8C3 /* SignUpAgree.storyboard in Resources */,
 				EC76E10325109C29009DDEF1 /* SignUpMain.storyboard in Resources */,
 				7F6ABEBB24ADE7720040746E /* Assets.xcassets in Resources */,
@@ -968,6 +992,7 @@
 			files = (
 				EC759C4024BEF121001D2F81 /* ThemeImageForWriteService.swift in Sources */,
 				7FA8C4B724C1753A00317F43 /* SentenceLikeData.swift in Sources */,
+				B8218B2625601094003AA1AA /* OpenSourceDetailVC.swift in Sources */,
 				ECF391D725582987009337D3 /* OnboardingMainVC.swift in Sources */,
 				EC86B49A24B7646600DB930A /* UITextField+Extensions.swift in Sources */,
 				7FFEA28324BF4839003D381A /* ToastView.swift in Sources */,
@@ -1009,6 +1034,7 @@
 				7F6ABED524ADE9FC0040746E /* UIImageView+Extensions.swift in Sources */,
 				7FFEA28B24BFAC77003D381A /* MainCuratorData.swift in Sources */,
 				B8E2E14F24BEE0E900595752 /* MyTabCuratorVC.swift in Sources */,
+				B8218B1D25600107003AA1AA /* OpenSourceVC.swift in Sources */,
 				B8E2E16924C1B58E00595752 /* CuratorRecommendData.swift in Sources */,
 				7F1E71AA24B7BADB00D79516 /* ThemeInfoVC.swift in Sources */,
 				EC759C5024C02779001D2F81 /* ThemeSelectForWriteData.swift in Sources */,
@@ -1049,11 +1075,13 @@
 				EC30462C254ED0AA00DB6E4A /* ServiceAgreeForSignUpVC.swift in Sources */,
 				B8E2E17B24C2A33600595752 /* MySentenceService.swift in Sources */,
 				EC759C3C24BED5CD001D2F81 /* SigninData.swift in Sources */,
+				B8218B202560021E003AA1AA /* OpenSourceTVC.swift in Sources */,
 				EC88960E24B87F66008D29E2 /* ThemeSelectForWritingSentenceVC.swift in Sources */,
 				7FC5B4D724BC6D2B007C1725 /* AddBookToSentenceVC.swift in Sources */,
 				7F6ABEB224ADE7700040746E /* AppDelegate.swift in Sources */,
 				EC759C3E24BEF01A001D2F81 /* ThemeImageDataForWrite.swift in Sources */,
 				B8E2E16D24C1BC7900595752 /* ThemeInCuratorData.swift in Sources */,
+				B8218ACC255F82BD003AA1AA /* ServicePolicyVC.swift in Sources */,
 				EC86B49824B716BB00DB930A /* SearchBookForWritingVC.swift in Sources */,
 				EC849311255BD99B003B4149 /* SignUpEmailService.swift in Sources */,
 				7FCEE21924B3078E00225CA3 /* MainTabMainVC.swift in Sources */,

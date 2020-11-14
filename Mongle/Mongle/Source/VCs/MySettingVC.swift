@@ -113,6 +113,10 @@ extension MySettingVC: UITableViewDelegate {
             case 2:
                 //서비스 운영정책
                 print("SignUpServiceAgree")
+                guard let nextVC = UIStoryboard(name: "ServicePolicy", bundle: nil).instantiateViewController(identifier: "ServicePolicyVC") as? ServicePolicyVC else {
+                    return
+                }
+                self.navigationController?.pushViewController(nextVC, animated: true)
             case 3:
                 //개인정보 이용약관
                 guard let nextVC = UIStoryboard(name: "SignUpRule", bundle: nil).instantiateViewController(identifier: "SignUpRuleVC") as? SignUpRuleVC else {
@@ -127,6 +131,10 @@ extension MySettingVC: UITableViewDelegate {
                     self.navigationController?.pushViewController(nextVC, animated: true)
                 case 5:
                     //오픈소스 라이선스
+                    guard let nextVC = UIStoryboard(name: "OpenSource", bundle: nil).instantiateViewController(identifier: "OpenSourceVC") as? OpenSourceVC else {
+                        return
+                    }
+                    self.navigationController?.pushViewController(nextVC, animated: true)
                     print("opensource")
             default:
                 break
