@@ -60,28 +60,29 @@ class ThemeInfoVC: UIViewController {
     func setInitLayout(){
         themeBackgroundView.backgroundColor = .clear
         
-        if hasTheme {
-            
-            self.themeNameLabel.text = themeText ?? ""
-            sentencesBackGroudViewBottomConstraint.constant = 0
-            bottomBackgroundView.isHidden = false
-            themeImageView.image = themeImage
-//                UIImage(named: "sentenceThemeOImgTheme")
-        }
-        else {
-            themeNameLabel.text = "테마 없는 문장"
-            backButton.setImage(UIImage(named: "sentenceThemeXBtnBack"), for: .normal)
-            themeImageView.image = UIImage(named: "themeWritingThemeXSentenceBg")
-            sentencesBackgroundView.backgroundColor = .black
-            sentencesBackGroudViewBottomConstraint.constant = -bottomBackgroundView.frame.height
-            
-            curatorProfileImageView.isHidden = true
-            themeInfoStackView.isHidden = true
-            bottomBackgroundView.isHidden = true
-            curatorNameLabel.snp.makeConstraints {
-                $0.leading.equalToSuperview().offset(16)
-            }
-        }
+//        if hasTheme {
+//            
+//            self.themeNameLabel.text = themeText ?? ""
+//            sentencesBackGroudViewBottomConstraint.constant = 0
+//            bottomBackgroundView.isHidden = false
+//            themeImageView.image = themeImage
+////                UIImage(named: "sentenceThemeOImgTheme")
+//        }
+//        else {
+//            themeNameLabel.text = "테마 없는 문장"
+//            backButton.setImage(UIImage(named: "sentenceThemeXBtnBack"), for: .normal)
+//            themeImageView.image = UIImage(named: "themeWritingThemeXSentenceBg")
+//            sentencesBackgroundView.backgroundColor = .black
+//            sentencesBackGroudViewBottomConstraint.constant = -bottomBackgroundView.frame.height
+//            
+//            curatorProfileImageView.isHidden = true
+//            themeInfoStackView.isHidden = true
+//            bottomBackgroundView.isHidden = true
+//            curatorNameLabel.snp.makeConstraints {
+//                $0.leading.equalToSuperview().offset(16)
+//            }
+//        }
+        sentenceTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomBackgroundView.frame.height, right: 0)
         writeInThemeButton.makeRounded(cornerRadius: self.writeInThemeButton.bounds.width * 30 / 253)
         saveButton.makeRounded(cornerRadius: saveButton.bounds.width * 30 / 77)
         saveButton.setBorder(borderColor: .veryLightPinkSix, borderWidth: 1)
