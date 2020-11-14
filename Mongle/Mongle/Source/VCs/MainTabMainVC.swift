@@ -94,7 +94,7 @@ class MainTabMainVC: UIViewController {
             case .success(let data):
                 if let _data = data as? [TodaySentenceData] {
                     self.sentences = _data
-                    
+                    print(self.sentences)
                     DispatchQueue.main.async {
                         self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 1), with: .automatic)
                     }

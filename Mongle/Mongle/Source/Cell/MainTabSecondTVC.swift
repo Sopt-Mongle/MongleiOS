@@ -54,7 +54,7 @@ extension MainTabSecondTVC: UICollectionViewDataSource {
         }
         let sentence = sentences[indexPath.item]
         cell.setData(sentence: sentence.sentence, bookName: sentence.title)
-        cell.setData(sentence: "sad", bookName: "asd")
+        
         return cell
     }
 }

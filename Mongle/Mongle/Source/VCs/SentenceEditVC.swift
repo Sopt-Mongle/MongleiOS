@@ -17,6 +17,7 @@ class SentenceEditVC: UIViewController {
     
     // MARK:- Property
     var text: String?
+    var sentenceIdx: Int?
     
     // MARK:- Lifecycle
     override func viewDidLoad() {
@@ -107,30 +108,51 @@ class SentenceEditVC: UIViewController {
         
     }
     
+    func requestEdit() {
+        SentenceEditService.shared.editSentence(idx: sentenceIdx ?? 0, sentence: sentenceTextView.text) { (networkResult) in
+            switch networkResult {
+            case .success(_):
+                let prevIndex = self.navigationController?.viewControllers.count
+                self.navigationController?.viewControllers[prevIndex! - 2].showToast(text: "문장이 수정되었어요!")
+                self.navigationController?.popViewController(animated: true)
+                
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "requestErr")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
+        }
+    }
+    
     //MARK:- IBAction
     @IBAction func touchUpBackButton(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func touchEditButton(_ sender: UIButton) {
+        
+
         let popupView = MonglePopupView(frame: CGRect(x: 0, y: 0, width: 304, height: 193))
         let blurView = UIView().then {
             $0.backgroundColor = .black
             $0.alpha = 0.5
         }
         self.view.addSubview(blurView)
-        
+
         popupView.setPopUp(state: .edit,
                            yesHandler: nil,
                            noHandler: nil,
                            confirmHandler: { [weak self] in
-                            self?.navigationController?.popViewController(animated: true)
-            
+                            self?.requestEdit()
         })
         blurView.snp.makeConstraints {
             $0.top.bottom.leading.trailing.equalToSuperview()
         }
-        
+
         self.view.addSubview(popupView)
         popupView.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()

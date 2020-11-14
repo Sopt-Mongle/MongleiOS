@@ -39,7 +39,8 @@ struct APIConstants {
     static let postEmptySentenceURL = baseURL + "/post/emptySentence"
 //    테마 없는 문장 테마 지정하기 (/post/setTheme)
     static let postSetThemeURL = baseURL + "/post/setTheme"
-    
+    // 문장 수정
+    static let myURL = baseURL + "/my"
     static let bookSearchForWritingURL = baseURL + "/post/bookSearch"
     static let recentSearchURL = baseURL + "/search/recent"
     static let recommendSearchURL = baseURL + "/search/recommend"

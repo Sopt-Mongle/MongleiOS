@@ -42,7 +42,7 @@ class SentenceInfoVC: UIViewController {
     var themeImage: UIImage? = UIImage(named: "curatorImgTheme1")
     var otherSentences: [Sentence] = []
     var hasTheme: Bool = true
-    var isMySentence: Bool = false
+    var isMySentence: Bool = true
     var canDisplayOtherSentece: Bool = true
     var sentenceIdx: Int?
     var themeIdx: Int?
@@ -72,6 +72,7 @@ class SentenceInfoVC: UIViewController {
             case .success(let data):
                 if let _data = data as? [Sentence] {
                     self.sentence = _data[0]
+                    print(self.sentence?.alreadyBookmarked)
                     DispatchQueue.main.async {
                         self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
                         self.updateStateLayout()
@@ -133,12 +134,14 @@ class SentenceInfoVC: UIViewController {
         
         if _sentence.alreadyLiked {
             self.likeCountLabel.textColor = .softGreen
+            
         }
         else {
             self.likeCountLabel.textColor = .veryLightPink
-            
         }
         
+        self.bookmarkImageView.isHighlighted = _sentence.alreadyBookmarked
+        print(_sentence.alreadyBookmarked)
         if _sentence.alreadyBookmarked {
             self.bookCountLabel.textColor = .softGreen
         }
@@ -171,14 +174,8 @@ class SentenceInfoVC: UIViewController {
                 if let _data = data as? SentenceLikeData {
                     self.sentence?.alreadyLiked = _data.isLike
                     self.sentence?.likes = _data.likes
-                    self.updateStateLayout()
                     
-                    if _data.isLike {
-//                        self.showToast(text: "좋아요 성공")
-                    }
-                    else {
-//                        self.showToast(text: "좋아요 해제")
-                    }
+                    self.updateStateLayout()
                 }
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "")
@@ -199,6 +196,7 @@ class SentenceInfoVC: UIViewController {
             self.presentLoginRequestPopUp()
             return
         }
+        
         SentenceService.shared.putBookmark(idx: self.sentenceIdx ?? 0) { networkResult in
             switch networkResult {
                 
@@ -209,7 +207,7 @@ class SentenceInfoVC: UIViewController {
                     self.sentence?.saves = _data.saves
                     self.updateStateLayout()
                     if _data.isSave {
-                        self.showToast(text: "문장이 저장되었습니다!")
+                        self.showToast(text: "문장이 저장되었어요!")
                     }
                     else {
 //                        self.showToast(text: "북마크 해제")
@@ -227,11 +225,32 @@ class SentenceInfoVC: UIViewController {
         }
     }
     
+    func requestDelete() {
+        SentenceEditService.shared.deleteSentece(idx: sentenceIdx ?? 0) { (networkResult) in
+            switch networkResult {
+            case .success(_):
+                print("########################")
+                print("success")
+                let prevIndex = self.navigationController?.viewControllers.count
+                self.navigationController?.viewControllers[prevIndex! - 2].showToast(text: "문장이 삭제되었어요!")
+                self.navigationController?.popViewController(animated: true)
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "requestErr")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
+        }
+    }
+    
     
     func showPopUp(){
         
         popup.setPopUp(state: .delete, yesHandler: { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
+            self?.requestDelete()
             
         }, noHandler: {[weak self] in
             self?.blur.removeFromSuperview()
@@ -467,8 +486,8 @@ extension SentenceInfoVC: UITableViewDataSource {
                                             guard let dvc = sb.instantiateViewController(identifier: "SentenceEditVC") as? SentenceEditVC else {
                                                 return
                                             }
-                                            
-                                            dvc.text = self?.sentenceText
+                                            dvc.sentenceIdx = self?.sentenceIdx
+                                            dvc.text = self?.sentence?.sentence
                                             self?.navigationController?.pushViewController(dvc, animated: true)
                                         })
                             .then { $0.titleTextColor = .black },
