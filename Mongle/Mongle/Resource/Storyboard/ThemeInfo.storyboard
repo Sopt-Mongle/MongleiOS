@@ -277,9 +277,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xd-z8-Jyb">
                                         <rect key="frame" x="106" y="55" width="253" height="57"/>
                                         <color key="backgroundColor" red="0.45098039215686275" green="0.75294117647058822" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="3Xd-z8-Jyb" secondAttribute="height" multiplier="253:57" id="dGc-Ij-eJe"/>
-                                        </constraints>
                                         <state key="normal" title="테마에 문장 쓰기">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -299,6 +296,7 @@
                                     <constraint firstItem="8vZ-i9-jeT" firstAttribute="leading" secondItem="sOx-yo-vKk" secondAttribute="leading" constant="16" id="U2p-aE-p7S"/>
                                     <constraint firstItem="37X-qC-zaS" firstAttribute="top" secondItem="sOx-yo-vKk" secondAttribute="top" id="bfi-tr-vWw"/>
                                     <constraint firstItem="8vZ-i9-jeT" firstAttribute="top" secondItem="sOx-yo-vKk" secondAttribute="top" constant="55" id="dF8-eJ-MfU"/>
+                                    <constraint firstItem="3Xd-z8-Jyb" firstAttribute="leading" secondItem="8vZ-i9-jeT" secondAttribute="trailing" constant="13" id="dwc-Y1-Knr"/>
                                     <constraint firstItem="3Xd-z8-Jyb" firstAttribute="top" secondItem="sOx-yo-vKk" secondAttribute="top" constant="55" id="e7v-eO-Tlb"/>
                                     <constraint firstItem="37X-qC-zaS" firstAttribute="leading" secondItem="sOx-yo-vKk" secondAttribute="leading" id="o8e-ZW-DFM"/>
                                 </constraints>
