@@ -149,7 +149,7 @@ class LogInVC: UIViewController {
             return
         }
         
-        if token == "1"{
+        if token == "1" || token == "guest" {
             shouldBeDismissed = true
         }
         

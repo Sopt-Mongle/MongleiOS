@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let token = defaults.string(forKey: "token"){
             // 둘러보기
-            if token == "guest"{
+            if token == "guest" || token == "1"{
               
                 print("token : guest")
             }

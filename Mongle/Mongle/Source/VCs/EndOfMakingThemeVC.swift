@@ -128,10 +128,10 @@ class EndOfMakingThemeVC: UIViewController {
             else{
                 return
         }
-        guard let nowvc = self.presentingViewController else {return}
+        guard let nowvc = self.presentingViewController?.presentingViewController else {return}
         print("sendThemeIdx : \(sendThemeIdx)")
         vcName.themeIdx = sendThemeIdx
-        self.dismiss(animated: true, completion: {
+        self.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: {
             vcName.modalPresentationStyle = .fullScreen
             nowvc.present(vcName, animated: true, completion: nil)
         })
