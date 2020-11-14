@@ -50,7 +50,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var passWordToNIckNameConstraint: NSLayoutConstraint!
     
-
+    
     
     //MARK:- User Define Variables
     
@@ -202,6 +202,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         registerButton.setTitleColor(.white, for: .normal)
         registerButton.backgroundColor = .softGreen
         registerButton.makeRounded(cornerRadius: 30)
+        passWordTextField.addTarget(self, action: #selector(validationCheck), for: .editingChanged)
         passWordTextField2.addTarget(self, action: #selector(comparePasswords), for: .editingChanged)
         passWordTextField.addTarget(self, action: #selector(comparePasswords), for: .editingChanged)
         nickNameWarningLabel.alpha = 0
@@ -278,20 +279,21 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
         
         if textField == passWordTextField || textField == passWordTextField2 {
-//            let move = CGPoint(x: 0, y: (105+emailIsWarning)*Int(deviceBound))
+            //            let move = CGPoint(x: 0, y: (105+emailIsWarning)*Int(deviceBound))
             let move = CGPoint(x: 0, y: (105+emailIsWarning))
             UIView.animate(withDuration: 0.5, animations: {
                 
                 self.signUpScrollView.setContentOffset(move, animated: false)
             })
             hidePasswordWarning()
+            hideNickNameWarning()
             
             
             
         }
         
         else if textField == nickNameTextField {
-//            let move = CGPoint(x: 0, y: (280+emailIsWarning+passwordIsWarning)*Int(deviceBound))
+            //            let move = CGPoint(x: 0, y: (280+emailIsWarning+passwordIsWarning)*Int(deviceBound))
             let move = CGPoint(x: 0, y: (280+emailIsWarning+passwordIsWarning))
             UIView.animate(withDuration: 0.5, animations: {
                 
@@ -310,6 +312,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             })
             secondPasswordEnd()
             hideEmailWarning()
+            hideNickNameWarning()
         }
         textField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         
@@ -352,6 +355,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         case passWordTextField:
             
             hidePasswordWarning()
+            
             comparePasswords()
             passWordTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         case passWordTextField2 :
@@ -375,6 +379,18 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     
+    @objc func validationCheck(){
+        if !passWordTextField.text!.isValidPassword(){
+            showPasswordWarning()
+            passwordWarningLabel.text = "영문+숫자 최소 8자리 이상 입력해주세요!"
+            passWordTextField2.setBorder(borderColor: .veryLightPink, borderWidth: 1.0)
+        }
+        else{
+            
+            hidePasswordWarning()
+            
+        }
+    }
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
         
@@ -563,20 +579,27 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     @objc func comparePasswords(){
         
-        if passWordTextField.text == passWordTextField2.text && passWordTextField.text != "" && passWordTextField2.text != ""{
-            
-            self.passwordWarningLabel.text = "비밀번호가 일치해요!"
-            self.passwordWarningImageView.image = UIImage(named: "joinPassword5IcPossible")
-            self.passwordWarningLabel.textColor = .softGreen
-            
-            
-            
-            
+        if !passWordTextField.text!.isValidPassword(){
+            showPasswordWarning()
+            passwordWarningLabel.text = "영문+숫자 최소 8자리 이상 입력해주세요!"
+            passWordTextField2.setBorder(borderColor: .veryLightPink, borderWidth: 1.0)
         }
-        else if passWordTextField2.text != ""{
-            secondPasswordBegin()
+        else{
+            
+            if passWordTextField.text == passWordTextField2.text && passWordTextField.text != "" && passWordTextField2.text != ""{
+                
+                self.passwordWarningLabel.text = "비밀번호가 일치해요!"
+                self.passwordWarningImageView.image = UIImage(named: "joinPassword5IcPossible")
+                self.passwordWarningLabel.textColor = .softGreen
+                
+                
+                
+                
+            }
+            else if passWordTextField2.text != ""{
+                secondPasswordBegin()
+            }
         }
-        
         
     }
     @objc func updateNicknameQuantity(){
@@ -631,7 +654,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         passwordIsWarning = 25
         print(1)
         passWordToNIckNameConstraint.constant = 59
-       
+        
         
         self.signUpScrollView.addSubview(passwordWarningImageView)
         self.signUpScrollView.addSubview(passwordWarningLabel)
@@ -666,7 +689,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         print(2)
         passwordIsWarning = 0
         passWordToNIckNameConstraint.constant = 34
-
+        
         
         passwordWarningLabel.removeFromSuperview()
         passwordWarningImageView.removeFromSuperview()
@@ -679,7 +702,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     func secondPasswordBegin(){
         print(3)
         passWordToNIckNameConstraint.constant = 59
-
+        
         
         self.signUpScrollView.addSubview(passwordWarningImageView)
         self.signUpScrollView.addSubview(passwordWarningLabel)
@@ -749,9 +772,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     
     func secondPasswordEnd(){
-
+        
         passWordToNIckNameConstraint.constant = 34
-
+        
         
         passwordWarningLabel.removeFromSuperview()
         passwordWarningImageView.removeFromSuperview()
@@ -783,7 +806,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     }
     
     func hideNickNameWarning(){
-        nickNameTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+        nickNameTextField.setBorder(borderColor: .veryLightPink, borderWidth: 1.0)
         nickNameWarningLabel.alpha = 0
         nickNameWarningImageView.alpha = 0
     }
@@ -801,21 +824,26 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             emailWarningLabel.text = "올바른 이메일 형식이 아니에요!"
             showEmailWarning()
             
-//            if passwordIsWarning == 25 {
-                hidePasswordWarning()
-//                showPasswordWarning()
-                
-                
-//            }
+            //            if passwordIsWarning == 25 {
+            hidePasswordWarning()
+            //                showPasswordWarning()
+            
+            
+            //            }
             
             
         }
         else if passWordTextField.text == "" || passWordTextField2.text == ""{
+            passwordWarningLabel.text = "영문+숫자 최소 8자리 이상 입력해주세요!"
+            showPasswordWarning()
+            
+        }
+        else if !passWordTextField.text!.isValidPassword() {
             passwordWarningLabel.text = "비밀번호를 입력해주세요!"
             showPasswordWarning()
             
         }
-       
+        
         else if passWordTextField.text != passWordTextField2.text{
             passWordTextField.setBorder(borderColor: .reddish, borderWidth: 1.0)
             passWordTextField2.setBorder(borderColor: .reddish, borderWidth: 1.0)
@@ -852,7 +880,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                     else if dup == "email"{
                         self.emailWarningLabel.text = "이미 가입된 이메일이에요!"
                         self.showEmailWarning()
-                       
+                        
                     }
                     
                 case .requestErr(let duplicate) :
@@ -871,15 +899,15 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                     else if dup == "email"{
                         self.emailWarningLabel.text = "이미 가입된 이메일이에요!"
                         self.showEmailWarning()
-                       
+                        
                     }
-                   
+                    
                 case .pathErr: print("ptherr")
                 case .serverErr: print("serverErr")
                 case .networkFail: print("networkFails2")
-                
-                
-                
+                    
+                    
+                    
                 }
                 
                 
@@ -887,7 +915,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             }
             
             
-                
+            
             
             
         }
@@ -900,8 +928,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     @IBAction func backButtonAction(_ sender: Any) {
         
         
+        self.navigationController?.popViewController(animated: true)
         
-        dismiss(animated: true, completion: nil)
         
     }
     
@@ -911,7 +939,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         guard let name = nickNameTextField.text else {return}
         
         
-        
+        UserDefaults.standard.set(email, forKey: "email")
         
         var able = true
         
@@ -925,7 +953,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         }
         
         
-  
+        
         
         print("email sending break")
         SignUpEmailService.shared.signup(email: email) { networkResult in
@@ -939,7 +967,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                 SignUpVC.emailCodeDelegate?.emailCodeTransfer(s: scode!, e: email, p: password, n: name)
                 print(code)
                 vcName.modalPresentationStyle = .fullScreen
-                self.present(vcName, animated: true, completion: nil)
+                self.navigationController?.pushViewController(vcName, animated: true)
                 
             case .requestErr(let message):
                 print("request by email")
@@ -965,7 +993,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             
         }
         
-       
+        
         
         
         

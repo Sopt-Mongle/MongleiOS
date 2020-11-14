@@ -40,7 +40,7 @@ class OnboardingThirdVC: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        OnboardingThirdVC.onboardingTFDelegate?.hideButtons()
+//        OnboardingThirdVC.onboardingTFDelegate?.hideButtons()
     }
     
     

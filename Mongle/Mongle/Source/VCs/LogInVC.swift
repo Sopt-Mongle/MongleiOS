@@ -99,7 +99,8 @@ class LogInVC: UIViewController {
     override func viewDidLoad() {
          super.viewDidLoad()
       
-        
+       
+
         
         hideAllItems()
         self.view.addSubview(splash)
@@ -513,6 +514,8 @@ class LogInVC: UIViewController {
                                             guard let token = token as? String else { return }
                                             print(token)
                                             UserDefaults.standard.set(token, forKey: "token")
+                                            UserDefaults.standard.set(email, forKey: "email")
+                                            UserDefaults.standard.set(password, forKey: "password")
                                             guard let vcName = UIStoryboard(name: "UnderTab",
                                                                             bundle: nil).instantiateViewController(
                                                                                 withIdentifier: "UnderTabBarController") as? UINavigationController
@@ -551,7 +554,7 @@ class LogInVC: UIViewController {
     @IBAction func signUpButton(_ sender: Any) {
         guard let vcName = UIStoryboard(name: "SignUpAgree",
                                         bundle: nil).instantiateViewController(
-                                            withIdentifier: "SignUpAgreeVC") as? SignUpAgreeVC
+                                            withIdentifier: "SignUpAgreeVC") as? UINavigationController
             else{
                 return
         }
@@ -559,6 +562,8 @@ class LogInVC: UIViewController {
         vcName.modalPresentationStyle = .fullScreen
         
         self.present(vcName, animated: true, completion: nil)
+        
+        
         
         
         

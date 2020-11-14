@@ -450,8 +450,8 @@ class SignUpAgreeVC: UIViewController {
             }
             
             vcName.modalPresentationStyle = .fullScreen
+            self.navigationController?.pushViewController(vcName, animated: true)
             
-            self.present(vcName, animated: true, completion: nil)
             
         }
         

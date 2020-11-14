@@ -200,8 +200,9 @@ class OnboardingMainVC: UIViewController {
 
 extension OnboardingMainVC : OnboardingDelegate {
     func toNextPage(next: Int) {
-        self.toPage(next: next)
         nowIdx = next
+        self.toPage(next: next)
+        
     }
     
     
@@ -210,9 +211,10 @@ extension OnboardingMainVC : OnboardingDelegate {
 
 extension OnboardingMainVC : OnboardingButtonDelegate {
     func buttonNextPage(next: Int) {
+        nowIdx = next
         pageInstance?.setViewControllers([(pageInstance?.VCArray[next])!], direction: .forward,
         animated: true, completion: nil)
-        nowIdx = next
+        
         toNextPage(next: next)
         
     }
@@ -221,11 +223,13 @@ extension OnboardingMainVC : OnboardingButtonDelegate {
 extension OnboardingMainVC : OnboardingThreeToFourDelegate{
     
     func hideButtons() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.nextButton.alpha = 0
-            self.jumpButton.alpha = 0
-            
-        })
+        if nowIdx != 1{
+            UIView.animate(withDuration: 0.5, animations: {
+                self.nextButton.alpha = 0
+                self.jumpButton.alpha = 0
+                
+            })
+        }
         
         
     }

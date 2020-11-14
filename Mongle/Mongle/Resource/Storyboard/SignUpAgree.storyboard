@@ -12,7 +12,7 @@
         <!--Sign Up AgreeVC-->
         <scene sceneID="bPK-tz-jmb">
             <objects>
-                <viewController storyboardIdentifier="SignUpAgreeVC" id="ect-TA-kH3" customClass="SignUpAgreeVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ect-TA-kH3" customClass="SignUpAgreeVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TdM-3m-WeT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -210,6 +210,7 @@
                             <constraint firstItem="tIM-pv-Lon" firstAttribute="leading" secondItem="wcK-s5-79n" secondAttribute="leading" constant="19" id="zXe-ur-L6y"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="W67-kC-8cJ"/>
                     <connections>
                         <outlet property="checkButton" destination="wvJ-X5-Az0" id="a18-Sb-TpO"/>
                         <outlet property="checkButton2" destination="t5R-5U-G2W" id="TrY-Tx-y90"/>
@@ -238,6 +239,23 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ktF-ny-3EV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1018.4" y="-235.71428571428572"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="XiC-6d-yZr">
+            <objects>
+                <navigationController storyboardIdentifier="SignUpAgreeVC" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="9Lh-DO-NK1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="C7T-Io-qQd">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ect-TA-kH3" kind="relationship" relationship="rootViewController" id="V7u-49-5Il"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mdf-2v-T0f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="76" y="-235.71428571428572"/>
         </scene>

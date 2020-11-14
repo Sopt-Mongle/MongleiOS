@@ -25,7 +25,7 @@ class OnboardingFourthVC: UIViewController {
     var gravityBehavior   : UIGravityBehavior!
     var collisionBehavior : UICollisionBehavior!
     var bouncingBehavior  : UIDynamicItemBehavior!
-    
+
     @IBOutlet weak var mongleBottomConstraint: NSLayoutConstraint!
     let deviceBound = UIScreen.main.bounds.height/812.0
     
@@ -39,6 +39,7 @@ class OnboardingFourthVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         startAnimation3()
+        OnboardingThirdVC.onboardingTFDelegate?.hideButtons()
     }
     
     
@@ -166,6 +167,7 @@ class OnboardingFourthVC: UIViewController {
             }
             
             vcName.modalPresentationStyle = .fullScreen
+            self.dismiss(animated: true, completion: nil)
             self.present(vcName, animated: true, completion: nil)
             
         })
@@ -174,6 +176,22 @@ class OnboardingFourthVC: UIViewController {
     }
     
     
+    @IBAction func lookAroundButtonAction(_ sender: Any) {
+        print("called")
+        UserDefaults.standard.set("guest", forKey: "token")
+        guard let vcName = UIStoryboard(name: "UnderTab",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "UnderTabBarController") as? UINavigationController
+        else{
+            return
+        }
+        
+        vcName.modalPresentationStyle = .fullScreen
+        self.dismiss(animated: true, completion: nil)
+        self.present(vcName, animated: true, completion: nil)
+        
+        
+    }
     
     
 }

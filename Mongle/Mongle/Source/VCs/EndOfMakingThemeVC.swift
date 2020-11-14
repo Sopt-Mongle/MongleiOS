@@ -22,7 +22,7 @@ class EndOfMakingThemeVC: UIViewController {
     
     let deviceBound = UIScreen.main.bounds.height/812.0
     
-    
+    var nickName = "몽글이"
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -33,10 +33,11 @@ class EndOfMakingThemeVC: UIViewController {
     
     
     func setItems(){
+        setNickName()
         mongleImageView.image = UIImage(named: "writingThemeFinishImgMongleTheme")?.withRenderingMode(.alwaysOriginal)
         
         firstLabel.text = "테마가 등록되었습니다!"
-        secondLabel.text = "몽글이님의 테마를 의미있는 문장으로\n채워보는 건 어떨까요?"
+        secondLabel.text = "\(nickName)님의 테마를 의미있는 문장으로\n채워보는 건 어떨까요?"
         secondLabel.textColor = .brownGreyTwo
         writeSentenceButton.backgroundColor = .softGreen
         backToMainButton.setBorder(borderColor: .softGreen, borderWidth: 1.0)
@@ -85,13 +86,36 @@ class EndOfMakingThemeVC: UIViewController {
         
     }
     
-    
+    func setNickName(){
+        MyProfileService.shared.getMy(){ networkResult in
+            
+            switch networkResult {
+            case .success(let theme):
+                guard let data = theme as? [MyProfileData] else {
+                    return
+                }
+                self.nickName = data[0].name
+                self.secondLabel.text = "\(self.nickName)님의 테마를 의미있는 문장으로\n채워보는 건 어떨까요?"
+              
+            case .requestErr(let message):
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+        
+    }
     
     
     @IBAction func backToMainButtonActino(_ sender: Any) {
         
         
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        self.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
     
     }
     

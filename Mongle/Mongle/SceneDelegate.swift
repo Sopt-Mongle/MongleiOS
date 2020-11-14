@@ -21,18 +21,62 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         let defaults = UserDefaults.standard
         
-        var storyBoard = UIStoryboard(name: "Onboarding", bundle: nil)
-        var rootVc = storyBoard.instantiateViewController(identifier: "OnboardingMainVC")
+        
+        var storyBoard = UIStoryboard(name: "UnderTab", bundle: nil)
+        var rootVc = storyBoard.instantiateViewController(identifier: "UnderTabBarController")
         
         OnboardingMainVC.shouldShowSplash = true
         
-        if let appIsAlreadyLaunched = defaults.string(forKey: "isAlreadyLaunched"){
-            storyBoard = UIStoryboard(name: "LogIn", bundle: nil)
-            rootVc = storyBoard.instantiateViewController(identifier: "LogInVC")
+        if let token = defaults.string(forKey: "token"){
+            // 둘러보기
+            if token == "guest"{
+              
+                print("token : guest")
+            }
+            
+            // 자동로그인 -> 메인뷰
+            else{
+                
+                guard let email = defaults.string(forKey: "email") else { return }
+                guard let password = defaults.string(forKey: "password") else {return}
+                SignInService.shared.signin(email: email,
+                                            password: password)  { networkResult in
+                                                switch networkResult {
+                                                case .success(let token) :
+                                                    guard let token = token as? String else { return }
+                                                    print(token)
+                                                    defaults.set(token, forKey: "token")
+                                                    print("autoLogin")
+
+                                                case .requestErr(let message):
+                                                    print("reqERR")
+
+                                                case .pathErr:
+                                                    print("pathERR")
+                                                case .serverErr:
+                                                    print("serverERR")
+                                                case .networkFail:
+                                                    print("network")
+
+                                                }
+
+
+                }
+                
+                
+                
+                
+            }
+            
             
         }
+        
+        // 온보딩
         else{
-            defaults.set(true,forKey: "isAlreadyLaunched")
+            print("Onboarding")
+            storyBoard = UIStoryboard(name: "Onboarding", bundle: nil)
+            rootVc = storyBoard.instantiateViewController(identifier: "OnboardingMainVC")
+            
     
         }
         
