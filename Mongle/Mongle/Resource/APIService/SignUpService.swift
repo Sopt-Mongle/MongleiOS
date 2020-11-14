@@ -31,6 +31,9 @@ struct SignUpService {
         dataRequest.responseData { dataResponse in
             switch dataResponse.result {
             case .success :
+ 
+                
+                
                 guard let statusCode = dataResponse.response?.statusCode else {return}
                 guard let data = dataResponse.value else {return}
                 let networkResult = self.judge(by: statusCode, data)
@@ -42,6 +45,8 @@ struct SignUpService {
                 
             }
         }
+        
+        
         
         
         

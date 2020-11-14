@@ -21,7 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         let defaults = UserDefaults.standard
         
-        
+       
+
+       
         var storyBoard = UIStoryboard(name: "UnderTab", bundle: nil)
         var rootVc = storyBoard.instantiateViewController(identifier: "UnderTabBarController")
         
@@ -47,7 +49,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                                     print(token)
                                                     defaults.set(token, forKey: "token")
                                                     print("autoLogin")
-
+                                                    
+                                             
+                                                        
                                                 case .requestErr(let message):
                                                     print("reqERR")
 
