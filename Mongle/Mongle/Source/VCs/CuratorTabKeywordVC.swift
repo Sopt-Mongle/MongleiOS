@@ -31,7 +31,7 @@ class CuratorTabKeywordVC: UIViewController {
     
     func setCuratorList(){
         print(self.keywordIdx)
-        CuratorKeywordService.shared.getKeyword(keywordIdx: self.keywordIdx){ networkResult in
+        CuratorKeywordService.shared.getKeyword(keywordIdx: self.keywordIdx+1){ networkResult in
             switch networkResult {
             case .success(let recommend):
                 guard let data = recommend as? [CuratorKeywordData] else {
@@ -93,9 +93,11 @@ extension CuratorTabKeywordVC: UICollectionViewDataSource{
         cell.curatorIdx = curatorList[indexPath.item].curatorIdx
         cell.subscriberLabel.text = "구독자 \(curatorList[indexPath.item].subscribe)명"
         if curatorList[indexPath.item].alreadySubscribed{
+            cell.subscribeBTN.isSelected = true
             cell.subscribeBTN.backgroundColor = .veryLightPinkSeven
         }
         else{
+            cell.subscribeBTN.isSelected = false
             cell.subscribeBTN.backgroundColor = .softGreen
         }
         return cell

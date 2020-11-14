@@ -41,7 +41,10 @@ class MyTabVC: UIViewController {
         guard let settingVC = UIStoryboard(name:"MySetting",bundle:nil).instantiateViewController(identifier: "MySettingVC") as? MySettingVC else{
             return
         }
-        self.navigationController?.pushViewController(settingVC, animated: true)
+
+       self.navigationController?.pushViewController(settingVC, animated: true)
+
+        
     }
     @IBAction func touchUpTheme(_ sender: Any) {
         item = 0
@@ -110,6 +113,7 @@ class MyTabVC: UIViewController {
         setMyTheme()
         setMySentence()
         setMyCurator()
+        self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![0])!], direction: .forward, animated: false, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
