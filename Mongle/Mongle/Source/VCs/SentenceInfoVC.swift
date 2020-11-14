@@ -255,7 +255,10 @@ class SentenceInfoVC: UIViewController {
     }
     
     @IBAction func touchUpBackButton(){
-        self.navigationController?.popViewController(animated: true)
+        if let navi = self.navigationController {
+            navi.popViewController(animated: true)
+        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func touchUpOtherThemeButton(){
