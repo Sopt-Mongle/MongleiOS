@@ -153,7 +153,57 @@ class ThemeInfoVC: UIViewController {
         self.bookmarkCountLabel.text = "\(self.themeData?.saves ?? 0)"
     }
     
+    func report(content: String){
+        ReportService.shared.report(type: "theme", idx: themeIdx ?? 0, content: content) { (networkResult) in
+            switch networkResult {
+            case .success(_):
+                if content == "falseAd" {
+                    self.showToast(text: "허위 내용 신고가 접수되었어요!")
+                }
+                else {
+                    self.showToast(text: "부적절한 내용 신고가 접수되었어요!")
+                }
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
+            
+        }
+    }
+    
     //MARK:- IBAction
+    
+    @IBAction func touchUpReportButton(_ sender: Any) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        [
+            UIAlertAction(title: "허위 내용 신고",
+                          style: .default,
+                          handler: { [weak self] action in
+                            
+                            self?.report(content: "falseAd")
+                          })
+                .then { $0.titleTextColor = .black },
+            UIAlertAction(title: "부적절한 내용 신고",
+                          style: .default,
+                          handler: { [weak self] action in
+                            self?.report(content: "inappropriate")
+                          })
+                .then{ $0.titleTextColor = .black },
+            UIAlertAction(title: "취소",
+                          style: .cancel,
+                          handler: nil)
+                .then { $0.titleTextColor = .black}
+        ]
+        .forEach { actionSheet.addAction($0)}
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
     @IBAction func touchUpBackButton(sender: UIButton) {
         
         if let navi = self.navigationController {
