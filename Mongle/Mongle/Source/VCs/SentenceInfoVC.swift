@@ -428,10 +428,10 @@ extension SentenceInfoVC: UITableViewDataSource {
                     return
                 }
                 
-                                                       let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
+                let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
                 
                 if token == "guest" {
-                    self?.presentLoginRequestPopUp()
+                    self.presentLoginRequestPopUp()
                     return
                 }
                 
