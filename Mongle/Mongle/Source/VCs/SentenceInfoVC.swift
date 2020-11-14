@@ -423,38 +423,69 @@ extension SentenceInfoVC: UITableViewDataSource {
                              bookImageUrl: self.sentence?.writerImg ?? "")
             
             cell.editButtonDelegate = { [weak self] sheet in
-                let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
+                
+                guard let self = self else{
+                    return
+                }
+                
+                                                       let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
                 
                 if token == "guest" {
                     self?.presentLoginRequestPopUp()
                     return
                 }
-                let editAction = UIAlertAction(title: "수정", style: .default) { action in
-                    guard let dvc = UIStoryboard.init(name: "SentenceEdit", bundle: nil).instantiateViewController(identifier: "SentenceEditVC") as? SentenceEditVC else {
-                        return
-                    }
-                    dvc.text = self?.sentenceText
-                    self?.navigationController?.pushViewController(dvc, animated: true)
-                }.then {
-                    $0.titleTextColor = .black
-                }
                 
-                let deleteAction = UIAlertAction(title: "삭제", style: .default) {[weak self] action in
+                if self.isMySentence {
+                    [
+                        UIAlertAction(title: "수정",
+                                      style: .default,
+                                      handler:
+                                        { [weak self] (action) in
+                                            let sb = UIStoryboard.init(name: "SentenceEdit", bundle: nil)
+                                            guard let dvc = sb.instantiateViewController(identifier: "SentenceEditVC") as? SentenceEditVC else {
+                                                return
+                                            }
+                                            
+                                            dvc.text = self?.sentenceText
+                                            self?.navigationController?.pushViewController(dvc, animated: true)
+                                        })
+                            .then { $0.titleTextColor = .black },
+                        
+                        UIAlertAction(title: "삭제",
+                                      style: .default) {[weak self] action in
+                            self?.showPopUp()
+                        }
+                        .then { $0.titleTextColor = .black },
+                        UIAlertAction(title: "취소", style: .cancel) { action in
+                        }
+                        .then { $0.titleTextColor = .black }
+                    ]
+                    .forEach { sheet.addAction($0)}
                     
-                    self?.showPopUp()
-                }.then {
-                    $0.titleTextColor = .black
+                    self.present(sheet, animated: true, completion: nil)
                 }
-                
-                let cancelAction = UIAlertAction(title: "취소", style: .cancel) { action in
-                }.then {
-                    $0.titleTextColor = .black
+                else {
+                    [
+                        UIAlertAction(title: "허위 내용 신고",
+                                      style: .default,
+                                      handler: { [weak self] action in
+                                        self?.showToast(text: "허위 내용 신고가 접수되었어요!")
+                                      })
+                            .then { $0.titleTextColor = .black },
+                        UIAlertAction(title: "부적절한 내용 신고",
+                                      style: .default,
+                                      handler: { [weak self] action in
+                                        self?.showToast(text: "부적절한 내용 신고가 접수되었어요!")
+                                      })
+                            .then{ $0.titleTextColor = .black },
+                        UIAlertAction(title: "취소",
+                                      style: .cancel,
+                                      handler: nil)
+                            .then { $0.titleTextColor = .black}
+                    ]
+                    .forEach { sheet.addAction($0)}
                 }
 
-                sheet.addAction(editAction)
-                sheet.addAction(deleteAction)
-                sheet.addAction(cancelAction)
-                self?.present(sheet, animated: true, completion: nil)
             }
         
             cell.editButton.isHidden = !isMySentence
