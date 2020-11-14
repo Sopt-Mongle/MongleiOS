@@ -124,7 +124,7 @@ class CuratorTabMainVC: UIViewController {
     }
 
 }
-
+// MARK: - UITableViewDelegate
 extension CuratorTabMainVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -152,7 +152,7 @@ extension CuratorTabMainVC: UITableViewDataSource{
     
     
 }
-
+// MARK: - UICollectionViewDelegate
 //popularCollectionViewCell
 extension CuratorTabMainVC: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -185,9 +185,10 @@ extension CuratorTabMainVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainPopularCuratorCVC", for: indexPath) as? MainPopularCuratorCVC else{ return UICollectionViewCell() }
-        cell.profileNameLabel.text = self.popularList[indexPath.item].name
-        cell.profileImageView.imageFromUrl(self.popularList[indexPath.item].img, defaultImgPath: "sentenceThemeOImgCurator1010")
-        cell.tagLabel.text = self.popularList[indexPath.item].keyword
+        cell.setData(imgUrl: self.popularList[indexPath.item].img ?? "", name: self.popularList[indexPath.item].name, tag: self.popularList[indexPath.item].keyword ?? "동기부여")
+//        cell.profileNameLabel.text = self.popularList[indexPath.item].name
+//        cell.profileImageView.imageFromUrl(self.popularList[indexPath.item].img, defaultImgPath: "sentenceThemeOImgCurator1010")
+//        cell.tagLabel.text = self.popularList[indexPath.item].keyword
         
         return cell
     }

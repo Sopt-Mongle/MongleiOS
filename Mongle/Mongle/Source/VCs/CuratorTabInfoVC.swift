@@ -86,7 +86,6 @@ class CuratorTabInfoVC: UIViewController {
                 self.curatorData = data
                 self.themeNum = data.theme.count
                 self.sentenceNum = data.sentence.count
-                print("herere")
                 self.curatorProfileData = data.profile
                 self.curatorNameLabel.text = self.curatorProfileData[0].name
                 self.curatorImageView.imageFromUrl(self.curatorProfileData[0].img, defaultImgPath: "sentenceThemeOImgCurator1010")

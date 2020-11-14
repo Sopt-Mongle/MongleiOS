@@ -67,7 +67,7 @@ extension CuratorTabMainTVC: UICollectionViewDelegateFlowLayout{
 }
 extension CuratorTabMainTVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return curatorList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -84,9 +84,10 @@ extension CuratorTabMainTVC: UICollectionViewDataSource{
         if cell.subscribeBTN.isSelected{
             
             cell.subscribeBTN.backgroundColor = .veryLightPinkSeven
+            cell.subscribeBTN.setTitle("구독중", for: .selected)
         }
         else{
-
+            cell.subscribeBTN.setTitle("구독", for: .normal)
             cell.subscribeBTN.backgroundColor = .softGreen
         }
         
