@@ -28,6 +28,7 @@ class SentenceInfoTVC: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         sentenceLabel.text = sentence ?? ""
         self.curatorProfileImageView.makeRounded(cornerRadius: self.curatorProfileImageView.frame.width / 2)
         

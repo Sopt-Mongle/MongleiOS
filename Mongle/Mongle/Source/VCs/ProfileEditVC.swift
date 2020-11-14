@@ -8,9 +8,11 @@
 
 import UIKit
 
-class ProfileEditVC: UIViewController {
+class ProfileEditVC: UIViewController{
     
     // MARK:- IBOutlet
+    @IBOutlet weak var nickNameCountLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet var profileImageView: UIImageView!
     @IBOutlet var nickNameTextField: UITextField! {
         didSet {
@@ -30,7 +32,10 @@ class ProfileEditVC: UIViewController {
     @IBOutlet var completeButton: UIButton!
     @IBOutlet var bottomBlurImageBottomConstraint: NSLayoutConstraint!
     @IBOutlet var keywordLabelTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topBlurView: UIImageView!
+    @IBOutlet weak var nickNameWarningImageView: UIImageView!
     
+    @IBOutlet weak var nickNameWarningLabel: UILabel!
     
     // MARK:- UIComponent
     lazy var imagePickerController = UIImagePickerController().then {
@@ -39,53 +44,86 @@ class ProfileEditVC: UIViewController {
         $0.delegate = self
     }
     
-    lazy var nickNameWarningStackView = UIStackView()
-    lazy var introduceWarningStackView = UIStackView()
+    let blurImageView = UIImageView().then{
+        $0.image = UIImage(named: "passwordChangePopupBg")
+    }
+    let popupView = UIView().then{
+        $0.backgroundColor = .clear
+    }
+    var popupImageView = UIImageView().then{
+        $0.image = UIImage(named: "mySettingsProfilePopupBox")
+    }
+    var popupTitleLabel = UILabel().then{
+        $0.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        $0.textColor = .black
+        $0.adjustsFontSizeToFitWidth = true
+    }
+    
+    var yesButton = UIButton().then{
+        $0.setTitle("확인", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.backgroundColor = .softGreen
+        $0.makeRounded(cornerRadius: 19)
+        $0.addTarget(self, action: #selector(yesButtonAction), for: .touchUpInside)
+        $0.titleLabel?.font = $0.titleLabel?.font.withSize(13)
+    }
     
     // MARK: Property
     var keywords: [String] = ["감성자극", "동기부여", "자기계발", "깊은생각", "독서기록", "일상문장"]
-    var selectedKeywordIdx: Int = 0
+    var selectedKeywordIdx: Int = 1
     var isScrollSpended: Bool = false
+    var name: String = ""
+    var profileImage: String?
+    var introduce: String = UserDefaults.standard.string(forKey: "UserProfileIntroduce") ?? ""
+    let heightRatio: CGFloat = UIScreen.main.bounds.height/812
+    let widthRatio: CGFloat = UIScreen.main.bounds.width/375
     
     // MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLayout()
         
+        setLayout()
         setKeywordButton()
         updateSelectedKeywordButton()
         setGesture()
-        // Do any additional setup after loading the view.
+        partialGreenColor()
+        nickNameTextField.addTarget(self, action: #selector(textFieldDidChange(sender:)), for: .editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        updateSelectedKeywordButton()
         registerForKeyboardNotifications()
+        setData()
     }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         unregisterForKeyboardNotifications()
     }
+
     
     func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(_:)), name:
-            UIResponder.keyboardWillShowNotification, object: nil)
+                                                UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name:
-            UIResponder.keyboardWillHideNotification, object: nil)
+                                                UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func unregisterForKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name:
-            UIResponder.keyboardWillShowNotification, object: nil)
+                                                    UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name:
-            UIResponder.keyboardWillHideNotification, object: nil)
+                                                    UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
     // MARK:- @objc Method
     @objc func keyboardWillShow(_ notification: NSNotification) {
         
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
-            as? NSValue)?.cgRectValue {
+                                as? NSValue)?.cgRectValue {
             self.bottomBlurImageBottomConstraint.constant = -keyboardSize.height + 20
             
             UIView.animate(withDuration: 0.3, animations: {
@@ -93,50 +131,63 @@ class ProfileEditVC: UIViewController {
             })
             
         }
+        self.topBlurView.alpha = 1
     }
-    
+    @objc func textFieldDidChange(sender:UITextField) {
+
+            if let text = sender.text {
+                // 초과되는 텍스트 제거
+                if text.count > 6 {
+                    let index = text.index(text.startIndex, offsetBy: 5)
+                    let newString = text[text.startIndex...index]
+                    sender.text = String(newString)
+                }
+                nickNameCountLabel.text = "\((sender.text?.count)!)/6"
+            }
+        
+    }
     @objc func keyboardWillHide(_ notification: NSNotification) {
         guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]
-            as? Double else {return}
+                as? Double else {return}
         guard let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey]
-            as? UInt else {return}
+                as? UInt else {return}
         self.bottomBlurImageBottomConstraint.constant = -17
         UIView.animate(withDuration: duration,
                        delay: 0.0,
                        options: .init(rawValue: curve),
                        animations: {
                         self.view.layoutIfNeeded()
-        })
+                       })
+        self.topBlurView.alpha = 0
+        //self.view.layoutIfNeeded()
     }
-    @objc func touchUpProfoleImageView(){
+    @objc func touchUpProfileImageView(){
         self.present(self.imagePickerController, animated: true, completion: nil)
     }
-    
-    
+    @objc func yesButtonAction(){
+        self.navigationController?.popViewController(animated: true)
+    }
     // MARK: Custom Method
     func setLayout(){
-        keywordBackgroundView.backgroundColor = UIColor(red: 232 / 255, green: 232 / 255, blue: 232 / 255, alpha: 1.0)
+        keywordBackgroundView.backgroundColor = UIColor.veryLightPinkEight
         profileImageView.makeRounded(cornerRadius: profileImageView.frame.width / 2)
         cameraButton.makeRounded(cornerRadius: cameraButton.frame.width / 2)
         
         nickNameTextField.makeRounded(cornerRadius: 10)
         nickNameTextField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1)
         
-        
         nickNameTextField.addLeftPadding(left: 15)
-//        introduceTextField.addLeftPadding(left: 15)
         
         completeButton.makeRounded(cornerRadius: 28)
-//        nickNameTextField.textRect(forBounds: CGRect(x: 0, y: 0, width: 20, height: 10))
+        
     }
     
     func setKeywordButton(){
-        var idx: Int = 0
+        var idx: Int = 1
         keywordButton.forEach {
-            $0.setTitle(keywords[idx], for: .normal)
+            $0.setTitle(keywords[idx-1], for: .normal)
             $0.titleLabel?.font = UIFont.systemFont(ofSize: 13)
             $0.setTitleColor(UIColor(red: 124 / 255, green: 124 / 255, blue: 124 / 255, alpha: 1.0), for: .normal)
-            
             
             $0.setTitleColor(.white, for: .selected)
             $0.backgroundColor = .white
@@ -157,109 +208,258 @@ class ProfileEditVC: UIViewController {
             }
         }
     }
-    func testValidInput(){
-        keywordLabelTopConstraint.constant = 59
+    func setData(){
+        self.nickNameTextField.text = UserDefaults.standard.string(forKey: "UserProfileName")
+        self.profileImageView.imageFromUrl(UserDefaults.standard.string(forKey: "UserProfileImgLink"), defaultImgPath: "mySettingsProfile4BtnProfileChange")
+        self.layoutTableView.reloadData()
+        selectedKeywordIdx = UserDefaults.standard.integer(forKey: "UserProfileKeyIdx")
+        updateSelectedKeywordButton()
+    }
+    func showWarning(color: WarningColor, title: String){
+        nickNameWarningLabel.text = title
+        switch color{
+            case .green:
+                nickNameWarningLabel.textColor = .softGreen
+                nickNameWarningImageView.image = UIImage(named:"mySettingsProfile4IcPossible")
+            case .red:
+                nickNameWarningLabel.textColor = .reddish
+                nickNameWarningImageView.image = UIImage(named:"mySettingsProfile3IcWarning")
+                nickNameTextField.becomeFirstResponder()
+                
+                
+        }
+
+        nickNameWarningLabel.alpha = 1
+        nickNameWarningImageView.alpha = 1
+    }
+    func hideWarning(){
+        nickNameWarningLabel.alpha = 0
+        nickNameWarningImageView.alpha = 0
+    }
+        
+    func callNickNameDuplicate(){
+
         if isValidNickNameInput() {
-            nickNameWarningStackView.removeFromSuperview()
-            nickNameTextField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1)
-            nickNameWarningStackView = makeWarningStackView(message: "사용 가능한 닉네임이에요!", isCorrect: true)
+            if nickNameTextField.text! != UserDefaults.standard.string(forKey: "UserProfileName"){
+                SignUpDuplicateService.shared.checkDuplicate(email: "-", name: nickNameTextField.text!, completion: {networkResult in
+                    switch networkResult{
+                        case .success(let data):
+                            print("####1")
+                            guard let duplicateData = data as? String else{
+                                return
+                            }
+                            if duplicateData == "name"{
+                                //이미 사용중인 닉네임.
+                                print("####사용중 닉네임")
+                           
+                                self.nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1)
+                                self.showWarning(color: .red, title: "이미 사용 중인 닉네임이에요!")
+                           
+                            }
+                            else if duplicateData == "available"{
+                                //사용 가능한 닉네임입니다.
+                                print("####사용가능 닉네임")
+                                
+                                self.nickNameTextField.setBorder(borderColor: .softGreen, borderWidth: 1)
+                                self.showWarning(color : .green, title: "사용 가능한 닉네임이에요!")
+                                if (ProfileEditIntroduceTVC.isIntroduceValid!){
+                                    DispatchQueue.main.async{
+                                        self.callProfileEdit()
+                                    }
+                                }
+                                else{
+                                    self.layoutTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                                }
+                                
+                            }
+                            
+                        case .requestErr(let message):
+                            guard let message = message as? String else { return }
+                            self.showToast(text: message)
+                            print(message)
+                        case .pathErr:
+                            print("pathErr")
+                        case .serverErr:
+                            print("serverErr")
+                        case .networkFail:
+                            print("networkFail")
+                            
+                    }
+                })
+            }
+            else{
+                nickNameTextField.setBorder(borderColor: .veryLightPink, borderWidth: 1)
+                hideWarning()
+                self.layoutTableView.reloadData()
+                if (ProfileEditIntroduceTVC.isIntroduceValid! &&  (self.introduce != UserDefaults.standard.string(forKey: "UserProfileIntroduce") || self.selectedKeywordIdx != UserDefaults.standard.integer(forKey:"UserProfileKeyIdx"))){
+                    DispatchQueue.main.async{
+                        self.callProfileEdit()
+                    }
+                }
+            }
             
         }
         else {
-            nickNameWarningStackView.removeFromSuperview()
-            nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1)
-            self.nickNameWarningStackView = makeWarningStackView(message: "닉네임을 입력해주세요!", isCorrect: false)
+            self.nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1)
+            showWarning(color: .red,title:"닉네임을 입력해주세요!")
+
+
         }
-        self.view.addSubview(nickNameWarningStackView)
         
-        nickNameWarningStackView.snp.makeConstraints {
-            $0.top.equalTo(nickNameTextField.snp.bottom).offset(9)
-            $0.leading.equalToSuperview().offset(16)
-        }
+        
     }
-    
+    func callProfileEdit(){
+        layoutTableView.reloadData()
+        var msg = ""
+        if UserDefaults.standard.string(forKey: "UserProfileIntroduce") != self.introduce{
+            msg = self.introduce
+        }
+        else{
+            msg = UserDefaults.standard.string(forKey: "UserProfileIntroduce")!
+        }
+        MyProfileService.shared.uploadMy(img: profileImageView.image ?? UIImage(named:"warning")!, name: nickNameTextField.text!, introduce: msg , keywordIdx: selectedKeywordIdx, completion: { networkResult in
+            switch networkResult{
+                case .success(let data):
+                    print("####1")
+                    guard let profileData = data as? [MyProfileUploadData] else{
+                        return
+                    }
+                    print("####2")
+                    self.showPopupView("프로필이 수정되었어요!")
+                    UserDefaults.standard.setValue(profileData[0].name, forKey: "UserProfileName")
+                    UserDefaults.standard.setValue(profileData[0].img, forKey: "UserProfileImgLink")
+                    UserDefaults.standard.setValue(profileData[0].introduce, forKey: "UserProfileIntroduce")
+                    UserDefaults.standard.setValue(profileData[0].keywordIdx, forKey: "UserProfileKeyIdx")
+                    
+                case .requestErr(let message):
+                    guard let message = message as? String else { return }
+                    self.showToast(text: message)
+                    print(message)
+                case .pathErr:
+                    print("pathErr")
+                case .serverErr:
+                    print("serverErr")
+                case .networkFail:
+                    print("networkFail")
+            }
+        }
+        )
+    }
     func isValidNickNameInput() -> Bool {
         guard let text = nickNameTextField.text else {
             return false
         }
-        if text.count > 0 && text.count < 6 {
+        if text.count > 0 && text.count < 20 {
             return true
         }
         return false
     }
-    
+    func partialGreenColor(){
+        
+        guard let text = self.nickNameCountLabel.text else {
+            return
+        }
+        nickNameCountLabel.text = "\(text.count)/6"
+        nickNameCountLabel.textColor = .softGreen
+        let attributedString = NSMutableAttributedString(string: nickNameCountLabel.text!)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                      value: UIColor.veryLightPink,
+                                      range: (text as NSString).range(of: "/6"))
+        if nickNameCountLabel.text == "" {
+            nickNameCountLabel.textColor = .veryLightPink
+        }
+        nickNameCountLabel.attributedText = attributedString
+    }
     func setGesture(){
         profileImageView.isUserInteractionEnabled = true
-        let tabGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpProfoleImageView))
+        let tabGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpProfileImageView))
         profileImageView.addGestureRecognizer(tabGesture)
     }
-
-    func makeWarningStackView(message: String, isCorrect: Bool) -> UIStackView{
-
-        var imageStr: String = ""
-        var stateColor: UIColor?
+    
+    
+    func showPopupView(_ popupTitle: String){
         
-        if isCorrect {
-            imageStr = "mySettingsProfileNamePossibleIcPossible"
-            stateColor = .softGreen
+        self.view.addSubview(blurImageView)
+        self.view.addSubview(popupView)
+        self.popupView.addSubview(popupImageView)
+        self.popupView.addSubview(popupTitleLabel)
+        self.popupView.addSubview(yesButton)
+        //constraints
+        self.popupTitleLabel.text = popupTitle
+        self.blurImageView.snp.makeConstraints{
+            $0.top.bottom.leading.trailing.equalToSuperview()
         }
-        else {
-            imageStr = "warning"
-            stateColor = .reddish
+        self.popupView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(310*heightRatio)
+            $0.leading.equalToSuperview().offset(35*widthRatio)
+            $0.bottom.equalToSuperview().offset(-309*heightRatio)
+            $0.trailing.equalToSuperview().offset(-35*widthRatio)
         }
-        
-        let label = UILabel().then {
-            $0.text = message
-            $0.textColor = stateColor
-            $0.font = UIFont.systemFont(ofSize: 13)
-            $0.sizeToFit()
+        self.popupImageView.snp.makeConstraints{
+            $0.top.bottom.leading.trailing.equalToSuperview()
         }
-        
-        let imageView = UIImageView().then {
-            $0.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
-            $0.image = UIImage(named: imageStr)
-        }
-        
-        imageView.snp.makeConstraints {
-            $0.width.height.equalTo(15)
+        self.popupTitleLabel.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(81*heightRatio)
+            $0.bottom.equalToSuperview().offset(-94*heightRatio)
+            $0.centerX.equalToSuperview()
         }
         
-        
-        let stackView = UIStackView().then {
-            $0.spacing = 8
-            $0.distribution = .fill
-            $0.axis = .horizontal
-            $0.addArrangedSubview(imageView)
-            $0.addArrangedSubview(label)
+        self.yesButton.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(131*heightRatio)
+            $0.bottom.equalToSuperview().offset(-25*heightRatio)
+            $0.leading.equalToSuperview().offset(88*widthRatio)
+            $0.trailing.equalToSuperview().offset(-88*widthRatio)
         }
+        //뒤에 있는 컴포넌트 안눌리게
+        nickNameTextField.isUserInteractionEnabled = false
+        keywordButton.forEach {
+            $0.isUserInteractionEnabled = false
+        }
+        backButton.isUserInteractionEnabled = false
+        completeButton.isUserInteractionEnabled = false
         
-        return stackView
     }
     
-    
+    //MARK: - IBAction
     @IBAction func touchKeywordButton(sender: UIButton) {
+        nickNameTextField.resignFirstResponder()
         selectedKeywordIdx = sender.tag
         updateSelectedKeywordButton()
     }
     
-    @IBAction func touchUpDismissButton(sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func touchUpBackButton(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func touchUpCompleteButton(){
-        testValidInput()
-        layoutTableView.reloadData()
+        callNickNameDuplicate()
     }
 }
 
 //MARK: UITextFieldDelegate
 extension ProfileEditVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        layoutTableView.setContentOffset(CGPoint(x: 0, y: textField.frame.minY - 30), animated: true)
+        UIView.animate(withDuration:0.3){
+            self.layoutTableView.setContentOffset(CGPoint(x: 0, y: textField.frame.minY - 70 ), animated: false)
+        }
         textField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+        nickNameCountLabel.alpha = 1
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.setBorder(borderColor: .veryLightPink, borderWidth: 1.0)
+        nickNameCountLabel.alpha = 0
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else {return false}
+            
+            // 중간에 추가되는 텍스트 막기
+            if text.count >= 6 && range.length == 0 && range.location < 6 {
+                return false
+            }
+            
+            return true
+    
+        
     }
 }
 
@@ -269,6 +469,7 @@ extension ProfileEditVC: UITableViewDelegate {
 }
 // MARK: UITableViewDataSource
 extension ProfileEditVC: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isScrollSpended {
             return 5
@@ -290,12 +491,17 @@ extension ProfileEditVC: UITableViewDataSource {
             cell.unSelectedTextfieldDelegate = { [weak self] in
                 self?.isScrollSpended = false
             }
+            cell.introduceDelegate = { text in
+                self.introduce = text
+            }
+            //            cell.introduceTextField.text = UserDefaults.standard.string(forKey: "UserProfileIntroduce")
+            //            self.introduce = cell.introduceTextField.text ?? ""
             return cell
         }
         else {
             return UITableViewCell()
         }
-
+        
     }
 }
 
@@ -313,4 +519,8 @@ extension ProfileEditVC: UIImagePickerControllerDelegate, UINavigationController
         
         self.dismiss(animated: true, completion: nil)
     }
+}
+
+enum WarningColor{
+    case green,red
 }

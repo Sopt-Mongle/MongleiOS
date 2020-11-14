@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kJn-c1-6Jy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Log InVC-->
         <scene sceneID="Mb4-KT-M44">
             <objects>
-                <viewController id="kJn-c1-6Jy" customClass="LogInVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogInVC" id="kJn-c1-6Jy" customClass="LogInVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f6D-xL-Vve">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,7 +49,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZY-Eu-Lxk">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZY-Eu-Lxk">
                                         <rect key="frame" x="28" y="183" width="319" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="5iH-ui-Gl0"/>
@@ -58,7 +60,7 @@
                                             <action selector="logInButtonAction:" destination="kJn-c1-6Jy" eventType="touchUpInside" id="vAZ-bT-Iqw"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzD-S9-orH">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzD-S9-orH">
                                         <rect key="frame" x="57" y="247" width="73" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="G51-mM-1eC"/>
@@ -70,7 +72,7 @@
                                             <action selector="signUpButton:" destination="kJn-c1-6Jy" eventType="touchUpInside" id="SDV-M9-gRq"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6U-Wp-rp9">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6U-Wp-rp9">
                                         <rect key="frame" x="131" y="247" width="88" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="88" id="fr5-ft-qcA"/>
@@ -96,7 +98,7 @@
                                             <constraint firstAttribute="width" constant="1" id="kDn-tV-cHh"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuO-O4-ffD">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuO-O4-ffD">
                                         <rect key="frame" x="220" y="247" width="100" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="EDH-sv-5qD"/>
@@ -106,7 +108,7 @@
                                         <state key="normal" title="Button"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="VuT-Sk-86Y" firstAttribute="leading" secondItem="k6U-Wp-rp9" secondAttribute="trailing" id="2Ct-My-JRm"/>
                                     <constraint firstItem="VuT-Sk-86Y" firstAttribute="top" secondItem="XZY-Eu-Lxk" secondAttribute="bottom" constant="27" id="2Yu-hs-wjx"/>
@@ -149,6 +151,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="SdA-xr-Jbg"/>
                         <color key="backgroundColor" red="0.98432296509999995" green="0.98430186509999995" blue="0.98430591820000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="SdA-xr-Jbg" firstAttribute="trailing" secondItem="vqZ-Vv-3Fw" secondAttribute="trailing" constant="28" id="70i-Dp-oBk"/>
@@ -161,7 +164,6 @@
                             <constraint firstItem="NAa-qI-T8P" firstAttribute="leading" secondItem="SdA-xr-Jbg" secondAttribute="leading" constant="28" id="eSY-Ru-WHx"/>
                             <constraint firstItem="3sC-he-YSd" firstAttribute="top" secondItem="NAa-qI-T8P" secondAttribute="bottom" constant="15" id="zhF-il-Mp5"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="SdA-xr-Jbg"/>
                     </view>
                     <connections>
                         <outlet property="backGroundImageView" destination="z8u-Gu-SgQ" id="YyH-cS-dk0"/>
@@ -186,4 +188,9 @@
             <point key="canvasLocation" x="-71" y="44"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

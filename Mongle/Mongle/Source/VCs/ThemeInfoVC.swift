@@ -32,6 +32,7 @@ class ThemeInfoVC: UIViewController {
     @IBOutlet var bottomBackgroundView: UIView!
     @IBOutlet var sentencesBackGroudViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet var saveButton: UIButton!
     @IBOutlet var backButton: UIButton!
     //MARK:- Property
     var themeImage: UIImage?
@@ -58,6 +59,7 @@ class ThemeInfoVC: UIViewController {
     
     func setInitLayout(){
         themeBackgroundView.backgroundColor = .clear
+        
         if hasTheme {
             
             self.themeNameLabel.text = themeText ?? ""
@@ -80,7 +82,9 @@ class ThemeInfoVC: UIViewController {
                 $0.leading.equalToSuperview().offset(16)
             }
         }
-        
+        writeInThemeButton.makeRounded(cornerRadius: self.writeInThemeButton.bounds.width * 30 / 253)
+        saveButton.makeRounded(cornerRadius: saveButton.bounds.width * 30 / 77)
+        saveButton.setBorder(borderColor: .veryLightPinkSix, borderWidth: 1)
         curatorProfileImageView.makeRounded(cornerRadius: curatorProfileImageView.frame.width / 2)
         sentencesBackgroundView.layer.cornerRadius = 25
         sentencesBackgroundView.clipsToBounds = true
@@ -101,8 +105,10 @@ class ThemeInfoVC: UIViewController {
                     if let _data = data as? ThemeInfoData {
                         self.themeData = _data.theme[0]
                         self.sentences = _data.sentence
-                        self.updateLayout()
-                        self.sentenceTableView.reloadData()
+                        DispatchQueue.main.async {
+                            self.updateLayout()
+                            self.sentenceTableView.reloadData()
+                        }
                     }
                 case .requestErr(let msg):
                     self.showToast(text: msg as! String)
@@ -149,21 +155,38 @@ class ThemeInfoVC: UIViewController {
     
     //MARK:- IBAction
     @IBAction func touchUpBackButton(sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        
+        if let navi = self.navigationController {
+            navi.popViewController(animated: true)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func touchUpWriteInSentenceInThemeButton(_ sender: UIButton) {
-
+        
+        let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
+        
+        if token == "guest" {
+            self.presentLoginRequestPopUp()
+            return
+        }
         guard let dvc = UIStoryboard(name: "WritingSentenceInTheme", bundle: nil).instantiateViewController(identifier: "WritingSentenceInThemeVC") as? WritingSentenceInThemeVC else {
             return
         }
+        
         dvc.themeIdx = self.themeIdx
         dvc.themeName = self.themeData?.theme
         self.navigationController?.pushViewController(dvc, animated: true)
     }
     
     @IBAction func touchUpBookMarkButton(sender: UIButton) {
+        let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
+        
+        if token == "guest" {
+            self.presentLoginRequestPopUp()
+            return
+        }
+        
         ThemeService.shared.putBookmark(idx: self.themeIdx ?? 0) { networkResult in
             switch networkResult {
             case .success(let data):

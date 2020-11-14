@@ -22,6 +22,7 @@ class MyTabVC: UIViewController {
     var profileMsg : String = ""
     var profileKeyword : String?
     var profileKeywordIdx : Int?
+    var profileIntroduce = ""
     
     //MARK:- IBOutlet
     @IBOutlet weak var myProfileImage: UIImageView!
@@ -49,9 +50,9 @@ class MyTabVC: UIViewController {
         }
         else{
             pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .reverse, animated: true, completion: nil)
-
+            
         }
-    
+        
         pageInstance?.keyValue.curPresentViewIndex = item
         themeMenuBTN.setTitleColor(.softGreen, for: .normal)
         themeMenuLabel.textColor = .softGreen
@@ -99,7 +100,7 @@ class MyTabVC: UIViewController {
     //MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setMenu()
     }
     override func viewWillDisappear(_ animated: Bool) {
         observingList.forEach { $0.invalidate() }
@@ -112,47 +113,49 @@ class MyTabVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "pageSegue" {
+        if segue.identifier == "pageSegue2" {
+            print("#####왜안돼1")
             pageInstance = segue.destination as? MyTabPageVC
+            print("#####?")
             let ob = pageInstance?.keyValue.observe(\.curPresentViewIndex,
-                         options: [.new, .old]) {
-                            [weak self] (changeObject, value) in
-                            print(changeObject.curPresentViewIndex)
-                            if (changeObject.curPresentViewIndex == 0){
-                                UIView.animate(withDuration: 0.3){
-                                    self!.themeMenuBTN.setTitleColor(.softGreen, for: .normal)
-                                    self!.themeMenuLabel.textColor = .softGreen
-                                    self!.sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-                                    self!.sentenceMenuLabel.textColor = .veryLightPink
-                                    self!.curatorMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-                                    self!.curatorMenuLabel.textColor = .veryLightPink
-                                    
-                                }
-                            }
-                            else if (changeObject.curPresentViewIndex == 1){
-                                UIView.animate(withDuration: 0.3){
-                                    self!.themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-                                    self!.themeMenuLabel.textColor = .veryLightPink
-                                    self!.sentenceMenuBTN.setTitleColor(.softGreen, for: .normal)
-                                    self!.sentenceMenuLabel.textColor = .softGreen
-                                    self!.curatorMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-                                    self!.curatorMenuLabel.textColor = .veryLightPink
-                                }
-                            }
-                            else{
-                                UIView.animate(withDuration: 0.3){
-                                    self!.themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-                                    self!.themeMenuLabel.textColor = .veryLightPink
-                                    self!.sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-                                    self!.sentenceMenuLabel.textColor = .veryLightPink
-                                    self!.curatorMenuBTN.setTitleColor(.softGreen, for: .normal)
-                                    self!.curatorMenuLabel.textColor = .softGreen
-                                }
-                            }
-                            
-                            
-                            print("kvo test")
-                            
+                                                    options: [.new, .old]) {
+                [weak self] (changeObject, value) in
+                print("CurrentIndex\(changeObject.curPresentViewIndex))")
+                if (changeObject.curPresentViewIndex == 0){
+                    UIView.animate(withDuration: 0.3){
+                        self!.themeMenuBTN.setTitleColor(.softGreen, for: .normal)
+                        self!.themeMenuLabel.textColor = .softGreen
+                        self!.sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                        self!.sentenceMenuLabel.textColor = .veryLightPink
+                        self!.curatorMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                        self!.curatorMenuLabel.textColor = .veryLightPink
+                        
+                    }
+                }
+                else if (changeObject.curPresentViewIndex == 1){
+                    UIView.animate(withDuration: 0.3){
+                        self!.themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                        self!.themeMenuLabel.textColor = .veryLightPink
+                        self!.sentenceMenuBTN.setTitleColor(.softGreen, for: .normal)
+                        self!.sentenceMenuLabel.textColor = .softGreen
+                        self!.curatorMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                        self!.curatorMenuLabel.textColor = .veryLightPink
+                    }
+                }
+                else{
+                    UIView.animate(withDuration: 0.3){
+                        self!.themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                        self!.themeMenuLabel.textColor = .veryLightPink
+                        self!.sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                        self!.sentenceMenuLabel.textColor = .veryLightPink
+                        self!.curatorMenuBTN.setTitleColor(.softGreen, for: .normal)
+                        self!.curatorMenuLabel.textColor = .softGreen
+                    }
+                }
+                
+                
+                print("kvo test")
+                
             }
             
             observingList.append(ob!)
@@ -164,55 +167,59 @@ class MyTabVC: UIViewController {
         MyProfileService.shared.getMy(){ networkResult in
             
             switch networkResult {
-            case .success(let theme):
-                guard let data = theme as? [MyProfileData] else {
-                    return
-                }
-                
-                self.myProfileData = data[0]
-                self.profileImg = self.myProfileData!.img
-                self.profileName = self.myProfileData!.name
-                self.profileKeywordIdx = self.myProfileData!.keywordIdx
-                
-                switch self.myProfileData!.keywordIdx{
-                
-                case 1:
-                    self.profileKeyword = "감성자극"
-                case 2:
-                    self.profileKeyword = "동기부여"
-                case 3:
-                    self.profileKeyword = "자기계발"
-                case 4:
-                    self.profileKeyword = "깊은생각"
-                case 5:
-                    self.profileKeyword = "독서기록"
-                case 6:
-                    self.profileKeyword = "일상문장"
-                default:
-                    self.profileKeyword = ""
-                
-                
-                }
-                
-                print("내 프로필: \(data)")
-                DispatchQueue.main.async {
-                    self.setMenu()
-                    self.setProfile()
-                }
-                
-                
-            case .requestErr(let message):
-                guard let message = message as? String else { return }
-                
-                self.showToast(text: message)
-                print(message)
-            case .pathErr:
-                
-                print("path")
-            case .serverErr:
-                print("serverErr")
-            case .networkFail:
-                print("networkFail")
+                case .success(let theme):
+                    guard let data = theme as? [MyProfileData] else {
+                        return
+                    }
+                    
+                    self.myProfileData = data[0]
+                    self.profileImg = self.myProfileData!.img ?? ""
+                    self.profileName = self.myProfileData!.name
+                    self.profileKeywordIdx = self.myProfileData!.keywordIdx
+                    self.profileIntroduce = self.myProfileData?.introduce ?? ""
+                    UserDefaults.standard.setValue(self.profileName, forKey: "UserProfileName")
+                    UserDefaults.standard.setValue(self.profileImg, forKey: "UserProfileImgLink")
+                    UserDefaults.standard.setValue(self.profileKeywordIdx, forKey: "UserProfileKeyIdx")
+                    UserDefaults.standard.setValue(self.profileIntroduce, forKey: "UserProfileIntroduce")
+                    
+                    switch self.myProfileData!.keywordIdx{
+                        
+                        case 1:
+                            self.profileKeyword = "감성자극"
+                        case 2:
+                            self.profileKeyword = "동기부여"
+                        case 3:
+                            self.profileKeyword = "자기계발"
+                        case 4:
+                            self.profileKeyword = "깊은생각"
+                        case 5:
+                            self.profileKeyword = "독서기록"
+                        case 6:
+                            self.profileKeyword = "일상문장"
+                        default:
+                            self.profileKeyword = ""
+                            
+                            
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.setMenu()
+                        self.setProfile()
+                    }
+                    
+                    
+                case .requestErr(let message):
+                    guard let message = message as? String else { return }
+                    
+                    self.showToast(text: message)
+                    print(message)
+                case .pathErr:
+                    
+                    print("path")
+                case .serverErr:
+                    print("serverErr")
+                case .networkFail:
+                    print("networkFail")
             }
         }
     }
@@ -244,30 +251,29 @@ class MyTabVC: UIViewController {
         MyThemeService.shared.getMy(){ networkResult in
             
             switch networkResult {
-            case .success(let theme):
-                guard let data = theme as? MyThemeData else {
-                    return
-                }
-                print("성공")
-                self.themeNum = data.save.count + data.write.count
-                print("내 프로필 테마: \(data)")
-                DispatchQueue.main.async {
-                    self.themeMenuLabel.text = "\(self.themeNum)"
-                }
-                
-                
-            case .requestErr(let message):
-                guard let message = message as? String else { return }
-                
-                self.showToast(text: message)
-                print(message)
-            case .pathErr:
-                
-                print("path")
-            case .serverErr:
-                print("serverErr")
-            case .networkFail:
-                print("networkFail")
+                case .success(let theme):
+                    guard let data = theme as? MyThemeData else {
+                        return
+                    }
+                    self.themeNum = data.save.count + data.write.count
+                    DispatchQueue.main.async {
+                        self.themeMenuLabel.text = "\(self.themeNum)"
+                        self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![0])!], direction: .forward, animated: false, completion: nil)
+                    }
+                    
+                    
+                case .requestErr(let message):
+                    guard let message = message as? String else { return }
+                    
+                    self.showToast(text: message)
+                    print(message)
+                case .pathErr:
+                    
+                    print("path")
+                case .serverErr:
+                    print("serverErr")
+                case .networkFail:
+                    print("networkFail")
             }
         }
     }
@@ -275,29 +281,28 @@ class MyTabVC: UIViewController {
         MySentenceService.shared.getMy(){ networkResult in
             
             switch networkResult {
-            case .success(let theme):
-                guard let data = theme as? MySentenceData else {
-                    return
-                }
-                self.sentenceNum = data.save.count + data.write.count
-                print("내 프로필 테마: \(data)")
-                DispatchQueue.main.async {
-                    self.sentenceMenuLabel.text = "\(self.sentenceNum)"
-                }
-                
-                
-            case .requestErr(let message):
-                guard let message = message as? String else { return }
-                
-                self.showToast(text: message)
-                print(message)
-            case .pathErr:
-                
-                print("path")
-            case .serverErr:
-                print("serverErr")
-            case .networkFail:
-                print("networkFail")
+                case .success(let theme):
+                    guard let data = theme as? MySentenceData else {
+                        return
+                    }
+                    self.sentenceNum = data.save.count + data.write.count
+                    DispatchQueue.main.async {
+                        self.sentenceMenuLabel.text = "\(self.sentenceNum)"
+                    }
+                    
+                    
+                case .requestErr(let message):
+                    guard let message = message as? String else { return }
+                    
+                    self.showToast(text: message)
+                    print(message)
+                case .pathErr:
+                    
+                    print("path")
+                case .serverErr:
+                    print("serverErr")
+                case .networkFail:
+                    print("networkFail")
             }
         }
     }
@@ -305,33 +310,43 @@ class MyTabVC: UIViewController {
         MyCuratorService.shared.getMy(){ networkResult in
             
             switch networkResult {
-            case .success(let theme):
-                guard let data = theme as? [MyCuratorData] else {
-                    return
-                }
-                
-                self.curatorNum = data.count
-                
-                DispatchQueue.main.async {
-                    self.curatorMenuLabel.text = "\(self.curatorNum)"
-                }
-                
-                
-            case .requestErr(let message):
-                guard let message = message as? String else { return }
-                
-                self.showToast(text: message)
-                print(message)
-            case .pathErr:
-                
-                print("path")
-            case .serverErr:
-                print("serverErr")
-            case .networkFail:
-                print("networkFail")
+                case .success(let theme):
+                    guard let data = theme as? [MyCuratorData] else {
+                        return
+                    }
+                    
+                    self.curatorNum = data.count
+                    
+                    DispatchQueue.main.async {
+                        self.curatorMenuLabel.text = "\(self.curatorNum)"
+                    }
+                    
+                    
+                case .requestErr(let message):
+                    guard let message = message as? String else { return }
+                    
+                    self.showToast(text: message)
+                    print(message)
+                case .pathErr:
+                    
+                    print("path")
+                case .serverErr:
+                    print("serverErr")
+                case .networkFail:
+                    print("networkFail")
             }
         }
     }
     
-
+    
 }
+
+struct MyProfileStruct{
+    var curatorIdx: Int = 0
+    var name: String = ""
+    var image: UIImage?
+    var introduce: String?
+    var keywordIdx: Int?
+    var subscribe: Int = 0
+}
+

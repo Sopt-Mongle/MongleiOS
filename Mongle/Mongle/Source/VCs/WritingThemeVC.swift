@@ -216,6 +216,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         { networkResult in
             switch networkResult {
             case .success(_) :
+                
                 guard let vcName = UIStoryboard(name: "EndOfMakingTheme",
                                                 bundle: nil).instantiateViewController(
                                                     withIdentifier: "EndOfMakingThemeVC") as? EndOfMakingThemeVC
@@ -224,7 +225,6 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
                 }
                 
                 vcName.modalPresentationStyle = .fullScreen
-                
                 self.present(vcName, animated: true, completion: nil)
             case .requestErr(let message):
                 guard let message = message as? String else {return}

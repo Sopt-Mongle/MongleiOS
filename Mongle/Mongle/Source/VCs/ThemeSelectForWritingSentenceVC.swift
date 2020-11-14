@@ -227,7 +227,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController, UITextFieldDelegate {
                 
                 guard let themeForSentences = data as? [ThemeSelectForWriteData] else {return}
                 
-                self.themes.append(noName)
+//                self.themes.append(noName)
                 for themeForSentence in themeForSentences{
                     self.themes.append(themeForSentence)
                     

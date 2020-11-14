@@ -24,7 +24,7 @@ class EndOfWritingSentenceVC: UIViewController {
     //MARK:- User Define Variables
     
     let deviceBound = UIScreen.main.bounds.height/812.0
-    
+    var nickName = "몽글이"
     
     //MARK:- LifeCycle Methods
     override func viewDidLoad() {
@@ -43,6 +43,8 @@ class EndOfWritingSentenceVC: UIViewController {
     //MARK:- User Define Functions
     func setItems(){
         secondLabel.text = "몽글이님의 문장으로\n몽글이 더욱 풍부해졌어요!"
+        setNickName()
+        
         secondLabel.textColor = .brownGreyTwo
         EndImageView.image = UIImage(named: "writingSentenceFinishImgSentence")?.withRenderingMode(.alwaysOriginal)
         sentenceCheckButton.backgroundColor = .softGreen
@@ -61,6 +63,32 @@ class EndOfWritingSentenceVC: UIViewController {
         
     }
     
+    
+    
+    func setNickName(){
+        MyProfileService.shared.getMy(){ networkResult in
+            
+            switch networkResult {
+            case .success(let theme):
+                guard let data = theme as? [MyProfileData] else {
+                    return
+                }
+                self.nickName = data[0].name
+                self.secondLabel.text = "\(self.nickName)님의 테마를 의미있는 문장으로\n채워보는 건 어떨까요?"
+              
+            case .requestErr(let message):
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+        
+    }
     
      
     func imageAnimation1(){
@@ -121,6 +149,7 @@ class EndOfWritingSentenceVC: UIViewController {
     
     @IBAction func backToMainButtonAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+        
         
     }
     

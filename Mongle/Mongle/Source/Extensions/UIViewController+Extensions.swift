@@ -10,6 +10,8 @@ import UIKit
 
 extension UIViewController {
     
+    
+    
     // UIAlertController without handler
     func simpleAlert(title: String, message: String) {
         
@@ -91,6 +93,43 @@ extension UIViewController {
         return value_
     }//func gfno
     
+    func presentLoginRequestPopUp() {
+        let popUpView = LoginRequestPopupView(frame: .zero)
+        let blurView = UIView(frame: .zero).then {
+            $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        }
+        self.view.addSubview(blurView)
+        self.view.addSubview(popUpView)
+        
+        blurView.snp.makeConstraints {
+            $0.top.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        popUpView.snp.makeConstraints {
+            $0.width.equalTo(304)
+            $0.height.equalTo(233)
+            $0.centerX.centerY.equalToSuperview()
+        }
+        
+        popUpView.signInButtonClicked = { [weak self] in
+            let loginStoryboard = UIStoryboard(name: "LogIn", bundle: nil)
+            guard let loginVC = loginStoryboard.instantiateViewController(identifier: "LogInVC") as? LogInVC else {
+                return
+            }
+            self?.present(loginVC, animated: true, completion: {
+                blurView.removeFromSuperview()
+                popUpView.removeFromSuperview()
+            })
+        }
+        
+        popUpView.cancelButtonCliecked = { [weak self] in
+            blurView.removeFromSuperview()
+            popUpView.removeFromSuperview()
+        }
+        
+    }
+    
+    
     func showToast(text: String){
         let toast = ToastView(frame: CGRect(x: 0, y: 0, width: 343, height: 84))
         toast.setLabel(text: text)
@@ -118,6 +157,8 @@ extension UIViewController {
 //                toast.removeFromSuperview()
             })
         })
+        
+
         
 //
 //        UIView.animate(withDuration: 0.1, animations: {

@@ -1,19 +1,19 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
       "filename" : "sentenceThemeOBtnBack.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "idiom" : "universal"
     },
     {
-      "idiom" : "universal",
+      "filename" : "sentenceThemeOBtnBack@2x.png",
       "scale" : "2x",
-      "filename" : "sentenceThemeOBtnBack@2x.png"
+      "idiom" : "universal"
     },
     {
-      "scale" : "3x",
+      "filename" : "sentenceThemeOBtnBack@3x.png",
       "idiom" : "universal",
-      "filename" : "sentenceThemeOBtnBack@3x.png"
+      "scale" : "3x"
     }
   ],
   "info" : {

@@ -15,7 +15,7 @@ struct ThemeService {
     static let shared = ThemeService()
     
     func getThemeInfo(idx: Int, completion: @escaping ((NetworkResult<Any>)->Void)) {
-        let token = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue)!
+        let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
         
         let header: HTTPHeaders = [
             "Content-Type":"application/json",

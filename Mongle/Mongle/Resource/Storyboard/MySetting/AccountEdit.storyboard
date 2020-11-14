@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleSDGothicNeoM.ttf">
+            <string>AppleSDGothicNeoM00</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Account EditVC-->
+        <scene sceneID="CQ8-uJ-PsK">
+            <objects>
+                <viewController storyboardIdentifier="AccountEditVC" id="UeQ-yD-InJ" customClass="AccountEditVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dpG-gH-HTt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6q-Uc-44B">
+                                <rect key="frame" x="0.0" y="44" width="414" height="49.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDK-G4-JHP">
+                                        <rect key="frame" x="173.5" y="4" width="67.5" height="23"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="23" id="B9c-Jl-BuH"/>
+                                        </constraints>
+                                        <attributedString key="attributedText">
+                                            <fragment content="계정 설정">
+                                                <attributes>
+                                                    <font key="NSFont" size="18" name="AppleSDGothicNeo-SemiBold"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zy1-Uh-atb">
+                                        <rect key="frame" x="0.0" y="-8.5" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="rSF-1a-0se"/>
+                                            <constraint firstAttribute="width" constant="48" id="vKg-UX-02V"/>
+                                        </constraints>
+                                        <state key="normal" image="curatorInfoThemeSubscribeBtnBack"/>
+                                        <connections>
+                                            <action selector="touchUpBack:" destination="UeQ-yD-InJ" eventType="touchUpInside" id="G65-br-C6c"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Zy1-Uh-atb" firstAttribute="leading" secondItem="N6q-Uc-44B" secondAttribute="leading" id="C2f-rL-z77"/>
+                                    <constraint firstAttribute="width" secondItem="N6q-Uc-44B" secondAttribute="height" multiplier="375:45" id="WM5-rX-IrD"/>
+                                    <constraint firstItem="DDK-G4-JHP" firstAttribute="top" secondItem="N6q-Uc-44B" secondAttribute="top" constant="4" id="b2K-61-rdq"/>
+                                    <constraint firstItem="Zy1-Uh-atb" firstAttribute="centerY" secondItem="DDK-G4-JHP" secondAttribute="centerY" id="dGw-FE-AnC"/>
+                                    <constraint firstItem="DDK-G4-JHP" firstAttribute="centerX" secondItem="N6q-Uc-44B" secondAttribute="centerX" id="mLl-PM-NkW"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nKf-Wz-97z">
+                                <rect key="frame" x="0.0" y="93.5" width="414" height="768.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccountEditTVC" id="bYe-9m-FG0" customClass="AccountEditTVC" customModule="Mongle" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bYe-9m-FG0" id="1cU-3B-EJV">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mySettingsIcArrow1" translatesAutoresizingMaskIntoConstraints="NO" id="49i-fD-zHn">
+                                                    <rect key="frame" x="391" y="16" width="6" height="10"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="6" id="FFa-Fx-hxv"/>
+                                                        <constraint firstAttribute="height" constant="10" id="W6T-gH-V99"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="accountEditMenu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIP-H6-NvQ">
+                                                    <rect key="frame" x="20" y="11" width="116" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="fvi-zE-BOI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeoM00" family="AppleSDGothicNeoM00" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="49i-fD-zHn" secondAttribute="trailing" constant="17" id="4Cz-q3-NnM"/>
+                                                <constraint firstItem="sIP-H6-NvQ" firstAttribute="top" secondItem="1cU-3B-EJV" secondAttribute="top" constant="11" id="Km7-LE-Zzt"/>
+                                                <constraint firstAttribute="bottom" secondItem="sIP-H6-NvQ" secondAttribute="bottom" constant="13" id="R87-4G-GNg"/>
+                                                <constraint firstItem="sIP-H6-NvQ" firstAttribute="leading" secondItem="1cU-3B-EJV" secondAttribute="leading" constant="16" id="RpP-Rd-H64"/>
+                                                <constraint firstItem="49i-fD-zHn" firstAttribute="centerY" secondItem="sIP-H6-NvQ" secondAttribute="centerY" id="dTi-ku-aoF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="accountEditMenuLabel" destination="sIP-H6-NvQ" id="xHN-eD-Zqs"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5VB-3i-tUq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nKf-Wz-97z" firstAttribute="top" secondItem="N6q-Uc-44B" secondAttribute="bottom" id="GlN-6K-gh6"/>
+                            <constraint firstItem="nKf-Wz-97z" firstAttribute="leading" secondItem="5VB-3i-tUq" secondAttribute="leading" id="JoD-f3-jAg"/>
+                            <constraint firstItem="N6q-Uc-44B" firstAttribute="leading" secondItem="5VB-3i-tUq" secondAttribute="leading" id="VFZ-cd-N9v"/>
+                            <constraint firstItem="5VB-3i-tUq" firstAttribute="trailing" secondItem="nKf-Wz-97z" secondAttribute="trailing" id="cYy-vv-MWZ"/>
+                            <constraint firstItem="5VB-3i-tUq" firstAttribute="trailing" secondItem="N6q-Uc-44B" secondAttribute="trailing" id="cpr-Ee-kJE"/>
+                            <constraint firstItem="N6q-Uc-44B" firstAttribute="top" secondItem="5VB-3i-tUq" secondAttribute="top" id="dHu-aI-a9n"/>
+                            <constraint firstItem="5VB-3i-tUq" firstAttribute="bottom" secondItem="nKf-Wz-97z" secondAttribute="bottom" id="dcu-We-JRb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="accountEditTableView" destination="nKf-Wz-97z" id="CnG-IT-McX"/>
+                        <outlet property="backButton" destination="Zy1-Uh-atb" id="fWy-Ec-nB9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lPX-fW-WPe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-88.405797101449281" y="-278.57142857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="curatorInfoThemeSubscribeBtnBack" width="10.5" height="19"/>
+        <image name="mySettingsIcArrow1" width="7" height="12.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
