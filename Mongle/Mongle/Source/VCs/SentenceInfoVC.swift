@@ -42,7 +42,7 @@ class SentenceInfoVC: UIViewController {
     var themeImage: UIImage? = UIImage(named: "curatorImgTheme1")
     var otherSentences: [Sentence] = []
     var hasTheme: Bool = true
-    var isMySentence: Bool = true
+    var isMySentence: Bool = false
     var canDisplayOtherSentece: Bool = true
     var sentenceIdx: Int?
     var themeIdx: Int?
@@ -172,6 +172,7 @@ class SentenceInfoVC: UIViewController {
                     self.sentence?.alreadyLiked = _data.isLike
                     self.sentence?.likes = _data.likes
                     self.updateStateLayout()
+                    
                     if _data.isLike {
 //                        self.showToast(text: "좋아요 성공")
                     }
@@ -418,7 +419,6 @@ extension SentenceInfoVC: UITableViewDataSource {
                              publisherName: self.sentence?.publisher ?? "",
                              bookImageUrl: self.sentence?.writerImg ?? "")
             
-//            cell.sentenceLabel.text = self.sentenceText
             cell.editButtonDelegate = { [weak self] sheet in
                 let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
                 
@@ -462,7 +462,7 @@ extension SentenceInfoVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceInThemeTVC.identifier, for: indexPath) as? SentenceInThemeTVC else {
                 return UITableViewCell()
             }
-            print(indexPath.row)
+
             let otherSentnece = self.otherSentences[indexPath.row]
 
             cell.setData(sentence: otherSentnece.sentence,

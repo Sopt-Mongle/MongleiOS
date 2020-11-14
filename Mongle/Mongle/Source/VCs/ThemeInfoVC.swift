@@ -155,7 +155,10 @@ class ThemeInfoVC: UIViewController {
     
     //MARK:- IBAction
     @IBAction func touchUpBackButton(sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        
+        if let navi = self.navigationController {
+            navi.popViewController(animated: true)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
