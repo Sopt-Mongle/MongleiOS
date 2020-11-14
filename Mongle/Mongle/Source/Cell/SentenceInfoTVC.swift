@@ -55,7 +55,6 @@ class SentenceInfoTVC: UITableViewCell {
         self.bookNameLabel.text = bookName
         self.bookWriterNameLabel.text = writerName
         self.bookPublisherNameLabel.text = publisherName
-//        self.bookImageView.imageFromUrl(bookImageUrl, defaultImgPath: "themeWritingSentenceBook4ImgBook")
         self.bookImageView.image = UIImage(named: "themeWritingSentenceBook4ImgBook")
     }
 }

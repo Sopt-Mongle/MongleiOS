@@ -72,7 +72,6 @@ class SentenceInfoVC: UIViewController {
             case .success(let data):
                 if let _data = data as? [Sentence] {
                     self.sentence = _data[0]
-                    print(self.sentence?.alreadyBookmarked)
                     DispatchQueue.main.async {
                         self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
                         self.updateStateLayout()
@@ -93,6 +92,7 @@ class SentenceInfoVC: UIViewController {
     func bindThemeInfo() {
         themeImageView.image = themeImage
         themeNameLabel.text = themeText
+        themeNameLabel.sizeToFit()
     }
     
     func getOtherSentece(){
@@ -141,7 +141,6 @@ class SentenceInfoVC: UIViewController {
         }
         
         self.bookmarkImageView.isHighlighted = _sentence.alreadyBookmarked
-        print(_sentence.alreadyBookmarked)
         if _sentence.alreadyBookmarked {
             self.bookCountLabel.textColor = .softGreen
         }
@@ -208,9 +207,6 @@ class SentenceInfoVC: UIViewController {
                     self.updateStateLayout()
                     if _data.isSave {
                         self.showToast(text: "문장이 저장되었어요!")
-                    }
-                    else {
-//                        self.showToast(text: "북마크 해제")
                     }
                 }
             case .requestErr(let msg):
