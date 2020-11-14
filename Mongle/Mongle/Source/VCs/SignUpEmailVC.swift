@@ -22,6 +22,8 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
     
     @IBOutlet var wordTexts: [UITextField]!
     
+    @IBOutlet weak var codeWarningLabel: UILabel!
+    @IBOutlet weak var codeWarningImage: UIImageView!
     @IBOutlet var textCircles: [UIImageView]!
     @IBOutlet weak var emailNoticeLabel: UILabel!
     
@@ -109,6 +111,11 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
         $0.setBorder(borderColor: .softGreen, borderWidth: 1)
         $0.addTarget(self, action: #selector(touchUpYesButton), for: .touchUpInside)
     }
+    
+  
+    
+   
+    
     
     var wordIndex = 0
     var isEdited : [Bool] = [false,false,false,false,false,false]
@@ -323,7 +330,13 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
         emailNoticeLabel.text = "입력한 \(UserDefaults.standard.string(forKey: "email")!)으로 전송된 메일 속 본인 확인 인증 코드를 입력해주세요."
         emailNoticeLabel.numberOfLines = 0
         emailNoticeLabel.textAlignment = .center
+        codeWarningLabel.text = "잘못된 코드에요! 다시 입력해주세요!"
+        codeWarningLabel.textColor = .reddish
+        codeWarningLabel.font = UIFont(name: "AppleSDGothicNeoR00", size: 13)
         
+        codeWarningLabel.alpha = 0
+        codeWarningImage.image = UIImage(named: "joinStep35IcWarning")
+        codeWarningImage.alpha = 0
     }
     
     func setConstraints(){
@@ -420,7 +433,8 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
+        codeWarningImage.alpha = 0
+        codeWarningLabel.alpha = 0
         switch textField {
         case wordTexts[0]:
             textCircles[0].image = UIImage(named: "joinStep3IcNumber1")
@@ -821,6 +835,11 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
             
         }
         else{
+           
+            self.view.endEditing(true)
+            codeWarningImage.alpha = 1
+            codeWarningLabel.alpha = 1
+            
             
             
             

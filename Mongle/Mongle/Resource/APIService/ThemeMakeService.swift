@@ -33,10 +33,12 @@ struct ThemeMakeService {
         dataRequest.responseData { dataResponse in
             switch dataResponse.result {
             case .success :
+                print("auto login")
                 guard let statusCode = dataResponse.response?.statusCode else {return}
                 guard let data = dataResponse.value else {return}
                 let networkResult = self.judge(by: statusCode, data)
                 completion(networkResult)
+                
               
             case .failure :
                 completion(.networkFail)

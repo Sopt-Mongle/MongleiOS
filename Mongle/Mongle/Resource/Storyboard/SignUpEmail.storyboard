@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tzz-Wy-rhX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tzz-Wy-rhX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -221,10 +221,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="40h-Ea-moV">
+                                <rect key="frame" x="180" y="404" width="54" height="15"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1ky-rf-eTF">
+                                        <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="15" id="hZp-ha-hbl"/>
+                                            <constraint firstAttribute="height" constant="15" id="nOS-v4-gtK"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JN-B2-Mgt">
+                                        <rect key="frame" x="23" y="0.0" width="31" height="15"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tMD-oP-Y1l"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="40h-Ea-moV" firstAttribute="top" secondItem="rdP-6A-al8" secondAttribute="bottom" constant="10" id="2x7-b6-M0n"/>
                             <constraint firstItem="oiU-Ox-pAQ" firstAttribute="centerX" secondItem="tMD-oP-Y1l" secondAttribute="centerX" id="6vJ-sc-LKX"/>
                             <constraint firstItem="nVu-tB-CcD" firstAttribute="top" secondItem="qLb-5p-1T8" secondAttribute="top" id="9QK-6b-rEo"/>
                             <constraint firstItem="427-ln-FdQ" firstAttribute="centerX" secondItem="tMD-oP-Y1l" secondAttribute="centerX" id="Gph-bG-uF1"/>
@@ -241,6 +260,7 @@
                             <constraint firstItem="a4z-gW-xeR" firstAttribute="leading" secondItem="tMD-oP-Y1l" secondAttribute="leading" constant="28" id="R1c-LC-Ap2"/>
                             <constraint firstItem="tMD-oP-Y1l" firstAttribute="trailing" secondItem="2Ea-ca-kVf" secondAttribute="trailing" constant="41" id="Vh3-kN-RdP"/>
                             <constraint firstItem="TP3-qp-5WH" firstAttribute="top" secondItem="cV6-6H-UkO" secondAttribute="bottom" constant="20" id="Woa-K3-CQC"/>
+                            <constraint firstItem="40h-Ea-moV" firstAttribute="centerX" secondItem="tMD-oP-Y1l" secondAttribute="centerX" id="Zgt-Bp-2OU"/>
                             <constraint firstItem="WKG-m0-rIr" firstAttribute="top" secondItem="oiU-Ox-pAQ" secondAttribute="bottom" constant="16" id="adQ-Rr-ErJ"/>
                             <constraint firstItem="qLb-5p-1T8" firstAttribute="centerX" secondItem="tMD-oP-Y1l" secondAttribute="centerX" id="bAS-JE-YYR"/>
                             <constraint firstItem="cV6-6H-UkO" firstAttribute="centerX" secondItem="tMD-oP-Y1l" secondAttribute="centerX" id="g3u-RB-FtU"/>
@@ -265,6 +285,8 @@
                         <outlet property="backButtonIMage" destination="Xo5-t5-zv9" id="1TE-G6-hWY"/>
                         <outlet property="batToMongle" destination="NKb-GO-4iL" id="nFW-HX-CW4"/>
                         <outlet property="buttonToButton" destination="stY-eJ-6jS" id="HHt-Or-axX"/>
+                        <outlet property="codeWarningImage" destination="1ky-rf-eTF" id="ALM-xQ-6lZ"/>
+                        <outlet property="codeWarningLabel" destination="8JN-B2-Mgt" id="VYV-da-TvO"/>
                         <outlet property="emailMongleImage" destination="cV6-6H-UkO" id="C1s-U5-T89"/>
                         <outlet property="emailNoticeLabel" destination="nVu-tB-CcD" id="amX-E7-CJe"/>
                         <outlet property="labelToNotice" destination="w4W-vz-19l" id="yXu-W0-Vqj"/>
