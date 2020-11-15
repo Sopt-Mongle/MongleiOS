@@ -44,6 +44,7 @@ class SentenceInfoVC: UIViewController {
     var hasTheme: Bool = true
     var isMySentence: Bool = true
     var canDisplayOtherSentece: Bool = true
+    var myNickName: String = ""
     var sentenceIdx: Int?
     var themeIdx: Int?
     
@@ -52,12 +53,37 @@ class SentenceInfoVC: UIViewController {
         addGesture()
         bindThemeInfo()
         makeRoundTableView()
+        
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
         getSentenceInfo()
         getOtherSentece()
+    }
+    
+    func getMyNickName(completion: @escaping (String)->()) {
+        MyProfileService.shared.getMy(){ networkResult in
+            
+            switch networkResult {
+            case .success(let theme):
+                guard let data = theme as? [MyProfileData] else {
+                    return
+                }
+                
+                completion(data[0].name)
+                
+            case .requestErr(let message):
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
     
     func makeRoundTableView() {
@@ -72,9 +98,18 @@ class SentenceInfoVC: UIViewController {
             case .success(let data):
                 if let _data = data as? [Sentence] {
                     self.sentence = _data[0]
-                    DispatchQueue.main.async {
-                        self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
-                        self.updateStateLayout()
+                    self.getMyNickName { [weak self] nickName in
+                        if nickName == self?.sentence?.writer! {
+                            self?.isMySentence = true
+                        }
+                        else {
+                            self?.isMySentence = false
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self?.layoutTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
+                            self?.updateStateLayout()
+                        }
                     }
                 }
             case .requestErr(let msg):
@@ -132,21 +167,22 @@ class SentenceInfoVC: UIViewController {
         self.likeCountLabel.text = likeCountText
         self.bookCountLabel.text = savesCountText
         
-        if _sentence.alreadyLiked {
-            self.likeCountLabel.textColor = .softGreen
-            
-        }
-        else {
-            self.likeCountLabel.textColor = .veryLightPink
-        }
-        
+//        if _sentence.alreadyLiked {
+//            self.likeCountLabel.textColor = .softGreen
+//
+//        }
+//        else {
+//            self.likeCountLabel.textColor = .veryLightPink
+//        }
+        self.likeImageview.isHighlighted = _sentence.alreadyLiked
         self.bookmarkImageView.isHighlighted = _sentence.alreadyBookmarked
-        if _sentence.alreadyBookmarked {
-            self.bookCountLabel.textColor = .softGreen
-        }
-        else {
-            self.bookCountLabel.textColor = .veryLightPink
-        }
+//
+//        if _sentence.alreadyBookmarked {
+//            self.bookCountLabel.textColor = .softGreen
+//        }
+//        else {
+//            self.bookCountLabel.textColor = .veryLightPink
+//        }
     }
     
     func addGesture(){
