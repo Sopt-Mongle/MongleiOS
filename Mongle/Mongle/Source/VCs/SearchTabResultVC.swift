@@ -26,6 +26,8 @@ class SearchTabResultVC: UIViewController {
             "SearchResultThemeVC") as? SearchResultThemeVC else {
                 return
         }
+        pageInstance?.searchKey = searchKeyword
+        pageInstance?.viewDidLoad()
         //themeVC.setSearchThemeData(searchKeyword)
         
     }
@@ -103,6 +105,9 @@ class SearchTabResultVC: UIViewController {
             observingList.append(ob!)
             
         }
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
 

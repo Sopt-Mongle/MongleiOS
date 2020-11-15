@@ -9,7 +9,7 @@
 import UIKit
 
 class SignUpRuleVC: UIViewController {
-
+    var flag = false
     @IBOutlet weak var xButton: UIButton!
     @IBOutlet weak var xImageView: UIImageView!
     @IBOutlet weak var wholeImageView: UIImageView!
@@ -40,7 +40,14 @@ class SignUpRuleVC: UIViewController {
 
     @IBAction func xButtonAction(_ sender: Any) {
         print("called")
-        dismiss(animated: true, completion: nil)
+        if flag{
+            flag = false
+            self.navigationController?.popViewController(animated: true)
+        }
+        else{
+            dismiss(animated: true, completion: nil)
+        }
+        
     }
     
     

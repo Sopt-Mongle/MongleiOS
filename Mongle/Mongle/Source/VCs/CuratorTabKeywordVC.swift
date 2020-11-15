@@ -14,12 +14,14 @@ class CuratorTabKeywordVC: UIViewController {
     var keywordIdx:Int = 0
     var curatorList : [CuratorKeywordData] = []
     @IBOutlet weak var keywordTitleLabel: UILabel!
+    @IBOutlet weak var naviView: UIView!
     @IBAction func touchUpBackBTN(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     @IBOutlet weak var curatorListCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        naviView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.04, radius: 6)
         curatorListCollectionView.delegate = self
         curatorListCollectionView.dataSource = self
         keywordTitleLabel.text = selectedKeyword
@@ -87,6 +89,7 @@ extension CuratorTabKeywordVC: UICollectionViewDataSource{
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CuratorListCVC", for: indexPath) as? CuratorListCVC else{
             return UICollectionViewCell()
         }
+        cell.myVC = self
         cell.curatorProfileImageView.imageFromUrl(curatorList[indexPath.item].img, defaultImgPath: "sentenceThemeOImgCurator1010")
         cell.curatorNameLabel.text = curatorList[indexPath.item].name
         cell.curatorInfoLabel.text = curatorList[indexPath.item].introduce

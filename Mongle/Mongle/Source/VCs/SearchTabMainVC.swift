@@ -67,12 +67,23 @@ class SearchTabMainVC: UIViewController{
         recommendSearchCV.dataSource = self
         
         initGestureRecognizer()
+        setCollctionViewLayout()
         
     }
     override func viewWillAppear(_ animated: Bool) {
         searchTextField.becomeFirstResponder()
         setRecentSearchData()
         setRecommendSearchData()
+    }
+    func setCollctionViewLayout(){
+        let alignedFlowLayout = AlignedCollectionViewFlowLayout(horizontalAlignment: .left, verticalAlignment: .top)
+        alignedFlowLayout.minimumLineSpacing = 8
+        alignedFlowLayout.minimumInteritemSpacing = 8
+        alignedFlowLayout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        alignedFlowLayout.estimatedItemSize = CGSize(width: 71, height: 37)
+        recommendSearchCV.collectionViewLayout = alignedFlowLayout
+        
+
     }
     
     func setRecentSearchData(){
@@ -84,7 +95,7 @@ class SearchTabMainVC: UIViewController{
                 }
                 
                 self.recentKeyArray = data
-                print("ㅁㅁㅁㅁㅁ최근검색어\(data)ㅁㅁㅁㅁㅁ")
+        
                 DispatchQueue.main.async {
                     self.recentSearchCV.reloadData()
                 }
@@ -253,7 +264,7 @@ extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionView
                 recommendCell.setRecommend(key: "추천 검색어가 없습니다.")
             }
             else{
-                recommendCell.layer.cornerRadius = recommendCell.bounds.width/3 + 3.5
+//                recommendCell.layer.cornerRadius = recommendCell.bounds.width/3 + 3.5
                 recommendCell.backgroundColor = .ice
                 recommendCell.recommendSearchKeyLabel.textColor = .tea
                 recommendCell.setRecommend(key: recommendKeyArray[indexPath.item])
@@ -283,8 +294,9 @@ extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionView
             searchTextField.text = cell?.recommendSearchKeyLabel.text
             touchUpSearchBTN(self.searchBTN)
         }
+        
     }
-
+    
 }
 //MARK:- UIGestureRecognizerDelegate Extension
 //여기는 제스쳐 인식 제외하는거 false로 해줌

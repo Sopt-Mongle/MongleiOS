@@ -88,6 +88,8 @@
 		B8218B202560021E003AA1AA /* OpenSourceTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8218B1F2560021E003AA1AA /* OpenSourceTVC.swift */; };
 		B8218B232560106B003AA1AA /* OpenSourceDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8218B222560106B003AA1AA /* OpenSourceDetail.storyboard */; };
 		B8218B2625601094003AA1AA /* OpenSourceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8218B2525601094003AA1AA /* OpenSourceDetailVC.swift */; };
+		B8218B3025610356003AA1AA /* WithdrawService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8218B2F25610356003AA1AA /* WithdrawService.swift */; };
+		B8218B3425612F4E003AA1AA /* AlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8218B3325612F4E003AA1AA /* AlignedCollectionViewFlowLayout.swift */; };
 		B83800F52525FF78009286AE /* PasswordChangeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83800F42525FF78009286AE /* PasswordChangeVC.swift */; };
 		B83800F82525FFA2009286AE /* PasswordChange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B83800F72525FFA2009286AE /* PasswordChange.storyboard */; };
 		B842A4462557E3B100253275 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B842A4452557E3B100253275 /* String+Extensions.swift */; };
@@ -313,6 +315,8 @@
 		B8218B1F2560021E003AA1AA /* OpenSourceTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceTVC.swift; sourceTree = "<group>"; };
 		B8218B222560106B003AA1AA /* OpenSourceDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenSourceDetail.storyboard; sourceTree = "<group>"; };
 		B8218B2525601094003AA1AA /* OpenSourceDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSourceDetailVC.swift; sourceTree = "<group>"; };
+		B8218B2F25610356003AA1AA /* WithdrawService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawService.swift; sourceTree = "<group>"; };
+		B8218B3325612F4E003AA1AA /* AlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		B83800F42525FF78009286AE /* PasswordChangeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeVC.swift; sourceTree = "<group>"; };
 		B83800F72525FFA2009286AE /* PasswordChange.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasswordChange.storyboard; sourceTree = "<group>"; };
 		B842A4452557E3B100253275 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -537,8 +541,8 @@
 			children = (
 				7F1E719E24B4768D00D79516 /* Views */,
 				7F6ABECD24ADE8670040746E /* VCs */,
-				7F6ABECC24ADE8610040746E /* Cell */,
 				7F6ABECB24ADE85A0040746E /* Extensions */,
+				7F6ABECC24ADE8610040746E /* Cell */,
 				7F6ABECA24ADE8500040746E /* Model */,
 			);
 			path = Source;
@@ -619,6 +623,7 @@
 				B8E2E17E24C2B67300595752 /* MyCuratorService.swift */,
 				EC849310255BD99B003B4149 /* SignUpEmailService.swift */,
 				EC84931C255D1892003B4149 /* SignUpDuplicateService.swift */,
+				B8218B2F25610356003AA1AA /* WithdrawService.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -827,6 +832,7 @@
 				EC6B70BC24BDD43600151A3B /* Comp 2_1.gif */,
 				EC759C3324BEA6E5001D2F81 /* Comp 3.gif */,
 				EC148CF824BC67E7006925A0 /* 43-emoji-wink.json */,
+				B8218B3325612F4E003AA1AA /* AlignedCollectionViewFlowLayout.swift */,
 			);
 			path = SupportFiles;
 			sourceTree = "<group>";
@@ -1032,6 +1038,7 @@
 				7F7C097524BAFAAE007C7C52 /* SentenceEditVC.swift in Sources */,
 				EC7410E224BC539500CBAF1C /* LogInVC.swift in Sources */,
 				B8E2E15F24C0C08100595752 /* SearchCuratorService.swift in Sources */,
+				B8218B3025610356003AA1AA /* WithdrawService.swift in Sources */,
 				EC771BB4254D4E210041603E /* SignUpServiceAgreeVC.swift in Sources */,
 				7F6ABEDD24ADF3B20040746E /* NetworkResult.swift in Sources */,
 				EC759C4C24C02615001D2F81 /* PostBookData.swift in Sources */,
@@ -1121,6 +1128,7 @@
 				EC7410B824BA5F1A00CBAF1C /* ThemeMakeImagesCVC.swift in Sources */,
 				EC265295255D91590043C629 /* SplashView.swift in Sources */,
 				B8F4DDF624B20FD00075FDC1 /* SearchTabMainVC.swift in Sources */,
+				B8218B3425612F4E003AA1AA /* AlignedCollectionViewFlowLayout.swift in Sources */,
 				7FFEA28924BF9C72003D381A /* TodaySentenceData.swift in Sources */,
 				ECA23EE024B5F5F100C100F1 /* WritingSentenceSecondVC.swift in Sources */,
 				EC76E10525109D56009DDEF1 /* SignUpMainVC.swift in Sources */,

@@ -13,6 +13,8 @@ class CuratorListCVC: UICollectionViewCell {
     //var isSubscribed = false
     var subscriberNum : Int = 0
     var curatorIdx = -1
+    let token = UserDefaults.standard.string(forKey: "token")
+    var myVC : UIViewController?
     
     @IBOutlet weak var curatorNameLabel: UILabel!
     @IBOutlet weak var curatorProfileImageView: UIImageView!
@@ -22,7 +24,12 @@ class CuratorListCVC: UICollectionViewCell {
     
     
     @IBAction func touchUpSubscribe(_ sender: Any) {
-        follow(idx: curatorIdx)
+        if token == "guest"{
+            myVC?.presentLoginRequestPopUp()
+        }
+        else{
+            follow(idx: curatorIdx)
+        }
     }
     
     override func awakeFromNib() {

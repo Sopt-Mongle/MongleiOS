@@ -53,7 +53,7 @@ class ProfileEditVC: UIViewController{
     var introduce: String = UserDefaults.standard.string(forKey: "UserProfileIntroduce") ?? ""
     let heightRatio: CGFloat = UIScreen.main.bounds.height/812
     let widthRatio: CGFloat = UIScreen.main.bounds.width/375
-    
+    var imageFlag = false
     // MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -186,7 +186,7 @@ class ProfileEditVC: UIViewController{
     }
     func setData(){
         self.nickNameTextField.text = UserDefaults.standard.string(forKey: "UserProfileName")
-        self.profileImageView.imageFromUrl(UserDefaults.standard.string(forKey: "UserProfileImgLink"), defaultImgPath: "mySettingsProfile4BtnProfileChange")
+        self.profileImageView.imageFromUrl(UserDefaults.standard.string(forKey: "UserProfileImgLink"), defaultImgPath: "sentenceThemeOImgCurator1010")
         self.layoutTableView.reloadData()
         selectedKeywordIdx = UserDefaults.standard.integer(forKey: "UserProfileKeyIdx")
         updateSelectedKeywordButton()
@@ -220,22 +220,19 @@ class ProfileEditVC: UIViewController{
                 SignUpDuplicateService.shared.checkDuplicate(email: "-", name: nickNameTextField.text!, completion: {networkResult in
                     switch networkResult{
                         case .success(let data):
-                            print("####1")
                             guard let duplicateData = data as? String else{
                                 return
                             }
                             if duplicateData == "name"{
                                 //이미 사용중인 닉네임.
-                                print("####사용중 닉네임")
-                           
+                                
                                 self.nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1)
                                 self.showWarning(color: .red, title: "이미 사용 중인 닉네임이에요!")
                            
                             }
                             else if duplicateData == "available"{
                                 //사용 가능한 닉네임입니다.
-                                print("####사용가능 닉네임")
-                                
+                               
                                 self.nickNameTextField.setBorder(borderColor: .softGreen, borderWidth: 1)
                                 self.showWarning(color : .green, title: "사용 가능한 닉네임이에요!")
                                 if (ProfileEditIntroduceTVC.isIntroduceValid!){
@@ -267,7 +264,7 @@ class ProfileEditVC: UIViewController{
                 nickNameTextField.setBorder(borderColor: .veryLightPink, borderWidth: 1)
                 hideWarning()
                 self.layoutTableView.reloadData()
-                if (ProfileEditIntroduceTVC.isIntroduceValid! &&  (self.introduce != UserDefaults.standard.string(forKey: "UserProfileIntroduce") || self.selectedKeywordIdx != UserDefaults.standard.integer(forKey:"UserProfileKeyIdx"))){
+                if (ProfileEditIntroduceTVC.isIntroduceValid! &&  (self.introduce != UserDefaults.standard.string(forKey: "UserProfileIntroduce") || self.selectedKeywordIdx != UserDefaults.standard.integer(forKey:"UserProfileKeyIdx") || imageFlag)){
                     DispatchQueue.main.async{
                         self.callProfileEdit()
                     }
@@ -301,6 +298,7 @@ class ProfileEditVC: UIViewController{
                     }
         
                     self.showToast(text: "프로필이 수정되었어요!")
+                    self.imageFlag = false
                     UserDefaults.standard.setValue(profileData[0].name, forKey: "UserProfileName")
                     UserDefaults.standard.setValue(profileData[0].img, forKey: "UserProfileImgLink")
                     UserDefaults.standard.setValue(profileData[0].introduce, forKey: "UserProfileIntroduce")
@@ -354,6 +352,7 @@ class ProfileEditVC: UIViewController{
     
     //MARK: - IBAction
     @IBAction func touchKeywordButton(sender: UIButton) {
+        self.view.endEditing(true)
         nickNameTextField.resignFirstResponder()
         selectedKeywordIdx = sender.tag
         updateSelectedKeywordButton()
@@ -446,6 +445,7 @@ extension ProfileEditVC: UIImagePickerControllerDelegate, UINavigationController
         
         if let originalImage: UIImage = info[.originalImage] as? UIImage {
             self.profileImageView.image = originalImage
+            imageFlag = true
         }
         
         self.dismiss(animated: true, completion: nil)

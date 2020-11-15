@@ -97,13 +97,14 @@ extension SearchResultCuratorVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CuratorListCVC", for: indexPath) as? CuratorListCVC else{ return CuratorListCVC()}
-        
+        cell.myVC = self
         cell.curatorNameLabel.text = curatorList[indexPath.item].name
         cell.subscriberNum = curatorList[indexPath.item].subscribe
         cell.curatorProfileImageView.imageFromUrl(curatorList[indexPath.item].img, defaultImgPath: "sentenceThemeOImgCurator1010")
         cell.subscribeBTN.isSelected = curatorList[indexPath.item].alreadySubscribed
         cell.curatorIdx = curatorList[indexPath.item].curatorIdx
         cell.subscriberLabel.text = "구독자 \(curatorList[indexPath.item].subscribe)명"
+        cell.curatorInfoLabel.text = curatorList[indexPath.item].introduce
         if curatorList[indexPath.item].alreadySubscribed{
             cell.subscribeBTN.backgroundColor = .veryLightPinkSeven
         }

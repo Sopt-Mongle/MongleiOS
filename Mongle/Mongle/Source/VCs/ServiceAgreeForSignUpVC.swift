@@ -9,7 +9,7 @@
 import UIKit
 
 class ServiceAgreeForSignUpVC: UIViewController {
-
+    var flag = false
     @IBOutlet weak var upperBlur: UIImageView!
     @IBOutlet weak var underBlur: UIImageView!
     
@@ -31,7 +31,14 @@ class ServiceAgreeForSignUpVC: UIViewController {
     }
 
     @IBAction func xButtonAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        if flag{
+            flag = false
+            self.navigationController?.popViewController(animated: true)
+        }
+        else{
+            dismiss(animated: true, completion: nil)
+        }
+        
         
     }
     /*

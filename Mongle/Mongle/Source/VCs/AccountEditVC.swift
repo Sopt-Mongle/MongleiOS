@@ -51,7 +51,7 @@ class AccountEditVC: UIViewController {
         $0.titleLabel?.font = $0.titleLabel?.font.withSize(13)
     }
     var noButton = UIButton().then{
-        $0.setTitle("아니오", for: .normal)
+        $0.setTitle("아니요", for: .normal)
         $0.setTitleColor(.softGreen, for: .normal)
         $0.backgroundColor = .white
         $0.makeRounded(cornerRadius: 19)
@@ -123,28 +123,59 @@ class AccountEditVC: UIViewController {
     }
     
     func callWithdraw(){
-        print("withdraw")
+        print(UserDefaults.standard.string(forKey: "email"))
+        WithdrawService.shared.deleteRequest(email: UserDefaults.standard.string(forKey: "email") ?? "", password: UserDefaults.standard.string(forKey: "password") ?? ""){ networkResult in
+            switch networkResult{
+                case .success(let message):
+                    guard let message = message as? String else { return }
+                    print(message)
+                    UserDefaults.standard.removeObject(forKey: "email")
+                    UserDefaults.standard.removeObject(forKey: "password")
+                    guard let loginVC = UIStoryboard(name:"LogIn", bundle:nil).instantiateViewController(identifier: "LogInVC") as? LogInVC else{
+                                        return
+                                    }
+                    loginVC.modalPresentationStyle = .fullScreen
+                    self.present(loginVC,animated: true){
+                        self.navigationController?.popToRootViewController(animated: false)
+                    }
+                    
+                case .requestErr(let message):
+                    
+                    guard let message = message as? String else { return }
+                    print(message)
+                    self.showToast(text: message)
+                case .pathErr:
+                    
+                    print("path")
+                case .serverErr:
+                    print("serverErr")
+                    self.showToast(text: "서버 내부 오류")
+                case .networkFail:
+                    print("networkFail")
+                    self.showToast(text: "네트워크 실패")
+                }
+        
+            
+        }
     }
     @objc func yesButtonAction(){
         
         switch yesState{
         
         case .logout:
-            UserDefaults.standard.setValue("1", forKey: "token")
+            UserDefaults.standard.setValue("guest", forKey: "token")
+            UserDefaults.standard.removeObject(forKey: "email")
+            UserDefaults.standard.removeObject(forKey: "password")
+            guard let loginVC = UIStoryboard(name:"LogIn", bundle:nil).instantiateViewController(identifier: "LogInVC") as? LogInVC else{
+                                return
+                            }
+            loginVC.modalPresentationStyle = .fullScreen
+            self.present(loginVC,animated: true){
+                self.navigationController?.popToRootViewController(animated: false)
+            }
         
         case .withdraw:
             callWithdraw()
-            //탈퇴 API
-        }
-        
-        UserDefaults.standard.removeObject(forKey: "email")
-        UserDefaults.standard.removeObject(forKey: "password")
-        guard let loginVC = UIStoryboard(name:"LogIn", bundle:nil).instantiateViewController(identifier: "LogInVC") as? LogInVC else{
-                            return
-                        }
-        loginVC.modalPresentationStyle = .fullScreen
-        self.present(loginVC,animated: true){
-            self.navigationController?.popToRootViewController(animated: false)
         }
         
     }

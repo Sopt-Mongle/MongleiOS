@@ -16,7 +16,8 @@ struct CuratorInfoData: Codable {
 
 // MARK: - Profile
 struct CuratorProfile: Codable {
-    var curatorIdx,keywordIdx: Int
+    var curatorIdx: Int
+    var keywordIdx: Int?
     var name, img, keyword,introduce: String?
     var subscribe: Int
     var alreadySubscribed: Bool

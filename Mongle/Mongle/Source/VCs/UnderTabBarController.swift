@@ -13,6 +13,7 @@ import Then
 class UnderTabBarController: UITabBarController {
     
     var curIndex: Int = 0
+    let token = UserDefaults.standard.string(forKey: "token")
     var runCountForSplash = 0
     // MARK:- UIComponents
     
@@ -452,9 +453,23 @@ extension UnderTabBarController: UITabBarControllerDelegate {
                 vc.prevIdx = self.curIndex
             }
         }
+        else if tabBarController.selectedIndex == 4{
+            if let vc = viewController as? MyTabVC{
+                vc.viewDidLoad()
+            }
+        }
             
         else {
             self.curIndex = tabBarController.selectedIndex
         }
+    }
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if tabBarController.viewControllers?[4] == viewController{
+            if token == "guest"{
+                self.presentLoginRequestPopUp()
+                return false
+            }
+        }
+        return true
     }
 }
