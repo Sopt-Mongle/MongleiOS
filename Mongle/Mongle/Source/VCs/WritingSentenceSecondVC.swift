@@ -151,6 +151,7 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         
         self.publisherTextField.text = book.bookPublisher
         
+        
     }
     
     

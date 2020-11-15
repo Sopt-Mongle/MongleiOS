@@ -537,6 +537,7 @@ class LogInVC: UIViewController {
                                             
                                             vcName.modalPresentationStyle = .fullScreen
                                             if self.shouldBeDismissed {
+                                                
                                                 self.dismiss(animated: true, completion: nil)
                                             }
                                             else{

@@ -792,6 +792,8 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
                     guard let token = token as? String else { return }
                     print(token)
                     UserDefaults.standard.set(token, forKey: "token")
+                    UserDefaults.standard.set(self.email, forKey: "email")
+                    UserDefaults.standard.set(self.password, forKey: "password")
 //
 //                    self.view.window?.rootViewController?.dismiss(animated: false, completion: {
 //                        let sceneDelegate = UIApplication.shared.delegate as! SceneDelegate
