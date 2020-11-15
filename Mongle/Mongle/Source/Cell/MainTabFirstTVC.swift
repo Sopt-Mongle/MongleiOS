@@ -38,7 +38,7 @@ class MainTabFirstTVC: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
-        pageViewWidth = (editorData.count - 1) * 7 + 19 + (editorData.count - 1) * 7
+        
         
 
         
@@ -98,7 +98,8 @@ extension MainTabFirstTVC: UICollectionViewDataSource {
                 cell.backgroundColor = .softGreen
                 cell.makeRounded(cornerRadius: cell.frame.width / 4 - 1.5)
                 return cell
-            } else {
+            }
+            else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "undisplayCell", for: indexPath)
                 cell.makeRounded(cornerRadius: cell.frame.width / 2)
                 cell.backgroundColor = UIColor(red: 239 / 255, green: 249 / 255, blue: 239 / 255, alpha: 1.0)
@@ -160,9 +161,10 @@ extension MainTabFirstTVC: UICollectionViewDelegateFlowLayout {
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
         else {
+            pageViewWidth = (editorData.count - 1) * 7 + 19 + (editorData.count - 1) * 7
             let left = CGFloat(collectionView.bounds.width) - CGFloat(self.pageViewWidth)
-            
-            return UIEdgeInsets(top: 0, left: left / 2, bottom: 0, right: 0)
+
+            return UIEdgeInsets(top: 0, left: left / 2, bottom: 0, right: left / 2)
         }
     }
     

@@ -38,26 +38,52 @@ class SentenceInfoVC: UIViewController {
     var sentenceText: String = """
 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의인상,사소한 것으로 인해 생기는 호감,
 """
-    var sentence: Sentence?
+    var sentence: DetailSentenceInfo?
     var themeImage: UIImage? = UIImage(named: "curatorImgTheme1")
     var otherSentences: [Sentence] = []
     var hasTheme: Bool = true
     var isMySentence: Bool = true
     var canDisplayOtherSentece: Bool = true
+    var myNickName: String = ""
     var sentenceIdx: Int?
     var themeIdx: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addGesture()
-        bindThemeInfo()
+//        bindThemeInfo()
         makeRoundTableView()
+        
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
         getSentenceInfo()
         getOtherSentece()
+    }
+    
+    func getMyNickName(completion: @escaping (Bool, String)->()) {
+        MyProfileService.shared.getMy(){ networkResult in
+            
+            switch networkResult {
+            case .success(let theme):
+                guard let data = theme as? [MyProfileData] else {
+                    return
+                }
+                
+                completion(true, data[0].name)
+                
+            case .requestErr(let message):
+                completion(false, "")
+            case .pathErr:
+                
+                completion(false, "")
+            case .serverErr:
+                completion(false, "")
+            case .networkFail:
+                completion(false, "")
+            }
+        }
     }
     
     func makeRoundTableView() {
@@ -68,14 +94,45 @@ class SentenceInfoVC: UIViewController {
     
     func getSentenceInfo(){
         SentenceService.shared.getSentence(idx: self.sentenceIdx ?? 0) { networkResult in
+
             switch networkResult {
             case .success(let data):
-                if let _data = data as? [Sentence] {
+                if let _data = data as? [DetailSentenceInfo] {
                     self.sentence = _data[0]
-                    DispatchQueue.main.async {
-                        self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
-                        self.updateStateLayout()
+                    self.getThemeInfo(themeIdx: self.sentence?.themeIdx ?? 0) {
+                        [weak self] (themeImage, themeName) in
+                        DispatchQueue.main.async {
+                            self?.themeImageView.imageFromUrl(themeImage, defaultImgPath: "themeWritingThemeXSentenceBg")
+                            self?.themeNameLabel.text = themeName
+                        }
                     }
+                    self.getMyNickName { [weak self] (success, nickName) in
+                        if success {
+                            if nickName == self?.sentence?.writer {
+                                self?.isMySentence = true
+                    
+                            }
+                            else {
+                                self?.isMySentence = false
+                            }
+                        }
+                        self?.getMySaveSentence { [weak self] (success, sentenceIdxes) in
+                            print("##########")
+                            print(sentenceIdxes)
+                            print(self?.sentenceIdx ?? 0)
+                            if success {
+                                self?.sentence?.alreadyBookmarked = sentenceIdxes.contains(self?.sentenceIdx ?? 0)
+                            }
+                            else {
+                                self?.sentence?.alreadyBookmarked = false
+                            }
+                            DispatchQueue.main.async {
+                                self?.layoutTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
+                                self?.updateStateLayout()
+                            }
+                        }
+                    }
+                   
                 }
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "")
@@ -87,13 +144,57 @@ class SentenceInfoVC: UIViewController {
                 self.showToast(text: "networkFail")
             }
         }
+        
     }
     
-    func bindThemeInfo() {
-        themeImageView.image = themeImage
-        themeNameLabel.text = themeText
-        themeNameLabel.sizeToFit()
+    func getThemeInfo(themeIdx: Int, completion: @escaping (String, String) -> Void) {
+        ThemeService.shared.getThemeInfo(idx: themeIdx) { (networkResult) in
+            switch networkResult {
+            case .success(let themeData):
+                if let _data = themeData as? ThemeInfoData {
+                    completion(_data.theme[0].themeImg ?? "", _data.theme[0].theme ?? "")
+                }
+    
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "requestErr")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
+        }
     }
+    
+    func getMySaveSentence(completion: @escaping (Bool, [Int]) -> ()) {
+        MySentenceService.shared.getMy { (networkResult) in
+            switch networkResult {
+            case .success(let data):
+                if let _data = data as? MySentenceData {
+                    completion(true, _data.save.compactMap{ return $0.sentenceIdx })
+                }
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "requestErr")
+                completion(false, [])
+            case .pathErr:
+                self.showToast(text: "pathErr")
+                completion(false, [])
+            case .serverErr:
+                self.showToast(text: "serverErr")
+                completion(false, [])
+            case .networkFail:
+                self.showToast(text: "networkFail")
+                completion(false, [])
+            }
+        }
+    }
+    
+//    func bindThemeInfo() {
+//        themeImageView.image = themeImage
+//        themeNameLabel.text = themeText
+//        themeNameLabel.sizeToFit()
+//    }
     
     func getOtherSentece(){
         SentenceService.shared.getSentence(idx: self.sentenceIdx ?? 0) { networkResult in
@@ -132,21 +233,22 @@ class SentenceInfoVC: UIViewController {
         self.likeCountLabel.text = likeCountText
         self.bookCountLabel.text = savesCountText
         
-        if _sentence.alreadyLiked {
-            self.likeCountLabel.textColor = .softGreen
-            
-        }
-        else {
-            self.likeCountLabel.textColor = .veryLightPink
-        }
-        
+//        if _sentence.alreadyLiked {
+//            self.likeCountLabel.textColor = .softGreen
+//
+//        }
+//        else {
+//            self.likeCountLabel.textColor = .veryLightPink
+//        }
+        self.likeImageview.isHighlighted = _sentence.alreadyLiked
         self.bookmarkImageView.isHighlighted = _sentence.alreadyBookmarked
-        if _sentence.alreadyBookmarked {
-            self.bookCountLabel.textColor = .softGreen
-        }
-        else {
-            self.bookCountLabel.textColor = .veryLightPink
-        }
+//
+//        if _sentence.alreadyBookmarked {
+//            self.bookCountLabel.textColor = .softGreen
+//        }
+//        else {
+//            self.bookCountLabel.textColor = .veryLightPink
+//        }
     }
     
     func addGesture(){
@@ -200,13 +302,18 @@ class SentenceInfoVC: UIViewController {
             switch networkResult {
                 
             case .success(let data):
-                
+                print(data)
                 if let _data = data as? SentenceBookmarkData {
                     self.sentence?.alreadyBookmarked = _data.isSave
                     self.sentence?.saves = _data.saves
-                    self.updateStateLayout()
-                    if _data.isSave {
-                        self.showToast(text: "문장이 저장되었어요!")
+                    DispatchQueue.main.async {
+                        self.updateStateLayout()
+                        if _data.isSave {
+                            self.showToast(text: "문장이 저장되었어요!")
+                        }
+                        else {
+//                            self.showToast(text: "저장 해제")
+                        }
                     }
                 }
             case .requestErr(let msg):
@@ -225,8 +332,6 @@ class SentenceInfoVC: UIViewController {
         SentenceEditService.shared.deleteSentece(idx: sentenceIdx ?? 0) { (networkResult) in
             switch networkResult {
             case .success(_):
-                print("########################")
-                print("success")
                 let prevIndex = self.navigationController?.viewControllers.count
                 self.navigationController?.viewControllers[prevIndex! - 2].showToast(text: "문장이 삭제되었어요!")
                 self.navigationController?.popViewController(animated: true)

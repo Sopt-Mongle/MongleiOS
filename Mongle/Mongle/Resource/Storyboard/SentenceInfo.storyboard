@@ -311,7 +311,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bJS-X5-SeK">
                                                         <rect key="frame" x="51.333333333333329" y="20" width="62.333333333333329" height="17"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sentenceThemeOIcSentenceLike1" translatesAutoresizingMaskIntoConstraints="NO" id="zlC-QS-1mt">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sentenceThemeOIcSentenceLike1" highlightedImage="sentenceBtnGreenIcLike" translatesAutoresizingMaskIntoConstraints="NO" id="zlC-QS-1mt">
                                                                 <rect key="frame" x="0.0" y="0.0" width="17" height="17"/>
                                                                 <color key="tintColor" red="0.45098039220000002" green="0.75294117650000003" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
@@ -450,6 +450,7 @@
         <image name="curatorImgTheme1" width="375" height="138"/>
         <image name="loginImgMarks" width="31" height="24"/>
         <image name="mainIcBook1" width="13" height="16"/>
+        <image name="sentenceBtnGreenIcLike" width="18" height="15"/>
         <image name="sentenceThemeOBtnBack" width="10.666666984558105" height="19"/>
         <image name="sentenceThemeOIcCompany" width="17" height="16"/>
         <image name="sentenceThemeOIcSentenceBookmark1" width="9" height="10"/>
