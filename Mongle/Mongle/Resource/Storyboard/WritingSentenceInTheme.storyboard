@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3H5-ot-vwD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3H5-ot-vwD">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,7 +38,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="Ogp-Fj-Nvf" firstAttribute="top" secondItem="6qG-qb-chJ" secondAttribute="top" constant="48" id="404-3c-8Ke"/>
                                     <constraint firstItem="Ogp-Fj-Nvf" firstAttribute="centerX" secondItem="6qG-qb-chJ" secondAttribute="centerX" id="6UI-kd-oE3"/>
@@ -87,7 +89,7 @@
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Qk4-e1-vuC">
                                 <rect key="frame" x="16" y="193" width="343" height="147"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Qk4-e1-vuC" secondAttribute="height" multiplier="7:3" id="ScW-6T-kyo"/>
                                 </constraints>
@@ -97,7 +99,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiB-z3-TA2">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiB-z3-TA2">
                                 <rect key="frame" x="16" y="350" width="130" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="themeWritingSentence2BtnSentenceLoad"/>
@@ -111,7 +113,7 @@
                                 <color key="textColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HK-a6-teY">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HK-a6-teY">
                                 <rect key="frame" x="16" y="721" width="343" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7HK-a6-teY" secondAttribute="height" multiplier="343:57" id="ebk-I8-Urs"/>
@@ -122,7 +124,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="GfX-in-vfv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6qG-qb-chJ" firstAttribute="leading" secondItem="GfX-in-vfv" secondAttribute="leading" id="68g-tl-MBq"/>
                             <constraint firstItem="6qG-qb-chJ" firstAttribute="top" secondItem="tmN-wg-fU4" secondAttribute="top" id="D2j-jh-5KA"/>
@@ -141,7 +144,6 @@
                             <constraint firstItem="xe8-V3-RQN" firstAttribute="top" secondItem="6qG-qb-chJ" secondAttribute="bottom" constant="13" id="mJN-Px-RCa"/>
                             <constraint firstItem="Dyt-wq-SLM" firstAttribute="top" secondItem="xe8-V3-RQN" secondAttribute="bottom" constant="18" id="pKN-Gb-onc"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="GfX-in-vfv"/>
                     </view>
                     <connections>
                         <outlet property="callInNoThemeSentenceButton" destination="LiB-z3-TA2" id="Jc3-qq-8zx"/>
@@ -160,5 +162,8 @@
     <resources>
         <image name="searchBtnBack" width="10.333333015441895" height="18.666666030883789"/>
         <image name="themeWritingSentence2BtnSentenceLoad" width="129.66667175292969" height="16"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
