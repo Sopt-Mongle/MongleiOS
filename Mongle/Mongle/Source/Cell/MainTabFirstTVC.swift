@@ -84,9 +84,9 @@ extension MainTabFirstTVC: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             let editor = editorData[indexPath.item]
-            cell.displayPictureImageView.imageFromUrl(editor.illust, defaultImgPath: "")
+            cell.displayPictureImageView.imageFromUrl(editor.illust, defaultImgPath: "themeWritingThemeXSentenceBg")
             
-//            cell.themeNameLabel.text = self.names[indexPath.item]
+            cell.themeNameLabel.text = editor.theme
             cell.themeCountLabel.text = "문장 \(editor.sentenceNum)개"
             
             

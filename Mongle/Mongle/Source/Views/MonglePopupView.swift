@@ -116,6 +116,13 @@ class MonglePopupView: UIView {
                 $0.trailing.equalToSuperview().offset(-18)
                 $0.height.equalTo(37)
             }
+            
+            yesButton.snp.makeConstraints {
+                $0.top.bottom.equalToSuperview()
+            }
+            noButton.snp.makeConstraints {
+                $0.top.bottom.equalToSuperview()
+            }
         }
     }
 

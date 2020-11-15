@@ -792,6 +792,8 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
                     guard let token = token as? String else { return }
                     print(token)
                     UserDefaults.standard.set(token, forKey: "token")
+                    UserDefaults.standard.set(self.email, forKey: "email")
+                    UserDefaults.standard.set(self.password, forKey: "password")
 //
 //                    self.view.window?.rootViewController?.dismiss(animated: false, completion: {
 //                        let sceneDelegate = UIApplication.shared.delegate as! SceneDelegate
@@ -839,7 +841,13 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
             self.view.endEditing(true)
             codeWarningImage.alpha = 1
             codeWarningLabel.alpha = 1
-            
+            for circle in textCircles{
+                
+                circle.image = UIImage(named: "joinStep35IcNumber1")
+                circle.dropShadow(color: .reddish, offSet: CGSize(width: 0, height: 0), opacity: 0.33, radius: 6)
+                
+                
+            }
             
             
             

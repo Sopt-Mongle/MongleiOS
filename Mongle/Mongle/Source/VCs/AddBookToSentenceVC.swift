@@ -74,6 +74,7 @@ class AddBookToSentenceVC: UIViewController {
                           title: self.bookInfo?.bookTitle ?? "",
                           author: self.bookInfo?.bookAuthors[0] ?? "",
                           publisher: self.bookInfo?.bookPublisher ?? "",
+                          thumbnail: self.bookInfo?.bookImgName ?? "",
                           themeIdx: self.themeIdx ?? 0) { networkResult in
                             switch networkResult{
                             case .success(_):

@@ -14,6 +14,7 @@ class UnderTabBarController: UITabBarController {
     
     var curIndex: Int = 0
     let token = UserDefaults.standard.string(forKey: "token")
+    var runCountForSplash = 0
     // MARK:- UIComponents
     
     let plusButton = UIButton().then {
@@ -53,10 +54,15 @@ class UnderTabBarController: UITabBarController {
         // Do any additional setup after loading the view.
         self.delegate = self
         setTabBar()
-       
+        if(OnboardingMainVC.shouldShowSplash){
+            showSplash()
+        }
+        OnboardingMainVC.shouldShowSplash = false
         
         
     }
+    
+
     
     
     override func viewDidLayoutSubviews() {
@@ -296,6 +302,53 @@ class UnderTabBarController: UITabBarController {
         
     }
     
+    func showSplash(){
+        let containView = UIView()
+        containView.backgroundColor = UIColor(red: 251 / 255.0, green: 251 / 255.0, blue: 251 / 255.0, alpha: 1.0)
+        self.view.addSubview(containView)
+        containView.frame = self.view.bounds
+        
+        var imageView = UIImageView()
+        do{
+            let gif = try UIImage(gifName: "Comp 3")
+            imageView = UIImageView(gifImage: gif,loopCount: 1)
+        
+            self.view.addSubview(imageView)
+            imageView.snp.makeConstraints{
+                $0.width.equalTo(350)
+                $0.height.equalTo(200)
+                $0.center.equalToSuperview()
+                
+            }
+            
+            
+        } catch{
+            print(error)
+        }
+        
+       
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            self.runCountForSplash += 1
+            
+
+            if self.runCountForSplash == 30 {
+                timer.invalidate()
+                
+                UIView.animate(withDuration: 1.0, animations: {
+                    imageView.removeFromSuperview()
+                    containView.alpha = 0
+                    
+                    
+                })
+                
+                
+                    
+            }
+        }
+        
+        
+    }
+    
     
 //        When PlustButton is Tapped
     private func showSubMenus(){
@@ -349,6 +402,14 @@ class UnderTabBarController: UITabBarController {
      }
     
     @objc func makeThemeButtonAction(sender: UIButton?){
+        if UserDefaults.standard.string(forKey: "token") == "guest" {
+            hideSubMenus() 
+            self.presentLoginRequestPopUp()
+            return
+        }
+        
+        
+        
         guard let vcName = UIStoryboard(name: "Writing_Theme",
                                         bundle: nil).instantiateViewController(
                                             withIdentifier: "WritingThemeVC") as? WritingThemeVC
@@ -363,6 +424,11 @@ class UnderTabBarController: UITabBarController {
     }
     
     @objc func makeSentenceButtonAction(sender: UIButton?){
+        
+        if UserDefaults.standard.string(forKey: "token") == "guest" {
+            self.presentLoginRequestPopUp()
+            return
+        }
         guard let vcName = UIStoryboard(name: "WritingSentence",
                                         bundle: nil).instantiateViewController(
                                             withIdentifier: "WritingSentenceVC") as? UINavigationController

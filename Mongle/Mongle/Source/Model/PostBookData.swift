@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PostBookData : Codable {
-    
-    
+struct PostBookData: Codable {
+
+    let data: Int
 }

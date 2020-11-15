@@ -63,7 +63,7 @@ class OnboardingFirstVC: UIViewController {
     
     func startAnimation(){
        
-        UIView.animate(withDuration: 0.3, delay: 0, animations: {
+        UIView.animate(withDuration: 0.3, delay: 3.0, animations: {
             self.bookImage.transform = CGAffineTransform(rotationAngle: -30/180)
             
             

@@ -33,7 +33,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
     
     var theme : String?
     var yesIsTapping : Bool = false
-    
+    var themeIdx : Int?
     
     
     // MARK:- Class Variables
@@ -215,7 +215,7 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
         ThemeMakeService.shared.themeMake(theme: themeNameTextField.text!, themeImgIdx: selectedIdx)
         { networkResult in
             switch networkResult {
-            case .success(_) :
+            case .success(let data) :
                 
                 guard let vcName = UIStoryboard(name: "EndOfMakingTheme",
                                                 bundle: nil).instantiateViewController(
@@ -224,7 +224,13 @@ class WritingThemeVC: UIViewController, UITextFieldDelegate {
                         return
                 }
                 
+                
+                
                 vcName.modalPresentationStyle = .fullScreen
+                vcName.sendThemeIdx = data as? Int
+                
+                
+                
                 self.present(vcName, animated: true, completion: nil)
             case .requestErr(let message):
                 guard let message = message as? String else {return}
