@@ -165,18 +165,6 @@
                                     <action selector="touchUpBack:" destination="mk1-5s-R89" eventType="touchUpInside" id="utk-bG-c46"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8uw-Fu-FON">
-                                <rect key="frame" x="314" y="55" width="45" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="gU0-LI-l1Y"/>
-                                    <constraint firstAttribute="height" constant="45" id="vey-oL-Ay4"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="14" minY="13" maxX="14" maxY="13"/>
-                                <state key="normal" image="searchBtnSearch"/>
-                                <connections>
-                                    <action selector="touchUpSearch:" destination="mk1-5s-R89" eventType="touchUpInside" id="ydk-GR-abL"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GST-7F-Xen">
                                 <rect key="frame" x="67" y="55" width="247" height="45"/>
                                 <constraints>
@@ -252,6 +240,18 @@
                                     <segue destination="Jqe-54-DSA" kind="embed" identifier="pageSegue" id="ShB-VC-Wy1"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8uw-Fu-FON">
+                                <rect key="frame" x="314" y="55" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="gU0-LI-l1Y"/>
+                                    <constraint firstAttribute="height" constant="45" id="vey-oL-Ay4"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="14" minY="13" maxX="14" maxY="13"/>
+                                <state key="normal" image="searchResultCuratorBtnSearch"/>
+                                <connections>
+                                    <action selector="touchUpSearch:" destination="mk1-5s-R89" eventType="touchUpInside" id="ydk-GR-abL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="35k-vu-IKc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -654,7 +654,7 @@
     </scenes>
     <resources>
         <image name="searchBtnBack" width="10.333333015441895" height="18.666666030883789"/>
-        <image name="searchBtnSearch" width="18" height="18"/>
+        <image name="searchResultCuratorBtnSearch" width="18" height="18"/>
         <image name="searchResultSentenceIcCurator1" width="11" height="11"/>
         <image name="searchResultThemeBoxSearch" width="317" height="45"/>
         <image name="searchResultThemeEmptyImgMongle" width="86" height="67.333335876464844"/>
