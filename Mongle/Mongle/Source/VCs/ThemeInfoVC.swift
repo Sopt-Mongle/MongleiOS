@@ -106,11 +106,18 @@ class ThemeInfoVC: UIViewController {
                 case .success(let data):
                     if let _data = data as? ThemeInfoData {
                         self.themeData = _data.theme[0]
-                        print(self.themeData?.alreadyBookmarked)
-                        self.sentences = _data.sentence
-                        DispatchQueue.main.async {
-                            self.updateLayout()
-                            self.sentenceTableView.reloadData()
+                        self.getMySaveTheme { [weak self] (success, indexes) in
+                            if success {
+                                self?.themeData?.alreadyBookmarked = indexes.contains(self?.themeIdx ?? 0)
+                            }
+                            else {
+                                self?.themeData?.alreadyBookmarked = false
+                            }
+                            self?.sentences = _data.sentence
+                            DispatchQueue.main.async {
+                                self?.updateLayout()
+                                self?.sentenceTableView.reloadData()
+                            }
                         }
                     }
                 case .requestErr(let msg):
@@ -124,27 +131,27 @@ class ThemeInfoVC: UIViewController {
                 }
             }
         }
-        else {
-            ThemeService.shared.getNoThemeSentenceInfo{ networkResult in
-                switch networkResult {
-                case .success(let data):
-                    if let _data = data as? NoThemeData {
-                        self.noThemeCount = _data.num
-                        self.noThemeSentence = _data.sentences
-                        self.curatorNameLabel.text = "문장 \(_data.num)개"
-                        self.sentenceTableView.reloadData()
-                    }
-                case .requestErr(let msg):
-                    self.showToast(text: msg as? String ?? "")
-                case .pathErr:
-                    self.showToast(text: "pathErr")
-                case .serverErr:
-                    self.showToast(text: "serverErr")
-                case .networkFail:
-                    self.showToast(text: "networkFail")
-                }
-            }
-        }
+//        else {
+//            ThemeService.shared.getNoThemeSentenceInfo{ networkResult in
+//                switch networkResult {
+//                case .success(let data):
+//                    if let _data = data as? NoThemeData {
+//                        self.noThemeCount = _data.num
+//                        self.noThemeSentence = _data.sentences
+//                        self.curatorNameLabel.text = "문장 \(_data.num)개"
+//                        self.sentenceTableView.reloadData()
+//                    }
+//                case .requestErr(let msg):
+//                    self.showToast(text: msg as? String ?? "")
+//                case .pathErr:
+//                    self.showToast(text: "pathErr")
+//                case .serverErr:
+//                    self.showToast(text: "serverErr")
+//                case .networkFail:
+//                    self.showToast(text: "networkFail")
+//                }
+//            }
+//        }
     }
     
     func updateLayout(){
@@ -179,7 +186,32 @@ class ThemeInfoVC: UIViewController {
             
         }
     }
-    
+    func getMySaveTheme(completion: @escaping (Bool, [Int]) -> ()) {
+        MyThemeService.shared.getMy { (networkResult) in
+            switch networkResult {
+            case .success(let data):
+                if let _data = data as? MyThemeData {
+                    
+                    completion(true, _data.save.compactMap{
+                        return $0.themeIdx
+                    })
+                    
+                }
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "requestErr")
+                completion(false, [])
+            case .pathErr:
+                self.showToast(text: "pathErr")
+                completion(false, [])
+            case .serverErr:
+                self.showToast(text: "serverErr")
+                completion(false, [])
+            case .networkFail:
+                self.showToast(text: "networkFail")
+                completion(false, [])
+            }
+        }
+    }
     //MARK:- IBAction
     
     @IBAction func touchUpReportButton(_ sender: Any) {

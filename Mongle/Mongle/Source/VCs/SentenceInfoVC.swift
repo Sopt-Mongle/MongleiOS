@@ -110,17 +110,29 @@ class SentenceInfoVC: UIViewController {
                         if success {
                             if nickName == self?.sentence?.writer {
                                 self?.isMySentence = true
+                    
                             }
                             else {
                                 self?.isMySentence = false
                             }
                         }
-                        
-                        DispatchQueue.main.async {
-                            self?.layoutTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
-                            self?.updateStateLayout()
+                        self?.getMySaveSentence { [weak self] (success, sentenceIdxes) in
+                            print("##########")
+                            print(sentenceIdxes)
+                            print(self?.sentenceIdx ?? 0)
+                            if success {
+                                self?.sentence?.alreadyBookmarked = sentenceIdxes.contains(self?.sentenceIdx ?? 0)
+                            }
+                            else {
+                                self?.sentence?.alreadyBookmarked = false
+                            }
+                            DispatchQueue.main.async {
+                                self?.layoutTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
+                                self?.updateStateLayout()
+                            }
                         }
                     }
+                   
                 }
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "")
@@ -151,6 +163,29 @@ class SentenceInfoVC: UIViewController {
                 self.showToast(text: "serverErr")
             case .networkFail:
                 self.showToast(text: "networkFail")
+            }
+        }
+    }
+    
+    func getMySaveSentence(completion: @escaping (Bool, [Int]) -> ()) {
+        MySentenceService.shared.getMy { (networkResult) in
+            switch networkResult {
+            case .success(let data):
+                if let _data = data as? MySentenceData {
+                    completion(true, _data.save.compactMap{ return $0.sentenceIdx })
+                }
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "requestErr")
+                completion(false, [])
+            case .pathErr:
+                self.showToast(text: "pathErr")
+                completion(false, [])
+            case .serverErr:
+                self.showToast(text: "serverErr")
+                completion(false, [])
+            case .networkFail:
+                self.showToast(text: "networkFail")
+                completion(false, [])
             }
         }
     }
@@ -267,13 +302,18 @@ class SentenceInfoVC: UIViewController {
             switch networkResult {
                 
             case .success(let data):
-                
+                print(data)
                 if let _data = data as? SentenceBookmarkData {
                     self.sentence?.alreadyBookmarked = _data.isSave
                     self.sentence?.saves = _data.saves
-                    self.updateStateLayout()
-                    if _data.isSave {
-                        self.showToast(text: "문장이 저장되었어요!")
+                    DispatchQueue.main.async {
+                        self.updateStateLayout()
+                        if _data.isSave {
+                            self.showToast(text: "문장이 저장되었어요!")
+                        }
+                        else {
+//                            self.showToast(text: "저장 해제")
+                        }
                     }
                 }
             case .requestErr(let msg):
