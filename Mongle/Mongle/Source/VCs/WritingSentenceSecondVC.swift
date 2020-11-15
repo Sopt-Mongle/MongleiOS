@@ -63,7 +63,7 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
     
     var noAnimation : Bool = false
     static var isVisited : Bool = false
-    
+    var thumbNail = ""
     var sentenceForPost : String = ""
     var isSearched : Bool = false
     var book : Book?
@@ -359,6 +359,7 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
             vcName.authorForPost = authorTextField.text!
             vcName.publisherForPost = publisherTextField.text!
             vcName.sentenceForPost = self.sentenceForPost
+            vcName.thumNailForPost = self.thumbNail
             
             
             
@@ -370,6 +371,7 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
     func sendBookData(Data: Book,isSelected : Bool, noAnimation : Bool) {
         self.isSearched = isSelected
         self.noAnimation = noAnimation
+        self.thumbNail = Data.bookImgName
         
         setInformationsAfterSelect(book: Data)
         
