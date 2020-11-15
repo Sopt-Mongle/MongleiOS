@@ -82,8 +82,6 @@ class MainTabMainVC: UIViewController {
 
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -177,6 +175,15 @@ class MainTabMainVC: UIViewController {
             case .networkFail:
                 print("networkFail")
             }
+        }
+    }
+    @IBAction func searchButton(_ sender: Any) {
+        if let tabBar = self.tabBarController as? UnderTabBarController {
+            if let searchVC = tabBar.viewControllers![1] as? SearchTabMainVC {
+                searchVC.prevIdx = 0
+                tabBar.selectedIndex = 1
+            }
+            
         }
     }
 }

@@ -445,6 +445,9 @@
                                             <constraint firstAttribute="width" secondItem="HR6-Xj-tWP" secondAttribute="height" multiplier="1:1" id="yK8-9k-hQR"/>
                                         </constraints>
                                         <state key="normal" image="mainBtnSearch"/>
+                                        <connections>
+                                            <action selector="searchButton:" destination="j3y-77-Kqr" eventType="touchUpInside" id="2V8-be-gEc"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

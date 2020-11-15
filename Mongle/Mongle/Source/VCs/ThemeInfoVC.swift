@@ -95,6 +95,7 @@ class ThemeInfoVC: UIViewController {
         // .layerMinXMaxYCorner : 왼쪽 아래
         // .layerMinXMinYCorner : 왼쪽 위
         sentencesBackgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
     }
     
     func setThemeData(){
@@ -105,6 +106,7 @@ class ThemeInfoVC: UIViewController {
                 case .success(let data):
                     if let _data = data as? ThemeInfoData {
                         self.themeData = _data.theme[0]
+                        print(self.themeData?.alreadyBookmarked)
                         self.sentences = _data.sentence
                         DispatchQueue.main.async {
                             self.updateLayout()
@@ -152,6 +154,7 @@ class ThemeInfoVC: UIViewController {
         self.curatorProfileImageView.imageFromUrl(self.themeData?.writerImg, defaultImgPath: "themeImgCurator")
         self.sentenceCountLabel.text = "\(self.themeData?.sentenceNum ?? 0)"
         self.bookmarkCountLabel.text = "\(self.themeData?.saves ?? 0)"
+        self.saveButton.isSelected = self.themeData?.alreadyBookmarked ?? false
     }
     
     func report(content: String){
@@ -180,6 +183,13 @@ class ThemeInfoVC: UIViewController {
     //MARK:- IBAction
     
     @IBAction func touchUpReportButton(_ sender: Any) {
+        let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
+        
+        if token == "guest" {
+            self.presentLoginRequestPopUp()
+            return
+        }
+        
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         [
