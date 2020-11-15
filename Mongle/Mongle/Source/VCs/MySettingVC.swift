@@ -99,35 +99,37 @@ extension MySettingVC: UITableViewDelegate {
             
         case 2:
             switch indexPath.row{
-            case 0:
-                guard let nextVC = UIStoryboard(name: "VersionInfo", bundle: nil).instantiateViewController(identifier: "VersionInfoVC") as? VersionInfoVC else {
-                    return
-                }
-                self.navigationController?.pushViewController(nextVC, animated: true)
-            
-            case 1:
-                guard let nextVC = UIStoryboard(name: "Mongles", bundle: nil).instantiateViewController(identifier: "MonglesVC") as? MonglesVC else {
-                    return
-                }
-                self.navigationController?.pushViewController(nextVC, animated: true)
-            case 2:
-                //서비스 운영정책
-                print("SignUpServiceAgree")
-                guard let nextVC = UIStoryboard(name: "ServicePolicy", bundle: nil).instantiateViewController(identifier: "ServicePolicyVC") as? ServicePolicyVC else {
-                    return
-                }
-                self.navigationController?.pushViewController(nextVC, animated: true)
-            case 3:
-                //개인정보 이용약관
-                guard let nextVC = UIStoryboard(name: "SignUpRule", bundle: nil).instantiateViewController(identifier: "SignUpRuleVC") as? SignUpRuleVC else {
-                    return
-                }
-                self.navigationController?.pushViewController(nextVC, animated: true)
+                case 0:
+                    guard let nextVC = UIStoryboard(name: "VersionInfo", bundle: nil).instantiateViewController(identifier: "VersionInfoVC") as? VersionInfoVC else {
+                        return
+                    }
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                    
+                case 1:
+                    guard let nextVC = UIStoryboard(name: "Mongles", bundle: nil).instantiateViewController(identifier: "MonglesVC") as? MonglesVC else {
+                        return
+                    }
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                case 2:
+                    //서비스 운영정책
+                    print("SignUpServiceAgree")
+                    guard let nextVC = UIStoryboard(name: "ServicePolicy", bundle: nil).instantiateViewController(identifier: "ServicePolicyVC") as? ServicePolicyVC else {
+                        return
+                    }
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                case 3:
+                    //개인정보 이용약관
+                    guard let nextVC = UIStoryboard(name: "SignUpRule", bundle: nil).instantiateViewController(identifier: "SignUpRuleVC") as? SignUpRuleVC else {
+                        return
+                    }
+                    nextVC.flag = true
+                    self.navigationController?.pushViewController(nextVC, animated: true)
                 case 4:
                     //서비스 이용약관
                     guard let nextVC = UIStoryboard(name: "ServiceAgreeForSignUp", bundle: nil).instantiateViewController(identifier: "ServiceAgreeForSignUpVC") as? ServiceAgreeForSignUpVC else {
                         return
                     }
+                    nextVC.flag = true
                     self.navigationController?.pushViewController(nextVC, animated: true)
                 case 5:
                     //오픈소스 라이선스
@@ -136,8 +138,8 @@ extension MySettingVC: UITableViewDelegate {
                     }
                     self.navigationController?.pushViewController(nextVC, animated: true)
                     print("opensource")
-            default:
-                break
+                default:
+                    break
             }
         default:
             break

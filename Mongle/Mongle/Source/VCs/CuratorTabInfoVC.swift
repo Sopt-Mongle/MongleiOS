@@ -10,6 +10,8 @@ import UIKit
 
 class CuratorTabInfoVC: UIViewController {
     
+    let token = UserDefaults.standard.string(forKey: "token")
+    
     var pageInstance : CuratorTabInfoPageVC?
     var observingList: [NSKeyValueObservation] = []
     var curatorIdx = -1
@@ -33,7 +35,12 @@ class CuratorTabInfoVC: UIViewController {
     @IBOutlet weak var sentenceMenuBTN: UIButton!
     
     @IBAction func touchUpSubscribe(_ sender: Any) {
-        follow(idx: curatorIdx)
+        if token == "guest"{
+            self.presentLoginRequestPopUp()
+        }
+        else{
+            follow(idx: curatorIdx)
+        }
       
     }
     @IBAction func touchUpBack(_ sender: Any) {

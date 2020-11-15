@@ -537,8 +537,8 @@
 			children = (
 				7F1E719E24B4768D00D79516 /* Views */,
 				7F6ABECD24ADE8670040746E /* VCs */,
-				7F6ABECC24ADE8610040746E /* Cell */,
 				7F6ABECB24ADE85A0040746E /* Extensions */,
+				7F6ABECC24ADE8610040746E /* Cell */,
 				7F6ABECA24ADE8500040746E /* Model */,
 			);
 			path = Source;

@@ -18,7 +18,7 @@ class SignUpServiceAgreeVC: UIViewController {
     
     @IBOutlet var titleLabels: [UILabel]!
     
-    
+    var flag = false
     override func viewDidLoad() {
         super.viewDidLoad()
         setItems()
@@ -38,6 +38,15 @@ class SignUpServiceAgreeVC: UIViewController {
         
         
         
+    }
+    @IBAction func touchUpClose(_ sender: Any) {
+        if flag{
+            flag = false
+            self.navigationController?.popViewController(animated: true)
+        }
+        else{
+            dismiss(animated: true, completion: nil)
+        }
     }
     
 

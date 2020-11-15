@@ -13,7 +13,7 @@ import Then
 class UnderTabBarController: UITabBarController {
     
     var curIndex: Int = 0
-    
+    let token = UserDefaults.standard.string(forKey: "token")
     // MARK:- UIComponents
     
     let plusButton = UIButton().then {
@@ -391,5 +391,14 @@ extension UnderTabBarController: UITabBarControllerDelegate {
         else {
             self.curIndex = tabBarController.selectedIndex
         }
+    }
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if tabBarController.viewControllers?[4] == viewController{
+            if token == "guest"{
+                self.presentLoginRequestPopUp()
+                return false
+            }
+        }
+        return true
     }
 }

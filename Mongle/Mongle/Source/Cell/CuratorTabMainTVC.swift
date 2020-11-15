@@ -9,16 +9,18 @@
 import UIKit
 
 class CuratorTabMainTVC: UITableViewCell {
-    
+    //MARK: - IBOutlets
     @IBOutlet weak var themeTitleImageView: UIImageView!
     @IBOutlet weak var themeTitleLabel: UILabel!
     @IBOutlet weak var themeCuratorCountLabel: UILabel!
     @IBOutlet weak var curatorListCollectionView: UICollectionView!
     
+    //MARK: - Custom Property
+    var myVC: UIViewController?
     var curatorList:[CuratorInTheme] = []
     var count = 0
     var selectSentenceDelegate: ((_ viewControllers: UIViewController) -> ()) = { _ in }
-    
+    //MARK: - Lifecycle Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -29,7 +31,6 @@ class CuratorTabMainTVC: UITableViewCell {
         themeCuratorCountLabel.text = "큐레이터 \(count)명"
         
     }
-   
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -81,6 +82,7 @@ extension CuratorTabMainTVC: UICollectionViewDataSource{
         cell.curatorIdx = curatorList[indexPath.item].curatorIdx
         
         cell.subscribeBTN.isSelected = curatorList[indexPath.item].alreadySubscribed
+        cell.myVC = self.myVC
         if cell.subscribeBTN.isSelected{
             
             cell.subscribeBTN.backgroundColor = .veryLightPinkSeven

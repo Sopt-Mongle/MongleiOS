@@ -147,6 +147,7 @@ extension CuratorTabMainVC: UITableViewDataSource{
         cell.themeTitleImageView.imageFromUrl(self.themeList[indexPath.row].themeImg, defaultImgPath: "mainImgTheme1")
         cell.themeCuratorCountLabel.text = "큐레이터 \(self.themeList[indexPath.row].curatorNum)명"
         cell.curatorListCollectionView.reloadData()
+        cell.myVC = self
         return cell
         
     }

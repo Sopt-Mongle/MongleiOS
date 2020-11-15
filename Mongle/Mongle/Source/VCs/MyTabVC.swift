@@ -24,6 +24,8 @@ class MyTabVC: UIViewController {
     var profileKeywordIdx : Int?
     var profileIntroduce = ""
     
+    let token = UserDefaults.standard.string(forKey: "token")
+    
     //MARK:- IBOutlet
     @IBOutlet weak var myProfileImage: UIImageView!
     @IBOutlet weak var myNameLabel: UILabel!

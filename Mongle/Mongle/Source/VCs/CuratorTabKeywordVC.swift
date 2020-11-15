@@ -89,6 +89,7 @@ extension CuratorTabKeywordVC: UICollectionViewDataSource{
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CuratorListCVC", for: indexPath) as? CuratorListCVC else{
             return UICollectionViewCell()
         }
+        cell.myVC = self
         cell.curatorProfileImageView.imageFromUrl(curatorList[indexPath.item].img, defaultImgPath: "sentenceThemeOImgCurator1010")
         cell.curatorNameLabel.text = curatorList[indexPath.item].name
         cell.curatorInfoLabel.text = curatorList[indexPath.item].introduce
