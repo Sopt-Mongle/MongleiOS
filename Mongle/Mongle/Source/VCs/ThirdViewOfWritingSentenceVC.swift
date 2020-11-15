@@ -284,7 +284,7 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
             switch networkResult{
             case .success(let data) :
                 
-                
+               
                 guard let vcName = UIStoryboard(name: "EndOfWritingSentence",
                                                 bundle: nil).instantiateViewController(
                                                     withIdentifier: "EndOfWritingSentenceVC")

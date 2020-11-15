@@ -60,7 +60,7 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         
     }
     
-    
+    let particleEmitter = CAEmitterLayer()
     var noAnimation : Bool = false
     static var isVisited : Bool = false
     var thumbNail = ""
@@ -86,6 +86,7 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         bookTitleLabel.text = ""
         setWarning()
         searchTextButton.makeRounded(cornerRadius: 10)
+        
         
         
         // Do any additional setup after loading the view.
@@ -339,8 +340,118 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         
     }
     
+    func makeEmitterCell(color: UIColor) -> CAEmitterCell {
+        let cell = CAEmitterCell()
+        cell.birthRate = 10
+        cell.lifetime = 7.0
+        cell.lifetimeRange = 0
+        // MARK: 색관련
+        cell.color = color.cgColor
+        // alpha값 줄어드는 오차범위
+        cell.alphaRange = 0.5
+        // red값 오차범위
+        // cell.redRange = 100
+        // red값 변하는속도
+        // cell.redSpeed = 50
+        // cell.blueRange = 100
+        // cell.blueSpeed = 50
+        // cell.greenRange = 100
+        // cell.greenSpeed = 50
+        // alpha값 줄어드는 속도
+        cell.alphaSpeed = -0.3
+        // MARK: 속도관련
+        // 클수록 방향전환영향도 커짐
+        cell.velocity = 100
+        cell.velocityRange = 1
+        // y방향으로 가속도
+        cell.yAcceleration = 60
+        // 효과 뿌려지는 각도조절
+        // cell.emissionLongitude = .pi/2
+        cell.emissionRange = .pi * 2
+        // cell.emissionLatitude = .pi/2
+        cell.spin = 3
+        cell.spinRange = 3
+        cell.scale = 0.5
+        cell.scaleRange = 0.01
+        cell.scaleSpeed = -0.01
+        cell.contents = UIImage(named: "joinStep1AgreeImgMongle")?.cgImage
+        return cell
+        
+    }
+
+    func makeEmiterCellFirework() -> CAEmitterCell {
+        let cell = CAEmitterCell()
+        cell.birthRate = 50
+        cell.velocity = 100
+        cell.lifetime = 1.0
+        cell.emissionRange = (2 * .pi)
+        cell.scale = 0.5
+        cell.alphaSpeed = -0.2
+        cell.yAcceleration = 80
+        cell.beginTime = 1.5
+        cell.duration = 0.1
+        cell.scaleSpeed = -0.015
+        cell.spin = 2
+        cell.redRange = 100
+        cell.redSpeed = 50
+        cell.blueRange = 100
+        cell.blueSpeed = 50
+        cell.greenRange = 100
+        cell.greenSpeed = 50
+        cell.contents = UIImage(named: "joinStep1AgreeImgMongle")?.cgImage
+        return cell
+        
+    }
+
+   
+    func createParticles() {
+       
+        particleEmitter.lifetime = 5.0
+        // MARK: 설정
+        particleEmitter.emitterPosition = CGPoint(x: view.center.x, y: view.center.y)
+        // particleEmitter.zPosition = 100
+        // particleEmitter.emitterDepth = 100
+        // particleEmitter.emitterZPosition = 100
+        // 뿌려지는 모양
+        particleEmitter.emitterShape = .point
+        // 뿌려지는 컨테이너의 크기
+        particleEmitter.emitterSize = CGSize(width: view.frame.size.width, height: 1)
+        // particleEmitter.emitterMode = .volume
+        particleEmitter.velocity = 2
+        particleEmitter.renderMode = .additive
+        let white = makeEmitterCell(color: .white)
+        let red = makeEmitterCell(color: UIColor.red)
+        let green = makeEmitterCell(color: UIColor.green)
+        let blue = makeEmitterCell(color: UIColor.blue)
+        particleEmitter.birthRate = 1
+        particleEmitter.emitterCells = [green]
+        view.layer.addSublayer(particleEmitter)
+        
+    }
+
+ 
+    
     
     @IBAction func nextButtonAction(_ sender: Any) {
+        if authorTextField.text == "" || publisherTextField.text == "" {
+            createParticles()
+            UIView.animate(withDuration: 7.0, delay: 0, options: .curveEaseOut , animations: {
+                self.showToast(text: "축하드립니다. 당신은 이스터에그를 발견하셨습니다.")
+                
+            }, completion: nil)
+           
+           
+            let white = makeEmitterCell(color: .white)
+            let firework = makeEmiterCellFirework()
+            particleEmitter.emitterCells = [white]
+            white.emitterCells = [firework]
+            view.layer.addSublayer(particleEmitter)
+
+           
+            return
+            
+        }
+        
         guard let vcName = UIStoryboard(name: "WritingSentenceThird",
                                         bundle: nil).instantiateViewController(
                                             withIdentifier: "WritingSentenceThirdVC")
