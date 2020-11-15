@@ -25,24 +25,41 @@ class AddBookToSentenceVC: UIViewController {
     var bookInfo: Book?
     
     var isFill: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        publisherTextField.isEnabled = false
-        authorTextField.isEnabled = false
-        backButton.setImage(UIImage(named: "searchBtnBack"), for: .normal)
-        backButton.tintColor = .veryLightPink
-        setNextButton()
-        searchTextButton.setImage(UIImage(named: "themeWritingSentenceBookBtnBookSearch")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        bookTitleLabel.text = ""
+        initLayout()
     }
     
     func setNextButton(){
-          self.nextButton.backgroundColor = .softGreen
-          self.nextButton.makeRounded(cornerRadius: 25)
-          
-          
-      }
+        self.nextButton.backgroundColor = .softGreen
+        self.nextButton.makeRounded(cornerRadius: 25)
+    }
+    
+    func initLayout() {
+        setNextButton()
+        
+        publisherTextField.then {
+            $0.isEnabled = false
+            $0.backgroundColor = .whiteThree
+            $0.makeRounded(cornerRadius: 10)
+            $0.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1)
+            $0.addLeftPadding(left: 15.0)
+        }
+        authorTextField.then {
+            $0.isEnabled = false
+            $0.backgroundColor = .whiteThree
+            $0.makeRounded(cornerRadius: 10)
+            $0.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1)
+            $0.addLeftPadding(left: 15.0)
+        }
+        
+        bookTitleLabel.text = ""
+        
+        backButton.setImage(UIImage(named: "searchBtnBack"), for: .normal)
+        backButton.tintColor = .veryLightPink
+    }
     
 
     
@@ -76,11 +93,12 @@ class AddBookToSentenceVC: UIViewController {
                           publisher: self.bookInfo?.bookPublisher ?? "",
                           themeIdx: self.themeIdx ?? 0) { networkResult in
                             switch networkResult{
-                            case .success(_):
+                            case .success(let idx):
                                 self.showToast(text: "등록 완료")
                                 guard let dvc = UIStoryboard(name: "EndOfWritingSentence", bundle: nil).instantiateViewController(identifier: "EndOfWritingSentenceVC") as? EndOfWritingSentenceVC else {
                                     return
                                 }
+                                dvc.sendingSentenceIdx = idx as! Int
                                 self.navigationController?.pushViewController(dvc, animated: true)
                             case .requestErr(let msg):
                                 self.showToast(text: msg as? String ?? "request err")

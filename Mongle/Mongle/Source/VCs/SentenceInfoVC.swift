@@ -38,7 +38,7 @@ class SentenceInfoVC: UIViewController {
     var sentenceText: String = """
 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의인상,사소한 것으로 인해 생기는 호감,
 """
-    var sentence: Sentence?
+    var sentence: DetailSentenceInfo?
     var themeImage: UIImage? = UIImage(named: "curatorImgTheme1")
     var otherSentences: [Sentence] = []
     var hasTheme: Bool = true
@@ -51,7 +51,7 @@ class SentenceInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGesture()
-        bindThemeInfo()
+//        bindThemeInfo()
         makeRoundTableView()
         
         layoutTableView.delegate = self
@@ -94,12 +94,22 @@ class SentenceInfoVC: UIViewController {
     
     func getSentenceInfo(){
         SentenceService.shared.getSentence(idx: self.sentenceIdx ?? 0) { networkResult in
+            print("##########################")
+            print(networkResult)
             switch networkResult {
             case .success(let data):
-                if let _data = data as? [Sentence] {
+                if let _data = data as? [DetailSentenceInfo] {
                     self.sentence = _data[0]
+                    print(self.sentence)
+                    self.getThemeInfo(themeIdx: self.sentence?.themeIdx ?? 0) {
+                        [weak self] (themeImage, themeName) in
+                        DispatchQueue.main.async {
+                            self?.themeImageView.imageFromUrl(themeImage, defaultImgPath: "")
+                            self?.themeNameLabel.text = themeName
+                        }
+                    }
                     self.getMyNickName { [weak self] nickName in
-                        if nickName == self?.sentence?.writer! {
+                        if nickName == self?.sentence?.writer {
                             self?.isMySentence = true
                         }
                         else {
@@ -121,14 +131,38 @@ class SentenceInfoVC: UIViewController {
             case .networkFail:
                 self.showToast(text: "networkFail")
             }
+            print("##########################")
+        }
+        
+    }
+    
+    func getThemeInfo(themeIdx: Int, completion: @escaping (String, String) -> Void) {
+        ThemeService.shared.getThemeInfo(idx: themeIdx) { (networkResult) in
+            switch networkResult {
+            case .success(let themeData):
+                if let _data = themeData as? ThemeInfoData {
+                    print("##########")
+                    print(_data.theme[0])
+                    completion(_data.theme[0].themeImg ?? "", _data.theme[0].theme ?? "")
+                }
+    
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "requestErr")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
         }
     }
     
-    func bindThemeInfo() {
-        themeImageView.image = themeImage
-        themeNameLabel.text = themeText
-        themeNameLabel.sizeToFit()
-    }
+//    func bindThemeInfo() {
+//        themeImageView.image = themeImage
+//        themeNameLabel.text = themeText
+//        themeNameLabel.sizeToFit()
+//    }
     
     func getOtherSentece(){
         SentenceService.shared.getSentence(idx: self.sentenceIdx ?? 0) { networkResult in

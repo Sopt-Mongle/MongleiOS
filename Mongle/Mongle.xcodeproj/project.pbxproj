@@ -19,6 +19,7 @@
 		7F1E71A824B7A72400D79516 /* ThemeInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F1E71A724B7A72400D79516 /* ThemeInfo.storyboard */; };
 		7F1E71AA24B7BADB00D79516 /* ThemeInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1E71A924B7BADB00D79516 /* ThemeInfoVC.swift */; };
 		7F1E71AC24B7BC6900D79516 /* SentenceInThemeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1E71AB24B7BC6900D79516 /* SentenceInThemeTVC.swift */; };
+		7F6416F925610108004D9ED5 /* DetailSentenceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6416F825610108004D9ED5 /* DetailSentenceInfo.swift */; };
 		7F6ABEB224ADE7700040746E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABEB124ADE7700040746E /* AppDelegate.swift */; };
 		7F6ABEB424ADE7700040746E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6ABEB324ADE7700040746E /* SceneDelegate.swift */; };
 		7F6ABEBB24ADE7720040746E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F6ABEBA24ADE7720040746E /* Assets.xcassets */; };
@@ -242,6 +243,7 @@
 		7F1E71A924B7BADB00D79516 /* ThemeInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeInfoVC.swift; sourceTree = "<group>"; };
 		7F1E71AB24B7BC6900D79516 /* SentenceInThemeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceInThemeTVC.swift; sourceTree = "<group>"; };
 		7F27ED38D43F3B60FE12A5BC /* Pods-Mongle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mongle.release.xcconfig"; path = "Target Support Files/Pods-Mongle/Pods-Mongle.release.xcconfig"; sourceTree = "<group>"; };
+		7F6416F825610108004D9ED5 /* DetailSentenceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSentenceInfo.swift; sourceTree = "<group>"; };
 		7F6ABEAE24ADE7700040746E /* Mongle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mongle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6ABEB124ADE7700040746E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F6ABEB324ADE7700040746E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -647,6 +649,7 @@
 				EC759C4B24C02615001D2F81 /* PostBookData.swift */,
 				EC759C4F24C02779001D2F81 /* ThemeSelectForWriteData.swift */,
 				EC759C5324C03C84001D2F81 /* SearchThemeData.swift */,
+				7F6416F825610108004D9ED5 /* DetailSentenceInfo.swift */,
 				7FA8C4AE24C0C74400317F43 /* ThemeInfoData.swift */,
 				7FA8C4B024C0EFB900317F43 /* ThemeBookmarkData.swift */,
 				7FA8C4B624C1753A00317F43 /* SentenceLikeData.swift */,
@@ -1098,6 +1101,7 @@
 				B8B48AE524B9847500551F5B /* SearchResultSentenceTVC.swift in Sources */,
 				7FFEA26624BE1B54003D381A /* VersionInfoVC.swift in Sources */,
 				7FA8C4BD24C1BFB000317F43 /* NoThemeSentenceService.swift in Sources */,
+				7F6416F925610108004D9ED5 /* DetailSentenceInfo.swift in Sources */,
 				B8E2E16724C1B48500595752 /* CuratorRecommendService.swift in Sources */,
 				EC759C3824BEB7C3001D2F81 /* SignUpService.swift in Sources */,
 				B8B48ADB24B762A000551F5B /* SearchResultMenuCVC.swift in Sources */,

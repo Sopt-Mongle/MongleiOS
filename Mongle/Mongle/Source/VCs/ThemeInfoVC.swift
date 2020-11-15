@@ -221,13 +221,18 @@ class ThemeInfoVC: UIViewController {
             self.presentLoginRequestPopUp()
             return
         }
-        guard let dvc = UIStoryboard(name: "WritingSentenceInTheme", bundle: nil).instantiateViewController(identifier: "WritingSentenceInThemeVC") as? WritingSentenceInThemeVC else {
+        guard let dvc = UIStoryboard(name: "WritingSentenceInTheme", bundle: nil).instantiateViewController(identifier: "WritingSentenceInThemeNavi") as? UINavigationController else {
             return
         }
         
-        dvc.themeIdx = self.themeIdx
-        dvc.themeName = self.themeData?.theme
-        self.navigationController?.pushViewController(dvc, animated: true)
+        guard let root = dvc.topViewController as? WritingSentenceInThemeVC else {
+            return
+        }
+        root.themeIdx = self.themeIdx
+        root.themeName = self.themeData?.theme
+        dvc.modalPresentationStyle = .fullScreen
+        
+        self.present(dvc, animated: true, completion: nil)
     }
     
     @IBAction func touchUpBookMarkButton(sender: UIButton) {

@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "themeWritingSentence3BtnBookSearch.png",
+      "scale" : "1x"
+    },
+    {
+      "scale" : "2x",
+      "filename" : "themeWritingSentence3BtnBookSearch@2x.png",
+      "idiom" : "universal"
+    },
+    {
+      "scale" : "3x",
+      "idiom" : "universal",
+      "filename" : "themeWritingSentence3BtnBookSearch@3x.png"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

@@ -248,7 +248,7 @@ class WritingSentenceInThemeVC: UIViewController {
     }
     
     @IBAction func touchUpBackButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func touchUpCallInNoThemeSentenceButton(_ sender: UIButton) {
