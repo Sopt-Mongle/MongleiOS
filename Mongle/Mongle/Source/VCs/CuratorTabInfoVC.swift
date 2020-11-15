@@ -44,8 +44,10 @@ class CuratorTabInfoVC: UIViewController {
         pageInstance?.keyValue.curPresentViewIndex = 0
         themeMenuBTN.setTitleColor(.softGreen, for: .normal)
         themeMenuLabel.textColor = .softGreen
+        themeMenuText.textColor = .softGreen
         sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
         sentenceMenuLabel.textColor = .veryLightPink
+        sentenceMenuText.textColor = .veryLightPink
     }
     
     @IBAction func touchUpSentence(_ sender: Any) {
@@ -53,8 +55,10 @@ class CuratorTabInfoVC: UIViewController {
         pageInstance?.keyValue.curPresentViewIndex = 1
         themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
         themeMenuLabel.textColor = .veryLightPink
+        themeMenuText.textColor = .veryLightPink
         sentenceMenuBTN.setTitleColor(.softGreen, for: .normal)
         sentenceMenuLabel.textColor = .softGreen
+        sentenceMenuText.textColor = .softGreen
     }
     
     //MARK:- LifeCycle Methods
