@@ -180,7 +180,8 @@ class MyTabVC: UIViewController {
                     self.profileImg = self.myProfileData!.img ?? ""
                     self.profileName = self.myProfileData!.name
                     self.profileKeywordIdx = self.myProfileData!.keywordIdx
-                    self.profileIntroduce = self.myProfileData?.introduce ?? ""
+                    self.profileIntroduce = self.myProfileData!.introduce ?? ""
+                    print("##########Introduce,\(self.profileIntroduce)")
                     UserDefaults.standard.setValue(self.profileName, forKey: "UserProfileName")
                     UserDefaults.standard.setValue(self.profileImg, forKey: "UserProfileImgLink")
                     UserDefaults.standard.setValue(self.profileKeywordIdx, forKey: "UserProfileKeyIdx")
@@ -209,6 +210,7 @@ class MyTabVC: UIViewController {
                     DispatchQueue.main.async {
                         self.setMenu()
                         self.setProfile()
+                        
                     }
                     
                     
@@ -248,7 +250,7 @@ class MyTabVC: UIViewController {
         myProfileImage.imageFromUrl(self.profileImg, defaultImgPath: "sentenceThemeOImgCurator1010")
         myNameLabel.text = self.profileName
         myKeywordLabel.text = self.profileKeyword
-        myProfileMsgLabel.text = self.profileMsg
+        myProfileMsgLabel.text = self.profileIntroduce
     }
     
     func setMyTheme(){
