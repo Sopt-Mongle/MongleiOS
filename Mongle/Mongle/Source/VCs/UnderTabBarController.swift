@@ -402,6 +402,7 @@ class UnderTabBarController: UITabBarController {
     
     @objc func makeThemeButtonAction(sender: UIButton?){
         if UserDefaults.standard.string(forKey: "token") == "guest" {
+            hideSubMenus() 
             self.presentLoginRequestPopUp()
             return
         }
