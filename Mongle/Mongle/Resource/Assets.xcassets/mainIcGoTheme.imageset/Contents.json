@@ -2,18 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "mainIcGoTheme.png"
+      "filename" : "mainIcGoTheme.png",
+      "scale" : "1x"
     },
     {
-      "filename" : "mainIcGoTheme@2x.png",
       "scale" : "2x",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "mainIcGoTheme@2x.png"
     },
     {
       "filename" : "mainIcGoTheme@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "idiom" : "universal"
     }
   ],
   "info" : {

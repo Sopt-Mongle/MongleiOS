@@ -22,7 +22,7 @@ class MainPopularThemaCVC: UICollectionViewCell {
         self.makeRounded(cornerRadius: 10)
     }
     
-    func setData(name: String, count: Int, imageUrl: String, isBookMark: Bool){
+    func setData(name: String, count: Int, imageUrl: String, isBookMark: Bool, bookMarkCount: Int){
         self.themaNameLabel.text = name
         self.sentenceCountLabel.text = "문장 \(count)개"
         if isBookMark {
@@ -32,6 +32,7 @@ class MainPopularThemaCVC: UICollectionViewCell {
             bookMarkImageView.image = UIImage(named: "mainIcBookmark1")
         }
         self.backgroundImageView.imageFromUrl(imageUrl, defaultImgPath: "writingSentenceTheme3ImgThemeX")
+        self.bookMarkCountLabel.text = "\(bookMarkCount)"
         
     }
 }
