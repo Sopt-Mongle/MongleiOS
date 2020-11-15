@@ -181,7 +181,7 @@ class MyTabVC: UIViewController {
                     self.myProfileData = data[0]
                     self.profileImg = self.myProfileData!.img ?? ""
                     self.profileName = self.myProfileData!.name
-                    self.profileKeywordIdx = self.myProfileData!.keywordIdx
+                    self.profileKeywordIdx = self.myProfileData!.keywordIdx ?? 1
                     self.profileIntroduce = self.myProfileData!.introduce ?? ""
                     print("##########Introduce,\(self.profileIntroduce)")
                     UserDefaults.standard.setValue(self.profileName, forKey: "UserProfileName")

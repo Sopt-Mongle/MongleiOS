@@ -26,6 +26,8 @@ class SearchTabResultVC: UIViewController {
             "SearchResultThemeVC") as? SearchResultThemeVC else {
                 return
         }
+        pageInstance?.searchKey = searchKeyword
+        pageInstance?.viewDidLoad()
         //themeVC.setSearchThemeData(searchKeyword)
         
     }

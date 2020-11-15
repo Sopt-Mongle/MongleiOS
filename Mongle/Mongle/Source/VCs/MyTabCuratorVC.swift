@@ -87,7 +87,7 @@ extension MyTabCuratorVC: UICollectionViewDataSource{
         cell.subscribeBTN.isSelected = myCuratorList[indexPath.item].alreadySubscribed
         cell.curatorIdx = myCuratorList[indexPath.item].curatorIdx
         cell.subscriberLabel.text = "구독자 \(myCuratorList[indexPath.item].subscribe)명"
-        cell.curatorInfoLabel.text = myCuratorList[indexPath.item].introduce
+        cell.curatorInfoLabel.text = myCuratorList[indexPath.item].keyword
         if myCuratorList[indexPath.item].alreadySubscribed{
             cell.subscribeBTN.backgroundColor = .veryLightPinkSeven
         }

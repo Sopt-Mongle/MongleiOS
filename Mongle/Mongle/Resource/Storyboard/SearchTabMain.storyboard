@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchBox" translatesAutoresizingMaskIntoConstraints="NO" id="US7-AI-z1w">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchBox" translatesAutoresizingMaskIntoConstraints="NO" id="US7-AI-z1w">
                                 <rect key="frame" x="42" y="55" width="317" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="US7-AI-z1w" secondAttribute="height" multiplier="317:45" id="Tgf-rG-rGL"/>

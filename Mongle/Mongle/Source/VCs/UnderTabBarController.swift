@@ -387,6 +387,11 @@ extension UnderTabBarController: UITabBarControllerDelegate {
                 vc.prevIdx = self.curIndex
             }
         }
+        else if tabBarController.selectedIndex == 4{
+            if let vc = viewController as? MyTabVC{
+                vc.viewDidLoad()
+            }
+        }
             
         else {
             self.curIndex = tabBarController.selectedIndex

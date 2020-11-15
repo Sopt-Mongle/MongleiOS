@@ -352,6 +352,7 @@ class ProfileEditVC: UIViewController{
     
     //MARK: - IBAction
     @IBAction func touchKeywordButton(sender: UIButton) {
+        self.view.endEditing(true)
         nickNameTextField.resignFirstResponder()
         selectedKeywordIdx = sender.tag
         updateSelectedKeywordButton()
