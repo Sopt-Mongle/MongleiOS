@@ -26,12 +26,10 @@ class MainPopularThemaCVC: UICollectionViewCell {
         self.themaNameLabel.text = name
         self.sentenceCountLabel.text = "문장 \(count)개"
         if isBookMark {
-            bookMarkImageView.image = UIImage(named: "mainIcBookmark1")
-//            mainIcBookmark1
-//            themeIcBookmarkGreen
+            bookMarkImageView.image = UIImage(named: "themeIcBookmarkGreen")
         }
         else {
-            bookMarkImageView.image = UIImage(named: "themeIcBookmarkGreen")
+            bookMarkImageView.image = UIImage(named: "mainIcBookmark1")
         }
         self.backgroundImageView.imageFromUrl(imageUrl, defaultImgPath: "writingSentenceTheme3ImgThemeX")
         

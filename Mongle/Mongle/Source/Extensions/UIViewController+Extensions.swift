@@ -116,6 +116,7 @@ extension UIViewController {
             guard let loginVC = loginStoryboard.instantiateViewController(identifier: "LogInVC") as? LogInVC else {
                 return
             }
+            loginVC.modalPresentationStyle = .fullScreen
             self?.present(loginVC, animated: true, completion: {
                 blurView.removeFromSuperview()
                 popUpView.removeFromSuperview()

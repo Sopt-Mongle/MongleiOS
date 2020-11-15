@@ -1,19 +1,19 @@
 {
   "images" : [
     {
-      "scale" : "1x",
+      "filename" : "mainIcBookmark1.png",
       "idiom" : "universal",
-      "filename" : "mainIcBookmark1.png"
+      "scale" : "1x"
     },
     {
       "scale" : "2x",
-      "idiom" : "universal",
-      "filename" : "mainIcBookmark1@2x.png"
+      "filename" : "mainIcBookmark1@2x.png",
+      "idiom" : "universal"
     },
     {
+      "filename" : "mainIcBookmark1@3x.png",
       "scale" : "3x",
-      "idiom" : "universal",
-      "filename" : "mainIcBookmark1@3x.png"
+      "idiom" : "universal"
     }
   ],
   "info" : {

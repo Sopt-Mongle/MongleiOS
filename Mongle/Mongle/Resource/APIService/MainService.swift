@@ -93,7 +93,6 @@ struct MainService {
                                 }
                                 completion(self.judgePopularCurator(status: statusCode, data: data))
                             case .failure(let err):
-//                                print("Error#######################################")
                                 print(err)
                                 completion(.networkFail)
                             }

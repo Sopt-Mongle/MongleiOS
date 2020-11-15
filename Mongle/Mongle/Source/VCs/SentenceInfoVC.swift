@@ -62,7 +62,7 @@ class SentenceInfoVC: UIViewController {
         getOtherSentece()
     }
     
-    func getMyNickName(completion: @escaping (String)->()) {
+    func getMyNickName(completion: @escaping (Bool, String)->()) {
         MyProfileService.shared.getMy(){ networkResult in
             
             switch networkResult {
@@ -71,17 +71,17 @@ class SentenceInfoVC: UIViewController {
                     return
                 }
                 
-                completion(data[0].name)
+                completion(true, data[0].name)
                 
             case .requestErr(let message):
-                print(message)
+                completion(false, "")
             case .pathErr:
                 
-                print("path")
+                completion(false, "")
             case .serverErr:
-                print("serverErr")
+                completion(false, "")
             case .networkFail:
-                print("networkFail")
+                completion(false, "")
             }
         }
     }
@@ -94,26 +94,26 @@ class SentenceInfoVC: UIViewController {
     
     func getSentenceInfo(){
         SentenceService.shared.getSentence(idx: self.sentenceIdx ?? 0) { networkResult in
-            print("##########################")
-            print(networkResult)
+
             switch networkResult {
             case .success(let data):
                 if let _data = data as? [DetailSentenceInfo] {
                     self.sentence = _data[0]
-                    print(self.sentence)
                     self.getThemeInfo(themeIdx: self.sentence?.themeIdx ?? 0) {
                         [weak self] (themeImage, themeName) in
                         DispatchQueue.main.async {
-                            self?.themeImageView.imageFromUrl(themeImage, defaultImgPath: "")
+                            self?.themeImageView.imageFromUrl(themeImage, defaultImgPath: "themeWritingThemeXSentenceBg")
                             self?.themeNameLabel.text = themeName
                         }
                     }
-                    self.getMyNickName { [weak self] nickName in
-                        if nickName == self?.sentence?.writer {
-                            self?.isMySentence = true
-                        }
-                        else {
-                            self?.isMySentence = false
+                    self.getMyNickName { [weak self] (success, nickName) in
+                        if success {
+                            if nickName == self?.sentence?.writer {
+                                self?.isMySentence = true
+                            }
+                            else {
+                                self?.isMySentence = false
+                            }
                         }
                         
                         DispatchQueue.main.async {
@@ -131,7 +131,6 @@ class SentenceInfoVC: UIViewController {
             case .networkFail:
                 self.showToast(text: "networkFail")
             }
-            print("##########################")
         }
         
     }
@@ -141,8 +140,6 @@ class SentenceInfoVC: UIViewController {
             switch networkResult {
             case .success(let themeData):
                 if let _data = themeData as? ThemeInfoData {
-                    print("##########")
-                    print(_data.theme[0])
                     completion(_data.theme[0].themeImg ?? "", _data.theme[0].theme ?? "")
                 }
     
@@ -295,8 +292,6 @@ class SentenceInfoVC: UIViewController {
         SentenceEditService.shared.deleteSentece(idx: sentenceIdx ?? 0) { (networkResult) in
             switch networkResult {
             case .success(_):
-                print("########################")
-                print("success")
                 let prevIndex = self.navigationController?.viewControllers.count
                 self.navigationController?.viewControllers[prevIndex! - 2].showToast(text: "문장이 삭제되었어요!")
                 self.navigationController?.popViewController(animated: true)

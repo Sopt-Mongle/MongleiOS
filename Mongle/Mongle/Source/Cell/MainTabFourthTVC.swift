@@ -64,7 +64,7 @@ extension MainTabFourthTVC: UICollectionViewDataSource {
         }
         
         let theme = self.themas[indexPath.item]
-        cell.setData(name: theme.theme, count: theme.sentenceNum, imageUrl: theme.themeImg, isBookMark: theme.alreadyBookmarked)
+        cell.setData(name: theme.theme, count: theme.sentenceNum, imageUrl: theme.themeImg, isBookMark: false)
         
         return cell
     }
