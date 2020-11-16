@@ -117,9 +117,6 @@ class SentenceInfoVC: UIViewController {
                             }
                         }
                         self?.getMySaveSentence { [weak self] (success, sentenceIdxes) in
-                            print("##########")
-                            print(sentenceIdxes)
-                            print(self?.sentenceIdx ?? 0)
                             if success {
                                 self?.sentence?.alreadyBookmarked = sentenceIdxes.contains(self?.sentenceIdx ?? 0)
                             }
@@ -132,7 +129,6 @@ class SentenceInfoVC: UIViewController {
                             }
                         }
                     }
-                   
                 }
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "")
@@ -175,7 +171,7 @@ class SentenceInfoVC: UIViewController {
                     completion(true, _data.save.compactMap{ return $0.sentenceIdx })
                 }
             case .requestErr(let msg):
-                self.showToast(text: msg as? String ?? "requestErr")
+//                self.showToast(text: msg as? String ?? "requestErr")
                 completion(false, [])
             case .pathErr:
                 self.showToast(text: "pathErr")
@@ -302,7 +298,6 @@ class SentenceInfoVC: UIViewController {
             switch networkResult {
                 
             case .success(let data):
-                print(data)
                 if let _data = data as? SentenceBookmarkData {
                     self.sentence?.alreadyBookmarked = _data.isSave
                     self.sentence?.saves = _data.saves

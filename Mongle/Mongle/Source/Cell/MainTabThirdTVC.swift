@@ -53,6 +53,7 @@ extension MainTabThirdTVC: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         let curator = self.curators[indexPath.item]
+        
         cell.setData(imgUrl: curator.img ?? "themeImgCurator", name: curator.name, tag: curator.keyword ?? " ")
         return cell
     }
