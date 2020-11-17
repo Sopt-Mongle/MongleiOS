@@ -206,7 +206,7 @@ class LogInVC: UIViewController {
         
         var imageView = UIImageView()
         do{
-            let gif = try UIImage(gifName: "Comp 3")
+            let gif = try UIImage(gifName: "Comp 4")
             imageView = UIImageView(gifImage: gif,loopCount: 1)
         
             self.view.addSubview(imageView)
