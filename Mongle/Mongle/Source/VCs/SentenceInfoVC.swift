@@ -557,7 +557,7 @@ extension SentenceInfoVC: UITableViewDataSource {
             cell.setBookData(bookName: self.sentence?.title ?? "",
                              writerName: self.sentence?.author ?? "",
                              publisherName: self.sentence?.publisher ?? "",
-                             bookImageUrl: self.sentence?.writerImg ?? "")
+                             bookImageUrl: self.sentence?.thumbnail ?? "")
             
             cell.editButtonDelegate = { [weak self] sheet in
                 
