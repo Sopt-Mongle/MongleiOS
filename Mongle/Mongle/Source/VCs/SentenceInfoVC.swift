@@ -327,9 +327,17 @@ class SentenceInfoVC: UIViewController {
         SentenceEditService.shared.deleteSentece(idx: sentenceIdx ?? 0) { (networkResult) in
             switch networkResult {
             case .success(_):
-                let prevIndex = self.navigationController?.viewControllers.count
-                self.navigationController?.viewControllers[prevIndex! - 2].showToast(text: "문장이 삭제되었어요!")
-                self.navigationController?.popViewController(animated: true)
+                if let navi = self.navigationController {
+                    let prevIndex = navi.viewControllers.count
+                    navi.viewControllers[prevIndex - 2].showToast(text: "문장이 삭제되었어요!")
+                    navi.popViewController(animated: true)
+                }
+                else {
+                    self.showToast(text: "문장이 삭제되었어요!", completion: {
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                }
+                
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "requestErr")
             case .pathErr:

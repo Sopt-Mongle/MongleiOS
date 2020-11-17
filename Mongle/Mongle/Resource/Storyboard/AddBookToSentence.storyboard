@@ -124,7 +124,6 @@
                         <viewLayoutGuide key="safeArea" id="A06-aJ-v94"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="pyM-Gn-ZxQ" firstAttribute="top" secondItem="izK-bS-5JN" secondAttribute="top" constant="37" id="4lY-Oq-aFi"/>
                             <constraint firstItem="v0I-5V-1bz" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" constant="16" id="B4t-uk-emp"/>
                             <constraint firstItem="v0I-5V-1bz" firstAttribute="top" secondItem="S8i-eg-9PE" secondAttribute="bottom" constant="18" id="E5u-b9-lSq"/>
                             <constraint firstItem="Kes-Hl-2Us" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" constant="16" id="EEZ-Lw-6kV"/>
@@ -139,6 +138,7 @@
                             <constraint firstItem="pyM-Gn-ZxQ" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" id="X3F-I7-nKk"/>
                             <constraint firstItem="Y9K-4F-2BM" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" constant="16" id="Xlw-Ko-5E1"/>
                             <constraint firstItem="7FW-if-3Iu" firstAttribute="centerX" secondItem="A06-aJ-v94" secondAttribute="centerX" id="bpb-GX-A8h"/>
+                            <constraint firstItem="A06-aJ-v94" firstAttribute="top" secondItem="pyM-Gn-ZxQ" secondAttribute="top" constant="7" id="c1o-i2-axd"/>
                             <constraint firstItem="A06-aJ-v94" firstAttribute="trailing" secondItem="60K-D8-bCs" secondAttribute="trailing" constant="16" id="cWW-kE-uLY"/>
                             <constraint firstItem="24z-ck-m5l" firstAttribute="top" secondItem="v0I-5V-1bz" secondAttribute="bottom" constant="12" id="dVb-2b-yti"/>
                             <constraint firstItem="A06-aJ-v94" firstAttribute="bottom" secondItem="PbV-Oy-Dhy" secondAttribute="bottom" constant="11" id="fz4-tQ-H1t"/>

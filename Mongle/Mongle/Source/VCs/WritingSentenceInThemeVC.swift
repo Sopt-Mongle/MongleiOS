@@ -183,7 +183,7 @@ class WritingSentenceInThemeVC: UIViewController {
             as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.3, animations: {
                 self.nextButton.transform =
-                    CGAffineTransform(translationX: 0, y: -keyboardSize.height + 16)
+                    CGAffineTransform(translationX: 0, y: -keyboardSize.height)
             })
             self.view.layoutIfNeeded()
         }
