@@ -198,7 +198,7 @@ class ThemeInfoVC: UIViewController {
                     
                 }
             case .requestErr(let msg):
-                self.showToast(text: msg as? String ?? "requestErr")
+//                self.showToast(text: msg as? String ?? "requestErr")
                 completion(false, [])
             case .pathErr:
                 self.showToast(text: "pathErr")

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C1y-yQ-wMX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C1y-yQ-wMX">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -44,8 +44,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJ7-Fw-Nwu">
                                         <rect key="frame" x="0.0" y="37" width="48" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="ldu-T5-QAe"/>
-                                            <constraint firstAttribute="height" constant="48" id="v2D-n7-iar"/>
+                                            <constraint firstAttribute="width" constant="48" id="mZA-dI-5da"/>
+                                            <constraint firstAttribute="height" constant="48" id="pAb-jo-ORU"/>
                                         </constraints>
                                         <state key="normal" image="themeBtnBack"/>
                                         <connections>
@@ -126,6 +126,7 @@
                                     <constraint firstAttribute="trailing" secondItem="oEF-vb-HrK" secondAttribute="trailing" constant="8" id="Mid-it-8cf"/>
                                     <constraint firstItem="mJ7-Fw-Nwu" firstAttribute="leading" secondItem="i8f-0R-EAS" secondAttribute="leading" id="QnJ-QV-r1t"/>
                                     <constraint firstItem="iWI-Mv-FuQ" firstAttribute="leading" secondItem="i8f-0R-EAS" secondAttribute="leading" constant="16" id="cJO-N7-rrR"/>
+                                    <constraint firstAttribute="trailing" secondItem="mJ7-Fw-Nwu" secondAttribute="trailing" constant="327" id="gD5-Vg-lMx"/>
                                     <constraint firstItem="1ty-8Y-zWx" firstAttribute="leading" secondItem="i8f-0R-EAS" secondAttribute="leading" constant="16" id="jpH-NO-HCU"/>
                                     <constraint firstItem="H4s-l6-9mq" firstAttribute="centerY" secondItem="iWI-Mv-FuQ" secondAttribute="centerY" id="mK9-OW-lXN"/>
                                     <constraint firstItem="oEF-vb-HrK" firstAttribute="top" secondItem="mJ7-Fw-Nwu" secondAttribute="top" id="s74-mO-5K9"/>
