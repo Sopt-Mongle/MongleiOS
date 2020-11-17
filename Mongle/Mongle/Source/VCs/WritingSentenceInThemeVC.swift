@@ -11,6 +11,9 @@ import UIKit
 class WritingSentenceInThemeVC: UIViewController {
 
     //MARK:- IBOutlet
+    
+    @IBOutlet var introduceLabel: UILabel!
+    
     @IBOutlet var themeBackgroundView: UIView!
     @IBOutlet var themeLabel: UILabel!
     
@@ -101,6 +104,15 @@ class WritingSentenceInThemeVC: UIViewController {
         setNonWarningState()
         
         self.themeLabel.text = self.themeName
+        
+        let attributedString = NSMutableAttributedString(string: "마음에 드는 한 문장을 적어주세요!", attributes: [
+          .font: UIFont(name: "AppleSDGothicNeoM00", size: 18.0)!,
+          .foregroundColor: UIColor.greyishBrown,
+          .kern: -0.36
+        ])
+        attributedString.addAttribute(.foregroundColor, value: UIColor.softGreen, range: NSRange(location: 7, length: 4))
+        
+        introduceLabel.attributedText = attributedString
 
     }
     

@@ -9,6 +9,7 @@
 import UIKit
 
 class AddBookToSentenceVC: UIViewController {
+    @IBOutlet var introduceLabel: UILabel!
     
     @IBOutlet weak var authorTextField: UITextField!
     @IBOutlet weak var publisherTextField: UITextField!
@@ -55,10 +56,20 @@ class AddBookToSentenceVC: UIViewController {
             $0.addLeftPadding(left: 15.0)
         }
         
-        bookTitleLabel.text = ""
+        bookTitleLabel.text = "책 제목을 검색해주세요."
+        bookTitleLabel.textColor = .veryLightPink
         
         backButton.setImage(UIImage(named: "searchBtnBack"), for: .normal)
         backButton.tintColor = .veryLightPink
+        
+        
+        let attributedString = NSMutableAttributedString(string: "한 문장이 담긴 책을 추가해주세요!", attributes: [
+            .font: UIFont(name: "AppleSDGothicNeoM00", size: 18.0)!,
+            .foregroundColor: UIColor.greyishBrown,
+            .kern: -0.36
+        ])
+        attributedString.addAttribute(.foregroundColor, value: UIColor.softGreen, range: NSRange(location: 0, length: 4))
+        introduceLabel.attributedText = attributedString
     }
     
 
@@ -121,6 +132,7 @@ extension AddBookToSentenceVC: BookSearchDataDelegate {
         self.bookInfo = Data
         self.authorTextField.text = Data.bookAuthors[0]
         self.bookTitleLabel.text = Data.bookTitle
+        self.bookTitleLabel.textColor = .black
         self.publisherTextField.text = Data.bookPublisher
         self.isFill = true
     }

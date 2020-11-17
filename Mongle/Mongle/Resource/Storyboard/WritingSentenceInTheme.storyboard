@@ -148,6 +148,7 @@
                     <navigationItem key="navigationItem" id="RYo-qc-Kzo"/>
                     <connections>
                         <outlet property="callInNoThemeSentenceButton" destination="LiB-z3-TA2" id="Jc3-qq-8zx"/>
+                        <outlet property="introduceLabel" destination="xe8-V3-RQN" id="oLM-Oc-Hbz"/>
                         <outlet property="nextButton" destination="7HK-a6-teY" id="j09-kx-YDs"/>
                         <outlet property="sentenceTextView" destination="Qk4-e1-vuC" id="0eH-Kx-2qW"/>
                         <outlet property="textCountLabel" destination="5vn-cR-SVA" id="RNE-UI-wJp"/>
