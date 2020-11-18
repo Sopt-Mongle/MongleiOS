@@ -26,7 +26,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mongleCharacters" translatesAutoresizingMaskIntoConstraints="NO" id="ron-ju-hMk">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="themeWritingThemeXSentenceBg" translatesAutoresizingMaskIntoConstraints="NO" id="ron-ju-hMk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ron-ju-hMk" secondAttribute="height" multiplier="25:18" id="aob-Si-AFA"/>
@@ -363,7 +363,6 @@
     </scenes>
     <resources>
         <image name="mainIcBook1" width="13" height="16"/>
-        <image name="mongleCharacters" width="75" height="78"/>
         <image name="sentenceThemeOIcSentenceBookmark1" width="9" height="10"/>
         <image name="sentenceThemeOIcSentenceLike1" width="12" height="10"/>
         <image name="themeBtnBack" width="10.666666984558105" height="19"/>
@@ -373,6 +372,7 @@
         <image name="themeInfoBoxBlur" width="375" height="53"/>
         <image name="themeInfoBoxBlur2" width="375" height="146"/>
         <image name="themeInfoBtnMore" width="18" height="4"/>
+        <image name="themeWritingThemeXSentenceBg" width="375" height="265"/>
         <namedColor name="slateGreen">
             <color red="0.35294117647058826" green="0.56862745098039214" blue="0.41176470588235292" alpha="0.55000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

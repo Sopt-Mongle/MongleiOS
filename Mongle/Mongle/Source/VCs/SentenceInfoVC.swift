@@ -53,13 +53,17 @@ class SentenceInfoVC: UIViewController {
         addGesture()
 //        bindThemeInfo()
         makeRoundTableView()
-        
+        swipeToPop()
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
         getSentenceInfo()
         getOtherSentece()
+    }
+    
+    func swipeToPop() {
+//        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     func getMyNickName(completion: @escaping (Bool, String)->()) {
@@ -655,3 +659,10 @@ extension SentenceInfoVC: UITableViewDataSource {
         }
     }
 }
+
+
+//extension SentenceInfoVC: UIGestureRecognizerDelegate {
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
+//}

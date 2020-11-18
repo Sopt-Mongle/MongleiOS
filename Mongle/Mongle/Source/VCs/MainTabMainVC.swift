@@ -16,6 +16,7 @@ class MainTabMainVC: UIViewController {
             layoutTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.1))
         }
     }
+    @IBOutlet var shadowView: UIView!
     
     var editorsTheme: [EditorPickData] = []
     var sentences: [TodaySentenceData] = []
@@ -59,7 +60,6 @@ class MainTabMainVC: UIViewController {
                     switch networkResult {
                     case .success(let token) :
                         guard let token = token as? String else { return }
-                        print(token)
                         UserDefaults.standard.set(token, forKey: "token")
                         print("autoLogin")
                     case .requestErr(let message):
@@ -84,9 +84,15 @@ class MainTabMainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        initLayout()
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
+    }
+    
+    func initLayout() {
+        shadowView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.04, radius: 6)
+//        shadowView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+//        shadowView.clipsToBounds = true
     }
     
     func getThemeList(flag: Int) {
