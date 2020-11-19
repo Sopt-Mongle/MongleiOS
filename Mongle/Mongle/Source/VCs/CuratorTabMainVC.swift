@@ -36,7 +36,6 @@ class CuratorTabMainVC: UIViewController {
     //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        naviView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.04, radius: 6)
         curatorTabTableView.delegate = self
         curatorTabTableView.dataSource = self
         popularCollectionView.delegate = self
@@ -123,12 +122,27 @@ class CuratorTabMainVC: UIViewController {
             }
         }
     }
+    func showNaviShadow(){
+        naviView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.04, radius: 6)
+    }
+    func hideNaviShadow(){
+        naviView.layer.shadowOpacity = 0
+    }
 
 }
 // MARK: - UITableViewDelegate
 extension CuratorTabMainVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let y = scrollView.contentOffset.y
+        if y>0{
+            showNaviShadow()
+        }
+        else{
+            hideNaviShadow()
+        }
     }
 }
 extension CuratorTabMainVC: UITableViewDataSource{
