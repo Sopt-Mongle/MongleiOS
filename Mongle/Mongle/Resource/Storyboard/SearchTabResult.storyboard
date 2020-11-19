@@ -277,6 +277,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchButton" destination="8uw-Fu-FON" id="hEQ-Xe-Cq8"/>
                         <outlet property="searchTextField" destination="GST-7F-Xen" id="oD3-gZ-Dru"/>
                         <outlet property="tabBarCV" destination="RBx-RA-gJ2" id="aGQ-7q-iDy"/>
                         <outlet property="underBarView" destination="SxS-yM-DDC" id="JJs-O0-Ueg"/>

@@ -19,6 +19,7 @@ class SearchTabResultVC: UIViewController {
     @IBOutlet weak var tabBarCV: UICollectionView!
     @IBOutlet weak var underBarView: UIView!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
 
     //MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -26,8 +27,10 @@ class SearchTabResultVC: UIViewController {
         
         tabBarCV.delegate = self
         tabBarCV.dataSource = self
+        searchTextField.delegate = self
         
         searchTextField.text = searchKeyword
+        
         underBarView.backgroundColor = .softGreen
         underBarView.translatesAutoresizingMaskIntoConstraints = false
         let constraintHeight = underBarView.heightAnchor.constraint(equalToConstant: 2.0)
@@ -184,3 +187,9 @@ extension SearchTabResultVC: UICollectionViewDelegateFlowLayout {
     
 }
 
+extension SearchTabResultVC: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.touchUpSearch(self.searchButton)
+        return true
+    }
+}
