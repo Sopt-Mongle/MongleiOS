@@ -113,18 +113,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
-        
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let originDate = UserDefaults.standard.string(forKey: "tokenTime")!
-        let ogD = formatter.date(from: originDate)
-        let calendar = Calendar.current
-        let diff = calendar.dateComponents([.minute], from: ogD!, to: date)
-        
-        if diff.minute! > 210  {
-            let defaults = UserDefaults.standard
-            if let token = defaults.string(forKey: "token"){
+        let defaults = UserDefaults.standard
+        if let token = defaults.string(forKey: "token"){
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let originDate = UserDefaults.standard.string(forKey: "tokenTime")!
+            let ogD = formatter.date(from: originDate)
+            let calendar = Calendar.current
+            let diff = calendar.dateComponents([.minute], from: ogD!, to: date)
+            
+            if diff.minute! > 210  {
+                
+                
                 // 둘러보기
                 if token == "guest" || token == "1"{
                     
