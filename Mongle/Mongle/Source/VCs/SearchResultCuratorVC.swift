@@ -52,8 +52,7 @@ class SearchResultCuratorVC: UIViewController {
             case .requestErr(let message):
                 
                 guard let message = message as? String else { return }
-                
-                self.showToast(text: message)
+
                 print(message)
             case .pathErr:
                 

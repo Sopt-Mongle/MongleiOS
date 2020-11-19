@@ -51,7 +51,6 @@ class SearchResultThemeVC: UIViewController {
                 
                 guard let message = message as? String else { return }
             
-                self.showToast(text: message)
                 print(message)
             case .pathErr:
                 
