@@ -157,7 +157,7 @@ extension SearchTabResultVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / CGFloat(menuItem.count), height: collectionView.bounds.height)
+        return CGSize(width: UIScreen.main.bounds.width/CGFloat(menuItem.count), height: collectionView.bounds.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

@@ -31,9 +31,6 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="키워드, 테마, 큐레이터 등을 검색하세요." adjustsFontForContentSizeCategory="YES" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Lwb-4h-hu7">
                                 <rect key="frame" x="57" y="55" width="265" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="E4a-86-BUu"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
@@ -44,10 +41,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xP2-ng-tW5">
-                                <rect key="frame" x="1" y="53.666666666666657" width="43" height="48"/>
+                                <rect key="frame" x="3.6666666666666679" y="55" width="40.333333333333329" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="43" id="jCD-tc-A9T"/>
-                                    <constraint firstAttribute="height" constant="48" id="wnh-f1-C1q"/>
+                                    <constraint firstAttribute="width" secondItem="xP2-ng-tW5" secondAttribute="height" multiplier="43:48" id="nJF-js-B8o"/>
                                 </constraints>
                                 <color key="tintColor" red="0.62352941176470589" green="0.62352941176470589" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="searchBtnBack"/>
@@ -87,8 +83,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="152" height="48"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDR-7L-EKr">
-                                                    <rect key="frame" x="17" y="9" width="118" height="32"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDR-7L-EKr">
+                                                    <rect key="frame" x="17" y="10" width="118" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="t2z-es-1Xh"/>
                                                     </constraints>
@@ -179,11 +175,13 @@
                         <viewLayoutGuide key="safeArea" id="T1c-4f-qv5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="xP2-ng-tW5" firstAttribute="height" secondItem="US7-AI-z1w" secondAttribute="height" id="7lc-C3-R9P"/>
                             <constraint firstItem="lKG-dS-PS1" firstAttribute="leading" secondItem="T1c-4f-qv5" secondAttribute="leading" id="A7C-NO-qeF"/>
                             <constraint firstItem="xP2-ng-tW5" firstAttribute="trailing" secondItem="US7-AI-z1w" secondAttribute="leading" constant="2" id="ACO-2l-IyU"/>
                             <constraint firstItem="T1c-4f-qv5" firstAttribute="trailing" secondItem="US7-AI-z1w" secondAttribute="trailing" constant="15" id="Arv-u7-kFr"/>
                             <constraint firstItem="Lwb-4h-hu7" firstAttribute="trailing" secondItem="QFo-py-E32" secondAttribute="leading" constant="7" id="FIQ-7P-dMU"/>
                             <constraint firstItem="lKG-dS-PS1" firstAttribute="top" secondItem="y7v-Kt-Ghm" secondAttribute="bottom" constant="21" id="HvN-GT-flY"/>
+                            <constraint firstItem="Lwb-4h-hu7" firstAttribute="height" secondItem="US7-AI-z1w" secondAttribute="height" multiplier="1:1" id="IHt-er-dJz"/>
                             <constraint firstItem="xP2-ng-tW5" firstAttribute="centerY" secondItem="Lwb-4h-hu7" secondAttribute="centerY" id="KLq-qj-jac"/>
                             <constraint firstItem="T1c-4f-qv5" firstAttribute="trailing" secondItem="uen-Fo-bY7" secondAttribute="trailing" id="NEh-c4-PZX"/>
                             <constraint firstItem="Lwb-4h-hu7" firstAttribute="centerY" secondItem="US7-AI-z1w" secondAttribute="centerY" id="NrT-Bl-ejp"/>
