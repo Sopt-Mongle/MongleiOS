@@ -21,9 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         let defaults = UserDefaults.standard
         
-       
-
-       
+        
+        
+        
         var storyBoard = UIStoryboard(name: "UnderTab", bundle: nil)
         var rootVc = storyBoard.instantiateViewController(identifier: "UnderTabBarController")
         
@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let token = defaults.string(forKey: "token"){
             // 둘러보기
             if token == "guest" || token == "1"{
-              
+                
                 print("token : guest")
             }
             
@@ -43,28 +43,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 guard let password = defaults.string(forKey: "password") else {return}
                 SignInService.shared.signin(email: email,
                                             password: password)  { networkResult in
-                                                switch networkResult {
-                                                case .success(let token) :
-                                                    guard let token = token as? String else { return }
-                                                    print(token)
-                                                    defaults.set(token, forKey: "token")
-                                                    print("autoLogin")
-                                                    
-                                             
-                                                        
-                                                case .requestErr(let message):
-                                                    print("reqERR")
-
-                                                case .pathErr:
-                                                    print("pathERR")
-                                                case .serverErr:
-                                                    print("serverERR")
-                                                case .networkFail:
-                                                    print("network")
-
-                                                }
-
-
+                    switch networkResult {
+                    case .success(let token) :
+                        guard let token = token as? String else { return }
+                        print(token)
+                        defaults.set(token, forKey: "token")
+                        print("autoLogin")
+                        
+                        
+                        
+                    case .requestErr(let message):
+                        print("reqERR")
+                        
+                    case .pathErr:
+                        print("pathERR")
+                    case .serverErr:
+                        print("serverERR")
+                    case .networkFail:
+                        print("network")
+                        
+                    }
+                    
+                    
                 }
                 
                 
@@ -81,7 +81,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             storyBoard = UIStoryboard(name: "Onboarding", bundle: nil)
             rootVc = storyBoard.instantiateViewController(identifier: "OnboardingMainVC")
             
-    
+            
         }
         
         window = UIWindow(windowScene: scene)
@@ -113,6 +113,59 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let originDate = UserDefaults.standard.string(forKey: "tokenTime")!
+        let ogD = formatter.date(from: originDate)
+        let calendar = Calendar.current
+        let diff = calendar.dateComponents([.minute], from: ogD!, to: date)
+        
+        if diff.minute! > 210  {
+            let defaults = UserDefaults.standard
+            if let token = defaults.string(forKey: "token"){
+                // 둘러보기
+                if token == "guest" || token == "1"{
+                    
+                    print("token : guest")
+                }
+                else{
+                    guard let email = defaults.string(forKey: "email") else { return }
+                    guard let password = defaults.string(forKey: "password") else {return}
+                    SignInService.shared.signin(email: email,
+                                                password: password)  { networkResult in
+                        switch networkResult {
+                        case .success(let token) :
+                            guard let token = token as? String else { return }
+                            print(token)
+                            defaults.set(token, forKey: "token")
+                            print("autoLogin")
+                            
+                            
+                            
+                        case .requestErr(let message):
+                            print("reqERR")
+                            
+                        case .pathErr:
+                            print("pathERR")
+                        case .serverErr:
+                            print("serverERR")
+                        case .networkFail:
+                            print("network")
+                            
+                        }
+                        
+                        
+                    }
+                    
+                    
+                }
+                
+                
+            }
+            
+        }
     }
     
     func sceneDidEnterBackground(_ scene: UIScene) {

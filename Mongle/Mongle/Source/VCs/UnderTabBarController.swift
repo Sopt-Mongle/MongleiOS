@@ -43,7 +43,7 @@ class UnderTabBarController: UITabBarController {
         
         
     }
-    
+    let deviceBound = UIScreen.main.bounds.height/812.0
     
     
     // MARK:- LifeCycleFunctions
@@ -66,14 +66,14 @@ class UnderTabBarController: UITabBarController {
     
     
     override func viewDidLayoutSubviews() {
-        let deviceBound = UIScreen.main.bounds.height/812.0
+        
         
         
     
         super.viewDidLayoutSubviews()
         if(deviceBound < 1){
-            tabBar.frame.size.height = 93*deviceBound - 10
-            tabBar.frame.origin.y = view.frame.height - 93*deviceBound - 10
+            tabBar.frame.size.height = 83*deviceBound - 10
+            tabBar.frame.origin.y = view.frame.height - 83*deviceBound
             seperateLine.snp.makeConstraints{
                 
                 $0.bottom.equalToSuperview().offset(-self.tabBar.frame.size.height-10)
@@ -90,10 +90,19 @@ class UnderTabBarController: UITabBarController {
                 
                 
             }
+            
+            plusButton.snp.makeConstraints{
+                $0.width.height.equalTo(65*1/((1/sqrt(deviceBound))))
+//                $0.width.height.equalTo(65*deviceBound*deviceBound)
+                $0.centerX.equalToSuperview()
+                //            $0.bottom.equalTo(self.view.safeAreaInsets.bottom).offset(-41) //should be changed : not exact
+                $0.bottom.equalToSuperview().offset(-30*deviceBound)
+            }
+            plusButton.dropShadow(color: .black, offSet: CGSize(width:  0 , height: 6*1/((1/sqrt(deviceBound)))), opacity: 0.11, radius: 6)
         }
         else {
-            tabBar.frame.size.height = 93*deviceBound
-            tabBar.frame.origin.y = view.frame.height - 93*deviceBound
+            tabBar.frame.size.height = 83*deviceBound
+            tabBar.frame.origin.y = view.frame.height - 83*deviceBound
             seperateLine.snp.makeConstraints{
                 
                 $0.bottom.equalToSuperview().offset(-self.tabBar.frame.size.height)
@@ -109,21 +118,22 @@ class UnderTabBarController: UITabBarController {
                 
                 
             }
+            plusButton.snp.makeConstraints{
+//                $0.width.height.equalTo(65*1/((1/sqrt(deviceBound))))
+                $0.width.height.equalTo(65*deviceBound*deviceBound)
+                $0.centerX.equalToSuperview()
+                //            $0.bottom.equalTo(self.view.safeAreaInsets.bottom).offset(-41) //should be changed : not exact
+                $0.bottom.equalToSuperview().offset(-30*deviceBound)
+            }
+            plusButton.dropShadow(color: .black, offSet: CGSize(width:  0 , height: 6*deviceBound*deviceBound), opacity: 0.16, radius: 4)
             
             
         }
         
+        print(deviceBound)
+       
         
-        plusButton.snp.makeConstraints{
-            $0.width.height.equalTo(65*1/((1/sqrt(deviceBound))))
-            $0.centerX.equalToSuperview()
-            //            $0.bottom.equalTo(self.view.safeAreaInsets.bottom).offset(-41) //should be changed : not exact
-            $0.bottom.equalToSuperview().offset(-41*deviceBound)
-        }
-        
-        
-        
-        
+
         
     }
     
@@ -285,11 +295,23 @@ class UnderTabBarController: UITabBarController {
            tabBarItem.isEnabled = false
         }
         
+        if deviceBound > 1{
+            myTabBarItem1.imageInsets = UIEdgeInsets(top: 27*(1-deviceBound), left: 0, bottom: -27*(1-deviceBound), right: 0)
+            myTabBarItem2.imageInsets = UIEdgeInsets(top: 27*(1-deviceBound), left: 0, bottom: -27*(1-deviceBound), right: 0)
+            myTabBarItem4.imageInsets = UIEdgeInsets(top: 27*(1-deviceBound), left: 0, bottom: -27*(1-deviceBound), right: 0)
+            myTabBarItem5.imageInsets = UIEdgeInsets(top: 27*(1-deviceBound), left: 0, bottom: -27*(1-deviceBound), right: 0)
+            
+            
+        }
+        else{
+            myTabBarItem1.imageInsets = UIEdgeInsets(top: -27*(1-deviceBound), left: 0, bottom: 27*(1-deviceBound), right: 0)
+            myTabBarItem2.imageInsets = UIEdgeInsets(top: -27*(1-deviceBound), left: 0, bottom: 27*(1-deviceBound), right: 0)
+            myTabBarItem4.imageInsets = UIEdgeInsets(top: -27*(1-deviceBound), left: 0, bottom: 27*(1-deviceBound), right: 0)
+            myTabBarItem5.imageInsets = UIEdgeInsets(top: -27*(1-deviceBound), left: 0, bottom: 27*(1-deviceBound), right: 0)
+            
+            
+        }
         
-        myTabBarItem1.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        myTabBarItem2.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        myTabBarItem4.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        myTabBarItem5.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
 //        self.tabBar.frame.size.height = 93
 //        self.tabBar.frame.origin.y = view.frame.height - 93
@@ -472,4 +494,21 @@ extension UnderTabBarController: UITabBarControllerDelegate {
         }
         return true
     }
+}
+
+
+extension UITabBar{
+    
+    open override func sizeThatFits(_ size: CGSize) -> CGSize {
+        var sizethatFits = super.sizeThatFits(size)
+        
+        sizethatFits.height = 0
+        
+        return sizethatFits
+        
+        
+        
+    }
+    
+    
 }

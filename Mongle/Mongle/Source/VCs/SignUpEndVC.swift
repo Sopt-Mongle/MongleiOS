@@ -32,7 +32,7 @@ class SignUpEndVC: UIViewController {
         endButton.setTitle("메인으로 가기", for: .normal)
         endButton.setTitleColor(.white, for: .normal)
         endButton.makeRounded(cornerRadius: 20)
-        imageAnimation1()
+//        imageAnimation1()
         
         
         // Do any additional setup after loading the view.
