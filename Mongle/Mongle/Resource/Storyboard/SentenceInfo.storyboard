@@ -39,7 +39,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15L-1W-hjH">
                                 <rect key="frame" x="0.0" y="37" width="48" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="15L-1W-hjH" secondAttribute="height" multiplier="1:1" id="WDx-8i-5c5"/>
+                                    <constraint firstAttribute="width" constant="48" id="gB9-qU-WLB"/>
+                                    <constraint firstAttribute="height" constant="48" id="iwe-cj-fqx"/>
                                 </constraints>
                                 <state key="normal" image="sentenceThemeOBtnBack"/>
                                 <connections>
@@ -410,7 +411,6 @@
                             <constraint firstItem="pCd-12-Rm6" firstAttribute="top" secondItem="0MD-b1-XnF" secondAttribute="bottom" constant="30" id="1Vp-wa-FcS"/>
                             <constraint firstItem="TLM-xw-liv" firstAttribute="trailing" secondItem="hv3-PN-S8H" secondAttribute="trailing" id="1nW-FP-nDA"/>
                             <constraint firstItem="pCd-12-Rm6" firstAttribute="leading" secondItem="TLM-xw-liv" secondAttribute="leading" id="7Cg-0i-kEK"/>
-                            <constraint firstItem="TLM-xw-liv" firstAttribute="trailing" secondItem="15L-1W-hjH" secondAttribute="trailing" constant="327" id="7je-BH-Iqv"/>
                             <constraint firstItem="TLM-xw-liv" firstAttribute="trailing" secondItem="pCd-12-Rm6" secondAttribute="trailing" id="Apg-g7-YuB"/>
                             <constraint firstItem="15L-1W-hjH" firstAttribute="leading" secondItem="TLM-xw-liv" secondAttribute="leading" id="CLS-qp-N5f"/>
                             <constraint firstItem="Sad-r3-niN" firstAttribute="trailing" secondItem="pCd-12-Rm6" secondAttribute="trailing" id="CcT-zS-7CO"/>
