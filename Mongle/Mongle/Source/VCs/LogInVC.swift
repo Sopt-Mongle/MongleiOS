@@ -174,7 +174,7 @@ class LogInVC: UIViewController {
     @objc func signUpButtonInPopUp(){
         guard let vcName = UIStoryboard(name: "SignUpAgree",
                                         bundle: nil).instantiateViewController(
-                                            withIdentifier: "SignUpAgreeVC") as? SignUpAgreeVC
+                                            withIdentifier: "SignUpAgreeVC") as? UINavigationController
             else{
                 return
         }
@@ -182,6 +182,7 @@ class LogInVC: UIViewController {
         vcName.modalPresentationStyle = .fullScreen
         
         self.present(vcName, animated: true, completion: nil)
+        
         
     }
     
@@ -448,21 +449,23 @@ class LogInVC: UIViewController {
         alertView.addSubview(alertButton1)
         alertView.addSubview(alertButton2)
         
-        alertLabel1.font = alertLabel1.font.withSize(15*sqrt(deviceBound))
-        alertLabel2.font = alertLabel2.font.withSize(13*sqrt(deviceBound))
-        alertButton1.makeRounded(cornerRadius: 19*sqrt(deviceBound))
-        alertButton2.makeRounded(cornerRadius: 19*sqrt(deviceBound))
+        alertLabel1.font = alertLabel1.font.withSize(15)
+        alertLabel2.font = alertLabel2.font.withSize(13)
+        alertButton1.makeRounded(cornerRadius: 19)
+        alertButton2.makeRounded(cornerRadius: 19)
         
         blurView.snp.makeConstraints{
             $0.top.bottom.leading.trailing.equalToSuperview()
             
         }
         alertView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(290*deviceBound)
-            $0.leading.equalToSuperview().offset(36/deviceBound)
-            $0.trailing.equalToSuperview().offset(-35/deviceBound)
-            $0.bottom.equalToSuperview().offset(-289*deviceBound)
-            
+//            $0.top.equalToSuperview().offset(290*deviceBound)
+//            $0.leading.equalToSuperview().offset(36/deviceBound)
+//            $0.trailing.equalToSuperview().offset(-35/deviceBound)
+            $0.center.equalToSuperview()
+            $0.width.equalTo(304)
+//            $0.bottom.equalToSuperview().offset(-289*deviceBound)
+            $0.height.equalTo(233)
             
         }
         alertImageView.snp.makeConstraints {
@@ -470,28 +473,28 @@ class LogInVC: UIViewController {
             
         }
         alertLabel1.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(84*deviceBound)
+            $0.top.equalToSuperview().offset(84)
             $0.centerX.equalToSuperview()
 //            $0.leading.equalToSuperview().offset(56*deviceBound)
             
         }
         alertLabel2.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(112*deviceBound)
+            $0.top.equalToSuperview().offset(112)
 //            $0.leading.equalToSuperview().offset(88*deviceBound)
             $0.centerX.equalToSuperview()
         }
         
         alertButton1.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(171*deviceBound)
-            $0.leading.equalToSuperview().offset(20/deviceBound)
-            $0.width.equalTo(127*sqrt(deviceBound))
-            $0.height.equalTo(37*sqrt(deviceBound))
+            $0.top.equalToSuperview().offset(171)
+            $0.leading.equalToSuperview().offset(20)
+            $0.width.equalTo(127)
+            $0.height.equalTo(37)
         }
         alertButton2.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(171*deviceBound)
-            $0.trailing.equalToSuperview().offset(-16/(deviceBound))
-            $0.width.equalTo(127*sqrt(deviceBound))
-            $0.height.equalTo(37*sqrt(deviceBound))
+            $0.top.equalToSuperview().offset(171)
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.width.equalTo(127)
+            $0.height.equalTo(37)
         }
         
         

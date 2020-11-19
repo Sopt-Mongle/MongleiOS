@@ -147,6 +147,18 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         }
     }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if textView.text.count > 279 {
+            return false
+        }
+        return true
+        
+        
+    }
+
+    
+    
     @objc func keyboardWillHide(_ notification: NSNotification) {
           guard let duration =
             notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]

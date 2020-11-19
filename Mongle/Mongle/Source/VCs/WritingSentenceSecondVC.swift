@@ -59,6 +59,7 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         
         
     }
+    @IBOutlet weak var buttonImageView: UIImageView!
     
     let particleEmitter = CAEmitterLayer()
     var noAnimation : Bool = false
@@ -80,13 +81,14 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         backButton.setImage(UIImage(named: "searchBtnBack"), for: .normal)
         backButton.tintColor = .veryLightPink
         setNextButton()
-        searchTextButton.setImage(UIImage(named: "themeWritingSentenceBookBtnBookSearch")?.withRenderingMode(.alwaysOriginal), for: .normal)
+//        searchTextButton.setImage(UIImage(named: "themeWritingSentenceBookBtnBookSearch")?.withRenderingMode(.alwaysOriginal), for: .normal)
         searchTextButton.imageView?.contentMode = .scaleToFill
-        searchTextButton.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
+//        searchTextButton.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
         bookTitleLabel.text = ""
         setWarning()
         searchTextButton.makeRounded(cornerRadius: 10)
         
+        buttonImageView.image = UIImage(named: "themeWritingSentenceBookBtnBookSearch")
         
         
         // Do any additional setup after loading the view.
