@@ -19,22 +19,8 @@ class SearchTabResultVC: UIViewController {
     @IBOutlet weak var tabBarCV: UICollectionView!
     @IBOutlet weak var underBarView: UIView!
     @IBOutlet weak var searchTextField: UITextField!
-    
-    @IBAction func touchUpSearch(_ sender: Any) {
-        searchKeyword = searchTextField.text!
-        guard let themeVC = self.storyboard?.instantiateViewController(withIdentifier:
-            "SearchResultThemeVC") as? SearchResultThemeVC else {
-                return
-        }
-        pageInstance?.searchKey = searchKeyword
-        pageInstance?.viewDidLoad()
-        //themeVC.setSearchThemeData(searchKeyword)
-        
-    }
-    @IBAction func touchUpBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
+
+    //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -110,8 +96,26 @@ class SearchTabResultVC: UIViewController {
         self.view.endEditing(true)
     }
 
+    //MARK: - IBActions
+    @IBAction func touchUpSearch(_ sender: Any) {
+        searchKeyword = searchTextField.text!
+        guard let themeVC = self.storyboard?.instantiateViewController(withIdentifier:
+            "SearchResultThemeVC") as? SearchResultThemeVC else {
+                return
+        }
+        pageInstance?.searchKey = searchKeyword
+        self.tabBarCV.selectItem(at: IndexPath(item: 0, section: 0),animated: false,scrollPosition: .bottom)
+        pageInstance?.viewDidLoad()
+        underBarView.transform = CGAffineTransform(translationX: 0, y: 0)
+        //themeVC.setSearchThemeData(searchKeyword)
+        
+    }
+    @IBAction func touchUpBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 
 }
+//MARK: - UICollectionViewDelegate
 extension SearchTabResultVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -132,8 +136,9 @@ extension SearchTabResultVC: UICollectionViewDelegate {
             pageInstance.keyValue.curPresentViewIndex = item
         }
     }
-}
 
+}
+//MARK: - UICollectionViewDataSource
 extension SearchTabResultVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return menuItem.count
@@ -178,3 +183,4 @@ extension SearchTabResultVC: UICollectionViewDelegateFlowLayout {
     }
     
 }
+

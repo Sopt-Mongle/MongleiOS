@@ -230,7 +230,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgD-Ew-RyS">
-                                <rect key="frame" x="1.6666666666666679" y="55" width="40.333333333333329" height="45"/>
+                                <rect key="frame" x="3.6666666666666856" y="55" width="40.333333333333329" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="kgD-Ew-RyS" secondAttribute="height" multiplier="43:48" id="VPF-L7-ThT"/>
                                 </constraints>
@@ -255,7 +255,7 @@
                             <constraint firstItem="kgD-Ew-RyS" firstAttribute="centerY" secondItem="wUH-6h-2df" secondAttribute="centerY" id="ABg-1V-75H"/>
                             <constraint firstItem="GST-7F-Xen" firstAttribute="height" secondItem="wUH-6h-2df" secondAttribute="height" multiplier="1:1" id="B8c-ol-KKv"/>
                             <constraint firstItem="8uw-Fu-FON" firstAttribute="trailing" secondItem="wUH-6h-2df" secondAttribute="trailing" id="HMe-bU-JdJ"/>
-                            <constraint firstItem="wUH-6h-2df" firstAttribute="leading" secondItem="kgD-Ew-RyS" secondAttribute="trailing" id="OrI-xe-WMX"/>
+                            <constraint firstItem="kgD-Ew-RyS" firstAttribute="trailing" secondItem="wUH-6h-2df" secondAttribute="leading" constant="2" id="OrI-xe-WMX"/>
                             <constraint firstItem="35k-vu-IKc" firstAttribute="trailing" secondItem="wUH-6h-2df" secondAttribute="trailing" constant="16" id="SnH-SY-1Rg"/>
                             <constraint firstItem="bao-Or-pfJ" firstAttribute="bottom" secondItem="SxS-yM-DDC" secondAttribute="bottom" id="UNF-rX-hLZ"/>
                             <constraint firstItem="35k-vu-IKc" firstAttribute="trailing" secondItem="RBx-RA-gJ2" secondAttribute="trailing" id="YAi-09-tQE"/>
@@ -300,10 +300,10 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultSentenceTVC" id="DaC-7g-bhZ" customClass="SearchResultSentenceTVC" customModule="Mongle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="120.66666412353516"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="121"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DaC-7g-bhZ" id="wcy-Eh-g0e">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120.66666412353516"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFi-Aw-XM3">
@@ -326,7 +326,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNN-zu-G4n">
-                                                    <rect key="frame" x="33" y="88" width="176" height="14.666666666666671"/>
+                                                    <rect key="frame" x="33" y="88" width="176" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
