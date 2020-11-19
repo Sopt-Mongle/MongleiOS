@@ -32,7 +32,7 @@ class EndOfWritingSentenceVC: UIViewController {
         super.viewDidLoad()
         setItems()
         //self.view.addSubview(yesButton)
-        imageAnimation1()
+//        imageAnimation1()
          
         // Do any additional setup after loading the view.
         
