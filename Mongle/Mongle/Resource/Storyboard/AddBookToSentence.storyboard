@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -59,13 +59,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="작가/옮긴이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXT-7A-bt2">
                                 <rect key="frame" x="16" y="267" width="70" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.33725490196078434" green="0.33725490196078434" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="출판사" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0I-5V-1bz">
                                 <rect key="frame" x="16" y="360" width="39" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.33725490196078434" green="0.33725490196078434" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S8i-eg-9PE">
@@ -99,9 +99,9 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60K-D8-bCs">
-                                <rect key="frame" x="16" y="135" width="382" height="30"/>
+                                <rect key="frame" x="16" y="179" width="382" height="45"/>
                                 <color key="tintColor" systemColor="systemGrayColor"/>
-                                <state key="normal">
+                                <state key="normal" backgroundImage="themeWritingSentence3BtnBookSearch">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -124,7 +124,6 @@
                         <viewLayoutGuide key="safeArea" id="A06-aJ-v94"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="pyM-Gn-ZxQ" firstAttribute="top" secondItem="izK-bS-5JN" secondAttribute="top" constant="37" id="4lY-Oq-aFi"/>
                             <constraint firstItem="v0I-5V-1bz" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" constant="16" id="B4t-uk-emp"/>
                             <constraint firstItem="v0I-5V-1bz" firstAttribute="top" secondItem="S8i-eg-9PE" secondAttribute="bottom" constant="18" id="E5u-b9-lSq"/>
                             <constraint firstItem="Kes-Hl-2Us" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" constant="16" id="EEZ-Lw-6kV"/>
@@ -139,6 +138,7 @@
                             <constraint firstItem="pyM-Gn-ZxQ" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" id="X3F-I7-nKk"/>
                             <constraint firstItem="Y9K-4F-2BM" firstAttribute="leading" secondItem="A06-aJ-v94" secondAttribute="leading" constant="16" id="Xlw-Ko-5E1"/>
                             <constraint firstItem="7FW-if-3Iu" firstAttribute="centerX" secondItem="A06-aJ-v94" secondAttribute="centerX" id="bpb-GX-A8h"/>
+                            <constraint firstItem="A06-aJ-v94" firstAttribute="top" secondItem="pyM-Gn-ZxQ" secondAttribute="top" constant="7" id="c1o-i2-axd"/>
                             <constraint firstItem="A06-aJ-v94" firstAttribute="trailing" secondItem="60K-D8-bCs" secondAttribute="trailing" constant="16" id="cWW-kE-uLY"/>
                             <constraint firstItem="24z-ck-m5l" firstAttribute="top" secondItem="v0I-5V-1bz" secondAttribute="bottom" constant="12" id="dVb-2b-yti"/>
                             <constraint firstItem="A06-aJ-v94" firstAttribute="bottom" secondItem="PbV-Oy-Dhy" secondAttribute="bottom" constant="11" id="fz4-tQ-H1t"/>
@@ -157,6 +157,7 @@
                         <outlet property="authorTextField" destination="S8i-eg-9PE" id="deC-WI-taD"/>
                         <outlet property="backButton" destination="pyM-Gn-ZxQ" id="mUp-MK-Y2V"/>
                         <outlet property="bookTitleLabel" destination="eDH-3N-CRx" id="ssQ-WM-REr"/>
+                        <outlet property="introduceLabel" destination="Y9K-4F-2BM" id="bze-xF-wJ2"/>
                         <outlet property="nextButton" destination="PbV-Oy-Dhy" id="f9w-W9-Hdn"/>
                         <outlet property="noticeLabel" destination="Y9K-4F-2BM" id="uhy-pq-4v2"/>
                         <outlet property="publisherTextField" destination="24z-ck-m5l" id="OTa-xb-QJ8"/>
@@ -170,6 +171,7 @@
     </scenes>
     <resources>
         <image name="searchBtnBack" width="10.5" height="18.5"/>
+        <image name="themeWritingSentence3BtnBookSearch" width="343" height="45"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

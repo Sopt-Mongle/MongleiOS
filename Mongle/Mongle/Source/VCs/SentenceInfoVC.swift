@@ -53,13 +53,17 @@ class SentenceInfoVC: UIViewController {
         addGesture()
 //        bindThemeInfo()
         makeRoundTableView()
-        
+        swipeToPop()
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
         getSentenceInfo()
         getOtherSentece()
+    }
+    
+    func swipeToPop() {
+//        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     func getMyNickName(completion: @escaping (Bool, String)->()) {
@@ -327,9 +331,17 @@ class SentenceInfoVC: UIViewController {
         SentenceEditService.shared.deleteSentece(idx: sentenceIdx ?? 0) { (networkResult) in
             switch networkResult {
             case .success(_):
-                let prevIndex = self.navigationController?.viewControllers.count
-                self.navigationController?.viewControllers[prevIndex! - 2].showToast(text: "문장이 삭제되었어요!")
-                self.navigationController?.popViewController(animated: true)
+                if let navi = self.navigationController {
+                    let prevIndex = navi.viewControllers.count
+                    navi.viewControllers[prevIndex - 2].showToast(text: "문장이 삭제되었어요!")
+                    navi.popViewController(animated: true)
+                }
+                else {
+                    self.showToast(text: "문장이 삭제되었어요!", completion: {
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                }
+                
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "requestErr")
             case .pathErr:
@@ -647,3 +659,10 @@ extension SentenceInfoVC: UITableViewDataSource {
         }
     }
 }
+
+
+//extension SentenceInfoVC: UIGestureRecognizerDelegate {
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
+//}

@@ -22,7 +22,6 @@ struct SentenceService {
         ]
         
         let url = APIConstants.detailSentenceURL + "/\(idx)"
-        print(idx)
         Alamofire.request(url,
                           method: .get,
                           parameters: nil,
@@ -51,7 +50,6 @@ struct SentenceService {
         }
         switch status {
         case 200:
-            print(decodedData)
             return .success(decodedData.data)
         case 400..<500:
             return .requestErr(decodedData.message)
