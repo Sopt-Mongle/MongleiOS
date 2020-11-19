@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xgH-LR-iMl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cQt-Mz-wap">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -24,24 +24,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchBox" translatesAutoresizingMaskIntoConstraints="NO" id="US7-AI-z1w">
-                                <rect key="frame" x="42" y="55" width="318" height="45"/>
+                                <rect key="frame" x="42" y="99" width="318" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="US7-AI-z1w" secondAttribute="height" multiplier="317:45" id="Tgf-rG-rGL"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="키워드, 테마, 큐레이터 등을 검색하세요." adjustsFontForContentSizeCategory="YES" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Lwb-4h-hu7">
-                                <rect key="frame" x="57" y="55" width="265" height="45"/>
+                                <rect key="frame" x="57" y="99" width="265" height="45"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근 키워드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7v-Kt-Ghm">
-                                <rect key="frame" x="16" y="134" width="69" height="18"/>
+                                <rect key="frame" x="16" y="178" width="69" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xP2-ng-tW5">
-                                <rect key="frame" x="3.6666666666666679" y="55" width="40.333333333333329" height="45"/>
+                                <rect key="frame" x="3.6666666666666679" y="99" width="40.333333333333329" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xP2-ng-tW5" secondAttribute="height" multiplier="43:48" id="nJF-js-B8o"/>
                                 </constraints>
@@ -52,7 +52,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFo-py-E32">
-                                <rect key="frame" x="315" y="55" width="45" height="45"/>
+                                <rect key="frame" x="315" y="99" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="CdM-RU-Haz"/>
                                     <constraint firstAttribute="width" constant="45" id="Yh8-l9-STf"/>
@@ -64,7 +64,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lKG-dS-PS1">
-                                <rect key="frame" x="0.0" y="173" width="375" height="48"/>
+                                <rect key="frame" x="0.0" y="217" width="375" height="48"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="MTz-Fo-GGb"/>
@@ -108,13 +108,13 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추천 키워드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lmw-dy-d2r">
-                                <rect key="frame" x="16" y="251" width="69" height="18"/>
+                                <rect key="frame" x="16" y="295" width="69" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" semanticContentAttribute="playback" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uen-Fo-bY7">
-                                <rect key="frame" x="0.0" y="290" width="375" height="95"/>
+                                <rect key="frame" x="0.0" y="334" width="375" height="95"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="95" id="qdJ-x1-uTK"/>
@@ -158,7 +158,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7q-ZQ-n3h">
-                                <rect key="frame" x="294" y="119" width="81" height="48"/>
+                                <rect key="frame" x="294" y="163" width="81" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="DES-Rd-f9I"/>
                                     <constraint firstAttribute="width" constant="81" id="O8x-SB-NAq"/>
@@ -201,6 +201,7 @@
                             <constraint firstItem="uen-Fo-bY7" firstAttribute="leading" secondItem="T1c-4f-qv5" secondAttribute="leading" id="zDl-cX-ZRu"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="9vz-sm-Mtz"/>
                     <connections>
                         <outlet property="recentSearchCV" destination="lKG-dS-PS1" id="Ihw-c1-l2Z"/>
                         <outlet property="recommendSearchCV" destination="uen-Fo-bY7" id="kPw-PK-xuV"/>
@@ -210,7 +211,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oPu-RO-34i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1135" y="-893"/>
+            <point key="canvasLocation" x="2076" y="-893.3497536945813"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="czT-7m-mD5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cQt-Mz-wap" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8WV-fk-yPl">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xgH-LR-iMl" kind="relationship" relationship="rootViewController" id="vxj-yc-djW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="plM-hT-V0n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1133.5999999999999" y="-893.3497536945813"/>
         </scene>
     </scenes>
     <resources>

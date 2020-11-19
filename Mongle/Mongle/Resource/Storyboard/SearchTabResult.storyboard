@@ -223,7 +223,6 @@
                                     <constraint firstAttribute="width" constant="45" id="gU0-LI-l1Y"/>
                                     <constraint firstAttribute="height" constant="45" id="vey-oL-Ay4"/>
                                 </constraints>
-                                <inset key="contentEdgeInsets" minX="14" minY="13" maxX="14" maxY="13"/>
                                 <state key="normal" image="searchResultCuratorBtnSearch"/>
                                 <connections>
                                     <action selector="touchUpSearch:" destination="mk1-5s-R89" eventType="touchUpInside" id="ydk-GR-abL"/>
