@@ -89,6 +89,7 @@ class MyTabSentenceVC: UIViewController {
 
 
 }
+//MARK: - UITableViewDelegate
 extension MyTabSentenceVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView().then{
@@ -128,12 +129,7 @@ extension MyTabSentenceVC: UITableViewDelegate{
             $0.addTarget(self, action: #selector(self.madeThemeDidTap), for: .touchUpInside)
             headerView.addSubview($0)
         }
-        let divider = UIView().then{
-            $0.backgroundColor = .veryLightPinkSix
-            
-            headerView.addSubview($0)
-        }
-//
+        //
         
         if self.doNotReload{
             savedSentenceLabel.textColor = .veryLightPink
@@ -154,34 +150,26 @@ extension MyTabSentenceVC: UITableViewDelegate{
         savedSentenceLabel.snp.makeConstraints{
             $0.width.equalTo(82)
             $0.height.equalTo(28)
-            $0.top.equalToSuperview().offset(9)
-            $0.left.equalToSuperview().offset(218)
-            $0.bottom.equalToSuperview().offset(-12)
+            $0.top.equalToSuperview().offset(15)
+            $0.right.equalToSuperview().offset(-78)
+            $0.bottom.equalToSuperview().offset(-6)
         }
         madeSentenceLabel.snp.makeConstraints{
             $0.width.equalTo(62)
             $0.height.equalTo(28)
-            $0.top.equalToSuperview().offset(9)
-            $0.left.equalToSuperview().offset(300)
-            $0.bottom.equalToSuperview().offset(-12)
-        }
-        
-        divider.snp.makeConstraints{
-            $0.height.equalTo(1)
-            $0.left.equalToSuperview()
-            $0.right.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.top.equalToSuperview().offset(15)
+            $0.right.equalToSuperview().offset(-16)
+            $0.bottom.equalToSuperview().offset(-6)
         }
         savedSentenceTouchArea.snp.makeConstraints{
-            $0.width.equalTo(84)
+            $0.width.equalTo(82)
             $0.top.equalToSuperview()
-            $0.left.equalToSuperview().offset(203)
+            $0.right.equalToSuperview().offset(-78)
             $0.bottom.equalToSuperview()
         }
         madeSentenceTouchArea.snp.makeConstraints{
-            $0.width.equalTo(84)
+            $0.width.equalTo(62)
             $0.top.equalToSuperview()
-            $0.left.equalToSuperview().offset(287)
             $0.right.equalToSuperview().offset(-16)
             $0.bottom.equalToSuperview()
         }
@@ -190,7 +178,7 @@ extension MyTabSentenceVC: UITableViewDelegate{
         
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 49
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -209,6 +197,7 @@ extension MyTabSentenceVC: UITableViewDelegate{
     }
     
 }
+//MARK:- UITableViewDataSource
 extension MyTabSentenceVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if doNotReload{
