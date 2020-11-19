@@ -110,7 +110,8 @@ extension CuratorTabKeywordVC: UICollectionViewDataSource{
 }
 extension CuratorTabKeywordVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 375, height: 120)
+        let devicewidth = UIScreen.main.bounds.width
+        return CGSize(width: devicewidth, height: devicewidth/375*120)
     }
     //cell content inset 지정
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

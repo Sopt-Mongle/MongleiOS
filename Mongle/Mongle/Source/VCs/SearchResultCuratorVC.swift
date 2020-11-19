@@ -52,8 +52,7 @@ class SearchResultCuratorVC: UIViewController {
             case .requestErr(let message):
                 
                 guard let message = message as? String else { return }
-                
-                self.showToast(text: message)
+
                 print(message)
             case .pathErr:
                 
@@ -128,7 +127,8 @@ extension SearchResultCuratorVC: UICollectionViewDataSource{
 }
 extension SearchResultCuratorVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 375, height: 120)
+        let devicewidth = UIScreen.main.bounds.width
+        return CGSize(width: devicewidth, height: devicewidth/375*120)
     }
     //cell content inset 지정
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
