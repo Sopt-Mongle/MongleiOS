@@ -40,9 +40,11 @@ class SearchTabMainVC: UIViewController{
         }
         
         searchTextField.text = ""
+        
         let sb = UIStoryboard.init(name: "SearchTabResult", bundle: nil)
         if let dvc = sb.instantiateViewController(identifier: "searchTabResultVC") as? SearchTabResultVC {
             dvc.searchKeyword = self.searchKey ?? "실패"
+            dvc.hidesBottomBarWhenPushed = false
             self.navigationController?.pushViewController(dvc, animated: true)
         }
         
@@ -68,6 +70,7 @@ class SearchTabMainVC: UIViewController{
         
         initGestureRecognizer()
         setCollctionViewLayout()
+        self.hidesBottomBarWhenPushed = false
         
     }
     override func viewWillAppear(_ animated: Bool) {

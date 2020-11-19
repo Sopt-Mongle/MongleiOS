@@ -25,11 +25,11 @@ class SearchTabResultVC: UIViewController {
     //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.containerViewBottom.constant = deviceBound * 73
+        self.containerViewBottom.constant = deviceBound * 73
         tabBarCV.delegate = self
         tabBarCV.dataSource = self
         searchTextField.delegate = self
-        
+
         searchTextField.text = searchKeyword
         
         underBarView.backgroundColor = .softGreen
@@ -55,6 +55,8 @@ class SearchTabResultVC: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         observingList.forEach { $0.invalidate() }
+        self.tabBarController?.hidesBottomBarWhenPushed = true
+        
     }
     
     
