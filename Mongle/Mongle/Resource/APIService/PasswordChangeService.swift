@@ -18,8 +18,8 @@ struct PasswordChangeService{
     func putRequest(password:String, completion : @escaping (NetworkResult<Any>) -> Void){
         let header : HTTPHeaders = ["Content-Type" : "application/json", "token" : UserDefaults.standard.string(forKey: "token")!]
         
-        let dataRequest = Alamofire.request(APIConstants.withdrawURL,
-                                            method: .delete,
+        let dataRequest = Alamofire.request(APIConstants.passwordChangeURL,
+                                            method: .put,
                                             parameters: makeParameter(password),
                                             encoding: JSONEncoding.default,
                                             headers: header)

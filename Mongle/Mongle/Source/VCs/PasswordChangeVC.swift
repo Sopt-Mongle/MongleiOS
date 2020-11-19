@@ -291,11 +291,39 @@ class PasswordChangeVC: UIViewController {
     @IBAction func touchUpComplete(_ sender: Any) {
         if checkAllPassword() == true {
             //비밀번호 변경 API 성공
-            self.view.endEditing(true)
-            self.nowPasswordTextField.setBorder(borderColor: .softGreen, borderWidth: 1)
-            self.newPasswordTextField.setBorder(borderColor: .softGreen, borderWidth: 1)
-            self.newPasswordCheckTextField.setBorder(borderColor: .softGreen, borderWidth: 1)
-            showPopupView("비밀번호가 변경되었어요!", "변경된 비밀번호로\n재로그인을 해주세요!")
+            PasswordChangeService.shared.putRequest(password: self.newPasswordTextField.text!){
+                networkResult in
+                switch networkResult{
+                    case .success(let message):
+                        guard let message = message as? String else { return }
+                        print(message)
+                        UserDefaults.standard.setValue(self.newPasswordTextField.text!, forKey: "password")
+                        self.view.endEditing(true)
+                        self.nowPasswordTextField.setBorder(borderColor: .softGreen, borderWidth: 1)
+                        self.newPasswordTextField.setBorder(borderColor: .softGreen, borderWidth: 1)
+                        self.newPasswordCheckTextField.setBorder(borderColor: .softGreen, borderWidth: 1)
+                        self.showPopupView("비밀번호가 변경되었어요!", "변경된 비밀번호로\n재로그인을 해주세요!")
+                        
+                    case .requestErr(let message):
+                        
+                        guard let message = message as? String else { return }
+                        print(message)
+                        self.showToast(text: message)
+                    case .pathErr:
+                        
+                        print("path")
+                    case .serverErr:
+                        print("serverErr")
+                        self.showToast(text: "서버 내부 오류")
+                    case .networkFail:
+                        print("networkFail")
+                        self.showToast(text: "네트워크 실패")
+                    }
+            
+                
+            
+            }
+            
         }
     }
     
