@@ -25,7 +25,7 @@ class PasswordChangeVC: UIViewController {
     
     //MARK:- Custom Properties
     
-    let nowPassword = "testpw"
+    let nowPassword = UserDefaults.standard.string(forKey: "password")
     let heightRatio: CGFloat = UIScreen.main.bounds.height/812
     let widthRatio: CGFloat = UIScreen.main.bounds.width/375
     let blurImageView = UIImageView().then{

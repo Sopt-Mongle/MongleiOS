@@ -61,4 +61,5 @@ struct APIConstants {
     static let signupEmailURL = baseURL + "/users/auth"
     static let signupDuplicateURL = baseURL + "/users/duplicate"
     static let withdrawURL = baseURL + "/users/withdraw"
+    static let passwordChangeURL = baseURL + "/users/changePassword"
 }
