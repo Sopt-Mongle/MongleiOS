@@ -82,6 +82,7 @@
 		7FFEA28724BF768D003D381A /* EditorPickData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA28624BF768D003D381A /* EditorPickData.swift */; };
 		7FFEA28924BF9C72003D381A /* TodaySentenceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA28824BF9C72003D381A /* TodaySentenceData.swift */; };
 		7FFEA28B24BFAC77003D381A /* MainCuratorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFEA28A24BFAC77003D381A /* MainCuratorData.swift */; };
+		B816185F25663D6500307B53 /* PasswordChangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B816185E25663D6400307B53 /* PasswordChangeService.swift */; };
 		B8218AC9255F8289003AA1AA /* ServicePolicy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8218AC8255F8289003AA1AA /* ServicePolicy.storyboard */; };
 		B8218ACC255F82BD003AA1AA /* ServicePolicyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8218ACB255F82BD003AA1AA /* ServicePolicyVC.swift */; };
 		B8218B1A256000E3003AA1AA /* OpenSource.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8218B19256000E2003AA1AA /* OpenSource.storyboard */; };
@@ -308,6 +309,7 @@
 		7FFEA28624BF768D003D381A /* EditorPickData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorPickData.swift; sourceTree = "<group>"; };
 		7FFEA28824BF9C72003D381A /* TodaySentenceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySentenceData.swift; sourceTree = "<group>"; };
 		7FFEA28A24BFAC77003D381A /* MainCuratorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCuratorData.swift; sourceTree = "<group>"; };
+		B816185E25663D6400307B53 /* PasswordChangeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeService.swift; sourceTree = "<group>"; };
 		B8218AC8255F8289003AA1AA /* ServicePolicy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ServicePolicy.storyboard; sourceTree = "<group>"; };
 		B8218ACB255F82BD003AA1AA /* ServicePolicyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicePolicyVC.swift; sourceTree = "<group>"; };
 		B8218B19256000E2003AA1AA /* OpenSource.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OpenSource.storyboard; sourceTree = "<group>"; };
@@ -622,6 +624,7 @@
 				EC849310255BD99B003B4149 /* SignUpEmailService.swift */,
 				EC84931C255D1892003B4149 /* SignUpDuplicateService.swift */,
 				B8218B2F25610356003AA1AA /* WithdrawService.swift */,
+				B816185E25663D6400307B53 /* PasswordChangeService.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -1063,6 +1066,7 @@
 				B8B48B3524BC676500551F5B /* CuratorTabInfoVC.swift in Sources */,
 				B8E2E15924C0A71E00595752 /* SearchSentenceService.swift in Sources */,
 				7FFEA26A24BE3317003D381A /* MonglesVC.swift in Sources */,
+				B816185F25663D6500307B53 /* PasswordChangeService.swift in Sources */,
 				7F1E719D24B46E3C00D79516 /* MainPopularThemaCVC.swift in Sources */,
 				7FC5B4D324BB61A4007C1725 /* WritingSentenceInThemeVC.swift in Sources */,
 				EC6E99CA2508C9D900B57284 /* SignUpAgreeVC.swift in Sources */,
@@ -1309,7 +1313,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.juhyeoklee.Mongle3;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.juhyeoklee.Mongle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1328,7 +1332,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.juhyeoklee.Mongle3;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.juhyeoklee.Mongle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

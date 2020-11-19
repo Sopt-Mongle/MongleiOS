@@ -127,6 +127,10 @@ extension ProfileEditIntroduceTVC: UITextFieldDelegate {
             
             return true
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
     
     
 }

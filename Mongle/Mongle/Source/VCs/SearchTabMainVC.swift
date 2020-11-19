@@ -20,7 +20,7 @@ class SearchTabMainVC: UIViewController{
     @IBOutlet weak var recommendSearchCV: UICollectionView!
     @IBOutlet weak var searchBTN: UIButton!
     
-    // MARK:= IBAction
+    // MARK:- IBAction
     @IBAction func touchUpSearchBTN(_ sender: Any) {
         //searchKey = searchTextField.text
         if searchTextField.hasText{
