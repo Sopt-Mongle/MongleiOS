@@ -392,6 +392,10 @@ extension ProfileEditVC: UITextFieldDelegate {
     
         
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
 }
 
 // MARK: UITableViewDelegate
