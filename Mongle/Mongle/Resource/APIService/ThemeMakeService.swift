@@ -15,7 +15,7 @@ struct ThemeMakeService {
     static let shared = ThemeMakeService()
     
     private func makeParameter(_ theme : String,_ themeImgIdx : Int)-> Parameters{
-        return ["theme" : theme, "themeImgIdx" : themeImgIdx]
+        return ["theme" : theme, "themeImgIdx" : themeImgIdx+1]
     }
     
     func themeMake(theme : String, themeImgIdx : Int, completion : @escaping (NetworkResult<Any>) -> Void){
@@ -29,10 +29,11 @@ struct ThemeMakeService {
                                             encoding: JSONEncoding.default,
                                             headers: header)
         
-        
+        print("테마 이미지 번호: \(themeImgIdx)")
         dataRequest.responseData { dataResponse in
             switch dataResponse.result {
             case .success :
+                
                 guard let statusCode = dataResponse.response?.statusCode else {return}
                 guard let data = dataResponse.value else {return}
                 let networkResult = self.judge(by: statusCode, data)

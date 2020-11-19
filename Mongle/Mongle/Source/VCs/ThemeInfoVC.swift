@@ -83,13 +83,15 @@ class ThemeInfoVC: UIViewController {
 //            }
 //        }
         sentenceTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomBackgroundView.frame.height, right: 0)
-        writeInThemeButton.makeRounded(cornerRadius: self.writeInThemeButton.bounds.width * 30 / 253)
-        saveButton.makeRounded(cornerRadius: saveButton.bounds.width * 30 / 77)
-        saveButton.setBorder(borderColor: .veryLightPinkSix, borderWidth: 1)
+        
+//        writeInThemeButton.makeRounded(cornerRadius: self.writeInThemeButton.bounds.width * 31 / 253)
+        
+//        saveButton.makeRounded(cornerRadius: saveButton.bounds.width * 31 / 77)
+//        saveButton.setBorder(borderColor: .veryLightPinkSix, borderWidth: 1)
         curatorProfileImageView.makeRounded(cornerRadius: curatorProfileImageView.frame.width / 2)
         sentencesBackgroundView.layer.cornerRadius = 25
         sentencesBackgroundView.clipsToBounds = true
-        writeInThemeButton.backgroundColor = .softGreen
+//        writeInThemeButton.backgroundColor = .softGreen
         // .layerMaxXMinYCorner : 오른쪽 위
         // .layerMaxXMaxYCorner : 오른쪽 아래
         // .layerMinXMaxYCorner : 왼쪽 아래
@@ -198,7 +200,7 @@ class ThemeInfoVC: UIViewController {
                     
                 }
             case .requestErr(let msg):
-                self.showToast(text: msg as? String ?? "requestErr")
+//                self.showToast(text: msg as? String ?? "requestErr")
                 completion(false, [])
             case .pathErr:
                 self.showToast(text: "pathErr")

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyGif
 
 class OnboardingMainVC: UIViewController {
     
@@ -22,19 +23,28 @@ class OnboardingMainVC: UIViewController {
     
     @IBOutlet weak var stackTopCons: NSLayoutConstraint!
     var runCount = 0
+    var imageView = UIImageView()
+    let containView = UIView()
     
     static var shouldShowSplash = false
     
     let deviceBound = UIScreen.main.bounds.height/812.0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageView.delegate = self
+        setItems()
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         if(OnboardingMainVC.shouldShowSplash){
             showSplash()
         }
         OnboardingMainVC.shouldShowSplash = false
-        setItems()
-        // Do any additional setup after loading the view.
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pageSegue"{
@@ -60,6 +70,8 @@ class OnboardingMainVC: UIViewController {
     }
     
     func setItems(){
+        
+        containView.backgroundColor = UIColor(red: 251 / 255.0, green: 251 / 255.0, blue: 251 / 255.0, alpha: 1.0)
         widths[0].constant = 19
         circles[0].backgroundColor = .softGreen
         circles[0].makeRounded(cornerRadius: 3)
@@ -76,48 +88,36 @@ class OnboardingMainVC: UIViewController {
     }
     
     func showSplash(){
-        let containView = UIView()
-        containView.backgroundColor = UIColor(red: 251 / 255.0, green: 251 / 255.0, blue: 251 / 255.0, alpha: 1.0)
+        
         self.view.addSubview(containView)
         containView.frame = self.view.bounds
         
-        var imageView = UIImageView()
+       
         do{
-            let gif = try UIImage(gifName: "Comp 3")
-            imageView = UIImageView(gifImage: gif,loopCount: 1)
+            let gif = try UIImage(gifName: "Comp 4")
+//            imageView = UIImageView(gifImage: gif,loopCount: 1)
+            imageView.setGifImage(gif, manager: .defaultManager, loopCount: 1)
         
             self.view.addSubview(imageView)
             imageView.snp.makeConstraints{
                 $0.width.equalTo(350)
                 $0.height.equalTo(200)
                 $0.center.equalToSuperview()
-                
+
             }
-            
+        
             
         } catch{
             print(error)
         }
-        
-       
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-            self.runCount += 1
-            
-
-            if self.runCount == 30 {
-                timer.invalidate()
-                
-                UIView.animate(withDuration: 1.0, animations: {
-                    imageView.removeFromSuperview()
-                    containView.alpha = 0
-                    
-                    
-                })
-                
-                
-                    
-            }
-        }
+//        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+//            self.runCount += 1
+//            if self.runCount == 30 {
+//                timer.invalidate()
+//
+//
+//            }
+//        }
         
         
     }
@@ -254,4 +254,33 @@ protocol OnboardingThreeToFourDelegate {
     
     func hideButtons()
     
+}
+
+
+extension OnboardingMainVC : SwiftyGifDelegate {
+
+    func gifURLDidFinish(sender: UIImageView) {
+        print("gifURLDidFinish")
+    }
+
+    func gifURLDidFail(sender: UIImageView) {
+        print("gifURLDidFail")
+    }
+
+    func gifDidStart(sender: UIImageView) {
+        print("gifDidStart")
+    }
+    
+    func gifDidLoop(sender: UIImageView) {
+        print("gifDidLoop")
+    }
+    
+    func gifDidStop(sender: UIImageView) {
+        print("gifDidStop")
+        UIView.animate(withDuration: 1.0, animations: {
+            
+            self.imageView.removeFromSuperview()
+            self.containView.alpha = 0
+        })
+    }
 }
