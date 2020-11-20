@@ -50,6 +50,7 @@ class CuratorTabMainVC: UIViewController {
             idx += 1
             
         }
+        curatorTabTableView.contentInset.bottom = 60
         
     }
     override func viewWillAppear(_ animated: Bool) {
