@@ -589,7 +589,7 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
         
         // Buttons
         resendButton2.snp.makeConstraints{
-            $0.top.equalTo(subMessageLabel.snp.bottom).offset(26)
+            $0.top.equalToSuperview().offset(171)
             $0.leading.equalToSuperview().offset(89)
             $0.trailing.equalToSuperview().offset(-88)
             $0.height.equalTo(37)

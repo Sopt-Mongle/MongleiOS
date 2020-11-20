@@ -35,7 +35,6 @@ class SignUpAgreeVC: UIViewController {
     @IBOutlet weak var showServiceAgreeButton: UIButton!
     
     @IBOutlet weak var outerCircle2Constraint: NSLayoutConstraint!
-    @IBOutlet weak var innerCircle2Constraint: NSLayoutConstraint!
     
     
     
@@ -265,7 +264,6 @@ class SignUpAgreeVC: UIViewController {
         textViewTopConstraint.constant = 76
         
         outerCircle2Constraint.constant = 28
-        innerCircle2Constraint.constant = 39
         serViceButtonConstraint.constant = 18
         checkButton2Constraints.constant = 18
         smallNext2Constraint.constant = 33
@@ -276,7 +274,8 @@ class SignUpAgreeVC: UIViewController {
         
         warnView.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(58)
-            $0.top.equalToSuperview().offset(349)
+            $0.top.equalTo(self.noticeLabel).offset(26)
+//            $0.top.equalToSuperview().offset(349)
             $0.height.equalTo(15)
             $0.width.equalTo(200)
         }
@@ -333,7 +332,6 @@ class SignUpAgreeVC: UIViewController {
         warnView.removeFromSuperview()
         textViewTopConstraint.constant = 53
         outerCircle2Constraint.constant = 10
-        innerCircle2Constraint.constant = 21
         serViceButtonConstraint.constant = 0
         checkButton2Constraints.constant = 0
         smallNext2Constraint.constant = 15

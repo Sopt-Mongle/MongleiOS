@@ -172,7 +172,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     //MARK:- User Define Functions
     func setItems(){
-        backButton.setImage(UIImage(named: "joinEmailErrorBtnClose")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        backButton.setImage(UIImage(named: "joinStep2BtnBack")?.withRenderingMode(.alwaysOriginal), for: .normal)
         upperBlurHeight.constant = 91*deviceBound
         
         emailTextField.placeholder = "이메일 주소"
@@ -198,7 +198,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
         nickNameWarningLabel.textColor = .reddish
         nickNameWarningImageView.image = UIImage(named: "joinEmailErrorIcWarning")
-        registerButton.setTitle("가입하기", for: .normal)
+        registerButton.setTitle("다음", for: .normal)
         registerButton.setTitleColor(.white, for: .normal)
         registerButton.backgroundColor = .softGreen
         registerButton.makeRounded(cornerRadius: 30)
@@ -281,7 +281,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         if textField == passWordTextField || textField == passWordTextField2 {
             //            let move = CGPoint(x: 0, y: (105+emailIsWarning)*Int(deviceBound))
             let move = CGPoint(x: 0, y: (105+emailIsWarning))
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 0.5, delay : 0.3, animations: {
                 
                 self.signUpScrollView.setContentOffset(move, animated: false)
             })
@@ -328,19 +328,83 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             nickNameQuantityLabel.alpha = 0
         }
         else if textField == emailTextField{
-            if emailTextField.text == "" || emailTextField.text?.isValidEmailAddress() == false{
+            
+            if emailTextField.text == ""{
+                emailWarningLabel.text = "이메일 주소를 입력해주세요!"
                 showEmailWarning()
+                hidePasswordWarning()
                 
                 if passwordIsWarning == 25 {
                     hidePasswordWarning()
                     showPasswordWarning()
-                    
-                    
+                }
+            }
+            else if emailTextField.text?.isValidEmailAddress() == false{
+                emailWarningLabel.text = "올바른 이메일 형식이 아니에요!"
+                showEmailWarning()
+                
+                //            if passwordIsWarning == 25 {
+                hidePasswordWarning()
+                //                showPasswordWarning()
+                
+                
+                //            }
+                
+                if passwordIsWarning == 25 {
+                    hidePasswordWarning()
+                    showPasswordWarning()
                 }
                 
                 
             }
-            
+            else{
+                let email = emailTextField.text!
+                let name = "1a2a3a4a5a6a7a8a"
+               
+                SignUpDuplicateService.shared.checkDuplicate(email: email, name: name) { networkResult in
+                    switch networkResult {
+                    case .success(let data):
+                        let dup = data as? String
+                        print(dup!)
+                        if dup == "available" {
+                            self.emailWarningLabel.text = "사용 가능한 이메일이에요!"
+                            self.showEmailValid()
+                           
+                        }
+                   
+                        else if dup == "email"{
+                            self.emailWarningLabel.text = "이미 가입된 이메일이에요!"
+                            self.showEmailWarning()
+                            
+                        }
+                        
+                    case .requestErr(let duplicate) :
+                        let dup = duplicate as? String
+                        print(dup!)
+                        if dup == "available" {
+                            self.emailWarningLabel.text = "사용 가능한 이메일이에요!"
+                            self.showEmailValid()
+                        }
+                      
+                        else if dup == "email"{
+                            self.emailWarningLabel.text = "이미 가입된 이메일이에요!"
+                            self.showEmailWarning()
+                            
+                        }
+                        
+                    case .pathErr: print("ptherr")
+                    case .serverErr: print("serverErr")
+                    case .networkFail: print("networkFails2")
+                        
+                        
+                        
+                    }
+                    
+                    
+                    
+                }
+                
+            }
         }
         
         
@@ -587,7 +651,7 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         else{
             
             if passWordTextField.text == passWordTextField2.text && passWordTextField.text != "" && passWordTextField2.text != ""{
-                
+               
                 self.passwordWarningLabel.text = "비밀번호가 일치해요!"
                 self.passwordWarningImageView.image = UIImage(named: "joinPassword5IcPossible")
                 self.passwordWarningLabel.textColor = .softGreen
@@ -623,6 +687,32 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         self.signUpScrollView.addSubview(emailWarningImageView)
         self.signUpScrollView.addSubview(emailWarningLabel)
         
+        emailWarningLabel.textColor = .reddish
+        
+        emailWarningImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(119)
+            $0.leading.equalToSuperview().offset(28)
+            $0.width.height.equalTo(15)
+        }
+        emailWarningImageView.image = UIImage(named: "joinEmailErrorIcWarning")
+        emailWarningLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(119)
+            $0.leading.equalToSuperview().offset(51)
+            
+        }
+        self.emailTextField.setBorder(borderColor: .reddish, borderWidth: 1.0)
+        
+        emailIsWarning = 25
+        
+    }
+    
+    func showEmailValid(){
+        emailToPassWordConstraint.constant = 59
+        self.signUpScrollView.addSubview(emailWarningImageView)
+        self.signUpScrollView.addSubview(emailWarningLabel)
+        emailWarningImageView.image = UIImage(named: "joinStep2NicknameIcPossible")
+        emailWarningLabel.textColor = .softGreen
+        
         emailWarningImageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(119)
             $0.leading.equalToSuperview().offset(28)
@@ -634,9 +724,11 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             $0.leading.equalToSuperview().offset(51)
             
         }
-        self.emailTextField.setBorder(borderColor: .reddish, borderWidth: 1.0)
+//        self.emailTextField.setBorder(borderColor: .reddish, borderWidth: 1.0)
         
         emailIsWarning = 25
+        
+        
         
     }
     
@@ -654,8 +746,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         passwordIsWarning = 25
         print(1)
         passWordToNIckNameConstraint.constant = 59
-        
-        
+        passwordWarningLabel.textColor = .reddish
+        self.passwordWarningImageView.image = UIImage(named: "joinEmailErrorIcWarning")
         self.signUpScrollView.addSubview(passwordWarningImageView)
         self.signUpScrollView.addSubview(passwordWarningLabel)
         
@@ -814,6 +906,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func registerButtonAction(_ sender: Any) {
+ 
+        
         self.view.endEditing(true)
         if emailTextField.text == ""{
             emailWarningLabel.text = "이메일 주소를 입력해주세요!"
@@ -834,12 +928,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             
         }
         else if passWordTextField.text == "" || passWordTextField2.text == ""{
-            passwordWarningLabel.text = "영문+숫자 최소 8자리 이상 입력해주세요!"
+            passwordWarningLabel.text = "비밀번호를 입력해주세요!"
             showPasswordWarning()
             
         }
         else if !passWordTextField.text!.isValidPassword() {
-            passwordWarningLabel.text = "비밀번호를 입력해주세요!"
+            passwordWarningLabel.text = "영문+숫자 최소 8자리 이상 입력해주세요!"
+            
             showPasswordWarning()
             
         }
