@@ -212,7 +212,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q2v-vN-RlU">
-                                <rect key="frame" x="0.0" y="167" width="375" height="551"/>
+                                <rect key="frame" x="0.0" y="167" width="375" height="645"/>
                                 <connections>
                                     <segue destination="Jqe-54-DSA" kind="embed" identifier="pageSegue" id="ShB-VC-Wy1"/>
                                 </connections>
@@ -223,14 +223,13 @@
                                     <constraint firstAttribute="width" constant="45" id="gU0-LI-l1Y"/>
                                     <constraint firstAttribute="height" constant="45" id="vey-oL-Ay4"/>
                                 </constraints>
-                                <inset key="contentEdgeInsets" minX="14" minY="13" maxX="14" maxY="13"/>
                                 <state key="normal" image="searchResultCuratorBtnSearch"/>
                                 <connections>
                                     <action selector="touchUpSearch:" destination="mk1-5s-R89" eventType="touchUpInside" id="ydk-GR-abL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgD-Ew-RyS">
-                                <rect key="frame" x="3.6666666666666856" y="55" width="40.333333333333329" height="45"/>
+                                <rect key="frame" x="3.6666666666666679" y="55" width="40.333333333333329" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="kgD-Ew-RyS" secondAttribute="height" multiplier="43:48" id="VPF-L7-ThT"/>
                                 </constraints>
@@ -265,7 +264,7 @@
                             <constraint firstItem="SxS-yM-DDC" firstAttribute="width" secondItem="RBx-RA-gJ2" secondAttribute="width" multiplier="0.333333" id="dow-Q9-Go4"/>
                             <constraint firstItem="GST-7F-Xen" firstAttribute="top" secondItem="wUH-6h-2df" secondAttribute="top" id="hIo-Wn-8rb"/>
                             <constraint firstItem="RBx-RA-gJ2" firstAttribute="leading" secondItem="35k-vu-IKc" secondAttribute="leading" id="idz-WE-Ji1"/>
-                            <constraint firstItem="35k-vu-IKc" firstAttribute="bottom" secondItem="q2v-vN-RlU" secondAttribute="bottom" constant="60" id="jFS-0P-T47"/>
+                            <constraint firstAttribute="bottom" secondItem="q2v-vN-RlU" secondAttribute="bottom" id="jFS-0P-T47"/>
                             <constraint firstItem="8uw-Fu-FON" firstAttribute="centerY" secondItem="wUH-6h-2df" secondAttribute="centerY" id="nIH-OH-6Fn"/>
                             <constraint firstItem="q2v-vN-RlU" firstAttribute="top" secondItem="SxS-yM-DDC" secondAttribute="bottom" id="otX-IC-Fof"/>
                             <constraint firstItem="RBx-RA-gJ2" firstAttribute="top" secondItem="wUH-6h-2df" secondAttribute="bottom" constant="32" id="pa7-b1-tGO"/>
@@ -277,6 +276,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="containerViewBottom" destination="jFS-0P-T47" id="Phd-9V-VzJ"/>
                         <outlet property="searchButton" destination="8uw-Fu-FON" id="hEQ-Xe-Cq8"/>
                         <outlet property="searchTextField" destination="GST-7F-Xen" id="oD3-gZ-Dru"/>
                         <outlet property="tabBarCV" destination="RBx-RA-gJ2" id="aGQ-7q-iDy"/>
@@ -301,10 +301,10 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultSentenceTVC" id="DaC-7g-bhZ" customClass="SearchResultSentenceTVC" customModule="Mongle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="121"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="121.33333587646484"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DaC-7g-bhZ" id="wcy-Eh-g0e">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="121.33333587646484"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFi-Aw-XM3">
@@ -327,7 +327,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNN-zu-G4n">
-                                                    <rect key="frame" x="33" y="88" width="176" height="15"/>
+                                                    <rect key="frame" x="33" y="88" width="176" height="15.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -446,7 +446,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZUW-In-bnf">
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aNA-3Y-4mR">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aNA-3Y-4mR">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="50" height="40"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -454,14 +454,14 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CuratorListCVC" id="H9x-Ys-lfE" customClass="CuratorListCVC" customModule="Mongle" customModuleProvider="target">
-                                        <rect key="frame" x="72" y="40" width="231" height="120"/>
+                                        <rect key="frame" x="0.0" y="40" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Itv-Rg-UIH">
-                                            <rect key="frame" x="0.0" y="0.0" width="231" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sentenceThemeOImgCurator1010" translatesAutoresizingMaskIntoConstraints="NO" id="vPK-0q-11S">
-                                                    <rect key="frame" x="28" y="28" width="65" height="65"/>
+                                                    <rect key="frame" x="28" y="28" width="65" height="73"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="7t3-Hj-YjY"/>
                                                         <constraint firstAttribute="height" constant="65" id="UeF-br-NDQ"/>
@@ -487,7 +487,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEB-9H-4Re">
-                                                    <rect key="frame" x="143" y="46" width="60" height="28"/>
+                                                    <rect key="frame" x="40" y="46" width="60" height="36"/>
                                                     <color key="backgroundColor" red="0.45098039220000002" green="0.75294117650000003" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="TGR-Hs-8rl"/>
@@ -505,7 +505,7 @@
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U1b-Z6-r3L">
-                                                    <rect key="frame" x="0.0" y="119" width="231" height="1"/>
+                                                    <rect key="frame" x="0.0" y="127" width="128" height="1"/>
                                                     <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="sai-gg-QVw"/>
@@ -522,7 +522,6 @@
                                                 <constraint firstItem="U1b-Z6-r3L" firstAttribute="leading" secondItem="Itv-Rg-UIH" secondAttribute="leading" id="UcQ-eC-dil"/>
                                                 <constraint firstAttribute="trailing" secondItem="BEB-9H-4Re" secondAttribute="trailing" constant="28" id="b7m-zo-3l3"/>
                                                 <constraint firstAttribute="bottom" secondItem="vPK-0q-11S" secondAttribute="bottom" constant="27" id="faN-qG-Ja5"/>
-                                                <constraint firstItem="DTY-Tb-4TB" firstAttribute="trailing" secondItem="BEB-9H-4Re" secondAttribute="leading" constant="3" id="nzD-9H-0LD"/>
                                                 <constraint firstItem="BEB-9H-4Re" firstAttribute="top" secondItem="Itv-Rg-UIH" secondAttribute="top" constant="46" id="twj-K6-Dej"/>
                                                 <constraint firstAttribute="bottom" secondItem="U1b-Z6-r3L" secondAttribute="bottom" id="wOd-wS-pTU"/>
                                                 <constraint firstItem="vPK-0q-11S" firstAttribute="top" secondItem="Itv-Rg-UIH" secondAttribute="top" constant="28" id="xXM-O4-sMW"/>
@@ -637,7 +636,7 @@
             <objects>
                 <viewController id="Jqe-54-DSA" customClass="SearchResultPageVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BId-aI-qxW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="645"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Bf7-n5-f45"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

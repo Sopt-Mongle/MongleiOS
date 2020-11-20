@@ -9,7 +9,7 @@
 import UIKit
 
 class SearchTabResultVC: UIViewController {
-    
+    let deviceBound = UIScreen.main.bounds.height/812.0
     let menuItem = ["테마","문장","큐레이터"]
     var pageInstance : SearchResultPageVC?
     var observingList: [NSKeyValueObservation] = []
@@ -20,15 +20,16 @@ class SearchTabResultVC: UIViewController {
     @IBOutlet weak var underBarView: UIView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
-
+    @IBOutlet weak var containerViewBottom: NSLayoutConstraint!
+    
     //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.containerViewBottom.constant = deviceBound * 73
         tabBarCV.delegate = self
         tabBarCV.dataSource = self
         searchTextField.delegate = self
-        
+
         searchTextField.text = searchKeyword
         
         underBarView.backgroundColor = .softGreen
@@ -54,6 +55,8 @@ class SearchTabResultVC: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         observingList.forEach { $0.invalidate() }
+        self.tabBarController?.hidesBottomBarWhenPushed = true
+        
     }
     
     
@@ -102,6 +105,7 @@ class SearchTabResultVC: UIViewController {
     //MARK: - IBActions
     @IBAction func touchUpSearch(_ sender: Any) {
         searchKeyword = searchTextField.text!
+        self.view.endEditing(true)
         guard let themeVC = self.storyboard?.instantiateViewController(withIdentifier:
             "SearchResultThemeVC") as? SearchResultThemeVC else {
                 return

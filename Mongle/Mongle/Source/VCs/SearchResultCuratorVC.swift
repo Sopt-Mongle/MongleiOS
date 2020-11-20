@@ -119,7 +119,7 @@ extension SearchResultCuratorVC: UICollectionViewDataSource{
                                       value: UIColor.softGreen,
                                       range: (text as! NSString).range(of: searchKey))
         cell.curatorNameLabel.attributedText = attributedString
-        
+//        cell.setLayout()
         return cell
     }
     

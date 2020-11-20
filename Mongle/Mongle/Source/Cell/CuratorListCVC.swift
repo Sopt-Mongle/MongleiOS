@@ -10,6 +10,7 @@ import UIKit
 
 class CuratorListCVC: UICollectionViewCell {
     static let identifier = "CuratorListCVC"
+    let deviceSize = UIScreen.main.bounds
     //var isSubscribed = false
     var subscriberNum : Int = 0
     var curatorIdx = -1
@@ -33,7 +34,7 @@ class CuratorListCVC: UICollectionViewCell {
     }
     
     override func awakeFromNib() {
-        subscribeBTN.layer.cornerRadius = subscribeBTN.frame.width/4
+        subscribeBTN.layer.cornerRadius = 15
         subscriberLabel.text = "구독자 \(subscriberNum)명"
         subscriberLabel.textColor = .veryLightPink
         curatorInfoLabel.textColor = .veryLightPink
@@ -41,7 +42,7 @@ class CuratorListCVC: UICollectionViewCell {
         subscribeBTN.setTitleColor(UIColor(red:181/255,green:181/255,blue:181/255, alpha:1.0), for: .selected)
         subscribeBTN.setTitle("구독",for: .normal)
         subscribeBTN.setTitleColor(.white, for: .normal)
-        curatorProfileImageView.makeRounded(cornerRadius: curatorProfileImageView.frame.width/2)
+        curatorProfileImageView.makeRounded(cornerRadius: 65/2)
         curatorProfileImageView.contentMode = .scaleAspectFill
         if subscribeBTN.isSelected {
             subscribeBTN.backgroundColor = .veryLightPinkSeven
@@ -52,6 +53,10 @@ class CuratorListCVC: UICollectionViewCell {
         
         self.backgroundColor = .white
         
+    }
+    func setLayout(){
+        subscribeBTN.makeRounded(cornerRadius: subscribeBTN.bounds.width/4)
+        curatorProfileImageView.makeRounded(cornerRadius: curatorProfileImageView.bounds.width/2)
     }
     func follow(idx: Int){
         CuratorFollowService.shared.follow(followedIdx: idx){ networkResult in

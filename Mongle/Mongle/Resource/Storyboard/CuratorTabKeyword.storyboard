@@ -19,18 +19,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ag4-3g-Up6">
-                                <rect key="frame" x="0.0" y="107" width="414" height="755"/>
+                                <rect key="frame" x="0.0" y="92.5" width="414" height="769.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zeg-Dw-LJM">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="estimatedItemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="14" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CuratorListCVC" id="ewe-Sr-P5O" customClass="CuratorListCVC" customModule="Mongle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="120"/>
+                                        <rect key="frame" x="0.0" y="14" width="128" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bay-D4-7N8">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="120"/>
@@ -126,7 +126,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZuL-Bh-0bc">
-                                <rect key="frame" x="0.0" y="44" width="414" height="63"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="48.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcX-Xm-wEa">
                                         <rect key="frame" x="207" y="4" width="0.0" height="23"/>
@@ -151,7 +151,7 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="ZuL-Bh-0bc" secondAttribute="height" multiplier="375:57" id="1gT-Kt-YxM"/>
+                                    <constraint firstAttribute="width" secondItem="ZuL-Bh-0bc" secondAttribute="height" multiplier="375:44" id="1gT-Kt-YxM"/>
                                     <constraint firstItem="fcX-Xm-wEa" firstAttribute="top" secondItem="ZuL-Bh-0bc" secondAttribute="top" constant="4" id="B9D-3r-Epz"/>
                                     <constraint firstItem="bVk-yE-PPh" firstAttribute="top" secondItem="ZuL-Bh-0bc" secondAttribute="top" constant="-7" id="Gpt-0x-ruF"/>
                                     <constraint firstItem="fcX-Xm-wEa" firstAttribute="centerX" secondItem="ZuL-Bh-0bc" secondAttribute="centerX" id="Zvm-fh-rMA"/>

@@ -11,7 +11,7 @@ import UIKit
 class CuratorTabKeywordVC: UIViewController {
     
     var selectedKeyword:String?
-    var keywordIdx:Int = 0
+    var keywordIdx:Int = 1
     var curatorList : [CuratorKeywordData] = []
     @IBOutlet weak var keywordTitleLabel: UILabel!
     @IBOutlet weak var naviView: UIView!
@@ -21,7 +21,7 @@ class CuratorTabKeywordVC: UIViewController {
     @IBOutlet weak var curatorListCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        naviView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.04, radius: 6)
+        
         curatorListCollectionView.delegate = self
         curatorListCollectionView.dataSource = self
         keywordTitleLabel.text = selectedKeyword
@@ -33,7 +33,7 @@ class CuratorTabKeywordVC: UIViewController {
     
     func setCuratorList(){
         print(self.keywordIdx)
-        CuratorKeywordService.shared.getKeyword(keywordIdx: self.keywordIdx+1){ networkResult in
+        CuratorKeywordService.shared.getKeyword(keywordIdx: self.keywordIdx){ networkResult in
             switch networkResult {
             case .success(let recommend):
                 guard let data = recommend as? [CuratorKeywordData] else {
@@ -66,6 +66,12 @@ class CuratorTabKeywordVC: UIViewController {
         }
         
     }
+    func showNaviShadow(){
+        naviView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.04, radius: 6)
+    }
+    func hideNaviShadow(){
+        naviView.layer.shadowOpacity = 0
+    }
 
     
 
@@ -77,6 +83,15 @@ extension CuratorTabKeywordVC: UICollectionViewDelegate{
         }
         curatorInfoVC.curatorIdx = curatorList[indexPath.item].curatorIdx
         self.navigationController?.pushViewController(curatorInfoVC, animated: true)
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let y = scrollView.contentOffset.y
+        if y>0{
+            showNaviShadow()
+        }
+        else{
+            hideNaviShadow()
+        }
     }
     
 }
