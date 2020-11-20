@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -171,6 +171,7 @@
                         <constraints>
                             <constraint firstItem="wcK-s5-79n" firstAttribute="trailing" secondItem="J33-0p-aKj" secondAttribute="trailing" constant="30" id="2rW-Zu-8Mz"/>
                             <constraint firstItem="izQ-xH-jK1" firstAttribute="top" secondItem="Fgs-FZ-wgx" secondAttribute="bottom" id="5hy-Md-vXp"/>
+                            <constraint firstItem="cgy-am-fmz" firstAttribute="top" secondItem="tIM-pv-Lon" secondAttribute="top" constant="12" id="BKU-qJ-3XX"/>
                             <constraint firstItem="Kcz-dq-i0G" firstAttribute="leading" secondItem="wcK-s5-79n" secondAttribute="leading" constant="17" id="BlB-5d-xBs"/>
                             <constraint firstItem="SmI-qL-dQF" firstAttribute="top" secondItem="bZx-5c-Dxr" secondAttribute="bottom" constant="15.4" id="DHy-i5-uQM"/>
                             <constraint firstItem="wcK-s5-79n" firstAttribute="trailing" secondItem="izQ-xH-jK1" secondAttribute="trailing" constant="19" id="DL3-lH-moh"/>
@@ -194,7 +195,6 @@
                             <constraint firstAttribute="bottom" secondItem="Mb1-zg-2LT" secondAttribute="bottom" constant="50" id="dML-AT-x3m"/>
                             <constraint firstItem="L9B-bV-bXr" firstAttribute="top" secondItem="ppY-fj-FLw" secondAttribute="bottom" constant="73" id="dVS-0l-PwP"/>
                             <constraint firstItem="tIM-pv-Lon" firstAttribute="top" secondItem="wvJ-X5-Az0" secondAttribute="bottom" constant="9" id="f7y-Y5-DEc"/>
-                            <constraint firstItem="cgy-am-fmz" firstAttribute="top" secondItem="wvJ-X5-Az0" secondAttribute="bottom" constant="21" id="fTm-M6-iDZ"/>
                             <constraint firstItem="VXo-fU-Wev" firstAttribute="leading" secondItem="wcK-s5-79n" secondAttribute="leading" constant="31" id="gQA-2H-Eit"/>
                             <constraint firstItem="SmI-qL-dQF" firstAttribute="leading" secondItem="wcK-s5-79n" secondAttribute="leading" constant="28" id="jHb-My-sIn"/>
                             <constraint firstItem="97s-AS-qFu" firstAttribute="leading" secondItem="t5R-5U-G2W" secondAttribute="trailing" id="jWt-Ok-UkB"/>
@@ -222,7 +222,6 @@
                         <outlet property="closeButton" destination="Kcz-dq-i0G" id="O3m-XP-cwd"/>
                         <outlet property="explainTextView" destination="J33-0p-aKj" id="JTH-0o-qp0"/>
                         <outlet property="headerImageView" destination="SmI-qL-dQF" id="hPs-Sk-z4p"/>
-                        <outlet property="innerCircle2Constraint" destination="fTm-M6-iDZ" id="a9P-7R-vRN"/>
                         <outlet property="mongleImageView" destination="bZx-5c-Dxr" id="3lk-TK-oFI"/>
                         <outlet property="nextButton" destination="Mb1-zg-2LT" id="tZK-oa-857"/>
                         <outlet property="noticeLabel" destination="Bzk-dP-UYm" id="KEY-Kx-e3b"/>
