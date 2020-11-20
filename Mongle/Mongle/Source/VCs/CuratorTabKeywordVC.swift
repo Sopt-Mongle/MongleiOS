@@ -11,7 +11,7 @@ import UIKit
 class CuratorTabKeywordVC: UIViewController {
     
     var selectedKeyword:String?
-    var keywordIdx:Int = 0
+    var keywordIdx:Int = 1
     var curatorList : [CuratorKeywordData] = []
     @IBOutlet weak var keywordTitleLabel: UILabel!
     @IBOutlet weak var naviView: UIView!
@@ -33,7 +33,7 @@ class CuratorTabKeywordVC: UIViewController {
     
     func setCuratorList(){
         print(self.keywordIdx)
-        CuratorKeywordService.shared.getKeyword(keywordIdx: self.keywordIdx+1){ networkResult in
+        CuratorKeywordService.shared.getKeyword(keywordIdx: self.keywordIdx){ networkResult in
             switch networkResult {
             case .success(let recommend):
                 guard let data = recommend as? [CuratorKeywordData] else {
