@@ -294,7 +294,7 @@ class ThemeInfoVC: UIViewController {
                     self.bookmarkCountLabel.text = "\(_data.saves)"
                     
                     if _data.isSave {
-                        self.showToast(text: "테마가 저장되었습니다!")
+                        self.showToast(text: "테마가 저장되었어요!")
                     }
                     else {
 //                        self.showToast(text: "북마크 해제")
