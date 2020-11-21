@@ -34,13 +34,11 @@ class SentenceInfoVC: UIViewController {
         $0.alpha = 0.5
     }
     //MARK:- Property
-    var themeText: String = "브랜딩이 어려울 때, 영감을 주는 문장"
-    var sentenceText: String = """
-처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의인상,사소한 것으로 인해 생기는 호감,
-"""
+    var themeText: String = " "
+    var sentenceText: String = " "
     var sentence: DetailSentenceInfo?
     var themeImage: UIImage? = UIImage(named: "curatorImgTheme1")
-    var otherSentences: [Sentence] = []
+    var otherSentences: [OtherSentence] = []
     var hasTheme: Bool = true
     var isMySentence: Bool = true
     var canDisplayOtherSentece: Bool = true
@@ -53,7 +51,7 @@ class SentenceInfoVC: UIViewController {
         addGesture()
 //        bindThemeInfo()
         makeRoundTableView()
-        swipeToPop()
+//        swipeToPop()
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
     }
@@ -197,10 +195,11 @@ class SentenceInfoVC: UIViewController {
 //    }
     
     func getOtherSentece(){
-        SentenceService.shared.getSentence(idx: self.sentenceIdx ?? 0) { networkResult in
+        SentenceService.shared.getOtherSentenceInTheme(idx: self.sentenceIdx ?? 0) { networkResult in
             switch networkResult {
             case .success(let data):
-                if let _data = data as? [Sentence] {
+                if let _data = data as? [OtherSentence] {
+                    
                     self.otherSentences = _data
                     self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 1), with: .automatic)
                 }
