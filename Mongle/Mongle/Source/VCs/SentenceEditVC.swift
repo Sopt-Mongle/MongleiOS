@@ -135,28 +135,7 @@ class SentenceEditVC: UIViewController {
     
     @IBAction func touchEditButton(_ sender: UIButton) {
         
-
-        let popupView = MonglePopupView(frame: CGRect(x: 0, y: 0, width: 304, height: 193))
-        let blurView = UIView().then {
-            $0.backgroundColor = .black
-            $0.alpha = 0.5
-        }
-        self.view.addSubview(blurView)
-
-        popupView.setPopUp(state: .edit,
-                           yesHandler: nil,
-                           noHandler: nil,
-                           confirmHandler: { [weak self] in
-                            self?.requestEdit()
-        })
-        blurView.snp.makeConstraints {
-            $0.top.bottom.leading.trailing.equalToSuperview()
-        }
-
-        self.view.addSubview(popupView)
-        popupView.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-        }
+        self.requestEdit()
     }
     
 }
