@@ -14,7 +14,7 @@ import UIKit
 }
 
 class SearchResultPageVC: UIPageViewController {
-    
+    var searchAgainFlag = false
     var previousPage: UIViewController?
     var nextPage: UIViewController?
     var realNextPage: UIViewController?
@@ -50,7 +50,13 @@ class SearchResultPageVC: UIPageViewController {
             
         }
         if let firstVC = vcArr?.first {
-            setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+            if searchAgainFlag{
+                searchAgainFlag = false
+                setViewControllers([firstVC], direction: .forward, animated: false, completion: nil)
+            }
+            else{
+                setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+            }
         }
         // Do any additional setup after loading the view.
     }

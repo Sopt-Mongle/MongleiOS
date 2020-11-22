@@ -112,6 +112,7 @@ class SearchTabResultVC: UIViewController {
         }
         pageInstance?.searchKey = searchKeyword
         self.tabBarCV.selectItem(at: IndexPath(item: 0, section: 0),animated: false,scrollPosition: .bottom)
+        pageInstance?.searchAgainFlag = true
         pageInstance?.viewDidLoad()
         underBarView.transform = CGAffineTransform(translationX: 0, y: 0)
         //themeVC.setSearchThemeData(searchKeyword)
