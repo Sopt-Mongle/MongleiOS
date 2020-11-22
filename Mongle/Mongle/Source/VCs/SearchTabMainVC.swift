@@ -161,8 +161,8 @@ class SearchTabMainVC: UIViewController{
             case .success(let message):
                 print("qqqqqqqqqqq\(message)")
                 guard let message = message as? String else { return }
-                self.showToast(text: message)
-                
+//                self.showToast("최근 검색어가 전체삭제 되었어요!")
+                print(message)
                 self.recentKeyArray = []
                 self.recentSearchCV.reloadData()
                 //self.setRecentSearchData()
