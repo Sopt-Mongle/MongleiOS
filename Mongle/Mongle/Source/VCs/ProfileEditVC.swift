@@ -190,6 +190,7 @@ class ProfileEditVC: UIViewController{
         self.layoutTableView.reloadData()
         selectedKeywordIdx = UserDefaults.standard.integer(forKey: "UserProfileKeyIdx")
         updateSelectedKeywordButton()
+        partialGreenColor()
     }
     func showWarning(color: WarningColor, title: String){
         nickNameWarningLabel.text = title
@@ -201,6 +202,7 @@ class ProfileEditVC: UIViewController{
                 nickNameWarningLabel.textColor = .reddish
                 nickNameWarningImageView.image = UIImage(named:"mySettingsProfile3IcWarning")
                 nickNameTextField.becomeFirstResponder()
+                nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1)
                 
                 
         }
@@ -237,6 +239,8 @@ class ProfileEditVC: UIViewController{
                                 self.showWarning(color : .green, title: "사용 가능한 닉네임이에요!")
                                 if (ProfileEditIntroduceTVC.isIntroduceValid!){
                                     DispatchQueue.main.async{
+                                        self.hideWarning()
+                                        self.nickNameTextField.setBorder(borderColor: .veryLightPink, borderWidth: 1)
                                         self.callProfileEdit()
                                     }
                                 }
@@ -260,6 +264,7 @@ class ProfileEditVC: UIViewController{
                     }
                 })
             }
+            //닉네임은 수정하지 않았을 때
             else{
                 nickNameTextField.setBorder(borderColor: .veryLightPink, borderWidth: 1)
                 hideWarning()
@@ -296,13 +301,14 @@ class ProfileEditVC: UIViewController{
                     guard let profileData = data as? [MyProfileUploadData] else{
                         return
                     }
-        
-                    self.showToast(text: "프로필이 수정되었어요!")
                     self.imageFlag = false
                     UserDefaults.standard.setValue(profileData[0].name, forKey: "UserProfileName")
                     UserDefaults.standard.setValue(profileData[0].img, forKey: "UserProfileImgLink")
                     UserDefaults.standard.setValue(profileData[0].introduce, forKey: "UserProfileIntroduce")
                     UserDefaults.standard.setValue(profileData[0].keywordIdx, forKey: "UserProfileKeyIdx")
+                    self.showToast(text: "프로필이 수정되었어요!"){
+                        self.navigationController?.popViewController(animated: true)
+                    }
                     
                 case .requestErr(let message):
                     guard let message = message as? String else { return }
@@ -329,18 +335,19 @@ class ProfileEditVC: UIViewController{
     }
     func partialGreenColor(){
         
-        guard let text = self.nickNameCountLabel.text else {
+        guard let text = self.nickNameTextField.text else {
             return
         }
         nickNameCountLabel.text = "\(text.count)/6"
         nickNameCountLabel.textColor = .softGreen
+        if nickNameTextField.text == "" {
+            nickNameCountLabel.textColor = .veryLightPink
+        }
         let attributedString = NSMutableAttributedString(string: nickNameCountLabel.text!)
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
                                       value: UIColor.veryLightPink,
                                       range: (text as NSString).range(of: "/6"))
-        if nickNameCountLabel.text == "" {
-            nickNameCountLabel.textColor = .veryLightPink
-        }
+        
         nickNameCountLabel.attributedText = attributedString
     }
     func setGesture(){
@@ -363,6 +370,7 @@ class ProfileEditVC: UIViewController{
     }
     
     @IBAction func touchUpCompleteButton(){
+        self.view.endEditing(true)
         callNickNameDuplicate()
     }
 }
