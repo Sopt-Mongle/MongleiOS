@@ -67,7 +67,7 @@ class CuratorTabKeywordVC: UIViewController {
         
     }
     func showNaviShadow(){
-        naviView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.04, radius: 6)
+        naviView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 7), opacity: 0.04, radius: 6)
     }
     func hideNaviShadow(){
         naviView.layer.shadowOpacity = 0
@@ -107,7 +107,7 @@ extension CuratorTabKeywordVC: UICollectionViewDataSource{
         cell.myVC = self
         cell.curatorProfileImageView.imageFromUrl(curatorList[indexPath.item].img, defaultImgPath: "sentenceThemeOImgCurator1010")
         cell.curatorNameLabel.text = curatorList[indexPath.item].name
-        cell.curatorInfoLabel.text = curatorList[indexPath.item].introduce
+        cell.curatorInfoLabel.text = curatorList[indexPath.item].keyword
         cell.curatorIdx = curatorList[indexPath.item].curatorIdx
         cell.subscriberLabel.text = "구독자 \(curatorList[indexPath.item].subscribe)명"
         if curatorList[indexPath.item].alreadySubscribed{

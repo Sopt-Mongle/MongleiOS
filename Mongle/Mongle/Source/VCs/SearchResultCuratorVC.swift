@@ -27,7 +27,7 @@ class SearchResultCuratorVC: UIViewController {
         setSearchCuratorData(searchKey)
         
     }
-    
+    //MARK: - Custom methods
     func setSearchCuratorData(_ searchKey: String){
         SearchCuratorService.shared.search(words:searchKey) { networkResult in
             switch networkResult {
@@ -69,6 +69,7 @@ class SearchResultCuratorVC: UIViewController {
     
     
 }
+//MARK: - UICollectionViewDelegate
 extension SearchResultCuratorVC: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
@@ -88,6 +89,7 @@ extension SearchResultCuratorVC: UICollectionViewDelegate{
         self.navigationController?.pushViewController(curatorInfoVC, animated: true)
     }
 }
+//MARK: - UICOllectionViewDataSource
 extension SearchResultCuratorVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -103,7 +105,7 @@ extension SearchResultCuratorVC: UICollectionViewDataSource{
         cell.subscribeBTN.isSelected = curatorList[indexPath.item].alreadySubscribed
         cell.curatorIdx = curatorList[indexPath.item].curatorIdx
         cell.subscriberLabel.text = "구독자 \(curatorList[indexPath.item].subscribe)명"
-        cell.curatorInfoLabel.text = curatorList[indexPath.item].introduce
+        cell.curatorInfoLabel.text = curatorList[indexPath.item].keyword
         if curatorList[indexPath.item].alreadySubscribed{
             cell.subscribeBTN.backgroundColor = .veryLightPinkSeven
         }
