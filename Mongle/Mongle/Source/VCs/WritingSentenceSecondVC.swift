@@ -9,7 +9,7 @@
 import UIKit
 
 class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
-
+    
     
     //    MARK:- IBOutlets
     
@@ -46,7 +46,7 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
     let outerCircle2 = UIView().then{
         $0.backgroundColor = .brownGreyThree
         $0.alpha = 0.34
-    
+        
     }
     let smallCircle = UIView().then{
         $0.backgroundColor = .veryLightPinkSeven
@@ -68,7 +68,7 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
     var sentenceForPost : String = ""
     var isSearched : Bool = false
     var book : Book?
-//    MARK:- LifeCycle Methods
+    //    MARK:- LifeCycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,9 +81,9 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         backButton.setImage(UIImage(named: "searchBtnBack"), for: .normal)
         backButton.tintColor = .veryLightPink
         setNextButton()
-//        searchTextButton.setImage(UIImage(named: "themeWritingSentenceBookBtnBookSearch")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        //        searchTextButton.setImage(UIImage(named: "themeWritingSentenceBookBtnBookSearch")?.withRenderingMode(.alwaysOriginal), for: .normal)
         searchTextButton.imageView?.contentMode = .scaleToFill
-//        searchTextButton.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
+        //        searchTextButton.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
         bookTitleLabel.text = ""
         setWarning()
         searchTextButton.makeRounded(cornerRadius: 10)
@@ -103,7 +103,7 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
             
         }
         else if self.noAnimation == true{
-         
+            
             
         }
         else{
@@ -113,10 +113,10 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         
     }
     
- 
     
     
-//    MARK:- User Define Functions
+    
+    //    MARK:- User Define Functions
     func partialGreenColor(){
         
         guard let text = self.noticeLabel.text else {
@@ -130,15 +130,15 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
     }
     
     func setNextButton(){
-          self.nextButton.backgroundColor = .softGreen
-          self.nextButton.makeRounded(cornerRadius: 25)
-          
-          
-      }
+        self.nextButton.backgroundColor = .softGreen
+        self.nextButton.makeRounded(cornerRadius: 25)
+        
+        
+    }
     @IBAction func backButton(_ sender: Any) {
         
         WritingSentenceSecondVC.isVisited = true
-//        WritingSentenceVC.secondToFirstLevelAnimation()
+        //        WritingSentenceVC.secondToFirstLevelAnimation()
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -226,14 +226,14 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
     func secondLevelAnimation() {
         progressBar.progress = 0
         //        progressBar.setProgress(0.5, animated: true)
-       
+        
         
         UIView.animate(withDuration: 0.5, delay: 0.0, animations: {
             self.progressBar.layoutIfNeeded()
             
         }, completion: { finished in
             self.progressBar.progress = 0.5
-           
+            
             
             
             
@@ -260,9 +260,9 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         guard let vcName = UIStoryboard(name: "SearchBookForWriting",
                                         bundle: nil).instantiateViewController(
                                             withIdentifier: "SearchBookForWritingVC")
-            as? SearchBookForWritingVC
-            else{
-                return
+                as? SearchBookForWritingVC
+        else{
+            return
         }
         vcName.bookSendDelegate = self
         vcName.modalPresentationStyle = .fullScreen
@@ -380,7 +380,7 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         return cell
         
     }
-
+    
     func makeEmiterCellFirework() -> CAEmitterCell {
         let cell = CAEmitterCell()
         cell.birthRate = 50
@@ -404,10 +404,10 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         return cell
         
     }
-
-   
+    
+    
     func createParticles() {
-       
+        
         particleEmitter.lifetime = 5.0
         // MARK: 설정
         particleEmitter.emitterPosition = CGPoint(x: view.center.x, y: view.center.y)
@@ -430,40 +430,47 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         view.layer.addSublayer(particleEmitter)
         
     }
-
- 
+    
+    
     
     
     @IBAction func nextButtonAction(_ sender: Any) {
-        if authorTextField.text == "" || publisherTextField.text == "" {
-            createParticles()
-            UIView.animate(withDuration: 7.0, delay: 0, options: .curveEaseOut , animations: {
-                self.showToast(text: "축하드립니다. 당신은 이스터에그를 발견하셨습니다.")
-                
-            }, completion: nil)
-           
-           
-            let white = makeEmitterCell(color: .white)
-            let firework = makeEmiterCellFirework()
-            particleEmitter.emitterCells = [white]
-            white.emitterCells = [firework]
-            view.layer.addSublayer(particleEmitter)
-
-           
-            return
-            
-        }
+        
         
         guard let vcName = UIStoryboard(name: "WritingSentenceThird",
                                         bundle: nil).instantiateViewController(
                                             withIdentifier: "WritingSentenceThirdVC")
-            as? ThirdViewOfWritingSentenceVC
-            else{
-                return
+                as? ThirdViewOfWritingSentenceVC
+        else{
+            return
         }
         if bookTitleLabel.text == ""{
             showWarning()
         }
+        else if authorTextField.text == "" || publisherTextField.text == "" {
+            //            createParticles()
+            //            UIView.animate(withDuration: 7.0, delay: 0, options: .curveEaseOut , animations: {
+            //                self.showToast(text: "축하드립니다. 당신은 이스터에그를 발견하셨습니다.")
+            //
+            //            }, completion: nil)
+            //
+            //
+            //            let white = makeEmitterCell(color: .white)
+            //            let firework = makeEmiterCellFirework()
+            //            particleEmitter.emitterCells = [white]
+            //            white.emitterCells = [firework]
+            //            view.layer.addSublayer(particleEmitter)
+            
+            
+            self.showToast(text: "작가나 출판사가 있는 책을 골라주세요!")
+            
+            return
+            
+        }
+        
+        
+        
+        
         else{
             vcName.modalPresentationStyle = .currentContext
             

@@ -27,6 +27,8 @@ class ThemeSelectForWritingSentenceVC: UIViewController, UITextFieldDelegate {
     
     var themeIdxForPost : Int = 0
     
+    let deviceBoundw = UIScreen.main.bounds.width/374.0
+    
     
     
     //MARK:- User Define Variables
@@ -544,6 +546,11 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if deviceBoundw > 1 {
+            
+            return CGSize(width: 166*deviceBoundw, height: 166*deviceBoundw)
+        }
         
         return CGSize(width : 166, height: 166 )
     }
