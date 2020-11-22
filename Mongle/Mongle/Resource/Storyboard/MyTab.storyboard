@@ -29,6 +29,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R2b-Rg-dIX">
+                                <rect key="frame" x="0.0" y="238" width="375" height="84"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="o3m-0b-VkL"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VhP-mt-FKV">
                                 <rect key="frame" x="67" y="342" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -176,6 +183,7 @@
                             <constraint firstItem="VVZ-gQ-26j" firstAttribute="trailing" secondItem="0wg-Zw-UpZ" secondAttribute="trailing" constant="22" id="NzI-G5-pHw"/>
                             <constraint firstItem="dTy-EP-c5T" firstAttribute="top" secondItem="VVZ-gQ-26j" secondAttribute="top" constant="8" id="OzG-hg-z7A"/>
                             <constraint firstItem="9wG-96-SnT" firstAttribute="leading" secondItem="aBs-7v-BM8" secondAttribute="trailing" constant="3" id="RWY-yk-M1P"/>
+                            <constraint firstItem="R2b-Rg-dIX" firstAttribute="leading" secondItem="VVZ-gQ-26j" secondAttribute="leading" id="Tlv-jw-LKR"/>
                             <constraint firstItem="orb-68-jlb" firstAttribute="leading" secondItem="VVZ-gQ-26j" secondAttribute="leading" id="UJe-29-BdZ"/>
                             <constraint firstItem="GEb-E9-z3b" firstAttribute="top" secondItem="woz-kH-sJl" secondAttribute="bottom" constant="18" id="VTW-1U-fzU"/>
                             <constraint firstItem="woz-kH-sJl" firstAttribute="centerX" secondItem="VVZ-gQ-26j" secondAttribute="centerX" id="VUh-Zv-pKD"/>
@@ -183,6 +191,7 @@
                             <constraint firstItem="VVZ-gQ-26j" firstAttribute="trailing" secondItem="orb-68-jlb" secondAttribute="trailing" id="Ysi-6d-pCP"/>
                             <constraint firstItem="9wG-96-SnT" firstAttribute="trailing" secondItem="0wg-Zw-UpZ" secondAttribute="leading" id="ZQA-LY-yTu"/>
                             <constraint firstItem="XD9-9e-mhW" firstAttribute="top" secondItem="kfP-GV-7LE" secondAttribute="bottom" constant="15" id="b0M-8d-Abl"/>
+                            <constraint firstItem="orb-68-jlb" firstAttribute="top" secondItem="R2b-Rg-dIX" secondAttribute="bottom" id="bLJ-5b-Ft4"/>
                             <constraint firstItem="BXR-q0-VGI" firstAttribute="leading" secondItem="VVZ-gQ-26j" secondAttribute="leading" constant="28" id="bmj-nI-eOt"/>
                             <constraint firstItem="aBs-7v-BM8" firstAttribute="top" secondItem="woz-kH-sJl" secondAttribute="bottom" constant="16" id="dpC-pL-GXj"/>
                             <constraint firstItem="dgA-1M-q7f" firstAttribute="top" secondItem="woz-kH-sJl" secondAttribute="bottom" constant="18" id="gKX-6l-pWh"/>
@@ -192,6 +201,7 @@
                             <constraint firstItem="XD9-9e-mhW" firstAttribute="centerX" secondItem="VVZ-gQ-26j" secondAttribute="centerX" id="m1h-Dr-bxQ"/>
                             <constraint firstItem="aBs-7v-BM8" firstAttribute="bottom" secondItem="orb-68-jlb" secondAttribute="top" id="qGu-fi-0Qy"/>
                             <constraint firstItem="dgA-1M-q7f" firstAttribute="centerX" secondItem="0wg-Zw-UpZ" secondAttribute="centerX" id="rF3-VT-cXY"/>
+                            <constraint firstItem="R2b-Rg-dIX" firstAttribute="trailing" secondItem="VVZ-gQ-26j" secondAttribute="trailing" id="sJp-iR-S7D"/>
                             <constraint firstItem="GEb-E9-z3b" firstAttribute="centerX" secondItem="BXR-q0-VGI" secondAttribute="centerX" id="sW3-pa-oKe"/>
                             <constraint firstItem="9wG-96-SnT" firstAttribute="top" secondItem="64U-su-Pdh" secondAttribute="top" constant="282" id="t8m-mE-M7e"/>
                             <constraint firstItem="eFb-IT-nP6" firstAttribute="top" secondItem="woz-kH-sJl" secondAttribute="bottom" constant="30" id="tNo-9r-WGX"/>
@@ -209,13 +219,14 @@
                         <outlet property="myProfileMsgLabel" destination="woz-kH-sJl" id="dfu-bt-sPi"/>
                         <outlet property="sentenceMenuBTN" destination="aBs-7v-BM8" id="dpb-0N-DlI"/>
                         <outlet property="sentenceMenuLabel" destination="J6A-XN-0bR" id="nws-km-u2J"/>
+                        <outlet property="shadowBox" destination="R2b-Rg-dIX" id="fyG-NE-M82"/>
                         <outlet property="themeMenuBTN" destination="BXR-q0-VGI" id="t6N-j6-lzy"/>
                         <outlet property="themeMenuLabel" destination="GEb-E9-z3b" id="cCv-5p-URu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6xl-pJ-Xyg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1041" y="57"/>
+            <point key="canvasLocation" x="-1042.4000000000001" y="56.896551724137936"/>
         </scene>
         <!--My Tab SentenceVC-->
         <scene sceneID="Gch-JJ-ymH">
@@ -413,7 +424,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g2r-eO-KY6">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="66" width="375" height="712"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="k2o-kV-M0c">
                                     <size key="itemSize" width="128" height="128"/>
@@ -514,7 +525,7 @@
                         <viewLayoutGuide key="safeArea" id="pQV-e3-sMh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="g2r-eO-KY6" firstAttribute="top" secondItem="pQV-e3-sMh" secondAttribute="top" id="fBs-3h-5ND"/>
+                            <constraint firstItem="g2r-eO-KY6" firstAttribute="top" secondItem="pQV-e3-sMh" secondAttribute="top" constant="22" id="fBs-3h-5ND"/>
                             <constraint firstItem="pQV-e3-sMh" firstAttribute="trailing" secondItem="g2r-eO-KY6" secondAttribute="trailing" id="g5r-Dr-9Oq"/>
                             <constraint firstItem="pQV-e3-sMh" firstAttribute="bottom" secondItem="g2r-eO-KY6" secondAttribute="bottom" id="jlM-vo-9HD"/>
                             <constraint firstItem="g2r-eO-KY6" firstAttribute="leading" secondItem="pQV-e3-sMh" secondAttribute="leading" id="lpO-rQ-whj"/>
@@ -554,7 +565,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="themeIcSentenceBookmark" translatesAutoresizingMaskIntoConstraints="NO" id="NDp-Kx-BJo">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myThemeBookmarkIcThemeBookmark1" translatesAutoresizingMaskIntoConstraints="NO" id="NDp-Kx-BJo">
                                                     <rect key="frame" x="16" y="115.66666666666667" width="11" height="11"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="11" id="0AC-VU-yJY"/>
@@ -590,23 +601,34 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BW3-b7-Tew">
+                                <rect key="frame" x="0.0" y="88" width="375" height="5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="zDS-Fj-ndv"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MoE-JS-ANY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="BW3-b7-Tew" firstAttribute="leading" secondItem="kVf-Cz-fwa" secondAttribute="leading" id="46t-fS-ZHD"/>
                             <constraint firstItem="0EA-KZ-DyD" firstAttribute="leading" secondItem="MoE-JS-ANY" secondAttribute="leading" id="NS1-7P-dni"/>
                             <constraint firstItem="0EA-KZ-DyD" firstAttribute="top" secondItem="MoE-JS-ANY" secondAttribute="top" id="PLt-AB-g4q"/>
+                            <constraint firstItem="0EA-KZ-DyD" firstAttribute="top" secondItem="BW3-b7-Tew" secondAttribute="bottom" constant="-49" id="XyQ-Dv-GBA"/>
                             <constraint firstItem="MoE-JS-ANY" firstAttribute="trailing" secondItem="0EA-KZ-DyD" secondAttribute="trailing" id="bYl-gA-y5o"/>
+                            <constraint firstAttribute="trailing" secondItem="BW3-b7-Tew" secondAttribute="trailing" id="eaG-jF-KdM"/>
                             <constraint firstItem="MoE-JS-ANY" firstAttribute="bottom" secondItem="0EA-KZ-DyD" secondAttribute="bottom" id="ezT-eL-KHp"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="shadowBox" destination="BW3-b7-Tew" id="fMy-Fm-tm2"/>
                         <outlet property="themeTableView" destination="0EA-KZ-DyD" id="j2h-T6-IMi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xIm-V2-hjb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="863" y="-282"/>
+            <point key="canvasLocation" x="861.60000000000002" y="-282.26600985221677"/>
         </scene>
         <!--My Tab PageVC-->
         <scene sceneID="ssC-fj-yNQ">
@@ -626,9 +648,9 @@
     </scenes>
     <resources>
         <image name="myThemeBookmarkBtnSettings" width="19" height="19"/>
+        <image name="myThemeBookmarkIcThemeBookmark1" width="9" height="10"/>
         <image name="searchResultSentenceIcCurator1" width="11" height="11"/>
         <image name="sentenceThemeOImgCurator1010" width="69.666664123535156" height="69.666664123535156"/>
-        <image name="themeIcSentenceBookmark" width="11" height="11"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

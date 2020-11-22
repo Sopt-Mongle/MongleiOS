@@ -73,6 +73,7 @@ class MyTabVC: UIViewController {
     @IBOutlet weak var themeMenuBTN: UIButton!
     @IBOutlet weak var sentenceMenuBTN: UIButton!
     @IBOutlet weak var curatorMenuBTN: UIButton!
+    @IBOutlet weak var shadowBox: UIView!
     
     //MARK:- IBAction
     @IBAction func touchUpSetting(_ sender: Any) {

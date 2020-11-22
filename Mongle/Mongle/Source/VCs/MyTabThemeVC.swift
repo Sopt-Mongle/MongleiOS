@@ -19,6 +19,7 @@ class MyTabThemeVC: UIViewController {
   
     // MARK: - IBOutlet
     @IBOutlet weak var themeTableView: UITableView!
+    @IBOutlet weak var shadowBox: UIView!
     
     //MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -58,6 +59,13 @@ class MyTabThemeVC: UIViewController {
         
         self.themeTableView.reloadData()
     }
+//    func showShadow(){
+//        themeTableView.headerView(forSection: 0)?.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.04, radius: 6)
+//        themeTableView.layoutIfNeeded()
+//    }
+//    func hideShadow(){
+//        shadowBox.layer.shadowOpacity = 0
+//    }
     func setMyTheme(){
         MyThemeService.shared.getMy(){ networkResult in
             
@@ -216,6 +224,15 @@ extension MyTabThemeVC: UITableViewDelegate{
         }
         self.navigationController?.pushViewController(themeVC, animated: true)
     }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let y = scrollView.contentOffset.y
+//        if y>0{
+//            showShadow()
+//        }
+//        else{
+//            hideShadow()
+//        }
+//    }
     
 }
 extension MyTabThemeVC: UITableViewDataSource{
