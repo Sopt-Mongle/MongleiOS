@@ -23,9 +23,45 @@ class MyTabVC: UIViewController {
     var profileKeyword : String?
     var profileKeywordIdx : Int?
     var profileIntroduce = ""
+    var sentenceIdx = 0
+    var sentenceFlag = false
     
+    let heightRatio: CGFloat = UIScreen.main.bounds.height/812
+    let widthRatio: CGFloat = UIScreen.main.bounds.width/375
     let token = UserDefaults.standard.string(forKey: "token")
-    
+    //팝업뷰
+    let blurImageView = UIImageView().then{
+        $0.image = UIImage(named: "logoutPopupBg")
+    }
+    let popupView = UIView().then{
+        $0.backgroundColor = .clear
+    }
+    var popupImageView = UIImageView().then{
+        $0.image = UIImage(named: "sentenceDeleteCheckBox")
+    }
+    var popupTitleLabel = UILabel().then{
+        $0.text = "문장을 삭제하시겠어요?"
+        $0.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        $0.textColor = .black
+        $0.adjustsFontSizeToFitWidth = true
+    }
+    var yesButton = UIButton().then{
+        $0.setTitle("네", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.backgroundColor = .softGreen
+        $0.makeRounded(cornerRadius: 19)
+        $0.addTarget(self, action: #selector(yesButtonAction), for: .touchUpInside)
+        $0.titleLabel?.font = $0.titleLabel?.font.withSize(13)
+    }
+    var noButton = UIButton().then{
+        $0.setTitle("아니요", for: .normal)
+        $0.setTitleColor(.softGreen, for: .normal)
+        $0.backgroundColor = .white
+        $0.makeRounded(cornerRadius: 19)
+        $0.setBorder(borderColor: .softGreen, borderWidth: 1)
+        $0.addTarget(self, action: #selector(noButtonAction), for: .touchUpInside)
+        $0.titleLabel?.font = $0.titleLabel?.font.withSize(13)
+    }
     //MARK:- IBOutlet
     @IBOutlet weak var myProfileImage: UIImageView!
     @IBOutlet weak var myNameLabel: UILabel!
@@ -111,17 +147,34 @@ class MyTabVC: UIViewController {
         observingList.forEach { $0.invalidate() }
     }
     override func viewWillAppear(_ animated: Bool) {
-        setMyProfile()
-        setMyTheme()
-        setMySentence()
-        setMyCurator()
-        self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![0])!], direction: .forward, animated: false, completion: nil)
+        if sentenceFlag{
+            sentenceFlag = false
+            setMySentence()
+            
+            DispatchQueue.main.async{
+                let vc = (self.pageInstance?.vcArr?[1])! as? MyTabSentenceVC
+                vc?.sentenceTableView.reloadData()
+                self.pageInstance?.viewWillAppear(true)
+                
+            self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![1])!], direction: .forward, animated: true, completion: nil)
+            self.pageInstance?.keyValue.curPresentViewIndex = 1
+            }
+            self.view.layoutIfNeeded()
+        }
+        else{
+            setMyProfile()
+            setMyTheme()
+            setMySentence()
+            setMyCurator()
+            self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![0])!], direction: .forward, animated: false, completion: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pageSegue2" {
             print("#####왜안돼1")
             pageInstance = segue.destination as? MyTabPageVC
+            pageInstance?.mainVC = self
             print("#####?")
             let ob = pageInstance?.keyValue.observe(\.curPresentViewIndex,
                                                     options: [.new, .old]) {
@@ -345,7 +398,87 @@ class MyTabVC: UIViewController {
             }
         }
     }
+    func callDeleteSentence(sentenceIdx: Int){
+        SentenceEditService.shared.deleteSentece(idx: sentenceIdx){networkResult in
+            switch networkResult{
+            case .success(let idx):
+                print("문장 인덱스 \(idx) 삭제완료")
+                self.blurImageView.removeFromSuperview()
+                self.popupView.removeFromSuperview()
+//                self.sentenceFlag = true
+                self.pageInstance!.sentenceFlag = true
+                self.pageInstance?.viewDidLoad()
+                
+//                self.viewWillAppear(true)
+//                self.setMySentence()
+                //self.touchUpSentence(self.sentenceMenuBTN)
+//                guard let sentenceVC = self.pageInstance?.viewControllers?[0] as? MyTabSentenceVC else{return}
+//                sentenceVC.sentenceTableView.reloadData()
+                
+               
+            case .requestErr(let message):
+                print(message)
+            case .pathErr:
+                print("pathErr")
+            case .networkFail:
+                print("네트워크 오류")
+            case .serverErr:
+                print("서버 오류")
+                
+            }
+        }
+    }
+    func showPopupView(_ popupTitle: String, _ sentenceIdx: Int){
+        self.sentenceIdx = sentenceIdx
+        self.view.addSubview(blurImageView)
+        self.view.addSubview(popupView)
+        self.popupView.addSubview(popupImageView)
+        self.popupView.addSubview(popupTitleLabel)
+        self.popupView.addSubview(yesButton)
+        self.popupView.addSubview(noButton)
+        //constraints
+        self.popupTitleLabel.text = popupTitle
+        self.blurImageView.snp.makeConstraints{
+            $0.top.bottom.leading.trailing.equalToSuperview()
+        }
+        self.popupView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(310*heightRatio)
+            $0.leading.equalToSuperview().offset(35*widthRatio)
+            $0.bottom.equalToSuperview().offset(-309*heightRatio)
+            $0.trailing.equalToSuperview().offset(-35*widthRatio)
+        }
+        self.popupImageView.snp.makeConstraints{
+            $0.top.bottom.leading.trailing.equalToSuperview()
+        }
+        self.popupTitleLabel.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(81*heightRatio)
+            $0.bottom.equalToSuperview().offset(-94*heightRatio)
+            $0.centerX.equalToSuperview()
+        }
+
+        self.yesButton.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(131*heightRatio)
+            $0.bottom.equalToSuperview().offset(-25*heightRatio)
+            $0.leading.equalToSuperview().offset(20*widthRatio)
+            $0.trailing.equalToSuperview().offset(-157*widthRatio)
+        }
+        self.noButton.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(131*heightRatio)
+            $0.bottom.equalToSuperview().offset(-25*heightRatio)
+            $0.leading.equalToSuperview().offset(161*widthRatio)
+            $0.trailing.equalToSuperview().offset(-16*widthRatio)
+        }
+        
+    }
     
+    @objc func yesButtonAction(){
+        callDeleteSentence(sentenceIdx: self.sentenceIdx)
+    }
+    @objc func noButtonAction(){
+        blurImageView.removeFromSuperview()
+        popupView.removeFromSuperview()
+    }
+
     
 }
 

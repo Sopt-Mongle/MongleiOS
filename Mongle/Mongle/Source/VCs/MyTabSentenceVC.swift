@@ -23,6 +23,9 @@ class MyTabSentenceVC: UIViewController {
     var mySentenceSave : [MySentenceSave] = []
     var mySentenceWrite : [MySentenceSave] = []
     
+    var rowIdx = 0
+    var mainVC: MyTabVC?
+    
     //MARK: - IBOutlet
     @IBOutlet weak var sentenceTableView: UITableView!
     
@@ -31,13 +34,14 @@ class MyTabSentenceVC: UIViewController {
         super.viewDidLoad()
         sentenceTableView.delegate = self
         sentenceTableView.dataSource = self
+        sentenceTableView.contentInset.bottom = 60
         
     }
     override func viewWillAppear(_ animated: Bool) {
         setMySentence()
     }
     
-    //MARK: - Custom Methods
+    //MARK: - objc functions
     @objc func savedThemeDidTap(){
         self.bookmarkBtnIdx = 0
         self.doNotReload = false
@@ -51,6 +55,9 @@ class MyTabSentenceVC: UIViewController {
         
         self.sentenceTableView.reloadData()
     }
+    
+    
+    //MARK: - Custom Methods
     func setMySentence(){
         MySentenceService.shared.getMy(){ networkResult in
             
@@ -85,9 +92,8 @@ class MyTabSentenceVC: UIViewController {
             }
         }
     }
-
-
-
+    
+    
 }
 //MARK: - UITableViewDelegate
 extension MyTabSentenceVC: UITableViewDelegate{
@@ -218,19 +224,21 @@ extension MyTabSentenceVC: UITableViewDataSource{
                     guard let dvc = UIStoryboard.init(name: "SentenceEdit", bundle: nil).instantiateViewController(identifier: "SentenceEditVC") as? SentenceEditVC else {
                         return
                     }
-                    dvc.text = self?.sentenceText
+                    dvc.text = self?.mySentenceWrite[indexPath.row].sentence
                     self?.navigationController?.pushViewController(dvc, animated: true)
                 }.then {
                     $0.titleTextColor = .black
                 }
                 
                 let deleteAction = UIAlertAction(title: "삭제", style: .default) { action in
-                    
+                    self?.mainVC?.showPopupView("문장을 삭제하시겠어요?", self?.mySentenceWrite[indexPath.row].sentenceIdx ?? 0)
                 }.then {
                     $0.titleTextColor = .black
                 }
                 
                 let cancelAction = UIAlertAction(title: "취소", style: .cancel) { action in
+                    
+                    
                 }.then {
                     $0.titleTextColor = .black
                 }

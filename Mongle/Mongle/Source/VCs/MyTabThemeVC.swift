@@ -26,6 +26,7 @@ class MyTabThemeVC: UIViewController {
         themeTableView.delegate = self
         themeTableView.dataSource = self
         themeTableView.reloadData()
+        themeTableView.contentInset.bottom = 60
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
