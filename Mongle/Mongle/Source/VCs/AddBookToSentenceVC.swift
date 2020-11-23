@@ -20,6 +20,26 @@ class AddBookToSentenceVC: UIViewController {
     
     @IBOutlet weak var bookTitleLabel: UILabel!
 
+    //MARK:- UI Component
+    lazy var warningImageView: UIImageView = UIImageView().then {
+        $0.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+        $0.image = UIImage(named: "warning")
+        
+    }
+    lazy var warningLabel: UILabel = UILabel().then {
+        $0.frame = CGRect(x: 0, y: 0, width: 109, height: 16)
+        $0.textColor = .reddish
+        $0.text = "책 제목을 검색해주세요!"
+        $0.sizeToFit()
+        $0.font = UIFont.systemFont(ofSize: 13)
+    }
+    
+    lazy var warningStackView: UIStackView = UIStackView().then {
+        $0.frame = CGRect(x: 100, y: 100, width: 0, height: 0)
+        $0.axis = .horizontal
+        $0.alignment = .center
+        $0.spacing = 8
+    }
     
     var sentence: String?
     var themeIdx: Int?
@@ -72,6 +92,28 @@ class AddBookToSentenceVC: UIViewController {
         introduceLabel.attributedText = attributedString
     }
     
+    func setWarningState(){
+        // stackview
+        warningStackView.addArrangedSubview(warningImageView)
+        warningStackView.addArrangedSubview(warningLabel)
+        warningStackView.sizeToFit()
+        
+        self.view.addSubview(warningStackView)
+        
+        warningStackView.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(16)
+            $0.top.equalTo(searchTextButton.snp.bottom).offset(9)
+        }
+
+        searchTextButton.setBackgroundImage(UIImage(named: "themeWritingSentenceBookBtnBookSearch"), for: .normal)
+    }
+    
+    func setNonWarningState(){
+        warningStackView.removeFromSuperview()
+        searchTextButton.setBackgroundImage(UIImage(named: "themeWritingSentence3BtnBookSearch"), for: .normal)
+
+    }
+    
 
     
     @IBAction func searchTextButtonAction(_ sender: Any) {
@@ -96,6 +138,7 @@ class AddBookToSentenceVC: UIViewController {
     
     @IBAction func touchUpNextButton(sender: UIButton){
         if isFill {
+            
             PostBookService
                 .shared
                 .postBook(sentence: self.sentence ?? "",
@@ -124,6 +167,9 @@ class AddBookToSentenceVC: UIViewController {
                             }
             }
         }
+        else {
+            setWarningState()
+        }
     }
 }
 
@@ -135,6 +181,7 @@ extension AddBookToSentenceVC: BookSearchDataDelegate {
         self.bookTitleLabel.textColor = .black
         self.publisherTextField.text = Data.bookPublisher
         self.isFill = true
+        setNonWarningState()
     }
 }
 

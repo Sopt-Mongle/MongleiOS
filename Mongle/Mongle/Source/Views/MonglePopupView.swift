@@ -41,7 +41,7 @@ class MonglePopupView: UIView {
         $0.backgroundColor = .softGreen
         $0.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 13)!
         $0.setTitleColor(.white, for: .normal)
-        $0.makeRounded(cornerRadius: 14)
+        $0.makeRounded(cornerRadius: 19)
         $0.addTarget(self, action: #selector(touchUpYesButton), for: .touchUpInside)
     }
     lazy var noButton: UIButton = UIButton().then {
@@ -49,7 +49,7 @@ class MonglePopupView: UIView {
         $0.backgroundColor = .white
         $0.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 13)!
         $0.setTitleColor(.softGreen, for: .normal)
-        $0.makeRounded(cornerRadius: 14)
+        $0.makeRounded(cornerRadius: 19)
         $0.setBorder(borderColor: .softGreen, borderWidth: 1)
         $0.addTarget(self, action: #selector(touchUpNoButton), for: .touchUpInside)
     }

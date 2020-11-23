@@ -94,7 +94,7 @@ struct SentenceService {
     
     private func judgeOtherSentenceData(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<[Sentence]>.self, from: data) else {
+        guard let decodedData = try? decoder.decode(GenericResponse<[OtherSentence]>.self, from: data) else {
             return .pathErr
         }
         switch status {

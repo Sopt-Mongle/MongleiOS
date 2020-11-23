@@ -27,7 +27,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController, UITextFieldDelegate {
     
     var themeIdxForPost : Int = 0
     
-    let deviceBoundw = UIScreen.main.bounds.width/374.0
+    let deviceBoundw = UIScreen.main.bounds.width/375.0
     
     
     
@@ -557,6 +557,7 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
             
             return CGSize(width: 166*deviceBoundw, height: 166*deviceBoundw)
         }
+       
         
         return CGSize(width : 166, height: 166 )
     }
