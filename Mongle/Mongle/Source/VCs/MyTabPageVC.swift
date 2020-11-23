@@ -11,11 +11,14 @@ import UIKit
 class MyTabPageVC: UIPageViewController {
 
     var previousPage: UIViewController?
+    var mainVC: MyTabVC?
     var nextPage: UIViewController?
     var realNextPage: UIViewController?
     let identifiers: NSArray = ["MyTabThemeVC", "MyTabSentenceVC","MyTabCuratorVC"]
     var vcArr: [UIViewController]?
     var keyValue = KVOObject()
+    var sentenceFlag = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +33,7 @@ class MyTabPageVC: UIPageViewController {
             }
             else if id == "MyTabSentenceVC"{
                 let vc = self.storyboard?.instantiateViewController(identifier: $0 as! String) as! MyTabSentenceVC
+                vc.mainVC = self.mainVC
                 return vc
             }
             else{
@@ -39,10 +43,22 @@ class MyTabPageVC: UIPageViewController {
             
             
         }
-        if let firstVC = vcArr?.first {
-            setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+        if sentenceFlag{
+            sentenceFlag = false
+            if let sentenceVC = vcArr?[1] as? MyTabSentenceVC{
+                setViewControllers([sentenceVC], direction: .forward, animated: false, completion: nil)
+                sentenceVC.bookmarkBtnIdx = 1
+                sentenceVC.doNotReload = true
+                
+               sentenceVC.sentenceTableView.reloadData()
+            }
         }
-        // Do any additional setup after loading the view.
+        else{
+            if let firstVC = vcArr?.first {
+                setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+            }
+        }
+    
     }
     
     // 스크롤 방식 변경, inspector Builder에서 변경할 수도 있지만 커스텀 으로 생성하기 때문에 이런식으로 설정

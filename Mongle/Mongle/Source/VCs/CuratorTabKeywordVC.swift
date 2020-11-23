@@ -35,13 +35,13 @@ class CuratorTabKeywordVC: UIViewController {
         print(self.keywordIdx)
         CuratorKeywordService.shared.getKeyword(keywordIdx: self.keywordIdx){ networkResult in
             switch networkResult {
-            case .success(let recommend):
-                guard let data = recommend as? [CuratorKeywordData] else {
+            case .success(let curatorKeyword):
+                guard let data = curatorKeyword as? [CuratorKeywordData] else {
                     return
                 }
                 
                 self.curatorList = data
-                print("추천 큐레이터: \(data)")
+                print("키워드 큐레이터 : \(data)")
                 DispatchQueue.main.async {
                     self.curatorListCollectionView.reloadData()
                     
@@ -51,9 +51,11 @@ class CuratorTabKeywordVC: UIViewController {
             case .requestErr(let message):
                 
                 guard let message = message as? String else { return }
-                
-                self.showToast(text: message)
                 print(message)
+                self.showToast(text: "해당하는 큐레이터가 없어요!"){
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
             case .pathErr:
                 
                 print("path")
@@ -67,7 +69,7 @@ class CuratorTabKeywordVC: UIViewController {
         
     }
     func showNaviShadow(){
-        naviView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.04, radius: 6)
+        naviView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 7), opacity: 0.04, radius: 6)
     }
     func hideNaviShadow(){
         naviView.layer.shadowOpacity = 0
@@ -107,7 +109,7 @@ extension CuratorTabKeywordVC: UICollectionViewDataSource{
         cell.myVC = self
         cell.curatorProfileImageView.imageFromUrl(curatorList[indexPath.item].img, defaultImgPath: "sentenceThemeOImgCurator1010")
         cell.curatorNameLabel.text = curatorList[indexPath.item].name
-        cell.curatorInfoLabel.text = curatorList[indexPath.item].introduce
+        cell.curatorInfoLabel.text = curatorList[indexPath.item].keyword
         cell.curatorIdx = curatorList[indexPath.item].curatorIdx
         cell.subscriberLabel.text = "구독자 \(curatorList[indexPath.item].subscribe)명"
         if curatorList[indexPath.item].alreadySubscribed{

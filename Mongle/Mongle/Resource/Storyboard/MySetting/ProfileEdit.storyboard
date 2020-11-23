@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -189,7 +189,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="닉네임을 6자 이내로 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T8N-eO-5wn">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="닉네임을 6자 이내로 입력해주세요." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="T8N-eO-5wn">
                                             <rect key="frame" x="16" y="170" width="343" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="T8N-eO-5wn" secondAttribute="height" multiplier="343:45" id="dSD-Ki-7Nc"/>
@@ -203,6 +203,12 @@
                                             <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="당신의 문장 취향을 대표할 키워드를 설정해주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0M-a8-C0n">
+                                            <rect key="frame" x="102.66666666666666" y="250" width="256.33333333333337" height="16"/>
+                                            <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="13"/>
+                                            <color key="textColor" red="0.65490196078431373" green="0.65490196078431373" blue="0.65490196078431373" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="uLC-qL-jd7" firstAttribute="leading" secondItem="vAz-9M-1q7" secondAttribute="leading" id="2PR-wB-tAG"/>
@@ -210,11 +216,13 @@
                                         <constraint firstItem="FRG-JF-mw6" firstAttribute="leading" secondItem="vAz-9M-1q7" secondAttribute="leading" constant="16" id="6Gl-9Y-Wwv"/>
                                         <constraint firstItem="Gjh-Ur-EAV" firstAttribute="leading" secondItem="ARd-7L-SsW" secondAttribute="trailing" constant="8" id="8vc-3c-7Nk"/>
                                         <constraint firstItem="uLC-qL-jd7" firstAttribute="top" secondItem="BJg-3R-fDR" secondAttribute="bottom" constant="12" id="9VZ-1x-aIr"/>
+                                        <constraint firstItem="l0M-a8-C0n" firstAttribute="centerY" secondItem="BJg-3R-fDR" secondAttribute="centerY" id="9ZX-Dp-FfO"/>
                                         <constraint firstItem="FRG-JF-mw6" firstAttribute="top" secondItem="A4w-hY-ude" secondAttribute="bottom" constant="48" id="CAC-FT-ecU"/>
                                         <constraint firstItem="T8N-eO-5wn" firstAttribute="leading" secondItem="vAz-9M-1q7" secondAttribute="leading" constant="16" id="EAj-Ox-aCa"/>
                                         <constraint firstAttribute="trailing" secondItem="T8N-eO-5wn" secondAttribute="trailing" constant="16" id="ExJ-UG-sXS"/>
                                         <constraint firstAttribute="trailing" secondItem="uLC-qL-jd7" secondAttribute="trailing" id="G6F-6q-dgb"/>
                                         <constraint firstItem="BJg-3R-fDR" firstAttribute="top" secondItem="T8N-eO-5wn" secondAttribute="bottom" constant="34" id="MVY-zK-WAV"/>
+                                        <constraint firstAttribute="trailing" secondItem="l0M-a8-C0n" secondAttribute="trailing" constant="16" id="Tct-1D-esM"/>
                                         <constraint firstItem="FSn-fw-blE" firstAttribute="top" secondItem="T8N-eO-5wn" secondAttribute="bottom" constant="11" id="WcE-1a-IGj"/>
                                         <constraint firstItem="A4w-hY-ude" firstAttribute="centerX" secondItem="vAz-9M-1q7" secondAttribute="centerX" id="Xwz-8Z-pH4"/>
                                         <constraint firstItem="Gjh-Ur-EAV" firstAttribute="centerY" secondItem="ARd-7L-SsW" secondAttribute="centerY" id="dRi-wy-8j9"/>

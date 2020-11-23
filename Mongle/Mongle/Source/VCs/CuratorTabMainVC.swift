@@ -124,7 +124,7 @@ class CuratorTabMainVC: UIViewController {
         }
     }
     func showNaviShadow(){
-        naviView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.04, radius: 6)
+        naviView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 7), opacity: 0.04, radius: 6)
     }
     func hideNaviShadow(){
         naviView.layer.shadowOpacity = 0
@@ -188,7 +188,7 @@ extension CuratorTabMainVC: UICollectionViewDelegateFlowLayout{
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
+        return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -203,9 +203,7 @@ extension CuratorTabMainVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainPopularCuratorCVC", for: indexPath) as? MainPopularCuratorCVC else{ return UICollectionViewCell() }
         cell.setData(imgUrl: self.popularList[indexPath.item].img ?? "", name: self.popularList[indexPath.item].name, tag: self.popularList[indexPath.item].keyword ?? "동기부여")
-//        cell.profileNameLabel.text = self.popularList[indexPath.item].name
-//        cell.profileImageView.imageFromUrl(self.popularList[indexPath.item].img, defaultImgPath: "sentenceThemeOImgCurator1010")
-//        cell.tagLabel.text = self.popularList[indexPath.item].keyword
+
         
         return cell
     }
@@ -213,5 +211,5 @@ extension CuratorTabMainVC: UICollectionViewDataSource{
     
 }
 
-//
+
 

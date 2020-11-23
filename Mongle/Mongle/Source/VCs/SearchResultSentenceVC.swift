@@ -124,7 +124,7 @@ extension SearchResultSentenceVC: UITableViewDataSource{
         }
         cell.themeLabel.text = sentenceList[indexPath.row].theme
         cell.sentenceLabel.text = sentenceList[indexPath.row].sentence
-        cell.curatorLabel.text = sentenceList[indexPath.row].author
+        cell.curatorLabel.text = sentenceList[indexPath.row].writer
         
         let text = cell.sentenceLabel.text
         

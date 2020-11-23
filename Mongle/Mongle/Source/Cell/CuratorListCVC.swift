@@ -55,8 +55,8 @@ class CuratorListCVC: UICollectionViewCell {
         
     }
     func setLayout(){
-        subscribeBTN.makeRounded(cornerRadius: subscribeBTN.bounds.width/4)
-        curatorProfileImageView.makeRounded(cornerRadius: curatorProfileImageView.bounds.width/2)
+        subscribeBTN.makeRounded(cornerRadius: 15)
+        curatorProfileImageView.makeRounded(cornerRadius: 65/2)
     }
     func follow(idx: Int){
         CuratorFollowService.shared.follow(followedIdx: idx){ networkResult in

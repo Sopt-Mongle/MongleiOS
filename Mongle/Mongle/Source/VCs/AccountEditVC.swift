@@ -158,6 +158,7 @@ class AccountEditVC: UIViewController {
             
         }
     }
+    //MARK: - @objc functions
     @objc func yesButtonAction(){
         
         switch yesState{
