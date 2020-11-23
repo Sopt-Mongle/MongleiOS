@@ -75,7 +75,7 @@ class EndOfWritingSentenceVC: UIViewController {
                     return
                 }
                 self.nickName = data[0].name
-                self.secondLabel.text = "\(self.nickName)님의 테마를 의미있는 문장으로\n채워보는 건 어떨까요?"
+                self.secondLabel.text = "\(self.nickName)님의 문장으로\n몽글이 더욱 풍부해졌어요!"
               
             case .requestErr(let message):
                 print(message)

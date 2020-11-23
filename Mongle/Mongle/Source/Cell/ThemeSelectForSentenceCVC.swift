@@ -103,6 +103,17 @@ class ThemeSelectForSentenceCVC: UICollectionViewCell {
         }
     }
     
+    func partialGreen(keyword : String){
+        
+        
+        themeTitleLabel.textColor = .white
+        let attributedString = NSMutableAttributedString(string: themeTitleLabel.text!)
+        print("엥",keyword)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.softGreen,
+                                      range: (themeTitleLabel.text! as NSString).range(of: keyword))
+        themeTitleLabel.attributedText = attributedString
+        
+    }
     
     
     
