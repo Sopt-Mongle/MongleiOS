@@ -55,7 +55,7 @@ class SearchTabResultVC: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         observingList.forEach { $0.invalidate() }
-        self.tabBarController?.hidesBottomBarWhenPushed = true
+//        self.tabBarController?.hidesBottomBarWhenPushed = true
         
     }
     

@@ -216,7 +216,6 @@ class ProfileEditVC: UIViewController{
     }
         
     func callNickNameDuplicate(){
-
         if isValidNickNameInput() {
             if nickNameTextField.text! != UserDefaults.standard.string(forKey: "UserProfileName"){
                 SignUpDuplicateService.shared.checkDuplicate(email: "-", name: nickNameTextField.text!, completion: {networkResult in
@@ -281,9 +280,7 @@ class ProfileEditVC: UIViewController{
             self.nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1)
             showWarning(color: .red,title:"닉네임을 입력해주세요!")
 
-
         }
-        
         
     }
     func callProfileEdit(){
@@ -387,6 +384,7 @@ extension ProfileEditVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if isValidNickNameInput(){
             hideWarning()
+            nickNameTextField.setBorder(borderColor: .veryLightPink, borderWidth: 1)
         }
         else{
             showWarning(color: .red, title: "닉네임을 입력해주세요!")

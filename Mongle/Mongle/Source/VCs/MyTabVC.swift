@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyTabVC: UIViewController {
+class MyTabVC: UIViewController,UIGestureRecognizerDelegate {
     
     var pageInstance : MyTabPageVC?
     var observingList: [NSKeyValueObservation] = []
@@ -75,74 +75,12 @@ class MyTabVC: UIViewController {
     @IBOutlet weak var curatorMenuBTN: UIButton!
     @IBOutlet weak var shadowBox: UIView!
     
-    //MARK:- IBAction
-    @IBAction func touchUpSetting(_ sender: Any) {
-        guard let settingVC = UIStoryboard(name:"MySetting",bundle:nil).instantiateViewController(identifier: "MySettingVC") as? MySettingVC else{
-            return
-        }
-
-       self.navigationController?.pushViewController(settingVC, animated: true)
-
-        
-    }
-    @IBAction func touchUpTheme(_ sender: Any) {
-        item = 0
-        if item - (pageInstance?.keyValue.curPresentViewIndex)! > 0{
-            pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .forward, animated: true, completion: nil)
-        }
-        else{
-            pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .reverse, animated: true, completion: nil)
-            
-        }
-        
-        pageInstance?.keyValue.curPresentViewIndex = item
-        themeMenuBTN.setTitleColor(.softGreen, for: .normal)
-        themeMenuLabel.textColor = .softGreen
-        sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-        sentenceMenuLabel.textColor = .veryLightPink
-        curatorMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-        curatorMenuLabel.textColor = .veryLightPink
-    }
-    @IBAction func touchUpSentence(_ sender: Any) {
-        item = 1
-        if item - (pageInstance?.keyValue.curPresentViewIndex)! > 0{
-            pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .forward, animated: true, completion: nil)
-        }
-        else{
-            pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .reverse, animated: true, completion: nil)
-        }
-        pageInstance?.keyValue.curPresentViewIndex = item
-        themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-        themeMenuLabel.textColor = .veryLightPink
-        sentenceMenuBTN.setTitleColor(.softGreen, for: .normal)
-        sentenceMenuLabel.textColor = .softGreen
-        curatorMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-        curatorMenuLabel.textColor = .veryLightPink
-    }
-    @IBAction func touchUpCurator(_ sender: Any) {
-        item = 2
-        if item - (pageInstance?.keyValue.curPresentViewIndex)! > 0{
-            pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .forward, animated: true, completion: nil)
-            
-        }
-        else{
-            pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .reverse, animated: true, completion: nil)
-            
-        }
-        pageInstance?.keyValue.curPresentViewIndex = item
-        themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-        themeMenuLabel.textColor = .veryLightPink
-        sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-        sentenceMenuLabel.textColor = .veryLightPink
-        curatorMenuBTN.setTitleColor(.softGreen, for: .normal)
-        curatorMenuLabel.textColor = .softGreen
-    }
-    
     
     //MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setMenu()
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     override func viewWillDisappear(_ animated: Bool) {
         observingList.forEach { $0.invalidate() }
@@ -471,13 +409,75 @@ class MyTabVC: UIViewController {
         }
         
     }
-    
+    //MARK: - objc functions
     @objc func yesButtonAction(){
         callDeleteSentence(sentenceIdx: self.sentenceIdx)
     }
     @objc func noButtonAction(){
         blurImageView.removeFromSuperview()
         popupView.removeFromSuperview()
+    }
+    //MARK:- IBAction
+    @IBAction func touchUpSetting(_ sender: Any) {
+        guard let settingVC = UIStoryboard(name:"MySetting",bundle:nil).instantiateViewController(identifier: "MySettingVC") as? MySettingVC else{
+            return
+        }
+
+       self.navigationController?.pushViewController(settingVC, animated: true)
+
+        
+    }
+    @IBAction func touchUpTheme(_ sender: Any) {
+        item = 0
+        if item - (pageInstance?.keyValue.curPresentViewIndex)! > 0{
+            pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .forward, animated: true, completion: nil)
+        }
+        else{
+            pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .reverse, animated: true, completion: nil)
+            
+        }
+        
+        pageInstance?.keyValue.curPresentViewIndex = item
+        themeMenuBTN.setTitleColor(.softGreen, for: .normal)
+        themeMenuLabel.textColor = .softGreen
+        sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+        sentenceMenuLabel.textColor = .veryLightPink
+        curatorMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+        curatorMenuLabel.textColor = .veryLightPink
+    }
+    @IBAction func touchUpSentence(_ sender: Any) {
+        item = 1
+        if item - (pageInstance?.keyValue.curPresentViewIndex)! > 0{
+            pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .forward, animated: true, completion: nil)
+        }
+        else{
+            pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .reverse, animated: true, completion: nil)
+        }
+        pageInstance?.keyValue.curPresentViewIndex = item
+        themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+        themeMenuLabel.textColor = .veryLightPink
+        sentenceMenuBTN.setTitleColor(.softGreen, for: .normal)
+        sentenceMenuLabel.textColor = .softGreen
+        curatorMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+        curatorMenuLabel.textColor = .veryLightPink
+    }
+    @IBAction func touchUpCurator(_ sender: Any) {
+        item = 2
+        if item - (pageInstance?.keyValue.curPresentViewIndex)! > 0{
+            pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .forward, animated: true, completion: nil)
+            
+        }
+        else{
+            pageInstance?.setViewControllers([(pageInstance?.vcArr![item])!], direction: .reverse, animated: true, completion: nil)
+            
+        }
+        pageInstance?.keyValue.curPresentViewIndex = item
+        themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+        themeMenuLabel.textColor = .veryLightPink
+        sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+        sentenceMenuLabel.textColor = .veryLightPink
+        curatorMenuBTN.setTitleColor(.softGreen, for: .normal)
+        curatorMenuLabel.textColor = .softGreen
     }
 
     

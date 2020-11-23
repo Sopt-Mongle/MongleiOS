@@ -31,6 +31,7 @@ class MySettingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingTableview.backgroundView?.backgroundColor = .blue
+        settingTableview.isScrollEnabled = false
         
     }
     

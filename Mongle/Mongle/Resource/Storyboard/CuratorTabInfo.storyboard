@@ -128,7 +128,8 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyn-fM-9vr">
                                 <rect key="frame" x="187" y="321" width="1" height="35"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="hmj-cR-7at"/>
                                     <constraint firstAttribute="width" constant="1" id="mBV-Ql-O5V"/>
@@ -237,6 +238,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="MqM-Tn-2E8">
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultSentenceTVC" id="Eb7-WS-BBd" customClass="SearchResultSentenceTVC" customModule="Mongle" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="121.33333587646484"/>
@@ -264,7 +266,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6T-ri-cTk">
-                                                    <rect key="frame" x="33" y="88" width="41" height="15.333333333333329"/>
+                                                    <rect key="frame" x="33" y="88" width="31" height="15.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -293,7 +295,6 @@
                                                 <constraint firstItem="Q6T-ri-cTk" firstAttribute="top" secondItem="dZn-d5-HM8" secondAttribute="bottom" constant="9" id="HNZ-ej-P2F"/>
                                                 <constraint firstAttribute="trailing" secondItem="F9T-JU-t97" secondAttribute="trailing" constant="15" id="KxG-Au-e1l"/>
                                                 <constraint firstItem="F9T-JU-t97" firstAttribute="top" secondItem="mAb-Wn-5Jp" secondAttribute="top" constant="19" id="MmO-5a-GRn"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Q6T-ri-cTk" secondAttribute="trailing" constant="285" id="S2x-fM-7Fi"/>
                                                 <constraint firstItem="J5r-wh-Bpw" firstAttribute="leading" secondItem="mAb-Wn-5Jp" secondAttribute="leading" constant="16" id="aaQ-cd-DmL"/>
                                                 <constraint firstItem="J5r-wh-Bpw" firstAttribute="top" secondItem="dZn-d5-HM8" secondAttribute="bottom" constant="11" id="bWd-x5-cEq"/>
                                                 <constraint firstAttribute="trailing" secondItem="dZn-d5-HM8" secondAttribute="trailing" constant="22" id="eCY-g8-BwZ"/>
@@ -340,6 +341,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F7O-Lp-Vab">
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultThemeTVC" rowHeight="157" id="YAb-Xz-d5J" customClass="SearchResultThemeTVC" customModule="Mongle" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="157"/>

@@ -67,6 +67,7 @@ class AccountEditVC: UIViewController {
         super.viewDidLoad()
         accountEditTableView.delegate = self
         accountEditTableView.dataSource = self
+        accountEditTableView.isScrollEnabled = false
     
     }
     
