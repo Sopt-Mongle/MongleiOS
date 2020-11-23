@@ -31,7 +31,8 @@ class ThemeInfoVC: UIViewController {
     @IBOutlet var themeImageView: UIImageView!
     @IBOutlet var bottomBackgroundView: UIView!
     @IBOutlet var sentencesBackGroudViewBottomConstraint: NSLayoutConstraint!
-    
+
+    @IBOutlet var buttonSpaceConstraint: NSLayoutConstraint!
     @IBOutlet var saveButton: UIButton!
     @IBOutlet var backButton: UIButton!
     //MARK:- Property
@@ -59,6 +60,14 @@ class ThemeInfoVC: UIViewController {
     
     func setInitLayout(){
         themeBackgroundView.backgroundColor = .clear
+        if UIScreen.main.bounds.width > 400 {
+            buttonSpaceConstraint.constant = UIScreen.main.bounds.width * 5 / 100
+        }
+        else {
+            buttonSpaceConstraint.constant = UIScreen.main.bounds.width * 3.5 / 100
+        }
+        
+        
         
 //        if hasTheme {
 //            
