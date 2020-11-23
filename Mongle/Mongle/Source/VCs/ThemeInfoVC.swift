@@ -52,6 +52,7 @@ class ThemeInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setInitLayout()
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {

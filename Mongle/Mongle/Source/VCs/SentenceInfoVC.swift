@@ -52,6 +52,7 @@ class SentenceInfoVC: UIViewController {
 //        bindThemeInfo()
         makeRoundTableView()
 //        swipeToPop()
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
     }
