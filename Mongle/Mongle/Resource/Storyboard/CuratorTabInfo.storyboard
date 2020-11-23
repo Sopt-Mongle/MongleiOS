@@ -239,10 +239,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultSentenceTVC" id="Eb7-WS-BBd" customClass="SearchResultSentenceTVC" customModule="Mongle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="121.33333587646484"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="120.66666412353516"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Eb7-WS-BBd" id="mAb-Wn-5Jp">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="121.33333587646484"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120.66666412353516"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9T-JU-t97">
@@ -264,7 +264,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6T-ri-cTk">
-                                                    <rect key="frame" x="33" y="88" width="41" height="15.333333333333329"/>
+                                                    <rect key="frame" x="33" y="88" width="31" height="14.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -293,7 +293,6 @@
                                                 <constraint firstItem="Q6T-ri-cTk" firstAttribute="top" secondItem="dZn-d5-HM8" secondAttribute="bottom" constant="9" id="HNZ-ej-P2F"/>
                                                 <constraint firstAttribute="trailing" secondItem="F9T-JU-t97" secondAttribute="trailing" constant="15" id="KxG-Au-e1l"/>
                                                 <constraint firstItem="F9T-JU-t97" firstAttribute="top" secondItem="mAb-Wn-5Jp" secondAttribute="top" constant="19" id="MmO-5a-GRn"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Q6T-ri-cTk" secondAttribute="trailing" constant="285" id="S2x-fM-7Fi"/>
                                                 <constraint firstItem="J5r-wh-Bpw" firstAttribute="leading" secondItem="mAb-Wn-5Jp" secondAttribute="leading" constant="16" id="aaQ-cd-DmL"/>
                                                 <constraint firstItem="J5r-wh-Bpw" firstAttribute="top" secondItem="dZn-d5-HM8" secondAttribute="bottom" constant="11" id="bWd-x5-cEq"/>
                                                 <constraint firstAttribute="trailing" secondItem="dZn-d5-HM8" secondAttribute="trailing" constant="22" id="eCY-g8-BwZ"/>
