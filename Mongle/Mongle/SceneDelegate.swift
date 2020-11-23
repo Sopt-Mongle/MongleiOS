@@ -118,7 +118,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let date = Date()
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            let originDate = UserDefaults.standard.string(forKey: "tokenTime")!
+            guard let originDate = UserDefaults.standard.string(forKey: "tokenTime") else {
+                return
+            }
             let ogD = formatter.date(from: originDate)
             let calendar = Calendar.current
             let diff = calendar.dateComponents([.minute], from: ogD!, to: date)
