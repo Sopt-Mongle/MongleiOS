@@ -69,7 +69,7 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍">
                                                             <attributes>
-                                                                <font key="NSFont" size="16" name=".AppleSDGothicNeoI-Regular"/>
+                                                                <font key="NSFont" metaFont="system" size="16"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="4" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
