@@ -316,6 +316,9 @@ class LogInVC: UIViewController {
         seperateImageView1.image = UIImage(named: "loginDivMenu1")
         seperateImageView2.image = UIImage(named: "loginDivMenu1")
         
+        
+        
+        
         loginButton.backgroundColor = .softGreen
         loginButton.setTitleColor(.white, for: .normal)
         loginButton.setTitle("로그인", for: .normal)
@@ -337,12 +340,14 @@ class LogInVC: UIViewController {
         idTextField.makeRounded(cornerRadius: 10)
         idTextField.addLeftPadding(left: 7.5)
         idTextField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
+        idTextField.keyboardType = .emailAddress
+        
         
         passwordTextField.placeholder = "비밀번호를 입력해주세요"
         passwordTextField.makeRounded(cornerRadius: 10)
         passwordTextField.addLeftPadding(left: 7.5)
         passwordTextField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
-       
+        
                
     
     }

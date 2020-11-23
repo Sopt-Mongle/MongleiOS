@@ -56,7 +56,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WbP-if-Rh9">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" disabledBackground="challengeImgLogo" translatesAutoresizingMaskIntoConstraints="NO" id="WbP-if-Rh9">
                                 <rect key="frame" x="16" y="309" width="382" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="IFH-6b-LNE"/>
@@ -183,6 +183,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="challengeImgLogo" width="122" height="88"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

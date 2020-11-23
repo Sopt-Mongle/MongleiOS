@@ -89,7 +89,10 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         searchTextButton.makeRounded(cornerRadius: 10)
         
         buttonImageView.image = UIImage(named: "themeWritingSentenceBookBtnBookSearch")
-        
+        authorTextField.backgroundColor = .whiteThree
+        publisherTextField.backgroundColor = .whiteThree
+        bookTitleLabel.text = "책 제목을 검색해주세요."
+        bookTitleLabel.textColor = .veryLightPink
         
         // Do any additional setup after loading the view.
     }
@@ -110,6 +113,9 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
             secondLevelAnimation()
         }
         
+        if bookTitleLabel.text != "책 제목을 검색해주세요."{
+            bookTitleLabel.textColor = .black
+        }
         
     }
     
@@ -444,7 +450,7 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         else{
             return
         }
-        if bookTitleLabel.text == ""{
+        if bookTitleLabel.text == "책 제목을 검색해주세요."{
             showWarning()
         }
         else if authorTextField.text == "" || publisherTextField.text == "" {

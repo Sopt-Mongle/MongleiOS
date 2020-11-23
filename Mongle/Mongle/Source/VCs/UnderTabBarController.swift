@@ -207,13 +207,14 @@ class UnderTabBarController: UITabBarController {
             $0.height.equalTo(40)
         }
         
-        makeThemeButton.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.28, radius: 10)
+        
         
         makeThemeButton.makeRounded(cornerRadius: 20)
         makeThemeButton.addTarget(self,
                                   action: #selector(makeThemeButtonAction), for: .touchUpInside)
         makeThemeButton.titleLabel?.font = UIFont(name:
         "American Typewriter", size: 15)
+        makeThemeButton.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.28, radius: 15)
         writeSentenceButton.addTarget(self, action: #selector(makeSentenceButtonAction), for: .touchUpInside)
         
         
