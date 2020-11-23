@@ -64,10 +64,16 @@
                                                         <constraint firstAttribute="width" constant="30" id="tml-vP-lV1"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFt-IT-Wyd">
-                                                    <rect key="frame" x="28" y="39" width="319" height="13"/>
-                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="16"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFt-IT-Wyd">
+                                                    <rect key="frame" x="28" y="39" width="319" height="43"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍">
+                                                            <attributes>
+                                                                <font key="NSFont" size="16" name=".AppleSDGothicNeoI-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="4" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFA-74-0DZ">
