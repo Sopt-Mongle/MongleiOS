@@ -328,7 +328,7 @@ class ProfileEditVC: UIViewController{
         guard let text = nickNameTextField.text else {
             return false
         }
-        if text.count > 0 && text.count < 20 {
+        if text.count > 0 && text.count < 7 {
             return true
         }
         return false
@@ -385,7 +385,13 @@ extension ProfileEditVC: UITextFieldDelegate {
         nickNameCountLabel.alpha = 1
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.setBorder(borderColor: .veryLightPink, borderWidth: 1.0)
+        if isValidNickNameInput(){
+            hideWarning()
+        }
+        else{
+            showWarning(color: .red, title: "닉네임을 입력해주세요!")
+            nickNameTextField.setBorder(borderColor: .reddish, borderWidth: 1)
+        }
         nickNameCountLabel.alpha = 0
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
