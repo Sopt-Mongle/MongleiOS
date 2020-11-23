@@ -158,7 +158,7 @@ class ThemeInfoVC: UIViewController {
     
     func updateLayout(){
         self.themeNameLabel.text = self.themeData?.theme
-        self.themeImageView.imageFromUrl(self.themeData?.themeImg, defaultImgPath: "themeWritingThemeXSentenceBg")
+        self.themeImageView.imageFromUrl(self.themeData?.themeImg, defaultImgPath: "")
         self.curatorNameLabel.text = self.themeData?.writer
         self.curatorProfileImageView.imageFromUrl(self.themeData?.writerImg, defaultImgPath: "themeImgCurator")
         self.sentenceCountLabel.text = "\(self.themeData?.sentenceNum ?? 0)"
@@ -185,7 +185,6 @@ class ThemeInfoVC: UIViewController {
             case .networkFail:
                 self.showToast(text: "networkFail")
             }
-            
         }
     }
     func getMySaveTheme(completion: @escaping (Bool, [Int]) -> ()) {
