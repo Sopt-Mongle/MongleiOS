@@ -11,15 +11,17 @@ import UIKit
 class CuratorTabKeywordVC: UIViewController {
     
     var selectedKeyword:String?
-    var keywordIdx:Int = 0
+    var keywordIdx:Int = 1
     var curatorList : [CuratorKeywordData] = []
     @IBOutlet weak var keywordTitleLabel: UILabel!
+    @IBOutlet weak var naviView: UIView!
     @IBAction func touchUpBackBTN(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     @IBOutlet weak var curatorListCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         curatorListCollectionView.delegate = self
         curatorListCollectionView.dataSource = self
         keywordTitleLabel.text = selectedKeyword
@@ -33,13 +35,13 @@ class CuratorTabKeywordVC: UIViewController {
         print(self.keywordIdx)
         CuratorKeywordService.shared.getKeyword(keywordIdx: self.keywordIdx){ networkResult in
             switch networkResult {
-            case .success(let recommend):
-                guard let data = recommend as? [CuratorKeywordData] else {
+            case .success(let curatorKeyword):
+                guard let data = curatorKeyword as? [CuratorKeywordData] else {
                     return
                 }
                 
                 self.curatorList = data
-                print("추천 큐레이터: \(data)")
+                print("키워드 큐레이터 : \(data)")
                 DispatchQueue.main.async {
                     self.curatorListCollectionView.reloadData()
                     
@@ -49,9 +51,11 @@ class CuratorTabKeywordVC: UIViewController {
             case .requestErr(let message):
                 
                 guard let message = message as? String else { return }
-                
-                self.showToast(text: message)
                 print(message)
+                self.showToast(text: "해당하는 큐레이터가 없어요!"){
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
             case .pathErr:
                 
                 print("path")
@@ -63,6 +67,12 @@ class CuratorTabKeywordVC: UIViewController {
             
         }
         
+    }
+    func showNaviShadow(){
+        naviView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 7), opacity: 0.04, radius: 6)
+    }
+    func hideNaviShadow(){
+        naviView.layer.shadowOpacity = 0
     }
 
     
@@ -76,6 +86,15 @@ extension CuratorTabKeywordVC: UICollectionViewDelegate{
         curatorInfoVC.curatorIdx = curatorList[indexPath.item].curatorIdx
         self.navigationController?.pushViewController(curatorInfoVC, animated: true)
     }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let y = scrollView.contentOffset.y
+        if y>0{
+            showNaviShadow()
+        }
+        else{
+            hideNaviShadow()
+        }
+    }
     
 }
 extension CuratorTabKeywordVC: UICollectionViewDataSource{
@@ -87,15 +106,18 @@ extension CuratorTabKeywordVC: UICollectionViewDataSource{
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CuratorListCVC", for: indexPath) as? CuratorListCVC else{
             return UICollectionViewCell()
         }
+        cell.myVC = self
         cell.curatorProfileImageView.imageFromUrl(curatorList[indexPath.item].img, defaultImgPath: "sentenceThemeOImgCurator1010")
         cell.curatorNameLabel.text = curatorList[indexPath.item].name
-        cell.curatorInfoLabel.text = curatorList[indexPath.item].introduce
+        cell.curatorInfoLabel.text = curatorList[indexPath.item].keyword
         cell.curatorIdx = curatorList[indexPath.item].curatorIdx
         cell.subscriberLabel.text = "구독자 \(curatorList[indexPath.item].subscribe)명"
         if curatorList[indexPath.item].alreadySubscribed{
+            cell.subscribeBTN.isSelected = true
             cell.subscribeBTN.backgroundColor = .veryLightPinkSeven
         }
         else{
+            cell.subscribeBTN.isSelected = false
             cell.subscribeBTN.backgroundColor = .softGreen
         }
         return cell
@@ -105,7 +127,8 @@ extension CuratorTabKeywordVC: UICollectionViewDataSource{
 }
 extension CuratorTabKeywordVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 375, height: 120)
+        let devicewidth = UIScreen.main.bounds.width
+        return CGSize(width: devicewidth, height: devicewidth/375*120)
     }
     //cell content inset 지정
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

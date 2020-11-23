@@ -13,7 +13,8 @@ import Then
 class UnderTabBarController: UITabBarController {
     
     var curIndex: Int = 0
-    
+    let token = UserDefaults.standard.string(forKey: "token")
+    var runCountForSplash = 0
     // MARK:- UIComponents
     
     let plusButton = UIButton().then {
@@ -42,7 +43,7 @@ class UnderTabBarController: UITabBarController {
         
         
     }
-    
+    let deviceBound = UIScreen.main.bounds.height/812.0
     
     
     // MARK:- LifeCycleFunctions
@@ -53,21 +54,26 @@ class UnderTabBarController: UITabBarController {
         // Do any additional setup after loading the view.
         self.delegate = self
         setTabBar()
-       
+        if(OnboardingMainVC.shouldShowSplash){
+            showSplash()
+        }
+        OnboardingMainVC.shouldShowSplash = false
         
         
     }
     
+
+    
     
     override func viewDidLayoutSubviews() {
-        let deviceBound = UIScreen.main.bounds.height/812.0
+        
         
         
     
         super.viewDidLayoutSubviews()
         if(deviceBound < 1){
-            tabBar.frame.size.height = 93*deviceBound - 10
-            tabBar.frame.origin.y = view.frame.height - 93*deviceBound - 10
+            tabBar.frame.size.height = 83*deviceBound - 10
+            tabBar.frame.origin.y = view.frame.height - 83*deviceBound
             seperateLine.snp.makeConstraints{
                 
                 $0.bottom.equalToSuperview().offset(-self.tabBar.frame.size.height-10)
@@ -84,10 +90,19 @@ class UnderTabBarController: UITabBarController {
                 
                 
             }
+            
+            plusButton.snp.makeConstraints{
+                $0.width.height.equalTo(65*1/((1/sqrt(deviceBound))))
+//                $0.width.height.equalTo(65*deviceBound*deviceBound)
+                $0.centerX.equalToSuperview()
+                //            $0.bottom.equalTo(self.view.safeAreaInsets.bottom).offset(-41) //should be changed : not exact
+                $0.bottom.equalToSuperview().offset(-30*deviceBound)
+            }
+            plusButton.dropShadow(color: .black, offSet: CGSize(width:  0 , height: 6*1/((1/sqrt(deviceBound)))), opacity: 0.11, radius: 6)
         }
         else {
-            tabBar.frame.size.height = 93*deviceBound
-            tabBar.frame.origin.y = view.frame.height - 93*deviceBound
+            tabBar.frame.size.height = 83*deviceBound
+            tabBar.frame.origin.y = view.frame.height - 83*deviceBound
             seperateLine.snp.makeConstraints{
                 
                 $0.bottom.equalToSuperview().offset(-self.tabBar.frame.size.height)
@@ -103,21 +118,22 @@ class UnderTabBarController: UITabBarController {
                 
                 
             }
+            plusButton.snp.makeConstraints{
+//                $0.width.height.equalTo(65*1/((1/sqrt(deviceBound))))
+                $0.width.height.equalTo(65*deviceBound*deviceBound)
+                $0.centerX.equalToSuperview()
+                //            $0.bottom.equalTo(self.view.safeAreaInsets.bottom).offset(-41) //should be changed : not exact
+                $0.bottom.equalToSuperview().offset(-30*deviceBound)
+            }
+            plusButton.dropShadow(color: .black, offSet: CGSize(width:  0 , height: 6*deviceBound*deviceBound), opacity: 0.16, radius: 4)
             
             
         }
         
+        print(deviceBound)
+       
         
-        plusButton.snp.makeConstraints{
-            $0.width.height.equalTo(65*1/((1/sqrt(deviceBound))))
-            $0.centerX.equalToSuperview()
-            //            $0.bottom.equalTo(self.view.safeAreaInsets.bottom).offset(-41) //should be changed : not exact
-            $0.bottom.equalToSuperview().offset(-41*deviceBound)
-        }
-        
-        
-        
-        
+
         
     }
     
@@ -191,13 +207,14 @@ class UnderTabBarController: UITabBarController {
             $0.height.equalTo(40)
         }
         
-        makeThemeButton.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.28, radius: 10)
+        
         
         makeThemeButton.makeRounded(cornerRadius: 20)
         makeThemeButton.addTarget(self,
                                   action: #selector(makeThemeButtonAction), for: .touchUpInside)
         makeThemeButton.titleLabel?.font = UIFont(name:
         "American Typewriter", size: 15)
+        makeThemeButton.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.28, radius: 15)
         writeSentenceButton.addTarget(self, action: #selector(makeSentenceButtonAction), for: .touchUpInside)
         
         
@@ -269,8 +286,8 @@ class UnderTabBarController: UITabBarController {
         myTabBarItem4.image = UIImage(named : "navigationBar3IcCurator")?.withRenderingMode(.alwaysOriginal)
         myTabBarItem4.selectedImage = UIImage(named : "navigationBar2IcCurator")?.withRenderingMode(.alwaysOriginal)
         
-        myTabBarItem5.image = UIImage(named : "navigationBar3IcMy")?.withRenderingMode(.alwaysOriginal)
-        myTabBarItem5.selectedImage = UIImage(named : "navigationBar2IcMy")?.withRenderingMode(.alwaysOriginal)
+        myTabBarItem5.image = UIImage(named : "navigationBar1IcMy_un")?.withRenderingMode(.alwaysOriginal)
+        myTabBarItem5.selectedImage = UIImage(named : "navigationBar1IcMy")?.withRenderingMode(.alwaysOriginal)
         
         
         //        Disabling tmpVC
@@ -279,11 +296,23 @@ class UnderTabBarController: UITabBarController {
            tabBarItem.isEnabled = false
         }
         
+        if deviceBound > 1{
+            myTabBarItem1.imageInsets = UIEdgeInsets(top: 27*(1-deviceBound), left: 0, bottom: -27*(1-deviceBound), right: 0)
+            myTabBarItem2.imageInsets = UIEdgeInsets(top: 27*(1-deviceBound), left: 0, bottom: -27*(1-deviceBound), right: 0)
+            myTabBarItem4.imageInsets = UIEdgeInsets(top: 27*(1-deviceBound), left: 0, bottom: -27*(1-deviceBound), right: 0)
+            myTabBarItem5.imageInsets = UIEdgeInsets(top: 27*(1-deviceBound), left: 0, bottom: -27*(1-deviceBound), right: 0)
+            
+            
+        }
+        else{
+            myTabBarItem1.imageInsets = UIEdgeInsets(top: -27*(1-deviceBound), left: 0, bottom: 27*(1-deviceBound), right: 0)
+            myTabBarItem2.imageInsets = UIEdgeInsets(top: -27*(1-deviceBound), left: 0, bottom: 27*(1-deviceBound), right: 0)
+            myTabBarItem4.imageInsets = UIEdgeInsets(top: -27*(1-deviceBound), left: 0, bottom: 27*(1-deviceBound), right: 0)
+            myTabBarItem5.imageInsets = UIEdgeInsets(top: -27*(1-deviceBound), left: 0, bottom: 27*(1-deviceBound), right: 0)
+            
+            
+        }
         
-        myTabBarItem1.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        myTabBarItem2.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        myTabBarItem4.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        myTabBarItem5.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
 //        self.tabBar.frame.size.height = 93
 //        self.tabBar.frame.origin.y = view.frame.height - 93
@@ -292,6 +321,53 @@ class UnderTabBarController: UITabBarController {
   
         
         
+        
+        
+    }
+    
+    func showSplash(){
+        let containView = UIView()
+        containView.backgroundColor = UIColor(red: 251 / 255.0, green: 251 / 255.0, blue: 251 / 255.0, alpha: 1.0)
+        self.view.addSubview(containView)
+        containView.frame = self.view.bounds
+        
+        var imageView = UIImageView()
+        do{
+            let gif = try UIImage(gifName: "Comp 4")
+            imageView = UIImageView(gifImage: gif,loopCount: 1)
+        
+            self.view.addSubview(imageView)
+            imageView.snp.makeConstraints{
+                $0.width.equalTo(350)
+                $0.height.equalTo(200)
+                $0.center.equalToSuperview()
+                
+            }
+            
+            
+        } catch{
+            print(error)
+        }
+        
+       
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            self.runCountForSplash += 1
+            
+
+            if self.runCountForSplash == 30 {
+                timer.invalidate()
+                
+                UIView.animate(withDuration: 1.0, animations: {
+                    imageView.removeFromSuperview()
+                    containView.alpha = 0
+                    
+                    
+                })
+                
+                
+                    
+            }
+        }
         
         
     }
@@ -349,6 +425,14 @@ class UnderTabBarController: UITabBarController {
      }
     
     @objc func makeThemeButtonAction(sender: UIButton?){
+        if UserDefaults.standard.string(forKey: "token") == "guest" {
+            hideSubMenus() 
+            self.presentLoginRequestPopUp()
+            return
+        }
+        
+        
+        
         guard let vcName = UIStoryboard(name: "Writing_Theme",
                                         bundle: nil).instantiateViewController(
                                             withIdentifier: "WritingThemeVC") as? WritingThemeVC
@@ -363,6 +447,11 @@ class UnderTabBarController: UITabBarController {
     }
     
     @objc func makeSentenceButtonAction(sender: UIButton?){
+        
+        if UserDefaults.standard.string(forKey: "token") == "guest" {
+            self.presentLoginRequestPopUp()
+            return
+        }
         guard let vcName = UIStoryboard(name: "WritingSentence",
                                         bundle: nil).instantiateViewController(
                                             withIdentifier: "WritingSentenceVC") as? UINavigationController
@@ -387,9 +476,40 @@ extension UnderTabBarController: UITabBarControllerDelegate {
                 vc.prevIdx = self.curIndex
             }
         }
+//        else if tabBarController.selectedIndex == 4{
+//            if let vc = viewController as? MyTabVC{
+//                vc.viewDidLoad()
+//            }
+//        }
             
         else {
             self.curIndex = tabBarController.selectedIndex
         }
     }
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if tabBarController.viewControllers?[4] == viewController{
+            if UserDefaults.standard.string(forKey: "token") == "guest"{
+                self.presentLoginRequestPopUp()
+                return false
+            }
+        }
+        return true
+    }
+}
+
+
+extension UITabBar{
+    
+    open override func sizeThatFits(_ size: CGSize) -> CGSize {
+        var sizethatFits = super.sizeThatFits(size)
+        
+        sizethatFits.height = 0
+        
+        return sizethatFits
+        
+        
+        
+    }
+    
+    
 }

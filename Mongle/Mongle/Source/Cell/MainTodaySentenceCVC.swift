@@ -19,9 +19,13 @@ class MainTodaySentenceCVC: UICollectionViewCell {
         self.backgroundColor = .white
         self.dropShadow(color: .black, offSet: CGSize(width: 0, height: 0), opacity: 0.07, radius: 8)
         self.setBorder(borderColor: UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 0.24), borderWidth: 1)
+        
     }
     
     func setData(sentence: String, bookName: String) {
+      
+        
+        
         sentenceLabel.text = sentence
         bookLabel.text = bookName
     }

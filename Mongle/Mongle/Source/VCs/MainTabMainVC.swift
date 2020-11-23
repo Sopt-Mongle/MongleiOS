@@ -11,9 +11,14 @@ import UIKit
 class MainTabMainVC: UIViewController {
     
     //MARK:- IBOutlet
-    @IBOutlet var layoutTableView: UITableView!
+    @IBOutlet var layoutTableView: UITableView! {
+        didSet {
+            layoutTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.1))
+            layoutTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
+        }
+    }
+    @IBOutlet var shadowView: UIView!
     
-    //
     var editorsTheme: [EditorPickData] = []
     var sentences: [TodaySentenceData] = []
     var curators: [MainCuratorData] = []
@@ -31,14 +36,60 @@ class MainTabMainVC: UIViewController {
         getThemeList(flag: 0)
         getThemeList(flag: 1)
         getThemeList(flag: 2)
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if  UserDefaults.standard.string(forKey: "token") != "guest"{
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let originDate = UserDefaults.standard.string(forKey: "tokenTime")!
+            let ogD = formatter.date(from: originDate)
+            let calendar = Calendar.current
+            let diff = calendar.dateComponents([.minute], from: ogD!, to: date)
+            
+            if diff.minute! > 210  {
+               
+                
+                
+                guard let email = UserDefaults.standard.string(forKey: "email") else { return }
+                guard let password = UserDefaults.standard.string(forKey: "password") else {return}
+                SignInService.shared.signin(email: email,
+                                            password: password)  { networkResult in
+                    switch networkResult {
+                    case .success(let token) :
+                        guard let token = token as? String else { return }
+                        UserDefaults.standard.set(token, forKey: "token")
+                        print("autoLogin")
+                    case .requestErr(let message):
+                        print("reqERR")
+                    case .pathErr:
+                        print("pathERR")
+                    case .serverErr:
+                        print("serverERR")
+                    case .networkFail:
+                        print("network")
+                        
+                    }
+                }
+            }
+        }
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#function)
-        
+        initLayout()
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
+    }
+    
+    func initLayout() {
+        shadowView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.04, radius: 6)
+//        shadowView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+//        shadowView.clipsToBounds = true
     }
     
     func getThemeList(flag: Int) {
@@ -92,19 +143,20 @@ class MainTabMainVC: UIViewController {
             case .success(let data):
                 if let _data = data as? [TodaySentenceData] {
                     self.sentences = _data
-                    
+                    print(self.sentences)
                     DispatchQueue.main.async {
                         self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 1), with: .automatic)
                     }
                 }
             case .requestErr(let msg):
-                self.showToast(text: msg as? String ?? "")
+//                self.showToast(text: msg as? String ?? "")
+                print(msg as? String ?? "")
             case .pathErr:
-                break
+                print("pathErr")
             case .serverErr:
-                break
+                print("serverErr")
             case .networkFail:
-                break
+                print("networkFail")
             }
         }
     }
@@ -129,6 +181,16 @@ class MainTabMainVC: UIViewController {
             }
         }
     }
+    
+    @IBAction func searchButton(_ sender: Any) {
+        if let tabBar = self.tabBarController as? UnderTabBarController {
+            if let searchVC = tabBar.viewControllers![1] as? SearchTabMainVC {
+                searchVC.prevIdx = 0
+                tabBar.selectedIndex = 1
+            }
+            
+        }
+    }
 }
 // MARK:- Extension
 // MARK: UITableViewDelegate
@@ -136,15 +198,8 @@ extension MainTabMainVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case 0:
-            let view = MainMongleHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 58))
-            view.searchButtomDelegate = { [weak self] in
-                if let tab = self?.tabBarController as? UnderTabBarController {
-//                    tab.tabBarController(tab, didSelect: self!)
-//                    tab.selectedIndex = 1
-//                    tab.curIndex = 0
-                }
-//                self?.tabBarController?.selectedIndex = 1
-            }
+            let view = UIView()
+            view.backgroundColor = .brown
             return view
         case 1:
             let view = MainTabDefaultHeaderView(frame: CGRect(x: 0, y: 0, width: 375, height: 48))
@@ -175,10 +230,8 @@ extension MainTabMainVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
-        case 0:
-            return 58
         case 1, 2, 3, 4, 5:
-            return 48
+            return 22
         default:
             break
         }
@@ -189,7 +242,6 @@ extension MainTabMainVC: UITableViewDelegate {
         return 0
     }
 }
-
 
 // MARK: UITableViewDataSource
 extension MainTabMainVC: UITableViewDataSource {
@@ -269,6 +321,7 @@ extension MainTabMainVC: UITableViewDataSource {
             cell.popularThemaCollectionview.reloadData()
             return cell
         default:
+            
             return UITableViewCell()
         }
     }

@@ -91,6 +91,8 @@ class LogInVC: UIViewController {
         
     }
     var runCount = 0
+    var runCountForSplash = 0
+    var shouldBeDismissed = false
     
     //MARK:- LifeCycle Methods
 
@@ -99,26 +101,24 @@ class LogInVC: UIViewController {
          super.viewDidLoad()
       
         
+
         
         hideAllItems()
         self.view.addSubview(splash)
        
         
-        splash.snp.makeConstraints{
-            $0.width.equalTo(350)
-            $0.height.equalTo(200)
-            $0.center.equalToSuperview()
-            
+        if(OnboardingMainVC.shouldShowSplash){
+            showSplash()
         }
+        OnboardingMainVC.shouldShowSplash = false
         
-        
-        splashPlay()
+//        splashPlay()
         
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
             self.runCount += 1
             
 
-            if self.runCount == 29 {
+            if self.runCount == 3 {
                 timer.invalidate()
                 self.animate1()
                     
@@ -141,8 +141,18 @@ class LogInVC: UIViewController {
     }
     
     
+    
     override func viewWillAppear(_ animated: Bool) {
         registerForKeyboardNotifications()
+        guard let token = UserDefaults.standard.string(forKey: "token") else{
+            
+            return
+        }
+        
+        if token == "1" || token == "guest" {
+            shouldBeDismissed = true
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -162,9 +172,9 @@ class LogInVC: UIViewController {
         
     }
     @objc func signUpButtonInPopUp(){
-        guard let vcName = UIStoryboard(name: "SignUp",
+        guard let vcName = UIStoryboard(name: "SignUpAgree",
                                         bundle: nil).instantiateViewController(
-                                            withIdentifier: "SignUpVC") as? SignUpVC
+                                            withIdentifier: "SignUpAgreeVC") as? UINavigationController
             else{
                 return
         }
@@ -172,6 +182,7 @@ class LogInVC: UIViewController {
         vcName.modalPresentationStyle = .fullScreen
         
         self.present(vcName, animated: true, completion: nil)
+        
         
     }
     
@@ -188,7 +199,52 @@ class LogInVC: UIViewController {
         })
         
     }
-    
+    func showSplash(){
+        let containView = UIView()
+        containView.backgroundColor = UIColor(red: 251 / 255.0, green: 251 / 255.0, blue: 251 / 255.0, alpha: 1.0)
+        self.view.addSubview(containView)
+        containView.frame = self.view.bounds
+        
+        var imageView = UIImageView()
+        do{
+            let gif = try UIImage(gifName: "Comp 4")
+            imageView = UIImageView(gifImage: gif,loopCount: 1)
+        
+            self.view.addSubview(imageView)
+            imageView.snp.makeConstraints{
+                $0.width.equalTo(350)
+                $0.height.equalTo(200)
+                $0.center.equalToSuperview()
+                
+            }
+            
+            
+        } catch{
+            print(error)
+        }
+        
+       
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            self.runCountForSplash += 1
+            
+
+            if self.runCountForSplash == 30 {
+                timer.invalidate()
+                
+                UIView.animate(withDuration: 1.0, animations: {
+                    imageView.removeFromSuperview()
+                    containView.alpha = 0
+                    
+                    
+                })
+                
+                
+                    
+            }
+        }
+        
+        
+    }
     func animate2(){
         UIView.animate(withDuration: 1.0, animations: {
             self.unHideAllItems()
@@ -260,6 +316,9 @@ class LogInVC: UIViewController {
         seperateImageView1.image = UIImage(named: "loginDivMenu1")
         seperateImageView2.image = UIImage(named: "loginDivMenu1")
         
+        
+        
+        
         loginButton.backgroundColor = .softGreen
         loginButton.setTitleColor(.white, for: .normal)
         loginButton.setTitle("로그인", for: .normal)
@@ -281,12 +340,14 @@ class LogInVC: UIViewController {
         idTextField.makeRounded(cornerRadius: 10)
         idTextField.addLeftPadding(left: 7.5)
         idTextField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
+        idTextField.keyboardType = .emailAddress
+        
         
         passwordTextField.placeholder = "비밀번호를 입력해주세요"
         passwordTextField.makeRounded(cornerRadius: 10)
         passwordTextField.addLeftPadding(left: 7.5)
         passwordTextField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
-       
+        
                
     
     }
@@ -393,21 +454,23 @@ class LogInVC: UIViewController {
         alertView.addSubview(alertButton1)
         alertView.addSubview(alertButton2)
         
-        alertLabel1.font = alertLabel1.font.withSize(15*sqrt(deviceBound))
-        alertLabel2.font = alertLabel2.font.withSize(13*sqrt(deviceBound))
-        alertButton1.makeRounded(cornerRadius: 19*sqrt(deviceBound))
-        alertButton2.makeRounded(cornerRadius: 19*sqrt(deviceBound))
+        alertLabel1.font = alertLabel1.font.withSize(15)
+        alertLabel2.font = alertLabel2.font.withSize(13)
+        alertButton1.makeRounded(cornerRadius: 19)
+        alertButton2.makeRounded(cornerRadius: 19)
         
         blurView.snp.makeConstraints{
             $0.top.bottom.leading.trailing.equalToSuperview()
             
         }
         alertView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(290*deviceBound)
-            $0.leading.equalToSuperview().offset(36/deviceBound)
-            $0.trailing.equalToSuperview().offset(-35/deviceBound)
-            $0.bottom.equalToSuperview().offset(-289*deviceBound)
-            
+//            $0.top.equalToSuperview().offset(290*deviceBound)
+//            $0.leading.equalToSuperview().offset(36/deviceBound)
+//            $0.trailing.equalToSuperview().offset(-35/deviceBound)
+            $0.center.equalToSuperview()
+            $0.width.equalTo(304)
+//            $0.bottom.equalToSuperview().offset(-289*deviceBound)
+            $0.height.equalTo(233)
             
         }
         alertImageView.snp.makeConstraints {
@@ -415,28 +478,28 @@ class LogInVC: UIViewController {
             
         }
         alertLabel1.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(84*deviceBound)
+            $0.top.equalToSuperview().offset(84)
             $0.centerX.equalToSuperview()
 //            $0.leading.equalToSuperview().offset(56*deviceBound)
             
         }
         alertLabel2.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(112*deviceBound)
+            $0.top.equalToSuperview().offset(112)
 //            $0.leading.equalToSuperview().offset(88*deviceBound)
             $0.centerX.equalToSuperview()
         }
         
         alertButton1.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(171*deviceBound)
-            $0.leading.equalToSuperview().offset(20/deviceBound)
-            $0.width.equalTo(127*sqrt(deviceBound))
-            $0.height.equalTo(37*sqrt(deviceBound))
+            $0.top.equalToSuperview().offset(171)
+            $0.leading.equalToSuperview().offset(20)
+            $0.width.equalTo(127)
+            $0.height.equalTo(37)
         }
         alertButton2.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(171*deviceBound)
-            $0.trailing.equalToSuperview().offset(-16/(deviceBound))
-            $0.width.equalTo(127*sqrt(deviceBound))
-            $0.height.equalTo(37*sqrt(deviceBound))
+            $0.top.equalToSuperview().offset(171)
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.width.equalTo(127)
+            $0.height.equalTo(37)
         }
         
         
@@ -470,6 +533,8 @@ class LogInVC: UIViewController {
                                             guard let token = token as? String else { return }
                                             print(token)
                                             UserDefaults.standard.set(token, forKey: "token")
+                                            UserDefaults.standard.set(email, forKey: "email")
+                                            UserDefaults.standard.set(password, forKey: "password")
                                             guard let vcName = UIStoryboard(name: "UnderTab",
                                                                             bundle: nil).instantiateViewController(
                                                                                 withIdentifier: "UnderTabBarController") as? UINavigationController
@@ -477,9 +542,16 @@ class LogInVC: UIViewController {
                                                     return
                                             }
                                             
-                                            vcName.modalPresentationStyle = .fullScreen
                                             
-                                            self.present(vcName, animated: true, completion: nil)
+                                            vcName.modalPresentationStyle = .fullScreen
+                                            if self.shouldBeDismissed {
+                                                
+                                                self.dismiss(animated: true, completion: nil)
+                                            }
+                                            else{
+                                                self.present(vcName, animated: true, completion: nil)
+                                            }
+                                            
                                             
                                         case .requestErr(let message):
                                             self.showAlert()
@@ -506,9 +578,9 @@ class LogInVC: UIViewController {
     }
     
     @IBAction func signUpButton(_ sender: Any) {
-        guard let vcName = UIStoryboard(name: "SignUp",
+        guard let vcName = UIStoryboard(name: "SignUpAgree",
                                         bundle: nil).instantiateViewController(
-                                            withIdentifier: "SignUpVC") as? SignUpVC
+                                            withIdentifier: "SignUpAgreeVC") as? UINavigationController
             else{
                 return
         }
@@ -516,6 +588,8 @@ class LogInVC: UIViewController {
         vcName.modalPresentationStyle = .fullScreen
         
         self.present(vcName, animated: true, completion: nil)
+        
+        
         
         
         

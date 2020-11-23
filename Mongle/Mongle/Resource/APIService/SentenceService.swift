@@ -14,7 +14,7 @@ struct SentenceService {
     static let shared = SentenceService()
     
     func getSentence(idx: Int, completion: @escaping ((NetworkResult<Any>) -> Void)) {
-        let token = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue)!
+        let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
         
         let header: HTTPHeaders = [
             "Content-Type":"application/json",
@@ -22,7 +22,6 @@ struct SentenceService {
         ]
         
         let url = APIConstants.detailSentenceURL + "/\(idx)"
-        
         Alamofire.request(url,
                           method: .get,
                           parameters: nil,
@@ -46,7 +45,7 @@ struct SentenceService {
     
     private func judgeSentenceData(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<[Sentence]>.self, from: data) else {
+        guard let decodedData = try? decoder.decode(GenericResponse<[DetailSentenceInfo]>.self, from: data) else {
             return .pathErr
         }
         switch status {
@@ -95,7 +94,7 @@ struct SentenceService {
     
     private func judgeOtherSentenceData(status: Int, data: Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<[Sentence]>.self, from: data) else {
+        guard let decodedData = try? decoder.decode(GenericResponse<[OtherSentence]>.self, from: data) else {
             return .pathErr
         }
         switch status {

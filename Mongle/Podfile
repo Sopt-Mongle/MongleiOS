@@ -13,6 +13,7 @@ pod 'Then'
 pod 'Hero'
 pod 'lottie-ios'
 pod 'Gifu'
+pod 'SwiftyGif'
   # Pods for Mongle
 
 end

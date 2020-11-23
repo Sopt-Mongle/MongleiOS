@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "joinStep1PolicyYangachiYoonjae.png",
+      "scale" : "1x",
+      "idiom" : "universal"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "joinStep1PolicyYangachiYoonjae@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "scale" : "3x",
+      "idiom" : "universal",
+      "filename" : "joinStep1PolicyYangachiYoonjae@3x.png"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

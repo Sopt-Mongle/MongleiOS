@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class MyTabCuratorVC: UIViewController {
     
@@ -78,6 +79,7 @@ extension MyTabCuratorVC: UICollectionViewDataSource{
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CuratorListCVC", for: indexPath) as? CuratorListCVC else{
             return UICollectionViewCell()
         }
+        cell.myVC = self
         cell.curatorProfileImageView.imageFromUrl(myCuratorList[indexPath.item].img, defaultImgPath: "sentenceThemeOImgCurator1010")
         cell.curatorNameLabel.text = myCuratorList[indexPath.item].name
         cell.subscriberNum = myCuratorList[indexPath.item].subscribe
@@ -85,6 +87,7 @@ extension MyTabCuratorVC: UICollectionViewDataSource{
         cell.subscribeBTN.isSelected = myCuratorList[indexPath.item].alreadySubscribed
         cell.curatorIdx = myCuratorList[indexPath.item].curatorIdx
         cell.subscriberLabel.text = "구독자 \(myCuratorList[indexPath.item].subscribe)명"
+        cell.curatorInfoLabel.text = myCuratorList[indexPath.item].keyword
         if myCuratorList[indexPath.item].alreadySubscribed{
             cell.subscribeBTN.backgroundColor = .veryLightPinkSeven
         }
@@ -98,11 +101,12 @@ extension MyTabCuratorVC: UICollectionViewDataSource{
 }
 extension MyTabCuratorVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 375, height: 120)
+        let devicewidth = UIScreen.main.bounds.width
+        return CGSize(width: devicewidth, height: devicewidth/375*120)
     }
     //cell content inset 지정
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
     }
     //cell 상 하 간격 지정
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

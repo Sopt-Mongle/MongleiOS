@@ -32,12 +32,15 @@ class MainTabFirstTVC: UITableViewCell {
     var editorData: [EditorPickData] = []
     
     var selectedCellDelegate: ((UIViewController) -> Void) = { _ in }
+
     
     // MARK:- Override Method
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         
-        pageViewWidth = (editorData.count - 1) * 7 + 19 + (editorData.count - 1) * 7
+        
+
         
         mainDisplayPictureCollectionView.delegate = self
         mainDisplayPictureCollectionView.dataSource = self
@@ -56,6 +59,7 @@ class MainTabFirstTVC: UITableViewCell {
 //MARK: UICollectionViewDelegate
 extension MainTabFirstTVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         if collectionView == mainDisplayPictureCollectionView {
             guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
                 return
@@ -79,38 +83,13 @@ extension MainTabFirstTVC: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainPictureCVC.identifier, for: indexPath) as? MainPictureCVC else {
                 return UICollectionViewCell()
             }
-            cell.displayPictureImageView.image = UIImage(named: self.pictures[indexPath.item])
-            cell.themeNameLabel.text = self.names[indexPath.item]
-            cell.themeCountLabel.text = "문장 \(self.counts[indexPath.item])개"
+            let editor = editorData[indexPath.item]
+            cell.displayPictureImageView.imageFromUrl(editor.illust, defaultImgPath: "")
+            
+            cell.themeNameLabel.text = editor.theme
+            cell.themeCountLabel.text = "문장 \(editor.sentenceNum)개"
             
             
-            if indexPath.item == 0 {
-                let attributedString = NSMutableAttributedString(string: "온 세상에\n나만 깨어있는 것 같은\n새벽감성에 읽기 좋은 문장", attributes: [
-                  .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
-                  .foregroundColor: UIColor.white,
-                  .kern: -0.5
-                ])
-                attributedString.addAttribute(.foregroundColor, value: UIColor(red: 1.0, green: 233.0 / 255.0, blue: 175.0 / 255.0, alpha: 1.0), range: NSRange(location: 19, length: 4))
-                cell.themeNameLabel.attributedText = attributedString
-            }
-            else if indexPath.item == 1 {
-                let attributedString = NSMutableAttributedString(string: "나와 다른 너를\n이해하고 싶을 때\n나를 도와주는 한 문장", attributes: [
-                  .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
-                  .foregroundColor: UIColor.white,
-                  .kern: -0.5
-                ])
-                attributedString.addAttribute(.foregroundColor, value: UIColor(red: 188.0 / 255.0, green: 227.0 / 255.0, blue: 195.0 / 255.0, alpha: 1.0), range: NSRange(location: 0, length: 7))
-                cell.themeNameLabel.attributedText = attributedString
-            }
-            else {
-                let attributedString = NSMutableAttributedString(string: "힘껏 달리기만 하다\n번아웃이 온 당신을\n다시 걷게 할 한 문장", attributes: [
-                  .font: UIFont(name: "AppleSDGothicNeoR00", size: 25.0)!,
-                  .foregroundColor: UIColor.white,
-                  .kern: -0.5
-                ])
-                attributedString.addAttribute(.foregroundColor, value: UIColor(red: 178.0 / 255.0, green: 205.0 / 255.0, blue: 1.0, alpha: 1.0), range: NSRange(location: 11, length: 3))
-                cell.themeNameLabel.attributedText = attributedString
-            }
             return cell
         }
         else if collectionView == pageCollectionView {
@@ -119,7 +98,8 @@ extension MainTabFirstTVC: UICollectionViewDataSource {
                 cell.backgroundColor = .softGreen
                 cell.makeRounded(cornerRadius: cell.frame.width / 4 - 1.5)
                 return cell
-            } else {
+            }
+            else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "undisplayCell", for: indexPath)
                 cell.makeRounded(cornerRadius: cell.frame.width / 2)
                 cell.backgroundColor = UIColor(red: 239 / 255, green: 249 / 255, blue: 239 / 255, alpha: 1.0)
@@ -181,9 +161,10 @@ extension MainTabFirstTVC: UICollectionViewDelegateFlowLayout {
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
         else {
+            pageViewWidth = (editorData.count - 1) * 7 + 19 + (editorData.count - 1) * 7
             let left = CGFloat(collectionView.bounds.width) - CGFloat(self.pageViewWidth)
-            
-            return UIEdgeInsets(top: 0, left: left / 2, bottom: 0, right: 0)
+
+            return UIEdgeInsets(top: 0, left: left / 2, bottom: 0, right: left / 2)
         }
     }
     

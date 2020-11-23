@@ -15,6 +15,7 @@ class CuratorTabMainVC: UIViewController {
     var themeList:[CuratorTabTheme] = []
     
     //MARK:- IBOutlet
+    @IBOutlet weak var naviView: UIView!
     @IBOutlet weak var curatorTabTableView: UITableView!
     @IBOutlet weak var popularCollectionView: UICollectionView!
     @IBOutlet var keywordBTN: [UIButton]!
@@ -35,7 +36,6 @@ class CuratorTabMainVC: UIViewController {
     //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         curatorTabTableView.delegate = self
         curatorTabTableView.dataSource = self
         popularCollectionView.delegate = self
@@ -50,6 +50,7 @@ class CuratorTabMainVC: UIViewController {
             idx += 1
             
         }
+        curatorTabTableView.contentInset.bottom = 60
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -122,12 +123,27 @@ class CuratorTabMainVC: UIViewController {
             }
         }
     }
+    func showNaviShadow(){
+        naviView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 7), opacity: 0.04, radius: 6)
+    }
+    func hideNaviShadow(){
+        naviView.layer.shadowOpacity = 0
+    }
 
 }
-
+// MARK: - UITableViewDelegate
 extension CuratorTabMainVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let y = scrollView.contentOffset.y
+        if y>0{
+            showNaviShadow()
+        }
+        else{
+            hideNaviShadow()
+        }
     }
 }
 extension CuratorTabMainVC: UITableViewDataSource{
@@ -146,13 +162,14 @@ extension CuratorTabMainVC: UITableViewDataSource{
         cell.themeTitleImageView.imageFromUrl(self.themeList[indexPath.row].themeImg, defaultImgPath: "mainImgTheme1")
         cell.themeCuratorCountLabel.text = "큐레이터 \(self.themeList[indexPath.row].curatorNum)명"
         cell.curatorListCollectionView.reloadData()
+        cell.myVC = self
         return cell
         
     }
     
     
 }
-
+// MARK: - UICollectionViewDelegate
 //popularCollectionViewCell
 extension CuratorTabMainVC: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -171,7 +188,7 @@ extension CuratorTabMainVC: UICollectionViewDelegateFlowLayout{
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
+        return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -185,9 +202,8 @@ extension CuratorTabMainVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainPopularCuratorCVC", for: indexPath) as? MainPopularCuratorCVC else{ return UICollectionViewCell() }
-        cell.profileNameLabel.text = self.popularList[indexPath.item].name
-        cell.profileImageView.imageFromUrl(self.popularList[indexPath.item].img, defaultImgPath: "sentenceThemeOImgCurator1010")
-        cell.tagLabel.text = self.popularList[indexPath.item].keyword
+        cell.setData(imgUrl: self.popularList[indexPath.item].img ?? "", name: self.popularList[indexPath.item].name, tag: self.popularList[indexPath.item].keyword ?? "동기부여")
+
         
         return cell
     }
@@ -195,5 +211,5 @@ extension CuratorTabMainVC: UICollectionViewDataSource{
     
 }
 
-//
+
 

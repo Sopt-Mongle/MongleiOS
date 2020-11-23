@@ -27,6 +27,8 @@ class ThemeSelectForWritingSentenceVC: UIViewController, UITextFieldDelegate {
     
     var themeIdxForPost : Int = 0
     
+    let deviceBoundw = UIScreen.main.bounds.width/375.0
+    
     
     
     //MARK:- User Define Variables
@@ -227,7 +229,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController, UITextFieldDelegate {
                 
                 guard let themeForSentences = data as? [ThemeSelectForWriteData] else {return}
                 
-                self.themes.append(noName)
+//                self.themes.append(noName)
                 for themeForSentence in themeForSentences{
                     self.themes.append(themeForSentence)
                     
@@ -258,11 +260,14 @@ class ThemeSelectForWritingSentenceVC: UIViewController, UITextFieldDelegate {
     
     @objc func textFieldDidChange(){
         themeTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+        
     
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+        hideWarning()
+    
     }
     
     
@@ -355,6 +360,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController, UITextFieldDelegate {
     @IBAction func searchButtonAction(_ sender: Any) {
         searched = true
         self.view.endEditing(true)
+        checkIndex = -1
         if themeTextField.text == "으악" {
             shouldBeHidden = true
             themeCollectionView.reloadData()
@@ -524,6 +530,8 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
                 let input = ThemeForSentence(imgName: tmpTheme.themeImg, themeTitle: tmpTheme.theme, state: check)
                 themeCell.setItems(input, self.themeTextField.text!,check,isFirst:  false)
                 themeCell.makeRounded(cornerRadius: 0)
+                themeCell.partialGreen(keyword: self.themeTextField.text!)
+                
             }
                 
             else {
@@ -545,6 +553,12 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
+        if deviceBoundw > 1 {
+            
+            return CGSize(width: 166*deviceBoundw, height: 166*deviceBoundw)
+        }
+       
+        
         return CGSize(width : 166, height: 166 )
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -559,6 +573,7 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
         return 11
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        hideWarning()
         
         if searched{
             themeIdxForPost = themesBySearch[indexPath.item].themeIdx
@@ -578,7 +593,8 @@ extension ThemeSelectForWritingSentenceVC : UICollectionViewDelegate, UICollecti
             
         }
         hideWarning()
-        isWarning = true
+        isWarning = false
+        
         checkIndex = indexPath.item
         
         if isSearched {

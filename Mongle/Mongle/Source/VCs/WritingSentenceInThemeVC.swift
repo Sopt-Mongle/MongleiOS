@@ -11,6 +11,9 @@ import UIKit
 class WritingSentenceInThemeVC: UIViewController {
 
     //MARK:- IBOutlet
+    
+    @IBOutlet var introduceLabel: UILabel!
+    
     @IBOutlet var themeBackgroundView: UIView!
     @IBOutlet var themeLabel: UILabel!
     
@@ -82,7 +85,7 @@ class WritingSentenceInThemeVC: UIViewController {
                                                       alpha: 0.19)
         
         sentenceTextView.makeRounded(cornerRadius: 10)
-        sentenceTextView.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
+        sentenceTextView.setBorder(borderColor: .softGreen, borderWidth: 1)
         sentenceTextView.contentInset = UIEdgeInsets(top: 16,
                                                      left: 14,
                                                      bottom: 16,
@@ -101,6 +104,15 @@ class WritingSentenceInThemeVC: UIViewController {
         setNonWarningState()
         
         self.themeLabel.text = self.themeName
+        
+        let attributedString = NSMutableAttributedString(string: "마음에 드는 한 문장을 적어주세요!", attributes: [
+          .font: UIFont(name: "AppleSDGothicNeoM00", size: 18.0)!,
+          .foregroundColor: UIColor.greyishBrown,
+          .kern: -0.36
+        ])
+        attributedString.addAttribute(.foregroundColor, value: UIColor.softGreen, range: NSRange(location: 7, length: 4))
+        
+        introduceLabel.attributedText = attributedString
 
     }
     
@@ -109,7 +121,7 @@ class WritingSentenceInThemeVC: UIViewController {
         let text = "\(count)/280"
         let attributedString = NSMutableAttributedString(string: text)
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
-                                      value:UIColor.black,
+                                      value:UIColor.veryLightPink,
                                       range: (text as NSString).range(of: "/280"))
         textCountLabel.attributedText = attributedString
     }
@@ -158,7 +170,7 @@ class WritingSentenceInThemeVC: UIViewController {
             $0.width.equalTo(129)
             $0.height.equalTo(42)
         }
-        sentenceTextView.setBorder(borderColor: .black, borderWidth: 1.0)
+        sentenceTextView.setBorder(borderColor: .softGreen, borderWidth: 1.0)
     }
     
 
@@ -171,7 +183,7 @@ class WritingSentenceInThemeVC: UIViewController {
             as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.3, animations: {
                 self.nextButton.transform =
-                    CGAffineTransform(translationX: 0, y: -keyboardSize.height + 16)
+                    CGAffineTransform(translationX: 0, y: -keyboardSize.height)
             })
             self.view.layoutIfNeeded()
         }
@@ -248,7 +260,7 @@ class WritingSentenceInThemeVC: UIViewController {
     }
     
     @IBAction func touchUpBackButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func touchUpCallInNoThemeSentenceButton(_ sender: UIButton) {
@@ -294,11 +306,13 @@ extension WritingSentenceInThemeVC: UITextViewDelegate {
         if textView.text.count > 280 {
             textView.text = text
         }
-        
         text = textView.text
         self.isInitial = false
         setAttributeCountLabel(count: textView.text.count)
         
+        if isValidInputTextView() {
+            setNonWarningState()
+        }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {

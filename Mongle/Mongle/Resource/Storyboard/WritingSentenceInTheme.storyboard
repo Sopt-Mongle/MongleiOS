@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3H5-ot-vwD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N0N-uu-Fld">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,11 +38,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="Ogp-Fj-Nvf" firstAttribute="top" secondItem="6qG-qb-chJ" secondAttribute="top" constant="48" id="404-3c-8Ke"/>
                                     <constraint firstItem="Ogp-Fj-Nvf" firstAttribute="centerX" secondItem="6qG-qb-chJ" secondAttribute="centerX" id="6UI-kd-oE3"/>
-                                    <constraint firstItem="Idt-l3-ws2" firstAttribute="top" secondItem="6qG-qb-chJ" secondAttribute="top" constant="37" id="FoF-zQ-ZVw"/>
                                     <constraint firstItem="Idt-l3-ws2" firstAttribute="leading" secondItem="6qG-qb-chJ" secondAttribute="leading" id="fv4-Oc-gPf"/>
                                     <constraint firstAttribute="width" secondItem="6qG-qb-chJ" secondAttribute="height" multiplier="75:17" id="mcN-Tu-ZRw"/>
                                 </constraints>
@@ -87,7 +87,7 @@
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Qk4-e1-vuC">
                                 <rect key="frame" x="16" y="193" width="343" height="147"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Qk4-e1-vuC" secondAttribute="height" multiplier="7:3" id="ScW-6T-kyo"/>
                                 </constraints>
@@ -97,7 +97,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiB-z3-TA2">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LiB-z3-TA2">
                                 <rect key="frame" x="16" y="350" width="130" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="themeWritingSentence2BtnSentenceLoad"/>
@@ -111,8 +111,8 @@
                                 <color key="textColor" red="0.73725490199999999" green="0.73725490199999999" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HK-a6-teY">
-                                <rect key="frame" x="16" y="721" width="343" height="57"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HK-a6-teY">
+                                <rect key="frame" x="16" y="705" width="343" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7HK-a6-teY" secondAttribute="height" multiplier="343:57" id="ebk-I8-Urs"/>
                                 </constraints>
@@ -122,10 +122,12 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="GfX-in-vfv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6qG-qb-chJ" firstAttribute="leading" secondItem="GfX-in-vfv" secondAttribute="leading" id="68g-tl-MBq"/>
                             <constraint firstItem="6qG-qb-chJ" firstAttribute="top" secondItem="tmN-wg-fU4" secondAttribute="top" id="D2j-jh-5KA"/>
+                            <constraint firstItem="GfX-in-vfv" firstAttribute="top" secondItem="Idt-l3-ws2" secondAttribute="top" constant="7" id="Dhc-e0-FeQ"/>
                             <constraint firstItem="GfX-in-vfv" firstAttribute="trailing" secondItem="Dyt-wq-SLM" secondAttribute="trailing" constant="16" id="K5E-lZ-3av"/>
                             <constraint firstItem="GfX-in-vfv" firstAttribute="trailing" secondItem="Qk4-e1-vuC" secondAttribute="trailing" constant="16" id="KvY-EP-gH7"/>
                             <constraint firstItem="5vn-cR-SVA" firstAttribute="top" secondItem="Qk4-e1-vuC" secondAttribute="bottom" constant="13" id="NG2-gV-40X"/>
@@ -134,17 +136,19 @@
                             <constraint firstItem="7HK-a6-teY" firstAttribute="leading" secondItem="GfX-in-vfv" secondAttribute="leading" constant="16" id="ZIQ-TH-UkG"/>
                             <constraint firstItem="xe8-V3-RQN" firstAttribute="leading" secondItem="GfX-in-vfv" secondAttribute="leading" constant="16" id="Zxr-Hb-Y3c"/>
                             <constraint firstItem="Qk4-e1-vuC" firstAttribute="leading" secondItem="GfX-in-vfv" secondAttribute="leading" constant="16" id="agn-VS-h0n"/>
-                            <constraint firstItem="7HK-a6-teY" firstAttribute="bottom" secondItem="GfX-in-vfv" secondAttribute="bottom" id="dWg-hd-63L"/>
+                            <constraint firstItem="7HK-a6-teY" firstAttribute="bottom" secondItem="GfX-in-vfv" secondAttribute="bottom" constant="-16" id="dWg-hd-63L"/>
                             <constraint firstItem="Qk4-e1-vuC" firstAttribute="top" secondItem="Dyt-wq-SLM" secondAttribute="bottom" constant="11" id="ehh-xQ-a4I"/>
                             <constraint firstItem="5vn-cR-SVA" firstAttribute="trailing" secondItem="Qk4-e1-vuC" secondAttribute="trailing" id="iZL-CF-f9S"/>
                             <constraint firstItem="Dyt-wq-SLM" firstAttribute="leading" secondItem="GfX-in-vfv" secondAttribute="leading" constant="16" id="kbq-Cc-fwd"/>
                             <constraint firstItem="xe8-V3-RQN" firstAttribute="top" secondItem="6qG-qb-chJ" secondAttribute="bottom" constant="13" id="mJN-Px-RCa"/>
                             <constraint firstItem="Dyt-wq-SLM" firstAttribute="top" secondItem="xe8-V3-RQN" secondAttribute="bottom" constant="18" id="pKN-Gb-onc"/>
+                            <constraint firstItem="Ogp-Fj-Nvf" firstAttribute="top" secondItem="GfX-in-vfv" secondAttribute="top" constant="4" id="skk-NT-QI4"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="GfX-in-vfv"/>
                     </view>
+                    <navigationItem key="navigationItem" id="RYo-qc-Kzo"/>
                     <connections>
                         <outlet property="callInNoThemeSentenceButton" destination="LiB-z3-TA2" id="Jc3-qq-8zx"/>
+                        <outlet property="introduceLabel" destination="xe8-V3-RQN" id="oLM-Oc-Hbz"/>
                         <outlet property="nextButton" destination="7HK-a6-teY" id="j09-kx-YDs"/>
                         <outlet property="sentenceTextView" destination="Qk4-e1-vuC" id="0eH-Kx-2qW"/>
                         <outlet property="textCountLabel" destination="5vn-cR-SVA" id="RNE-UI-wJp"/>
@@ -154,11 +158,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGh-Pj-Bed" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="236" y="61"/>
+            <point key="canvasLocation" x="1178.4000000000001" y="60.591133004926114"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ddo-Zr-WsD">
+            <objects>
+                <navigationController storyboardIdentifier="WritingSentenceInThemeNavi" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="N0N-uu-Fld" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="A7a-QD-5HD">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3H5-ot-vwD" kind="relationship" relationship="rootViewController" id="DDI-z4-8cS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wAn-oC-qBR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="236" y="60.591133004926114"/>
         </scene>
     </scenes>
     <resources>
         <image name="searchBtnBack" width="10.333333015441895" height="18.666666030883789"/>
         <image name="themeWritingSentence2BtnSentenceLoad" width="129.66667175292969" height="16"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

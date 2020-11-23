@@ -19,6 +19,7 @@ class MyTabThemeVC: UIViewController {
   
     // MARK: - IBOutlet
     @IBOutlet weak var themeTableView: UITableView!
+    @IBOutlet weak var shadowBox: UIView!
     
     //MARK: - LifeCycle Methods
     override func viewDidLoad() {
@@ -26,6 +27,7 @@ class MyTabThemeVC: UIViewController {
         themeTableView.delegate = self
         themeTableView.dataSource = self
         themeTableView.reloadData()
+        themeTableView.contentInset.bottom = 60
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +59,13 @@ class MyTabThemeVC: UIViewController {
         
         self.themeTableView.reloadData()
     }
+//    func showShadow(){
+//        themeTableView.headerView(forSection: 0)?.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.04, radius: 6)
+//        themeTableView.layoutIfNeeded()
+//    }
+//    func hideShadow(){
+//        shadowBox.layer.shadowOpacity = 0
+//    }
     func setMyTheme(){
         MyThemeService.shared.getMy(){ networkResult in
             
@@ -108,6 +117,7 @@ extension MyTabThemeVC: UITableViewDelegate{
             $0.contentEdgeInsets = UIEdgeInsets(top: 17, left: 16, bottom: 0, right: 0)
             $0.addTarget(self, action: #selector(self.sentenceWithoutThemeDidTap), for: .touchUpInside)
             headerView.addSubview($0)
+            $0.isHidden = true
         }
         let savedThemeLabel = UILabel().then {
             $0.text = "저장한 테마"
@@ -157,11 +167,7 @@ extension MyTabThemeVC: UITableViewDelegate{
             $0.addTarget(self, action: #selector(self.madeThemeDidTap), for: .touchUpInside)
             headerView.addSubview($0)
         }
-        let divider = UIView().then{
-            $0.backgroundColor = .veryLightPinkSix
-            
-            headerView.addSubview($0)
-        }
+
         
         
         withoutTheme.snp.makeConstraints{
@@ -172,34 +178,27 @@ extension MyTabThemeVC: UITableViewDelegate{
         savedThemeLabel.snp.makeConstraints{
             $0.width.equalTo(82)
             $0.height.equalTo(28)
-            $0.top.equalToSuperview().offset(9)
-            $0.left.equalToSuperview().offset(218)
-            $0.bottom.equalToSuperview().offset(-12)
+            $0.top.equalToSuperview().offset(15)
+            $0.right.equalToSuperview().offset(-88)
+            $0.bottom.equalToSuperview().offset(-6)
         }
         madeThemeLabel.snp.makeConstraints{
             $0.width.equalTo(72)
             $0.height.equalTo(28)
-            $0.top.equalToSuperview().offset(9)
-            $0.left.equalToSuperview().offset(300)
-            $0.bottom.equalToSuperview().offset(-12)
+            $0.top.equalToSuperview().offset(15)
+            $0.right.equalToSuperview().offset(-16)
+            $0.bottom.equalToSuperview().offset(-6)
         }
         
-        divider.snp.makeConstraints{
-            $0.height.equalTo(1)
-            $0.left.equalToSuperview()
-            $0.right.equalToSuperview()
-            $0.bottom.equalToSuperview()
-        }
         savedThemeTouchArea.snp.makeConstraints{
-            $0.width.equalTo(84)
+            $0.width.equalTo(82)
             $0.top.equalToSuperview()
-            $0.left.equalToSuperview().offset(203)
+            $0.right.equalToSuperview().offset(-88)
             $0.bottom.equalToSuperview()
         }
         madeThemeTouchArea.snp.makeConstraints{
-            $0.width.equalTo(84)
+            $0.width.equalTo(72)
             $0.top.equalToSuperview()
-            $0.left.equalToSuperview().offset(287)
             $0.right.equalToSuperview().offset(-16)
             $0.bottom.equalToSuperview()
         }
@@ -208,7 +207,7 @@ extension MyTabThemeVC: UITableViewDelegate{
         
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 49
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -225,6 +224,15 @@ extension MyTabThemeVC: UITableViewDelegate{
         }
         self.navigationController?.pushViewController(themeVC, animated: true)
     }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let y = scrollView.contentOffset.y
+//        if y>0{
+//            showShadow()
+//        }
+//        else{
+//            hideShadow()
+//        }
+//    }
     
 }
 extension MyTabThemeVC: UITableViewDataSource{

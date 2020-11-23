@@ -12,7 +12,7 @@ import Foundation
 struct MyProfileData: Codable {
     var curatorIdx: Int
     var name: String
-    var img: String
+    var img: String?
     var introduce: String?
     var keywordIdx: Int?
     var subscribe: Int

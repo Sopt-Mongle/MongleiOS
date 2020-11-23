@@ -24,6 +24,9 @@ class SentenceInfoVC: UIViewController {
     @IBOutlet var likeView: UIView!
     @IBOutlet var bookmarkView: UIView!
     
+    @IBOutlet var themeImageView: UIImageView!
+    @IBOutlet var themeNameLabel: UILabel!
+    
     //MARK:- UI Component
     lazy var popup = MonglePopupView(frame: CGRect(x: 0, y: 0, width: 304, height: 193))
     lazy var blur = UIView().then {
@@ -31,22 +34,25 @@ class SentenceInfoVC: UIViewController {
         $0.alpha = 0.5
     }
     //MARK:- Property
-    var themeText: String = "브랜딩이 어려울 때, 영감을 주는 문장"
-    var sentenceText: String = """
-처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의인상,사소한 것으로 인해 생기는 호감,
-"""
-    var sentence: Sentence?
-    var themeImage: UIImage?
-    var otherSentences: [Sentence] = []
+    var themeText: String = " "
+    var sentenceText: String = " "
+    var sentence: DetailSentenceInfo?
+    var themeImage: UIImage? = UIImage(named: "curatorImgTheme1")
+    var otherSentences: [OtherSentence] = []
     var hasTheme: Bool = true
     var isMySentence: Bool = true
     var canDisplayOtherSentece: Bool = true
+    var myNickName: String = ""
     var sentenceIdx: Int?
     var themeIdx: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addGesture()
+//        bindThemeInfo()
+        makeRoundTableView()
+//        swipeToPop()
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
     }
@@ -55,14 +61,77 @@ class SentenceInfoVC: UIViewController {
         getOtherSentece()
     }
     
+    func swipeToPop() {
+//        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
+    
+    func getMyNickName(completion: @escaping (Bool, String)->()) {
+        MyProfileService.shared.getMy(){ networkResult in
+            
+            switch networkResult {
+            case .success(let theme):
+                guard let data = theme as? [MyProfileData] else {
+                    return
+                }
+                
+                completion(true, data[0].name)
+                
+            case .requestErr(let message):
+                completion(false, "")
+            case .pathErr:
+                
+                completion(false, "")
+            case .serverErr:
+                completion(false, "")
+            case .networkFail:
+                completion(false, "")
+            }
+        }
+    }
+    
+    func makeRoundTableView() {
+        layoutTableView.layer.cornerRadius = 25
+        layoutTableView.clipsToBounds = true
+        layoutTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+    
     func getSentenceInfo(){
         SentenceService.shared.getSentence(idx: self.sentenceIdx ?? 0) { networkResult in
+
             switch networkResult {
             case .success(let data):
-                if let _data = data as? [Sentence] {
+                if let _data = data as? [DetailSentenceInfo] {
                     self.sentence = _data[0]
-                    self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
-                    self.updateStateLayout()
+                    self.getThemeInfo(themeIdx: self.sentence?.themeIdx ?? 0) {
+                        [weak self] (themeImage, themeName) in
+                        DispatchQueue.main.async {
+                            self?.themeImageView.imageFromUrl(themeImage, defaultImgPath: "themeWritingThemeXSentenceBg")
+                            self?.themeNameLabel.text = themeName
+                        }
+                    }
+                    self.getMyNickName { [weak self] (success, nickName) in
+                        if success {
+                            if nickName == self?.sentence?.writer {
+                                self?.isMySentence = true
+                    
+                            }
+                            else {
+                                self?.isMySentence = false
+                            }
+                        }
+                        self?.getMySaveSentence { [weak self] (success, sentenceIdxes) in
+                            if success {
+                                self?.sentence?.alreadyBookmarked = sentenceIdxes.contains(self?.sentenceIdx ?? 0)
+                            }
+                            else {
+                                self?.sentence?.alreadyBookmarked = false
+                            }
+                            DispatchQueue.main.async {
+                                self?.layoutTableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
+                                self?.updateStateLayout()
+                            }
+                        }
+                    }
                 }
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "")
@@ -74,12 +143,64 @@ class SentenceInfoVC: UIViewController {
                 self.showToast(text: "networkFail")
             }
         }
+        
     }
-    func getOtherSentece(){
-        SentenceService.shared.getSentence(idx: self.sentenceIdx ?? 0) { networkResult in
+    
+    func getThemeInfo(themeIdx: Int, completion: @escaping (String, String) -> Void) {
+        ThemeService.shared.getThemeInfo(idx: themeIdx) { (networkResult) in
+            switch networkResult {
+            case .success(let themeData):
+                if let _data = themeData as? ThemeInfoData {
+                    completion(_data.theme[0].themeImg ?? "", _data.theme[0].theme ?? "")
+                }
+    
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "requestErr")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
+        }
+    }
+    
+    func getMySaveSentence(completion: @escaping (Bool, [Int]) -> ()) {
+        MySentenceService.shared.getMy { (networkResult) in
             switch networkResult {
             case .success(let data):
-                if let _data = data as? [Sentence] {
+                if let _data = data as? MySentenceData {
+                    completion(true, _data.save.compactMap{ return $0.sentenceIdx })
+                }
+            case .requestErr(let msg):
+//                self.showToast(text: msg as? String ?? "requestErr")
+                completion(false, [])
+            case .pathErr:
+                self.showToast(text: "pathErr")
+                completion(false, [])
+            case .serverErr:
+                self.showToast(text: "serverErr")
+                completion(false, [])
+            case .networkFail:
+                self.showToast(text: "networkFail")
+                completion(false, [])
+            }
+        }
+    }
+    
+//    func bindThemeInfo() {
+//        themeImageView.image = themeImage
+//        themeNameLabel.text = themeText
+//        themeNameLabel.sizeToFit()
+//    }
+    
+    func getOtherSentece(){
+        SentenceService.shared.getOtherSentenceInTheme(idx: self.sentenceIdx ?? 0) { networkResult in
+            switch networkResult {
+            case .success(let data):
+                if let _data = data as? [OtherSentence] {
+                    
                     self.otherSentences = _data
                     self.layoutTableView.reloadSections(IndexSet(arrayLiteral: 1), with: .automatic)
                 }
@@ -112,20 +233,22 @@ class SentenceInfoVC: UIViewController {
         self.likeCountLabel.text = likeCountText
         self.bookCountLabel.text = savesCountText
         
-        if _sentence.alreadyLiked {
-            self.likeCountLabel.textColor = .softGreen
-        }
-        else {
-            self.likeCountLabel.textColor = .veryLightPink
-            
-        }
-        
-        if _sentence.alreadyBookmarked {
-            self.bookCountLabel.textColor = .softGreen
-        }
-        else {
-            self.bookCountLabel.textColor = .veryLightPink
-        }
+//        if _sentence.alreadyLiked {
+//            self.likeCountLabel.textColor = .softGreen
+//
+//        }
+//        else {
+//            self.likeCountLabel.textColor = .veryLightPink
+//        }
+        self.likeImageview.isHighlighted = _sentence.alreadyLiked
+        self.bookmarkImageView.isHighlighted = _sentence.alreadyBookmarked
+//
+//        if _sentence.alreadyBookmarked {
+//            self.bookCountLabel.textColor = .softGreen
+//        }
+//        else {
+//            self.bookCountLabel.textColor = .veryLightPink
+//        }
     }
     
     func addGesture(){
@@ -139,19 +262,21 @@ class SentenceInfoVC: UIViewController {
     }
     
     @objc func touchUpLike(){
+        let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
+        
+        if token == "guest" {
+            self.presentLoginRequestPopUp()
+            return
+        }
+        
         SentenceService.shared.putSentenceLike(idx: self.sentenceIdx ?? 0) { networkResult in
             switch networkResult {
             case .success(let data):
                 if let _data = data as? SentenceLikeData {
                     self.sentence?.alreadyLiked = _data.isLike
                     self.sentence?.likes = _data.likes
+                    
                     self.updateStateLayout()
-                    if _data.isLike {
-//                        self.showToast(text: "좋아요 성공")
-                    }
-                    else {
-//                        self.showToast(text: "좋아요 해제")
-                    }
                 }
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "")
@@ -166,22 +291,57 @@ class SentenceInfoVC: UIViewController {
     }
     
     @objc func touchUpBookmark(){
+        let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
+        
+        if token == "guest" {
+            self.presentLoginRequestPopUp()
+            return
+        }
+        
         SentenceService.shared.putBookmark(idx: self.sentenceIdx ?? 0) { networkResult in
             switch networkResult {
                 
             case .success(let data):
-                
                 if let _data = data as? SentenceBookmarkData {
                     self.sentence?.alreadyBookmarked = _data.isSave
                     self.sentence?.saves = _data.saves
-                    self.updateStateLayout()
-                    if _data.isSave {
-                        self.showToast(text: "문장이 저장되었습니다!")
-                    }
-                    else {
-//                        self.showToast(text: "북마크 해제")
+                    DispatchQueue.main.async {
+                        self.updateStateLayout()
+                        if _data.isSave {
+                            self.showToast(text: "문장이 저장되었어요!")
+                        }
+                        else {
+//                            self.showToast(text: "저장 해제")
+                        }
                     }
                 }
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "requestErr")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
+        }
+    }
+    
+    func requestDelete() {
+        SentenceEditService.shared.deleteSentece(idx: sentenceIdx ?? 0) { (networkResult) in
+            switch networkResult {
+            case .success(_):
+                if let navi = self.navigationController {
+                    let prevIndex = navi.viewControllers.count
+                    navi.viewControllers[prevIndex - 2].showToast(text: "문장이 삭제되었어요!")
+                    navi.popViewController(animated: true)
+                }
+                else {
+                    self.showToast(text: "문장이 삭제되었어요!", completion: {
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                }
+                
             case .requestErr(let msg):
                 self.showToast(text: msg as? String ?? "requestErr")
             case .pathErr:
@@ -197,18 +357,14 @@ class SentenceInfoVC: UIViewController {
     
     func showPopUp(){
         
-        popup.setPopUp(state: .delete,
-                yesHandler: { [weak self] in
-                    print(#function)
-                    self?.navigationController?.popViewController(animated: true)
-                    
-        },
-                noHandler: {[weak self] in
-                    self?.blur.removeFromSuperview()
-                    self?.popup.removeFromSuperview()
-                    
-        },
-                confirmHandler: nil)
+        popup.setPopUp(state: .delete, yesHandler: { [weak self] in
+            self?.requestDelete()
+            
+        }, noHandler: {[weak self] in
+            self?.blur.removeFromSuperview()
+            self?.popup.removeFromSuperview()
+            
+        },confirmHandler: nil)
     
         
         self.view.addSubview(blur)
@@ -224,20 +380,45 @@ class SentenceInfoVC: UIViewController {
         }
     }
     
-    @objc func touchUpBackButton(){
-        self.navigationController?.popViewController(animated: true)
+    func report(content: String){
+        ReportService.shared.report(type: "sentence", idx: sentenceIdx ?? 0, content: content) { (networkResult) in
+            switch networkResult {
+            case .success(_):
+                if content == "falseAd" {
+                    self.showToast(text: "허위 내용 신고가 접수되었어요!")
+                }
+                else {
+                    self.showToast(text: "부적절한 내용 신고가 접수되었어요!")
+                }
+            case .requestErr(let msg):
+                self.showToast(text: msg as? String ?? "")
+            case .pathErr:
+                self.showToast(text: "pathErr")
+            case .serverErr:
+                self.showToast(text: "serverErr")
+            case .networkFail:
+                self.showToast(text: "networkFail")
+            }
+            
+        }
+    }
+    
+    @IBAction func touchUpBackButton(){
+        if let navi = self.navigationController {
+            navi.popViewController(animated: true)
+        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func touchUpOtherThemeButton(){
+        
         guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
             return
         }
-        dvc.themeIdx = self.themeIdx
+        dvc.themeIdx = self.sentence?.themeIdx
         
         self.navigationController?.pushViewController(dvc, animated: true)
     }
-    
-    
 }
 
 //MARK:- Extension
@@ -259,12 +440,10 @@ extension SentenceInfoVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 144
-        }
-        else {
+        if section == 1 {
             return 95
         }
+        return 43
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -279,54 +458,7 @@ extension SentenceInfoVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 144))
-            
-            var imageView = UIImageView(image: self.themeImage)
-//            imageView.contentMode = .scaleAspectFill
-//            imageView.
-            
-            let backButton = UIButton().then {
-                $0.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
-                $0.setImage(UIImage(named: "sentenceThemeOBtnBack"), for: .normal)
-                $0.addTarget(self, action: #selector(touchUpBackButton), for: .touchUpInside)
-            }
-            
-            let themeLabel = UILabel().then {
-                $0.text = themeText
-                $0.textColor = .white
-                $0.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 18.0)!
-                $0.numberOfLines = 2
-                $0.lineBreakMode = .byCharWrapping
-            }
-            
-            if !hasTheme {
-                self.tableViewBottomConstraint.constant = -likeAndBookmarkView.frame.height
-                themeLabel.text = "테마 없는 문장"
-                imageView = UIImageView(image: UIImage(named: "sentenceThemeXBgThemeX"))
-                backButton.setImage(UIImage(named: "sentenceThemeXBtnBack"), for: .normal)
-                likeAndBookmarkView.isHidden = true
-            }
-            
-            view.addSubview(imageView)
-            view.addSubview(backButton)
-            view.addSubview(themeLabel)
-            
-            imageView.snp.makeConstraints {
-                $0.top.leading.trailing.bottom.equalToSuperview()
-            }
-            backButton.snp.makeConstraints {
-                $0.top.equalToSuperview().offset(37)
-                $0.leading.equalToSuperview()
-                $0.height.width.equalTo(48)
-            }
-            
-            themeLabel.snp.makeConstraints {
-                $0.leading.equalToSuperview().offset(28)
-                $0.trailing.equalToSuperview().offset(-28)
-                $0.bottom.equalToSuperview().offset(-19)
-            }
-            view.backgroundColor = .brown
-            return view
+            return UIView()
         }
         else {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 95))
@@ -339,8 +471,6 @@ extension SentenceInfoVC: UITableViewDelegate {
                 $0.leading.equalToSuperview().offset(16)
                 $0.bottom.equalToSuperview().offset(-22)
             }
-            
-            
             return view
         }
     }
@@ -357,6 +487,7 @@ extension SentenceInfoVC: UITableViewDelegate {
             let image = UIImageView().then {
                 $0.image = UIImage(named: "mySettingsIcArrow1")
                 $0.frame = CGRect(x: 0, y: 0, width: 4, height: 8)
+                $0.contentMode = .scaleAspectFit
             }
             
             let stackView = UIStackView().then {
@@ -378,6 +509,8 @@ extension SentenceInfoVC: UITableViewDelegate {
             
             stackView.snp.makeConstraints {
                 $0.centerX.centerY.equalToSuperview()
+                $0.top.equalToSuperview()
+                $0.bottom.equalToSuperview()
             }
             
             image.snp.makeConstraints {
@@ -428,7 +561,7 @@ extension SentenceInfoVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceInfoTVC.identifier) as? SentenceInfoTVC else {
                 return UITableViewCell()
             }
-            cell.setSentenceData(sentence: self.sentence?.sentence ?? "",
+            cell.setSentenceData(sentence: self.sentence?.sentence ?? self.sentenceText,
                                  profileImg: self.sentence?.writerImg ?? "",
                                  curatorName: self.sentence?.writer ?? "",
                                  isLiked: true,
@@ -436,39 +569,77 @@ extension SentenceInfoVC: UITableViewDataSource {
             cell.setBookData(bookName: self.sentence?.title ?? "",
                              writerName: self.sentence?.author ?? "",
                              publisherName: self.sentence?.publisher ?? "",
-                             bookImageUrl: self.sentence?.writerImg ?? "")
+                             bookImageUrl: self.sentence?.thumbnail ?? "")
             
-//            cell.sentenceLabel.text = self.sentenceText
             cell.editButtonDelegate = { [weak self] sheet in
-                let editAction = UIAlertAction(title: "수정", style: .default) { action in
-                    guard let dvc = UIStoryboard.init(name: "SentenceEdit", bundle: nil).instantiateViewController(identifier: "SentenceEditVC") as? SentenceEditVC else {
-                        return
-                    }
-                    dvc.text = self?.sentenceText
-                    self?.navigationController?.pushViewController(dvc, animated: true)
-                }.then {
-                    $0.titleTextColor = .black
+                
+                guard let self = self else{
+                    return
                 }
                 
-                let deleteAction = UIAlertAction(title: "삭제", style: .default) {[weak self] action in
+                let token: String = UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue) ?? "guest"
+                
+                if token == "guest" {
+                    self.presentLoginRequestPopUp()
+                    return
+                }
+                
+                if self.isMySentence {
+                    [
+                        UIAlertAction(title: "수정",
+                                      style: .default,
+                                      handler:
+                                        { [weak self] (action) in
+                                            let sb = UIStoryboard.init(name: "SentenceEdit", bundle: nil)
+                                            guard let dvc = sb.instantiateViewController(identifier: "SentenceEditVC") as? SentenceEditVC else {
+                                                return
+                                            }
+                                            dvc.sentenceIdx = self?.sentenceIdx
+                                            dvc.text = self?.sentence?.sentence
+                                            self?.navigationController?.pushViewController(dvc, animated: true)
+                                        })
+                            .then { $0.titleTextColor = .black },
+                        
+                        UIAlertAction(title: "삭제",
+                                      style: .default) {[weak self] action in
+                            self?.showPopUp()
+                        }
+                        .then { $0.titleTextColor = .black },
+                        UIAlertAction(title: "취소", style: .cancel) { action in
+                        }
+                        .then { $0.titleTextColor = .black }
+                    ]
+                    .forEach { sheet.addAction($0)}
                     
-                    self?.showPopUp()
-                }.then {
-                    $0.titleTextColor = .black
+                    self.present(sheet, animated: true, completion: nil)
                 }
-                
-                let cancelAction = UIAlertAction(title: "취소", style: .cancel) { action in
-                }.then {
-                    $0.titleTextColor = .black
+                else {
+                    [
+                        UIAlertAction(title: "허위 내용 신고",
+                                      style: .default,
+                                      handler: { [weak self] action in
+                                        
+                                        self?.report(content: "falseAd")
+                                      })
+                            .then { $0.titleTextColor = .black },
+                        UIAlertAction(title: "부적절한 내용 신고",
+                                      style: .default,
+                                      handler: { [weak self] action in
+                                        self?.report(content: "inappropriate")
+                                      })
+                            .then{ $0.titleTextColor = .black },
+                        UIAlertAction(title: "취소",
+                                      style: .cancel,
+                                      handler: nil)
+                            .then { $0.titleTextColor = .black}
+                    ]
+                    .forEach { sheet.addAction($0)}
+                    self.present(sheet, animated: true, completion: nil)
                 }
 
-                sheet.addAction(editAction)
-                sheet.addAction(deleteAction)
-                sheet.addAction(cancelAction)
-                self?.present(sheet, animated: true, completion: nil)
             }
         
-            cell.editButton.isHidden = !isMySentence
+//            cell.editButton.isHidden = !isMySentence
             
             return cell
         }
@@ -476,7 +647,7 @@ extension SentenceInfoVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceInThemeTVC.identifier, for: indexPath) as? SentenceInThemeTVC else {
                 return UITableViewCell()
             }
-            print(indexPath.row)
+
             let otherSentnece = self.otherSentences[indexPath.row]
 
             cell.setData(sentence: otherSentnece.sentence,
@@ -488,3 +659,10 @@ extension SentenceInfoVC: UITableViewDataSource {
         }
     }
 }
+
+
+//extension SentenceInfoVC: UIGestureRecognizerDelegate {
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
+//}

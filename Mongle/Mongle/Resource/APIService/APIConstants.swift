@@ -9,8 +9,8 @@
 import Foundation
 
 struct APIConstants {
-//    static let baseURL = "http://3.34.20.225:3000"
-    static let baseURL = "http://18.189.125.26:3000"
+    static let baseURL = "http://3.34.20.225:3000"
+//    static let baseURL = "http://18.189.125.26:3000"
     
     static let signupURL = baseURL + "/users/signup"
     static let signinURL = baseURL + "/users/signin"
@@ -33,11 +33,14 @@ struct APIConstants {
     static let detailThemeURL = baseURL + "/detail/theme"
     //  문장 상세조회 (/detail/sentence/:sentenceIdx)
     static let detailSentenceURL = baseURL + "/detail/sentence"
+    // 신고하기
+    static let detailReportURL = baseURL + "/detail/report"
     //테마 없는 문장 목록 조회 (/post/emptySentence)
     static let postEmptySentenceURL = baseURL + "/post/emptySentence"
 //    테마 없는 문장 테마 지정하기 (/post/setTheme)
     static let postSetThemeURL = baseURL + "/post/setTheme"
-    
+    // 문장 수정
+    static let myURL = baseURL + "/my"
     static let bookSearchForWritingURL = baseURL + "/post/bookSearch"
     static let recentSearchURL = baseURL + "/search/recent"
     static let recommendSearchURL = baseURL + "/search/recommend"
@@ -55,4 +58,8 @@ struct APIConstants {
     static let myThemeURL = baseURL + "/my/theme"
     static let mySentenceURL = baseURL + "/my/sentence"
     static let myCuratorURL = baseURL + "/my/subscribe"
+    static let signupEmailURL = baseURL + "/users/auth"
+    static let signupDuplicateURL = baseURL + "/users/duplicate"
+    static let withdrawURL = baseURL + "/users/withdraw"
+    static let passwordChangeURL = baseURL + "/users/changePassword"
 }

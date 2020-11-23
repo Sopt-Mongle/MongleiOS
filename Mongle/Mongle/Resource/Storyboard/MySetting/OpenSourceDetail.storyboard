@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleSDGothicNeoSB.ttf">
+            <string>AppleSDGothicNeoSB00</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Open Source DetailVC-->
+        <scene sceneID="PaI-6S-4OZ">
+            <objects>
+                <viewController storyboardIdentifier="OpenSourceDetailVC" id="uxu-Js-ezj" customClass="OpenSourceDetailVC" customModule="Mongle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oew-zU-YGz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rv0-89-wWs">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Vs-KP-42c">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNK-ZN-eJ0">
+                                        <rect key="frame" x="172" y="4" width="31" height="23.666666666666668"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeoSB00" family="AppleSDGothicNeoSB00" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Mb-tf-TGG">
+                                        <rect key="frame" x="0.0" y="-7" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="ejT-50-IQV"/>
+                                            <constraint firstAttribute="width" constant="48" id="gA2-6J-ZfH"/>
+                                        </constraints>
+                                        <state key="normal" image="curatorInfoThemeSubscribeBtnBack"/>
+                                        <connections>
+                                            <action selector="touchUpBack:" destination="uxu-Js-ezj" eventType="touchUpInside" id="q5v-kM-PKB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="bNK-ZN-eJ0" firstAttribute="top" secondItem="1Vs-KP-42c" secondAttribute="top" constant="4" id="Cu4-Jb-0Hp"/>
+                                    <constraint firstItem="bNK-ZN-eJ0" firstAttribute="centerX" secondItem="1Vs-KP-42c" secondAttribute="centerX" id="DsM-jM-G3i"/>
+                                    <constraint firstItem="8Mb-tf-TGG" firstAttribute="top" secondItem="1Vs-KP-42c" secondAttribute="top" constant="-7" id="Y8y-J5-Q5B"/>
+                                    <constraint firstAttribute="width" secondItem="1Vs-KP-42c" secondAttribute="height" multiplier="375:44" id="bwZ-VT-8dt"/>
+                                    <constraint firstItem="8Mb-tf-TGG" firstAttribute="leading" secondItem="1Vs-KP-42c" secondAttribute="leading" id="nku-j0-EBC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nA4-4A-iIJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nA4-4A-iIJ" firstAttribute="trailing" secondItem="Rv0-89-wWs" secondAttribute="trailing" id="7kD-2g-lms"/>
+                            <constraint firstItem="Rv0-89-wWs" firstAttribute="top" secondItem="1Vs-KP-42c" secondAttribute="bottom" id="Ctt-Sq-IFb"/>
+                            <constraint firstItem="1Vs-KP-42c" firstAttribute="top" secondItem="nA4-4A-iIJ" secondAttribute="top" id="Jm7-Wb-rfm"/>
+                            <constraint firstItem="nA4-4A-iIJ" firstAttribute="bottom" secondItem="Rv0-89-wWs" secondAttribute="bottom" id="Vlu-oO-Pfb"/>
+                            <constraint firstItem="Rv0-89-wWs" firstAttribute="leading" secondItem="nA4-4A-iIJ" secondAttribute="leading" id="Wec-y3-UgA"/>
+                            <constraint firstItem="1Vs-KP-42c" firstAttribute="leading" secondItem="nA4-4A-iIJ" secondAttribute="leading" id="aEA-iP-qm6"/>
+                            <constraint firstItem="nA4-4A-iIJ" firstAttribute="trailing" secondItem="1Vs-KP-42c" secondAttribute="trailing" id="dIJ-4W-Mpb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="Rv0-89-wWs" id="pQz-Zp-BDn"/>
+                        <outlet property="titleLabel" destination="bNK-ZN-eJ0" id="toE-kq-I5i"/>
+                        <outlet property="titleView" destination="1Vs-KP-42c" id="3ch-WG-RN5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nx6-fx-f1Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.623188405797109" y="59.598214285714285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="curatorInfoThemeSubscribeBtnBack" width="10.666666984558105" height="19"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -24,14 +24,15 @@ class EndOfWritingSentenceVC: UIViewController {
     //MARK:- User Define Variables
     
     let deviceBound = UIScreen.main.bounds.height/812.0
-    
+    var nickName = "몽글이"
+    var sendingSentenceIdx : Int?
     
     //MARK:- LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setItems()
         //self.view.addSubview(yesButton)
-        imageAnimation1()
+//        imageAnimation1()
          
         // Do any additional setup after loading the view.
         
@@ -43,6 +44,8 @@ class EndOfWritingSentenceVC: UIViewController {
     //MARK:- User Define Functions
     func setItems(){
         secondLabel.text = "몽글이님의 문장으로\n몽글이 더욱 풍부해졌어요!"
+        setNickName()
+        
         secondLabel.textColor = .brownGreyTwo
         EndImageView.image = UIImage(named: "writingSentenceFinishImgSentence")?.withRenderingMode(.alwaysOriginal)
         sentenceCheckButton.backgroundColor = .softGreen
@@ -61,6 +64,32 @@ class EndOfWritingSentenceVC: UIViewController {
         
     }
     
+    
+    
+    func setNickName(){
+        MyProfileService.shared.getMy(){ networkResult in
+            
+            switch networkResult {
+            case .success(let theme):
+                guard let data = theme as? [MyProfileData] else {
+                    return
+                }
+                self.nickName = data[0].name
+                self.secondLabel.text = "\(self.nickName)님의 문장으로\n몽글이 더욱 풍부해졌어요!"
+              
+            case .requestErr(let message):
+                print(message)
+            case .pathErr:
+                
+                print("path")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+        
+    }
     
      
     func imageAnimation1(){
@@ -102,25 +131,33 @@ class EndOfWritingSentenceVC: UIViewController {
     
     
     @IBAction func sentenceCheckButtonAction(_ sender: Any) {
-//        dismiss(animated: true, completion: nil)
-//        guard let vcName = UIStoryboard(name: "SentenceInfo",
-//                                        bundle: nil).instantiateViewController(
-//                                            withIdentifier: "SentenceInfoVC")
-//            as? SentenceInfoVC
-//            else{
-//                return
-//        }
-//
-//
-//        vcName.modalPresentationStyle = .fullScreen
-//        self.present(vcName, animated: true, completion: nil)
+        guard let vcName = UIStoryboard(name: "SentenceInfo",
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "SentenceInfoVC")
+            as? SentenceInfoVC
+            else{
+                return
+        }
+        guard let nowvc = self.presentingViewController else {return}
+        print("sendSentenceIdx : \(sendingSentenceIdx)")
+        vcName.sentenceIdx = sendingSentenceIdx
+        self.dismiss(animated: true, completion: {
+            vcName.modalPresentationStyle = .fullScreen
+            nowvc.present(vcName, animated: true, completion: nil)
+        })
         
+        
+    
+        
+      
         
     }
     
     
     @IBAction func backToMainButtonAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+        
+        
         
     }
     

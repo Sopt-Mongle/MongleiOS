@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "onboarding1ImgBook.png",
+      "scale" : "1x"
+    },
+    {
+      "scale" : "2x",
+      "filename" : "onboarding1ImgBook@2x.png",
+      "idiom" : "universal"
+    },
+    {
+      "scale" : "3x",
+      "idiom" : "universal",
+      "filename" : "onboarding1ImgBook@3x.png"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

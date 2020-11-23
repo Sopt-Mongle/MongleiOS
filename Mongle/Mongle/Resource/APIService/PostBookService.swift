@@ -16,23 +16,23 @@ struct PostBookService {
     
     
     private func makeParameter(sentence : String , title : String, author : String ,
-                               publisher : String, themeIdx : Int)-> Parameters{
+                               publisher : String, thumbnail : String, themeIdx : Int)-> Parameters{
         return ["sentence" : sentence, "title" : title,"author" : author,
-                "publisher" : publisher,"themeIdx" : themeIdx]
+                "publisher" : publisher,"thumbnail" : thumbnail, "themeIdx" : themeIdx]
     }
     
     func postBook(sentence : String , title : String, author : String ,
-                publisher : String, themeIdx : Int, completion : @escaping (NetworkResult<Any>) -> Void){
+                  publisher : String, thumbnail : String, themeIdx : Int, completion : @escaping (NetworkResult<Any>) -> Void){
         let header : HTTPHeaders = ["Content-Type" : "application/json","token": UserDefaults.standard.string(forKey: UserDefaultKeys.token.rawValue)!]
         
         let dataRequest = Alamofire.request(APIConstants.postSentenceURL,
                                             method: .post,
-                                            parameters: makeParameter(sentence: sentence, title: title, author: author, publisher: publisher, themeIdx: themeIdx),
+                                            parameters: makeParameter(sentence: sentence, title: title, author: author, publisher: publisher, thumbnail : thumbnail, themeIdx: themeIdx),
                                             encoding: JSONEncoding.default,
                                             headers: header)
         
         print(["sentence" : sentence, "title" : title,"author" : author,
-        "publisher" : publisher,"themeIdx" : themeIdx])
+               "publisher" : publisher, "thumbnail" : thumbnail, "themeIdx" : themeIdx])
         dataRequest.responseData { dataResponse in
             switch dataResponse.result {
             case .success :
@@ -68,17 +68,19 @@ struct PostBookService {
     
     private func send(by data : Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<PostBookData>.self, from: data)
+        guard let decodedData = try? decoder.decode(GenericResponse<Int>.self, from: data)
             else { return .serverErr }
+//        guard let sentenceIdxData = decodedData.data else { return .requestErr(decodedData.message) }
         
-        return .success(decodedData)
+        
+        return .success(decodedData.data)
         
         
     }
     
     private func showErrorMessage(by data : Data) -> NetworkResult<Any> {
         let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<[SearchThemeData]>.self, from: data)
+        guard let decodedData = try? decoder.decode(GenericResponse<PostBookData>.self, from: data)
             else { return .pathErr }
         
         print(decodedData.message)

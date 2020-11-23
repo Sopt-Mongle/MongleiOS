@@ -12,7 +12,8 @@ struct CuratorKeywordData: Codable {
     var curatorIdx: Int
     var name: String
     var img: String?
-    var introduce, keyword: String
+    var introduce: String?
+    var keyword: String
     var keywordIdx, subscribe: Int
     var alreadySubscribed: Bool
 }

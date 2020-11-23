@@ -16,7 +16,8 @@ struct ThemeInCuratorData: Codable {
 struct CuratorTabTheme: Codable {
     var themeIdx: Int
     var theme: String
-    var themeImgIdx, saves, writerIdx, count: Int
+    var themeImgIdx, saves, writerIdx: Int
+    var count: Int
     var createdAt: String?
     var themeImg: String?
     var sentenceNum, curatorNum: Int

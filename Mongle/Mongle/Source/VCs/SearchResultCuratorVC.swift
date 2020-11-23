@@ -27,7 +27,7 @@ class SearchResultCuratorVC: UIViewController {
         setSearchCuratorData(searchKey)
         
     }
-    
+    //MARK: - Custom methods
     func setSearchCuratorData(_ searchKey: String){
         SearchCuratorService.shared.search(words:searchKey) { networkResult in
             switch networkResult {
@@ -52,8 +52,7 @@ class SearchResultCuratorVC: UIViewController {
             case .requestErr(let message):
                 
                 guard let message = message as? String else { return }
-                
-                self.showToast(text: message)
+
                 print(message)
             case .pathErr:
                 
@@ -70,6 +69,7 @@ class SearchResultCuratorVC: UIViewController {
     
     
 }
+//MARK: - UICollectionViewDelegate
 extension SearchResultCuratorVC: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
@@ -89,6 +89,7 @@ extension SearchResultCuratorVC: UICollectionViewDelegate{
         self.navigationController?.pushViewController(curatorInfoVC, animated: true)
     }
 }
+//MARK: - UICOllectionViewDataSource
 extension SearchResultCuratorVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -97,13 +98,14 @@ extension SearchResultCuratorVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CuratorListCVC", for: indexPath) as? CuratorListCVC else{ return CuratorListCVC()}
-        
+        cell.myVC = self
         cell.curatorNameLabel.text = curatorList[indexPath.item].name
         cell.subscriberNum = curatorList[indexPath.item].subscribe
         cell.curatorProfileImageView.imageFromUrl(curatorList[indexPath.item].img, defaultImgPath: "sentenceThemeOImgCurator1010")
         cell.subscribeBTN.isSelected = curatorList[indexPath.item].alreadySubscribed
         cell.curatorIdx = curatorList[indexPath.item].curatorIdx
         cell.subscriberLabel.text = "구독자 \(curatorList[indexPath.item].subscribe)명"
+        cell.curatorInfoLabel.text = curatorList[indexPath.item].keyword
         if curatorList[indexPath.item].alreadySubscribed{
             cell.subscribeBTN.backgroundColor = .veryLightPinkSeven
         }
@@ -119,7 +121,7 @@ extension SearchResultCuratorVC: UICollectionViewDataSource{
                                       value: UIColor.softGreen,
                                       range: (text as! NSString).range(of: searchKey))
         cell.curatorNameLabel.attributedText = attributedString
-        
+//        cell.setLayout()
         return cell
     }
     
@@ -127,7 +129,8 @@ extension SearchResultCuratorVC: UICollectionViewDataSource{
 }
 extension SearchResultCuratorVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 375, height: 120)
+        let devicewidth = UIScreen.main.bounds.width
+        return CGSize(width: devicewidth, height: 120)
     }
     //cell content inset 지정
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

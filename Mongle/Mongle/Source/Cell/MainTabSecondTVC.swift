@@ -15,19 +15,20 @@ class MainTabSecondTVC: UITableViewCell {
     
     var selectSentenceDelegate: ((_ viewControllers: UIViewController) -> ()) = { _ in }
     
+    let topInset:CGFloat = 21.0
+    let leadingInset: CGFloat = 16.0
+    let bottomInset: CGFloat = 38.0
+    
 //    let sentences = ["결국 봄이 언제나 찾아왔지만, 하마터면 오지않을 뻔했던 봄을 생각하면 마음이 섬찟해진다. ", "결국 봄이 언제나 찾아왔지만, 하마터면 오지않을 뻔했던 봄을 생각하면 마음이 섬찟해진다. "]
     var sentences: [TodaySentenceData] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         todaySentenceCollectionView.delegate = self
         todaySentenceCollectionView.dataSource = self
         
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-    }
-
 }
 
 extension MainTabSecondTVC: UICollectionViewDelegate {
@@ -44,6 +45,7 @@ extension MainTabSecondTVC: UICollectionViewDelegate {
 extension MainTabSecondTVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sentences.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -52,17 +54,22 @@ extension MainTabSecondTVC: UICollectionViewDataSource {
         }
         let sentence = sentences[indexPath.item]
         cell.setData(sentence: sentence.sentence, bookName: sentence.title)
+        
         return cell
     }
 }
 
 extension MainTabSecondTVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 299, height: 125)
+        return CGSize(width: collectionView.bounds.width - leadingInset - 60, height: collectionView.bounds.height - topInset - bottomInset)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 7, left: 16, bottom: 26, right: 16)
+        
+        return UIEdgeInsets(top: topInset,
+                            left: leadingInset,
+                            bottom: bottomInset,
+                            right: leadingInset)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

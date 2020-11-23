@@ -16,6 +16,11 @@ class MainTabThirdTVC: UITableViewCell {
 //    let curators = ["예슬", "주혁", "윤재", "윤재", "윤재", "윤재"]
     var curators: [MainCuratorData] = []
     var cellSelectDelegate: ((UIViewController)->Void) = { _ in }
+    
+    let topInset: CGFloat = 10
+    let horizonInset: CGFloat = 16
+    let bottomInset: CGFloat = 25
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -35,7 +40,6 @@ extension MainTabThirdTVC: UICollectionViewDelegate {
         }
         dvc.curatorIdx = curator.curatorIdx
         cellSelectDelegate(dvc)
-        
     }
 }
 
@@ -49,7 +53,10 @@ extension MainTabThirdTVC: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         let curator = self.curators[indexPath.item]
-        cell.setData(imgUrl: curator.img ?? "themeImgCurator", name: curator.name, tag: curator.keyword ?? " ")
+        
+        cell.setData(imgUrl: curator.img ?? "themeImgCurator",
+                     name: curator.name,
+                     tag: curator.keyword ?? " ")
         return cell
     }
 
@@ -58,11 +65,19 @@ extension MainTabThirdTVC: UICollectionViewDataSource {
 extension MainTabThirdTVC: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 96, height: 135)
+        let width = (collectionView.bounds.width - horizonInset) / 4
+        let height = collectionView.bounds.height - topInset - bottomInset
+        
+        return CGSize(width:  width,
+                      height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
+        
+        return UIEdgeInsets(top: topInset,
+                            left: horizonInset,
+                            bottom: bottomInset,
+                            right: horizonInset)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

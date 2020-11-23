@@ -28,19 +28,17 @@ class SentenceInfoTVC: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         sentenceLabel.text = sentence ?? ""
         self.curatorProfileImageView.makeRounded(cornerRadius: self.curatorProfileImageView.frame.width / 2)
         
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-    }
-    
     
     @IBAction func touchUpEditButton(sender: UIButton) {
         
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         self.editButtonDelegate(actionSheet)
+        
     }
     
     func setSentenceData(sentence: String,
@@ -57,8 +55,8 @@ class SentenceInfoTVC: UITableViewCell {
         self.bookNameLabel.text = bookName
         self.bookWriterNameLabel.text = writerName
         self.bookPublisherNameLabel.text = publisherName
-//        self.bookImageView.imageFromUrl(bookImageUrl, defaultImgPath: "themeWritingSentenceBook4ImgBook")
-        self.bookImageView.image = UIImage(named: "themeWritingSentenceBook4ImgBook")
+//        self.bookImageView.image = UIImage(named: "themeWritingSentenceBook4ImgBook")
+        self.bookImageView.imageFromUrl(bookImageUrl, defaultImgPath: "themeWritingSentenceBook4ImgBook")
     }
 }
 

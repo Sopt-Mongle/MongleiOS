@@ -60,7 +60,7 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
     var authorForPost : String = ""
     var publisherForPost : String = ""
     var themeNameForPost : String = ""
-    
+    var thumNailForPost : String = ""
     var themeIdxForPost : Int = 0
     
     //MARK:- LifeCycle Methods
@@ -280,18 +280,22 @@ class ThirdViewOfWritingSentenceVC: UIViewController {
     
     
     func postSentence(){
-        PostBookService.shared.postBook(sentence: sentenceForPost  , title: bookForPost, author: authorForPost, publisher: publisherForPost, themeIdx: themeIdxForPost) { networkResult in
+        PostBookService.shared.postBook(sentence: sentenceForPost  , title: bookForPost, author: authorForPost, publisher: publisherForPost, thumbnail: thumNailForPost, themeIdx: themeIdxForPost) { networkResult in
             switch networkResult{
-            case .success(_) :
+            case .success(let data) :
                 
-                
+               
                 guard let vcName = UIStoryboard(name: "EndOfWritingSentence",
                                                 bundle: nil).instantiateViewController(
                                                     withIdentifier: "EndOfWritingSentenceVC")
+                        
                     as? EndOfWritingSentenceVC
                     else{
                         return
                 }
+                vcName.sendingSentenceIdx = data as? Int
+                print("sentence Idx : \(data)")
+                
                 vcName.modalPresentationStyle = .currentContext
                 self.navigationController?.pushViewController(vcName, animated: true)
             case .requestErr(let message):

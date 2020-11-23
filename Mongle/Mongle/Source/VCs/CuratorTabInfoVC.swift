@@ -10,6 +10,8 @@ import UIKit
 
 class CuratorTabInfoVC: UIViewController {
     
+    let token = UserDefaults.standard.string(forKey: "token")
+    
     var pageInstance : CuratorTabInfoPageVC?
     var observingList: [NSKeyValueObservation] = []
     var curatorIdx = -1
@@ -26,12 +28,19 @@ class CuratorTabInfoVC: UIViewController {
     @IBOutlet weak var curatorMsgLabel: UILabel!
     @IBOutlet weak var subscribeBTN: UIButton!
     @IBOutlet weak var themeMenuLabel: UILabel!
+    @IBOutlet weak var themeMenuText: UILabel!
+    @IBOutlet weak var sentenceMenuText: UILabel!
     @IBOutlet weak var sentenceMenuLabel: UILabel!
     @IBOutlet weak var themeMenuBTN: UIButton!
     @IBOutlet weak var sentenceMenuBTN: UIButton!
     
     @IBAction func touchUpSubscribe(_ sender: Any) {
-        follow(idx: curatorIdx)
+        if token == "guest"{
+            self.presentLoginRequestPopUp()
+        }
+        else{
+            follow(idx: curatorIdx)
+        }
       
     }
     @IBAction func touchUpBack(_ sender: Any) {
@@ -42,8 +51,10 @@ class CuratorTabInfoVC: UIViewController {
         pageInstance?.keyValue.curPresentViewIndex = 0
         themeMenuBTN.setTitleColor(.softGreen, for: .normal)
         themeMenuLabel.textColor = .softGreen
+        themeMenuText.textColor = .softGreen
         sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
         sentenceMenuLabel.textColor = .veryLightPink
+        sentenceMenuText.textColor = .veryLightPink
     }
     
     @IBAction func touchUpSentence(_ sender: Any) {
@@ -51,8 +62,10 @@ class CuratorTabInfoVC: UIViewController {
         pageInstance?.keyValue.curPresentViewIndex = 1
         themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
         themeMenuLabel.textColor = .veryLightPink
+        themeMenuText.textColor = .veryLightPink
         sentenceMenuBTN.setTitleColor(.softGreen, for: .normal)
         sentenceMenuLabel.textColor = .softGreen
+        sentenceMenuText.textColor = .softGreen
     }
     
     //MARK:- LifeCycle Methods
@@ -64,8 +77,10 @@ class CuratorTabInfoVC: UIViewController {
         subscribeBTN.setTitle("구독",for: .normal)
         subscribeBTN.setTitleColor(.white, for: .normal)
         curatorImageView.contentMode = .scaleAspectFill
-        
-        
+        setMenu()
+        themeMenuBTN.isSelected = true
+        themeMenuText.textColor = .softGreen
+        sentenceMenuText.textColor = .veryLightPink
     }
     override func viewWillAppear(_ animated: Bool){
         getCuratorData()
@@ -86,7 +101,6 @@ class CuratorTabInfoVC: UIViewController {
                 self.curatorData = data
                 self.themeNum = data.theme.count
                 self.sentenceNum = data.sentence.count
-                print("herere")
                 self.curatorProfileData = data.profile
                 self.curatorNameLabel.text = self.curatorProfileData[0].name
                 self.curatorImageView.imageFromUrl(self.curatorProfileData[0].img, defaultImgPath: "sentenceThemeOImgCurator1010")
@@ -140,19 +154,23 @@ class CuratorTabInfoVC: UIViewController {
                             
                             if (changeObject.curPresentViewIndex == 0){
                                 UIView.animate(withDuration: 0.3){
-                                    self!.themeMenuBTN.setTitleColor(.softGreen, for: .normal)
+                                    self!.themeMenuBTN.isSelected = true
                                     self!.themeMenuLabel.textColor = .softGreen
-                                    self!.sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                                    self!.sentenceMenuBTN.isSelected = false
                                     self!.sentenceMenuLabel.textColor = .veryLightPink
+                                    self!.themeMenuText.textColor = .softGreen
+                                    self!.sentenceMenuText.textColor = .veryLightPink
                                     
                                 }
                             }
                             else{
                                 UIView.animate(withDuration: 0.3){
-                                    self!.themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-                                    self!.themeMenuLabel.textColor = .veryLightPink
-                                    self!.sentenceMenuBTN.setTitleColor(.softGreen, for: .normal)
+                                    self!.sentenceMenuBTN.isSelected = true
                                     self!.sentenceMenuLabel.textColor = .softGreen
+                                    self!.themeMenuBTN.isSelected = false
+                                    self!.themeMenuLabel.textColor = .veryLightPink
+                                    self!.themeMenuText.textColor = .veryLightPink
+                                    self!.sentenceMenuText.textColor = .softGreen
                                 }
                             }
                             
@@ -177,15 +195,17 @@ class CuratorTabInfoVC: UIViewController {
         }
     }
     func setMenu(){
+        curatorNameLabel.textColor = .greyishBrown
         curatorKeywordLabel.textColor = .brownGreyThree
         curatorMsgLabel.textColor = .veryLightPink
         themeMenuLabel.textColor = .softGreen
         sentenceMenuLabel.textColor = .veryLightPink
         themeMenuLabel.text = "\(self.themeNum)"
         sentenceMenuLabel.text = "\(self.sentenceNum)"
-        themeMenuBTN.setTitleColor(.softGreen, for: .normal)
+        themeMenuBTN.setTitleColor(.softGreen, for: .selected)
+        themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
         sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-        
+        sentenceMenuBTN.setTitleColor(.softGreen, for: .selected)
         
     }
     
