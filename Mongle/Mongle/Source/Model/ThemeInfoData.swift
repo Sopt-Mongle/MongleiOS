@@ -26,6 +26,16 @@ struct Sentence: Codable {
     var alreadyLiked, alreadyBookmarked: Bool
 }
 
+struct OtherSentence: Codable {
+    var sentenceIdx: Int?
+    var sentence: String
+    var likes, saves: Int
+    var writer, writerImg, title, author: String?
+    var publisher: String
+    var thumbnail: String?
+    var timestamp: String
+}
+
 //// MARK: - Theme
 struct Theme: Codable {
     var themeIdx: Int?

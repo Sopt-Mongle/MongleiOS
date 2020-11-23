@@ -55,7 +55,7 @@ extension MainTabFourthTVC: UICollectionViewDelegate {
 
 extension MainTabFourthTVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.themas.count
+        return self.themas.count > 10 ? 10 : self.themas.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

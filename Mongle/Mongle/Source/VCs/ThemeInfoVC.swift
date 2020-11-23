@@ -31,7 +31,8 @@ class ThemeInfoVC: UIViewController {
     @IBOutlet var themeImageView: UIImageView!
     @IBOutlet var bottomBackgroundView: UIView!
     @IBOutlet var sentencesBackGroudViewBottomConstraint: NSLayoutConstraint!
-    
+
+    @IBOutlet var buttonSpaceConstraint: NSLayoutConstraint!
     @IBOutlet var saveButton: UIButton!
     @IBOutlet var backButton: UIButton!
     //MARK:- Property
@@ -51,6 +52,7 @@ class ThemeInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setInitLayout()
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +61,14 @@ class ThemeInfoVC: UIViewController {
     
     func setInitLayout(){
         themeBackgroundView.backgroundColor = .clear
+        if UIScreen.main.bounds.width > 400 {
+            buttonSpaceConstraint.constant = UIScreen.main.bounds.width * 5 / 100
+        }
+        else {
+            buttonSpaceConstraint.constant = UIScreen.main.bounds.width * 3.5 / 100
+        }
+        
+        
         
 //        if hasTheme {
 //            
@@ -158,7 +168,7 @@ class ThemeInfoVC: UIViewController {
     
     func updateLayout(){
         self.themeNameLabel.text = self.themeData?.theme
-        self.themeImageView.imageFromUrl(self.themeData?.themeImg, defaultImgPath: "themeWritingThemeXSentenceBg")
+        self.themeImageView.imageFromUrl(self.themeData?.themeImg, defaultImgPath: "")
         self.curatorNameLabel.text = self.themeData?.writer
         self.curatorProfileImageView.imageFromUrl(self.themeData?.writerImg, defaultImgPath: "themeImgCurator")
         self.sentenceCountLabel.text = "\(self.themeData?.sentenceNum ?? 0)"
@@ -185,7 +195,6 @@ class ThemeInfoVC: UIViewController {
             case .networkFail:
                 self.showToast(text: "networkFail")
             }
-            
         }
     }
     func getMySaveTheme(completion: @escaping (Bool, [Int]) -> ()) {
@@ -294,7 +303,7 @@ class ThemeInfoVC: UIViewController {
                     self.bookmarkCountLabel.text = "\(_data.saves)"
                     
                     if _data.isSave {
-                        self.showToast(text: "테마가 저장되었습니다!")
+                        self.showToast(text: "테마가 저장되었어요!")
                     }
                     else {
 //                        self.showToast(text: "북마크 해제")

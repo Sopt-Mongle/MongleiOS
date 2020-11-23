@@ -14,6 +14,7 @@ class MainTabMainVC: UIViewController {
     @IBOutlet var layoutTableView: UITableView! {
         didSet {
             layoutTableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.1))
+            layoutTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
         }
     }
     @IBOutlet var shadowView: UIView!
@@ -72,12 +73,8 @@ class MainTabMainVC: UIViewController {
                         print("network")
                         
                     }
-                    
-                    
                 }
             }
-            
-            
         }
 
     }
@@ -152,13 +149,14 @@ class MainTabMainVC: UIViewController {
                     }
                 }
             case .requestErr(let msg):
-                self.showToast(text: msg as? String ?? "")
+//                self.showToast(text: msg as? String ?? "")
+                print(msg as? String ?? "")
             case .pathErr:
-                break
+                print("pathErr")
             case .serverErr:
-                break
+                print("serverErr")
             case .networkFail:
-                break
+                print("networkFail")
             }
         }
     }
@@ -183,6 +181,7 @@ class MainTabMainVC: UIViewController {
             }
         }
     }
+    
     @IBAction func searchButton(_ sender: Any) {
         if let tabBar = self.tabBarController as? UnderTabBarController {
             if let searchVC = tabBar.viewControllers![1] as? SearchTabMainVC {
