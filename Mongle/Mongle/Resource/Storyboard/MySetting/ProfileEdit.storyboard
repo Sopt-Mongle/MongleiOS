@@ -244,7 +244,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="346"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="30자 이내로 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="exK-iG-EqL">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="30자 이내로 입력해주세요." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="exK-iG-EqL">
                                                     <rect key="frame" x="16" y="64" width="343" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="exK-iG-EqL" secondAttribute="height" multiplier="343:45" id="OPR-dH-Z92"/>
