@@ -476,11 +476,11 @@ extension UnderTabBarController: UITabBarControllerDelegate {
                 vc.prevIdx = self.curIndex
             }
         }
-        else if tabBarController.selectedIndex == 4{
-            if let vc = viewController as? MyTabVC{
-                vc.viewDidLoad()
-            }
-        }
+//        else if tabBarController.selectedIndex == 4{
+//            if let vc = viewController as? MyTabVC{
+//                vc.viewDidLoad()
+//            }
+//        }
             
         else {
             self.curIndex = tabBarController.selectedIndex
@@ -488,7 +488,7 @@ extension UnderTabBarController: UITabBarControllerDelegate {
     }
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if tabBarController.viewControllers?[4] == viewController{
-            if token == "guest"{
+            if UserDefaults.standard.string(forKey: "token") == "guest"{
                 self.presentLoginRequestPopUp()
                 return false
             }
