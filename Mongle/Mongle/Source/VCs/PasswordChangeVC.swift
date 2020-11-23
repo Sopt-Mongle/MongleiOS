@@ -67,6 +67,9 @@ class PasswordChangeVC: UIViewController {
         self.newPasswordTextField.delegate = self
         self.newPasswordCheckTextField.delegate = self
         registerForKeyboardNotifications()
+        self.nowPasswordTextField.addTarget(self, action: #selector(textFieldDidChange(sender:)), for: .editingChanged)
+        self.newPasswordTextField.addTarget(self, action: #selector(textFieldDidChange(sender:)), for: .editingChanged)
+        self.newPasswordCheckTextField.addTarget(self, action: #selector(textFieldDidChange(sender:)), for: .editingChanged)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -103,6 +106,8 @@ class PasswordChangeVC: UIViewController {
                 nowWarningLabel.text = "현재 비밀번호를 입력해주세요!"
             case .rule:
                 nowWarningLabel.text = "영문+숫자 최소 8자리 이상 입력해주세요!"
+            default:
+                nowWarningLabel.text = ""
         }
         nowWarningImage.alpha = 1
         nowWarningLabel.alpha = 1
@@ -115,7 +120,10 @@ class PasswordChangeVC: UIViewController {
             case .match:
                 newWarningLabel.text = "비밀번호가 일치하지 않아요!"
             case .empty:
+                newWarningLabel.text = "새 비밀번호를 입력해주세요!"
+            case .newempty:
                 newWarningLabel.text = "새 비밀번호를 한 번 더 입력해주세요!"
+            
         }
         newWarningImage.image = UIImage(named:"warning")
         newWarningLabel.textColor = .reddish
@@ -282,6 +290,52 @@ class PasswordChangeVC: UIViewController {
         }
 
     }
+    @objc func textFieldDidChange(sender:UITextField) {
+            if let text = sender.text {
+                if sender == nowPasswordTextField{
+                    
+                    if text == ""{
+                        setNowComplete()
+                    }
+                    else if text.isValidPassword() == false{
+                        setNowWarning(.rule)
+                    }
+                    else if text.isValidPassword() == true{
+                        setNowComplete()
+                    }
+                }
+                //새 비밀번호
+                else if sender == newPasswordTextField{
+                    if text == ""{
+                        setNewComplete()
+                    }
+                    else if text.isValidPassword() == false{
+                        setNewWarning(.rule)
+                    }
+                    else if text.isValidPassword() == true{
+                        sender.setBorder(borderColor: .softGreen, borderWidth: 1)
+                        setNewComplete()
+                    }
+                }
+                //새 비밀번호 확인
+                else if sender == newPasswordCheckTextField{
+                    if text != self.newPasswordTextField.text {
+                        sender.setBorder(borderColor: .reddish, borderWidth: 1)
+                        if text != ""{
+                            setNewWarning(.match)
+                        }
+                        else{
+                            setNewWarning(.newempty)
+                        }
+                    }
+                    else if text == self.newPasswordTextField.text{
+                        sender.setBorder(borderColor: .softGreen, borderWidth: 1)
+                        setNewOkay()
+                    }
+                }
+            }
+                
+    }
     
     // MARK: - IBActions
     
@@ -320,8 +374,6 @@ class PasswordChangeVC: UIViewController {
                         self.showToast(text: "네트워크 실패")
                     }
             
-                
-            
             }
             
         }
@@ -329,25 +381,29 @@ class PasswordChangeVC: UIViewController {
     
 }
 
+//MARK: - UITextFieldDelegate
+
 extension PasswordChangeVC: UITextFieldDelegate{
+    //입력시작
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        //현재 비밀번호
-        if textField == nowPasswordTextField{
-            textField.setBorder(borderColor: .softGreen, borderWidth: 1)
-        }
+        textField.setBorder(borderColor: .softGreen, borderWidth: 1)
         //새 비밀번호
+        if textField == nowPasswordTextField{
+            setNowComplete()
+        }
         else if textField == newPasswordTextField{
-            textField.setBorder(borderColor: .softGreen, borderWidth: 1)
+            //새 비밀번호 확인 초기화 시키고 회색 border
+            setNewComplete()
             newPasswordCheckTextField.text = ""
             newPasswordCheckTextField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1)
         }
-        //새 비밀번호 확인
         else{
-            textField.setBorder(borderColor: .softGreen, borderWidth: 1)
+            setNewComplete()
         }
-        
     }
+    //입력완료
     func textFieldDidEndEditing(_ textField: UITextField) {
+        //현재 비밀번호
         if textField == nowPasswordTextField{
             if textField.text == ""{
                 textField.setBorder(borderColor: .reddish, borderWidth: 1)
@@ -362,83 +418,111 @@ extension PasswordChangeVC: UITextFieldDelegate{
                 setNowComplete()
             }
         }
+        //새 비밀번호
         else if textField == newPasswordTextField{
+            //빈칸
             if textField.text == ""{
                 textField.setBorder(borderColor: .reddish, borderWidth: 1)
                 setNewWarning(.empty)
             }
+            //규칙 위반
             else if textField.text?.isValidPassword() == false{
                 textField.setBorder(borderColor: .reddish, borderWidth: 1)
                 setNewWarning(.rule)
             }
+            //정상
             else{
                 textField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1)
-                setNewComplete()
-            }
-        }
-        else{
-            if textField.text == ""{
-                textField.setBorder(borderColor: .reddish, borderWidth: 1)
-                setNewWarning(.empty)
-            }
-            else if newPasswordTextField.text?.isValidPassword() == false{
-                newPasswordTextField.setBorder(borderColor: .reddish, borderWidth: 1)
-                setNewWarning(.rule)
-            }
-            else if textField.text != newPasswordTextField.text{
-                textField.setBorder(borderColor: .reddish, borderWidth: 1)
-                setNewWarning(.match)
-            }
-            else{
-                textField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1)
-                setNewComplete()
-            }
-        }
-    }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        let temp: String = (textField.text ?? "" ) + string
-        var idx = 0
-        if temp.count-range.length-1>=0{
-            idx = temp.count-range.length-1
-        }
-        else{
-            idx = 0
-        }
-        let strIndex = temp.index(temp.startIndex,offsetBy: idx)
-        let subStr = temp[temp.startIndex...strIndex]
-        let str = String(subStr)
-        //현재 비밀번호
-        if textField == nowPasswordTextField{
-            if str.isValidPassword() == false{
-                setNowWarning(.rule)
-            }
-            else if str.isValidPassword() == true{
-                setNowComplete()
-            }
-        }
-        //새 비밀번호
-        else if textField == newPasswordTextField{
-            if str.isValidPassword() == false{
-                textField.setBorder(borderColor: .reddish, borderWidth: 1)
-                setNewWarning(.rule)
-            }
-            else if str.isValidPassword() == true{
-                textField.setBorder(borderColor: .softGreen, borderWidth: 1)
                 setNewComplete()
             }
         }
         //새 비밀번호 확인
-        else if textField == newPasswordCheckTextField{
-            if str != self.newPasswordTextField.text{
-                textField.setBorder(borderColor: .reddish, borderWidth: 1)
-                setNewWarning(.match)
+        else{
+            //새 비밀번호 빈칸
+            if newPasswordTextField.text == ""{
+                setNewWarning(.empty)
+                newPasswordTextField.setBorder(borderColor: .reddish, borderWidth: 1)
+                newPasswordCheckTextField.setBorder(borderColor: .reddish, borderWidth: 1)
+                
             }
-            else if str == self.newPasswordTextField.text{
-                textField.setBorder(borderColor: .softGreen, borderWidth: 1)
-                setNewOkay()
+            //새 비밀번호 정상
+            else if newPasswordTextField.text?.isValidPassword() == true{
+                //새 비밀번호 확인 빈칸
+                if textField.text == ""{
+                    setNewWarning(.newempty)
+                }
+                //모두 일치
+                else{
+                    setNewComplete()
+                    newPasswordCheckTextField.setBorder(borderColor:.veryLightPinkFive, borderWidth: 1)
+                }
+        
+            }
+            //새 비밀번호 안 정상
+            else{
+                newPasswordTextField.setBorder(borderColor: .reddish, borderWidth: 1)
+                setNewWarning(.rule)
             }
         }
+    }
+    //입력중
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+//        let temp: String = (textField.text ?? "" ) + string
+//        var idx = 0
+//        if temp.count-range.length-1>=0{
+//            idx = temp.count-range.length-1
+//        }
+//        else{
+//            idx = 0
+//        }
+//        let strIndex = temp.index(temp.startIndex,offsetBy: idx)
+//        let subStr = temp[temp.startIndex...strIndex]
+//        //실제 입력값
+//        let str = String(subStr)
+//        //현재 비밀번호
+//        if textField == nowPasswordTextField{
+//            
+//            if str == ""{
+//                setNowComplete()
+//            }
+//            else if str.isValidPassword() == false{
+//                setNowWarning(.rule)
+//            }
+//            else if str.isValidPassword() == true{
+//                setNowComplete()
+//            }
+//        }
+//        //새 비밀번호
+//        else if textField == newPasswordTextField{
+//            print("\(str) 실제 입력")
+//            if str == ""{
+//                setNewComplete()
+//            }
+//            else if str.isValidPassword() == false{
+//                setNewWarning(.rule)
+//            }
+//            else if str.isValidPassword() == true{
+//                textField.setBorder(borderColor: .softGreen, borderWidth: 1)
+//                setNewComplete()
+//            }
+//        }
+//        //새 비밀번호 확인
+//        else if textField == newPasswordCheckTextField{
+//            if str != self.newPasswordTextField.text {
+//                textField.setBorder(borderColor: .reddish, borderWidth: 1)
+//                if str != ""{
+//                    setNewWarning(.match)
+//                }
+//                else{
+//                    setNewWarning(.newempty)
+//                }
+//            }
+//            else if str == self.newPasswordTextField.text{
+//                textField.setBorder(borderColor: .softGreen, borderWidth: 1)
+//                setNewOkay()
+//            }
+//        }
         return true
     }
     
@@ -446,15 +530,5 @@ extension PasswordChangeVC: UITextFieldDelegate{
 }
 
 enum WarningState{
-    case rule, match,empty
+    case rule, match,empty, newempty
 }
-
-extension UINavigationController{
-    func popToRootViewController(animated: Bool = true, completion: @escaping () -> Void) {
-        CATransaction.begin()
-        CATransaction.setCompletionBlock(completion)
-        popToRootViewController(animated: animated)
-        CATransaction.commit()
-    }
-}
-
