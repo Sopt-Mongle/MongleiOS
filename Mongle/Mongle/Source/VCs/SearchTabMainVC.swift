@@ -20,45 +20,6 @@ class SearchTabMainVC: UIViewController{
     @IBOutlet weak var recommendSearchCV: UICollectionView!
     @IBOutlet weak var searchBTN: UIButton!
     
-    // MARK:- IBAction
-    @IBAction func touchUpSearchBTN(_ sender: Any) {
-        //searchKey = searchTextField.text
-        if searchTextField.hasText{
-            searchKey = searchTextField.text ?? ""
-            if recentKeyArray.contains(searchKey!){
-                let length = recentKeyArray.count
-                for idx in 0..<length {
-                    if recentKeyArray[idx] == searchKey{
-                        recentKeyArray.remove(at:idx)
-                        break
-                    }
-                }
-            }
-            recentKeyArray.insert(searchKey!,at: 0)
-            recentSearchCV.reloadData()
-            
-        }
-        
-        searchTextField.text = ""
-        
-        let sb = UIStoryboard.init(name: "SearchTabResult", bundle: nil)
-        if let dvc = sb.instantiateViewController(identifier: "searchTabResultVC") as? SearchTabResultVC {
-            dvc.searchKeyword = self.searchKey ?? "실패"
-//            dvc.hidesBottomBarWhenPushed = false
-            self.navigationController?.pushViewController(dvc, animated: true)
-        }
-        
-        
-    }
-    @IBAction func touchUpBack(_ sender: Any) {
-//        self.navigationController?.popViewController(animated: true)
-//        self.showToast(text: "뒤로가기")
-        self.tabBarController?.selectedIndex = prevIdx!
-    }
-    @IBAction func removeSearchHistoryBTN(_ sender: Any) {
-        deleteRecentSearch()
-    }
-    
     // MARK:- LifeCycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +31,8 @@ class SearchTabMainVC: UIViewController{
         
         initGestureRecognizer()
         setCollctionViewLayout()
-        self.hidesBottomBarWhenPushed = false
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.hidesBottomBarWhenPushed = false
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -216,6 +178,46 @@ class SearchTabMainVC: UIViewController{
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    // MARK:- IBAction
+    @IBAction func touchUpSearchBTN(_ sender: Any) {
+        //searchKey = searchTextField.text
+        if searchTextField.hasText{
+            searchKey = searchTextField.text ?? ""
+            if recentKeyArray.contains(searchKey!){
+                let length = recentKeyArray.count
+                for idx in 0..<length {
+                    if recentKeyArray[idx] == searchKey{
+                        recentKeyArray.remove(at:idx)
+                        break
+                    }
+                }
+            }
+            recentKeyArray.insert(searchKey!,at: 0)
+            recentSearchCV.reloadData()
+            
+        }
+        
+        searchTextField.text = ""
+        
+        let sb = UIStoryboard.init(name: "SearchTabResult", bundle: nil)
+        if let dvc = sb.instantiateViewController(identifier: "searchTabResultVC") as? SearchTabResultVC {
+            dvc.searchKeyword = self.searchKey ?? "실패"
+//            dvc.hidesBottomBarWhenPushed = false
+            self.navigationController?.pushViewController(dvc, animated: true)
+        }
+        
+        
+    }
+    @IBAction func touchUpBack(_ sender: Any) {
+//        self.navigationController?.popViewController(animated: true)
+//        self.showToast(text: "뒤로가기")
+        self.tabBarController?.selectedIndex = prevIdx!
+    }
+    @IBAction func removeSearchHistoryBTN(_ sender: Any) {
+        deleteRecentSearch()
+    }
+    
 }
 
 extension SearchTabMainVC : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate{
