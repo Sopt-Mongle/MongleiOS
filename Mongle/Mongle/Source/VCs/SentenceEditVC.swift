@@ -168,6 +168,7 @@ extension SentenceEditVC: UITextViewDelegate {
     }
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        textView.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         if textView.text.count > 280 {
             return false
         }

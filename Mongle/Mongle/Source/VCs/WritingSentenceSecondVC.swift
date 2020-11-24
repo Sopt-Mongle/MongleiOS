@@ -88,7 +88,7 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         setWarning()
         searchTextButton.makeRounded(cornerRadius: 10)
         
-        buttonImageView.image = UIImage(named: "themeWritingSentenceBookBtnBookSearch")
+        buttonImageView.image = UIImage(named: "writingSentenceBookBtnBookSearch")
         authorTextField.backgroundColor = .whiteThree
         publisherTextField.backgroundColor = .whiteThree
         bookTitleLabel.text = "책 제목을 검색해주세요."
@@ -291,7 +291,7 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         warningImageView.alpha = 1
         labelConstraint.constant = 68
         searchTextButton.setBorder(borderColor: .reddish, borderWidth: 1.0)
-        
+        buttonImageView.image = UIImage(named: "writingSentenceBookErrorBtnBookSearch")
         
     }
     func hideWarning(){
@@ -299,6 +299,7 @@ class WritingSentenceSecondVC: UIViewController, BookSearchDataDelegate  {
         warningImageView.alpha = 0
         labelConstraint.constant = 43
         searchTextButton.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1.0)
+        buttonImageView.image = UIImage(named: "writingSentenceBookBtnBookSearch")
     }
     
     

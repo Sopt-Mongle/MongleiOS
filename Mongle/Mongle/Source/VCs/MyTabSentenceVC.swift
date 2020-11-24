@@ -224,6 +224,7 @@ extension MyTabSentenceVC: UITableViewDataSource{
                     guard let dvc = UIStoryboard.init(name: "SentenceEdit", bundle: nil).instantiateViewController(identifier: "SentenceEditVC") as? SentenceEditVC else {
                         return
                     }
+                    dvc.sentenceIdx = self?.mySentenceWrite[indexPath.row].sentenceIdx
                     dvc.text = self?.mySentenceWrite[indexPath.row].sentence
                     self?.navigationController?.pushViewController(dvc, animated: true)
                 }.then {

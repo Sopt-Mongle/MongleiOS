@@ -415,7 +415,7 @@ class SentenceInfoVC: UIViewController {
         guard let dvc = UIStoryboard(name: "ThemeInfo", bundle: nil).instantiateViewController(identifier: "ThemeInfoVC") as? ThemeInfoVC else {
             return
         }
-        dvc.themeIdx = self.themeIdx
+        dvc.themeIdx = self.sentence?.themeIdx
         
         self.navigationController?.pushViewController(dvc, animated: true)
     }
