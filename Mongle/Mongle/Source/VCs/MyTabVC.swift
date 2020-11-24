@@ -80,6 +80,7 @@ class MyTabVC: UIViewController,UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setMenu()
+        self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![0])!], direction: .forward, animated: false, completion: nil)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -105,7 +106,7 @@ class MyTabVC: UIViewController,UIGestureRecognizerDelegate {
             setMyTheme()
             setMySentence()
             setMyCurator()
-            self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![0])!], direction: .forward, animated: false, completion: nil)
+            
         }
     }
     
