@@ -239,8 +239,8 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         
         passWordTextField.disableAutoFill()
         passWordTextField2.disableAutoFill()
-        
-        
+
+
         
     }
     
