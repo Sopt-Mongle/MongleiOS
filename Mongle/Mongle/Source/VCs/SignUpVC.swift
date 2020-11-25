@@ -237,6 +237,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         nickNameNoticeLabel.textColor = .brownGreyThree
         mustLabel.textColor = .brownGreyThree
         
+        passWordTextField.disableAutoFill()
+        passWordTextField2.disableAutoFill()
+        
         
         
     }
