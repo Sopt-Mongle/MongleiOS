@@ -84,12 +84,12 @@
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTy-EP-c5T">
-                                <rect key="frame" x="340" y="52" width="19" height="19"/>
+                                <rect key="frame" x="325" y="38" width="48" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="19" id="i4B-77-tMw"/>
-                                    <constraint firstAttribute="width" constant="19" id="wLw-ql-mhJ"/>
+                                    <constraint firstAttribute="height" constant="48" id="i4B-77-tMw"/>
+                                    <constraint firstAttribute="width" constant="48" id="wLw-ql-mhJ"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="myThemeBookmarkBtnSettings"/>
+                                <state key="normal" image="myThemeBookmarkBtnSettings"/>
                                 <connections>
                                     <action selector="touchUpSetting:" destination="oSh-gn-Ay9" eventType="touchUpInside" id="laJ-eC-nxm"/>
                                 </connections>
@@ -182,7 +182,7 @@
                             <constraint firstItem="eFb-IT-nP6" firstAttribute="height" secondItem="aBs-7v-BM8" secondAttribute="height" multiplier="0.546875" id="Hzj-ah-CO3"/>
                             <constraint firstItem="aBs-7v-BM8" firstAttribute="centerX" secondItem="VVZ-gQ-26j" secondAttribute="centerX" id="NP2-jr-Kac"/>
                             <constraint firstItem="VVZ-gQ-26j" firstAttribute="trailing" secondItem="0wg-Zw-UpZ" secondAttribute="trailing" constant="22" id="NzI-G5-pHw"/>
-                            <constraint firstItem="dTy-EP-c5T" firstAttribute="top" secondItem="VVZ-gQ-26j" secondAttribute="top" constant="8" id="OzG-hg-z7A"/>
+                            <constraint firstItem="dTy-EP-c5T" firstAttribute="top" secondItem="VVZ-gQ-26j" secondAttribute="top" constant="-6" id="OzG-hg-z7A"/>
                             <constraint firstItem="9wG-96-SnT" firstAttribute="leading" secondItem="aBs-7v-BM8" secondAttribute="trailing" constant="3" id="RWY-yk-M1P"/>
                             <constraint firstItem="R2b-Rg-dIX" firstAttribute="leading" secondItem="VVZ-gQ-26j" secondAttribute="leading" id="Tlv-jw-LKR"/>
                             <constraint firstItem="orb-68-jlb" firstAttribute="leading" secondItem="VVZ-gQ-26j" secondAttribute="leading" id="UJe-29-BdZ"/>
@@ -198,7 +198,7 @@
                             <constraint firstItem="dgA-1M-q7f" firstAttribute="top" secondItem="woz-kH-sJl" secondAttribute="bottom" constant="18" id="gKX-6l-pWh"/>
                             <constraint firstItem="orb-68-jlb" firstAttribute="top" secondItem="BXR-q0-VGI" secondAttribute="bottom" id="hoI-Ga-Ng7"/>
                             <constraint firstItem="VVZ-gQ-26j" firstAttribute="bottom" secondItem="orb-68-jlb" secondAttribute="bottom" id="jMn-Il-OPn"/>
-                            <constraint firstItem="VVZ-gQ-26j" firstAttribute="trailing" secondItem="dTy-EP-c5T" secondAttribute="trailing" constant="16" id="l85-x8-L5r"/>
+                            <constraint firstItem="VVZ-gQ-26j" firstAttribute="trailing" secondItem="dTy-EP-c5T" secondAttribute="trailing" constant="2" id="l85-x8-L5r"/>
                             <constraint firstItem="XD9-9e-mhW" firstAttribute="centerX" secondItem="VVZ-gQ-26j" secondAttribute="centerX" id="m1h-Dr-bxQ"/>
                             <constraint firstItem="aBs-7v-BM8" firstAttribute="bottom" secondItem="orb-68-jlb" secondAttribute="top" id="qGu-fi-0Qy"/>
                             <constraint firstItem="dgA-1M-q7f" firstAttribute="centerX" secondItem="0wg-Zw-UpZ" secondAttribute="centerX" id="rF3-VT-cXY"/>
@@ -326,10 +326,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchResultSentenceTVC" id="seG-tn-jv4" customClass="SearchResultSentenceTVC" customModule="Mongle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="148.33333587646484" width="375" height="121.66666412353516"/>
+                                        <rect key="frame" x="0.0" y="148.33333587646484" width="375" height="120.66666412353516"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="seG-tn-jv4" id="RNw-tD-tyf">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="121.66666412353516"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120.66666412353516"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcV-0r-6QI">
@@ -351,7 +351,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="maX-5S-sW2">
-                                                    <rect key="frame" x="33" y="88" width="31" height="15.666666666666671"/>
+                                                    <rect key="frame" x="33" y="88" width="31" height="14.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
