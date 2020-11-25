@@ -84,7 +84,7 @@ class CuratorTabInfoVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool){
         getCuratorData()
-        
+        setObserving()
         self.curatorImageView.makeRounded(cornerRadius: self.curatorImageView.frame.width/2)
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -114,7 +114,8 @@ class CuratorTabInfoVC: UIViewController {
                     self.subscribeBTN.backgroundColor = .softGreen
                 }
                 DispatchQueue.main.async{
-                    self.setMenu()
+                    self.themeMenuLabel.text = "\(self.themeNum)"
+                    self.sentenceMenuLabel.text = "\(self.sentenceNum)"
                     self.setSubscribeBTN()
                 }
                 print("큐레이터 정보: \(data)개")
@@ -146,42 +147,45 @@ class CuratorTabInfoVC: UIViewController {
         if segue.identifier == "pageSegue" {
             pageInstance = segue.destination as? CuratorTabInfoPageVC
             pageInstance?.curatorIdx = self.curatorIdx
-            let ob = pageInstance?
-                .keyValue
-                .observe(\.curPresentViewIndex,
-                         options: [.new, .old]) {
-                            [weak self] (changeObject, value) in
-                            
-                            if (changeObject.curPresentViewIndex == 0){
-                                UIView.animate(withDuration: 0.3){
-                                    self!.themeMenuBTN.isSelected = true
-                                    self!.themeMenuLabel.textColor = .softGreen
-                                    self!.sentenceMenuBTN.isSelected = false
-                                    self!.sentenceMenuLabel.textColor = .veryLightPink
-                                    self!.themeMenuText.textColor = .softGreen
-                                    self!.sentenceMenuText.textColor = .veryLightPink
-                                    
-                                }
-                            }
-                            else{
-                                UIView.animate(withDuration: 0.3){
-                                    self!.sentenceMenuBTN.isSelected = true
-                                    self!.sentenceMenuLabel.textColor = .softGreen
-                                    self!.themeMenuBTN.isSelected = false
-                                    self!.themeMenuLabel.textColor = .veryLightPink
-                                    self!.themeMenuText.textColor = .veryLightPink
-                                    self!.sentenceMenuText.textColor = .softGreen
-                                }
-                            }
-                            
-                            
-                            print("kvo test")
-                            
-            }
-            
-            observingList.append(ob!)
-            //pageInstance?.pageControlDelegate = self
+            setObserving()
         }
+    }
+    func setObserving(){
+        let ob = pageInstance?
+            .keyValue
+            .observe(\.curPresentViewIndex,
+                     options: [.new, .old]) {
+                        [weak self] (changeObject, value) in
+                        
+                        if (changeObject.curPresentViewIndex == 0){
+                            UIView.animate(withDuration: 0.3){
+                                self!.themeMenuBTN.isSelected = true
+                                self!.themeMenuLabel.textColor = .softGreen
+                                self!.sentenceMenuBTN.isSelected = false
+                                self!.sentenceMenuLabel.textColor = .veryLightPink
+                                self!.themeMenuText.textColor = .softGreen
+                                self!.sentenceMenuText.textColor = .veryLightPink
+                                
+                            }
+                        }
+                        else{
+                            UIView.animate(withDuration: 0.3){
+                                self!.sentenceMenuBTN.isSelected = true
+                                self!.sentenceMenuLabel.textColor = .softGreen
+                                self!.themeMenuBTN.isSelected = false
+                                self!.themeMenuLabel.textColor = .veryLightPink
+                                self!.themeMenuText.textColor = .veryLightPink
+                                self!.sentenceMenuText.textColor = .softGreen
+                            }
+                        }
+                        
+                        
+                        print("kvo test")
+                        
+        }
+        
+        observingList.append(ob!)
+        //pageInstance?.pageControlDelegate = self
     }
     func setSubscribeBTN(){
         
@@ -200,8 +204,7 @@ class CuratorTabInfoVC: UIViewController {
         curatorMsgLabel.textColor = .veryLightPink
         themeMenuLabel.textColor = .softGreen
         sentenceMenuLabel.textColor = .veryLightPink
-        themeMenuLabel.text = "\(self.themeNum)"
-        sentenceMenuLabel.text = "\(self.sentenceNum)"
+        
         themeMenuBTN.setTitleColor(.softGreen, for: .selected)
         themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
         sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
