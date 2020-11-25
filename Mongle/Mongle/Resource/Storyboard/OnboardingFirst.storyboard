@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LWw-TQ-Bkp">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oTp-EI-NGY">
                                 <rect key="frame" x="82" y="371" width="274" height="218"/>
@@ -53,7 +52,7 @@
                             <constraint firstItem="Q9O-9B-Fzm" firstAttribute="top" secondItem="l9o-7Q-5je" secondAttribute="top" constant="116" id="kkG-d4-0cW"/>
                             <constraint firstItem="LWw-TQ-Bkp" firstAttribute="top" secondItem="l9o-7Q-5je" secondAttribute="top" id="rRI-U8-84C"/>
                             <constraint firstItem="Q9O-9B-Fzm" firstAttribute="leading" secondItem="OUy-pZ-T6k" secondAttribute="leading" constant="70" id="wvI-2N-WeA"/>
-                            <constraint firstAttribute="bottom" secondItem="LWw-TQ-Bkp" secondAttribute="bottom" constant="293" id="xEU-Os-qWf"/>
+                            <constraint firstAttribute="bottom" secondItem="LWw-TQ-Bkp" secondAttribute="bottom" id="xEU-Os-qWf"/>
                             <constraint firstItem="OUy-pZ-T6k" firstAttribute="trailing" secondItem="Q9O-9B-Fzm" secondAttribute="trailing" constant="69" id="zo5-Os-WqA"/>
                         </constraints>
                     </view>
