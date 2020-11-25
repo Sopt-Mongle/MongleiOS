@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 class WritingSentenceVC: UIViewController,UITextViewDelegate {
-
+    
     //MARK:- IBOutlets
     
     @IBOutlet weak var nextButton: UIButton!
@@ -40,16 +40,16 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     }
     
     let innerCircle2 = UIView().then{
-         $0.backgroundColor = .softGreen
-         
-         
-     }
-     let outerCircle2 = UIView().then{
-         $0.backgroundColor = .softGreen
-         $0.alpha = 0.34
-         
-         
-     }
+        $0.backgroundColor = .softGreen
+        
+        
+    }
+    let outerCircle2 = UIView().then{
+        $0.backgroundColor = .softGreen
+        $0.alpha = 0.34
+        
+        
+    }
     
     let smallCircle = UIView().then{
         $0.backgroundColor = .veryLightPinkSeven
@@ -69,8 +69,8 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         
     }
     
- 
-  
+    
+    
     
     
     // MARK:- LifeCycle Methods
@@ -89,53 +89,73 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         warningImageView.image = UIImage(named: "warning")
         warningLabel.alpha = 0
         warningImageView.alpha = 0
-        
-        
-    
+       
         partialGreenColor()
-        
+       
         
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-    
+        
         sentenceTextView.becomeFirstResponder()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(_:)), name:
-            UIResponder.keyboardWillShowNotification, object: nil)
+                                                UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)),
                                                name:
-        UIResponder.keyboardWillHideNotification, object: nil)
-       
+                                                UIResponder.keyboardWillHideNotification, object: nil)
         
-//        if WritingSentenceSecondVC.isVisited == true{
-//            UIView.animate(withDuration: 0.0, animations: {
-//                self.progressBar.progress = 0.0
-//            })
-//            
-//            self.outerCircle2.alpha = 0.34
-//            self.innerCircle2.alpha = 1
-//            
-////            self.secondToFirstLevelAnimation()
-//            
-//          
-//        
-//        }
+        
+        //        if WritingSentenceSecondVC.isVisited == true{
+        //            UIView.animate(withDuration: 0.0, animations: {
+        //                self.progressBar.progress = 0.0
+        //            })
+        //
+        //            self.outerCircle2.alpha = 0.34
+        //            self.innerCircle2.alpha = 1
+        //
+        ////            self.secondToFirstLevelAnimation()
+        //
+        //
+        //
+        //        }
     }
     override func viewDidDisappear(_ animated: Bool) {
-//        self.progressBar.progress = 0
-//        progressBar.layoutIfNeeded()
+        //        self.progressBar.progress = 0
+        //        progressBar.layoutIfNeeded()
     }
     
     
     // MARK:- User Define Functions
-    
+    @objc private func textDidChange(_ notification: Notification) {
+
+        if let textView = notification.object as? UITextView {
+
+            if let text = textView.text {
+
+                // 초과되는 텍스트 제거
+
+                if text.count >= 280 {
+
+                    let index = text.index(text.startIndex, offsetBy: 280)
+
+                    let newString = text.substring(to: index)
+
+                    self.sentenceTextView.text = newString
+
+                }
+
+            }
+
+        }
+
+    }
     @objc func keyboardWillShow(_ notification: NSNotification) {
         
         
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
-            as? NSValue)?.cgRectValue {
+                                as? NSValue)?.cgRectValue {
             UIView.animate(withDuration: 0.0, animations: {
                 self.nextButton.transform =
                     CGAffineTransform(translationX: 0, y: -keyboardSize.height)
@@ -147,41 +167,54 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         }
     }
     
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
+
         if textView.text.count > 279 {
             return false
         }
         return true
         
-        
     }
-
     
+ 
     
     @objc func keyboardWillHide(_ notification: NSNotification) {
-          guard let duration =
-            notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]
-              as? Double else {return}
-          guard let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey]
-              as? UInt else {return}
-          
-          UIView.animate(withDuration: duration, delay: 0.0, options: .init(rawValue: curve),
-                         animations: {
-              self.nextButton.transform = .identity
-          })
-          
-          self.view.layoutIfNeeded()
-      }
+        guard let duration =
+                notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]
+                as? Double else {return}
+        guard let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey]
+                as? UInt else {return}
+        
+        UIView.animate(withDuration: duration, delay: 0.0, options: .init(rawValue: curve),
+                       animations: {
+                        self.nextButton.transform = .identity
+                       })
+        
+        self.view.layoutIfNeeded()
+    }
     func textViewDidChange(_ textView: UITextView) {
-        if sentenceTextView.text.count == 1 {
+        if sentenceTextView.text.count > 0 {
+            
+            
+            
             placeholderLabel.alpha = 0
-            textQuantityLabel.text = String(sentenceTextView.text.count) + "/280"
+   
             warningLabel.alpha = 0
             warningImageView.alpha = 0
             sentenceTextView.setBorder(borderColor: .softGreen, borderWidth: 1.0)
             ballAppearAnimation()
-           
+            
+            if sentenceTextView.text.count >= 280 {
+
+                let index = sentenceTextView.text.index(sentenceTextView.text.startIndex, offsetBy: 280)
+
+                let newString = sentenceTextView.text.substring(to: index)
+
+                self.sentenceTextView.text = newString
+
+            }
+            textQuantityLabel.text = String(sentenceTextView.text.count) + "/280"
             
             
         }
@@ -194,6 +227,10 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         }
         else{
             
+            
+            
+            
+            
             textQuantityLabel.text = String(sentenceTextView.text.count) + "/280"
             
         }
@@ -205,9 +242,9 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         self.sentenceTextView.layer.borderWidth = 1.0
         self.sentenceTextView.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         self.sentenceTextView.makeRounded(cornerRadius: 10)
-       
+        
         self.placeholderLabel.text =
-        "최대 280자까지 입력 가능하며, 책의 문장을 임의로 \n변형하지 않게 주의해주세요!"
+            "최대 280자까지 입력 가능하며, 책의 문장을 임의로 \n변형하지 않게 주의해주세요!"
         self.sentenceTextView.textContainerInset = UIEdgeInsets(top: 16.0,
                                                                 left: 14.0,
                                                                 bottom: 0.0, right: 15.0)
@@ -233,10 +270,10 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         
         textQuantityLabel.attributedText = attributedString
     }
-   
     
     
-   
+    
+    
     
     func setNextButton(){
         self.nextButton.backgroundColor = .softGreen
@@ -250,13 +287,13 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     
     @IBAction func nextButtonAction(_ sender: Any) {
         guard let vcName = UIStoryboard(name: "WritingSentenceSecond",
-                                               bundle: nil).instantiateViewController(
-                                                withIdentifier: "WritingSentenceSecondVC")
-            as? WritingSentenceSecondVC
-            else{
-                return
+                                        bundle: nil).instantiateViewController(
+                                            withIdentifier: "WritingSentenceSecondVC")
+                as? WritingSentenceSecondVC
+        else{
+            return
         }
-     
+        
         
         if sentenceTextView.text == ""{
             warningLabel.alpha = 1
@@ -271,10 +308,10 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
             self.navigationController?.pushViewController(vcName, animated: true)
             vcName.sentenceForPost = sentenceTextView.text!
             
-//            vcName.setProgressBar()
-//            self.present(vcName, animated: true, completion: nil)
+            //            vcName.setProgressBar()
+            //            self.present(vcName, animated: true, completion: nil)
         }
-
+        
         
         
         
@@ -283,17 +320,17 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     
     
     func partialGreenColor(){
-           
-           guard let text = self.noticeLabel.text else {
-               return
-           }
-           noticeLabel.textColor = .black
-           let attributedString = NSMutableAttributedString(string: noticeLabel.text!)
-           attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
-                                         value: UIColor.softGreen,
-                                         range: (text as NSString).range(of: "한 문장"))
-           noticeLabel.attributedText = attributedString
-       }
+        
+        guard let text = self.noticeLabel.text else {
+            return
+        }
+        noticeLabel.textColor = .black
+        let attributedString = NSMutableAttributedString(string: noticeLabel.text!)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                      value: UIColor.softGreen,
+                                      range: (text as NSString).range(of: "한 문장"))
+        noticeLabel.attributedText = attributedString
+    }
     
     func setSmallBalls(){
         self.view.addSubview(smallCircle)
@@ -329,7 +366,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     
     func ballAppearAnimation(){
         UIView.animate(withDuration: 0.5 , delay: 0.25, options: [.curveEaseIn], animations: {
-
+            
             self.outerCircle.backgroundColor = .softGreen
             self.innerCircle.backgroundColor = .softGreen
             
@@ -340,7 +377,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
     
     func ballHideAnimation(){
         UIView.animate(withDuration: 0.5 , delay: 0.25, options: [.curveEaseIn], animations: {
-
+            
             self.outerCircle.backgroundColor = .brownGreyThree
             self.innerCircle.backgroundColor = .brownGreyThree
             
@@ -349,7 +386,8 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         
     }
     
-   
+    
+    
     
     
     func setProgressBar(){
@@ -359,7 +397,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         self.view.addSubview(outerCircle2)
         self.view.addSubview(innerCircle2)
         
-       
+        
         self.innerCircle2.snp.makeConstraints{
             $0.width.height.equalTo(9)
             $0.centerX.equalTo(self.progressBar.snp_centerXWithinMargins)
@@ -375,12 +413,12 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
             $0.width.height.equalTo(26)
             $0.centerX.equalTo(self.progressBar.snp_centerXWithinMargins)
             $0.centerY.equalTo(self.progressBar.snp_centerYWithinMargins)
-             
+            
         }
         outerCircle2.makeRounded(cornerRadius: 13)
         outerCircle2.alpha = 0
         
-     
+        
         progressBar.progressTintColor = .softGreen
         
         innerCircle.snp.makeConstraints{
@@ -419,7 +457,7 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         UIView.animate(withDuration: 3, animations: {
             self.progressBar.layoutIfNeeded()
         })
-
+        
     }
     
     
@@ -427,6 +465,8 @@ class WritingSentenceVC: UIViewController,UITextViewDelegate {
         
         dismiss(animated: true, completion: nil)
     }
+    
+    
     
     
     
