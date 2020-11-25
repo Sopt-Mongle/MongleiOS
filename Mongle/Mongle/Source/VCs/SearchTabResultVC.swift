@@ -52,6 +52,7 @@ class SearchTabResultVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         searchKeyword = searchTextField.text!
         pageInstance?.searchKey = searchKeyword
+        setObserving()
     }
     override func viewWillDisappear(_ animated: Bool) {
         observingList.forEach { $0.invalidate() }
@@ -64,44 +65,47 @@ class SearchTabResultVC: UIViewController {
         if segue.identifier == "pageSegue" {
             pageInstance = segue.destination as? SearchResultPageVC
             pageInstance?.searchKey = self.searchKeyword
-            let ob = pageInstance?
-                .keyValue
-                .observe(\.curPresentViewIndex,
-                         options: [.new, .old]) {
-                            [weak self] (changeObject, value) in
-                            
-                            self?.tabBarCV.selectItem(at: IndexPath(item: changeObject.curPresentViewIndex,
-                                                                                section: 0),animated: false,scrollPosition: .bottom)
-                            
-                            if (changeObject.curPresentViewIndex == 0){
-                                UIView.animate(withDuration: 0.3){
-                                    self!.underBarView.transform = CGAffineTransform(translationX:0 ,y: 0)
-                                }
-                            }
-                            else if(changeObject.curPresentViewIndex == 1){
-                                UIView.animate(withDuration: 0.3){
-                                    self!.underBarView.transform = CGAffineTransform(translationX:(self?.tabBarCV.frame.width)! / CGFloat((self?.menuItem.count)!),y: 0)
-                                }
-                            }
-                            else {
-                                UIView.animate(withDuration: 0.3){
-                                    self!.underBarView.transform = CGAffineTransform(translationX:(self?.tabBarCV.frame.width)! / CGFloat((self?.menuItem.count)!) * 2 ,y: 0)
-                                }
-                            }
-                            
-                            
-                            print("kvo test")
-                            
-            }
-            
-            observingList.append(ob!)
+            setObserving()
             
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
+    //MARK: - Custom Methods
+    func setObserving(){
+        let ob = pageInstance?
+            .keyValue
+            .observe(\.curPresentViewIndex,
+                     options: [.new, .old]) {
+                        [weak self] (changeObject, value) in
+                        
+                        self?.tabBarCV.selectItem(at: IndexPath(item: changeObject.curPresentViewIndex,
+                                                                            section: 0),animated: false,scrollPosition: .bottom)
+                        
+                        if (changeObject.curPresentViewIndex == 0){
+                            UIView.animate(withDuration: 0.3){
+                                self!.underBarView.transform = CGAffineTransform(translationX:0 ,y: 0)
+                            }
+                        }
+                        else if(changeObject.curPresentViewIndex == 1){
+                            UIView.animate(withDuration: 0.3){
+                                self!.underBarView.transform = CGAffineTransform(translationX:(self?.tabBarCV.frame.width)! / CGFloat((self?.menuItem.count)!),y: 0)
+                            }
+                        }
+                        else {
+                            UIView.animate(withDuration: 0.3){
+                                self!.underBarView.transform = CGAffineTransform(translationX:(self?.tabBarCV.frame.width)! / CGFloat((self?.menuItem.count)!) * 2 ,y: 0)
+                            }
+                        }
+                        
+                        
+                        print("kvo test")
+                        
+        }
+        
+        observingList.append(ob!)
+    }
     //MARK: - IBActions
     @IBAction func touchUpSearch(_ sender: Any) {
         searchKeyword = searchTextField.text!
@@ -123,6 +127,7 @@ class SearchTabResultVC: UIViewController {
     }
 
 }
+
 //MARK: - UICollectionViewDelegate
 extension SearchTabResultVC: UICollectionViewDelegate {
     

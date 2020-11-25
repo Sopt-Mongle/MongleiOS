@@ -25,6 +25,7 @@ class MyTabVC: UIViewController,UIGestureRecognizerDelegate {
     var profileIntroduce = ""
     var sentenceIdx = 0
     var sentenceFlag = false
+    var ob: NSKeyValueObservation?
     
     let heightRatio: CGFloat = UIScreen.main.bounds.height/812
     let widthRatio: CGFloat = UIScreen.main.bounds.width/375
@@ -80,6 +81,7 @@ class MyTabVC: UIViewController,UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setMenu()
+        self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![0])!], direction: .forward, animated: false, completion: nil)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -105,8 +107,50 @@ class MyTabVC: UIViewController,UIGestureRecognizerDelegate {
             setMyTheme()
             setMySentence()
             setMyCurator()
-            self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![0])!], direction: .forward, animated: false, completion: nil)
+            
         }
+        self.ob = pageInstance?.keyValue.observe(\.curPresentViewIndex,
+                                                options: [.new, .old]) {
+            [weak self] (changeObject, value) in
+            print("CurrentIndex\(changeObject.curPresentViewIndex))")
+            if (changeObject.curPresentViewIndex == 0){
+                UIView.animate(withDuration: 0.3){
+                    self!.themeMenuBTN.setTitleColor(.softGreen, for: .normal)
+                    self!.themeMenuLabel.textColor = .softGreen
+                    self!.sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                    self!.sentenceMenuLabel.textColor = .veryLightPink
+                    self!.curatorMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                    self!.curatorMenuLabel.textColor = .veryLightPink
+                    
+                }
+            }
+            else if (changeObject.curPresentViewIndex == 1){
+                UIView.animate(withDuration: 0.3){
+                    self!.themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                    self!.themeMenuLabel.textColor = .veryLightPink
+                    self!.sentenceMenuBTN.setTitleColor(.softGreen, for: .normal)
+                    self!.sentenceMenuLabel.textColor = .softGreen
+                    self!.curatorMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                    self!.curatorMenuLabel.textColor = .veryLightPink
+                }
+            }
+            else{
+                UIView.animate(withDuration: 0.3){
+                    self!.themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                    self!.themeMenuLabel.textColor = .veryLightPink
+                    self!.sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                    self!.sentenceMenuLabel.textColor = .veryLightPink
+                    self!.curatorMenuBTN.setTitleColor(.softGreen, for: .normal)
+                    self!.curatorMenuLabel.textColor = .softGreen
+                }
+            }
+            
+            
+            print("kvo test")
+            
+        }
+        
+        observingList.append(ob!)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -114,53 +158,54 @@ class MyTabVC: UIViewController,UIGestureRecognizerDelegate {
             print("#####왜안돼1")
             pageInstance = segue.destination as? MyTabPageVC
             pageInstance?.mainVC = self
-            print("#####?")
-            let ob = pageInstance?.keyValue.observe(\.curPresentViewIndex,
-                                                    options: [.new, .old]) {
-                [weak self] (changeObject, value) in
-                print("CurrentIndex\(changeObject.curPresentViewIndex))")
-                if (changeObject.curPresentViewIndex == 0){
-                    UIView.animate(withDuration: 0.3){
-                        self!.themeMenuBTN.setTitleColor(.softGreen, for: .normal)
-                        self!.themeMenuLabel.textColor = .softGreen
-                        self!.sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-                        self!.sentenceMenuLabel.textColor = .veryLightPink
-                        self!.curatorMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-                        self!.curatorMenuLabel.textColor = .veryLightPink
-                        
-                    }
-                }
-                else if (changeObject.curPresentViewIndex == 1){
-                    UIView.animate(withDuration: 0.3){
-                        self!.themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-                        self!.themeMenuLabel.textColor = .veryLightPink
-                        self!.sentenceMenuBTN.setTitleColor(.softGreen, for: .normal)
-                        self!.sentenceMenuLabel.textColor = .softGreen
-                        self!.curatorMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-                        self!.curatorMenuLabel.textColor = .veryLightPink
-                    }
-                }
-                else{
-                    UIView.animate(withDuration: 0.3){
-                        self!.themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-                        self!.themeMenuLabel.textColor = .veryLightPink
-                        self!.sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
-                        self!.sentenceMenuLabel.textColor = .veryLightPink
-                        self!.curatorMenuBTN.setTitleColor(.softGreen, for: .normal)
-                        self!.curatorMenuLabel.textColor = .softGreen
-                    }
-                }
-                
-                
-                print("kvo test")
-                
-            }
-            
-            observingList.append(ob!)
-            //pageInstance?.pageControlDelegate = self
+            setObserving()
         }
     }
     //MARK: - Custom Methods
+    func setObserving(){
+        self.ob = pageInstance?.keyValue.observe(\.curPresentViewIndex,
+                                                options: [.new, .old]) {
+            [weak self] (changeObject, value) in
+            print("CurrentIndex\(changeObject.curPresentViewIndex))")
+            if (changeObject.curPresentViewIndex == 0){
+                UIView.animate(withDuration: 0.3){
+                    self!.themeMenuBTN.setTitleColor(.softGreen, for: .normal)
+                    self!.themeMenuLabel.textColor = .softGreen
+                    self!.sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                    self!.sentenceMenuLabel.textColor = .veryLightPink
+                    self!.curatorMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                    self!.curatorMenuLabel.textColor = .veryLightPink
+                    
+                }
+            }
+            else if (changeObject.curPresentViewIndex == 1){
+                UIView.animate(withDuration: 0.3){
+                    self!.themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                    self!.themeMenuLabel.textColor = .veryLightPink
+                    self!.sentenceMenuBTN.setTitleColor(.softGreen, for: .normal)
+                    self!.sentenceMenuLabel.textColor = .softGreen
+                    self!.curatorMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                    self!.curatorMenuLabel.textColor = .veryLightPink
+                }
+            }
+            else{
+                UIView.animate(withDuration: 0.3){
+                    self!.themeMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                    self!.themeMenuLabel.textColor = .veryLightPink
+                    self!.sentenceMenuBTN.setTitleColor(.veryLightPink, for: .normal)
+                    self!.sentenceMenuLabel.textColor = .veryLightPink
+                    self!.curatorMenuBTN.setTitleColor(.softGreen, for: .normal)
+                    self!.curatorMenuLabel.textColor = .softGreen
+                }
+            }
+            
+            
+            print("kvo test")
+            
+        }
+        
+        observingList.append(ob!)
+    }
     func setMyProfile(){
         MyProfileService.shared.getMy(){ networkResult in
             

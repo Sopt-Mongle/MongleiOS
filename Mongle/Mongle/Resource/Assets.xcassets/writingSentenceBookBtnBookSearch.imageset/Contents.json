@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "onboarding1Bg.png",
       "scale" : "1x",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "writingSentenceBookBtnBookSearch.png"
     },
     {
       "idiom" : "universal",
-      "filename" : "onboarding1Bg@2x.png",
+      "filename" : "writingSentenceBookBtnBookSearch@2x.png",
       "scale" : "2x"
     },
     {
-      "filename" : "onboarding1Bg@3x.png",
+      "filename" : "writingSentenceBookBtnBookSearch@3x.png",
       "scale" : "3x",
       "idiom" : "universal"
     }

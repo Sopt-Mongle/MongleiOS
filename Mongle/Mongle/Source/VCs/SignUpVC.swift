@@ -237,6 +237,10 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
         nickNameNoticeLabel.textColor = .brownGreyThree
         mustLabel.textColor = .brownGreyThree
         
+        passWordTextField.disableAutoFill()
+        passWordTextField2.disableAutoFill()
+//        passWordTextField.textContentType = .emailAddress
+
         
         
     }
@@ -484,9 +488,9 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
                 $0.bottom.equalToSuperview().offset(-keyboardSize.height)
                 $0.height.equalTo(123*deviceBound)
                 $0.leading.trailing.equalToSuperview()
-                
+
             }
-            
+
             
             mustStar.alpha = 0
             mustLabel.alpha = 0

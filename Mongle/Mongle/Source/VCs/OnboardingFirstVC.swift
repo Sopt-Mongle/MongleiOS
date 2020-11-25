@@ -51,8 +51,8 @@ class OnboardingFirstVC: UIViewController {
         mongleImage.image = UIImage(named: "onboarding1ImgMongle")
         
         mentImage.image = UIImage(named: "onboarding1Text")
+        backgroundImage.contentMode = .scaleToFill
         
-        backgroundBottom.constant = 293*deviceBound
         mentTopConstraint.constant = 116*deviceBound
         bookBottom.constant = 293*deviceBound
         mongleBottom.constant = 237*deviceBound

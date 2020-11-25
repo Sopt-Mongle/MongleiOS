@@ -23,7 +23,9 @@ class SearchResultThemeTVC: UITableViewCell {
         
         // Initialization code
     }
-
+    func setCount(){
+        themeInfoLabel.text = "\(bookmarkCount) | 문장 \(sentenceCount)개"
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

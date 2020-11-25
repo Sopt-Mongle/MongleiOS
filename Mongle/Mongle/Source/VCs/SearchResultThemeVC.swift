@@ -143,6 +143,7 @@ extension SearchResultThemeVC: UITableViewDataSource{
                                       value: UIColor.softGreen,
                                       range: (text as! NSString).range(of: searchKey))
         cell.themeTitleLabel.attributedText = attributedString
+        cell.setCount()
         
         return cell
     }
