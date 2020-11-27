@@ -19,7 +19,9 @@ class SearchResultThemeVC: UIViewController {
         super.viewDidLoad()
         themeTableView.delegate = self
         themeTableView.dataSource = self
+        themeTableView.contentInset.bottom = 60
         themeTableView.reloadData()
+
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -35,7 +37,6 @@ class SearchResultThemeVC: UIViewController {
                 }
                 
                 self.themeList = data
-                print("최근검색어: \(data)개")
                 DispatchQueue.main.async {
                     self.themeTableView.reloadData()
                     if self.themeList.count == 0{
@@ -54,7 +55,7 @@ class SearchResultThemeVC: UIViewController {
                 print(message)
             case .pathErr:
                 
-                print("path")
+                print("pathErr")
             case .serverErr:
                 print("serverErr")
             case .networkFail:

@@ -20,12 +20,10 @@ class SearchTabResultVC: UIViewController {
     @IBOutlet weak var underBarView: UIView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
-    @IBOutlet weak var containerViewBottom: NSLayoutConstraint!
     
     //MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.containerViewBottom.constant = deviceBound * 73
         tabBarCV.delegate = self
         tabBarCV.dataSource = self
         searchTextField.delegate = self
@@ -44,21 +42,17 @@ class SearchTabResultVC: UIViewController {
         tabBarCV.selectItem(at: IndexPath(item: 0, section: 0),
                             animated: false,
                             scrollPosition: .bottom)
-        print(#function)
         print(searchKeyword)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(self.tabBarController?.viewControllers)
-        self.tabBarController?.tabBar.isHidden = false
         searchKeyword = searchTextField.text!
         pageInstance?.searchKey = searchKeyword
         setObserving()
     }
     override func viewWillDisappear(_ animated: Bool) {
         observingList.forEach { $0.invalidate() }
-//        self.tabBarController?.hidesBottomBarWhenPushed = true
         
     }
     
@@ -103,7 +97,7 @@ class SearchTabResultVC: UIViewController {
                         
                         
                         print("kvo test")
-                        
+                            
         }
         
         observingList.append(ob!)
@@ -140,8 +134,7 @@ extension SearchTabResultVC: UICollectionViewDelegate {
         guard let pageInstance = self.pageInstance else {
             return
         }
-        print("item : \(item)")
-//        pageInstance.searchKey = searchKeyword ?? "실ㄹㄹㄹㄹㄹㄹㄹㄹㄹ패"
+
         if item - pageInstance.keyValue.curPresentViewIndex > 0{
             pageInstance.setViewControllers([pageInstance.vcArr![item]], direction: .forward, animated: true, completion: nil)
             pageInstance.keyValue.curPresentViewIndex = item
