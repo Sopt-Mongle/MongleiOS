@@ -32,7 +32,7 @@ class SearchTabMainVC: UIViewController{
         initGestureRecognizer()
         setCollctionViewLayout()
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-        self.navigationController?.hidesBottomBarWhenPushed = false
+//        self.navigationController?.hidesBottomBarWhenPushed = false
         
     }
     override func viewWillAppear(_ animated: Bool) {
