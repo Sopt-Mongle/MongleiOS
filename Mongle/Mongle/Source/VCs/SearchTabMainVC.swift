@@ -71,15 +71,15 @@ class SearchTabMainVC: UIViewController{
             
                 guard let message = message as? String else { return }
                 self.simpleAlert(title: "error", message: message)
-                self.showToast(text: message)
-                print("ㅁㅁ\(message)")
+//                self.showToast(text: message)
+                print("\(message)")
             case .pathErr:
                 
-                print("ㅁㅁpath")
+                print("path")
             case .serverErr:
-                 print("ㅁㅁserverErr")
+                 print("serverErr")
             case .networkFail:
-                print("ㅁㅁnetworkFail")
+                print("networkFail")
             }
                 
             
@@ -94,7 +94,6 @@ class SearchTabMainVC: UIViewController{
                 }
                 
                 self.recommendKeyArray = data
-                print("ㅁㅁㅁㅁㅁ추천검색어\(data)ㅁㅁㅁㅁㅁ")
                 DispatchQueue.main.async {
                     self.recommendSearchCV.reloadData()
                 }
@@ -104,15 +103,15 @@ class SearchTabMainVC: UIViewController{
             
                 guard let message = message as? String else { return }
                 self.simpleAlert(title: "error", message: message)
-                self.showToast(text: message)
-                print("ㅁㅁ\(message)")
+//                self.showToast(text: message)
+                print(message)
             case .pathErr:
                 
-                print("ㅁㅁpath")
+                print("pathErr")
             case .serverErr:
-                 print("ㅁㅁserverErr")
+                 print("serverErr")
             case .networkFail:
-                print("ㅁㅁnetworkFail")
+                print("networkFail")
             }
                 
             
@@ -122,7 +121,6 @@ class SearchTabMainVC: UIViewController{
         SearchMainService.shared.deleteRecentSearch() { networkResult in
             switch networkResult {
             case .success(let message):
-                print("qqqqqqqqqqq\(message)")
                 guard let message = message as? String else { return }
 //                self.showToast("최근 검색어가 전체삭제 되었어요!")
                 print(message)
@@ -136,15 +134,15 @@ class SearchTabMainVC: UIViewController{
             
                 guard let message = message as? String else { return }
                 self.simpleAlert(title: "error", message: message)
-                self.showToast(text: message)
-                print("ㅁㅁ\(message)")
+//                self.showToast(text: message)
+                print(message)
             case .pathErr:
                 
-                print("ㅁㅁpath")
+                print("pathErr")
             case .serverErr:
-                 print("ㅁㅁserverErr")
+                 print("serverErr")
             case .networkFail:
-                print("ㅁㅁnetworkFail")
+                print("networkFail")
             }
                 
             

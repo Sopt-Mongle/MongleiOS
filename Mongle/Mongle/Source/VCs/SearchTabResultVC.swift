@@ -50,6 +50,8 @@ class SearchTabResultVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print(self.tabBarController?.viewControllers)
+        self.tabBarController?.tabBar.isHidden = false
         searchKeyword = searchTextField.text!
         pageInstance?.searchKey = searchKeyword
         setObserving()
