@@ -16,4 +16,5 @@ struct MyProfileData: Codable {
     var introduce: String?
     var keywordIdx: Int?
     var subscribe: Int
+    var themeCount, sentenceCount: Int
 }
