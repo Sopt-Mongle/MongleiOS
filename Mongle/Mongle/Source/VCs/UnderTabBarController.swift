@@ -73,7 +73,7 @@ class UnderTabBarController: UITabBarController {
         super.viewDidLayoutSubviews()
         if(deviceBound < 1){
             tabBar.frame.size.height = 83*deviceBound - 10
-            tabBar.frame.origin.y = view.frame.height - 83*deviceBound
+            tabBar.frame.origin.y = view.frame.height - 83*deviceBound 
             seperateLine.snp.makeConstraints{
                 
                 $0.bottom.equalToSuperview().offset(-self.tabBar.frame.size.height-10)

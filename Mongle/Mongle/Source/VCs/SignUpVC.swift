@@ -421,13 +421,13 @@ class SignUpVC: UIViewController, UITextFieldDelegate {
             hideEmailWarning()
             emailTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         case passWordTextField:
-            
+            textField.isSecureTextEntry = true
             hidePasswordWarning()
             
             comparePasswords()
             passWordTextField.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         case passWordTextField2 :
-            
+            textField.isSecureTextEntry = true
             passWordTextField2.setBorder(borderColor: .softGreen, borderWidth: 1.0)
         case nickNameTextField :
             hideNickNameWarning()
