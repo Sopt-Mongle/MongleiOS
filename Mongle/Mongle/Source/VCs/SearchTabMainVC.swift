@@ -13,7 +13,6 @@ class SearchTabMainVC: UIViewController{
     var recentKeyArray : [String] = []
     var recommendKeyArray : [String] = []
     var searchKey : String?
-    var screenEdgePanRecognizer: UIScreenEdgePanGestureRecognizer!
     // MARK:- IBOutlet
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var recentSearchCV: UICollectionView!
@@ -31,7 +30,6 @@ class SearchTabMainVC: UIViewController{
         
         initGestureRecognizer()
         setCollctionViewLayout()
-        self.view.addGestureRecognizer(screenEdgePanRecognizer)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
 //        self.navigationController?.hidesBottomBarWhenPushed = false
         
@@ -151,8 +149,6 @@ class SearchTabMainVC: UIViewController{
     
     //MARK:- Set Gesture
     func initGestureRecognizer() {
-        screenEdgePanRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(selectPreVC))
-        screenEdgePanRecognizer.edges = .left
         let textFieldTap = UITapGestureRecognizer(target: self, action: #selector(handleTapTextField(_:)))
         textFieldTap.delegate = self
         self.view.addGestureRecognizer(textFieldTap)
