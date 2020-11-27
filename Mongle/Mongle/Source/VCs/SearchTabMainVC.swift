@@ -13,7 +13,7 @@ class SearchTabMainVC: UIViewController{
     var recentKeyArray : [String] = []
     var recommendKeyArray : [String] = []
     var searchKey : String?
-    
+    var screenEdgePanRecognizer: UIScreenEdgePanGestureRecognizer!
     // MARK:- IBOutlet
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var recentSearchCV: UICollectionView!
@@ -31,6 +31,7 @@ class SearchTabMainVC: UIViewController{
         
         initGestureRecognizer()
         setCollctionViewLayout()
+        self.view.addGestureRecognizer(screenEdgePanRecognizer)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
 //        self.navigationController?.hidesBottomBarWhenPushed = false
         
@@ -152,6 +153,8 @@ class SearchTabMainVC: UIViewController{
     
     //MARK:- Set Gesture
     func initGestureRecognizer() {
+        screenEdgePanRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(selectPreVC))
+        screenEdgePanRecognizer.edges = .left
         let textFieldTap = UITapGestureRecognizer(target: self, action: #selector(handleTapTextField(_:)))
         textFieldTap.delegate = self
         self.view.addGestureRecognizer(textFieldTap)
@@ -165,6 +168,10 @@ class SearchTabMainVC: UIViewController{
     @objc func keyboardWillHide(_ notification: NSNotification) {
         guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {return}
         guard let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt else {return}
+    }
+    @objc func selectPreVC(){
+        UIView.animate(withDuration: 0.1, animations: {self.tabBarController?.selectedIndex = self.prevIdx!})
+        
     }
     // MARK:- register/unregister Notification Observer
     // observer
@@ -210,8 +217,7 @@ class SearchTabMainVC: UIViewController{
         
     }
     @IBAction func touchUpBack(_ sender: Any) {
-//        self.navigationController?.popViewController(animated: true)
-//        self.showToast(text: "뒤로가기")
+
         self.tabBarController?.selectedIndex = prevIdx!
     }
     @IBAction func removeSearchHistoryBTN(_ sender: Any) {
