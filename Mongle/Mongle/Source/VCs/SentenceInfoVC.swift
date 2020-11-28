@@ -105,7 +105,7 @@ class SentenceInfoVC: UIViewController {
                     self.getThemeInfo(themeIdx: self.sentence?.themeIdx ?? 0) {
                         [weak self] (themeImage, themeName) in
                         DispatchQueue.main.async {
-                            self?.themeImageView.imageFromUrl(themeImage, defaultImgPath: "themeWritingThemeXSentenceBg")
+                            self?.themeImageView.imageFromUrl(themeImage)
                             self?.themeNameLabel.text = themeName
                         }
                     }
