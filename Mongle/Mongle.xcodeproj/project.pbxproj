@@ -1338,7 +1338,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.08;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.juhyeoklee.Mongle;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.juhyeoklee.Mongle12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
