@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ThemeInfoVC: UIViewController {
     
@@ -29,6 +30,10 @@ class ThemeInfoVC: UIViewController {
     @IBOutlet var curatorNameLabel: UILabel!
     
     @IBOutlet var themeImageView: UIImageView!
+    @IBOutlet var themeBlurView: UIView!
+    
+    @IBOutlet var blurImageView: UIImageView!
+    
     @IBOutlet var bottomBackgroundView: UIView!
     @IBOutlet var sentencesBackGroudViewBottomConstraint: NSLayoutConstraint!
 
@@ -52,11 +57,39 @@ class ThemeInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setInitLayout()
+//        setBlur()
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setThemeData()
+    }
+    
+    func setBlur() {
+        // 1
+        themeBlurView.backgroundColor = .clear
+        // 2
+        let blurEffect = UIBlurEffect(style: .light)
+        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+        let vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
+        
+        vibrancyView.translatesAutoresizingMaskIntoConstraints = false
+        // 3
+//        vibrancyView.contentView.addSubview(optionsView)
+        // 3
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        // 4
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.contentView.addSubview(vibrancyView)
+        
+        themeBlurView.insertSubview(blurView, at: 0)
+        
+        blurView.snp.makeConstraints {
+            $0.top.leading.trailing.bottom.equalToSuperview()
+        }
+        vibrancyView.snp.makeConstraints {
+            $0.top.leading.trailing.bottom.equalToSuperview()
+        }
     }
     
     func setInitLayout(){
@@ -168,7 +201,21 @@ class ThemeInfoVC: UIViewController {
     
     func updateLayout(){
         self.themeNameLabel.text = self.themeData?.theme
-        self.themeImageView.imageFromUrl(self.themeData?.themeImg, defaultImgPath: "")
+//        self.blurImageView.image = UIImage(
+//        print(blurImageView.image)
+        self.themeImageView.imageFromUrl(self.themeData?.themeImg)
+//        self.themeImageView.imageFromUrl(self.themeData?.themeImg, defaultImgPath: "", completion: { [weak self] in
+//            print("image upload success")
+//
+//            DispatchQueue.main.async {
+//
+//                let image = self?.blurImageView.image?.makeImageBlurEffect()
+//
+//                self?.blurImageView.image = image
+//
+//            }
+//        } )
+        
         self.curatorNameLabel.text = self.themeData?.writer
         self.curatorProfileImageView.imageFromUrl(self.themeData?.writerImg, defaultImgPath: "themeImgCurator")
         self.sentenceCountLabel.text = "\(self.themeData?.sentenceNum ?? 0)"

@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C1y-yQ-wMX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -26,7 +25,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="themeWritingThemeXSentenceBg" translatesAutoresizingMaskIntoConstraints="NO" id="ron-ju-hMk">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ron-ju-hMk">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="298"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ron-ju-hMk" secondAttribute="height" multiplier="25:18" id="aob-Si-AFA"/>
@@ -35,6 +34,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i8f-0R-EAS">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="298"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="joX-kx-tGv">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="298"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1MB-lr-IoL">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="298"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="1MB-lr-IoL" secondAttribute="trailing" id="Hu7-LM-yOD"/>
+                                            <constraint firstAttribute="bottom" secondItem="1MB-lr-IoL" secondAttribute="bottom" id="KQ8-KS-KWI"/>
+                                            <constraint firstItem="1MB-lr-IoL" firstAttribute="top" secondItem="joX-kx-tGv" secondAttribute="top" id="Lee-Wc-f58"/>
+                                            <constraint firstItem="1MB-lr-IoL" firstAttribute="leading" secondItem="joX-kx-tGv" secondAttribute="leading" id="dxL-pH-Axv"/>
+                                        </constraints>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="브랜딩이 어려울 때, 영감을 주는 문장" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ty-8Y-zWx">
                                         <rect key="frame" x="16" y="98" width="382" height="22"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeoM00" family="AppleSDGothicNeoM00" pointSize="18"/>
@@ -118,11 +132,14 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                                 <constraints>
+                                    <constraint firstItem="joX-kx-tGv" firstAttribute="top" secondItem="i8f-0R-EAS" secondAttribute="top" id="6Gw-my-gwZ"/>
                                     <constraint firstAttribute="trailing" secondItem="KAx-an-jsX" secondAttribute="trailing" constant="19" id="6Ou-Q2-211"/>
+                                    <constraint firstItem="joX-kx-tGv" firstAttribute="leading" secondItem="i8f-0R-EAS" secondAttribute="leading" id="77h-nd-qoh"/>
                                     <constraint firstItem="H4s-l6-9mq" firstAttribute="leading" secondItem="iWI-Mv-FuQ" secondAttribute="trailing" constant="7" id="7mf-Xn-Czy"/>
                                     <constraint firstAttribute="trailing" secondItem="1ty-8Y-zWx" secondAttribute="trailing" constant="16" id="87S-Ef-oTi"/>
                                     <constraint firstItem="mJ7-Fw-Nwu" firstAttribute="top" secondItem="i8f-0R-EAS" secondAttribute="top" constant="37" id="C9e-wP-6J2"/>
                                     <constraint firstItem="oEF-vb-HrK" firstAttribute="bottom" secondItem="mJ7-Fw-Nwu" secondAttribute="bottom" id="JKd-Nm-CBC"/>
+                                    <constraint firstAttribute="trailing" secondItem="joX-kx-tGv" secondAttribute="trailing" id="LN1-Es-F7Y"/>
                                     <constraint firstAttribute="trailing" secondItem="oEF-vb-HrK" secondAttribute="trailing" constant="8" id="Mid-it-8cf"/>
                                     <constraint firstItem="mJ7-Fw-Nwu" firstAttribute="leading" secondItem="i8f-0R-EAS" secondAttribute="leading" id="QnJ-QV-r1t"/>
                                     <constraint firstItem="iWI-Mv-FuQ" firstAttribute="leading" secondItem="i8f-0R-EAS" secondAttribute="leading" constant="16" id="cJO-N7-rrR"/>
@@ -130,6 +147,7 @@
                                     <constraint firstItem="1ty-8Y-zWx" firstAttribute="top" secondItem="mJ7-Fw-Nwu" secondAttribute="bottom" constant="13" id="kRv-hz-mhB"/>
                                     <constraint firstItem="H4s-l6-9mq" firstAttribute="centerY" secondItem="iWI-Mv-FuQ" secondAttribute="centerY" id="mK9-OW-lXN"/>
                                     <constraint firstItem="oEF-vb-HrK" firstAttribute="top" secondItem="mJ7-Fw-Nwu" secondAttribute="top" id="s74-mO-5K9"/>
+                                    <constraint firstAttribute="bottom" secondItem="joX-kx-tGv" secondAttribute="bottom" id="tlO-qG-1Gr"/>
                                     <constraint firstItem="iWI-Mv-FuQ" firstAttribute="top" secondItem="1ty-8Y-zWx" secondAttribute="bottom" constant="54" id="vbs-4g-Fxd"/>
                                 </constraints>
                             </view>
@@ -341,6 +359,7 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="mJ7-Fw-Nwu" id="bc2-cN-tKn"/>
+                        <outlet property="blurImageView" destination="1MB-lr-IoL" id="3Xh-S1-Wez"/>
                         <outlet property="bookmarkCountLabel" destination="i2q-hV-pzw" id="yk6-eN-4d2"/>
                         <outlet property="bottomBackgroundView" destination="sOx-yo-vKk" id="vvX-Kd-1lh"/>
                         <outlet property="buttonSpaceConstraint" destination="dwc-Y1-Knr" id="QuO-cC-kku"/>
@@ -351,6 +370,7 @@
                         <outlet property="sentenceTableView" destination="7tc-cv-PKZ" id="zGe-LA-oQz"/>
                         <outlet property="sentencesBackgroundView" destination="Hu0-vn-sXz" id="Omc-vB-Kig"/>
                         <outlet property="themeBackgroundView" destination="i8f-0R-EAS" id="dZS-xE-AsK"/>
+                        <outlet property="themeBlurView" destination="joX-kx-tGv" id="FuR-mf-fuh"/>
                         <outlet property="themeImageView" destination="ron-ju-hMk" id="esg-o2-NIs"/>
                         <outlet property="themeInfoStackView" destination="KAx-an-jsX" id="NMJ-df-bIA"/>
                         <outlet property="themeNameLabel" destination="1ty-8Y-zWx" id="wtZ-aW-Odu"/>
@@ -375,7 +395,6 @@
         <image name="themeInfoBoxBookmark" width="77" height="57"/>
         <image name="themeInfoBtnMore" width="18" height="4"/>
         <image name="themeInfoBtnWritingSentence" width="253" height="57"/>
-        <image name="themeWritingThemeXSentenceBg" width="375" height="265"/>
         <namedColor name="slateGreen">
             <color red="0.35294117647058826" green="0.56862745098039214" blue="0.41176470588235292" alpha="0.55000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

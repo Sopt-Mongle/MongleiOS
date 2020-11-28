@@ -120,6 +120,7 @@ class MainTabMainVC: UIViewController {
             switch networkResult {
             case .success(let data):
                 if let _data = data as? [MainCuratorData] {
+                    print(_data)
                     self.curators = _data
                 }
                 DispatchQueue.main.async {
@@ -149,7 +150,6 @@ class MainTabMainVC: UIViewController {
                     }
                 }
             case .requestErr(let msg):
-//                self.showToast(text: msg as? String ?? "")
                 print(msg as? String ?? "")
             case .pathErr:
                 print("pathErr")

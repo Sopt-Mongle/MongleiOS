@@ -31,7 +31,7 @@ class MainPopularThemaCVC: UICollectionViewCell {
         else {
             bookMarkImageView.image = UIImage(named: "mainIcBookmark1")
         }
-        self.backgroundImageView.imageFromUrl(imageUrl, defaultImgPath: "")
+        self.backgroundImageView.imageFromUrl(imageUrl)
         self.bookMarkCountLabel.text = "\(bookMarkCount)"
         
     }
