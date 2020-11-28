@@ -18,14 +18,14 @@ class MainTabMainVC: UIViewController {
         }
     }
     @IBOutlet var shadowView: UIView!
-    
+    lazy var refreshControl = UIRefreshControl()
     var editorsTheme: [EditorPickData] = []
     var sentences: [TodaySentenceData] = []
     var curators: [MainCuratorData] = []
     var themes: [MainThemeData] = []
     var themesList: [[MainThemeData]] = [[],[],[]]
     
-    
+    // MARK:- Lifecycle Method
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -36,11 +36,21 @@ class MainTabMainVC: UIViewController {
         getThemeList(flag: 0)
         getThemeList(flag: 1)
         getThemeList(flag: 2)
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        refreshToken()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addRefreshControl()
+        layoutTableView.delegate = self
+        layoutTableView.dataSource = self
+    }
+    
+    // MARK:- Custom Method
+    func refreshToken(completion: (()->())? = nil) {
         if  UserDefaults.standard.string(forKey: "token") != "guest"{
             let date = Date()
             let formatter = DateFormatter()
@@ -51,9 +61,6 @@ class MainTabMainVC: UIViewController {
             let diff = calendar.dateComponents([.minute], from: ogD!, to: date)
             
             if diff.minute! > 210  {
-               
-                
-                
                 guard let email = UserDefaults.standard.string(forKey: "email") else { return }
                 guard let password = UserDefaults.standard.string(forKey: "password") else {return}
                 SignInService.shared.signin(email: email,
@@ -62,6 +69,9 @@ class MainTabMainVC: UIViewController {
                     case .success(let token) :
                         guard let token = token as? String else { return }
                         UserDefaults.standard.set(token, forKey: "token")
+                        if let comp = completion {
+                            comp()
+                        }
                         print("autoLogin")
                     case .requestErr(let message):
                         print("reqERR")
@@ -75,17 +85,23 @@ class MainTabMainVC: UIViewController {
                     }
                 }
             }
+            else {
+                if let comp = completion {
+                    comp()
+                }
+            }
         }
-
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        layoutTableView.delegate = self
-        layoutTableView.dataSource = self
+    func addRefreshControl() {
+        if #available(iOS 10.0, *){
+            self.layoutTableView.refreshControl = refreshControl
+        }else{
+            self.layoutTableView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
     
-    // MARK:- Custom Method
     func setShadowState(state: Bool) {
         if state {
             shadowView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.04, radius: 6)
@@ -184,6 +200,23 @@ class MainTabMainVC: UIViewController {
         }
     }
     
+    // MARK:- @objc Method
+    @objc func refresh(){
+        refreshToken { [weak self] in
+            self?.getEditorsContentsData()
+            self?.getTodaySentence()
+            self?.getCurators()
+            
+            self?.getThemeList(flag: 0)
+            self?.getThemeList(flag: 1)
+            self?.getThemeList(flag: 2)
+            print("asdasd")
+            self?.refreshControl.endRefreshing()
+        }
+        
+        
+    }
+    
     // MARK:- IBAction Method
     @IBAction func searchButton(_ sender: Any) {
         if let tabBar = self.tabBarController as? UnderTabBarController {
@@ -191,7 +224,6 @@ class MainTabMainVC: UIViewController {
                 searchVC.prevIdx = 0
                 tabBar.selectedIndex = 1
             }
-            
         }
     }
 }
