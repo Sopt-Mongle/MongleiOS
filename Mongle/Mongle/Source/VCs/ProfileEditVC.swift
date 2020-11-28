@@ -118,7 +118,7 @@ class ProfileEditVC: UIViewController{
                     let newString = text[text.startIndex...index]
                     sender.text = String(newString)
                 }
-                nickNameCountLabel.text = "\((sender.text?.count)!)/6"
+                partialGreenColor()
             }
         
     }
@@ -243,9 +243,9 @@ class ProfileEditVC: UIViewController{
                                         self.callProfileEdit()
                                     }
                                 }
-                                else{
-                                    self.layoutTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-                                }
+                                
+                                self.layoutTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                                
                                 
                             }
                             
@@ -335,17 +335,22 @@ class ProfileEditVC: UIViewController{
         guard let text = self.nickNameTextField.text else {
             return
         }
-        nickNameCountLabel.text = "\(text.count)/6"
-        nickNameCountLabel.textColor = .softGreen
-        if nickNameTextField.text == "" {
+        if text == ""{
+            nickNameCountLabel.text = "0/6"
             nickNameCountLabel.textColor = .veryLightPink
         }
-        let attributedString = NSMutableAttributedString(string: nickNameCountLabel.text!)
-        attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
-                                      value: UIColor.veryLightPink,
-                                      range: (text as NSString).range(of: "/6"))
+        else{
+            nickNameCountLabel.text = "\(text.count)/6"
+            nickNameCountLabel.textColor = .softGreen
+            
+            let attributedString = NSMutableAttributedString(string: nickNameCountLabel.text!)
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                          value: UIColor.veryLightPink,
+                                          range: (nickNameCountLabel.text! as NSString).range(of: "/6"))
+
+            nickNameCountLabel.attributedText = attributedString
+        }
         
-        nickNameCountLabel.attributedText = attributedString
     }
     func setGesture(){
         profileImageView.isUserInteractionEnabled = true

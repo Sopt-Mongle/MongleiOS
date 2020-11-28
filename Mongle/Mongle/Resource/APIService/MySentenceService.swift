@@ -66,7 +66,7 @@ struct MySentenceService {
         guard let decodedData = try? decoder.decode(GenericResponse<MySentenceData>.self, from: data)
             else { return .pathErr }
         
-        
+        print("@@@문장 데이터 \(decodedData)")
         guard let data = decodedData.data else{
             return .requestErr(decodedData.message)
         }

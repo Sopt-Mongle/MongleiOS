@@ -13,7 +13,6 @@ class SearchTabMainVC: UIViewController{
     var recentKeyArray : [String] = []
     var recommendKeyArray : [String] = []
     var searchKey : String?
-    
     // MARK:- IBOutlet
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var recentSearchCV: UICollectionView!
@@ -32,7 +31,7 @@ class SearchTabMainVC: UIViewController{
         initGestureRecognizer()
         setCollctionViewLayout()
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-        self.navigationController?.hidesBottomBarWhenPushed = false
+//        self.navigationController?.hidesBottomBarWhenPushed = false
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -70,15 +69,15 @@ class SearchTabMainVC: UIViewController{
             
                 guard let message = message as? String else { return }
                 self.simpleAlert(title: "error", message: message)
-                self.showToast(text: message)
-                print("ㅁㅁ\(message)")
+//                self.showToast(text: message)
+                print("\(message)")
             case .pathErr:
                 
-                print("ㅁㅁpath")
+                print("path")
             case .serverErr:
-                 print("ㅁㅁserverErr")
+                 print("serverErr")
             case .networkFail:
-                print("ㅁㅁnetworkFail")
+                print("networkFail")
             }
                 
             
@@ -93,7 +92,6 @@ class SearchTabMainVC: UIViewController{
                 }
                 
                 self.recommendKeyArray = data
-                print("ㅁㅁㅁㅁㅁ추천검색어\(data)ㅁㅁㅁㅁㅁ")
                 DispatchQueue.main.async {
                     self.recommendSearchCV.reloadData()
                 }
@@ -103,15 +101,15 @@ class SearchTabMainVC: UIViewController{
             
                 guard let message = message as? String else { return }
                 self.simpleAlert(title: "error", message: message)
-                self.showToast(text: message)
-                print("ㅁㅁ\(message)")
+//                self.showToast(text: message)
+                print(message)
             case .pathErr:
                 
-                print("ㅁㅁpath")
+                print("pathErr")
             case .serverErr:
-                 print("ㅁㅁserverErr")
+                 print("serverErr")
             case .networkFail:
-                print("ㅁㅁnetworkFail")
+                print("networkFail")
             }
                 
             
@@ -121,7 +119,6 @@ class SearchTabMainVC: UIViewController{
         SearchMainService.shared.deleteRecentSearch() { networkResult in
             switch networkResult {
             case .success(let message):
-                print("qqqqqqqqqqq\(message)")
                 guard let message = message as? String else { return }
 //                self.showToast("최근 검색어가 전체삭제 되었어요!")
                 print(message)
@@ -135,15 +132,15 @@ class SearchTabMainVC: UIViewController{
             
                 guard let message = message as? String else { return }
                 self.simpleAlert(title: "error", message: message)
-                self.showToast(text: message)
-                print("ㅁㅁ\(message)")
+//                self.showToast(text: message)
+                print(message)
             case .pathErr:
                 
-                print("ㅁㅁpath")
+                print("pathErr")
             case .serverErr:
-                 print("ㅁㅁserverErr")
+                 print("serverErr")
             case .networkFail:
-                print("ㅁㅁnetworkFail")
+                print("networkFail")
             }
                 
             
@@ -165,6 +162,10 @@ class SearchTabMainVC: UIViewController{
     @objc func keyboardWillHide(_ notification: NSNotification) {
         guard let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double else {return}
         guard let curve = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt else {return}
+    }
+    @objc func selectPreVC(){
+        UIView.animate(withDuration: 0.1, animations: {self.tabBarController?.selectedIndex = self.prevIdx!})
+        
     }
     // MARK:- register/unregister Notification Observer
     // observer
@@ -210,8 +211,7 @@ class SearchTabMainVC: UIViewController{
         
     }
     @IBAction func touchUpBack(_ sender: Any) {
-//        self.navigationController?.popViewController(animated: true)
-//        self.showToast(text: "뒤로가기")
+
         self.tabBarController?.selectedIndex = prevIdx!
     }
     @IBAction func removeSearchHistoryBTN(_ sender: Any) {
