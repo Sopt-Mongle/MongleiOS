@@ -81,15 +81,18 @@ class MainTabMainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initLayout()
         layoutTableView.delegate = self
         layoutTableView.dataSource = self
     }
     
-    func initLayout() {
-        shadowView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.04, radius: 6)
-//        shadowView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-//        shadowView.clipsToBounds = true
+    // MARK:- Custom Method
+    func setShadowState(state: Bool) {
+        if state {
+            shadowView.dropShadow(color: .black, offSet: CGSize(width: 0, height: 3), opacity: 0.04, radius: 6)
+        }
+        else {
+            shadowView.dropShadow(color: .clear, offSet: CGSize(width: 0, height: 0), opacity: 1, radius: 0)
+        }
     }
     
     func getThemeList(flag: Int) {
@@ -120,7 +123,6 @@ class MainTabMainVC: UIViewController {
             switch networkResult {
             case .success(let data):
                 if let _data = data as? [MainCuratorData] {
-                    print(_data)
                     self.curators = _data
                 }
                 DispatchQueue.main.async {
@@ -182,6 +184,7 @@ class MainTabMainVC: UIViewController {
         }
     }
     
+    // MARK:- IBAction Method
     @IBAction func searchButton(_ sender: Any) {
         if let tabBar = self.tabBarController as? UnderTabBarController {
             if let searchVC = tabBar.viewControllers![1] as? SearchTabMainVC {
@@ -326,4 +329,14 @@ extension MainTabMainVC: UITableViewDataSource {
         }
     }
 }
-
+// MARK: UIScrollViewDelegaet
+extension MainTabMainVC: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y == 0 {
+            setShadowState(state: false)
+        }
+        else {
+            setShadowState(state: true)
+        }
+    }
+}
