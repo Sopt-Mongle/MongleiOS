@@ -485,6 +485,11 @@ extension UnderTabBarController: UITabBarControllerDelegate {
             
         else {
             self.curIndex = tabBarController.selectedIndex
+            if tabBarController.selectedIndex == 3{
+                if let vc = viewController as? CuratorTabMainVC{
+                    vc.curatorTabTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+                }
+            }
         }
     }
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
