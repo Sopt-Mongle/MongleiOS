@@ -17,12 +17,6 @@ class MainTabFirstTVC: UITableViewCell {
     
     
     // MARK:- Property
-    var pictures = ["mainImgEditorpick1", "mainImgEditorpick2", "mainImgEditorpick3"]
-    var names = [
-        "온 세상에\n나만 깨어있는 것 같은\n새벽감성에 읽기 좋은 문장",
-        "나와 다른 너를\n이해하고 싶을 때\n나를 도와주는 한 문장",
-        "힘껏 달리기만 하다\n번아웃이 온 당신을\n다시 걷게 할 한 문장"
-    ]
     var counts:[Int] = [10,0,4]
     
     var pageViewWidth : Int = 0
@@ -38,9 +32,6 @@ class MainTabFirstTVC: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
-        
-        
-
         
         mainDisplayPictureCollectionView.delegate = self
         mainDisplayPictureCollectionView.dataSource = self
@@ -84,7 +75,7 @@ extension MainTabFirstTVC: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             let editor = editorData[indexPath.item]
-            cell.displayPictureImageView.imageFromUrl(editor.illust, defaultImgPath: "")
+            cell.displayPictureImageView.imageFromUrl(editor.illust)
             
             cell.themeNameLabel.text = editor.theme
             cell.themeCountLabel.text = "문장 \(editor.sentenceNum)개"

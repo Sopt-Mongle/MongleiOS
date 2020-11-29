@@ -53,8 +53,8 @@ class WritingSentenceInThemeVC: UIViewController {
     
     //MARK:- Property
     var isInitial: Bool = true
-    var text: String = ""
-    
+    var inputText: String = ""
+    var initialText: String = ""
     //MARK:- LifeCycle Method
     
     override func viewDidLoad() {
@@ -68,7 +68,7 @@ class WritingSentenceInThemeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         registerForKeyboardNotifications()
         sentenceTextView.becomeFirstResponder()
-        print(#function)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -285,28 +285,42 @@ class WritingSentenceInThemeVC: UIViewController {
 
 extension WritingSentenceInThemeVC: UITextViewDelegate {
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-//
-//        textView.text = """
-//        최대 280자까지 입력 가능하며, 책의 문장을 임의로
-//        변형하지 않게 주의해주세요!
-//        """
+
         let position = textView.beginningOfDocument
         textView.selectedTextRange = textView.textRange(from:position, to:position)
         return true
     }
     
-    func textViewDidChange(_ textView: UITextView) {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
+
         if isInitial {
-            let char = textView.text[textView.text.startIndex]
-            textView.text = "\(char)"
+            
+            textView.text = ""
+            initialText = text
+            textView.textColor = .black
+        }
+        
+        var newText = inputText + text
+        if newText.count > 280 {
+            inputText = String(newText.prefix(280))
+        }
+
+        
+        return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+
+        if isInitial {
+            textView.text = initialText
             textView.textColor = .black
         }
         
         if textView.text.count > 280 {
-            textView.text = text
+            textView.text = inputText
         }
-        text = textView.text
+        inputText = textView.text
         self.isInitial = false
         setAttributeCountLabel(count: textView.text.count)
         

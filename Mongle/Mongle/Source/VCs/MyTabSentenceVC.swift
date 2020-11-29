@@ -66,13 +66,15 @@ class MyTabSentenceVC: UIViewController {
                 guard let data = theme as? MySentenceData else {
                     return
                 }
-                print("성공")
                 self.mySentenceData = data
                 self.mySentenceSave = data.save
                 self.mySentenceWrite = data.write
-                print("내 프로필 테마: \(data)")
+                print("문장조회성공: \(data)")
+                self.mainVC?.sentenceNum = self.mySentenceSave.count + self.mySentenceWrite.count
+                print("sentenceNum",self.mainVC?.sentenceNum)
                 DispatchQueue.main.async {
                     self.sentenceTableView.reloadData()
+                    self.mainVC?.setMenuCount()
                 }
                 
                 
@@ -224,6 +226,7 @@ extension MyTabSentenceVC: UITableViewDataSource{
                     guard let dvc = UIStoryboard.init(name: "SentenceEdit", bundle: nil).instantiateViewController(identifier: "SentenceEditVC") as? SentenceEditVC else {
                         return
                     }
+                    self?.mainVC?.sentenceFlag = true
                     dvc.sentenceIdx = self?.mySentenceWrite[indexPath.row].sentenceIdx
                     dvc.text = self?.mySentenceWrite[indexPath.row].sentence
                     self?.navigationController?.pushViewController(dvc, animated: true)

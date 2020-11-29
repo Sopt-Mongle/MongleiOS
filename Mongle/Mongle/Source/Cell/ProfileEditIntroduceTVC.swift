@@ -53,12 +53,11 @@ class ProfileEditIntroduceTVC: UITableViewCell {
                 let newString = text[text.startIndex...index]
                 sender.text = String(newString)
             }
-            introduceCountLabel.text = "\((sender.text?.count)!)/30"
+            partialGreenColor()
         }
         ProfileEditIntroduceTVC.isIntroduceValid = isValidIntroductionInput()
         if ProfileEditIntroduceTVC.isIntroduceValid! {
             hideWarning()
-            introduceTextField.setBorder(borderColor: .softGreen, borderWidth: 1)
             
         }
         else {
@@ -71,7 +70,6 @@ class ProfileEditIntroduceTVC: UITableViewCell {
     func showWarning(){
         introduceWarningLabel.alpha = 1
         introduceWarningImageview.alpha = 1
-        introduceTextField.setBorder(borderColor: .reddish, borderWidth: 1.0)
     }
     func hideWarning(){
         introduceWarningLabel.alpha = 0
@@ -89,19 +87,22 @@ class ProfileEditIntroduceTVC: UITableViewCell {
     }
     func partialGreenColor(){
         
-        guard let text = self.introduceCountLabel.text else {
+        guard let text = self.introduceTextField.text else {
             return
         }
-        introduceCountLabel.text = "\(text.count)/30"
-        introduceCountLabel.textColor = .softGreen
-        let attributedString = NSMutableAttributedString(string: introduceCountLabel.text!)
-        attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
-                                      value: UIColor.veryLightPink,
-                                      range: (text as NSString).range(of: "/30"))
-        if introduceCountLabel.text == "" {
+        if text == ""{
+            introduceCountLabel.text = "0/30"
             introduceCountLabel.textColor = .veryLightPink
         }
-        introduceCountLabel.attributedText = attributedString
+        else{
+            introduceCountLabel.text = "\(text.count)/30"
+            introduceCountLabel.textColor = .softGreen
+            let attributedString = NSMutableAttributedString(string: introduceCountLabel.text!)
+            attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
+                                          value: UIColor.veryLightPink,
+                                          range: (introduceCountLabel.text! as NSString).range(of: "/30"))
+            introduceCountLabel.attributedText = attributedString
+            }
     }
 }
 
@@ -112,7 +113,15 @@ extension ProfileEditIntroduceTVC: UITextFieldDelegate {
         introduceCountLabel.alpha = 1
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.setBorder(borderColor: .veryLightPink, borderWidth: 1)
+        if isValidIntroductionInput(){
+            hideWarning()
+            textField.setBorder(borderColor: .veryLightPinkFive, borderWidth: 1)
+        }
+        else{
+            showWarning()
+            textField.setBorder(borderColor: .reddish, borderWidth: 1.0)
+        }
+        
         unSelectedTextfieldDelegate()
         introduceDelegate(textField.text!)
         introduceCountLabel.alpha = 0

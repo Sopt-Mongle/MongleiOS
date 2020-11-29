@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zCC-F9-Jlx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zCC-F9-Jlx">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="AppleSDGothicNeoM.ttf">
+            <string>AppleSDGothicNeoM00</string>
+        </array>
+        <array key="AppleSDGothicNeoR.ttf">
+            <string>AppleSDGothicNeoR00</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Sentence EditVC-->
         <scene sceneID="VdV-nF-trl">
@@ -30,13 +39,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="문장 수정하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3q-0d-UjM">
-                                        <rect key="frame" x="138" y="48" width="99" height="22"/>
+                                        <rect key="frame" x="138.66666666666666" y="48" width="98" height="22"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="u3q-0d-UjM" firstAttribute="top" secondItem="7ro-L1-TTi" secondAttribute="top" constant="48" id="BM6-is-9gu"/>
                                     <constraint firstItem="MsA-kk-x3J" firstAttribute="leading" secondItem="7ro-L1-TTi" secondAttribute="leading" id="FO8-V9-HJO"/>
@@ -47,34 +56,36 @@
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5Ws-rj-kLv">
                                 <rect key="frame" x="16" y="92.333333333333314" width="343" height="277"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="5Ws-rj-kLv" secondAttribute="height" multiplier="343:277" id="m1D-jY-Db2"/>
                                 </constraints>
                                 <string key="text">처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으로 인해 
 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고 있는 풍경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 처음 마주할 때의 인상, 사소한 것으로 인해 생기는 호감, 알아가면서 느끼는 다양한 감정과 머금고있는 풍경과 분위기까지. 가나다라 마바사</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/280" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSP-QO-OJ0">
-                                <rect key="frame" x="322" y="382.33333333333331" width="37" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <rect key="frame" x="323.66666666666669" y="382.33333333333331" width="35.333333333333314" height="16"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeoR00" family="AppleSDGothicNeoR00" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFe-cy-R3F">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFe-cy-R3F">
                                 <rect key="frame" x="16" y="705" width="343" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="YFe-cy-R3F" secondAttribute="height" multiplier="343:57" id="TKg-WK-N7P"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeoM00" family="AppleSDGothicNeoM00" pointSize="18"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="touchEditButton:" destination="zCC-F9-Jlx" eventType="touchUpInside" id="9K4-2j-UMR"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6L6-Zu-xtK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6L6-Zu-xtK" firstAttribute="trailing" secondItem="7ro-L1-TTi" secondAttribute="trailing" id="AMA-Ht-RjN"/>
                             <constraint firstItem="7ro-L1-TTi" firstAttribute="top" secondItem="9Ra-82-Ie6" secondAttribute="top" id="Dcq-KQ-Dv4"/>
@@ -88,7 +99,6 @@
                             <constraint firstItem="5Ws-rj-kLv" firstAttribute="top" secondItem="7ro-L1-TTi" secondAttribute="bottom" id="cn9-Wy-B3O"/>
                             <constraint firstItem="JSP-QO-OJ0" firstAttribute="trailing" secondItem="5Ws-rj-kLv" secondAttribute="trailing" id="lb8-0K-sYh"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6L6-Zu-xtK"/>
                     </view>
                     <connections>
                         <outlet property="editButton" destination="YFe-cy-R3F" id="lBJ-Sb-Q9C"/>
@@ -103,5 +113,11 @@
     </scenes>
     <resources>
         <image name="searchBtnBack" width="10.333333015441895" height="18.666666030883789"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

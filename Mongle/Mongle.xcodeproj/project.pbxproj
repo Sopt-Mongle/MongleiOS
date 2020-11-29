@@ -39,6 +39,7 @@
 		7F7C097124BA2EE7007C7C52 /* SentenceInfoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7C097024BA2EE7007C7C52 /* SentenceInfoTVC.swift */; };
 		7F7C097324BAF714007C7C52 /* SentenceEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F7C097224BAF714007C7C52 /* SentenceEdit.storyboard */; };
 		7F7C097524BAFAAE007C7C52 /* SentenceEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7C097424BAFAAE007C7C52 /* SentenceEditVC.swift */; };
+		7F9C56FB25727AF500999B22 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C56FA25727AF500999B22 /* UIImage+Extensions.swift */; };
 		7FA8C4AB24C0371C00317F43 /* MainThemeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA8C4AA24C0371C00317F43 /* MainThemeData.swift */; };
 		7FA8C4AD24C0C64F00317F43 /* ThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA8C4AC24C0C64F00317F43 /* ThemeService.swift */; };
 		7FA8C4AF24C0C74400317F43 /* ThemeInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA8C4AE24C0C74400317F43 /* ThemeInfoData.swift */; };
@@ -266,6 +267,7 @@
 		7F7C097024BA2EE7007C7C52 /* SentenceInfoTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceInfoTVC.swift; sourceTree = "<group>"; };
 		7F7C097224BAF714007C7C52 /* SentenceEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SentenceEdit.storyboard; sourceTree = "<group>"; };
 		7F7C097424BAFAAE007C7C52 /* SentenceEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceEditVC.swift; sourceTree = "<group>"; };
+		7F9C56FA25727AF500999B22 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		7FA8C4AA24C0371C00317F43 /* MainThemeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainThemeData.swift; sourceTree = "<group>"; };
 		7FA8C4AC24C0C64F00317F43 /* ThemeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeService.swift; sourceTree = "<group>"; };
 		7FA8C4AE24C0C74400317F43 /* ThemeInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeInfoData.swift; sourceTree = "<group>"; };
@@ -683,6 +685,7 @@
 				7F6ABED024ADE9860040746E /* UIView+Extensions.swift */,
 				7F6ABED224ADE9D60040746E /* UIViewController+Extensions.swift */,
 				7F6ABED424ADE9FC0040746E /* UIImageView+Extensions.swift */,
+				7F9C56FA25727AF500999B22 /* UIImage+Extensions.swift */,
 				EC86B49924B7646600DB930A /* UITextField+Extensions.swift */,
 				B842A4452557E3B100253275 /* String+Extensions.swift */,
 			);
@@ -1090,6 +1093,7 @@
 				EC30462C254ED0AA00DB6E4A /* ServiceAgreeForSignUpVC.swift in Sources */,
 				B8E2E17B24C2A33600595752 /* MySentenceService.swift in Sources */,
 				EC759C3C24BED5CD001D2F81 /* SigninData.swift in Sources */,
+				7F9C56FB25727AF500999B22 /* UIImage+Extensions.swift in Sources */,
 				B8218B202560021E003AA1AA /* OpenSourceTVC.swift in Sources */,
 				EC88960E24B87F66008D29E2 /* ThemeSelectForWritingSentenceVC.swift in Sources */,
 				7FC5B4D724BC6D2B007C1725 /* AddBookToSentenceVC.swift in Sources */,
@@ -1307,7 +1311,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6ZTQ76LJPZ;
+				DEVELOPMENT_TEAM = 4YXV56BSN6;
 				INFOPLIST_FILE = Mongle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

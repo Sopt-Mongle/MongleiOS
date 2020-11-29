@@ -105,7 +105,7 @@ class SentenceInfoVC: UIViewController {
                     self.getThemeInfo(themeIdx: self.sentence?.themeIdx ?? 0) {
                         [weak self] (themeImage, themeName) in
                         DispatchQueue.main.async {
-                            self?.themeImageView.imageFromUrl(themeImage, defaultImgPath: "themeWritingThemeXSentenceBg")
+                            self?.themeImageView.imageFromUrl(themeImage)
                             self?.themeNameLabel.text = themeName
                         }
                     }
@@ -649,11 +649,15 @@ extension SentenceInfoVC: UITableViewDataSource {
             }
 
             let otherSentnece = self.otherSentences[indexPath.row]
-
+            
             cell.setData(sentence: otherSentnece.sentence,
                          bookName: otherSentnece.title ?? "",
                          likeCount: otherSentnece.likes,
                          bookMarkCount: otherSentnece.saves)
+            cell.setIndicatorSate(state: true)
+            if indexPath.row == self.otherSentences.count - 1 {
+                cell.setIndicatorSate(state: false)
+            }
             return cell
             
         }
