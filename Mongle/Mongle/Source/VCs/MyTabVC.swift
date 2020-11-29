@@ -30,6 +30,7 @@ class MyTabVC: UIViewController,UIGestureRecognizerDelegate {
     let heightRatio: CGFloat = UIScreen.main.bounds.height/812
     let widthRatio: CGFloat = UIScreen.main.bounds.width/375
     let token = UserDefaults.standard.string(forKey: "token")
+    let refreshControl = UIRefreshControl()
     //팝업뷰
     let blurImageView = UIImageView().then{
         $0.image = UIImage(named: "logoutPopupBg")
@@ -83,6 +84,7 @@ class MyTabVC: UIViewController,UIGestureRecognizerDelegate {
         setMenu()
         self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![0])!], direction: .forward, animated: false, completion: nil)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         observingList.forEach { $0.invalidate() }
