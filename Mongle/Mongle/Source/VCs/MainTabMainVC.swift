@@ -220,9 +220,11 @@ class MainTabMainVC: UIViewController {
     // MARK:- IBAction Method
     @IBAction func searchButton(_ sender: Any) {
         if let tabBar = self.tabBarController as? UnderTabBarController {
-            if let searchVC = tabBar.viewControllers![1] as? SearchTabMainVC {
-                searchVC.prevIdx = 0
-                tabBar.selectedIndex = 1
+            if let searchNavi = tabBar.viewControllers![1] as? UINavigationController {
+                if let searchVC = searchNavi.viewControllers[0] as? SearchTabMainVC{
+                    searchVC.prevIdx = 0
+                    tabBar.selectedIndex = 1
+                }
             }
         }
     }
