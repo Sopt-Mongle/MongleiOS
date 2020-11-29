@@ -239,7 +239,7 @@ class UnderTabBarController: UITabBarController {
      
         guard let searchVC = UIStoryboard(name: "SearchTabMain",
                                         bundle: nil).instantiateViewController(
-                                            withIdentifier: "SearchNavigationController") as? UINavigationController
+                                            withIdentifier: "SearchTabMainVC") as? SearchTabMainVC
             else{
             
             return
@@ -472,8 +472,7 @@ class UnderTabBarController: UITabBarController {
 extension UnderTabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if tabBarController.selectedIndex == 1{
-            if let nav = viewController as? UINavigationController {
-                guard let vc = nav.viewControllers.first as? SearchTabMainVC else{ return }
+            if let vc = viewController as? SearchTabMainVC {
                 vc.prevIdx = self.curIndex
             }
         }
@@ -489,7 +488,7 @@ extension UnderTabBarController: UITabBarControllerDelegate {
                 if let vc = viewController as? CuratorTabMainVC{
                     vc.curatorTabTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
                 }
-            }
+            } 
         }
     }
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
