@@ -64,7 +64,6 @@ class ThemeInfoVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setThemeData()
     }
-    
     func setBlur() {
         // 1
         themeBlurView.backgroundColor = .clear

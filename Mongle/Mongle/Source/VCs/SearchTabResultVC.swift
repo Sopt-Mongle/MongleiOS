@@ -27,7 +27,6 @@ class SearchTabResultVC: UIViewController {
         tabBarCV.delegate = self
         tabBarCV.dataSource = self
         searchTextField.delegate = self
-
         searchTextField.text = searchKeyword
         
         underBarView.backgroundColor = .softGreen

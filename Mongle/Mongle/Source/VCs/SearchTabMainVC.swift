@@ -27,7 +27,6 @@ class SearchTabMainVC: UIViewController{
         recentSearchCV.dataSource = self
         recommendSearchCV.delegate = self
         recommendSearchCV.dataSource = self
-        
         initGestureRecognizer()
         setCollctionViewLayout()
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
