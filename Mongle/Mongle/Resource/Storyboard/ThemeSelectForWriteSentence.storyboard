@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLx-7d-McK">
-                                <rect key="frame" x="17" y="53" width="10.5" height="19"/>
+                                <rect key="frame" x="17" y="53" width="19" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="MOn-19-Sy7"/>
-                                    <constraint firstAttribute="width" constant="10.699999999999999" id="k44-au-tAO"/>
+                                    <constraint firstAttribute="width" constant="19" id="k44-au-tAO"/>
                                 </constraints>
                                 <connections>
                                     <action selector="backButtonAction:" destination="Bh9-Nr-MLf" eventType="touchUpInside" id="Nnp-2Y-P9Q"/>

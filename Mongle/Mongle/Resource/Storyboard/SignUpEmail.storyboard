@@ -289,6 +289,7 @@
                         <outlet property="codeWarningLabel" destination="8JN-B2-Mgt" id="VYV-da-TvO"/>
                         <outlet property="emailMongleImage" destination="cV6-6H-UkO" id="C1s-U5-T89"/>
                         <outlet property="emailNoticeLabel" destination="nVu-tB-CcD" id="amX-E7-CJe"/>
+                        <outlet property="imageHeightConstraint" destination="x3P-oB-zu9" id="foH-5H-P8p"/>
                         <outlet property="labelToNotice" destination="w4W-vz-19l" id="yXu-W0-Vqj"/>
                         <outlet property="mongleToLabel" destination="Woa-K3-CQC" id="K9F-eK-Yqh"/>
                         <outlet property="noticeImage" destination="qLb-5p-1T8" id="xhu-oc-foP"/>
