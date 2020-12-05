@@ -113,6 +113,7 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
     }
     
   
+    @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     
    
     
@@ -124,7 +125,7 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
     var startTimer = false
     var ballIsGreen = false
     var presentingPopUp = false
-    
+    let deviceBound = UIScreen.main.bounds.height/812.0
     
     //MARK: - Functions
     
@@ -679,6 +680,12 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
                 self.stackToButton.constant = 7
                 self.statckToButtonImage.constant = 16
                 self.buttonToButton.constant = 7
+                
+                if(self.deviceBound < 0.9) {
+                    self.imageHeightConstraint.constant = 0
+                    
+                }
+                
             },completion: { finished in
                 //                UIView.animate(withDuration: 0.12, animations: {
                 //                    self.emailMongleImage.transform = CGAffineTransform(rotationAngle: 360/180)
@@ -717,15 +724,21 @@ class SignUpEmailVC: UIViewController, UITextFieldDelegate{
         
         UIView.animate(withDuration: duration, delay: 0.0, options: .init(rawValue: curve),
                        animations: {
-                        self.batToMongle.constant = 103.5
-                        self.mongleToLabel.constant = 92
-                        self.labelToNotice.constant = 16
-                        self.noticeToTime.constant = 48
+                        self.batToMongle.constant = 103.5*self.deviceBound
+                        self.mongleToLabel.constant = 92*self.deviceBound
+                        self.labelToNotice.constant = 16*self.deviceBound
+                        self.noticeToTime.constant = 48*self.deviceBound
                         
-                        self.timeToStack.constant = 14
-                        self.stackToButton.constant = 62
-                        self.statckToButtonImage.constant = 70
-                        self.buttonToButton.constant = 14
+                        self.timeToStack.constant = 14*self.deviceBound
+                        self.stackToButton.constant = 62*self.deviceBound
+                        self.statckToButtonImage.constant = 70*self.deviceBound
+                        self.buttonToButton.constant = 14*self.deviceBound
+                        
+                        if(self.deviceBound < 0.9) {
+                            self.imageHeightConstraint.constant = 79
+                            self.mongleToLabel.constant = 40
+                            
+                        }
                        })
         
         self.view.layoutIfNeeded()

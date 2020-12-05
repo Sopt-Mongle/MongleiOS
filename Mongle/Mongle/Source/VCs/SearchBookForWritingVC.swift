@@ -216,7 +216,7 @@ class SearchBookForWritingVC: UIViewController,UITextFieldDelegate {
         searchButton.backgroundColor = .white
         searchButton.setImage(UIImage(named: "searchBtnSearch"), for: .normal)
         searchButton.tintColor = .softGreen
-        backButton.setImage(UIImage(named: "searchBtnBack"), for: .normal)
+        backButton.setImage(UIImage(named: "writingSentenceTheme6BtnClose"), for: .normal)
         backButton.tintColor = .veryLightPink
         bookTableView.isHidden = true
         secondLabel.text = "책 제목의 일부만 입력해도 책을 찾을 수 있어요 예) 해리포터와 불의 잔 → 해리"
