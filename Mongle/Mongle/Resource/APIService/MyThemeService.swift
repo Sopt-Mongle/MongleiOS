@@ -62,7 +62,7 @@ struct MyThemeService {
         guard let decodedData = try? decoder.decode(GenericResponse<MyThemeData>.self, from: data)
             else { return .pathErr }
         
-        
+        print("@@@테마 데이터 \(decodedData)")
         guard let data = decodedData.data else{
             return .requestErr(decodedData.message)
         }

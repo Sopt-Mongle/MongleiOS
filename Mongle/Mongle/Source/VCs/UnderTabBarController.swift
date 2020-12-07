@@ -73,7 +73,7 @@ class UnderTabBarController: UITabBarController {
         super.viewDidLayoutSubviews()
         if(deviceBound < 1){
             tabBar.frame.size.height = 83*deviceBound - 10
-            tabBar.frame.origin.y = view.frame.height - 83*deviceBound
+            tabBar.frame.origin.y = view.frame.height - 83*deviceBound 
             seperateLine.snp.makeConstraints{
                 
                 $0.bottom.equalToSuperview().offset(-self.tabBar.frame.size.height-10)
@@ -484,6 +484,11 @@ extension UnderTabBarController: UITabBarControllerDelegate {
             
         else {
             self.curIndex = tabBarController.selectedIndex
+            if tabBarController.selectedIndex == 3{
+                if let vc = viewController as? CuratorTabMainVC{
+                    vc.curatorTabTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+                }
+            } 
         }
     }
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {

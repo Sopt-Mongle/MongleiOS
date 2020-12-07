@@ -78,13 +78,14 @@ class MyTabThemeVC: UIViewController {
                 self.myThemeData = data
                 self.myThemeSave = data.save
                 self.myThemeWrite = data.write
-                print("내 프로필 테마: \(data)")
+                print("내 서재 테마: \(data)")
                 DispatchQueue.main.async {
                     self.themeTableView.reloadData()
                 }
                 
                 
             case .requestErr(let message):
+                print("디코딩오류")
                 guard let message = message as? String else { return }
                 
                 self.showToast(text: message)

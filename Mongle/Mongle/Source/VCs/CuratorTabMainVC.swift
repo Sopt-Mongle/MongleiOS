@@ -13,7 +13,7 @@ class CuratorTabMainVC: UIViewController {
     var keywordList:[String] = ["감성자극","동기부여","자기계발","깊은생각","독서기록","일상문장"]
     var popularList:[CuratorRecommendData] = []
     var themeList:[CuratorTabTheme] = []
-    
+    let refreshControl = UIRefreshControl()
     //MARK:- IBOutlet
     @IBOutlet weak var naviView: UIView!
     @IBOutlet weak var curatorTabTableView: UITableView!
@@ -51,6 +51,8 @@ class CuratorTabMainVC: UIViewController {
             
         }
         curatorTabTableView.contentInset.bottom = 60
+        curatorTabTableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -128,6 +130,12 @@ class CuratorTabMainVC: UIViewController {
     }
     func hideNaviShadow(){
         naviView.layer.shadowOpacity = 0
+    }
+    
+    @objc func refresh(){
+        setRecommendedCurator()
+        setThemeInCurator()
+        self.refreshControl.endRefreshing()
     }
 
 }

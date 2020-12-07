@@ -91,6 +91,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
+                                                    <action selector="findIDButtonAction:" destination="kJn-c1-6Jy" eventType="touchUpInside" id="fSY-wn-Dvu"/>
                                                     <action selector="findIdButtonAction:" destination="kJn-c1-6Jy" eventType="touchUpInside" id="xU4-bH-mVq"/>
                                                 </connections>
                                             </button>
@@ -108,6 +109,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="findPWButtonAction:" destination="kJn-c1-6Jy" eventType="touchUpInside" id="ujL-eO-Xo6"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>

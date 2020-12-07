@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "scale" : "1x",
+      "filename" : "mySettingsOpensource2BoxBlur.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "mySettingsOpensource2BoxBlur@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "mySettingsOpensource2BoxBlur@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

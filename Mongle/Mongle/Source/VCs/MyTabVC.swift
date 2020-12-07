@@ -30,6 +30,7 @@ class MyTabVC: UIViewController,UIGestureRecognizerDelegate {
     let heightRatio: CGFloat = UIScreen.main.bounds.height/812
     let widthRatio: CGFloat = UIScreen.main.bounds.width/375
     let token = UserDefaults.standard.string(forKey: "token")
+    let refreshControl = UIRefreshControl()
     //팝업뷰
     let blurImageView = UIImageView().then{
         $0.image = UIImage(named: "logoutPopupBg")
@@ -83,6 +84,7 @@ class MyTabVC: UIViewController,UIGestureRecognizerDelegate {
         setMenu()
         self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![0])!], direction: .forward, animated: false, completion: nil)
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         observingList.forEach { $0.invalidate() }
@@ -90,22 +92,28 @@ class MyTabVC: UIViewController,UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         if sentenceFlag{
             sentenceFlag = false
-            setMySentence()
+//            setMySentence()
             
             DispatchQueue.main.async{
                 let vc = (self.pageInstance?.vcArr?[1])! as? MyTabSentenceVC
                 vc?.sentenceTableView.reloadData()
                 self.pageInstance?.viewWillAppear(true)
                 
-            self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![1])!], direction: .forward, animated: true, completion: nil)
-            self.pageInstance?.keyValue.curPresentViewIndex = 1
+                self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![1])!], direction: .forward, animated: true, completion: nil)
+                self.pageInstance?.keyValue.curPresentViewIndex = 1
+                
             }
             self.view.layoutIfNeeded()
+            DispatchQueue.main.async {
+                self.sentenceMenuLabel.text = "\(self.sentenceNum)"
+            }
+            
         }
         else{
+            self.pageInstance?.setViewControllers([(self.pageInstance?.vcArr![0])!], direction: .forward, animated: true, completion: nil)
             setMyProfile()
-            setMyTheme()
-            setMySentence()
+//            setMyTheme()
+//            setMySentence()
             setMyCurator()
             
         }
@@ -220,6 +228,8 @@ class MyTabVC: UIViewController,UIGestureRecognizerDelegate {
                     self.profileName = self.myProfileData!.name
                     self.profileKeywordIdx = self.myProfileData!.keywordIdx ?? 1
                     self.profileIntroduce = self.myProfileData!.introduce ?? ""
+                    self.themeNum = self.myProfileData!.themeCount
+                    self.sentenceNum = self.myProfileData!.sentenceCount
                     print("##########Introduce,\(self.profileIntroduce)")
                     UserDefaults.standard.setValue(self.profileName, forKey: "UserProfileName")
                     UserDefaults.standard.setValue(self.profileImg, forKey: "UserProfileImgLink")
@@ -268,7 +278,11 @@ class MyTabVC: UIViewController,UIGestureRecognizerDelegate {
             }
         }
     }
-    
+    func setMenuCount(){
+        themeMenuLabel.text = "\(self.themeNum)"
+        sentenceMenuLabel.text = "\(self.sentenceNum)"
+        curatorMenuLabel.text = "\(self.curatorNum)"
+    }
     func setMenu(){
         myKeywordLabel.textColor = .brownGreyThree
         myProfileMsgLabel.textColor = .veryLightPink
@@ -300,6 +314,7 @@ class MyTabVC: UIViewController,UIGestureRecognizerDelegate {
                     guard let data = theme as? MyThemeData else {
                         return
                     }
+                    print("테마 조회 성공\(data)")
                     self.themeNum = data.save.count + data.write.count
                     DispatchQueue.main.async {
                         self.themeMenuLabel.text = "\(self.themeNum)"
@@ -309,7 +324,7 @@ class MyTabVC: UIViewController,UIGestureRecognizerDelegate {
                     
                 case .requestErr(let message):
                     guard let message = message as? String else { return }
-                    
+                    print("디코딩오류")
                     self.showToast(text: message)
                     print(message)
                 case .pathErr:

@@ -95,7 +95,7 @@ class SentenceEditVC: UIViewController {
         let countText = "\(count)/280"
         let attributedString = NSMutableAttributedString(string: countText)
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
-                                      value: UIColor.black,
+                                      value: UIColor.veryLightPink,
                                       range: (countText as NSString).range(of: "/280"))
         textCountLabel.attributedText = attributedString
         
@@ -103,7 +103,6 @@ class SentenceEditVC: UIViewController {
         editButton.backgroundColor = .softGreen
         editButton.setTitle("수정하기", for: .normal)
         editButton.setTitleColor(.white, for: .normal)
-        editButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         editButton.makeRounded(cornerRadius: 28)
         
     }
@@ -159,7 +158,7 @@ extension SentenceEditVC: UITextViewDelegate {
          let attributedString = NSMutableAttributedString(string: newText)
         
          attributedString.addAttribute(NSAttributedString.Key.foregroundColor,
-                                       value: UIColor.black,
+                                       value: UIColor.veryLightPink,
                                        range: (newText as NSString).range(of: "/280"))
         
          textCountLabel.attributedText = attributedString

@@ -59,9 +59,9 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZg-2D-s7e">
-                                <rect key="frame" x="17" y="53" width="10.666666666666664" height="19"/>
+                                <rect key="frame" x="17" y="53" width="19" height="19"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="10.699999999999999" id="GKT-Ne-7xC"/>
+                                    <constraint firstAttribute="width" constant="19" id="GKT-Ne-7xC"/>
                                     <constraint firstAttribute="height" constant="19" id="uNv-Tn-KTO"/>
                                 </constraints>
                                 <connections>

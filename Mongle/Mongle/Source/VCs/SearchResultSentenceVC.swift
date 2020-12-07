@@ -19,6 +19,7 @@ class SearchResultSentenceVC: UIViewController {
         super.viewDidLoad()
         sentenceTableView.delegate = self
         sentenceTableView.dataSource = self
+        sentenceTableView.contentInset.bottom = 60
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool){
@@ -39,7 +40,6 @@ class SearchResultSentenceVC: UIViewController {
                 }
                 
                 self.sentenceList = data
-                print("최근검색어: \(data)")
                 DispatchQueue.main.async {
                     self.sentenceTableView.reloadData()
                     if self.sentenceList.count == 0{
@@ -58,7 +58,7 @@ class SearchResultSentenceVC: UIViewController {
                 print(message)
             case .pathErr:
                 
-                print("path")
+                print("pathErr")
             case .serverErr:
                 print("serverErr")
             case .networkFail:

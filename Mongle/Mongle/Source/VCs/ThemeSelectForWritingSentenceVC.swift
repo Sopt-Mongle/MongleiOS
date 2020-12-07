@@ -104,7 +104,7 @@ class ThemeSelectForWritingSentenceVC: UIViewController, UITextFieldDelegate {
     
     //MARK:- User Define Functions
     func setItems(){
-        backButton.setImage(UIImage(named: "searchBtnBack")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        backButton.setImage(UIImage(named: "writingSentenceTheme6BtnClose")?.withRenderingMode(.alwaysOriginal), for: .normal)
         searchButton.setImage(UIImage(named: "searchBtnSearch")?.withRenderingMode(.alwaysOriginal), for: .normal)
         selectButton.backgroundColor = .softGreen
         selectButton.makeRounded(cornerRadius: 25)

@@ -25,6 +25,11 @@ class SentenceInThemeTVC: UITableViewCell {
     @IBOutlet var bookmarkImageView: UIImageView!
     @IBOutlet var likeAndBookmarkCountStackview: UIStackView!
     
+    
+    lazy var indicatorView: UIView = UIView().then {
+        $0.backgroundColor = .veryLightPinkSix
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,6 +41,20 @@ class SentenceInThemeTVC: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setIndicatorSate(state: Bool) {
+        if state {
+            self.addSubview(indicatorView)
+            indicatorView.snp.makeConstraints {
+                $0.leading.trailing.bottom.equalToSuperview()
+                $0.height.equalTo(1)
+            }
+        }
+        else {
+            indicatorView.removeFromSuperview()
+        }
+    }
+    
+    
     func setData(sentence: String,
                  bookName: String,
                  likeCount: Int,
@@ -45,7 +64,6 @@ class SentenceInThemeTVC: UITableViewCell {
         self.bookNameLabel.text = bookName
         self.likeCountLabel.text = "\(likeCount)"
         self.bookmarkCountLabel.text = "\(bookMarkCount)"
-//        self.likeAndBookmarkCountStackview.isHidden = false
     }
     
     func setNoThemeData(sentence: String, bookName: String){

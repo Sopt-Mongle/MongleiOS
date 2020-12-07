@@ -90,6 +90,48 @@ class LogInVC: UIViewController {
         $0.image = UIImage(named: "loginPopupBg")
         
     }
+    
+    let copyButton = UIButton().then{
+        $0.setTitle("메일 복사", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.backgroundColor = .softGreen
+        $0.makeRounded(cornerRadius: 19)
+        $0.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+        $0.addTarget(self, action: #selector(mailCopyButton), for: .touchUpInside)
+        $0.titleLabel?.font = $0.titleLabel?.font.withSize(13)
+        
+    }
+    
+    let mailNoButton = UIButton().then{
+        $0.setTitle("아니요", for: .normal)
+        $0.setTitleColor(.softGreen, for: .normal)
+        $0.backgroundColor = .white
+        $0.makeRounded(cornerRadius: 19)
+        $0.setBorder(borderColor: .softGreen, borderWidth: 1.0)
+        $0.addTarget(self, action: #selector(mailNobuttonAction), for: .touchUpInside)
+        $0.titleLabel?.font = $0.titleLabel?.font.withSize(13)
+        
+    }
+    let mailAlertLabel = UILabel().then {
+        $0.text = "몽글에 메일로 문의하시겠어요?"
+        $0.font = $0.font.withSize(15)
+        $0.textColor = .black
+
+    }
+    
+    let subMailAlertLabel = UILabel().then {
+        $0.text = "mongle.official@gmail.com 으로\n문의 주시면 계정을 찾아드릴게요! "
+        $0.font = $0.font.withSize(13)
+        $0.textColor = .brownGreyThree
+        $0.numberOfLines = 0
+        $0.textAlignment = .center
+        
+    }
+    
+    
+    
+    
+    
     var runCount = 0
     var runCountForSplash = 0
     var shouldBeDismissed = false
@@ -185,6 +227,22 @@ class LogInVC: UIViewController {
         
         
     }
+    @objc func mailCopyButton(){
+        
+        UIPasteboard.general.string = "mongle.official@gmail.com"
+        blurView.removeFromSuperview()
+        alertView.removeFromSuperview()
+        
+        
+        
+    }
+    
+    @objc func mailNobuttonAction(){
+        blurView.removeFromSuperview()
+        alertView.removeFromSuperview()
+        
+    }
+    
     
     func animate1(){
         self.monglesImageView.transform = CGAffineTransform(translationX: 0, y: -50)
@@ -597,6 +655,67 @@ class LogInVC: UIViewController {
     }
     
     
+    @IBAction func findIDButtonAction(_ sender: Any) {
+        showMailPopUp()
+        
+    }
+    
+    @IBAction func findPWButtonAction(_ sender: Any) {
+        showMailPopUp()
+        
+    }
+    
+    func showMailPopUp(){
+        
+        self.view.addSubview(blurView)
+        self.view.addSubview(alertView)
+        
+        
+        alertView.addSubview(alertImageView)
+        alertView.addSubview(mailAlertLabel)
+        alertView.addSubview(subMailAlertLabel)
+        alertView.addSubview(copyButton)
+        alertView.addSubview(mailNoButton)
+        
+        blurView.snp.makeConstraints{
+            $0.leading.trailing.top.bottom.equalToSuperview()
+        }
+        
+        alertView.snp.makeConstraints{
+            $0.width.equalTo(304)
+            $0.height.equalTo(233)
+            $0.center.equalToSuperview()
+        }
+        alertImageView.snp.makeConstraints{
+            $0.leading.trailing.top.bottom.equalToSuperview()
+        }
+        
+        mailAlertLabel.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(84)
+            $0.centerX.equalToSuperview()
+        }
+        
+        subMailAlertLabel.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(112)
+            $0.centerX.equalToSuperview()
+        }
+        
+        copyButton.snp.makeConstraints{
+            $0.width.equalTo(127)
+            $0.height.equalTo(37)
+            $0.leading.equalToSuperview().offset(20)
+            $0.bottom.equalToSuperview().offset(-25)
+        }
+        
+        mailNoButton.snp.makeConstraints{
+            $0.width.equalTo(127)
+            $0.height.equalTo(37)
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.bottom.equalToSuperview().offset(-25)
+        }
+        
+        
+    }
     
     
 }
