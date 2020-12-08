@@ -14,7 +14,9 @@
 
 <br>
 
-![](https://devxoul.github.io/notion-badge?id=1519748688&pt=121657414&ct=GitHub%20notion-badge&w=200)
+![]()
+
+<img src="https://devxoul.github.io/notion-badge?id=1519748688&pt=121657414&ct=GitHub%20notion-badge&w=200" width = 300>
 
 ## Team Mongle-iOS 👨🏻‍💻🧑🏻‍💻👩🏻‍💻
 
