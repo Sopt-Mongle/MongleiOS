@@ -333,9 +333,7 @@ query string이라는 새로운 통신 방법을 배울 수 있었음.
 
 
 
-## 📝 [Coding Convention Rule](./docs/CodingConventionRule.md)
 
-## 🤝 [Team Rule](./docs/TeamRule.md)
 
 ## People
 
@@ -351,6 +349,10 @@ iOS 개발자를 꿈꾸는 학생입니다 . 다음 기수 아요 팟장~~
 
 애니메이션에 맛들린 개발자 지망생
 -->
+
+## 📝 [Coding Convention Rule](./docs/CodingConventionRule.md)
+
+## 🤝 [Team Rule](./docs/TeamRule.md)
 
 ## Dependencies
 
