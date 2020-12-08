@@ -14,9 +14,9 @@
 
 <br>
 
-![]()
-
-<img src="https://devxoul.github.io/notion-badge?id=1519748688&pt=121657414&ct=GitHub%20notion-badge&w=200" width = 300>
+<a href="https://apps.apple.com/kr/app/몽글-mongle/id1541148787" target="_blank">
+<img src="./docs/asset/download-appstore.png" link="" width = 200>
+</a>
 
 ## Team Mongle-iOS 👨🏻‍💻🧑🏻‍💻👩🏻‍💻
 
