@@ -25,7 +25,6 @@ class OnboardingFirstVC: UIViewController {
     @IBOutlet weak var mongleBottom: NSLayoutConstraint!
     
     static var onboardingBDelegate: OnboardingButtonDelegate?
-    let deviceBound = UIScreen.main.bounds.height/812.0
 
     
     //MARK: - LifeCycle Methods
@@ -39,7 +38,6 @@ class OnboardingFirstVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         startAnimation()
-        
     }
 
     
@@ -53,41 +51,24 @@ class OnboardingFirstVC: UIViewController {
         mentImage.image = UIImage(named: "onboarding1Text")
         backgroundImage.contentMode = .scaleToFill
         
-        mentTopConstraint.constant = 116*deviceBound
-        bookBottom.constant = 293*deviceBound
-        mongleBottom.constant = 237*deviceBound
-    
-
-        
+        mentTopConstraint.constant = 116 * DeviceInfo.screenHeightRatio
+        bookBottom.constant = 293 * DeviceInfo.screenHeightRatio
+        mongleBottom.constant = 237 * DeviceInfo.screenHeightRatio
     }
     
     func startAnimation(){
        
-        UIView.animate(withDuration: 0.3, delay: 3.0, animations: {
-            self.bookImage.transform = CGAffineTransform(rotationAngle: -30/180)
+        UIView.animate(withDuration: 0.3, delay: 3.0, animations: { [weak self] in
+            self?.bookImage.transform = CGAffineTransform(rotationAngle: -30/180)
+        }, completion: { [weak self] _ in
             
-            
-            
-            
-        }, completion: { finished in
-            
-            UIView.animate(withDuration: 0.3, delay: 0, animations: {
-                self.bookImage.transform = CGAffineTransform(rotationAngle: 15/80)
-                
-                
-            }, completion: {finish in
-                UIView.animate(withDuration: 0.3, delay: 0, animations: {
-                    self.bookImage.transform = .identity
-                
+            UIView.animate(withDuration: 0.3, delay: 0, animations: { [weak self] in
+                self?.bookImage.transform = CGAffineTransform(rotationAngle: 15/80)
+            }, completion: { [weak self] _ in
+                UIView.animate(withDuration: 0.3, delay: 0, animations: { [weak self] in
+                    self?.bookImage.transform = .identity
                 })
-                
             })
-           
-           
-            
         })
-        
     }
-  
-    
 }

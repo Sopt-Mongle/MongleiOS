@@ -217,6 +217,7 @@
 		EC9800592561A473007C3046 /* Comp 4.gif in Resources */ = {isa = PBXBuildFile; fileRef = EC9800582561A473007C3046 /* Comp 4.gif */; };
 		ECA23EDE24B5F58D00C100F1 /* WritingSentenceSecond.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECA23EDD24B5F58D00C100F1 /* WritingSentenceSecond.storyboard */; };
 		ECA23EE024B5F5F100C100F1 /* WritingSentenceSecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA23EDF24B5F5F100C100F1 /* WritingSentenceSecondVC.swift */; };
+		ECCB5A8C2827BD8800553D07 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCB5A8B2827BD8800553D07 /* DeviceInfo.swift */; };
 		ECEF22BA24B4A3B200933534 /* WritingSentence.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECEF22B924B4A3B200933534 /* WritingSentence.storyboard */; };
 		ECEF22BC24B4A3DF00933534 /* WritingSentenceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEF22BB24B4A3DF00933534 /* WritingSentenceVC.swift */; };
 		ECF391CD2558268E009337D3 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECF391CC2558268E009337D3 /* Onboarding.storyboard */; };
@@ -446,6 +447,7 @@
 		EC9800582561A473007C3046 /* Comp 4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "Comp 4.gif"; sourceTree = "<group>"; };
 		ECA23EDD24B5F58D00C100F1 /* WritingSentenceSecond.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WritingSentenceSecond.storyboard; sourceTree = "<group>"; };
 		ECA23EDF24B5F5F100C100F1 /* WritingSentenceSecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingSentenceSecondVC.swift; sourceTree = "<group>"; };
+		ECCB5A8B2827BD8800553D07 /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		ECEF22B924B4A3B200933534 /* WritingSentence.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WritingSentence.storyboard; sourceTree = "<group>"; };
 		ECEF22BB24B4A3DF00933534 /* WritingSentenceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingSentenceVC.swift; sourceTree = "<group>"; };
 		ECF391CC2558268E009337D3 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 				7F6ABEC724ADE7F30040746E /* Storyboard */,
 				7F6ABEBA24ADE7720040746E /* Assets.xcassets */,
 				7F6ABED624ADEB730040746E /* UserDefaultKeys.swift */,
+				ECCB5A8B2827BD8800553D07 /* DeviceInfo.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -1112,6 +1115,7 @@
 				B8E2E16724C1B48500595752 /* CuratorRecommendService.swift in Sources */,
 				EC759C3824BEB7C3001D2F81 /* SignUpService.swift in Sources */,
 				B8B48ADB24B762A000551F5B /* SearchResultMenuCVC.swift in Sources */,
+				ECCB5A8C2827BD8800553D07 /* DeviceInfo.swift in Sources */,
 				EC759C4E24C0272A001D2F81 /* ThemeSelectForWriteService.swift in Sources */,
 				B8E2E17924C29CD300595752 /* MyThemeData.swift in Sources */,
 				B86D4C4224B2C14200C21906 /* RecommendSearchCVC.swift in Sources */,

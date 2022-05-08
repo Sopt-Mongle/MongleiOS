@@ -325,54 +325,6 @@ class UnderTabBarController: UITabBarController {
         
     }
     
-    func showSplash(){
-        let containView = UIView()
-        containView.backgroundColor = UIColor(red: 251 / 255.0, green: 251 / 255.0, blue: 251 / 255.0, alpha: 1.0)
-        self.view.addSubview(containView)
-        containView.frame = self.view.bounds
-        
-        var imageView = UIImageView()
-        do{
-            let gif = try UIImage(gifName: "Comp 4")
-            imageView = UIImageView(gifImage: gif,loopCount: 1)
-        
-            self.view.addSubview(imageView)
-            imageView.snp.makeConstraints{
-                $0.width.equalTo(350)
-                $0.height.equalTo(200)
-                $0.center.equalToSuperview()
-                
-            }
-            
-            
-        } catch{
-            print(error)
-        }
-        
-       
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-            self.runCountForSplash += 1
-            
-
-            if self.runCountForSplash == 30 {
-                timer.invalidate()
-                
-                UIView.animate(withDuration: 1.0, animations: {
-                    imageView.removeFromSuperview()
-                    containView.alpha = 0
-                    
-                    
-                })
-                
-                
-                    
-            }
-        }
-        
-        
-    }
-    
-    
 //        When PlustButton is Tapped
     private func showSubMenus(){
         UIView.animate(withDuration: 0.25 , delay: 0, options: [.curveEaseIn], animations: {

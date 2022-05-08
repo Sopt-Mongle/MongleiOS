@@ -15,7 +15,6 @@ class OnboardingSecondVC: UIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var curatorImage: UIImageView!
     @IBOutlet weak var mongleImage: UIImageView!
-    let deviceBound = UIScreen.main.bounds.height/812.0
 
     @IBOutlet weak var mentTop: NSLayoutConstraint!
 
@@ -26,14 +25,10 @@ class OnboardingSecondVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setItems()
-        
-        // Do any additional setup after loading the view.
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         startAnimation()
-        
         
         mongleImage.image = UIImage(named: "onboarding2ImgMongle")
         mongleImage.transform = .identity
@@ -45,49 +40,30 @@ class OnboardingSecondVC: UIViewController {
     }
     
     func setItems(){
-        
         backgroundImage.image = UIImage(named: "onboarding2Bg")
         curatorImage.image = UIImage(named: "onboarding2ImgList")
         mongleImage.image = UIImage(named: "onboarding2ImgMongle")
         mentImage.image = UIImage(named: "onboarding2Text")
 
-        mentTop.constant = 116*deviceBound
-        curatorBottom.constant = 245*deviceBound
-        mongleBottom.constant = 202*deviceBound
-        
+        mentTop.constant = 116 * DeviceInfo.screenHeightRatio
+        curatorBottom.constant = 245 * DeviceInfo.screenHeightRatio
+        mongleBottom.constant = 202 * DeviceInfo.screenHeightRatio
     }
-    
     
     func startAnimation(){
         curatorImage.alpha = 0
         curatorImage.transform = CGAffineTransform(translationX: 0, y: 150)
-        UIView.animate(withDuration: 1.5, delay: 0.2, animations: {
-            self.curatorImage.alpha = 1
-            self.curatorImage.transform = .identity
-            
+        UIView.animate(withDuration: 1.5, delay: 0.2, animations: { [weak self] in
+            self?.curatorImage.alpha = 1
+            self?.curatorImage.transform = .identity
         }, completion: nil)
-        
     }
     
     func endAnimation(){
-        
-        UIView.animate(withDuration: 1.0, delay: 0, animations: {
-            self.mongleImage.image = UIImage(named: "onboarding3ImgMongle")
-            
-        }, completion: { finished in
-            
-            self.mongleImage.alpha = 0
-            
+        UIView.animate(withDuration: 1.0, delay: 0, animations: { [weak self] in
+            self?.mongleImage.image = UIImage(named: "onboarding3ImgMongle")
+        }, completion: { [weak self] _ in
+            self?.mongleImage.alpha = 0
         })
-        
-        
-        
-        
     }
-    
-    
-
-    
-    
-    
 }

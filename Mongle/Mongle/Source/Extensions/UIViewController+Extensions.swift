@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftyGif
+import SnapKit
 
 extension UIViewController {
     
@@ -130,7 +132,6 @@ extension UIViewController {
         
     }
     
-    
     func showToast(text: String){
         let toast = ToastView(frame: CGRect(x: 0, y: 0, width: 343, height: 84))
         toast.setLabel(text: text)
@@ -187,4 +188,40 @@ extension UIViewController {
             })
         })
     }
+    
+    func showSplash() {
+        let containView = UIView()
+
+        var runCountForSplash = 0
+        
+        self.view.addSubview(containView)
+        
+        containView.backgroundColor = UIColor(red: 251 / 255.0, green: 251 / 255.0, blue: 251 / 255.0, alpha: 1.0)
+        containView.frame = self.view.bounds
+        
+        guard let gif = try? UIImage(gifName: "Comp 4") else { return }
+        
+        let imageView = UIImageView(gifImage: gif,loopCount: 1)
+        
+        self.view.addSubview(imageView)
+        imageView.snp.makeConstraints{
+            $0.width.equalTo(350)
+            $0.height.equalTo(200)
+            $0.center.equalToSuperview()
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            runCountForSplash += 1
+
+            if runCountForSplash == 30 {
+                timer.invalidate()
+                
+                UIView.animate(withDuration: 1.0, animations: {
+                    imageView.removeFromSuperview()
+                    containView.alpha = 0
+                })
+            }
+        }
+    }
+    
 }
